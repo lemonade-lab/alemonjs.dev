@@ -45,25 +45,24 @@ sidebar_position: 7
 ```ts title="src/route/api/hello.ts"
 import { Context } from 'koa'
 
-// get
-export const GET = (ctx: Context) => {
+// GET
+export const GET = (ctx: Context, next) => {
   ctx.status = 200
   ctx.body = {
     message: 'hello word !'
   }
 }
 
-// post
-export const GET = (ctx: Context) => {
+// POST
+export const POST = (ctx: Context, next) => {
   ctx.status = 200
   ctx.body = {
     message: 'hello word !'
   }
 }
 
-// delete
-// put
-// ...
+// DELETE
+// PUT
 ```
 
 ## root

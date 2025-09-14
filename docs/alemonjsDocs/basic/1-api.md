@@ -89,9 +89,11 @@ const response$3 = onResponse(selects, (event, next) => {
   console.log('step 3')
 })
 
-const group = onGroup(response$1, response$2, response$3)
-
-export default group
+export default onResponse(selects, [
+  response$1.current,
+  response$2.current,
+  response$3.current
+])
 ```
 
 ### 调用
