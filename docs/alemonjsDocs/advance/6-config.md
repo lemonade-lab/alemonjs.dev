@@ -2,7 +2,7 @@
 sidebar_position: 6
 ---
 
-# 配置
+# 配置读取
 
 :::info
 

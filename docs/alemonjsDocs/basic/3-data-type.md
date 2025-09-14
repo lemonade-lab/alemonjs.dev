@@ -18,7 +18,7 @@ sidebar_position: 3
 
 ```ts title="src/response/**/*/res.ts"
 import { Text, useMessage } from 'alemonjs'
-export const selects = onSelects(['message.create'])
+const selects = onSelects(['message.create'])
 export default onResponse(selects, event => {
   // 创建
   const [message] = useMessage(event)
@@ -48,7 +48,7 @@ export default onResponse(selects, event => {
 import { useMessage, Image } from 'alemonjs'
 import jpgURL from '@src/assets/test.jpeg'
 import { readFileSync } from 'node:fs'
-export const selects = onSelects(['message.create'])
+const selects = onSelects(['message.create'])
 export default onResponse(selects, event => {
   const [message] = useMessage(event)
   const { url, file } = Image
@@ -66,7 +66,7 @@ export default onResponse(selects, event => {
 
 ```ts title="response/**/*/res.ts"
 import { useMessage, Text, Mention } from 'alemonjs'
-export const selects = onSelects(['message.create'])
+const selects = onSelects(['message.create'])
 export default onResponse(selects, event => {
   const [message] = useMessage(event)
   // 发送多种类型的消息
@@ -259,7 +259,7 @@ export default response
 
 ```ts title="response/**/*/res.ts"
 import { Ark, useMessage } from 'alemonjs'
-export const selects = onSelects(['message.create'])
+const selects = onSelects(['message.create'])
 export default onResponse(selects, event => {
   const [message] = useMessage(event)
 

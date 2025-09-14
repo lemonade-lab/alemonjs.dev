@@ -55,9 +55,7 @@ start()
 ```js title="lib/index.js"
 export default defineChildren({
   onCreated() {
-    logger.info({
-      message: '启动应用'
-    })
+    logger.info('启动应用')
   }
 })
 ```
@@ -66,17 +64,14 @@ export default defineChildren({
 {
   // 确保文件拥有以下内容
   "main": "lib/index.js", // 入口文件
-  "type": "module",
-  "scripts": {
-    "app": "node index.js" // 启动脚本
-  }
+  "type": "module" // esm
 }
 ```
 
 - 启动
 
 ```sh
-yarn app
+node index.js
 ```
 
 ## 测试平台
@@ -89,7 +84,7 @@ yarn app
 
 - 方式2: 打开访问在线模式
 
-[htts://alemonjs.com/testone/](https://alemonjs.com/testone/)
+[https://alemonjs.com/testone/](https://alemonjs.com/testone/)
 
 ```sh
 yarn app
@@ -105,9 +100,6 @@ port: 17117 # 端口，快捷参数 --port
 input: 'lib/index.js' # 入口地址，快捷参数 --input
 login: 'discord' # 选择登录的平台，快捷参数 --login
 url: 'ws://127.0.0.1:17117' # 连接阿柠檬服务URL，快捷参数 --url
-```
-
-```yaml
 is_full_receive: false # 不全量接收消息（用于分流处理）
 # 禁用设置
 disabled_text_regular: '/闭关' # 设置正则，若匹配则禁用
@@ -118,8 +110,12 @@ disabled_user_id:
 disabled_user_key:
   '123456': true # 多匹配则禁用
 # 重定向：把指定的文本，转为指定的内容 （禁用规则比重定向优先）
-redirect_regular: '^#' # 识别前缀 #
-redirect_target: '/' # 替换为 /
+redirect_text_regular: '^#' # 识别前缀 #
+redirect_text_target: '/' # 替换为 /
+# 映射规则
+mapping_text:
+  - regular: '/开始游戏'
+    target: '/踏入仙途'
 # ismaster 设置
 master_id:
   '1715713638': true

@@ -2,7 +2,7 @@
 sidebar_position: 7
 ---
 
-# 路由
+# 接口路由
 
 :::tip
 

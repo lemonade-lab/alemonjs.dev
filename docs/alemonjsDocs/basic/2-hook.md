@@ -19,7 +19,7 @@ import TabItem from '@theme/TabItem';
 
 ```ts title="src/response/**/*/res.ts"
 import { Text, useMessage } from 'alemonjs'
-export const selects = onSelects(['message.create'])
+const selects = onSelects(['message.create'])
 export default onResponse(selects, (event, next) => {
   // 创建
   const [message] = useMessage(event)
@@ -29,7 +29,7 @@ export default onResponse(selects, (event, next) => {
 
 ```ts title="src/response/**/*/res.ts"
 import { Text } from 'alemonjs'
-export const selects = onSelects(['message.create'])
+const selects = onSelects(['message.create'])
 export default onResponse(selects, () => {
   return {
     // 即将要发送的数据
@@ -54,7 +54,7 @@ export default onResponse(selects, () => {
 
 ```ts title="response/**/*/res.ts"
 import { useMention } from 'alemonjs'
-export const selects = onSelects(['message.create'])
+const selects = onSelects(['message.create'])
 export default onResponse(selects, async (event, next) => {
   const [mention] = useMention(event)
   // 查找用户类型的 @ 提及，且不是 bot
@@ -81,7 +81,7 @@ export default onResponse(selects, async (event, next) => {
 ```ts title="response/**/*/res.ts"
 import { Text, useMessage, useSubscribe } from 'alemonjs'
 export const regular = /^(#|\/)?login$/
-export const selects = onSelects([
+const selects = onSelects([
   'message.create',
   'private.message.create'
 ])
@@ -127,7 +127,7 @@ export default onResponse(selects, event => {
 ```ts title="response/**/*/res.ts"
 import { useSubscribe } from 'alemonjs'
 
-export const selects = onSelects(['message.create'])
+const selects = onSelects(['message.create'])
 
 const res$1 = onResponse(selects, (event, next) => {
   // 创建
@@ -152,7 +152,7 @@ export default onResponse(selects, (event, next) => {
 ```ts title="middleware/**/*/res.ts"
 import { Text, useMessage, useSubscribe } from 'alemonjs'
 export const regular = /^(#|\/)?login$/
-export const selects = onSelects([
+const selects = onSelects([
   'message.create',
   'private.message.create'
 ])
@@ -210,17 +210,19 @@ unmonut(Res.current, [])
 
 ## `useState`
 
+:::warning
+
+已废弃
+
+:::
+
 > 声明res/mw的状态,可用于管理是否启用
 
 > 命名规则 子应用名:response:文件夹1:文件夹2...
 
 > 如默认main为： main:response:login
 
-:::warning
-
-响应文件夹由`apps（旧版本）`命名为`response`
-
-:::
+> 响应文件夹由`apps（旧版本）`命名为`response`
 
 <Tabs>
   <TabItem value="0" label="停用" default>
@@ -229,7 +231,7 @@ unmonut(Res.current, [])
 import { Text, useMessage, useState } from 'alemonjs'
 import { createRequire } from 'module'
 export const regular = /^(#|\/)?close:/
-export const selects = onSelects([
+const selects = onSelects([
   'message.create',
   'private.message.create'
 ])
@@ -265,7 +267,7 @@ export default onResponse(selects, (event, next) => {
 import { Text, useMessage, useState } from 'alemonjs'
 import { createRequire } from 'module'
 export const regular = /^(#|\/)?open:/
-export const selects = onSelects([
+const selects = onSelects([
   'message.create',
   'private.message.create'
 ])

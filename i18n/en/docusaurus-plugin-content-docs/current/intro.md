@@ -22,7 +22,7 @@ import TabItem from '@theme/TabItem';
 ```tsx title="Basic Example of Sending Messages"
 import React from 'react'
 import { Text, useSend } from 'alemonjs/jsx'
-export const selects = onSelects(['message.create'])
+const selects = onSelects(['message.create'])
 export default onResponse(selects, event => {
   const Send = useSend(event)
   Send(<Text>hello</Text>)
@@ -35,7 +35,7 @@ export default onResponse(selects, event => {
  
 ```ts title="Basic Example of Sending Messages" 
 import { Text, useSend } from 'alemonjs'
-export const selects = onSelects(['message.create'])
+const selects = onSelects(['message.create'])
 export default onResponse(selects, event => {
   const Send = useSend(event)
   Send(Text('hello'))

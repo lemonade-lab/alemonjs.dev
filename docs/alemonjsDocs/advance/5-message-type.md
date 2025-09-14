@@ -2,7 +2,7 @@
 sidebar_position: 5
 ---
 
-# 事件
+# 事件类型
 
 ```ts
 export type EventsMessageCreate = {

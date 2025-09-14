@@ -55,9 +55,7 @@ start()
 ```js title="lib/index.js"
 export default defineChildren({
   onCreated() {
-    logger.info({
-      message: '启动应用'
-    })
+    logger.info('启动应用')
   }
 })
 ```

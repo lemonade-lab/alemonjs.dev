@@ -19,7 +19,7 @@ import TabItem from '@theme/TabItem';
 
 ```ts title="src/response/**/*/res.ts"
 // 选择事件类型
-export const selects = onSelects(['message.create'])
+const selects = onSelects(['message.create'])
 // 定义响应函数
 export default onResponse(selects, (event, next) => {
   // 前往下一个响应,不执行则响应到此处后，立即停止。
@@ -38,7 +38,7 @@ export default onResponse(selects, (event, next) => {
 ```ts title="src/response/**/*/res.ts"
 // 不匹配该正则，自动进行next
 export const regular = /^(#|\/)?hello$/
-export const selects = onSelects(['message.create'])
+const selects = onSelects(['message.create'])
 export default onResponse(selects, event => {
   // your code
 })
@@ -53,7 +53,7 @@ const regular$2 = /^(#|\/)?word$/
 
 export const regular = Regular.or(regular$1, regular$2)
 
-export const selects = onSelects(['message.create'])
+const selects = onSelects(['message.create'])
 
 export default onResponse(selects, event => {
   if (regular$1.test(event.MessageText)) {
@@ -69,7 +69,7 @@ export default onResponse(selects, event => {
 > 共用一个 next
 
 ```ts
-export const selects = onSelects(['message.create'])
+const selects = onSelects(['message.create'])
 
 const response$1 = onResponse(selects, (event, next) => {
   console.log('step 1')
@@ -99,7 +99,7 @@ export default group
 > 可以return任意对象，除了约定的值需要注意之外
 
 ```ts
-export const selects = onSelects(['message.create'])
+const selects = onSelects(['message.create'])
 
 const response$1 = onResponse(selects, (event, next) => {
   return {

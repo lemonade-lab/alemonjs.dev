@@ -13,7 +13,7 @@ sidebar_position: 5
 ### `onMiddleware`
 
 ```ts title="src/middleware/**/*/mw.ts"
-export const selects = onSelects(['message.create'])
+const selects = onSelects(['message.create'])
 // 仅限 # 和 / 开头的消息才执行该中间件
 // export const regular = /^(#|\/)/
 // OnMiddleware((事件体,控制体)=>消息体,消息类型)
