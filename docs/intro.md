@@ -14,7 +14,6 @@ sidebar_position: 1
 
 框架主要通过定义响应函数来描述不同类型的事件将要执行的内容。
 
-import Image from '@site/src/components/Image';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -30,5 +29,3 @@ export default onResponse(selects, event => {
   message.send(format(Text('Hello Word!')))
 })
 ```
-
-<Image src={require('@site/static/img/model.png')} />

@@ -97,6 +97,7 @@ yarn app
 ```yaml title="alemon.config.yaml"
 # 常规配置
 port: 17117 # 端口，快捷参数 --port
+serverPort: 18117 # 应用端口，不配置不启动，快捷参数 --serverPort
 input: 'lib/index.js' # 入口地址，快捷参数 --input
 login: 'discord' # 选择登录的平台，快捷参数 --login
 url: 'ws://127.0.0.1:17117' # 连接阿柠檬服务URL，快捷参数 --url
@@ -145,16 +146,19 @@ alemonjs-openai:
 
 > 17117: 框架默认端口
 
-> 17187: WEB面板默认端口
-
 ## 环境变量
 
 ```ts
 namespace NodeJS {
   interface ProcessEnv {
+    // 登录名
     login?: string
+    // 平台包名
     platform?: string
+    // cbp 端口
     port?: string
+    // 模块进程服务端口
+    serverPort?: string
     // development 模式下。可查看 logger.debug 记录
     NODE_ENV?: 'development' | 'production'
   }
