@@ -16,6 +16,7 @@ sidebar_position: 1
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import BubblePreview from '@site/src/components/BubblePreview';
 
 ```ts title="Hello Word!"
 import { Text, useMessage } from 'alemonjs'
@@ -29,3 +30,5 @@ export default onResponse(selects, event => {
   message.send(format(Text('Hello Word!')))
 })
 ```
+
+<BubblePreview />

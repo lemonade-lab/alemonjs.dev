@@ -2,6 +2,7 @@ import Link from '@docusaurus/Link'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import Translate from '@docusaurus/Translate'
 import TextReveal from '@site/src/components/TextReveal'
+import React from 'react'
 export default function HeaderPage(): JSX.Element {
   const { siteConfig } = useDocusaurusContext()
   return (
