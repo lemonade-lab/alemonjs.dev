@@ -257,7 +257,7 @@ const response = onResponse(selects, event => {
 export default response
 ```
 
-<BubblePreview codeKey="md" minHeight="75rem" />
+<BubblePreview codeKey="md" minHeight="45rem" />
 
 ### Ark
 
