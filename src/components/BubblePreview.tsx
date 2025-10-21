@@ -6,7 +6,6 @@ import MessageBubble from './Bubble/MessageBubble'
 import type { DataEnums } from 'alemonjs'
 import * as Alemon from 'alemonjs'
 import { CodeMap } from './Bubble/mock'
-import { Text } from 'alemonjs'
 import MobileTabs from './Bubble/MobileTabs'
 const BubblePreview: React.FC = ({
   codeKey,
@@ -77,7 +76,6 @@ const BubblePreview: React.FC = ({
   }, [code])
 
   function runAlemonJSCode() {
-    console.log('运行 AlemonJS 代码...', Text('xxx'))
     setError(null)
     try {
       const userCode = code.trim()
