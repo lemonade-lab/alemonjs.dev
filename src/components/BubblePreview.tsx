@@ -1,26 +1,24 @@
 import React, { useEffect, useRef, useState } from 'react'
 import MonacoEditor from './MonacoEditor'
-import type {
-  AlemonJSButton,
-  RenderItem
-} from './BubbleTypes'
-import {
-  defaultCode as curDefaultCode,
-  mockAlemonJS,
-  tipCode
-} from './mock'
 import classnames from 'classnames'
 import { useEffectTheme } from '../core/theme'
-
+import MessageBubble from './Bubble/MessageBubble'
+import type { DataEnums } from 'alemonjs'
+import * as Alemon from 'alemonjs'
+import { CodeMap } from './Bubble/mock'
+import { Text } from 'alemonjs'
+import MobileTabs from './Bubble/MobileTabs'
 const BubblePreview: React.FC = ({
-  defaultCode
+  codeKey,
+  minHeight
 }: {
-  defaultCode?: string
+  codeKey?: string
+  minHeight?: number
 }) => {
   const [code, setCode] = useState<string>(
-    defaultCode ?? curDefaultCode
+    CodeMap[codeKey] ?? CodeMap['default']
   )
-  const [items, setItems] = useState<RenderItem[] | null>(
+  const [items, setItems] = useState<DataEnums[][] | null>(
     null
   )
   const [error, setError] = useState<string | null>(null)
@@ -28,12 +26,15 @@ const BubblePreview: React.FC = ({
   const [mobileView, setMobileView] = useState<
     'editor' | 'preview'
   >('editor')
+
   // 让容器跟随 docusaurus 的 data-theme 切换 dark 类
   useEffectTheme('data-theme', 'alemon-bubble-preview')
+
   // 同步 Monaco 主题
   const [editorTheme, setEditorTheme] = useState<
     'vs' | 'vs-dark'
   >('vs')
+
   useEffect(() => {
     if (typeof document === 'undefined') return
     const updateTheme = () => {
@@ -76,6 +77,7 @@ const BubblePreview: React.FC = ({
   }, [code])
 
   function runAlemonJSCode() {
+    console.log('运行 AlemonJS 代码...', Text('xxx'))
     setError(null)
     try {
       const userCode = code.trim()
@@ -88,12 +90,8 @@ const BubblePreview: React.FC = ({
         )
         .replace(/export\s+default\s+App;?/g, '')
 
-      const context = {
-        format: mockAlemonJS.format,
-        Text: mockAlemonJS.Text,
-        BT: mockAlemonJS.BT,
-        console
-      }
+      // 将 alemonjs 包的导出作为执行上下文注入
+      const context = { ...Alemon, console }
 
       const argNames = Object.keys(context)
       const argValues = Object.values(context)
@@ -110,14 +108,37 @@ const BubblePreview: React.FC = ({
       ) as (...args: any[]) => any
       const result = AppFunc(...argValues)
 
-      if (result && Array.isArray(result)) {
-        setItems(result as RenderItem[])
-        if ((result as RenderItem[]).length === 0) {
-          setError('代码执行成功，但返回了空数组')
-          setItems([])
-        }
+      // 兼容两种返回：DataEnums[]（单条气泡）或 DataEnums[][]（多条气泡）
+      if (!Array.isArray(result)) {
+        throw new Error(
+          'App 必须返回 format(...) 的结果（DataEnums[] 或 DataEnums[][]）'
+        )
+      }
+
+      let bubbles: DataEnums[][] = []
+      if (result.length === 0) {
+        bubbles = []
+      } else if (Array.isArray(result[0])) {
+        // 多条气泡
+        bubbles = (result as any[]).filter(
+          Array.isArray
+        ) as DataEnums[][]
+      } else if (
+        typeof (result as any)[0] === 'object' &&
+        (result as any)[0] &&
+        'type' in (result as any)[0]
+      ) {
+        // 单条气泡
+        bubbles = [result as DataEnums[]]
       } else {
-        throw new Error('App 必须返回 format() 的结果数组')
+        throw new Error(
+          '无法识别返回的数据结构，请返回 format(...) 的结果（DataEnums[] 或 DataEnums[][]）'
+        )
+      }
+
+      setItems(bubbles)
+      if (bubbles.length === 0) {
+        setError('代码执行成功，但返回了空结果')
       }
     } catch (err: any) {
       console.error('AlemonJS 代码执行错误:', err)
@@ -126,22 +147,19 @@ const BubblePreview: React.FC = ({
     }
   }
 
-  const handleButtonClick = (button: AlemonJSButton) => {
-    alert(
-      `按钮被点击: ${button.text}\n动作: ${button.action}`
-    )
-  }
-
   return (
     <div id="alemon-bubble-preview" className="font-sans ">
       {/* 固定整体卡片高度，移动端较小，桌面适中；内部使用 flex 填充 */}
-      <div className="max-w-7xl mx-auto bg-white dark:bg-slate-900 rounded-xl shadow-lg overflow-hidden flex flex-col h-[65vh] md:h-[70vh] min-h-[22rem]">
+      <div
+        className="max-w-7xl mx-auto bg-white dark:bg-slate-900 rounded-xl shadow-lg overflow-hidden flex flex-col min-h-[18rem]"
+        style={{
+          minHeight: minHeight
+        }}
+      >
         {/* Header */}
         <div className="h-14 bg-slate-900 text-white px-4 md:px-5 py-3 flex items-center justify-between border-b border-slate-800">
           <div className="flex items-center gap-3">
-            <span className="font-semibold">
-              Edit(试用)
-            </span>
+            <span className="font-semibold">Edit</span>
             <span className="text-xs opacity-80">
               format
             </span>
@@ -155,30 +173,10 @@ const BubblePreview: React.FC = ({
         </div>
 
         {/* 移动端切换 */}
-        <div className="md:hidden flex border-b border-slate-200 dark:border-slate-800">
-          <button
-            className={classnames('flex-1 py-2 text-sm', {
-              'text-slate-900 dark:text-slate-100 border-b-2 border-cyan-500 font-medium':
-                mobileView === 'editor',
-              'text-slate-500 dark:text-slate-400':
-                mobileView !== 'editor'
-            })}
-            onClick={() => setMobileView('editor')}
-          >
-            编辑
-          </button>
-          <button
-            className={classnames('flex-1 py-2 text-sm', {
-              'text-slate-900 dark:text-slate-100 border-b-2 border-cyan-500 font-medium':
-                mobileView === 'preview',
-              'text-slate-500 dark:text-slate-400':
-                mobileView !== 'preview'
-            })}
-            onClick={() => setMobileView('preview')}
-          >
-            预览
-          </button>
-        </div>
+        <MobileTabs
+          activeKey={mobileView}
+          onChange={k => setMobileView(k)}
+        />
 
         {/* 内容区 */}
         <div className="flex-1 flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x divide-slate-200 dark:divide-slate-800">
@@ -228,178 +226,24 @@ const BubblePreview: React.FC = ({
                   </div>
 
                   <pre className="bg-gray-100 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-md p-4 font-mono text-sm whitespace-pre-wrap dark:text-slate-100">
-                    {tipCode}
+                    {CodeMap['tip']}
                   </pre>
                 </>
               ) : items && items.length > 0 ? (
-                items.map((item, idx) => {
-                  if (!item) return null
-                  const roleClass = (item as any).role
-                    ? (item as any).role
-                    : 'assistant'
-                  if (item.type === 'text') {
-                    return (
-                      <div
-                        key={idx}
-                        className={classnames(
-                          'max-w-[85%] flex flex-col',
-                          {
-                            'self-end':
-                              roleClass === 'user',
-                            'self-start':
-                              roleClass !== 'user'
-                          }
-                        )}
-                      >
-                        <div
-                          className={classnames(
-                            'p-3.5 rounded-2xl shadow-sm',
-                            {
-                              'bg-slate-900 text-white border border-slate-800 rounded-br-sm':
-                                roleClass === 'user',
-                              'bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 border border-slate-200 dark:border-slate-700 rounded-bl-sm':
-                                roleClass !== 'user'
-                            }
-                          )}
-                        >
-                          <div className="whitespace-pre-wrap leading-6 text-[15px]">
-                            {item.content}
-                          </div>
-                        </div>
-                      </div>
-                    )
-                  } else if (item.type === 'buttons') {
-                    const buttonClass = classnames(
-                      'inline-flex items-center px-3.5 py-1.5 rounded-full text-sm shadow-sm focus:outline-none',
-                      {
-                        'border border-cyan-400/40 bg-transparent text-cyan-300 hover:bg-cyan-500/10 focus:ring-2 focus:ring-cyan-500/40':
-                          roleClass === 'user',
-                        'border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 focus:ring-2 focus:ring-slate-300':
-                          roleClass !== 'user'
-                      }
-                    )
-                    return (
-                      <div
-                        key={idx}
-                        className={classnames(
-                          'max-w-[85%] flex flex-col',
-                          {
-                            'self-end':
-                              roleClass === 'user',
-                            'self-start':
-                              roleClass !== 'user'
-                          }
-                        )}
-                      >
-                        <div
-                          className={classnames(
-                            'p-3.5 rounded-2xl shadow-sm',
-                            {
-                              'bg-slate-900 text-white border border-slate-800 rounded-br-sm':
-                                roleClass === 'user',
-                              'bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 border border-slate-200 dark:border-slate-700 rounded-bl-sm':
-                                roleClass !== 'user'
-                            }
-                          )}
-                        >
-                          <div className="flex flex-wrap gap-1.5">
-                            {item.buttons.map((btn, i) => (
-                              <button
-                                key={i}
-                                className={buttonClass}
-                                onClick={() =>
-                                  handleButtonClick(btn)
-                                }
-                              >
-                                {btn.text}
-                              </button>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    )
-                  } else if (item.type === 'bubble') {
-                    const rows =
-                      item.rows && item.rows.length
-                        ? item.rows
-                        : item.buttons
-                          ? [item.buttons]
-                          : []
-                    const totalButtons = rows.reduce(
-                      (acc, r) => acc + r.length,
-                      0
-                    )
-                    const hasButtons = totalButtons > 0
-                    const buttonClass = classnames(
-                      'inline-flex items-center px-3.5 py-1.5 rounded-full text-sm shadow-sm focus:outline-none',
-                      {
-                        'border border-cyan-400/40 bg-transparent text-cyan-300 hover:bg-cyan-500/10 focus:ring-2 focus:ring-cyan-500/40':
-                          roleClass === 'user',
-                        'border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 focus:ring-2 focus:ring-slate-300':
-                          roleClass !== 'user'
-                      }
-                    )
-                    return (
-                      <div
-                        key={idx}
-                        className={classnames(
-                          'max-w-[85%] flex flex-col',
-                          {
-                            'self-end':
-                              roleClass === 'user',
-                            'self-start':
-                              roleClass !== 'user'
-                          }
-                        )}
-                      >
-                        <div
-                          className={classnames(
-                            'p-3.5 rounded-2xl shadow-sm',
-                            {
-                              'bg-slate-900 text-white border border-slate-800 rounded-br-sm':
-                                roleClass === 'user',
-                              'bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 border border-slate-200 dark:border-slate-700 rounded-bl-sm':
-                                roleClass !== 'user'
-                            }
-                          )}
-                        >
-                          {item.content ? (
-                            <div className="whitespace-pre-wrap leading-6 text-[15px]">
-                              {item.content}
-                            </div>
-                          ) : null}
-                          {hasButtons ? (
-                            <div className="flex flex-col gap-1.5 mt-2">
-                              {rows.map((rowBtns, rIdx) => (
-                                <div
-                                  key={rIdx}
-                                  className="flex flex-wrap gap-1.5"
-                                >
-                                  {rowBtns.map((btn, i) => (
-                                    <button
-                                      key={`${rIdx}-${i}`}
-                                      className={
-                                        buttonClass
-                                      }
-                                      onClick={() =>
-                                        handleButtonClick(
-                                          btn
-                                        )
-                                      }
-                                    >
-                                      {btn.text}
-                                    </button>
-                                  ))}
-                                </div>
-                              ))}
-                            </div>
-                          ) : null}
-                        </div>
-                      </div>
-                    )
-                  }
-                  return null
-                })
+                items.map((bubble, idx) => (
+                  <div
+                    key={idx}
+                    className={classnames(
+                      'max-w-[85%] mb-3',
+                      { 'self-start': true }
+                    )}
+                  >
+                    <MessageBubble
+                      data={bubble}
+                      createAt={Date.now()}
+                    />
+                  </div>
+                ))
               ) : (
                 <div className="max-w-[85%] mb-2 self-start">
                   <div className="p-4 rounded-xl shadow bg-white dark:bg-slate-800 text-gray-800 dark:text-slate-100 border border-gray-200 dark:border-slate-700 rounded-bl-sm">

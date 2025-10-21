@@ -1,5 +1,6 @@
 @import './tailwind.css';
 @import './root.css';
+@import './MessageBubble.css';
 @import 'animate.css';
 
 .footer__link-item,

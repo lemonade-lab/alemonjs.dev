@@ -14,6 +14,8 @@ sidebar_position: 3
 
 > 如果想更定制化发送消息，请了解对应平台包client接口说明
 
+import BubblePreview from '@site/src/components/BubblePreview';
+
 ### Text
 
 ```ts title="src/response/**/*/res.ts"
@@ -41,6 +43,8 @@ export default onResponse(selects, event => {
   )
 })
 ```
+
+<BubblePreview codeKey="text" />
 
 ### Image
 
@@ -89,6 +93,8 @@ export default onResponse(selects, event => {
   )
 })
 ```
+
+<BubblePreview codeKey="mention" />
 
 ### Button
 
@@ -166,6 +172,8 @@ const response = onResponse(selects, event => {
 export default response
 ```
 
+<BubblePreview codeKey="button" minHeight="22rem" />
+
 ### MarkDown
 
 ```ts
@@ -192,11 +200,11 @@ const response = onResponse(selects, event => {
   message.send(
     format(
       MD(
-        text('普通文本'),
         // 标题
         title('标题！！'),
         // 副标题
         subtitle('子标题'),
+        text('普通文本'),
         // 加粗
         bold('加粗'),
         // 斜体
@@ -248,6 +256,8 @@ const response = onResponse(selects, event => {
 })
 export default response
 ```
+
+<BubblePreview codeKey="md" minHeight="75rem" />
 
 ### Ark
 

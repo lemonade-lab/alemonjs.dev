@@ -11,5 +11,11 @@
   },
   "[javascriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "cSpell.words": [
+    "alemon",
+    "alemonjs",
+    "easyops",
+    "giscus"
+  ]
 }
