@@ -16,40 +16,34 @@ sidebar_position: 6
 
 ## 开发者
 
-| 项目名          | 类型  | 说明     |
-| --------------- | ----- | -------- |
-| [alemonjs-code] | local | 订阅代码 |
+| 项目名          | 说明     |
+| --------------- | -------- |
+| [alemonjs-code] | 订阅代码 |
 
 [alemonjs-code]: https://github.com/lemonade-lab/subscribe-code
 
 ### 功能
 
-| 项目名            | 类型                    | 说明          |
-| ----------------- | ----------------------- | ------------- |
-| [alemonjs-cheese] | [![cheese-s]][cheese-p] | AI+今日运势等 |
+| 项目名            | 说明          |
+| ----------------- | ------------- |
+| [alemonjs-cheese] | AI+今日运势等 |
 
 [alemonjs-cheese]: https://github.com/V2233/alemonjs-cheese
-[cheese-s]: https://img.shields.io/npm/v/alemonjs-cheese.svg
-[cheese-p]: https://www.npmjs.com/package/alemonjs-cheese
 
 ### 游戏
 
-| 项目名             | 类型                    | 说明         |
-| ------------------ | ----------------------- | ------------ |
-| [alemonjs-xianyu]  | [![xianyu-s]][xianyu-p] | 扫雷等小游戏 |
-| [alemonjs-xiuxian] | local                   | 修仙文游     |
+| 项目名             | 说明         |
+| ------------------ | ------------ |
+| [alemonjs-xianyu]  | 扫雷等小游戏 |
+| [alemonjs-xiuxian] | 修仙文游     |
 
 [alemonjs-xianyu]: https://gitee.com/suancaixianyu/xianyu-plugin/tree/alemonjs/
-[xianyu-s]: https://img.shields.io/npm/v/alemonjs-xianyu.svg
-[xianyu-p]: https://www.npmjs.com/package/alemonjs-xianyu
-[alemonjs-xianyu]: https://github.com/xiuxianjs/xiuxian-plugin
+[alemonjs-xiuxian]: https://github.com/xiuxianjs/xiuxian-plugin
 
 ### AI
 
-| 项目名            | 类型                    | 说明                 |
-| ----------------- | ----------------------- | -------------------- |
-| [alemonjs-openai] | [![openai-s]][openai-p] | 连接符合openAI的模型 |
+| 项目名            | 说明                 |
+| ----------------- | -------------------- |
+| [alemonjs-openai] | 连接符合openAI的模型 |
 
 [alemonjs-openai]: https://github.com/xiuxianjs/ollama
-[openai-s]: https://img.shields.io/npm/v/alemonjs-openai.svg
-[openai-p]: https://www.npmjs.com/package/alemonjs-openai
