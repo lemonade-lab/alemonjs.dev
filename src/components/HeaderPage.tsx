@@ -22,7 +22,7 @@ export default function HeaderPage(): JSX.Element {
             // href="#desktop"
             onClick={() => {
               window.open(
-                'https://github.com/lemonade-lab/alemonjs-desktop/releases',
+                'https://github.com/lemonade-lab/alemondesk/releases',
                 '_self'
               )
             }}

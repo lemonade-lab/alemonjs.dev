@@ -1,6 +1,7 @@
 import { themes as prismThemes } from 'prism-react-renderer'
 import type { Config } from '@docusaurus/types'
 import type * as Preset from '@docusaurus/preset-classic'
+import MonacoWebpackPlugin from 'monaco-editor-webpack-plugin'
 
 /**
  *
@@ -134,7 +135,7 @@ export default defineConfig({
             },
             {
               label: 'desktop',
-              href: 'https://github.com/lemonade-lab/alemonjs-desktop'
+              href: 'https://github.com/lemonade-lab/alemondesk'
             },
             {
               label: 'alemongo',
@@ -169,5 +170,30 @@ export default defineConfig({
     ]
   ],
   stylesheets: [],
-  plugins: []
+  plugins: [
+    // function monacoPlugin(context, options) {
+    //   return {
+    //     name: 'monaco-editor-plugin',
+    //     configureWebpack(config, isServer, utils) {
+    //       // 只在客户端构建时添加 Monaco Editor
+    //       if (!isServer) {
+    //         return {
+    //           plugins: [
+    //             new MonacoWebpackPlugin({
+    //               languages: [
+    //                 'javascript',
+    //                 'typescript',
+    //                 'json',
+    //                 'markdown'
+    //               ]
+    //             })
+    //           ]
+    //         }
+    //       }
+    //       // 服务端渲染时返回空配置
+    //       return {}
+    //     }
+    //   }
+    // }
+  ]
 })

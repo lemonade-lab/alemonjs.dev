@@ -79,12 +79,12 @@ node_modules/                 // Node.js 依赖包
       // https://ant.design/components/icon-cn
       "logo": "public/logo.png",
       // 指令输入框
-      "commond": [
+      "command": [
         {
           "name": "test",
           // 图标（可选）支持antd图标
           "icon": "public/logo.png",
-          "commond": "open.test" // 发送指令
+          "command": "open.test" // 发送指令
         }
       ],
       // 侧边栏
@@ -94,7 +94,7 @@ node_modules/                 // Node.js 依赖包
           "name": "test",
           // 图标（可选） 支持antd图标
           "icon": "public/logo.png",
-          "commond": "open.test" // 发送指令
+          "command": "open.test" // 发送指令
         }
       ],
       // 平台（拥有此配置将无法被添加至config.value.apps）

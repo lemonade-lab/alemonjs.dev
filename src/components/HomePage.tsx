@@ -25,7 +25,7 @@ const items = [
     title: '桌面启动',
     docs: '立即安装立即启动机器人',
     position: 'right',
-    link: 'https://github.com/lemonade-lab/alemonjs-desktop'
+    link: 'https://github.com/lemonade-lab/alemondesk'
   }
 ]
 
