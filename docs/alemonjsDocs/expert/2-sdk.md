@@ -36,4 +36,4 @@ export default onResponse(selects, event => {
 })
 ```
 
-注意`platform`和`useClient`被约定为必须拥有的导出
+注意`platform`和`API`被约定为必须拥有的导出
