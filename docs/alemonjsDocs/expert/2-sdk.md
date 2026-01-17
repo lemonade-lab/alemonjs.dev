@@ -20,15 +20,19 @@ sidebar_position: 2
 
 ```ts title="src/response/**/*/res.ts"
 import {
-  platform as qqbot,
-  useClient
+    API,
+    platform
 } from '@alemonjs/qq-bot'
+import { useClient } from 'alemonjs'
 const selects = onSelects(['message.create'])
 export default onResponse(selects, event => {
-  if (event.platform === qqbot) {
-    const [client, value] = useClient(event)
-    // 使用原生api和数据
-  }
+    // 得到qq-bot平台的个人信息
+    if (event.Platform === platform) {
+        // 调用
+        const [client] = useClient(event, API)
+        // 直接调用对应平台接口规范
+        client.usersMe()
+    }
 })
 ```
 
