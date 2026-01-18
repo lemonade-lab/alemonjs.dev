@@ -26,7 +26,7 @@ export default defineConfig({
         {
           position: 'right',
           label: '编辑',
-          href: 'https://github.com/lemonade-lab/alemonjs-docs/blob/main/docs/intro.md'
+          href: 'https://github.com/lemonade-lab/alemonjs.dev/blob/main/docs/intro.md'
         },
         {
           position: 'right',
@@ -64,7 +64,7 @@ export default defineConfig({
             },
             {
               label: '评论',
-              href: 'https://github.com/lemonade-lab/alemonjs-docs/discussions'
+              href: 'https://github.com/lemonade-lab/alemonjs.dev/discussions'
             }
           ]
         },
