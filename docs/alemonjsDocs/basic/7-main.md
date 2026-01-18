@@ -1,4 +1,5 @@
 ---
+label: '周期'
 sidebar_position: 6
 ---
 

@@ -1,4 +1,5 @@
 ---
+label: '扩展'
 sidebar_position: 7
 ---
 
@@ -194,8 +195,7 @@ import { fileURLToPath } from 'url'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 export const activate = context => {
   // 创建一个 webview。
-  const sidebarWebView =
-    context.createSidebarWebView(context)
+  const sidebarWebView = context.createSidebarWebView(context)
   // 监听指定指令的执行
   context.onCommand('open.test', () => {
     const dir = join(__dirname, 'assets', 'index.html')
@@ -224,8 +224,7 @@ API.postMessage({
 ```js title="desktop.js"
 export const activate = context => {
   // 创建一个 webview。
-  const sidebarWebView =
-    context.createSidebarWebView(context)
+  const sidebarWebView = context.createSidebarWebView(context)
   // 监听 webview 的消息。
   sidebarWebView.onMessage(data => {
     // { type: 'pong',data: ''}
@@ -240,8 +239,7 @@ export const activate = context => {
 ```js title="desktop.js"
 export const activate = context => {
   // 创建一个 webview。
-  const sidebarWebView =
-    context.createSidebarWebView(context)
+  const sidebarWebView = context.createSidebarWebView(context)
   // 发送消息到webview。
   sidebarWebView.postMessage({
     type: 'ping',

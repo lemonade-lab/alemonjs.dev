@@ -1,0 +1,229 @@
+/* MDX 和文档样式增强 */
+
+/* 代码块带标题的样式 */
+.code-block-with-title {
+  @apply my-6 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 shadow-sm;
+}
+
+.code-block-header {
+  @apply flex items-center justify-between px-3 sm:px-4 py-2 bg-gray-100 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700;
+  @apply text-xs sm:text-sm font-mono text-gray-700 dark:text-gray-300 font-medium;
+}
+
+.code-block-with-title pre {
+  @apply !mt-0 !mb-0 !rounded-none !border-0;
+}
+
+/* 代码高亮样式 */
+.hljs {
+  @apply rounded-lg;
+}
+
+/* Admonition 样式 */
+.admonition {
+  @apply my-6 p-4 border-l-4 rounded;
+}
+
+.admonition-tip {
+  @apply bg-green-50 border-green-500;
+}
+
+html.dark .admonition-tip {
+  @apply bg-green-900/30 border-green-600;
+}
+
+.admonition-info {
+  @apply bg-blue-50 border-blue-500;
+}
+
+html.dark .admonition-info {
+  @apply bg-blue-900/30 border-blue-600;
+}
+
+.admonition-warning {
+  @apply bg-yellow-50 border-yellow-500;
+}
+
+html.dark .admonition-warning {
+  @apply bg-yellow-900/30 border-yellow-600;
+}
+
+.admonition-danger {
+  @apply bg-red-50 border-red-500;
+}
+
+html.dark .admonition-danger {
+  @apply bg-red-900/30 border-red-600;
+}
+
+/* Prose 样式增强 - 针对 Markdown 内容 */
+.prose {
+  @apply text-gray-800;
+}
+
+html.dark .prose {
+  @apply text-gray-200;
+}
+
+.prose h1 {
+  @apply text-4xl font-bold mb-6 mt-8 text-gray-900 border-b pb-3;
+}
+
+html.dark .prose h1 {
+  @apply text-gray-100 border-gray-700;
+}
+
+.prose h2 {
+  @apply text-3xl font-semibold mb-4 mt-8 text-gray-900 border-b pb-2;
+}
+
+html.dark .prose h2 {
+  @apply text-gray-100 border-gray-700;
+}
+
+.prose h3 {
+  @apply text-2xl font-semibold mb-3 mt-6 text-gray-900;
+}
+
+html.dark .prose h3 {
+  @apply text-gray-100;
+}
+
+.prose h4 {
+  @apply text-xl font-semibold mb-2 mt-4 text-gray-800;
+}
+
+html.dark .prose h4 {
+  @apply text-gray-200;
+}
+
+.prose p {
+  @apply mb-4 leading-7 text-gray-700;
+}
+
+html.dark .prose p {
+  @apply text-gray-300;
+}
+
+.prose a {
+  @apply text-blue-600 hover:text-blue-700 underline decoration-blue-300 hover:decoration-blue-500 transition-colors;
+}
+
+html.dark .prose a {
+  @apply text-blue-400 hover:text-blue-300 decoration-blue-600 hover:decoration-blue-400;
+}
+
+.prose code {
+  @apply bg-gray-100 text-red-600 px-1.5 py-0.5 rounded text-sm font-mono before:content-[''] after:content-[''];
+}
+
+html.dark .prose code {
+  @apply bg-gray-800 text-red-400;
+}
+
+.prose pre {
+  @apply bg-gray-50 text-gray-900 rounded-lg p-4 overflow-x-auto my-6 border border-gray-200;
+}
+
+html.dark .prose pre {
+  @apply bg-gray-800 text-gray-100 border-gray-700;
+}
+
+.prose pre code {
+  @apply bg-transparent text-gray-900 p-0;
+}
+
+html.dark .prose pre code {
+  @apply text-gray-100;
+}
+
+.prose ul {
+  @apply list-disc list-inside mb-4 space-y-2;
+}
+
+.prose ol {
+  @apply list-decimal list-inside mb-4 space-y-2;
+}
+
+.prose li {
+  @apply text-gray-700;
+}
+
+html.dark .prose li {
+  @apply text-gray-300;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-blue-500 pl-4 italic text-gray-700 my-4;
+}
+
+html.dark .prose blockquote {
+  @apply border-blue-600 text-gray-300;
+}
+
+.prose table {
+  @apply w-full border-collapse my-6;
+}
+
+.prose th {
+  @apply bg-gray-100 border border-gray-300 px-4 py-2 text-left font-semibold;
+}
+
+html.dark .prose th {
+  @apply bg-gray-800 border-gray-700 text-gray-200;
+}
+
+.prose td {
+  @apply border border-gray-300 px-4 py-2;
+}
+
+html.dark .prose td {
+  @apply border-gray-700 text-gray-300;
+}
+
+.prose img {
+  @apply rounded-lg shadow-md my-6;
+}
+
+.prose hr {
+  @apply my-8 border-gray-300;
+}
+
+html.dark .prose hr {
+  @apply border-gray-700;
+}
+
+/* 目录导航 */
+.toc {
+  @apply sticky top-24 overflow-y-auto;
+}
+
+.toc-link {
+  @apply block py-1 text-sm text-gray-600 hover:text-blue-600 transition-colors;
+}
+
+html.dark .toc-link {
+  @apply text-gray-400 hover:text-blue-400;
+}
+
+.toc-link-active {
+  @apply text-blue-600 font-medium;
+}
+
+html.dark .toc-link-active {
+  @apply text-blue-400;
+}
+
+/* 平滑滚动 */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 选择文本样式 */
+::selection {
+  @apply bg-blue-200 text-blue-900;
+}
+
+html.dark ::selection {
+  @apply bg-blue-900 text-blue-100;
+}

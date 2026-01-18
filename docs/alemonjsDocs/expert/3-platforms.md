@@ -1,4 +1,5 @@
 ---
+label: '自定义平台'
 sidebar_position: 3
 ---
 

@@ -1,4 +1,5 @@
 ---
+label: '中间件路由'
 sidebar_position: 7
 ---
 

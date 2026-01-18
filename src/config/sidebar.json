@@ -1,0 +1,147 @@
+[
+  {
+    "title": "简介",
+    "path": "/docs/intro",
+    "position": 1
+  },
+  {
+    "title": "快速开始",
+    "path": "/docs/start",
+    "position": 2
+  },
+  {
+    "id": "alemonjsDocs",
+    "label": "核心设计",
+    "position": 4,
+    "items": [
+      {
+        "id": "basic",
+        "label": "基础",
+        "position": 1,
+        "items": [
+          {
+            "title": "响应",
+            "path": "/docs/alemonjsDocs/basic/1-api",
+            "position": 1
+          },
+          {
+            "title": "接口",
+            "path": "/docs/alemonjsDocs/basic/2-hook",
+            "position": 2
+          },
+          {
+            "title": "消息格式",
+            "path": "/docs/alemonjsDocs/basic/3-data-type",
+            "position": 3
+          },
+          {
+            "title": "主动的",
+            "path": "/docs/alemonjsDocs/basic/4-send",
+            "position": 4
+          },
+          {
+            "title": "中间件",
+            "path": "/docs/alemonjsDocs/basic/5-mw",
+            "position": 5
+          },
+          {
+            "title": "优先级",
+            "path": "/docs/alemonjsDocs/basic/6-priority",
+            "position": 6
+          },
+          {
+            "title": "周期",
+            "path": "/docs/alemonjsDocs/basic/7-main",
+            "position": 6
+          }
+        ]
+      },
+      {
+        "id": "advance",
+        "label": "进阶",
+        "position": 2,
+        "items": [
+          {
+            "title": "事件类型",
+            "path": "/docs/alemonjsDocs/advance/5-message-type",
+            "position": 5
+          },
+          {
+            "title": "配置读取",
+            "path": "/docs/alemonjsDocs/advance/6-config",
+            "position": 6
+          },
+          {
+            "title": "接口路由",
+            "path": "/docs/alemonjsDocs/advance/7-route",
+            "position": 7
+          },
+          {
+            "title": "中间件路由",
+            "path": "/docs/alemonjsDocs/advance/8-route-mw",
+            "position": 7
+          },
+          {
+            "title": "工具函数",
+            "path": "/docs/alemonjsDocs/advance/9-utils",
+            "position": 9
+          }
+        ]
+      },
+      {
+        "id": "expert",
+        "label": "高阶",
+        "position": 3,
+        "items": [
+          {
+            "title": "匹配路由",
+            "path": "/docs/alemonjsDocs/expert/1-route",
+            "position": 1
+          },
+          {
+            "title": "个性化",
+            "path": "/docs/alemonjsDocs/expert/2-sdk",
+            "position": 2
+          },
+          {
+            "title": "实例对象",
+            "path": "/docs/alemonjsDocs/expert/3-class",
+            "position": 3
+          },
+          {
+            "title": "自定义平台",
+            "path": "/docs/alemonjsDocs/expert/3-platforms",
+            "position": 3
+          }
+        ]
+      },
+      {
+        "id": "open",
+        "label": "开放",
+        "position": 3,
+        "items": [
+          {
+            "title": "模块",
+            "path": "/docs/alemonjsDocs/open/7-models",
+            "position": 7
+          },
+          {
+            "title": "扩展",
+            "path": "/docs/alemonjsDocs/open/8-desktop",
+            "position": 7
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "登录账户",
+    "path": "/docs/environment",
+    "position": 5
+  },
+  {
+    "title": "开源生态",
+    "path": "/docs/apps",
+    "position": 6
+  }
+]

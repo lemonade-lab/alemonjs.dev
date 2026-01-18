@@ -1,12 +1,13 @@
 ---
 sidebar_position: 5
+label: '登录账户'
 ---
 
 # 登录账户
 
 ## 官方
 
-:::warning 注意事项
+:::warning
 
 点击`Project`、`Status`可进一步了解
 
@@ -74,7 +75,7 @@ sidebar_position: 5
 
 ## 三方
 
-:::warning 注意事项
+:::warning
 
 第三方协议具有一定的风险性，请谨慎使用。
 

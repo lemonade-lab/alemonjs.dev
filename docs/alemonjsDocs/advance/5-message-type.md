@@ -1,4 +1,5 @@
 ---
+label: '事件类型'
 sidebar_position: 5
 ---
 

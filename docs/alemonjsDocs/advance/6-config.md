@@ -1,4 +1,5 @@
 ---
+label: '配置读取'
 sidebar_position: 6
 ---
 

@@ -1,4 +1,5 @@
 ---
+label: '消息格式'
 sidebar_position: 3
 ---
 
@@ -14,8 +15,6 @@ sidebar_position: 3
 
 > 如果想更定制化发送消息，请了解对应平台包client接口说明
 
-import BubblePreview from '@site/src/components/BubblePreview';
-
 ### Text
 
 ```ts title="src/response/**/*/res.ts"
@@ -25,15 +24,9 @@ export default onResponse(selects, event => {
   // 创建
   const [message] = useMessage(event)
   message.send(
-    format(
-      Text('这个'),
-      Text('标题', { style: 'bold' }),
-      Text('被加粗了')
-    )
+    format(Text('这个'), Text('标题', { style: 'bold' }), Text('被加粗了'))
   )
-  message.send(
-    format(Text('这个'), Text('标题'), Text('没有变化'))
-  )
+  message.send(format(Text('这个'), Text('标题'), Text('没有变化')))
   message.send(
     format(
       Text(`// 我的代码块 \nconst Send = useSend(event)`, {
@@ -43,8 +36,6 @@ export default onResponse(selects, event => {
   )
 })
 ```
-
-<BubblePreview codeKey="text" />
 
 ### Image
 
@@ -94,8 +85,6 @@ export default onResponse(selects, event => {
 })
 ```
 
-<BubblePreview codeKey="mention" />
-
 ### Button
 
 ```ts
@@ -108,28 +97,15 @@ const response = onResponse(selects, event => {
 
   // 一行多个
   message.send(
-    format(
-      group(
-        row(
-          BT('开始', '/开始游戏'),
-          BT('结束', '/结束游戏')
-        )
-      )
-    )
+    format(group(row(BT('开始', '/开始游戏'), BT('结束', '/结束游戏'))))
   )
 
   // 多行多个
   message.send(
     format(
       group(
-        row(
-          BT('开始', '/开始游戏'),
-          BT('结束', '/结束游戏')
-        ),
-        row(
-          BT('退出', '/退出游戏'),
-          BT('注销', '/注销账户')
-        )
+        row(BT('开始', '/开始游戏'), BT('结束', '/结束游戏')),
+        row(BT('退出', '/退出游戏'), BT('注销', '/注销账户'))
       )
     )
   )
@@ -171,8 +147,6 @@ const response = onResponse(selects, event => {
 })
 export default response
 ```
-
-<BubblePreview codeKey="button" minHeight="22rem" />
 
 ### MarkDown
 
@@ -250,14 +224,10 @@ const response = onResponse(selects, event => {
   const { template } = MD
 
   // 向申请的模板注入参数
-  message.send(
-    format(template('template_id', { title: '你好' }))
-  )
+  message.send(format(template('template_id', { title: '你好' })))
 })
 export default response
 ```
-
-<BubblePreview codeKey="md" minHeight="45rem" />
 
 ### Ark
 

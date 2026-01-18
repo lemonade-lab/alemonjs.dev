@@ -1,4 +1,5 @@
 ---
+label: '匹配路由'
 sidebar_position: 1
 ---
 
@@ -22,10 +23,7 @@ export default defineResponse([
       {
         // 匹配正则
         regular: /^(!|！|\/|#|＃)?我的信息/,
-        handler: lazy(
-          () =>
-            import('@src/response/user-message/base/res')
-        )
+        handler: lazy(() => import('@src/response/user-message/base/res'))
       }
     ]
   }

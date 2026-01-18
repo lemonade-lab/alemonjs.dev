@@ -1,4 +1,5 @@
 ---
+label: '响应'
 sidebar_position: 1
 ---
 
@@ -9,9 +10,6 @@ sidebar_position: 1
 定义响应函数
 
 :::
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 ## `onResponse`
 

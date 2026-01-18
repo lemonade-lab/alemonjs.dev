@@ -31,7 +31,7 @@ jobs:
         run: |
           echo "BEIJING_TIME=$(TZ=Asia/Shanghai date +'%Y-%m-%d %H:%M:%S')" >> $GITHUB_ENV
           echo "TEAM_NAME='lemonade-lab'" >> $GITHUB_ENV
-          echo "WAREHOUSE_NAME='alemonjs-docs'" >> $GITHUB_ENV
+          echo "WAREHOUSE_NAME='alemonjs.dev'" >> $GITHUB_ENV
 
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -39,7 +39,6 @@ jobs:
       - name: Install dependencies
         run: |
           rm -rf .npmrc
-          npm install yarn@1.12.1 -g
           yarn install --ignore-engines
 
       - name: Build dependencies
@@ -53,11 +52,11 @@ jobs:
 
       - name: Deploy to server
         run: |
-          rsync -avz --delete ./build/ ${{ secrets.SSH_SERVER_USER }}@${{ secrets.SSH_SERVER_IP }}:/usr/local/nginx/alemonjs-docs
+          rsync -avz --delete ./dist/ ${{ secrets.SSH_SERVER_USER }}@${{ secrets.SSH_SERVER_IP }}:/usr/local/nginx/alemonjs-docs
 
       - name: Push docs to GitHub
         run: |
-          cd ./build
+          cd ./dist
           git init
           git config --local user.email "ningmengchongshui@gmail.com"
           git config --local user.name "ningmengchongshui"

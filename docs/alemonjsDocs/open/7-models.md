@@ -1,4 +1,5 @@
 ---
+label: '模块'
 sidebar_position: 7
 ---
 

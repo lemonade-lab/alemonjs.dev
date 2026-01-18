@@ -1,4 +1,5 @@
 ---
+label: '接口路由'
 sidebar_position: 7
 ---
 
@@ -23,10 +24,7 @@ sidebar_position: 7
 <html lang="en" id="__alemonjs">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AlemonJS</title>
   </head>
 
@@ -131,10 +129,7 @@ export default defineConfig({
 接口调用，以 axios 为例
 
 ```ts
-import axios, {
-  AxiosRequestConfig,
-  AxiosResponse
-} from 'axios'
+import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 const instance = axios.create({
   // 请求接口基于 ./api
   baseURL: './api'
@@ -145,9 +140,7 @@ const instance = axios.create({
  * @param config
  * @returns
  */
-export const request = (
-  config: AxiosRequestConfig
-): Promise<AxiosResponse> => {
+export const request = (config: AxiosRequestConfig): Promise<AxiosResponse> => {
   return new Promise<AxiosResponse>((resolve, reject) => {
     instance(config)
       .then(response => {

@@ -1,4 +1,5 @@
 ---
+label: '中间件'
 sidebar_position: 5
 ---
 
@@ -58,7 +59,9 @@ export default onMiddleware(selects, (event, next) => {
 })
 ```
 
-:::info 事件周期顺序
+:::info
+
+事件周期顺序
 
 subscribe(create) >
 

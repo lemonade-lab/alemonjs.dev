@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('animate.css');
+@import './docs.css';
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  overflow: auto;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+/* 暗色主题 */
+html.dark,
+html.dark body {
+  background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+  color: #e2e8f0;
+}
+
+#root {
+  overflow: visible;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.ant-app {
+  overflow: visible;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #94a3b8 0%, #64748b 100%);
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #475569 0%, #334155 100%);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #64748b 0%, #475569 100%);
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #334155 0%, #1e293b 100%);
+}
+
+/* 平滑动画 */
+* {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
