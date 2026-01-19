@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import Navbar from '@/components/Navbar'
 import BlogSidebar from '@/components/BlogSidebar'
+import BlogMeta from '@/components/BlogMeta'
+import BlogPagination from '@/components/BlogPagination'
 import Footer from '@/components/Footer'
 
 export default function BlogLayout() {
@@ -40,9 +42,13 @@ export default function BlogLayout() {
           </div>
 
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+            {/* 博客元信息 - 约定式注册 */}
+            <BlogMeta />
+
             <article className="prose prose-sm sm:prose-base lg:prose-lg prose-slate max-w-none">
               <Outlet />
             </article>
+            <BlogPagination />
           </div>
         </main>
       </div>

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import Navbar from '@/components/Navbar'
 import DocsSidebar from '@/components/DocsSidebar'
+import DocPagination from '@/components/DocPagination'
 import Footer from '@/components/Footer'
 
 export default function DocsLayout() {
@@ -43,6 +44,7 @@ export default function DocsLayout() {
             <article className="prose prose-sm sm:prose-base lg:prose-lg prose-slate max-w-none">
               <Outlet />
             </article>
+            <DocPagination />
           </div>
         </main>
       </div>

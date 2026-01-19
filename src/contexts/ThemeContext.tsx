@@ -15,7 +15,7 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 
-export function ThemeProvider({ children }: { children: ReactNode }) {
+export default function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>(() => {
     // 从 localStorage 读取主题，或使用系统偏好
     const savedTheme = localStorage.getItem('theme') as Theme | null

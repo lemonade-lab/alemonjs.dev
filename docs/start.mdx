@@ -45,18 +45,7 @@ yarn add alemonjs --registry=https://registry.npmmirror.com
 
 ## 运行示例
 
-```js title="index.js"
-import { start } from 'alemonjs'
-start()
-```
-
-```js title="lib/index.js"
-export default defineChildren({
-  onCreated() {
-    logger.info('启动应用')
-  }
-})
-```
+- 定义本地模块入口
 
 ```json title="package.json"
 {
@@ -64,6 +53,56 @@ export default defineChildren({
   "main": "lib/index.js", // 入口文件
   "type": "module" // esm
 }
+```
+
+- 创建启动文件
+
+```js title="index.js"
+import { start } from 'alemonjs'
+start()
+```
+
+- 模块入口文件编写逻辑
+
+```js title="lib/index.js"
+import {
+  defineChildren,
+  onSelects,
+  defineResponse,
+  logger,
+  Text,
+  useMessage
+} from 'alemonjs'
+
+const selects = onSelects(['message.create'])
+
+const res = onResponse(selects, event => {
+  // 创建
+  const [message] = useMessage(event)
+  // 发送消息
+  message.send(format(Text('hello Word')))
+})
+
+// 设置路由规则
+const response = defineResponse([
+  {
+    regular: /^(\/|#)?hello$/,
+    handler: async () => res
+  }
+])
+
+export default defineChildren({
+  // 注册内容
+  register() {
+    return {
+      response
+    }
+  },
+  // 当注册完成时
+  onCreated() {
+    logger.info('本地测试启动')
+  }
+})
 ```
 
 - 启动

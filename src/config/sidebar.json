@@ -21,37 +21,42 @@
         "items": [
           {
             "title": "响应",
-            "path": "/docs/alemonjsDocs/basic/1-api",
+            "path": "/docs/alemonjsDocs/basic/response",
             "position": 1
           },
           {
-            "title": "接口",
-            "path": "/docs/alemonjsDocs/basic/2-hook",
+            "title": "匹配路由",
+            "path": "/docs/alemonjsDocs/basic/route",
             "position": 2
           },
           {
-            "title": "消息格式",
-            "path": "/docs/alemonjsDocs/basic/3-data-type",
+            "title": "接口",
+            "path": "/docs/alemonjsDocs/basic/hook",
             "position": 3
           },
           {
-            "title": "主动的",
-            "path": "/docs/alemonjsDocs/basic/4-send",
+            "title": "消息格式",
+            "path": "/docs/alemonjsDocs/basic/data-type",
             "position": 4
           },
           {
             "title": "中间件",
-            "path": "/docs/alemonjsDocs/basic/5-mw",
+            "path": "/docs/alemonjsDocs/basic/middleware",
             "position": 5
           },
           {
-            "title": "优先级",
-            "path": "/docs/alemonjsDocs/basic/6-priority",
+            "title": "周期",
+            "path": "/docs/alemonjsDocs/basic/cycle",
             "position": 6
           },
           {
-            "title": "周期",
-            "path": "/docs/alemonjsDocs/basic/7-main",
+            "title": "优先级",
+            "path": "/docs/alemonjsDocs/basic/priority",
+            "position": 6
+          },
+          {
+            "title": "主动的",
+            "path": "/docs/alemonjsDocs/basic/send",
             "position": 6
           }
         ]
@@ -63,27 +68,27 @@
         "items": [
           {
             "title": "事件类型",
-            "path": "/docs/alemonjsDocs/advance/5-message-type",
+            "path": "/docs/alemonjsDocs/advance/message-type",
             "position": 5
           },
           {
             "title": "配置读取",
-            "path": "/docs/alemonjsDocs/advance/6-config",
+            "path": "/docs/alemonjsDocs/advance/config",
             "position": 6
           },
           {
-            "title": "接口路由",
-            "path": "/docs/alemonjsDocs/advance/7-route",
+            "title": "中间件路由",
+            "path": "/docs/alemonjsDocs/advance/route-mw",
             "position": 7
           },
           {
-            "title": "中间件路由",
-            "path": "/docs/alemonjsDocs/advance/8-route-mw",
+            "title": "接口路由",
+            "path": "/docs/alemonjsDocs/advance/route",
             "position": 7
           },
           {
             "title": "工具函数",
-            "path": "/docs/alemonjsDocs/advance/9-utils",
+            "path": "/docs/alemonjsDocs/advance/utils",
             "position": 9
           }
         ]
@@ -94,23 +99,18 @@
         "position": 3,
         "items": [
           {
-            "title": "匹配路由",
-            "path": "/docs/alemonjsDocs/expert/1-route",
-            "position": 1
-          },
-          {
             "title": "个性化",
-            "path": "/docs/alemonjsDocs/expert/2-sdk",
+            "path": "/docs/alemonjsDocs/expert/sdk",
             "position": 2
           },
           {
             "title": "实例对象",
-            "path": "/docs/alemonjsDocs/expert/3-class",
+            "path": "/docs/alemonjsDocs/expert/class",
             "position": 3
           },
           {
             "title": "自定义平台",
-            "path": "/docs/alemonjsDocs/expert/3-platforms",
+            "path": "/docs/alemonjsDocs/expert/platforms",
             "position": 3
           }
         ]
@@ -121,13 +121,13 @@
         "position": 3,
         "items": [
           {
-            "title": "模块",
-            "path": "/docs/alemonjsDocs/open/7-models",
+            "title": "扩展",
+            "path": "/docs/alemonjsDocs/open/desktop",
             "position": 7
           },
           {
-            "title": "扩展",
-            "path": "/docs/alemonjsDocs/open/8-desktop",
+            "title": "模块",
+            "path": "/docs/alemonjsDocs/open/models",
             "position": 7
           }
         ]

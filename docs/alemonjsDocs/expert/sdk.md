@@ -22,7 +22,6 @@ sidebar_position: 2
 ```ts title="src/response/**/*/res.ts"
 import { API, platform } from '@alemonjs/qq-bot'
 import { useClient } from 'alemonjs'
-const selects = onSelects(['message.create'])
 export default onResponse(selects, event => {
   // 得到qq-bot平台的个人信息
   if (event.Platform === platform) {

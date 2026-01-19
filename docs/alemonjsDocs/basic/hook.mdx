@@ -1,6 +1,6 @@
 ---
 label: '接口'
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 # 接口
@@ -17,7 +17,6 @@ sidebar_position: 2
 
 ```ts title="src/response/**/*/res.ts"
 import { Text, useMessage } from 'alemonjs'
-const selects = onSelects(['message.create'])
 export default onResponse(selects, (event, next) => {
   // 创建
   const [message] = useMessage(event)
@@ -27,7 +26,6 @@ export default onResponse(selects, (event, next) => {
 
 ```ts title="src/response/**/*/res.ts"
 import { Text } from 'alemonjs'
-const selects = onSelects(['message.create'])
 export default onResponse(selects, () => {
   return {
     // 即将要发送的数据
@@ -52,7 +50,6 @@ export default onResponse(selects, () => {
 
 ```ts title="response/**/*/res.ts"
 import { useMention } from 'alemonjs'
-const selects = onSelects(['message.create'])
 export default onResponse(selects, async (event, next) => {
   const [mention] = useMention(event)
   // 查找用户类型的 @ 提及，且不是 bot
@@ -72,9 +69,6 @@ export default onResponse(selects, async (event, next) => {
 > 订阅模式，在某个事件周期中进行观察
 
 > ! 不可以在 回调中调用 subscribe.cancel(sub)
-
-<Tabs>
-  <TabItem value="0" label="V2.1+" default>
 
 ```ts title="response/**/*/res.ts"
 import { Text, useMessage, useSubscribe } from 'alemonjs'
@@ -121,8 +115,6 @@ export default onResponse(selects, event => {
 
 ```ts title="response/**/*/res.ts"
 import { useSubscribe } from 'alemonjs'
-
-const selects = onSelects(['message.create'])
 
 const res$1 = onResponse(selects, (event, next) => {
   // 创建
@@ -184,118 +176,4 @@ export default onResponse(selects, event => {
     message.send(format(Text('登录超时')))
   }, 1000 * 10)
 })
-```
-
-  </TabItem>
-  <TabItem value="1" label="V2.0+" >
-
-```ts title="response/**/*/res.ts"
-// [创建之后，响应之前，响应之后]
-const [create, monut, unmonut] = useSubscribe(event, <select event type>)
-create(Res.current, [])
-monut(Res.current, []) // const monut = useObserver(event, <select event type>)
-unmonut(Res.current, [])
-```
-
-  </TabItem>
-</Tabs>
-
-## `useState`
-
-:::warning
-
-已废弃
-
-:::
-
-> 声明res/mw的状态,可用于管理是否启用
-
-> 命名规则 子应用名:response:文件夹1:文件夹2...
-
-> 如默认main为： main:response:login
-
-> 响应文件夹由`apps（旧版本）`命名为`response`
-
-<Tabs>
-  <TabItem value="0" label="停用" default>
-
-```ts title="response/**/*/res.ts"
-import { Text, useMessage, useState } from 'alemonjs'
-import { createRequire } from 'module'
-export const regular = /^(#|\/)?close:/
-const selects = onSelects(['message.create', 'private.message.create'])
-const requre = createRequire(import.meta.url)
-const pkg = requre('../../../package.json') as {
-  name: string
-}
-export default onResponse(selects, (event, next) => {
-  if (!event.IsMaster) {
-    return
-  }
-  const name = event.MessageText.replace(regular, '')
-  if (!new RegExp(`^${pkg.name}:`).test(name)) {
-    return
-  }
-  const [state, setState] = useState(name)
-  if (!state) {
-    next()
-    return
-  }
-  setState(false)
-  const [message] = useMessage(event)
-  message.send(format(Text('关闭成功')))
-  return
-})
-```
-
-  </TabItem>
-
-  <TabItem value="1" label="启用" >
-
-```ts title="response/**/*/res.ts"
-import { Text, useMessage, useState } from 'alemonjs'
-import { createRequire } from 'module'
-export const regular = /^(#|\/)?open:/
-const selects = onSelects(['message.create', 'private.message.create'])
-const requre = createRequire(import.meta.url)
-const pkg = requre('../../../../package.json') as {
-  name: string
-}
-export default onResponse(selects, (event, next) => {
-  if (!event.IsMaster) {
-    return
-  }
-  const name = event.MessageText.replace(regular, '')
-  if (!new RegExp(`^${pkg.name}:`).test(name)) {
-    return
-  }
-  const [state, setState] = useState(name)
-  if (state) {
-    next()
-    return
-  }
-  setState(true)
-  const [message] = useMessage(event)
-  message.send(format(Text('开启成功')))
-  return
-})
-```
-
-  </TabItem>
-
-</Tabs>
-
-> 可以在任意地方订阅状态的更改。
-
-```ts title="response/**/*/res.ts"
-import { onState, unState } from 'alemonjs'
-
-const key = 'main:response:login'
-
-const state = (val: boolean) => {
-  // 订阅 key 的状态变化
-}
-
-onState(key, state)
-unState(key, state)
 ```

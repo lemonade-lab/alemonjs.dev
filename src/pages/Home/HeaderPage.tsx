@@ -21,8 +21,8 @@ export default function HeaderPage() {
           <TextReveal text="基于 JavaScript 所构建的聊天平台机器人开发框架" />
         </p>
         <div className="flex flex-wrap justify-center gap-2 sm:gap-4 my-4 w-full px-4">
-          <a
-            className="bg-blue-500 dark:bg-blue-600 text-white rounded-md px-4 sm:px-6 py-2 sm:py-3 hover:bg-blue-600 dark:hover:bg-blue-700 transition text-sm sm:text-base flex-1 sm:flex-none min-w-[120px] text-center "
+          <button
+            className="bg-blue-500 cu dark:bg-blue-600 text-white rounded-md px-4 sm:px-6 py-2 sm:py-3 hover:bg-blue-600 dark:hover:bg-blue-700 transition text-sm sm:text-base flex-1 sm:flex-none min-w-[120px] text-center "
             onClick={() => {
               window.open(
                 'https://github.com/lemonade-lab/alemondesk/releases',
@@ -31,8 +31,8 @@ export default function HeaderPage() {
             }}
           >
             <Translate> ⚡️安装桌面</Translate>
-          </a>
-          <a
+          </button>
+          <button
             className="bg-gradient-to-r from-indigo-500 to-indigo-600 hover:from-indigo-600 hover:to-indigo-700 text-white rounded-lg px-4 sm:px-6 py-2 sm:py-3 transition-all duration-300 text-sm sm:text-base flex-1 sm:flex-none min-w-[120px] text-center  hover:-translate-y-0.5"
             onClick={() => {
               window.open(
@@ -42,12 +42,14 @@ export default function HeaderPage() {
             }}
           >
             <Translate> 💡安装Web</Translate>
-          </a>
+          </button>
           <Link
             className="bg-white dark:bg-gray-800 text-blue-600 dark:text-blue-400 border-2 border-blue-500 dark:border-blue-600 hover:border-blue-600 dark:hover:border-blue-500 rounded-lg px-4 sm:px-6 py-2 sm:py-3 hover:bg-blue-50 dark:hover:bg-gray-700 transition-all duration-300 text-sm sm:text-base flex-1 sm:flex-none min-w-[120px] text-center font-semibold  hover:-translate-y-0.5"
             to="docs/intro"
           >
-            <Translate> 🚀快速开始</Translate>
+            <button>
+              <Translate> 🚀快速开始</Translate>
+            </button>
           </Link>
         </div>
       </div>

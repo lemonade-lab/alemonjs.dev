@@ -109,12 +109,6 @@ export default function BlogSidebar({
         </div>
 
         <nav className="p-4 lg:p-6 space-y-2">
-          <div className="mb-4">
-            <h2 className="text-sm font-semibold text-gray-900 dark:text-gray-100 uppercase tracking-wider px-3">
-              发布日志
-            </h2>
-          </div>
-
           {sortedYears.map(year => {
             const yearBlogs = groupedBlogs[year]
             const isCollapsed = collapsedYears[year]

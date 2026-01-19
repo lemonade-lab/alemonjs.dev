@@ -37,15 +37,6 @@ export default function BlogList() {
 
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-      <div className="mb-8 sm:mb-12">
-        <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-3 sm:mb-4">
-          博客
-        </h1>
-        <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400">
-          项目更新、技术分享和版本发布记录
-        </p>
-      </div>
-
       {/* 标签过滤 */}
       {allTags.length > 0 && (
         <div className="mb-6 sm:mb-8 flex flex-wrap gap-2">

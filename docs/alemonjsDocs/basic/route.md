@@ -1,15 +1,9 @@
 ---
 label: '匹配路由'
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 # 匹配路由
-
-:::tip
-
-支持定义路由规则来更细致化的控制和管理响应。有效提高匹配效率。
-
-:::
 
 ## defineResponse
 
@@ -30,28 +24,6 @@ export default defineResponse([
 ])
 ```
 
-- lazy
-
-这是一个懒加载工具函数。你可以移除，直接对响应文件进行引用
-
-```ts title="src/router.ts"
-import check from '@src/response/mw'
-import myMessage from '@src/response/user-message/base/res'
-export default defineResponse([
-  {
-    handler: () => check,
-    children: [
-      {
-        regular: /^(!|！|\/|#|＃)?我的信息/,
-        handler: () => myMessage
-      }
-    ]
-  }
-])
-```
-
-响应路由需要手动注册。注册后。自动索引系统将失效。
-
 ```ts title="src/index.ts"
 import response from './router.js'
 export default defineChildren({
@@ -66,6 +38,26 @@ export default defineChildren({
     logger.info(`[测试机器人启动]`)
   }
 })
+```
+
+- lazy
+
+这是一个懒加载工具函数。你可以移除，直接对响应文件进行引用
+
+```ts title="src/router.ts"
+import check from '@src/response/mw'
+import myMessage from '@src/response/user-message/base/res'
+export default defineResponse([
+  {
+    handler: async () => check,
+    children: [
+      {
+        regular: /^(!|！|\/|#|＃)?我的信息/,
+        handler: async () => myMessage
+      }
+    ]
+  }
+])
 ```
 
 ## defineMiddleware

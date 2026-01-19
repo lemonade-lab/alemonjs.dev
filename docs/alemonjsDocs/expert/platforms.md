@@ -15,6 +15,7 @@ sidebar_position: 3
 
 ```js title="src/index.ts"
 import {
+    definePlatform,
     createResult,
     ResultCode,
     getConfigValue,
@@ -24,18 +25,22 @@ import {
 
 // 平台名称
 export const platform = 'bot-name'
+
 // 接口
 export class API { }
+
 // 配置参数
 export type Options = {
     token: string
 }
 
+// 得到平台配置
 const getBotConfig = (): Options => {
     const value = getConfigValue() || {}
     return value[platform] || {}
 }
 
+// 继承
 class Client extends API {
     #token: string
 
@@ -49,17 +54,15 @@ class Client extends API {
     }
 }
 
-export default () => {
-    // 得到自定义配置
+// 入口函数
+const main = () => {
+    // 平台配置
     const config = getBotConfig()
 
-    /**
-     * 连接 dbp 服务器。推送标准信息。
-     */
+    // 连接 dbp 服务器。推送标准信息。
     const port = process.env?.port || 17117
     const url = `ws://127.0.0.1:${port}`
     const cbp = cbpPlatform(url)
-
 
     const client = new Client({
         token: config.token
@@ -84,19 +87,19 @@ export default () => {
 
     cbp.onactions(async (data, consume) => {
         if (data.action === 'message.send') {
+            // 消息发送
             const event = data.payload.event
             const paramFormat = data.payload.params.format
             const res = await sendMessage(event, paramFormat)
             consume(res)
-        } else if (data.action === 'message.send.channel') {
-            const channel_id = data.payload.ChannelId
-            const val = data.payload.params.format
-        } else if (data.action === 'message.send.user') {
-            const user_id = data.payload.UserId
-            const val = data.payload.params.format
-        } else if (data.action === 'mention.get') {
-            const event = data.payload.event
+
+        } else {
+           consume([createResult(ResultCode.Fail, '未知请求，请尝试升级版本', null)]);
         }
+        // 主动发送消息 'message.send.channel'
+        // 主动私聊消息 'message.send.user'
+        // 获得 mention 'mention.get'
+        // 获得机器人信息 'me.info'
     })
 
     // 处理 api 调用
@@ -110,6 +113,12 @@ export default () => {
                 createResult(ResultCode.Ok, '请求完成', res)
             ])
         }
+         else {
+      consume([createResult(ResultCode.Fail, '未知请求，请尝试升级版本', null)]);
+    }
     })
 }
+
+
+export default definePlatform({ main });
 ```

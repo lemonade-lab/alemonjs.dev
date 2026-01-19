@@ -16,7 +16,7 @@ sidebar_position: 1
 通过定义响应函数来描述不同类型的事件将要执行的内容
 
 ```ts title="src/response/**/*/res.ts"
-// 选择事件类型
+// 创建事件类型
 const selects = onSelects(['message.create'])
 // 定义响应函数
 export default onResponse(selects, (event, next) => {
@@ -31,44 +31,11 @@ export default onResponse(selects, (event, next) => {
 
 :::
 
-### 匹配
-
-```ts title="src/response/**/*/res.ts"
-// 不匹配该正则，自动进行next
-export const regular = /^(#|\/)?hello$/
-const selects = onSelects(['message.create'])
-export default onResponse(selects, event => {
-  // your code
-})
-```
-
-```ts title="src/response/**/*/res.ts"
-import { Regular } from 'alemonjs/utils'
-
-// 如果想要同时匹配多个正则
-const regular$1 = /^(#|\/)?hello$/
-const regular$2 = /^(#|\/)?word$/
-
-export const regular = Regular.or(regular$1, regular$2)
-
-const selects = onSelects(['message.create'])
-
-export default onResponse(selects, event => {
-  if (regular$1.test(event.MessageText)) {
-    //
-  } else if (regular$2.test(event.MessageText)) {
-    //
-  }
-})
-```
-
 ### 分组
 
 > 共用一个 next
 
 ```ts
-const selects = onSelects(['message.create'])
-
 const response$1 = onResponse(selects, (event, next) => {
   console.log('step 1')
   // 允许在同组响应中，继续后续的函数
@@ -99,8 +66,6 @@ export default onResponse(selects, [
 > 可以return任意对象，除了约定的值需要注意之外
 
 ```ts
-const selects = onSelects(['message.create'])
-
 const response$1 = onResponse(selects, (event, next) => {
   return {
     id: 0

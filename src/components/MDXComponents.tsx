@@ -1,5 +1,6 @@
 // MDX 组件库 - 类似 Docusaurus 的主题组件
 import { ReactNode, useState, Children, ReactElement } from 'react'
+import BlogAuthor from './BlogAuthor'
 
 // ============= Tabs 组件 =============
 interface TabsProps {
@@ -37,7 +38,7 @@ export function Tabs({ children, defaultValue }: TabsProps) {
           </button>
         ))}
       </div>
-      <div className="p-3 sm:p-4 bg-gray-50 dark:bg-gray-800/50">
+      <div className="p-1">
         {tabs.find(tab => tab.props.value === activeTab)?.props.children}
       </div>
     </div>
@@ -158,12 +159,13 @@ export function Details({ summary, children }: DetailsProps) {
   )
 }
 
-// 导出为全局组件，可在 MDX 中直接使用
-export const components = {
+// 导出为全局组件,可在 MDX 中直接使用
+export default {
   Tabs,
   TabItem,
   Admonition,
   Details,
+  BlogAuthor,
   Note: (props: Omit<AdmonitionProps, 'type'>) => (
     <Admonition type="note" {...props} />
   ),

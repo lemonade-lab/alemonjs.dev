@@ -18,7 +18,6 @@ sidebar_position: 5
 当想要让指定目录下的所有响应都必须经过指定的局部中间件时，只需要在对应的目录定义`mw.ts`文件
 
 ```ts title="src/response/mw.ts"
-const selects = onSelects(['message.create'])
 const response$1 = onResponse(selects, (event, next) => {
   console.log('step 1')
   // 允许在同组响应中，继续后续的函数
@@ -28,8 +27,6 @@ export default response$1
 ```
 
 ```ts title="src/response/res.ts"
-const selects = onSelects(['message.create'])
-
 const response$2 = onResponse(selects, (event, next) => {
   console.log('step 2')
 })
@@ -46,7 +43,6 @@ export default response$2
 ### `onMiddleware`
 
 ```ts title="src/middleware/**/*/mw.ts"
-const selects = onSelects(['message.create'])
 // 仅限 # 和 / 开头的消息才执行该中间件
 // export const regular = /^(#|\/)/
 // OnMiddleware((事件体,控制体)=>消息体,消息类型)

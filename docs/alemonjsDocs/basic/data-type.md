@@ -1,6 +1,6 @@
 ---
 label: '消息格式'
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 # 消息格式
@@ -19,7 +19,6 @@ sidebar_position: 3
 
 ```ts title="src/response/**/*/res.ts"
 import { Text, useMessage } from 'alemonjs'
-const selects = onSelects(['message.create'])
 export default onResponse(selects, event => {
   // 创建
   const [message] = useMessage(event)
@@ -227,79 +226,4 @@ const response = onResponse(selects, event => {
   message.send(format(template('template_id', { title: '你好' })))
 })
 export default response
-```
-
-### Ark
-
-:::warning
-
-实验性功能
-
-:::
-
-```ts title="response/**/*/res.ts"
-import { Ark, useMessage } from 'alemonjs'
-const selects = onSelects(['message.create'])
-export default onResponse(selects, event => {
-  const [message] = useMessage(event)
-
-  const { Card, BigCard } = Ark
-
-  // 普通卡片
-  message.send(
-    format(
-      Card({
-        decs: '你是谁',
-        title: '收你来啦',
-        prompt: '通知信息！！',
-        metadecs: '阿柠檬2正式版发送',
-        cover:
-          'https://pub.idqqimg.com/pc/misc/files/20190820/2f4e70ae3355ece23d161cf5334d4fc1jzjfmtep.png',
-        link: '',
-        subtitle: '赞赞赞'
-      })
-    )
-  )
-
-  // 大图卡片
-  message.send(
-    format(
-      BigCard({
-        title: '收你来啦',
-        prompt: '通知信息！！',
-        cover:
-          'https://pub.idqqimg.com/pc/misc/files/20190820/2f4e70ae3355ece23d161cf5334d4fc1jzjfmtep.png',
-        link: '',
-        subtitle: '赞赞赞'
-      })
-    )
-  )
-
-  const { listTip, list, listContent, listItem } = Ark
-
-  // 列表
-  message.send(
-    format(
-      list(
-        listTip({
-          desc: '状态扭转',
-          prompt: '状态扭转'
-        }),
-        listContent(
-          listItem('需求标题：UI问题解决'),
-          listItem('点击下列动作直接扭转状态到：'),
-          listItem({
-            title: '状态1',
-            link: 'https://alemonjs.com?status=1'
-          }),
-          listItem({
-            title: '状态2',
-            link: 'https://alemonjs.com?status=2'
-          }),
-          listItem('请关注')
-        )
-      )
-    )
-  )
-})
 ```

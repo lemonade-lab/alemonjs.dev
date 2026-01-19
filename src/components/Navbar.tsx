@@ -1,12 +1,27 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useTheme } from '@/contexts/ThemeContext'
+import SearchModal from './SearchModal'
 import config from '@free-wind/config'
 
 export default function Navbar() {
   const { navbar } = config.themeConfig
   const { theme, toggleTheme } = useTheme()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isSearchOpen, setIsSearchOpen] = useState(false)
+
+  // 键盘快捷键 Cmd/Ctrl + K 打开搜索
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault()
+        setIsSearchOpen(true)
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [])
 
   return (
     <nav className="fixed top-0 z-50 w-full border-b border-white/20 dark:border-gray-700/50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl supports-[backdrop-filter]:bg-white/70 dark:supports-[backdrop-filter]:bg-gray-900/70 shadow-lg shadow-black/5 dark:shadow-black/20">
@@ -85,6 +100,31 @@ export default function Navbar() {
               }
               return null
             })}
+
+            {/* Search Button */}
+            <button
+              onClick={() => setIsSearchOpen(true)}
+              className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors px-3 py-2 rounded-md hover:bg-gray-50 dark:hover:bg-gray-800 border border-gray-300 dark:border-gray-600"
+              title="搜索 (⌘K)"
+            >
+              <svg
+                className="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+              <span className="hidden lg:inline">搜索</span>
+              <kbd className="hidden lg:inline-flex items-center px-1.5 py-0.5 text-xs font-mono bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded">
+                ⌘K
+              </kbd>
+            </button>
 
             {/* Theme Toggle Button */}
             <button
@@ -208,6 +248,30 @@ export default function Navbar() {
               return null
             })}
 
+            {/* Search button in mobile menu */}
+            <button
+              onClick={() => {
+                setIsSearchOpen(true)
+                setIsMobileMenuOpen(false)
+              }}
+              className="flex items-center w-full px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-800"
+            >
+              <svg
+                className="h-5 w-5 mr-2"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+              搜索
+            </button>
+
             {/* Theme toggle in mobile menu */}
             <button
               onClick={() => {
@@ -255,6 +319,12 @@ export default function Navbar() {
           </div>
         </div>
       )}
+
+      {/* Search Modal */}
+      <SearchModal
+        isOpen={isSearchOpen}
+        onClose={() => setIsSearchOpen(false)}
+      />
     </nav>
   )
 }
