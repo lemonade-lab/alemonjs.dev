@@ -2,6 +2,21 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 
+interface Author {
+  name: string
+  title?: string
+  url?: string
+  image_url?: string
+  email?: string
+  socials?: {
+    [key: string]: string
+  }
+}
+
+interface AuthorsData {
+  [key: string]: Author
+}
+
 interface DocMetadata {
   title?: string
   description?: string
@@ -393,6 +408,89 @@ function generateSidebarConfig(docsRoutes: DocRoute[], docsDir: string): any {
   return allItems
 }
 
+/** * 解析 YAML 格式的作者配置
+ */
+function parseAuthorsYaml(text: string): AuthorsData {
+  const authors: AuthorsData = {}
+  const lines = text.split('\n')
+  let currentAuthor: string | null = null
+  let currentSection: string | null = null
+
+  for (const line of lines) {
+    if (!line.trim() || line.trim().startsWith('#')) continue
+
+    // 检测作者名（顶级键，不缩进）
+    if (line.match(/^[a-zA-Z0-9_-]+:/)) {
+      currentAuthor = line.split(':')[0].trim()
+      authors[currentAuthor] = { name: currentAuthor }
+      currentSection = null
+      continue
+    }
+
+    if (!currentAuthor) continue
+
+    const indent = line.search(/\S/)
+    const trimmed = line.trim()
+
+    if (indent === 2) {
+      if (trimmed.includes(':')) {
+        const [key, ...valueParts] = trimmed.split(':')
+        const value = valueParts.join(':').trim()
+
+        if (key === 'socials') {
+          currentSection = 'socials'
+          authors[currentAuthor].socials = {}
+        } else if (value) {
+          const normalizedKey = key === 'namne' ? 'name' : key
+          switch (normalizedKey) {
+            case 'name':
+              authors[currentAuthor].name = value
+              break
+            case 'title':
+              authors[currentAuthor].title = value
+              break
+            case 'url':
+              authors[currentAuthor].url = value
+              break
+            case 'image_url':
+              authors[currentAuthor].image_url = value
+              break
+            case 'email':
+              authors[currentAuthor].email = value
+              break
+          }
+        }
+      }
+    } else if (indent === 4 && currentSection === 'socials') {
+      if (trimmed.includes(':')) {
+        const [key, ...valueParts] = trimmed.split(':')
+        const value = valueParts.join(':').trim()
+        const author = authors[currentAuthor]
+        if (value && author && author.socials) {
+          author.socials[key] = value
+        }
+      }
+    }
+  }
+
+  return authors
+}
+
+/**
+ * 生成作者配置
+ */
+function generateAuthorsConfig(blogDir: string): AuthorsData {
+  const authorsYmlPath = path.join(blogDir, 'authors.yml')
+
+  if (!fs.existsSync(authorsYmlPath)) {
+    console.warn('⚠️  未找到 blog/authors.yml 文件')
+    return {}
+  }
+
+  const yamlContent = fs.readFileSync(authorsYmlPath, 'utf-8')
+  return parseAuthorsYaml(yamlContent)
+}
+
 /**
  * 主函数
  */
@@ -440,6 +538,15 @@ function main() {
     'utf-8'
   )
   console.log('✅ 博客元数据已生成: src/config/blog.json')
+
+  // 生成作者配置
+  const authorsConfig = generateAuthorsConfig(blogDir)
+  fs.writeFileSync(
+    path.join(srcDir, 'config', 'authors.json'),
+    JSON.stringify(authorsConfig, null, 2),
+    'utf-8'
+  )
+  console.log('✅ 作者配置已生成: src/config/authors.json')
 
   console.log('🎉 完成！')
 }

@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import BlogAuthor from './BlogAuthor'
-import blogData from '@/config/blog.json'
+
+const blogData = () => import('@/config/blog.json')
 
 interface BlogPost {
   title: string
@@ -22,10 +23,10 @@ export default function BlogMeta() {
 
   useEffect(() => {
     // 查找当前路径对应的博客文章
-    const currentPost = (blogData as BlogPost[]).find(
-      p => p.path === location.pathname
-    )
-    setPost(currentPost || null)
+    blogData().then(data => {
+      const currentPost = data.find(p => p.path === location.pathname)
+      setPost(currentPost || null)
+    })
   }, [location.pathname])
 
   if (!post) {

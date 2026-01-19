@@ -10,13 +10,15 @@ interface BlogPost {
   authors?: string | string[]
 }
 
+const blogData = () => import('@/config/blog.json')
+
 export default function BlogList() {
   const [posts, setPosts] = useState<BlogPost[]>([])
   const [selectedTag, setSelectedTag] = useState<string | null>(null)
 
   useEffect(() => {
     // 动态导入博客配置
-    import('../config/blog.json')
+    blogData()
       .then(data => {
         setPosts(data.default || data)
       })

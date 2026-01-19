@@ -40,6 +40,8 @@ function isSubCategory(item: NavItem | SubCategory): item is SubCategory {
   return 'items' in item && Array.isArray(item.items)
 }
 
+const sidebarData = () => import('../config/sidebar.json')
+
 export default function DocsSidebar({
   isOpen = true,
   onClose
@@ -52,7 +54,7 @@ export default function DocsSidebar({
 
   // 加载侧边栏配置
   useEffect(() => {
-    import('../config/sidebar.json')
+    sidebarData()
       .then(data => {
         setNavigation(data.default || data)
       })

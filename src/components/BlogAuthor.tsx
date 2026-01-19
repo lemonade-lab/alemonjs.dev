@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import { Author, loadAuthors } from '@/utils/parseAuthors'
+import { useMemo } from 'react'
+import { getAuthors } from '@/utils/parseAuthors'
 
 interface BlogAuthorProps {
   authorId: string | string[]
@@ -10,21 +10,11 @@ export default function BlogAuthor({
   authorId,
   showBio = true
 }: BlogAuthorProps) {
-  const [authors, setAuthors] = useState<Author[]>([])
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    loadAuthors().then(authorsData => {
-      const ids = Array.isArray(authorId) ? authorId : [authorId]
-      const authorList = ids
-        .map(id => authorsData[id])
-        .filter((a): a is Author => a !== null)
-      setAuthors(authorList)
-      setLoading(false)
-    })
+  const authors = useMemo(() => {
+    return getAuthors(authorId)
   }, [authorId])
 
-  if (loading || authors.length === 0) {
+  if (authors.length === 0) {
     return null
   }
 
