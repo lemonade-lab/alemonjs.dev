@@ -10,6 +10,11 @@
     "position": 2
   },
   {
+    "title": "配置说明",
+    "path": "/docs/config",
+    "position": 3
+  },
+  {
     "id": "alemonjsDocs",
     "label": "核心设计",
     "position": 4,
