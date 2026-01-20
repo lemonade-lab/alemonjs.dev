@@ -43,14 +43,14 @@ export default response$2
 ### `onMiddleware`
 
 ```ts title="src/middleware/**/*/mw.ts"
-// 仅限 # 和 / 开头的消息才执行该中间件
-// export const regular = /^(#|\/)/
 // OnMiddleware((事件体,控制体)=>消息体,消息类型)
 export default onMiddleware(selects, (event, next) => {
   // 新增字段
   event['user_id'] = event.UserId
 
   // 常用于兼容其他框架或增强event功能
+
+  // 继续下一个中间件
   next()
 })
 ```

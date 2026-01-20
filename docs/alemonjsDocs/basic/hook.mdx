@@ -72,7 +72,6 @@ export default onResponse(selects, async (event, next) => {
 
 ```ts title="response/**/*/res.ts"
 import { Text, useMessage, useSubscribe } from 'alemonjs'
-export const regular = /^(#|\/)?login$/
 const selects = onSelects(['message.create', 'private.message.create'])
 export default onResponse(selects, event => {
   const [message] = useMessage(event)
@@ -138,7 +137,6 @@ export default onResponse(selects, (event, next) => {
 
 ```ts title="middleware/**/*/res.ts"
 import { Text, useMessage, useSubscribe } from 'alemonjs'
-export const regular = /^(#|\/)?login$/
 const selects = onSelects(['message.create', 'private.message.create'])
 export default onResponse(selects, event => {
   const [message] = useMessage(event)
