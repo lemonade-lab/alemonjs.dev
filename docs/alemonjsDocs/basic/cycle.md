@@ -1,9 +1,9 @@
 ---
-label: '周期'
+label: '应用周期'
 sidebar_position: 6
 ---
 
-# 周期
+# 应用周期
 
 :::info
 

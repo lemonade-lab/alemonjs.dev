@@ -1,6 +1,6 @@
 ---
 label: '消息格式'
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 # 消息格式

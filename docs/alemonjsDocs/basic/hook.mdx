@@ -97,6 +97,9 @@ export default onResponse(selects, event => {
         message.send(format(Text('密码不正确')))
         // 继续
         next()
+        // 继续，next()
+        // 下一个订阅, next(true)
+        // 下一个周期, next(true,true)
       }
       // 回调内不可调用 subscribe.cancel(sub)
     },

@@ -1,6 +1,6 @@
 ---
 label: '中间件'
-sidebar_position: 5
+sidebar_position: 6
 ---
 
 # 中间件
@@ -53,36 +53,4 @@ export default onMiddleware(selects, (event, next) => {
   // 继续下一个中间件
   next()
 })
-```
-
-:::info
-
-事件周期顺序
-
-subscribe(create) >
-
-middleware >
-
-subscribe(observer/mount) >
-
-response >
-
-subscribe(unmount)
-
-不执行next()表示结束后续匹配。
-
-:::
-
-### `Next(Bool)`
-
-```ts
-const current = async (event, next) => {
-  // 当前周期中进行
-  next()
-  // 下一个周期中进行
-  next(true)
-  // 下下个周期中进行
-  next(true, true)
-  // 以此类推
-}
 ```
