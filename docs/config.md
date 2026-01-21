@@ -8,7 +8,7 @@ label: '配置说明'
 
 ### 基础配置
 
-```yaml
+```yaml title="alemon.config.yaml"
 # === 服务器配置 ===
 port: 17117 # CBP服务器端口，快捷参数 --port
 serverPort: 18110 # 应用服务器端口（可选，仅在需要Web服务时设置）
@@ -22,7 +22,7 @@ is_full_receive: false # 是否全量接收消息（用于分流处理）
 
 ### 权限管理
 
-```yaml
+```yaml title="alemon.config.yaml"
 # === 主人权限设置 ===
 master_id:
   '1715713638': true # 通过用户ID设置主人权限
@@ -38,7 +38,7 @@ bot_key:
 
 ### 消息过滤与控制
 
-```yaml
+```yaml title="alemon.config.yaml"
 # === 禁用控制 ===
 disabled_text_regular: '/闭关' # 文本正则匹配，若匹配则禁用所有功能
 disabled_selects: # 禁用特定事件类型
@@ -64,7 +64,7 @@ mapping_text:
 
 ### 消息处理器配置
 
-```yaml
+```yaml title="alemon.config.yaml"
 processor:
   repeated_event_time: 60000 # 过滤重复MessageId的时间窗口（毫秒）
   repeated_user_time: 1000 # 过滤同一用户连续消息的时间窗口（毫秒）
@@ -72,7 +72,7 @@ processor:
 
 ### 模块管理
 
-```yaml
+```yaml title="alemon.config.yaml"
 # === 子模块配置 ===
 apps:
   'alemonjs-openai': true # 启用OpenAI模块
@@ -187,7 +187,7 @@ ALemonJS的核心通信协议，负责客户端与平台之间的消息传输。
 
 ### CBP连接配置
 
-```yaml
+```yaml title="alemon.config.yaml"
 # CBP服务器配置
 cbp:
   # 连接超时时间（毫秒）

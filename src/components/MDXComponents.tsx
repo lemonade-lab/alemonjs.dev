@@ -110,7 +110,7 @@ export function Admonition({
         <span className="text-base sm:text-lg">{config.icon}</span>
         <span>{title || config.title}</span>
       </div>
-      <div className="prose prose-sm max-w-none [&>*:first-child]:mt-0 [&>*:last-child]:mb-0">
+      <div className="prose pmax-w-none [&>*:first-child]:mt-0 [&>*:last-child]:mb-0">
         {children}
       </div>
     </div>

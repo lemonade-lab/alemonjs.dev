@@ -59,21 +59,13 @@ yarn dev
 
 ## 手动构建
 
-- 定义本地模块入口
-
-```json title="package.json"
-{
-  // 确保文件拥有以下内容
-  "main": "lib/index.js", // 入口文件
-  "type": "module" // esm
-}
-```
-
 - 创建启动文件
 
 ```js title="index.js"
 import { start } from 'alemonjs'
-start()
+start({
+  input: 'lib/index.js' // 模块入口文件
+})
 ```
 
 - 模块入口文件编写逻辑
@@ -88,6 +80,7 @@ import {
   useMessage
 } from 'alemonjs'
 
+// 消息创建选择器
 const selects = onSelects(['message.create'])
 
 const res = onResponse(selects, event => {
@@ -127,15 +120,11 @@ node index.js
 
 ## 测试平台
 
-- 方式1: 下载vscode并使用ALemonTestOne扩展
+- 下载vscode并使用ALemonTestOne扩展
 
 [`Visual Studio Code`](https://code.visualstudio.com/)
 
 [`ALemonTestOne`](https://marketplace.visualstudio.com/items?itemName=lemonadex.alemonjs-testone)
-
-- 方式2: 打开访问在线模式
-
-[https://alemonjs.com/testone/](https://alemonjs.com/testone/)
 
 ## 对TS的支持
 

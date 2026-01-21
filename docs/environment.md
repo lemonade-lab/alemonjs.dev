@@ -1,17 +1,26 @@
 ---
 sidebar_position: 5
-label: '登录账户'
+label: '连接平台'
 ---
 
-# 登录账户
-
-## 官方
+# 连接平台
 
 :::warning
 
 点击`Project`、`Status`可进一步了解
 
 :::
+
+```yaml title="alemon.config.yaml"
+# 基础连接例子
+
+# 以下例子对应bubble平台。包名为 @alemonjs/bubble
+# @alemonjs/为同一仓库内维护，而alemonjs-为其他开发者进行维护
+bubble:
+  token: ''
+```
+
+## 官方
 
 ### QQ
 
@@ -27,7 +36,7 @@ label: '登录账户'
 
 | Project             | Status                    | Description |
 | ------------------- | ------------------------- | ----------- |
-| [@alemonjs/discord] | [![discord-s]][discord-p] | discord     |
+| [@alemonjs/discord] | [![discord-s]][discord-p] | Discord     |
 
 [@alemonjs/discord]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/discord
 [discord-s]: https://img.shields.io/npm/v/@alemonjs/discord.svg
@@ -47,7 +56,7 @@ label: '登录账户'
 
 | Project              | Status                      | Description |
 | -------------------- | --------------------------- | ----------- |
-| [@alemonjs/telegram] | [![telegram-s]][telegram-p] | telegram    |
+| [@alemonjs/telegram] | [![telegram-s]][telegram-p] | Telegram    |
 
 [@alemonjs/telegram]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/telegram
 [telegram-s]: https://img.shields.io/npm/v/@alemonjs/telegram.svg
@@ -63,16 +72,6 @@ label: '登录账户'
 [wechat-s]: https://img.shields.io/npm/v/@alemonjs/wechat.svg
 [wechat-p]: https://www.npmjs.com/package/@alemonjs/wechat
 
-### Feishu
-
-| Project            | Status                  | Description |
-| ------------------ | ----------------------- | ----------- |
-| [@alemonjs/feishu] | [![feishu-s]][feishu-p] | feishu      |
-
-[@alemonjs/feishu]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/feishu
-[feishu-s]: https://img.shields.io/npm/v/@alemonjs/feishu.svg
-[feishu-p]: https://www.npmjs.com/package/@alemonjs/feishu
-
 ## 三方
 
 :::warning
@@ -85,18 +84,8 @@ label: '登录账户'
 
 | Project            | Status                  | Description |
 | ------------------ | ----------------------- | ----------- |
-| [@alemonjs/onebot] | [![onebot-s]][onebot-p] | onebot V11  |
+| [@alemonjs/onebot] | [![onebot-s]][onebot-p] | OneBot V11  |
 
 [@alemonjs/onebot]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/onebot
 [onebot-s]: https://img.shields.io/npm/v/@alemonjs/onebot.svg
 [onebot-p]: https://www.npmjs.com/package/@alemonjs/onebot
-
-### milky
-
-| Project           | Status                | Description |
-| ----------------- | --------------------- | ----------- |
-| [@alemonjs/milky] | [![milky-s]][milky-p] | milky       |
-
-[@alemonjs/milky]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/milky
-[milky-s]: https://img.shields.io/npm/v/@alemonjs/milky.svg
-[milky-p]: https://www.npmjs.com/package/@alemonjs/milky

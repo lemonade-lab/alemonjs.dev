@@ -57,9 +57,8 @@ const Session = ({ item }) => {
       <div onClick={e => e.stopPropagation()}>
         <Image
           classNames={{
-            root: 'w-[40rem]'
+            root: 'max-w-[40rem]'
           }}
-          className="w-full md:w-[40rem] rounded-2xl border border-gray-200 dark:border-gray-700 transition-all duration-500"
           src={item.url}
         />
       </div>

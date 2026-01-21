@@ -33,20 +33,32 @@ label: '开源生态'
 
 [alemonjs-cheese]: https://github.com/V2233/alemonjs-cheese
 
+### IP
+
+| 项目名   | 说明 |
+| -------- | ---- |
+| [kuromc] | 鸣潮 |
+
+[kuromc]: https://github.com/xiuxianjs/kuromc
+
 ### 游戏
 
-| 项目名             | 说明         |
-| ------------------ | ------------ |
-| [alemonjs-xianyu]  | 扫雷等小游戏 |
-| [alemonjs-xiuxian] | 修仙文游     |
+| 项目名            | 说明         |
+| ----------------- | ------------ |
+| [alemonjs-xianyu] | 扫雷等小游戏 |
+| [xiuxian]         | 修仙文游     |
+| [farm]            | 农场         |
 
 [alemonjs-xianyu]: https://gitee.com/suancaixianyu/xianyu-plugin/tree/alemonjs/
-[alemonjs-xiuxian]: https://github.com/xiuxianjs/xiuxian-plugin
+[xiuxian]: https://github.com/xiuxianjs/xiuxian-plugin
+[farm]: https://github.com/xiuxianjs/farm
 
 ### AI
 
 | 项目名            | 说明                 |
 | ----------------- | -------------------- |
 | [alemonjs-openai] | 连接符合openAI的模型 |
+| [alemonjs-aichat] | 猫娘AI               |
 
 [alemonjs-openai]: https://github.com/xiuxianjs/ollama
+[alemonjs-aichat]: https://gitee.com/suancaixianyu/alemonjs-aichat
