@@ -82,6 +82,8 @@ export default onResponse(selects, event => {
   // 订阅 res 挂载之前的
   const sub = subscribe.mount(
     (event, next) => {
+      // 回调内不可调用 subscribe.cancel(sub)
+      // 该设计已在 v2.1.17 版本修复
       // 创建
       const [message] = useMessage(event)
       // 获取文本
@@ -97,11 +99,15 @@ export default onResponse(selects, event => {
         message.send(format(Text('密码不正确')))
         // 继续
         next()
-        // 继续，next()
-        // 下一个订阅, next(true)
-        // 下一个周期, next(true,true)
+        // 需要注意的是，sub 会在正常的周期中多出2个next。
+        // 保持订阅，next()
+        // 保持订阅且传递给下一个订阅, next(true)
+        // 保持订阅且传递给下一个周期, next(true,true)
+        // 如果想取消订阅，但继续传递给下一个订阅。
+        // 则调用 next(true) 再调用 subscribe.cancel(sub)
+        // 因为sub的next会自带继续订阅逻辑。
+        // 该逻辑和next最初设计造成了一些困扰，在后续版本中会考虑优化。
       }
-      // 回调内不可调用 subscribe.cancel(sub)
     },
     ['UserId']
   )
