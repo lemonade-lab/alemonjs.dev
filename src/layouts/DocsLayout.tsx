@@ -1,9 +1,10 @@
-import { useState } from 'react'
-import { Outlet } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { Outlet, useLocation } from 'react-router-dom'
 import Navbar from '@/components/Navbar'
 import DocsSidebar from '@/components/DocsSidebar'
 import DocPagination from '@/components/DocPagination'
 import Footer from '@/components/Footer'
+import PageToc from '@/components/PageToc'
 
 export default function DocsLayout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
@@ -41,14 +42,32 @@ export default function DocsLayout() {
           </div>
 
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-            <article className="prose prose-sm sm:prose-base lg:prose-lg prose-slate max-w-none">
+            <article
+              id="doc-content"
+              className="prose prose-sm sm:prose-base lg:prose-lg prose-slate max-w-none"
+            >
               <Outlet />
             </article>
             <DocPagination />
           </div>
         </main>
+        {/* Right side TOC */}
+        <aside className="hidden xl:block w-64 pl-6">
+          <PageToc />
+        </aside>
       </div>
       <Footer />
     </div>
   )
+}
+
+// Scroll to top on route change within docs
+export function DocsLayoutWrapper() {
+  const location = useLocation()
+  useEffect(() => {
+    // ensure we scroll to top when navigating between docs
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+  }, [location.pathname])
+
+  return <DocsLayout />
 }

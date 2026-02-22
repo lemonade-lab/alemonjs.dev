@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { createPortal } from 'react-dom'
 import { useNavigate } from 'react-router-dom'
 import { searchContent, SearchResult } from '@/utils/searchUtils'
 
@@ -74,9 +75,9 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
 
   if (!isOpen) return null
 
-  return (
+  return createPortal(
     <div
-      className="fixed inset-0 z-50 flex items-start justify-center pt-[10vh] px-4"
+      className="fixed inset-0 z-[9999] flex items-start justify-center pt-[10vh] px-4"
       onClick={onClose}
     >
       {/* 遮罩层 */}
@@ -252,6 +253,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }

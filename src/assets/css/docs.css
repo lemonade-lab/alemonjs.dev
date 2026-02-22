@@ -133,6 +133,24 @@ html.dark .prose pre {
   @apply bg-transparent text-gray-900 p-0;
 }
 
+/* 代码块复制按钮样式 */
+.code-block-with-copy {
+  position: relative;
+}
+.code-block-with-copy pre {
+  margin: 0;
+  padding-top: 2.25rem; /* leave space for the button */
+}
+.code-block-with-copy > div.absolute {
+  z-index: 10;
+}
+
+@media (prefers-color-scheme: dark) {
+  .code-block-with-copy button {
+    color: #e5e7eb; /* text-gray-200 */
+  }
+}
+
 html.dark .prose pre code {
   @apply text-gray-100;
 }

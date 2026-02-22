@@ -1,5 +1,5 @@
 // MDX 组件库 - 类似 Docusaurus 的主题组件
-import { ReactNode, useState, Children, ReactElement } from 'react'
+import { ReactNode, useState, Children, ReactElement, useRef } from 'react'
 import BlogAuthor from './BlogAuthor'
 
 // ============= Tabs 组件 =============
@@ -159,6 +159,32 @@ export function Details({ summary, children }: DetailsProps) {
   )
 }
 
+// ============= 代码块（带复制按钮） =============
+function CodeBlock({ children }) {
+  const codeRef = useRef<HTMLPreElement>(null)
+  const handleCopy = async () => {
+    try {
+      const text = codeRef.current?.innerText || ''
+      await navigator.clipboard.writeText(text)
+    } catch (e) {
+      console.error('复制失败', e)
+    }
+  }
+  return (
+    <div className="relative [&_div]:opacity-0 [&_div]:hover:opacity-100">
+      <div className="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150">
+        <button
+          onClick={handleCopy}
+          className="inline-flex items-center gap-2 px-2.5 py-1.5 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-xs rounded-md shadow-sm hover:bg-gray-50 dark:hover:bg-gray-800"
+        >
+          复制
+        </button>
+      </div>
+      <pre ref={codeRef}>{children}</pre>
+    </div>
+  )
+}
+
 // 导出为全局组件,可在 MDX 中直接使用
 export default {
   Tabs,
@@ -166,6 +192,7 @@ export default {
   Admonition,
   Details,
   BlogAuthor,
+  pre: CodeBlock,
   Note: (props: Omit<AdmonitionProps, 'type'>) => (
     <Admonition type="note" {...props} />
   ),

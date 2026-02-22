@@ -20,7 +20,7 @@ export default defineConfig({
         },
         {
           to: 'blog',
-          label: '博客',
+          label: '版本记录',
           position: 'left'
         },
         {
@@ -55,15 +55,15 @@ export default defineConfig({
           title: '社区',
           items: [
             {
-              label: 'lvyjs',
+              label: '捆绑打包器',
               href: 'https://lemonade-lab.github.io/lvyjs.dev/'
             },
             {
-              label: '群聊',
+              label: '交流群',
               href: 'https://qm.qq.com/q/aZYMNqUQc'
             },
             {
-              label: '评论',
+              label: '本站评论',
               href: 'https://github.com/lemonade-lab/alemonjs.dev/discussions'
             }
           ]
@@ -72,19 +72,19 @@ export default defineConfig({
           title: '更多',
           items: [
             {
-              label: 'alemonjs',
+              label: '框架源码',
               href: 'https://github.com/lemonade-lab/alemonjs'
             },
             {
-              label: 'vscode-extend',
+              label: 'VSCode扩展',
               href: 'https://marketplace.visualstudio.com/items?itemName=lemonadex.alemonjs-testone'
             },
             {
-              label: 'desktop',
+              label: '机器人单例-桌面版',
               href: 'https://github.com/lemonade-lab/alemondesk'
             },
             {
-              label: 'alemongo',
+              label: '机器人群面板-WEB版',
               href: 'https://github.com/lemonade-lab/alemongo'
             }
           ]
