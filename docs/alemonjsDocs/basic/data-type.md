@@ -19,7 +19,7 @@ sidebar_position: 5
 
 ```ts title="src/response/**/*/res.ts"
 import { Text, useMessage } from 'alemonjs'
-export default onResponse(selects, event => {
+export default event => {
   // 创建
   const [message] = useMessage(event)
   message.send(
@@ -33,7 +33,7 @@ export default onResponse(selects, event => {
       })
     )
   )
-})
+}
 ```
 
 ### Image
@@ -42,8 +42,7 @@ export default onResponse(selects, event => {
 import { useMessage, Image } from 'alemonjs'
 import jpgURL from '@src/assets/test.jpeg'
 import { readFileSync } from 'node:fs'
-const selects = onSelects(['message.create'])
-export default onResponse(selects, event => {
+export default event => {
   const [message] = useMessage(event)
   const { url, file } = Image
   // file
@@ -53,15 +52,14 @@ export default onResponse(selects, event => {
   // buffer
   const img = readFileSync(jpgURL)
   message.send(format(Image(img)))
-})
+}
 ```
 
 ### Mention
 
 ```ts title="response/**/*/res.ts"
 import { useMessage, Text, Mention } from 'alemonjs'
-const selects = onSelects(['message.create'])
-export default onResponse(selects, event => {
+export default event => {
   const [message] = useMessage(event)
   // 发送多种类型的消息
   message.send(
@@ -81,15 +79,14 @@ export default onResponse(selects, event => {
       })
     )
   )
-})
+}
 ```
 
 ### Button
 
 ```ts
 import { BT, useMessage } from 'alemonjs'
-const selects = onSelects(['message.create'])
-const response = onResponse(selects, event => {
+export default event => {
   const [message] = useMessage(event)
 
   const { group, row } = BT
@@ -143,16 +140,14 @@ const response = onResponse(selects, event => {
 
   // 向申请的模板注入参数
   message.send(format(template('template_id')))
-})
-export default response
+}
 ```
 
 ### MarkDown
 
 ```ts
 import { MD, useMessage } from 'alemonjs'
-const selects = onSelects(['message.create'])
-const response = onResponse(selects, event => {
+export default event => {
   const [message] = useMessage(event)
 
   const {
@@ -224,6 +219,5 @@ const response = onResponse(selects, event => {
 
   // 向申请的模板注入参数
   message.send(format(template('template_id', { title: '你好' })))
-})
-export default response
+}
 ```

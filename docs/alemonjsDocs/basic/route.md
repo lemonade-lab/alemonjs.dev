@@ -5,11 +5,11 @@ sidebar_position: 2
 
 # 匹配路由
 
-## defineResponse
+## defineRouter
 
 ```ts title="src/router.ts"
-import { lazy } from 'alemonjs'
-export default defineResponse([
+import { lazy, defineRouter } from 'alemonjs'
+export default defineRouter([
   {
     // 用户验证中间件。这是局部的，仅对 children 下的响应规则生效
     handler: lazy(() => import('@src/response/mw')),
@@ -24,22 +24,6 @@ export default defineResponse([
 ])
 ```
 
-```ts title="src/index.ts"
-import response from './router.js'
-export default defineChildren({
-  // 注册
-  register() {
-    return {
-      // 注册响应体
-      response
-    }
-  },
-  onCreated() {
-    logger.info(`[测试机器人启动]`)
-  }
-})
-```
-
 - lazy
 
 这是一个懒加载工具函数。你可以移除，直接对响应文件进行引用
@@ -47,7 +31,7 @@ export default defineChildren({
 ```ts title="src/router.ts"
 import check from '@src/response/mw'
 import myMessage from '@src/response/user-message/base/res'
-export default defineResponse([
+export default defineRouter([
   {
     handler: async () => check,
     children: [
@@ -60,24 +44,32 @@ export default defineResponse([
 ])
 ```
 
-## defineMiddleware
-
-```ts title="src/router-mw.ts"
-import { lazy } from 'alemonjs'
-export default defineMiddleware([
-  {
-    handler: lazy(() => import('./middleware/mw'))
-  }
-])
-```
+## response
 
 ```ts title="src/index.ts"
-import middleware from './router-mw.js'
 export default defineChildren({
   // 注册
   register() {
     return {
-      middleware
+      // 注册响应体
+      // const responseRouter = defineRouter([])
+      responseRouter
+    }
+  },
+  onCreated() {
+    logger.info(`[测试机器人启动]`)
+  }
+})
+```
+
+## middleware
+
+```ts title="src/index.ts"
+export default defineChildren({
+  register() {
+    return {
+      // const middlewareRouter = defineRouter([])
+      middlewareRouter
     }
   },
   onCreated() {

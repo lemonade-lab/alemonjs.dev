@@ -33,6 +33,7 @@ const Doc22 = lazy(() => import('../docs/intro.md'))
 const Doc23 = lazy(() => import('../docs/start.mdx'))
 
 // 自动生成的博客导入
+const Blog16 = lazy(() => import('../blog/2026/02/26/v2.1.20.md'))
 const Blog15 = lazy(() => import('../blog/2026/01/22/v2.1.17.md'))
 const Blog14 = lazy(() => import('../blog/2026/01/08/v2.1.15.md'))
 const Blog13 = lazy(() => import('../blog/2025/05/30/v2.1.0.md'))
@@ -168,6 +169,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <BlogList />
+      },
+      {
+        path: '2026/02/26/v2.1.20',
+        element: <Blog16 />
       },
       {
         path: '2026/01/22/v2.1.17',

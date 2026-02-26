@@ -22,7 +22,7 @@ sidebar_position: 2
 ```ts title="src/response/**/*/res.ts"
 import { API, platform } from '@alemonjs/qq-bot'
 import { useClient } from 'alemonjs'
-export default onResponse(selects, event => {
+export default event => {
   // 得到qq-bot平台的个人信息
   if (event.Platform === platform) {
     // 调用
@@ -30,7 +30,7 @@ export default onResponse(selects, event => {
     // 直接调用对应平台接口规范
     client.usersMe()
   }
-})
+}
 ```
 
 注意`platform`和`API`被约定为必须拥有的导出

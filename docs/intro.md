@@ -16,14 +16,12 @@ label: '简介'
 框架主要通过定义响应函数来描述不同类型的事件将要执行的内容。
 
 ```ts title="Hello Word!"
-import { Text, useMessage } from 'alemonjs'
-// 创建事件类型
-const selects = onSelects(['message.create'])
-// 导出响应
-export default onResponse(selects, event => {
+import { useMessage, Format } from 'alemonjs'
+// 最简例
+export default e => {
   // 使用发送函数
-  const [message] = useMessage(event)
-  // 发送文本
-  message.send(format(Text('Hello Word!')))
-})
+  const [message] = useMessage(e)
+  const format = Format.create().addText('hello word')
+  message.send({ format })
+}
 ```
