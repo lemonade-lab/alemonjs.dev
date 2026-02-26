@@ -109,8 +109,7 @@ export default event => {
   // 一行多个
   message.send({
     format: Format.create().addButtonGroup(
-      Format.create()
-        .createButtonGroup()
+      Format.createButtonGroup()
         .addRow()
         .addButton('开始', '/开始游戏')
         .addButton('结束', '/结束游戏')
@@ -120,8 +119,7 @@ export default event => {
   // 多行多个
   message.send({
     format: Format.create().addButtonGroup(
-      Format.create()
-        .createButtonGroup()
+      Format.createButtonGroup()
         .addRow()
         .addButton('开始', '/开始游戏')
         .addButton('结束', '/结束游戏')
@@ -132,10 +130,8 @@ export default event => {
   })
 
   // 更多类型
-  const format = Format.create()
-  format.addButtonGroup(
-    format
-      .createButtonGroup()
+  const format = Format.create().addButtonGroup(
+    Format.createButtonGroup()
       // link
       .addRow()
       .addButton('访问文档', 'https://alemonjs.com/', { type: 'link' })
