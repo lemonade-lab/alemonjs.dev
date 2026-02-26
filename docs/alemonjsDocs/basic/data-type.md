@@ -159,7 +159,7 @@ export default event => {
   const [message] = useMessage(event)
 
   const format = Format.create()
-  const md = format.createMarkdown()
+  const md = Format.createMarkdown()
 
   md
     // 标题
