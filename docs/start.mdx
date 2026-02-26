@@ -73,7 +73,7 @@ start({
 ```js title="lib/index.js"
 import {
   defineChildren,
-  defineRoute,
+  defineRouter,
   logger,
   useMessage,
   Format
@@ -89,7 +89,7 @@ const response = e => {
 }
 
 // 设置路由规则
-const responseRoute = defineRoute([
+const responseRouter = defineRouter([
   {
     regular: /^(\/|#)?hello$/,
     handler: () => response
@@ -100,7 +100,7 @@ export default defineChildren({
   // 注册内容
   register() {
     return {
-      responseRoute
+      responseRouter
     }
   },
   // 当注册完成时

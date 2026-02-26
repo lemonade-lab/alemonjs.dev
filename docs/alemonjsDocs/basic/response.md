@@ -30,6 +30,7 @@ export default (e, next) => {
   })
   // 事件不匹配。或...
   if (!event.selects || !event.regular || !event.prefix || !event.exact) {
+    // 交给下一个进行处理
     next()
     return
   }

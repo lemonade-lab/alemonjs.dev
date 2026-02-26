@@ -7,6 +7,11 @@ sidebar_position: 2
 
 ## defineRouter
 
+- 确定优先级
+- 利用中间件，统一处理一类响应
+
+- 更早的确认是否执行，方便懒加载
+
 ```ts title="src/router.ts"
 import { lazy, defineRouter } from 'alemonjs'
 export default defineRouter([
