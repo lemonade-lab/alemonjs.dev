@@ -49,8 +49,6 @@ export default async (event, next) => {
 
 > 订阅模式，在某个事件周期中进行观察
 
-> ! 不可以在 回调中调用 subscribe.cancel(sub)
-
 ```ts title="response/**/*/res.ts"
 import { Format, useMessage, useSubscribe } from 'alemonjs'
 
@@ -72,6 +70,8 @@ export default event => {
     (event, next) => {
       // 回调内不可调用 subscribe.cancel(sub)
       // 该设计已在 v2.1.17 版本修复
+      // 若你的版本较低，请注意不要在回调内调用 subscribe.cancel(sub)，以免造成意外的结果
+
       // 创建
       const [message] = useMessage(event)
       // 获取文本
@@ -93,11 +93,15 @@ export default event => {
         })
         // 继续
         next()
+
         // 需要注意的是，sub 会在正常的周期中多出2个next。
-        // 保持订阅，next()
-        // 保持订阅且传递给下一个订阅, next(true)
-        // 保持订阅且传递给下一个周期, next(true,true)
-        // 如果想取消订阅，但继续传递给下一个订阅。
+        // next() 保持订阅
+        // next(true) 保持订阅且传递给下一个订阅
+        // next(true,true) 保持订阅且传递给下一个周期
+
+        // 以下做法仅在 v2.1.17 中支持
+        // 1、想取消订阅
+        // 2、想继续传递给下一个订阅。
         // 则调用 next(true) 再调用 subscribe.cancel(sub)
         // 因为sub的next会自带继续订阅逻辑。
         // 该逻辑和next最初设计造成了一些困扰，在后续版本中会考虑优化。

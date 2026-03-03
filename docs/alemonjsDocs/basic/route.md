@@ -7,13 +7,12 @@ sidebar_position: 2
 
 ## defineRouter
 
-- 确定优先级
-- 利用中间件，统一处理一类响应
-
-- 更早的确认是否执行，方便懒加载
-
 ```ts title="src/router.ts"
 import { lazy, defineRouter } from 'alemonjs'
+// 1、确定优先级，检查从数组index=0开始，依次检查 children。直到发现 children 为 undefined
+// 2、可统一对要匹配的 后续index及其children进行处理
+// 3、通过配置更明确的匹配规则，提高执行效率
+// 4、利用懒加载初次提高加载速度
 export default defineRouter([
   {
     // 用户验证中间件。这是局部的，仅对 children 下的响应规则生效

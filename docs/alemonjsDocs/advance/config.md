@@ -16,7 +16,7 @@ port: 17117 # 端口，快捷参数 --port
 input: 'lib/index.js' # 入口地址，快捷参数 --input
 ```
 
-使用例子
+### getConfigValue
 
 ```ts title="src/index.ts"
 import { getConfigValue } from 'alemonjs'
@@ -24,13 +24,10 @@ const value = getConfigValue()
 console.log('port', value.port) // port 17117
 ```
 
-更多调用
+### getConfig
 
 ```ts title="src/index.ts"
-import { getConfig, getConfigValue } from 'alemonjs'
-const value = getConfigValue()
-console.log('alemon.config.yaml', value)
-
+import { getConfig } from 'alemonjs'
 // 配置类
 const config = getConfig()
 // 包信息
@@ -44,4 +41,14 @@ console.log('alemon.config.yaml', config.value)
 const val = config.value
 val.apps.push('@alemonjs/db')
 config.saveValue(val)
+```
+
+### onWatchConfigValue
+
+```ts title="src/index.ts"
+import { onWatchConfigValue } from 'alemonjs'
+// 监听 配置变化
+const unWatchConfigValue = onWatchConfigValue(value => {
+  console.log('port', value.port) // port 17117
+})
 ```

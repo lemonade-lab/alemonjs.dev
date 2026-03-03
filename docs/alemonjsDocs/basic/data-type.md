@@ -130,23 +130,24 @@ export default event => {
   })
 
   // 更多类型
-  const format = Format.create().addButtonGroup(
-    Format.createButtonGroup()
-      // link
-      .addRow()
-      .addButton('访问文档', 'https://alemonjs.com/', { type: 'link' })
-      // call
-      .addRow()
-      .addButton('是否同意', '/同意', { type: 'call' })
-      // 自动发送 + 显示子频道list + 禁用提示
-      .addRow()
-      .addButton('哈哈', '/哈哈', {
-        autoEnter: false,
-        showList: true,
-        toolTip: '不支持'
-      })
-  )
-  message.send({ format })
+  message.send({
+    format: Format.create().addButtonGroup(
+      Format.createButtonGroup()
+        // link
+        .addRow()
+        .addButton('访问文档', 'https://alemonjs.com/', { type: 'link' })
+        // call
+        .addRow()
+        .addButton('是否同意', '/同意', { type: 'call' })
+        // 自动发送 + 显示子频道list + 禁用提示
+        .addRow()
+        .addButton('哈哈', '/哈哈', {
+          autoEnter: false,
+          showList: true,
+          toolTip: '不支持'
+        })
+    )
+  })
 }
 ```
 
