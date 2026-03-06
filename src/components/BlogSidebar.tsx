@@ -78,12 +78,12 @@ export default function BlogSidebar({
       {/* Sidebar */}
       <aside
         className={`
-        fixed lg:sticky top-16 left-0 z-40 w-64 
+        fixed top-16 left-0 z-40 w-64
+        h-[calc(100vh-4rem)]
         border-r border-gray-200/60 dark:border-gray-700/60 bg-gradient-to-b from-white via-gray-50/50 to-white dark:from-gray-900 dark:via-gray-800/50 dark:to-gray-900
-        overflow-y-auto  shadow-xl lg:shadow-none
+        overflow-y-auto shadow-xl lg:shadow-none
         transition-all duration-300 ease-out
-        lg:translate-x-0
-        ${isOpen ? 'translate-x-0' : '-translate-x-full'}
+        ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
       `}
       >
         {/* Mobile close button */}

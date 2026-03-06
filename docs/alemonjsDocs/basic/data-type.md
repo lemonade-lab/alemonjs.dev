@@ -18,58 +18,55 @@ sidebar_position: 5
 ### Text
 
 ```ts title="src/response/**/*/res.ts"
-import { useMessage } from 'alemonjs'
+import { useMessage, Format } from 'alemonjs'
 export default event => {
   // 创建
   const [message] = useMessage(event)
-
- // ex 1
- message.send({
-  format: Format.create().addText('标题', { style: 'bold' }), Text('被加粗了'))
- })
-
-  // ex 2
- message.send({
-  format: Format.create().addText('这个').addText('标题').addText('没有变化')
- })
-
-  // ex 3
-  message.send({
-  format: Format.create().addText(`// 我的代码块 \nconst Send = useSend(event)`, {
-        style: 'block'
-      })
- })
+  const format = Format.create().addText('hello').addText(' ').addText('word')
+  message.send({ format })
+}
 ```
 
 ### Image
 
 ```ts title="src/response/**/*/res.ts"
 import { useMessage, Format } from 'alemonjs'
-import jpgURL from '@src/assets/test.jpeg'
+import JPEG_PATH from '@src/assets/test.jpeg'
 import { readFileSync } from 'node:fs'
 
 export default event => {
   const [message] = useMessage(event)
 
-  // file
+  // 支持 Buffer、base64://、https://、file://
   message.send({
-    format: Format.create().addImageFile(jpgURL)
-  })
-
-  // url
-  message.send({
-    format: Format.create().addImageURL('https://xxx.com/yyy.png')
-  })
-
-  // buffer
-  const img = readFileSync(jpgURL)
-  message.send({
-    format: Format.create().addImage(img)
+    format: Format.create().addImage(JPEG_PATH)
   })
 }
 ```
 
-### Mention
+### Image&Text
+
+💡 不推荐使用的操作
+
+```ts
+import { useMessage, Format } from 'alemonjs'
+import JPEG_PATH from '@src/assets/test.jpeg'
+
+export default event => {
+  const [message] = useMessage(event)
+
+  const format = Format.create().addText('hello word').addImage(JPEG_PATH)
+
+  // 情况1 能完全按顺序渲染
+  // 情况2 不支持图文，大概率会整个全部文本后发送，再接着发送
+  // 情况3 仅支持 文本再图片，大概率会整个全部文本后跟随渲染图片
+  // ⚠️大部分平台是不支持机器人发送多图的
+
+  message.send({ format: format })
+}
+```
+
+### Mention&Text
 
 ```ts title="response/**/*/res.ts"
 import { useMessage, Text, Mention, Format } from 'alemonjs'
@@ -98,7 +95,59 @@ export default event => {
 }
 ```
 
-### Button
+### Audio
+
+```ts title="src/response/**/*/res.ts"
+import { useMessage, Format } from 'alemonjs'
+import MP3_PATH from '@src/assets/test.mp3'
+
+export default event => {
+  const [message] = useMessage(event)
+
+  // 支持 base64://、https://、file://
+  message.send({
+    format: Format.create().addAudio(MP3_PATH)
+  })
+}
+```
+
+### Video
+
+```ts title="src/response/**/*/res.ts"
+import { useMessage, Format } from 'alemonjs'
+import MP4_PATH from '@src/assets/test.mp4'
+
+export default event => {
+  const [message] = useMessage(event)
+
+  // 支持 base64://、https://、file://
+  message.send({
+    format: Format.create().addVideo(MP3_PATH)
+  })
+}
+```
+
+### Attachment
+
+💡 即File，为避免和js全局对象冲突，用Attachment代替
+
+```ts title="src/response/**/*/res.ts"
+import { useMessage, Format } from 'alemonjs'
+import DOCS_PATH from '@src/assets/test.docs'
+
+export default event => {
+  const [message] = useMessage(event)
+
+  // 支持 base64://、https://、file://
+  message.send({
+    format: Format.create().addAttachment(DOCS_PATH)
+  })
+}
+```
+
+### ButtonGroup
+
+⚠️ 框架把按钮视为一组5\*5的排列，超过将不确保有效发送或渲染
 
 ```ts
 import { useMessage, Format } from 'alemonjs'
@@ -151,6 +200,19 @@ export default event => {
 }
 ```
 
+- absorb
+
+```ts
+const format = Format.create()
+const bt = Format.createButtonGroup()
+const bt2 = Format.createButtonGroup()
+
+// 吸收bt2的按钮
+bt.absorb(bt2)
+
+format.addButtonGroup(md)
+```
+
 ### MarkDown
 
 ```ts
@@ -163,6 +225,12 @@ export default event => {
   const md = Format.createMarkdown()
 
   md
+    // @UserId
+    .addMention('<event.UserId>')
+    // 换行
+    .addNewline()
+    // Button，⚠️部分平台不支持
+    .addButton('你好', { data: '/你好' })
     // 标题
     .addTitle('标题！！')
     // 副标题
@@ -193,17 +261,50 @@ export default event => {
     )
     // 无序列表
     .addList('无序列表', '无序列表', '无序列表', '无序列表', '无序列表')
-    // 块引用
+    // 块引用 \n>XXX
     .addBlockquote('块引用')
+    // \n\n 结束
+    .addNewline(2)
     // 水平分割线
     .addDivider()
-    // 换行
-    .addNewline()
-    // 换多行
-    .addNewline(true)
 
   format.addMarkdown(md)
 
   message.send({ format })
 }
+```
+
+- absorb
+
+```ts
+const format = Format.create()
+const md = Format.createMarkdown()
+
+md.addText('hello')
+md.addText(' ')
+
+const md2 = Format.createMarkdown()
+md2.addText('word')
+
+// md对md2进行吸收
+md.absorb(md2)
+
+format.addMarkdown(md) // hello word
+```
+
+### MarkdownOriginal
+
+```ts
+import { Format } from 'alemonjs'
+
+const format = Format.create()
+
+format.addMarkdownOriginal(`
+
+# 标题
+## 子标题
+
+这是一个不推荐使用的消息格式，用于不考虑兼容性，直接最大可能的写md
+
+`)
 ```

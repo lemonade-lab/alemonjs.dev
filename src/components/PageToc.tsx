@@ -48,7 +48,7 @@ export default function PageToc() {
   if (!items.length) return null
 
   return (
-    <nav className="toc sticky top-24 hidden xl:block px-4">
+    <nav className="toc hidden xl:block px-4 py-6">
       <div className="text-sm font-semibold mb-3 text-gray-700 dark:text-gray-300">
         目录
       </div>
