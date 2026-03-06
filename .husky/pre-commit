@@ -1,4 +1,4 @@
-find . -name '.DS_Store' -type f -delete
 npm run format
+find . -name '.DS_Store' -type f -delete
 git diff --exit-code
 npm run build
