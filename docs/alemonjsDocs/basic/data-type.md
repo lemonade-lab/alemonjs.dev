@@ -1,19 +1,19 @@
 ---
-label: '消息格式'
+label: '数据格式'
 sidebar_position: 5
 ---
 
-# 消息格式
+# 数据格式
 
-:::info
+使用相同的 API 构建消息内容，由各平台包负责将其转换为平台原生格式。
 
-一些常用的消息格式说明
+消息发送的返回值为 `ClientAPIMessageResult[]`，即 `[res1, res2, ...]`。数组中的每一项对应一次实际的平台 API 调用。
 
-:::
+**核心原则：**
 
-> 可能存在部分平台不支持一些个性效果，实际以对应平台的要求为准
-
-> 如果想更定制化发送消息，请了解对应平台包client接口说明
+- **不支持的数据格式，一律逐步降级到 Text。**
+- **媒体消息无法向后合并时，优先发送媒体，再发后续内容。**
+- **Markdown 与 Text 互相转换**：平台支持哪个，就合并到哪个格式发送，始终只产出一条消息。
 
 ### Text
 
@@ -56,11 +56,6 @@ export default event => {
   const [message] = useMessage(event)
 
   const format = Format.create().addText('hello word').addImage(JPEG_PATH)
-
-  // 情况1 能完全按顺序渲染
-  // 情况2 不支持图文，大概率会整个全部文本后发送，再接着发送
-  // 情况3 仅支持 文本再图片，大概率会整个全部文本后跟随渲染图片
-  // ⚠️大部分平台是不支持机器人发送多图的
 
   message.send({ format: format })
 }
@@ -304,7 +299,81 @@ format.addMarkdownOriginal(`
 # 标题
 ## 子标题
 
-这是一个不推荐使用的消息格式，用于不考虑兼容性，直接最大可能的写md
+这是一个不推荐使用的数据格式，用于不考虑兼容性，直接最大可能的写md
 
 `)
 ```
+
+## 三级优先级
+
+消息中可能同时包含多种数据类型。平台包按照以下优先级从高到低处理：
+
+```
+优先级 1（媒体）  ──  Image / ImageURL / ImageFile / Audio / Video / Attachment
+       ↓
+优先级 2（富文本）──  Markdown / ButtonGroup / MarkdownOriginal
+       ↓
+优先级 3（基础）  ──  Text / Link / Mention
+```
+
+---
+
+## 发送规则
+
+### 高优先级优先发送
+
+当存在优先级 1 的媒体内容时，**先发媒体**。如果平台支持图文合并（如 caption），则低优先级内容随媒体一起发出，只产出一次调用。如果不支持合并，则拆分为多次：先发媒体，再发后续内容。
+
+### MD 与 Text 互为转换
+
+Markdown 和 Text 是**同一层信息的两种表达**。调用发送时：
+
+- 平台**支持 Markdown** → Text 内容合并进 Markdown，只发一条 `[res(md)]`
+- 平台**不支持 Markdown** → Markdown 降级为纯文本，合并到 Text，只发一条 `[res(text)]`
+
+**不论平台是否支持，MD 和 Text 不会分成两次 API 调用。它们必须合并为一个格式输出。**
+
+### 不支持的格式逐步降级到 Text
+
+任何平台不支持的数据类型，都会先尝试转为同优先级的替代格式，最终兜底到 Text：
+
+```
+ButtonGroup  →  降级为 "[按钮名1] [按钮名2]" 文本
+Markdown     →  降级为 "【标题】\n内容..." 文本
+Audio/Video  →  降级为 "[音频: url]" / "[视频: url]" 文本
+Attachment   →  降级为 "[附件: url]" 文本
+```
+
+### 无高优先级内容时依次降级
+
+如果消息中没有媒体，直接检查优先级 2；如果也没有，发送优先级 3 纯文本。全空则返回 `[]`。
+
+---
+
+## 发送流程
+
+```
+DataEnums[] 输入
+    │
+    ├─ 1. 提取优先级 1：Image / Audio / Video / Attachment
+    │     有媒体？
+    │     ├── 是 → 发送媒体消息
+    │     │     ├── 支持图文合并 → 低优先级内容作为 caption → [res1]
+    │     │     └── 不支持合并  → 先发媒体 [res1]，剩余内容继续向下 ↓
+    │     └── 否 → 继续向下 ↓
+    │
+    ├─ 2. 合并优先级 2 + 3：MD / Buttons / Text / Link / Mention
+    │     有 Markdown？
+    │     ├── 支持 MD   → Text 合并进 MD → [res(md)]
+    │     └── 不支持 MD → MD 降级为文本，合并到 Text → [res(text)]
+    │     有 ButtonGroup？
+    │     ├── 支持按钮   → 随 MD/Text 一起发送
+    │     └── 不支持按钮 → 降级为文本，合并到内容中
+    │
+    ├─ 3. 仅有 Text / Link / Mention？
+    │     └── 发送纯文本 → [res(text)]
+    │
+    └─ 4. 无内容 → []
+```
+
+---
