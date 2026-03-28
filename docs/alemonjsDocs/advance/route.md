@@ -63,7 +63,7 @@ export const POST = (ctx: Context, next) => {
 // PUT
 ```
 
-## root
+## package
 
 如果想更改资源访问的跟目录，可在 package.josn 中配置
 

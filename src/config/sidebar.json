@@ -58,16 +58,6 @@
             "title": "中间件",
             "path": "/docs/alemonjsDocs/basic/middleware",
             "position": 6
-          },
-          {
-            "title": "优先级",
-            "path": "/docs/alemonjsDocs/basic/priority",
-            "position": 6
-          },
-          {
-            "title": "主动的",
-            "path": "/docs/alemonjsDocs/basic/send",
-            "position": 7
           }
         ]
       },

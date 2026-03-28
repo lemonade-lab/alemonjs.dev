@@ -7,17 +7,7 @@ label: '开源生态'
 
 模块机制到底是怎么回事？请点击了解[👉模块化应用](/docs/alemonjsDocs/open/models)的制作
 
-:::warning
-
-如何加载Yunzai生态插件？
-
-请阅读 [https://github.com/lemonade-lab/yunzai](https://github.com/lemonade-lab/yunzai)
-
-:::
-
-## 分类
-
-## 开发者
+### 开发者
 
 | 项目名          | 说明     |
 | --------------- | -------- |
@@ -35,11 +25,13 @@ label: '开源生态'
 
 ### IP
 
-| 项目名   | 说明 |
-| -------- | ---- |
-| [kuromc] | 鸣潮 |
+| 项目名 | 说明             |
+| ------ | ---------------- |
+| [mhy]  | 米哈游查询工具   |
+| [miao] | 原神查询工具增强 |
 
-[kuromc]: https://github.com/xiuxianjs/kuromc
+[mhy]: https://github.com/xiuxianjs/alemonjs-mhy
+[miao]: https://github.com/xiuxianjs/alemonjs-miao
 
 ### 游戏
 
@@ -47,18 +39,16 @@ label: '开源生态'
 | ----------------- | ------------ |
 | [alemonjs-xianyu] | 扫雷等小游戏 |
 | [xiuxian]         | 修仙文游     |
-| [farm]            | 农场         |
 
 [alemonjs-xianyu]: https://gitee.com/suancaixianyu/xianyu-plugin/tree/alemonjs/
 [xiuxian]: https://github.com/xiuxianjs/xiuxian-plugin
-[farm]: https://github.com/xiuxianjs/farm
 
 ### AI
 
-| 项目名            | 说明                 |
-| ----------------- | -------------------- |
-| [alemonjs-openai] | 连接符合openAI的模型 |
-| [alemonjs-aichat] | 猫娘AI               |
+| 项目名            | 说明       |
+| ----------------- | ---------- |
+| [alemonjs-aichat] | 猫娘AI     |
+| [alemonjs-openai] | 通用AI连接 |
 
 [alemonjs-openai]: https://github.com/xiuxianjs/ollama
 [alemonjs-aichat]: https://gitee.com/suancaixianyu/alemonjs-aichat

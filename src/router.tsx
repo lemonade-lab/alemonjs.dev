@@ -16,23 +16,22 @@ const Doc5 = lazy(() => import('../docs/alemonjsDocs/basic/cycle.md'))
 const Doc6 = lazy(() => import('../docs/alemonjsDocs/basic/data-type.md'))
 const Doc7 = lazy(() => import('../docs/alemonjsDocs/basic/hook.mdx'))
 const Doc8 = lazy(() => import('../docs/alemonjsDocs/basic/middleware.md'))
-const Doc9 = lazy(() => import('../docs/alemonjsDocs/basic/priority.md'))
-const Doc10 = lazy(() => import('../docs/alemonjsDocs/basic/response-cycle.md'))
-const Doc11 = lazy(() => import('../docs/alemonjsDocs/basic/response.md'))
-const Doc12 = lazy(() => import('../docs/alemonjsDocs/basic/route.md'))
-const Doc13 = lazy(() => import('../docs/alemonjsDocs/basic/send.md'))
-const Doc14 = lazy(() => import('../docs/alemonjsDocs/expert/class.md'))
-const Doc15 = lazy(() => import('../docs/alemonjsDocs/expert/platforms.md'))
-const Doc16 = lazy(() => import('../docs/alemonjsDocs/expert/sdk.md'))
-const Doc17 = lazy(() => import('../docs/alemonjsDocs/open/desktop.md'))
-const Doc18 = lazy(() => import('../docs/alemonjsDocs/open/models.md'))
-const Doc19 = lazy(() => import('../docs/apps.md'))
-const Doc20 = lazy(() => import('../docs/config.md'))
-const Doc21 = lazy(() => import('../docs/environment.md'))
-const Doc22 = lazy(() => import('../docs/intro.md'))
-const Doc23 = lazy(() => import('../docs/start.mdx'))
+const Doc9 = lazy(() => import('../docs/alemonjsDocs/basic/response-cycle.md'))
+const Doc10 = lazy(() => import('../docs/alemonjsDocs/basic/response.md'))
+const Doc11 = lazy(() => import('../docs/alemonjsDocs/basic/route.md'))
+const Doc12 = lazy(() => import('../docs/alemonjsDocs/expert/class.md'))
+const Doc13 = lazy(() => import('../docs/alemonjsDocs/expert/platforms.md'))
+const Doc14 = lazy(() => import('../docs/alemonjsDocs/expert/sdk.md'))
+const Doc15 = lazy(() => import('../docs/alemonjsDocs/open/desktop.md'))
+const Doc16 = lazy(() => import('../docs/alemonjsDocs/open/models.md'))
+const Doc17 = lazy(() => import('../docs/apps.md'))
+const Doc18 = lazy(() => import('../docs/config.md'))
+const Doc19 = lazy(() => import('../docs/environment.md'))
+const Doc20 = lazy(() => import('../docs/intro.md'))
+const Doc21 = lazy(() => import('../docs/start.mdx'))
 
 // 自动生成的博客导入
+const Blog17 = lazy(() => import('../blog/2026/02/28/v2.1.43.md'))
 const Blog16 = lazy(() => import('../blog/2026/02/26/v2.1.22.md'))
 const Blog15 = lazy(() => import('../blog/2026/01/22/v2.1.17.md'))
 const Blog14 = lazy(() => import('../blog/2026/01/08/v2.1.15.md'))
@@ -101,64 +100,56 @@ const router = createBrowserRouter([
         element: <Doc8 />
       },
       {
-        path: 'alemonjsDocs/basic/priority',
+        path: 'alemonjsDocs/basic/response-cycle',
         element: <Doc9 />
       },
       {
-        path: 'alemonjsDocs/basic/response-cycle',
+        path: 'alemonjsDocs/basic/response',
         element: <Doc10 />
       },
       {
-        path: 'alemonjsDocs/basic/response',
+        path: 'alemonjsDocs/basic/route',
         element: <Doc11 />
       },
       {
-        path: 'alemonjsDocs/basic/route',
+        path: 'alemonjsDocs/expert/class',
         element: <Doc12 />
       },
       {
-        path: 'alemonjsDocs/basic/send',
+        path: 'alemonjsDocs/expert/platforms',
         element: <Doc13 />
       },
       {
-        path: 'alemonjsDocs/expert/class',
+        path: 'alemonjsDocs/expert/sdk',
         element: <Doc14 />
       },
       {
-        path: 'alemonjsDocs/expert/platforms',
+        path: 'alemonjsDocs/open/desktop',
         element: <Doc15 />
       },
       {
-        path: 'alemonjsDocs/expert/sdk',
+        path: 'alemonjsDocs/open/models',
         element: <Doc16 />
       },
       {
-        path: 'alemonjsDocs/open/desktop',
+        path: 'apps',
         element: <Doc17 />
       },
       {
-        path: 'alemonjsDocs/open/models',
+        path: 'config',
         element: <Doc18 />
       },
       {
-        path: 'apps',
+        path: 'environment',
         element: <Doc19 />
       },
       {
-        path: 'config',
+        path: 'intro',
         element: <Doc20 />
       },
       {
-        path: 'environment',
-        element: <Doc21 />
-      },
-      {
-        path: 'intro',
-        element: <Doc22 />
-      },
-      {
         path: 'start',
-        element: <Doc23 />
+        element: <Doc21 />
       }
     ]
   },
@@ -169,6 +160,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <BlogList />
+      },
+      {
+        path: '2026/02/28/v2.1.43',
+        element: <Blog17 />
       },
       {
         path: '2026/02/26/v2.1.22',
