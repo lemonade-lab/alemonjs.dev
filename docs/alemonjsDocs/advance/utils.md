@@ -40,10 +40,32 @@ const regular = getPublicIP()
 
 计数器
 
+```ts
+import { Counter } from 'alemonjs/utils'
+
+const counter = new Counter(0)
+counter.next() // 1
+counter.next() // 2
+counter.value // 2
+counter.reStart() // 重置为初始值
+```
+
 ## createQRCode
 
-把指定内容转为二维码图片
+把指定内容转为二维码图片，返回 `Buffer | false`
+
+```ts
+import { createQRCode } from 'alemonjs/utils'
+
+const buffer = await createQRCode('https://alemonjs.com')
+```
 
 ## getBufferByURL
 
 请求URL，并得到Buffer
+
+```ts
+import { getBufferByURL } from 'alemonjs/utils'
+
+const buffer = await getBufferByURL('https://example.com/image.png')
+```

@@ -110,16 +110,12 @@ node index.js --login discord
 # 指定CBP服务器连接地址
 node index.js --url ws://localhost:8080
 
-# === CBP相关参数 ===
-# 指定负载均衡策略
-node index.js --loadBalanceStrategy least-connections
-
 # 启用全量接收模式
 node index.js --is_full_receive true
 
 # === 组合使用示例 ===
-# 启动Discord平台，使用轮询策略，端口8080
-node index.js --login discord --loadBalanceStrategy round-robin --port 8080
+# 启动Discord平台，端口8080
+node index.js --login discord --port 8080
 ```
 
 ## 配置管理工具
@@ -139,7 +135,6 @@ alemonc remove apps alemonjs-openai
 # 设置配置项
 alemonc set login qq
 alemonc set discord.token your-token
-alemonc set loadBalanceStrategy least-connections
 
 # 删除配置项
 alemonc del discord

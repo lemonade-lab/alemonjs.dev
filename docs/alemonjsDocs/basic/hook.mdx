@@ -7,13 +7,13 @@ sidebar_position: 3
 
 :::info
 
-捕获事件后可进行的
+捕获事件后可进行的 Hook 函数
 
 :::
 
 ## `useMessage`
 
-> 在响应事件（如消息被创建）时，发送消息。
+> 在响应事件时发送消息
 
 ```ts title="src/response/**/*/res.ts"
 import { useMessage, Format } from 'alemonjs'
@@ -26,22 +26,60 @@ export default e => {
 
 ## `useMention`
 
-> 解析得到被提及的数据
+> 解析得到被提及（@）的数据
 
 ```ts title="response/**/*/res.ts"
 import { useMention } from 'alemonjs'
 export default async (event, next) => {
   const [mention] = useMention(event)
-  // 查找用户类型的 @ 提及，且不是 bot
+  // 查找用户类型的 @ 提及，默认排除 bot
   const user = await mention.findOne()
-  // 数据长度为0，或数据中没有用户信息
   if (!user.count || !user.data) {
-    return // 未找到用户Id
+    return // 未找到用户
   }
-
   console.log('User:', user)
+}
+```
 
-  // 处理被AT的用户...
+`find` 返回所有匹配的提及用户数组，`findOne` 返回第一个匹配用户。
+
+支持的过滤选项：
+
+| 选项       | 类型      | 说明                     |
+| ---------- | --------- | ------------------------ |
+| `UserId`   | `string`  | 按用户ID过滤             |
+| `UserKey`  | `string`  | 按用户Key过滤            |
+| `UserName` | `string`  | 按用户名过滤             |
+| `IsMaster` | `boolean` | 是否为主人               |
+| `IsBot`    | `boolean` | 是否为机器人（默认排除） |
+
+## `useMember`
+
+> 获取成员详细信息
+
+```ts title="response/**/*/res.ts"
+import { useMember } from 'alemonjs'
+export default async event => {
+  const [member] = useMember(event)
+  const info = await member.information({ userId: event.UserId })
+  if (info.data) {
+    console.log('Member:', info.data)
+  }
+}
+```
+
+## `useClient`
+
+> 映射平台原生接口类，用于调用平台特有 API
+
+```ts title="src/response/**/*/res.ts"
+import { API, platform } from '@alemonjs/qq-bot'
+import { useClient } from 'alemonjs'
+export default event => {
+  if (event.Platform === platform) {
+    const [client] = useClient(event, API)
+    client.usersMe()
+  }
 }
 ```
 
@@ -60,23 +98,15 @@ export default event => {
   ])
 
   message.send({
-    format: Format.create()
-      .addText('请输入密码')
-      .addText('123456', { style: 'bold' })
+    format: Format.create().addText('请输入密码')
   })
 
-  // 订阅 res 挂载之前的
+  // 订阅 res 挂载之前的事件
   const sub = subscribe.mount(
     (event, next) => {
-      // 回调内不可调用 subscribe.cancel(sub)
-      // 该设计已在 v2.1.17 版本修复
-      // 若你的版本较低，请注意不要在回调内调用 subscribe.cancel(sub)，以免造成意外的结果
-
-      // 创建
       const [message] = useMessage(event)
-      // 获取文本
       const text = event.MessageText
-      // 检查
+
       if (text === '123456') {
         message.send({
           format: Format.create().addText('密码正确')
@@ -91,32 +121,41 @@ export default event => {
         message.send({
           format: Format.create().addText('密码不正确')
         })
-        // 继续
+        // 保持订阅
         next()
-
-        // 需要注意的是，sub 会在正常的周期中多出2个next。
-        // next() 保持订阅
-        // next(true) 保持订阅且传递给下一个订阅
-        // next(true,true) 保持订阅且传递给下一个周期
-
-        // 以下做法仅在 v2.1.17 中支持
-        // 1、想取消订阅
-        // 2、想继续传递给下一个订阅。
-        // 则调用 next(true) 再调用 subscribe.cancel(sub)
-        // 因为sub的next会自带继续订阅逻辑。
-        // 该逻辑和next最初设计造成了一些困扰，在后续版本中会考虑优化。
       }
     },
     ['UserId']
   )
 
   const timeout = setTimeout(() => {
-    // 取消订阅
     subscribe.cancel(sub)
-    // 发送消息
     message.send({
       format: Format.create().addText('登录超时')
     })
   }, 1000 * 10)
 }
+```
+
+### 订阅时机
+
+`useSubscribe` 提供三种订阅时机：
+
+| 方法                                | 说明                       |
+| ----------------------------------- | -------------------------- |
+| `subscribe.create(callback, keys)`  | 在响应体创建时触发         |
+| `subscribe.mount(callback, keys)`   | 在中间件之后、响应之前触发 |
+| `subscribe.unmount(callback, keys)` | 在响应之后触发             |
+| `subscribe.cancel(sub)`             | 取消订阅                   |
+
+`keys` 参数指定用于匹配事件的字段名（如 `['UserId']`），只有这些字段值相同的事件才会触发订阅回调。
+
+### next 控制
+
+订阅回调中的 `next` 行为：
+
+```
+- `next()` — 保持订阅
+- `next(true)` — 保持订阅且传递给下一个订阅
+- `next(true, true)` — 保持订阅且传递给下一个周期
 ```

@@ -28,7 +28,39 @@ export default defineRouter([
 ])
 ```
 
-- lazy
+### 路由匹配模式
+
+每个路由项可配置三种匹配模式，按性能从高到低排列：
+
+| 模式     | 字段      | 性能 | 说明                             |
+| -------- | --------- | ---- | -------------------------------- |
+| 精确匹配 | `exact`   | O(1) | 文本完全相等才匹配               |
+| 前缀匹配 | `prefix`  | O(n) | 文本以指定前缀开头               |
+| 正则匹配 | `regular` | 较慢 | 正则表达式匹配（内部有缓存优化） |
+
+```ts
+defineRouter([
+  { exact: '/help', handler: lazy(() => import('./help')) },
+  { prefix: '/', handler: lazy(() => import('./command')) },
+  { regular: /^(#|\/)?hello$/, handler: lazy(() => import('./hello')) }
+])
+```
+
+### 事件类型过滤
+
+通过 `selects` 字段限制路由仅响应特定事件类型：
+
+```ts
+defineRouter([
+  {
+    selects: ['message.create', 'private.message.create'],
+    regular: /^\/签到$/,
+    handler: lazy(() => import('./signin'))
+  }
+])
+```
+
+### lazy
 
 这是一个懒加载工具函数。你可以移除，直接对响应文件进行引用
 
@@ -48,14 +80,14 @@ export default defineRouter([
 ])
 ```
 
-## response
+## 注册到应用
+
+### responseRouter
 
 ```ts title="src/index.ts"
 export default defineChildren({
-  // 注册
   register() {
     return {
-      // 注册响应体
       // const responseRouter = defineRouter([])
       responseRouter
     }
@@ -66,7 +98,7 @@ export default defineChildren({
 })
 ```
 
-## middleware
+### middlewareRouter
 
 ```ts title="src/index.ts"
 export default defineChildren({
@@ -80,4 +112,19 @@ export default defineChildren({
     logger.info(`[测试机器人启动]`)
   }
 })
+```
+
+### register 返回值
+
+`register()` 可返回以下字段：
+
+| 字段               | 类型                               | 说明             |
+| ------------------ | ---------------------------------- | ---------------- |
+| `responseRouter`   | `ReturnType<DefineRouterFunc>`     | 响应路由（推荐） |
+| `middlewareRouter` | `ReturnType<DefineRouterFunc>`     | 中间件路由       |
+| `response`         | `ReturnType<DefineResponseFunc>`   | 响应体（旧方式） |
+| `middleware`       | `ReturnType<defineMiddlewareFunc>` | 中间件（旧方式） |
+
+```
+
 ```

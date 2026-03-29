@@ -7,7 +7,7 @@ sidebar_position: 5
 
 使用相同的 API 构建消息内容，由各平台包负责将其转换为平台原生格式。
 
-消息发送的返回值为 `ClientAPIMessageResult[]`，即 `[res1, res2, ...]`。数组中的每一项对应一次实际的平台 API 调用。
+消息发送的返回值为 `Result[]`，即 `[res1, res2, ...]`。数组中的每一项对应一次实际的平台 API 调用。
 
 **核心原则：**
 
@@ -117,7 +117,7 @@ export default event => {
 
   // 支持 base64://、https://、file://
   message.send({
-    format: Format.create().addVideo(MP3_PATH)
+    format: Format.create().addVideo(MP4_PATH)
   })
 }
 ```

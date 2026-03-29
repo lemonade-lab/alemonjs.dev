@@ -44,7 +44,7 @@ node_modules/                 // Node.js 依赖包
   "scripts": {
     "build": "npx lvy build"
   },
-  "export": {
+  "exports": {
     ".": "./lib/index.js", // * 包入口
     "./package": "./package.json" // * 包配置信息
   },
@@ -72,7 +72,7 @@ node_modules/                 // Node.js 依赖包
 
 ```json title="package.json"
 {
-  "export": {
+  "exports": {
     "./desktop": "./lib/desktop.js" // * 桌面扩展入口脚本，固定导出
   },
   "alemonjs": {

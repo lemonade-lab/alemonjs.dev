@@ -7,44 +7,47 @@ sidebar_position: 6
 
 :::info
 
-主要分为局部中间件和全局中间件，可对指定事件类型的event进行修改并向下传递
+主要分为局部中间件和全局中间件，可对指定事件类型的 event 进行修改并向下传递
 
 :::
 
 ## 局部中间件
 
-其主要遵循 响应体的 分组设计，共用一个 next
+在 `defineRouter` 中通过分组实现。handler 返回 `true` 则允许继续执行 children 中的后续响应
 
 ```ts title="src/response/mw.ts"
 export default (event, next) => {
   console.log('step 1')
-  // 允许在同组响应中，继续后续的函数
+  // 返回 true 允许 children 中的后续函数执行
   return true
-}$1
+}
 ```
 
 ```ts title="src/response/res.ts"
 export default (event, next) => {
   console.log('step 2')
-}$2
+}
 ```
 
 最终执行 res 的打印顺序为 `step1`、`step2`
 
-如果 response$1 不进行`return` `true`，其结果只有 `step1`
+如果中间件不 `return true`，其结果只有 `step1`
 
 ## 全局中间件
 
 ### `onMiddleware`
 
+使用 `onMiddleware` 定义全局中间件，需指定事件类型
+
 ```ts title="src/middleware/**/*/mw.ts"
-export default (event, next) => {
+import { onMiddleware } from 'alemonjs'
+export default onMiddleware('message.create', (event, next) => {
   // 新增字段
   event['user_id'] = event.UserId
 
-  // 常用于兼容其他框架或增强event功能
+  // 常用于兼容其他框架或增强 event 功能
 
   // 继续下一个中间件
   next()
-}
+})
 ```

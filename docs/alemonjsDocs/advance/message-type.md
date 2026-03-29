@@ -5,9 +5,7 @@ sidebar_position: 5
 
 # 事件类型
 
-alemonjs 框架定义了一套跨平台统一事件体系，所有平台适配器都将原始协议事件转换为以下标准事件。
-
-事件名遵循 `{scope?}.{resource}.{action}` 命名规则：
+命名规则：`{scope?}.{resource}.{action}`
 
 - **无前缀**：公域事件（群/频道/服务器内发生）
 - **`private.` 前缀**：私域事件（私聊/好友/一对一场景）

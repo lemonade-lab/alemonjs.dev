@@ -9,7 +9,7 @@ sidebar_position: 4
 
 中间件时 middleware >
 
-中间件之后/响应之前 subscribe(observer/mount) >
+中间件之后/响应之前 subscribe(mount) >
 
 响应时 response >
 

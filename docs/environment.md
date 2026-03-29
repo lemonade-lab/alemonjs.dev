@@ -62,16 +62,6 @@ bubble:
 [telegram-s]: https://img.shields.io/npm/v/@alemonjs/telegram.svg
 [telegram-p]: https://www.npmjs.com/package/@alemonjs/telegram
 
-### Wechat
-
-| Project            | Status                  | Description |
-| ------------------ | ----------------------- | ----------- |
-| [@alemonjs/wechat] | [![wechat-s]][wechat-p] | 企业微信    |
-
-[@alemonjs/wechat]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/wechat
-[wechat-s]: https://img.shields.io/npm/v/@alemonjs/wechat.svg
-[wechat-p]: https://www.npmjs.com/package/@alemonjs/wechat
-
 ## 三方
 
 :::warning

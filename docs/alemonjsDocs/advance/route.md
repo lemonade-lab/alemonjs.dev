@@ -65,7 +65,7 @@ export const POST = (ctx: Context, next) => {
 
 ## package
 
-如果想更改资源访问的跟目录，可在 package.josn 中配置
+如果想更改资源访问的根目录，可在 package.json 中配置
 
 ```json
 {

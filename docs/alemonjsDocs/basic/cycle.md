@@ -21,12 +21,15 @@ export default defineChildren({
      */
   },
   // 建立res和mw索引之后
-  onMounted({ response, middleware }) {
+  onMounted(store) {
     // 模块索引识别完成时。也就是 onCreated 执行完之后。
+    // store.response — 响应体列表
+    // store.responseMiddleware — 响应体中间件索引
+    // store.middleware — 全局中间件列表
   },
   // onCreated 和 onMounted 出现意外后
-  unMounted() {
-    // 意外卸载
+  unMounted(error) {
+    // 意外卸载，error 为错误信息
   }
 })
 ```
