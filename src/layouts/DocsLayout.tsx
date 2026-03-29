@@ -18,7 +18,7 @@ export default function DocsLayout() {
         onClose={() => setIsSidebarOpen(false)}
       />
       {/* Fixed right TOC */}
-      <aside className="hidden xl:fixed xl:block xl:top-16 xl:right-0 xl:w-64  xl:overflow-y-auto xl:z-10">
+      <aside className="hidden xl:fixed xl:block xl:top-16 xl:bottom-0 xl:right-0 xl:w-64 xl:overflow-y-auto xl:z-10">
         <PageToc />
       </aside>
       {/* Main content with margins to account for fixed sidebars */}
