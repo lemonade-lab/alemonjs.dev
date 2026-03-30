@@ -77,16 +77,6 @@
             "position": 6
           },
           {
-            "title": "中间件路由",
-            "path": "/docs/alemonjsDocs/advance/route-mw",
-            "position": 7
-          },
-          {
-            "title": "接口路由",
-            "path": "/docs/alemonjsDocs/advance/route",
-            "position": 7
-          },
-          {
             "title": "工具函数",
             "path": "/docs/alemonjsDocs/advance/utils",
             "position": 9
@@ -98,11 +88,6 @@
         "label": "高阶",
         "position": 3,
         "items": [
-          {
-            "title": "个性化",
-            "path": "/docs/alemonjsDocs/expert/sdk",
-            "position": 2
-          },
           {
             "title": "实例对象",
             "path": "/docs/alemonjsDocs/expert/class",
@@ -118,7 +103,7 @@
       {
         "id": "open",
         "label": "开放",
-        "position": 3,
+        "position": 4,
         "items": [
           {
             "title": "扩展",
@@ -128,6 +113,23 @@
           {
             "title": "模块",
             "path": "/docs/alemonjsDocs/open/models",
+            "position": 7
+          }
+        ]
+      },
+      {
+        "id": "server",
+        "label": "接口",
+        "position": 5,
+        "items": [
+          {
+            "title": "中间件路由",
+            "path": "/docs/alemonjsDocs/server/route-mw",
+            "position": 7
+          },
+          {
+            "title": "接口路由",
+            "path": "/docs/alemonjsDocs/server/route",
             "position": 7
           }
         ]

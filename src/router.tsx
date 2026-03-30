@@ -9,26 +9,25 @@ const BlogList = lazy(() => import('@/pages/BlogList'))
 // 自动生成的文档导入
 const Doc0 = lazy(() => import('../docs/alemonjsDocs/advance/config.md'))
 const Doc1 = lazy(() => import('../docs/alemonjsDocs/advance/message-type.md'))
-const Doc2 = lazy(() => import('../docs/alemonjsDocs/advance/route-mw.md'))
-const Doc3 = lazy(() => import('../docs/alemonjsDocs/advance/route.md'))
-const Doc4 = lazy(() => import('../docs/alemonjsDocs/advance/utils.md'))
-const Doc5 = lazy(() => import('../docs/alemonjsDocs/basic/cycle.md'))
-const Doc6 = lazy(() => import('../docs/alemonjsDocs/basic/data-type.md'))
-const Doc7 = lazy(() => import('../docs/alemonjsDocs/basic/hook.mdx'))
-const Doc8 = lazy(() => import('../docs/alemonjsDocs/basic/middleware.md'))
-const Doc9 = lazy(() => import('../docs/alemonjsDocs/basic/response-cycle.md'))
-const Doc10 = lazy(() => import('../docs/alemonjsDocs/basic/response.md'))
-const Doc11 = lazy(() => import('../docs/alemonjsDocs/basic/route.md'))
-const Doc12 = lazy(() => import('../docs/alemonjsDocs/expert/class.md'))
-const Doc13 = lazy(() => import('../docs/alemonjsDocs/expert/platforms.md'))
-const Doc14 = lazy(() => import('../docs/alemonjsDocs/expert/sdk.md'))
-const Doc15 = lazy(() => import('../docs/alemonjsDocs/open/desktop.md'))
-const Doc16 = lazy(() => import('../docs/alemonjsDocs/open/models.md'))
-const Doc17 = lazy(() => import('../docs/apps.md'))
-const Doc18 = lazy(() => import('../docs/config.md'))
-const Doc19 = lazy(() => import('../docs/environment.md'))
-const Doc20 = lazy(() => import('../docs/intro.md'))
-const Doc21 = lazy(() => import('../docs/start.mdx'))
+const Doc2 = lazy(() => import('../docs/alemonjsDocs/advance/utils.md'))
+const Doc3 = lazy(() => import('../docs/alemonjsDocs/basic/cycle.md'))
+const Doc4 = lazy(() => import('../docs/alemonjsDocs/basic/data-type.md'))
+const Doc5 = lazy(() => import('../docs/alemonjsDocs/basic/hook.mdx'))
+const Doc6 = lazy(() => import('../docs/alemonjsDocs/basic/middleware.md'))
+const Doc7 = lazy(() => import('../docs/alemonjsDocs/basic/response-cycle.md'))
+const Doc8 = lazy(() => import('../docs/alemonjsDocs/basic/response.md'))
+const Doc9 = lazy(() => import('../docs/alemonjsDocs/basic/route.md'))
+const Doc10 = lazy(() => import('../docs/alemonjsDocs/expert/class.md'))
+const Doc11 = lazy(() => import('../docs/alemonjsDocs/expert/platforms.md'))
+const Doc12 = lazy(() => import('../docs/alemonjsDocs/open/desktop.md'))
+const Doc13 = lazy(() => import('../docs/alemonjsDocs/open/models.md'))
+const Doc14 = lazy(() => import('../docs/alemonjsDocs/server/route-mw.md'))
+const Doc15 = lazy(() => import('../docs/alemonjsDocs/server/route.md'))
+const Doc16 = lazy(() => import('../docs/apps.md'))
+const Doc17 = lazy(() => import('../docs/config.md'))
+const Doc18 = lazy(() => import('../docs/environment.md'))
+const Doc19 = lazy(() => import('../docs/intro.md'))
+const Doc20 = lazy(() => import('../docs/start.mdx'))
 
 // 自动生成的博客导入
 const Blog17 = lazy(() => import('../blog/2026/02/28/v2.1.43.md'))
@@ -72,84 +71,80 @@ const router = createBrowserRouter([
         element: <Doc1 />
       },
       {
-        path: 'alemonjsDocs/advance/route-mw',
+        path: 'alemonjsDocs/advance/utils',
         element: <Doc2 />
       },
       {
-        path: 'alemonjsDocs/advance/route',
+        path: 'alemonjsDocs/basic/cycle',
         element: <Doc3 />
       },
       {
-        path: 'alemonjsDocs/advance/utils',
+        path: 'alemonjsDocs/basic/data-type',
         element: <Doc4 />
       },
       {
-        path: 'alemonjsDocs/basic/cycle',
+        path: 'alemonjsDocs/basic/hook',
         element: <Doc5 />
       },
       {
-        path: 'alemonjsDocs/basic/data-type',
+        path: 'alemonjsDocs/basic/middleware',
         element: <Doc6 />
       },
       {
-        path: 'alemonjsDocs/basic/hook',
+        path: 'alemonjsDocs/basic/response-cycle',
         element: <Doc7 />
       },
       {
-        path: 'alemonjsDocs/basic/middleware',
+        path: 'alemonjsDocs/basic/response',
         element: <Doc8 />
       },
       {
-        path: 'alemonjsDocs/basic/response-cycle',
+        path: 'alemonjsDocs/basic/route',
         element: <Doc9 />
       },
       {
-        path: 'alemonjsDocs/basic/response',
+        path: 'alemonjsDocs/expert/class',
         element: <Doc10 />
       },
       {
-        path: 'alemonjsDocs/basic/route',
+        path: 'alemonjsDocs/expert/platforms',
         element: <Doc11 />
       },
       {
-        path: 'alemonjsDocs/expert/class',
+        path: 'alemonjsDocs/open/desktop',
         element: <Doc12 />
       },
       {
-        path: 'alemonjsDocs/expert/platforms',
+        path: 'alemonjsDocs/open/models',
         element: <Doc13 />
       },
       {
-        path: 'alemonjsDocs/expert/sdk',
+        path: 'alemonjsDocs/server/route-mw',
         element: <Doc14 />
       },
       {
-        path: 'alemonjsDocs/open/desktop',
+        path: 'alemonjsDocs/server/route',
         element: <Doc15 />
       },
       {
-        path: 'alemonjsDocs/open/models',
+        path: 'apps',
         element: <Doc16 />
       },
       {
-        path: 'apps',
+        path: 'config',
         element: <Doc17 />
       },
       {
-        path: 'config',
+        path: 'environment',
         element: <Doc18 />
       },
       {
-        path: 'environment',
+        path: 'intro',
         element: <Doc19 />
       },
       {
-        path: 'intro',
-        element: <Doc20 />
-      },
-      {
         path: 'start',
-        element: <Doc21 />
+        element: <Doc20 />
       }
     ]
   },

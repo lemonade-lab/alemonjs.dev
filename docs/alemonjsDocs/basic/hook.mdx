@@ -5,24 +5,45 @@ sidebar_position: 3
 
 # 接口
 
-:::info
-
-捕获事件后可进行的 Hook 函数
-
-:::
-
 ## `useMessage`
 
-> 在响应事件时发送消息
+> 消息发送、删除、编辑、置顶等操作
 
 ```ts title="src/response/**/*/res.ts"
 import { useMessage, Format } from 'alemonjs'
-export default e => {
-  const [message] = useMessage(e)
+export default async event => {
+  const [message] = useMessage(event)
+
+  // 发送消息
   const format = Format.create().addText('hello word')
   message.send({ format })
+
+  // 删除消息
+  await message.delete({ messageId: event.MessageId })
+
+  // 编辑消息
+  await message.edit({
+    format: Format.create().addText('edited'),
+    messageId: event.MessageId
+  })
+
+  // 置顶 / 取消置顶
+  await message.pin({ messageId: event.MessageId })
+  await message.unpin({ messageId: event.MessageId })
+
+  // 获取消息详情
+  const detail = await message.get({ messageId: event.MessageId })
 }
 ```
+
+| 方法     | 参数                                    | 说明         |
+| -------- | --------------------------------------- | ------------ |
+| `send`   | `{ format, replyId? }` 或 `DataEnums[]` | 发送消息     |
+| `delete` | `{ messageId? }`                        | 删除消息     |
+| `edit`   | `{ format, messageId? }`                | 编辑消息     |
+| `pin`    | `{ messageId? }`                        | 置顶消息     |
+| `unpin`  | `{ messageId? }`                        | 取消置顶     |
+| `get`    | `{ messageId? }`                        | 获取消息详情 |
 
 ## `useMention`
 
@@ -52,36 +73,6 @@ export default async (event, next) => {
 | `UserName` | `string`  | 按用户名过滤             |
 | `IsMaster` | `boolean` | 是否为主人               |
 | `IsBot`    | `boolean` | 是否为机器人（默认排除） |
-
-## `useMember`
-
-> 获取成员详细信息
-
-```ts title="response/**/*/res.ts"
-import { useMember } from 'alemonjs'
-export default async event => {
-  const [member] = useMember(event)
-  const info = await member.information({ userId: event.UserId })
-  if (info.data) {
-    console.log('Member:', info.data)
-  }
-}
-```
-
-## `useClient`
-
-> 映射平台原生接口类，用于调用平台特有 API
-
-```ts title="src/response/**/*/res.ts"
-import { API, platform } from '@alemonjs/qq-bot'
-import { useClient } from 'alemonjs'
-export default event => {
-  if (event.Platform === platform) {
-    const [client] = useClient(event, API)
-    client.usersMe()
-  }
-}
-```
 
 ## `useSubscribe`
 
@@ -158,4 +149,358 @@ export default event => {
 - `next()` — 保持订阅
 - `next(true)` — 保持订阅且传递给下一个订阅
 - `next(true, true)` — 保持订阅且传递给下一个周期
+```
+
+## `useMember`
+
+> 成员管理：查询、踢出、封禁、禁言、名片等
+
+```ts title="response/**/*/res.ts"
+import { useMember } from 'alemonjs'
+export default async event => {
+  const [member] = useMember(event)
+
+  // 获取成员信息
+  const info = await member.info({ userId: event.UserId })
+
+  // 获取成员列表
+  const list = await member.list({ guildId: event.GuildId })
+
+  // 搜索成员
+  const result = await member.search({ keyword: '管理' })
+
+  // 踢出成员
+  await member.kick({ userId: '123' })
+
+  // 封禁 / 解封
+  await member.ban({ userId: '123', reason: '违规', duration: 3600 })
+  await member.unban({ userId: '123' })
+
+  // 禁言（秒），0 = 解除
+  await member.mute({ userId: '123', duration: 60 })
+
+  // 设置管理员
+  await member.admin({ userId: '123', enable: true })
+
+  // 设置名片
+  await member.card({ userId: '123', card: '新昵称' })
+
+  // 设置专属头衔
+  await member.title({ userId: '123', title: 'VIP', duration: -1 })
+}
+```
+
+| 方法     | 参数                                       | 说明         |
+| -------- | ------------------------------------------ | ------------ |
+| `info`   | `{ userId, guildId? }`                     | 获取成员信息 |
+| `list`   | `{ guildId?, pagination? }`                | 获取成员列表 |
+| `search` | `{ keyword, guildId?, limit? }`            | 搜索成员     |
+| `kick`   | `{ userId, guildId? }`                     | 踢出成员     |
+| `ban`    | `{ userId, guildId?, reason?, duration? }` | 封禁成员     |
+| `unban`  | `{ userId, guildId? }`                     | 解封成员     |
+| `mute`   | `{ userId, duration, guildId? }`           | 禁言成员     |
+| `admin`  | `{ userId, enable, guildId? }`             | 设置管理员   |
+| `card`   | `{ userId, card, guildId? }`               | 设置名片     |
+| `title`  | `{ userId, title, guildId?, duration? }`   | 设置专属头衔 |
+
+## `useChannel`
+
+> 频道管理：查询、创建、更新、删除
+
+```ts title="response/**/*/res.ts"
+import { useChannel } from 'alemonjs'
+export default async event => {
+  const [channel] = useChannel(event)
+
+  // 获取频道信息
+  const info = await channel.info({ channelId: event.ChannelId })
+
+  // 获取频道列表
+  const list = await channel.list({ guildId: event.GuildId })
+
+  // 创建频道
+  await channel.create({ name: '新频道', guildId: event.GuildId })
+
+  // 更新频道
+  await channel.update({
+    channelId: event.ChannelId,
+    name: '改名',
+    topic: '新话题'
+  })
+
+  // 删除频道
+  await channel.delete({ channelId: event.ChannelId })
+}
+```
+
+| 方法     | 参数                                      | 说明         |
+| -------- | ----------------------------------------- | ------------ |
+| `info`   | `{ channelId? }`                          | 获取频道信息 |
+| `list`   | `{ guildId? }`                            | 获取频道列表 |
+| `create` | `{ name, type?, parentId?, guildId? }`    | 创建频道     |
+| `update` | `{ channelId, name?, topic?, position? }` | 更新频道     |
+| `delete` | `{ channelId }`                           | 删除频道     |
+
+## `useGuild`
+
+> 服务器/公会管理
+
+```ts title="response/**/*/res.ts"
+import { useGuild } from 'alemonjs'
+export default async event => {
+  const [guild] = useGuild(event)
+
+  // 获取服务器信息
+  const info = await guild.info({ guildId: event.GuildId })
+
+  // 获取服务器列表
+  const list = await guild.list()
+
+  // 更新服务器设置
+  await guild.update({ name: '新名称' })
+
+  // 退出服务器
+  await guild.leave({ guildId: event.GuildId })
+
+  // 全员禁言
+  await guild.mute({ enable: true })
+}
+```
+
+| 方法     | 参数                       | 说明            |
+| -------- | -------------------------- | --------------- |
+| `info`   | `{ guildId? }`             | 获取服务器信息  |
+| `list`   | 无                         | 获取服务器列表  |
+| `update` | `{ name?, guildId? }`      | 更新服务器设置  |
+| `leave`  | `{ guildId?, isDismiss? }` | 退出/解散服务器 |
+| `mute`   | `{ enable, guildId? }`     | 全员禁言        |
+
+## `useRole`
+
+> 角色管理：创建、更新、删除、分配、移除
+
+```ts title="response/**/*/res.ts"
+import { useRole } from 'alemonjs'
+export default async event => {
+  const [role] = useRole(event)
+
+  // 获取角色列表
+  const list = await role.list({ guildId: event.GuildId })
+
+  // 创建角色
+  const created = await role.create({ name: 'VIP', color: 0xff0000 })
+
+  // 更新角色
+  await role.update({ roleId: '123', name: '超级VIP' })
+
+  // 删除角色
+  await role.delete({ roleId: '123' })
+
+  // 分配 / 移除角色
+  await role.assign({ userId: event.UserId, roleId: '123' })
+  await role.remove({ userId: event.UserId, roleId: '123' })
+}
+```
+
+| 方法     | 参数                                                | 说明         |
+| -------- | --------------------------------------------------- | ------------ |
+| `list`   | `{ guildId? }`                                      | 获取角色列表 |
+| `create` | `{ name, color?, permissions?, guildId? }`          | 创建角色     |
+| `update` | `{ roleId, name?, color?, permissions?, guildId? }` | 更新角色     |
+| `delete` | `{ roleId, guildId? }`                              | 删除角色     |
+| `assign` | `{ userId, roleId, guildId? }`                      | 分配角色     |
+| `remove` | `{ userId, roleId, guildId? }`                      | 移除角色     |
+
+## `useReaction`
+
+> 表情回应管理
+
+```ts title="response/**/*/res.ts"
+import { useReaction } from 'alemonjs'
+export default async event => {
+  const [reaction] = useReaction(event)
+
+  // 添加表情回应
+  await reaction.add({ emojiId: '👍' })
+
+  // 移除表情回应
+  await reaction.remove({ emojiId: '👍', messageId: event.MessageId })
+
+  // 获取回应用户列表
+  const list = await reaction.list({ emojiId: '👍', limit: 20 })
+}
+```
+
+| 方法     | 参数                              | 说明             |
+| -------- | --------------------------------- | ---------------- |
+| `add`    | `{ emojiId, messageId? }`         | 添加表情回应     |
+| `remove` | `{ emojiId, messageId? }`         | 移除表情回应     |
+| `list`   | `{ emojiId, messageId?, limit? }` | 获取回应用户列表 |
+
+## `useMe`
+
+> 获取当前 Bot 自身信息
+
+```ts title="response/**/*/res.ts"
+import { useMe } from 'alemonjs'
+export default async event => {
+  const [me] = useMe()
+
+  const info = await me.info()
+  const guilds = await me.guilds()
+  const threads = await me.threads()
+  const friends = await me.friends()
+}
+```
+
+| 方法      | 说明                 |
+| --------- | -------------------- |
+| `info`    | 获取 Bot 个人信息    |
+| `guilds`  | 获取加入的服务器列表 |
+| `threads` | 获取私聊线程列表     |
+| `friends` | 获取好友列表         |
+
+## `useUser`
+
+> 用户信息查询（无需服务器上下文）
+
+```ts title="response/**/*/res.ts"
+import { useUser } from 'alemonjs'
+export default async event => {
+  const [user] = useUser()
+  const info = await user.info({ userId: event.UserId })
+}
+```
+
+| 方法   | 参数         | 说明         |
+| ------ | ------------ | ------------ |
+| `info` | `{ userId }` | 获取用户信息 |
+
+## `useRequest`
+
+> 处理好友请求、入群请求等
+
+```ts title="response/**/*/res.ts"
+import { useRequest } from 'alemonjs'
+export default async event => {
+  const [request] = useRequest()
+
+  // 同意好友请求
+  await request.friend({ flag: 'xxx', approve: true, remark: '备注' })
+
+  // 同意入群请求
+  await request.guild({ flag: 'xxx', subType: 'add', approve: true })
+}
+```
+
+| 方法     | 参数                                  | 说明                |
+| -------- | ------------------------------------- | ------------------- |
+| `friend` | `{ flag, approve, remark? }`          | 处理好友请求        |
+| `guild`  | `{ flag, subType, approve, reason? }` | 处理入群/服务器请求 |
+
+## `useMedia`
+
+> 媒体管理：上传、发送图片/音频/视频/文件
+
+```ts title="response/**/*/res.ts"
+import { useMedia } from 'alemonjs'
+export default async event => {
+  const [media] = useMedia(event)
+
+  // 上传媒体（仅上传，不发送）
+  await media.upload({ type: 'image', url: 'https://example.com/img.png' })
+
+  // 发送媒体到频道
+  await media.sendChannel({ type: 'image', url: 'https://example.com/img.png' })
+
+  // 发送媒体到用户
+  await media.sendUser({
+    userId: '123',
+    type: 'audio',
+    url: 'https://example.com/a.mp3'
+  })
+}
+```
+
+| 方法          | 参数                                       | 说明         |
+| ------------- | ------------------------------------------ | ------------ |
+| `upload`      | `{ type, url?, data?, name? }`             | 上传媒体文件 |
+| `sendChannel` | `{ type, url?, data?, name?, channelId? }` | 发送到频道   |
+| `sendUser`    | `{ userId, type, url?, data?, name? }`     | 发送到用户   |
+
+`type` 可选值：`'image'` | `'audio'` | `'video'` | `'file'`
+
+## `useHistory`
+
+> 消息历史记录
+
+```ts title="response/**/*/res.ts"
+import { useHistory } from 'alemonjs'
+export default async event => {
+  const [history] = useHistory(event)
+  const messages = await history.list({ limit: 50, before: event.MessageId })
+}
+```
+
+| 方法   | 参数                                      | 说明         |
+| ------ | ----------------------------------------- | ------------ |
+| `list` | `{ channelId?, limit?, before?, after? }` | 获取消息历史 |
+
+## `usePermission`
+
+> 频道权限管理
+
+```ts title="response/**/*/res.ts"
+import { usePermission } from 'alemonjs'
+export default async event => {
+  const [permission] = usePermission(event)
+
+  // 获取权限
+  const perm = await permission.get({ userId: event.UserId })
+
+  // 设置权限
+  await permission.set({ userId: event.UserId, allow: '1', deny: '0' })
+}
+```
+
+| 方法  | 参数                                    | 说明     |
+| ----- | --------------------------------------- | -------- |
+| `get` | `{ userId, channelId? }`                | 获取权限 |
+| `set` | `{ userId, allow?, deny?, channelId? }` | 设置权限 |
+
+## `useAnnounce`
+
+> 频道公告管理
+
+```ts title="response/**/*/res.ts"
+import { useAnnounce } from 'alemonjs'
+export default async event => {
+  const [announce] = useAnnounce(event)
+
+  // 设置公告
+  await announce.set({ messageId: event.MessageId })
+
+  // 删除公告
+  await announce.remove({ messageId: event.MessageId })
+}
+```
+
+| 方法     | 参数                                  | 说明     |
+| -------- | ------------------------------------- | -------- |
+| `set`    | `{ messageId, channelId?, guildId? }` | 设置公告 |
+| `remove` | `{ messageId?, guildId? }`            | 删除公告 |
+
+## `useClient`
+
+> 映射平台原生接口类，用于调用平台特有 API
+
+```ts title="src/response/**/*/res.ts"
+import { API, platform } from '@alemonjs/qq-bot'
+import { useClient } from 'alemonjs'
+export default event => {
+  if (event.Platform === platform) {
+    const [client] = useClient(event, API)
+    client.usersMe()
+  }
+}
 ```
