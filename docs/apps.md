@@ -21,11 +21,13 @@ label: '开源生态'
 
 ### 功能
 
-| 项目名       | 说明          |
-| ------------ | ------------- |
-| [cheese]     | AI+今日运势等 |
-| [fishspeech] | 语音转换工具  |
+| 项目名        | 说明               |
+| ------------- | ------------------ |
+| [load-yunzai] | 加载所有yunzai插件 |
+| [cheese]      | AI+今日运势等      |
+| [fishspeech]  | 语音转换工具       |
 
+[load-yunzai]: https://github.com/xiuxianjs/alemonjs-load-yunzai
 [cheese]: https://github.com/V2233/alemonjs-cheese
 [fishspeech]: https://github.com/oldcitynight/alemonjs-fishspeech-plugin
 
