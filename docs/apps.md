@@ -17,7 +17,7 @@ label: '开源生态'
 
 [mhy]: https://github.com/xiuxianjs/alemonjs-mhy
 [miao]: https://github.com/xiuxianjs/alemonjs-miao
-[kuro]: https://github.com/xiuxianjs/alemonjs-kuro
+[kuro]: https://github.com/loneyclown/alemonjs-kuro
 
 ### 功能
 
@@ -31,23 +31,23 @@ label: '开源生态'
 
 ### 游戏
 
-| 项目名            | 说明         |
-| ----------------- | ------------ |
-| [alemonjs-xianyu] | 扫雷等小游戏 |
-| [xiuxian]         | 修仙文游     |
+| 项目名    | 说明         |
+| --------- | ------------ |
+| [xianyu]  | 扫雷等小游戏 |
+| [xiuxian] | 修仙文游     |
 
-[alemonjs-xianyu]: https://gitee.com/suancaixianyu/xianyu-plugin/tree/alemonjs/
+[xianyu]: https://gitee.com/suancaixianyu/xianyu-plugin/tree/alemonjs/
 [xiuxian]: https://github.com/xiuxianjs/xiuxian-plugin
 
 ### AI
 
-| 项目名            | 说明       |
-| ----------------- | ---------- |
-| [alemonjs-aichat] | 猫娘AI     |
-| [alemonjs-openai] | 通用AI连接 |
+| 项目名   | 说明       |
+| -------- | ---------- |
+| [aichat] | 猫娘AI     |
+| [openai] | 通用AI连接 |
 
-[alemonjs-openai]: https://github.com/xiuxianjs/ollama
-[alemonjs-aichat]: https://gitee.com/suancaixianyu/alemonjs-aichat
+[openai]: https://github.com/xiuxianjs/openai
+[aichat]: https://gitee.com/suancaixianyu/alemonjs-aichat
 
 ### 开发者
 
