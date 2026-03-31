@@ -243,7 +243,7 @@ export default event => {
     // 标准链接，⚠️需要配置白名单
     .addLink('链接', 'https://www.baidu.com')
     // 裸链接
-    .addLink2('https://www.baidu.com')
+    .addNakedLink('https://www.baidu.com')
     // 图片
     .addImage('https://www.baidu.com/img/bd_logo1.png', {
       width: 100,
