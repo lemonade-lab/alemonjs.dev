@@ -240,10 +240,10 @@ export default event => {
     .addItalicStar('星号斜体')
     // 删除线
     .addStrikethrough('删除线')
+    // 裸链接
+    .addLink('https://www.baidu.com')
     // 标准链接，⚠️需要配置白名单
     .addLink('链接', 'https://www.baidu.com')
-    // 裸链接
-    .addNakedLink('https://www.baidu.com')
     // 图片
     .addImage('https://www.baidu.com/img/bd_logo1.png', {
       width: 100,
