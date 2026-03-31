@@ -118,31 +118,6 @@ node index.js --is_full_receive true
 node index.js --login discord --port 8080
 ```
 
-## 配置管理工具
-
-使用 `alemonc` 命令行工具来管理配置：
-
-```bash
-# 查看帮助
-npx alemonc -h
-
-# 添加模块
-alemonc add apps alemonjs-openai alemonjs-xianyu
-
-# 移除模块
-alemonc remove apps alemonjs-openai
-
-# 设置配置项
-alemonc set login qq
-alemonc set discord.token your-token
-
-# 删除配置项
-alemonc del discord
-
-# 获取配置项
-alemonc get login
-```
-
 ## 基础环境变量
 
 `platform`:`string` - 平台标识，支持的平台类型包括：
@@ -202,4 +177,36 @@ cbp:
     user-agent: 'platform' # 平台标识
     x-device-id: 'auto-generated' # 设备ID（自动生成）
     x-full-receive: '0' # 是否全量接收：'1' 开启，'0' 关闭
+```
+
+## 配置管理工具
+
+使用 `alemonc` 命令行工具来管理配置：
+
+```bash
+# 查看帮助
+npx alemonc -h
+
+# 添加模块
+alemonc add apps alemonjs-openai alemonjs-xianyu
+
+# 移除模块
+alemonc remove apps alemonjs-openai
+
+# 设置配置项
+alemonc set login qq
+alemonc set discord.token your-token
+
+# 删除配置项
+alemonc del discord
+
+# 获取配置项
+alemonc get login
+```
+
+```bash
+# 把本地alemonjs相关包立即拉到最新
+alemonc version update
+# 弹出基础信息
+alemonc info
 ```

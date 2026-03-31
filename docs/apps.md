@@ -7,6 +7,16 @@ label: '开源生态'
 
 模块机制到底是怎么回事？请点击了解[👉模块化应用](/docs/alemonjsDocs/open/models)的制作
 
+### 增强
+
+| 项目名        | 说明                              |
+| ------------- | --------------------------------- |
+| [load-yunzai] | 桥接层,加载所有yunzai插件         |
+| [yunzai]      | 胶水层,让你的yunzai插件单独跑起来 |
+
+[load-yunzai]: https://github.com/xiuxianjs/alemonjs-load-yunzai
+[yunzai]: https://github.com/xiuxianjs/alemonjs-yunzai
+
 ### IP
 
 | 项目名 | 说明                 |
@@ -21,13 +31,11 @@ label: '开源生态'
 
 ### 功能
 
-| 项目名        | 说明               |
-| ------------- | ------------------ |
-| [load-yunzai] | 加载所有yunzai插件 |
-| [cheese]      | AI+今日运势等      |
-| [fishspeech]  | 语音转换工具       |
+| 项目名       | 说明          |
+| ------------ | ------------- |
+| [cheese]     | AI+今日运势等 |
+| [fishspeech] | 语音转换工具  |
 
-[load-yunzai]: https://github.com/xiuxianjs/alemonjs-load-yunzai
 [cheese]: https://github.com/V2233/alemonjs-cheese
 [fishspeech]: https://github.com/oldcitynight/alemonjs-fishspeech-plugin
 
