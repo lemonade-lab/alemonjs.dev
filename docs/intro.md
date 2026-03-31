@@ -18,9 +18,9 @@ label: '简介'
 ```ts title="Hello Word!"
 import { useMessage, Format } from 'alemonjs'
 // 最简例
-export default e => {
+export default () => {
   // 使用发送函数
-  const [message] = useMessage(e)
+  const [message] = useMessage()
   const format = Format.create().addText('hello word')
   message.send({ format })
 }

@@ -3,7 +3,13 @@ label: '接口'
 sidebar_position: 3
 ---
 
-# 接口
+# Hooks
+
+:::info
+
+hook 的第一个参数为 event，在 response 中会自动劫持event上下文，也可显示传入，特别是非 response 上下文中调用。
+
+:::
 
 ## `useMessage`
 
@@ -12,7 +18,7 @@ sidebar_position: 3
 ```ts title="src/response/**/*/res.ts"
 import { useMessage, Format } from 'alemonjs'
 export default async event => {
-  const [message] = useMessage(event)
+  const [message] = useMessage()
 
   // 发送消息
   const format = Format.create().addText('hello word')
@@ -51,8 +57,8 @@ export default async event => {
 
 ```ts title="response/**/*/res.ts"
 import { useMention } from 'alemonjs'
-export default async (event, next) => {
-  const [mention] = useMention(event)
+export default async () => {
+  const [mention] = useMention()
   // 查找用户类型的 @ 提及，默认排除 bot
   const user = await mention.findOne()
   if (!user.count || !user.data) {
@@ -81,12 +87,9 @@ export default async (event, next) => {
 ```ts title="response/**/*/res.ts"
 import { Format, useMessage, useSubscribe } from 'alemonjs'
 
-export default event => {
-  const [message] = useMessage(event)
-  const [subscribe] = useSubscribe(event, [
-    'message.create',
-    'private.message.create'
-  ])
+export default () => {
+  const [message] = useMessage()
+  const [subscribe] = useSubscribe(['message.create', 'private.message.create'])
 
   message.send({
     format: Format.create().addText('请输入密码')
@@ -158,7 +161,7 @@ export default event => {
 ```ts title="response/**/*/res.ts"
 import { useMember } from 'alemonjs'
 export default async event => {
-  const [member] = useMember(event)
+  const [member] = useMember()
 
   // 获取成员信息
   const info = await member.info({ userId: event.UserId })
@@ -210,7 +213,7 @@ export default async event => {
 ```ts title="response/**/*/res.ts"
 import { useChannel } from 'alemonjs'
 export default async event => {
-  const [channel] = useChannel(event)
+  const [channel] = useChannel()
 
   // 获取频道信息
   const info = await channel.info({ channelId: event.ChannelId })
@@ -248,7 +251,7 @@ export default async event => {
 ```ts title="response/**/*/res.ts"
 import { useGuild } from 'alemonjs'
 export default async event => {
-  const [guild] = useGuild(event)
+  const [guild] = useGuild()
 
   // 获取服务器信息
   const info = await guild.info({ guildId: event.GuildId })
@@ -282,7 +285,7 @@ export default async event => {
 ```ts title="response/**/*/res.ts"
 import { useRole } from 'alemonjs'
 export default async event => {
-  const [role] = useRole(event)
+  const [role] = useRole()
 
   // 获取角色列表
   const list = await role.list({ guildId: event.GuildId })
@@ -318,7 +321,7 @@ export default async event => {
 ```ts title="response/**/*/res.ts"
 import { useReaction } from 'alemonjs'
 export default async event => {
-  const [reaction] = useReaction(event)
+  const [reaction] = useReaction()
 
   // 添加表情回应
   await reaction.add({ emojiId: '👍' })
@@ -343,7 +346,7 @@ export default async event => {
 
 ```ts title="response/**/*/res.ts"
 import { useMe } from 'alemonjs'
-export default async event => {
+export default async () => {
   const [me] = useMe()
 
   const info = await me.info()
@@ -382,7 +385,7 @@ export default async event => {
 
 ```ts title="response/**/*/res.ts"
 import { useRequest } from 'alemonjs'
-export default async event => {
+export default async () => {
   const [request] = useRequest()
 
   // 同意好友请求
@@ -404,8 +407,8 @@ export default async event => {
 
 ```ts title="response/**/*/res.ts"
 import { useMedia } from 'alemonjs'
-export default async event => {
-  const [media] = useMedia(event)
+export default async () => {
+  const [media] = useMedia()
 
   // 上传媒体（仅上传，不发送）
   await media.upload({ type: 'image', url: 'https://example.com/img.png' })
@@ -437,7 +440,7 @@ export default async event => {
 ```ts title="response/**/*/res.ts"
 import { useHistory } from 'alemonjs'
 export default async event => {
-  const [history] = useHistory(event)
+  const [history] = useHistory()
   const messages = await history.list({ limit: 50, before: event.MessageId })
 }
 ```
@@ -453,7 +456,7 @@ export default async event => {
 ```ts title="response/**/*/res.ts"
 import { usePermission } from 'alemonjs'
 export default async event => {
-  const [permission] = usePermission(event)
+  const [permission] = usePermission()
 
   // 获取权限
   const perm = await permission.get({ userId: event.UserId })
@@ -475,7 +478,7 @@ export default async event => {
 ```ts title="response/**/*/res.ts"
 import { useAnnounce } from 'alemonjs'
 export default async event => {
-  const [announce] = useAnnounce(event)
+  const [announce] = useAnnounce()
 
   // 设置公告
   await announce.set({ messageId: event.MessageId })
@@ -499,7 +502,7 @@ import { API, platform } from '@alemonjs/qq-bot'
 import { useClient } from 'alemonjs'
 export default event => {
   if (event.Platform === platform) {
-    const [client] = useClient(event, API)
+    const [client] = useClient(API)
     client.usersMe()
   }
 }

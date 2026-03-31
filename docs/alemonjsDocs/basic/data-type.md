@@ -19,9 +19,9 @@ sidebar_position: 5
 
 ```ts title="src/response/**/*/res.ts"
 import { useMessage, Format } from 'alemonjs'
-export default event => {
+export default () => {
   // 创建
-  const [message] = useMessage(event)
+  const [message] = useMessage()
   const format = Format.create().addText('hello').addText(' ').addText('word')
   message.send({ format })
 }
@@ -34,8 +34,8 @@ import { useMessage, Format } from 'alemonjs'
 import JPEG_PATH from '@src/assets/test.jpeg'
 import { readFileSync } from 'node:fs'
 
-export default event => {
-  const [message] = useMessage(event)
+export default () => {
+  const [message] = useMessage()
 
   // 支持 Buffer、base64://、https://、file://
   message.send({
@@ -52,8 +52,8 @@ export default event => {
 import { useMessage, Format } from 'alemonjs'
 import JPEG_PATH from '@src/assets/test.jpeg'
 
-export default event => {
-  const [message] = useMessage(event)
+export default () => {
+  const [message] = useMessage()
 
   const format = Format.create().addText('hello word').addImage(JPEG_PATH)
 
@@ -66,7 +66,7 @@ export default event => {
 ```ts title="response/**/*/res.ts"
 import { useMessage, Text, Mention, Format } from 'alemonjs'
 export default event => {
-  const [message] = useMessage(event)
+  const [message] = useMessage()
   // 发送多种类型的消息
 
   message.send({
@@ -96,8 +96,8 @@ export default event => {
 import { useMessage, Format } from 'alemonjs'
 import MP3_PATH from '@src/assets/test.mp3'
 
-export default event => {
-  const [message] = useMessage(event)
+export default () => {
+  const [message] = useMessage()
 
   // 支持 base64://、https://、file://
   message.send({
@@ -112,8 +112,8 @@ export default event => {
 import { useMessage, Format } from 'alemonjs'
 import MP4_PATH from '@src/assets/test.mp4'
 
-export default event => {
-  const [message] = useMessage(event)
+export default () => {
+  const [message] = useMessage()
 
   // 支持 base64://、https://、file://
   message.send({
@@ -130,8 +130,8 @@ export default event => {
 import { useMessage, Format } from 'alemonjs'
 import DOCS_PATH from '@src/assets/test.docs'
 
-export default event => {
-  const [message] = useMessage(event)
+export default () => {
+  const [message] = useMessage()
 
   // 支持 base64://、https://、file://
   message.send({
@@ -147,8 +147,8 @@ export default event => {
 ```ts
 import { useMessage, Format } from 'alemonjs'
 
-export default event => {
-  const [message] = useMessage(event)
+export default () => {
+  const [message] = useMessage()
 
   // 一行多个
   message.send({
@@ -214,14 +214,14 @@ format.addButtonGroup(md)
 import { useMessage, Format } from 'alemonjs'
 
 export default event => {
-  const [message] = useMessage(event)
+  const [message] = useMessage()
 
   const format = Format.create()
   const md = Format.createMarkdown()
 
   md
     // @UserId
-    .addMention('<event.UserId>')
+    .addMention(event.UserId)
     // 换行
     .addNewline()
     // Button，⚠️部分平台不支持
