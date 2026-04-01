@@ -79,28 +79,25 @@ import {
   Format
 } from 'alemonjs'
 
-const response = e => {
+const response = () => {
   // 使用消息工具
-  const [message] = useMessage(e)
+  const [message] = useMessage()
   // 构造消息内容
   const format = Format.create().addText('hello word')
   // 发送消息
   message.send({ format })
 }
 
-// 设置路由规则
-const responseRouter = defineRouter([
-  {
-    regular: /^(\/|#)?hello$/,
-    handler: () => response
-  }
-])
-
 export default defineChildren({
   // 注册内容
   register() {
     return {
-      responseRouter
+      responseRouter: defineRouter([
+        {
+          regular: /^(\/|#)?hello$/,
+          handler: () => response
+        }
+      ])
     }
   },
   // 当注册完成时
