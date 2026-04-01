@@ -19,15 +19,17 @@ label: '开源生态'
 
 ### IP
 
-| 项目名 | 说明                 |
-| ------ | -------------------- |
-| [mhy]  | 米哈游查询工具       |
-| [miao] | 原神查询工具增强     |
-| [kuro] | 库街区(库洛)查询工具 |
+| 项目名 | 说明         |
+| ------ | ------------ |
+| [mhy]  | 米哈游       |
+| [miao] | 原神         |
+| [kuro] | 库街区(库洛) |
+| [roco] | 洛克王国世界 |
 
 [mhy]: https://github.com/xiuxianjs/alemonjs-mhy
 [miao]: https://github.com/xiuxianjs/alemonjs-miao
 [kuro]: https://github.com/loneyclown/alemonjs-kuro
+[roco]: https://github.com/xiuxianjs/alemonjs-roco
 
 ### 功能
 
