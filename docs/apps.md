@@ -9,6 +9,8 @@ label: '开源生态'
 
 ### 增强
 
+> 最大可能的去加载现有生态的扩展
+
 | 项目名        | 说明                              |
 | ------------- | --------------------------------- |
 | [load-yunzai] | 桥接层,加载所有yunzai插件         |
@@ -18,6 +20,8 @@ label: '开源生态'
 [yunzai]: https://github.com/xiuxianjs/alemonjs-yunzai
 
 ### IP
+
+> 通指游戏、动漫等IP专用的相关扩展
 
 | 项目名 | 说明         |
 | ------ | ------------ |
@@ -33,6 +37,8 @@ label: '开源生态'
 
 ### 功能
 
+> 非IP类的，功能性扩展
+
 | 项目名       | 说明          |
 | ------------ | ------------- |
 | [cheese]     | AI+今日运势等 |
@@ -42,6 +48,8 @@ label: '开源生态'
 [fishspeech]: https://github.com/oldcitynight/alemonjs-fishspeech-plugin
 
 ### 游戏
+
+> 独立游戏，即可非IP，也非功能性的扩展
 
 | 项目名    | 说明         |
 | --------- | ------------ |
@@ -68,3 +76,13 @@ label: '开源生态'
 | [code] | 订阅代码 |
 
 [code]: https://github.com/lemonade-lab/subscribe-code
+
+### SKILL
+
+> 用于 AI 增强的 skill
+
+| 项目名   | 说明              |
+| -------- | ----------------- |
+| [common] | alemonjs 通用开发 |
+
+[common]: https://github.com/lemonade-lab/alemonjs-dev-skill
