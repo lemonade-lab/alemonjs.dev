@@ -3,16 +3,16 @@ label: '响应事件'
 sidebar_position: 1
 ---
 
-# 响应响应事件
+# 响应事件
 
 ## `useEvent`
 
-安全的读取event
+安全的读取 event 和 next
 
 ```ts
 import { useEvent } from 'alemonjs'
-export default (_, next) => {
-  const [event] = useEvent({
+export default () => {
+  const [event, next] = useEvent({
     selects: ['message.create'],
     regular: /hello/ // 可选，正则匹配
   })
@@ -26,17 +26,32 @@ export default (_, next) => {
 }
 ```
 
-## `onResponse`
+## 执行周期
 
-通过 `onResponse` 绑定事件类型与处理函数
+中间件之前 subscribe(create) >
+
+中间件时 middleware >
+
+中间件之后/响应之前 subscribe(mount) >
+
+响应时 response >
+
+响应之后 subscribe(unmount)
+
+不执行next()表示结束后续匹配。
+
+### `Next(Bool)`
 
 ```ts
-import { onResponse, useMessage, Format } from 'alemonjs'
-export default onResponse(
-  ['message.create', 'private.message.create'],
-  (event, next) => {
-    const [message] = useMessage(event)
-    message.send({ format: Format.create().addText('收到消息') })
-  }
-)
+import { useEvent } from 'alemonjs'
+export default () => {
+  const [_, next] = useEvent({})
+  // 当前周期中进行
+  next()
+  // 下一个周期中进行
+  next(true)
+  // 下下个周期中进行
+  next(true, true)
+  // 以此类推
+}
 ```

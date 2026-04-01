@@ -124,7 +124,3 @@ export default defineChildren({
 | `middlewareRouter` | `ReturnType<DefineRouterFunc>`     | 中间件路由       |
 | `response`         | `ReturnType<DefineResponseFunc>`   | 响应体（旧方式） |
 | `middleware`       | `ReturnType<defineMiddlewareFunc>` | 中间件（旧方式） |
-
-```
-
-```

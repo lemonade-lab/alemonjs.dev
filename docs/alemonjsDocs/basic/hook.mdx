@@ -7,7 +7,7 @@ sidebar_position: 3
 
 :::info
 
-hook 的第一个参数为 event，在 response 中会自动劫持event上下文，也可显示传入，特别是非 response 上下文中调用。
+hook 在 response 中会自动劫持 event 上下文，也可显式传入，特别是非 response 上下文中调用。通过 `useEvent` 可获取当前事件和 next 回调。
 
 :::
 
@@ -16,8 +16,9 @@ hook 的第一个参数为 event，在 response 中会自动劫持event上下文
 > 消息发送、删除、编辑、置顶等操作
 
 ```ts title="src/response/**/*/res.ts"
-import { useMessage, Format } from 'alemonjs'
-export default async event => {
+import { useEvent, useMessage, Format } from 'alemonjs'
+export default async () => {
+  const [event] = useEvent()
   const [message] = useMessage()
 
   // 发送消息
@@ -25,20 +26,20 @@ export default async event => {
   message.send({ format })
 
   // 删除消息
-  await message.delete({ messageId: event.MessageId })
+  await message.delete({ messageId: event.current.MessageId })
 
   // 编辑消息
   await message.edit({
     format: Format.create().addText('edited'),
-    messageId: event.MessageId
+    messageId: event.current.MessageId
   })
 
   // 置顶 / 取消置顶
-  await message.pin({ messageId: event.MessageId })
-  await message.unpin({ messageId: event.MessageId })
+  await message.pin({ messageId: event.current.MessageId })
+  await message.unpin({ messageId: event.current.MessageId })
 
   // 获取消息详情
-  const detail = await message.get({ messageId: event.MessageId })
+  const detail = await message.get({ messageId: event.current.MessageId })
 }
 ```
 
@@ -159,15 +160,16 @@ export default () => {
 > 成员管理：查询、踢出、封禁、禁言、名片等
 
 ```ts title="response/**/*/res.ts"
-import { useMember } from 'alemonjs'
-export default async event => {
+import { useEvent, useMember } from 'alemonjs'
+export default async () => {
+  const [event] = useEvent()
   const [member] = useMember()
 
   // 获取成员信息
-  const info = await member.info({ userId: event.UserId })
+  const info = await member.info({ userId: event.current.UserId })
 
   // 获取成员列表
-  const list = await member.list({ guildId: event.GuildId })
+  const list = await member.list({ guildId: event.current.GuildId })
 
   // 搜索成员
   const result = await member.search({ keyword: '管理' })
@@ -211,28 +213,29 @@ export default async event => {
 > 频道管理：查询、创建、更新、删除
 
 ```ts title="response/**/*/res.ts"
-import { useChannel } from 'alemonjs'
-export default async event => {
+import { useEvent, useChannel } from 'alemonjs'
+export default async () => {
+  const [event] = useEvent()
   const [channel] = useChannel()
 
   // 获取频道信息
-  const info = await channel.info({ channelId: event.ChannelId })
+  const info = await channel.info({ channelId: event.current.ChannelId })
 
   // 获取频道列表
-  const list = await channel.list({ guildId: event.GuildId })
+  const list = await channel.list({ guildId: event.current.GuildId })
 
   // 创建频道
-  await channel.create({ name: '新频道', guildId: event.GuildId })
+  await channel.create({ name: '新频道', guildId: event.current.GuildId })
 
   // 更新频道
   await channel.update({
-    channelId: event.ChannelId,
+    channelId: event.current.ChannelId,
     name: '改名',
     topic: '新话题'
   })
 
   // 删除频道
-  await channel.delete({ channelId: event.ChannelId })
+  await channel.delete({ channelId: event.current.ChannelId })
 }
 ```
 
@@ -249,12 +252,13 @@ export default async event => {
 > 服务器/公会管理
 
 ```ts title="response/**/*/res.ts"
-import { useGuild } from 'alemonjs'
-export default async event => {
+import { useEvent, useGuild } from 'alemonjs'
+export default async () => {
+  const [event] = useEvent()
   const [guild] = useGuild()
 
   // 获取服务器信息
-  const info = await guild.info({ guildId: event.GuildId })
+  const info = await guild.info({ guildId: event.current.GuildId })
 
   // 获取服务器列表
   const list = await guild.list()
@@ -263,7 +267,7 @@ export default async event => {
   await guild.update({ name: '新名称' })
 
   // 退出服务器
-  await guild.leave({ guildId: event.GuildId })
+  await guild.leave({ guildId: event.current.GuildId })
 
   // 全员禁言
   await guild.mute({ enable: true })
@@ -283,12 +287,13 @@ export default async event => {
 > 角色管理：创建、更新、删除、分配、移除
 
 ```ts title="response/**/*/res.ts"
-import { useRole } from 'alemonjs'
-export default async event => {
+import { useEvent, useRole } from 'alemonjs'
+export default async () => {
+  const [event] = useEvent()
   const [role] = useRole()
 
   // 获取角色列表
-  const list = await role.list({ guildId: event.GuildId })
+  const list = await role.list({ guildId: event.current.GuildId })
 
   // 创建角色
   const created = await role.create({ name: 'VIP', color: 0xff0000 })
@@ -300,8 +305,8 @@ export default async event => {
   await role.delete({ roleId: '123' })
 
   // 分配 / 移除角色
-  await role.assign({ userId: event.UserId, roleId: '123' })
-  await role.remove({ userId: event.UserId, roleId: '123' })
+  await role.assign({ userId: event.current.UserId, roleId: '123' })
+  await role.remove({ userId: event.current.UserId, roleId: '123' })
 }
 ```
 
@@ -319,15 +324,16 @@ export default async event => {
 > 表情回应管理
 
 ```ts title="response/**/*/res.ts"
-import { useReaction } from 'alemonjs'
-export default async event => {
+import { useEvent, useReaction } from 'alemonjs'
+export default async () => {
+  const [event] = useEvent()
   const [reaction] = useReaction()
 
   // 添加表情回应
   await reaction.add({ emojiId: '👍' })
 
   // 移除表情回应
-  await reaction.remove({ emojiId: '👍', messageId: event.MessageId })
+  await reaction.remove({ emojiId: '👍', messageId: event.current.MessageId })
 
   // 获取回应用户列表
   const list = await reaction.list({ emojiId: '👍', limit: 20 })
@@ -368,10 +374,11 @@ export default async () => {
 > 用户信息查询（无需服务器上下文）
 
 ```ts title="response/**/*/res.ts"
-import { useUser } from 'alemonjs'
-export default async event => {
+import { useEvent, useUser } from 'alemonjs'
+export default async () => {
+  const [event] = useEvent()
   const [user] = useUser()
-  const info = await user.info({ userId: event.UserId })
+  const info = await user.info({ userId: event.current.UserId })
 }
 ```
 
@@ -438,10 +445,14 @@ export default async () => {
 > 消息历史记录
 
 ```ts title="response/**/*/res.ts"
-import { useHistory } from 'alemonjs'
-export default async event => {
+import { useEvent, useHistory } from 'alemonjs'
+export default async () => {
+  const [event] = useEvent()
   const [history] = useHistory()
-  const messages = await history.list({ limit: 50, before: event.MessageId })
+  const messages = await history.list({
+    limit: 50,
+    before: event.current.MessageId
+  })
 }
 ```
 
@@ -454,15 +465,16 @@ export default async event => {
 > 频道权限管理
 
 ```ts title="response/**/*/res.ts"
-import { usePermission } from 'alemonjs'
-export default async event => {
+import { useEvent, usePermission } from 'alemonjs'
+export default async () => {
+  const [event] = useEvent()
   const [permission] = usePermission()
 
   // 获取权限
-  const perm = await permission.get({ userId: event.UserId })
+  const perm = await permission.get({ userId: event.current.UserId })
 
   // 设置权限
-  await permission.set({ userId: event.UserId, allow: '1', deny: '0' })
+  await permission.set({ userId: event.current.UserId, allow: '1', deny: '0' })
 }
 ```
 
@@ -476,15 +488,16 @@ export default async event => {
 > 频道公告管理
 
 ```ts title="response/**/*/res.ts"
-import { useAnnounce } from 'alemonjs'
-export default async event => {
+import { useEvent, useAnnounce } from 'alemonjs'
+export default async () => {
+  const [event] = useEvent()
   const [announce] = useAnnounce()
 
   // 设置公告
-  await announce.set({ messageId: event.MessageId })
+  await announce.set({ messageId: event.current.MessageId })
 
   // 删除公告
-  await announce.remove({ messageId: event.MessageId })
+  await announce.remove({ messageId: event.current.MessageId })
 }
 ```
 
@@ -499,9 +512,10 @@ export default async event => {
 
 ```ts title="src/response/**/*/res.ts"
 import { API, platform } from '@alemonjs/qq-bot'
-import { useClient } from 'alemonjs'
-export default event => {
-  if (event.Platform === platform) {
+import { useEvent, useClient } from 'alemonjs'
+export default () => {
+  const [event] = useEvent()
+  if (event.current.Platform === platform) {
     const [client] = useClient(API)
     client.usersMe()
   }

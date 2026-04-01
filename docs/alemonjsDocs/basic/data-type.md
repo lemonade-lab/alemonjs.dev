@@ -64,15 +64,16 @@ export default () => {
 ### Mention&Text
 
 ```ts title="response/**/*/res.ts"
-import { useMessage, Text, Mention, Format } from 'alemonjs'
-export default event => {
+import { useEvent, useMessage, Format } from 'alemonjs'
+export default () => {
+  const [event] = useEvent()
   const [message] = useMessage()
   // 发送多种类型的消息
 
   message.send({
     format: Format.create()
       .addText('hello ')
-      .addMention(event.UserId)
+      .addMention(event.current.UserId)
       .addText(', How are things going?')
   })
 
@@ -83,7 +84,7 @@ export default event => {
 
   // @ channel
   message.send({
-    format: Format.create().addMention(event.ChannelId, {
+    format: Format.create().addMention(event.current.ChannelId, {
       belong: 'channel'
     })
   })
@@ -211,9 +212,10 @@ format.addButtonGroup(md)
 ### MarkDown
 
 ```ts
-import { useMessage, Format } from 'alemonjs'
+import { useEvent, useMessage, Format } from 'alemonjs'
 
-export default event => {
+export default () => {
+  const [event] = useEvent()
   const [message] = useMessage()
 
   const format = Format.create()
@@ -221,7 +223,7 @@ export default event => {
 
   md
     // @UserId
-    .addMention(event.UserId)
+    .addMention(event.current.UserId)
     // 换行
     .addNewline()
     // Button，⚠️部分平台不支持

@@ -16,7 +16,7 @@ sidebar_position: 6
 在 `defineRouter` 中通过分组实现。handler 返回 `true` 则允许继续执行 children 中的后续响应
 
 ```ts title="src/response/mw.ts"
-export default (event, next) => {
+export default () => {
   console.log('step 1')
   // 返回 true 允许 children 中的后续函数执行
   return true
@@ -24,7 +24,7 @@ export default (event, next) => {
 ```
 
 ```ts title="src/response/res.ts"
-export default (event, next) => {
+export default () => {
   console.log('step 2')
 }
 ```
@@ -35,13 +35,8 @@ export default (event, next) => {
 
 ## 全局中间件
 
-### `onMiddleware`
-
-使用 `onMiddleware` 定义全局中间件，需指定事件类型
-
 ```ts title="src/middleware/**/*/mw.ts"
-import { onMiddleware } from 'alemonjs'
-export default onMiddleware('message.create', (event, next) => {
+export default (event, next) => {
   // 新增字段
   event['user_id'] = event.UserId
 
