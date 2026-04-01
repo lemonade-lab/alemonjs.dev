@@ -11,35 +11,9 @@ sidebar_position: 1
 
 :::
 
-## `onResponse`
-
-推荐的响应定义方式，通过 `onResponse` 绑定事件类型与处理函数
-
-```ts title="src/response/**/*/res.ts"
-import { onResponse, useMessage, Format } from 'alemonjs'
-export default onResponse('message.create', (event, next) => {
-  const [message] = useMessage(event)
-  const format = Format.create().addText('hello word')
-  message.send({ format })
-})
-```
-
-支持同时监听多个事件类型：
-
-```ts
-import { onResponse, useMessage, Format } from 'alemonjs'
-export default onResponse(
-  ['message.create', 'private.message.create'],
-  (event, next) => {
-    const [message] = useMessage(event)
-    message.send({ format: Format.create().addText('收到消息') })
-  }
-)
-```
-
 ## `createEvent`
 
-在不使用 `onResponse` 的场景下，可用 `createEvent` 手动验证事件是否符合预期
+验证事件是否符合预期
 
 ```ts
 import { createEvent } from 'alemonjs'
@@ -58,4 +32,19 @@ export default (e, next) => {
   }
   // 匹配成功，处理事件...
 }
+```
+
+## `onResponse`
+
+通过 `onResponse` 绑定事件类型与处理函数
+
+```ts
+import { onResponse, useMessage, Format } from 'alemonjs'
+export default onResponse(
+  ['message.create', 'private.message.create'],
+  (event, next) => {
+    const [message] = useMessage(event)
+    message.send({ format: Format.create().addText('收到消息') })
+  }
+)
 ```

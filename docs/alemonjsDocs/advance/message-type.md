@@ -382,3 +382,64 @@ type EventKeys = keyof Events
 // 所有事件类型的联合类型
 type EventsEnum = Events[EventKeys]
 ```
+
+## FormatEvent 链式构建器
+
+平台适配器使用 `FormatEvent` 链式构建事件对象。`EventBuilder<T>` 根据事件名 `T` 自动约束可调用的方法——不符合事件类型定义的方法在编译期即产生类型错误。
+
+```ts
+import { FormatEvent } from 'alemonjs'
+
+// message.create 拥有全部字段方法
+const msg = FormatEvent.create('message.create')
+  .addPlatform({ Platform: 'discord', value: raw, BotId: botId })
+  .addGuild({ GuildId: 'g1', SpaceId: 's1' })
+  .addChannel({ ChannelId: 'c1' })
+  .addUser({ UserId: 'u1', UserKey: 'k1', IsMaster: false, IsBot: false })
+  .addMessage({ MessageId: 'm1' })
+  .addText({ MessageText: 'hello' })
+  .addMedia({ MessageMedia: [{ Type: 'image', Url: '...' }] })
+  .addOpen({ OpenId: 'o1' }).value
+
+// guild.join 不含 Text/Media/Open，调用会类型报错
+const join = FormatEvent.create('guild.join')
+  .addPlatform({ Platform: 'qq', value: raw, BotId: botId })
+  .addGuild({ GuildId: 'g1', SpaceId: 's1' })
+  .addChannel({ ChannelId: 'c1' })
+  .addUser({ UserId: 'u1', UserKey: 'k1', IsMaster: false, IsBot: false })
+  .addMessage({ MessageId: '' }).value
+```
+
+### 方法可用性
+
+`addPlatform` / `addMessage` / `add` — 所有事件均可调用。其余方法按事件类型约束：
+
+| 事件                          | Guild | Channel | User | Text | Media | Open |
+| ----------------------------- | :---: | :-----: | :--: | :--: | :---: | :--: |
+| message.create                |   ✓   |    ✓    |  ✓   |  ✓   |   ✓   |  ✓   |
+| private.message.create        |       |         |  ✓   |  ✓   |   ✓   |  ✓   |
+| interaction.create            |   ✓   |    ✓    |  ✓   |  ✓   |       |  ✓   |
+| private.interaction.create    |       |         |  ✓   |  ✓   |       |  ✓   |
+| guild.join / guild.exit       |   ✓   |    ✓    |  ✓   |      |       |      |
+| member.\* (5种)               |   ✓   |    ✓    |  ✓   |      |       |      |
+| notice.create                 |   ✓   |    ✓    |  ✓   |      |       |      |
+| message.delete / pin          |   ✓   |    ✓    |      |      |       |      |
+| channel.\* (3种)              |   ✓   |    ✓    |      |      |       |      |
+| guild.update                  |   ✓   |    ✓    |      |      |       |      |
+| private.friend.\* / guild.add |       |         |  ✓   |      |       |      |
+| private.notice.create         |       |         |  ✓   |      |       |      |
+| private.message.delete        |       |         |      |      |       |      |
+
+### 自定义扩展字段
+
+通过 `add()` 方法附加平台特有字段。所有 key 自动加 `_` 前缀存储，避免与标准字段冲突：
+
+```ts
+FormatEvent.create('message.create')
+  .addPlatform({ Platform: 'qq', value: raw, BotId: botId })
+  // ...其他标准字段
+  .add({ tag: 'GROUP_AT_MESSAGE_CREATE', rawType: 'group' }).value
+// 实际存储为 { _tag: '...', _rawType: '...' }
+```
+
+> 使用 `wrapEvent()` 包装后，读取时无需 `_` 前缀：`event.tag` 自动读取 `event._tag`。

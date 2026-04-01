@@ -20,7 +20,7 @@ import {
     ResultCode,
     getConfigValue,
     cbpPlatform,
-    PublicEventMessageCreate
+    FormatEvent
 } from 'alemonjs'
 
 // 平台名称
@@ -70,11 +70,16 @@ const main = () => {
 
     client.onmessage = data => {
 
-        const e: PublicEventMessageCreate = {
-            name: 'message.create',
-            value: data
-            // ...
-        }
+        // 使用 FormatEvent 链式构建标准事件
+        const e = FormatEvent.create('message.create')
+            .addPlatform({ Platform: platform, value: data, BotId: '' })
+            .addGuild({ GuildId: '', SpaceId: '' })
+            .addChannel({ ChannelId: '' })
+            .addUser({ UserId: '', UserKey: '', IsMaster: false, IsBot: false })
+            .addMessage({ MessageId: '' })
+            .addText({ MessageText: '' })
+            .addOpen({ OpenId: '' })
+            .value
 
         // event
         cbp.send(e)
