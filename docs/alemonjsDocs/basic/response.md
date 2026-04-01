@@ -1,36 +1,28 @@
 ---
-label: '响应'
+label: '响应事件'
 sidebar_position: 1
 ---
 
-# 响应
+# 响应响应事件
 
-:::info
+## `useEvent`
 
-定义响应函数，处理不同类型的事件
-
-:::
-
-## `createEvent`
-
-验证事件是否符合预期
+安全的读取event
 
 ```ts
-import { createEvent } from 'alemonjs'
-export default (e, next) => {
-  const event = createEvent({
-    event: e,
+import { useEvent } from 'alemonjs'
+export default (_, next) => {
+  const [event] = useEvent({
     selects: ['message.create'],
-    regular: /hello/, // 可选，正则匹配
-    prefix: '/', // 可选，前缀匹配
-    exact: '/hello' // 可选，精确匹配
+    regular: /hello/ // 可选，正则匹配
   })
   // 匹配结果为布尔值
-  if (!event.selects || !event.regular) {
+  if (!event.match.selects || !event.match.regular) {
     next()
     return
   }
-  // 匹配成功，处理事件...
+  // 匹配成功，通过 event.current 访问事件对象
+  // 通过 event.value 访问原始数据
 }
 ```
 
