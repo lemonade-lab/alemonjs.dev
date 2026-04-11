@@ -1,5 +1,13 @@
 [
   {
+    "title": "V2.1.57",
+    "description": "框架定时任务",
+    "date": "2026-04-11",
+    "path": "/blog/2026/04/11/schedule-api",
+    "tags": ["更新"],
+    "authors": "ningmengchongshui"
+  },
+  {
     "title": "V2.1.52",
     "description": "hooks增强",
     "date": "2026-04-01",

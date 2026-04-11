@@ -75,6 +75,11 @@
             "title": "工具函数",
             "path": "/docs/alemonjsDocs/advance/utils",
             "position": 9
+          },
+          {
+            "title": "定时任务",
+            "path": "/docs/alemonjsDocs/advance/schedule",
+            "position": 10
           }
         ]
       },
