@@ -71,13 +71,13 @@ label: '开源生态'
 
 ### 特殊
 
-| 项目名                 | 说明                                    |
-| ---------------------- | --------------------------------------- |
-| [code]                 | 订阅代码                                |
-| [qqBot-socket-to-hook] | 支持把单个或多个qqBot账号转为socket服务 |
+| 项目名                  | 说明                                    |
+| ----------------------- | --------------------------------------- |
+| [code]                  | 订阅代码                                |
+| [qq-bot-socket-to-hook] | 支持把单个或多个qqBot账号转为socket服务 |
 
 [code]: https://github.com/lemonade-lab/subscribe-code
-[qqBot-soket-to-hook]: https://github.com/lemonade-lab/qq-bot
+[qq-bot-socket-to-hook]: https://github.com/lemonade-lab/qq-bot
 
 ### SKILL
 
