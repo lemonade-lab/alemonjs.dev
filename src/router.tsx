@@ -16,18 +16,19 @@ const Doc5 = lazy(() => import('../docs/alemonjsDocs/basic/data-type.md'))
 const Doc6 = lazy(() => import('../docs/alemonjsDocs/basic/hook.mdx'))
 const Doc7 = lazy(() => import('../docs/alemonjsDocs/basic/middleware.md'))
 const Doc8 = lazy(() => import('../docs/alemonjsDocs/basic/response.md'))
-const Doc9 = lazy(() => import('../docs/alemonjsDocs/basic/route.md'))
-const Doc10 = lazy(() => import('../docs/alemonjsDocs/expert/class.md'))
-const Doc11 = lazy(() => import('../docs/alemonjsDocs/expert/platforms.md'))
-const Doc12 = lazy(() => import('../docs/alemonjsDocs/open/desktop.md'))
-const Doc13 = lazy(() => import('../docs/alemonjsDocs/open/models.md'))
-const Doc14 = lazy(() => import('../docs/alemonjsDocs/server/route-mw.md'))
-const Doc15 = lazy(() => import('../docs/alemonjsDocs/server/route.md'))
-const Doc16 = lazy(() => import('../docs/apps.md'))
-const Doc17 = lazy(() => import('../docs/config.md'))
-const Doc18 = lazy(() => import('../docs/environment.md'))
-const Doc19 = lazy(() => import('../docs/intro.md'))
-const Doc20 = lazy(() => import('../docs/start.mdx'))
+const Doc9 = lazy(() => import('../docs/alemonjsDocs/basic/router-sdl.md'))
+const Doc10 = lazy(() => import('../docs/alemonjsDocs/basic/router.md'))
+const Doc11 = lazy(() => import('../docs/alemonjsDocs/expert/class.md'))
+const Doc12 = lazy(() => import('../docs/alemonjsDocs/expert/platforms.md'))
+const Doc13 = lazy(() => import('../docs/alemonjsDocs/open/desktop.md'))
+const Doc14 = lazy(() => import('../docs/alemonjsDocs/open/models.md'))
+const Doc15 = lazy(() => import('../docs/alemonjsDocs/server/route-mw.md'))
+const Doc16 = lazy(() => import('../docs/alemonjsDocs/server/route.md'))
+const Doc17 = lazy(() => import('../docs/apps.md'))
+const Doc18 = lazy(() => import('../docs/config.md'))
+const Doc19 = lazy(() => import('../docs/environment.md'))
+const Doc20 = lazy(() => import('../docs/intro.md'))
+const Doc21 = lazy(() => import('../docs/start.mdx'))
 
 // 自动生成的博客导入
 const Blog19 = lazy(() => import('../blog/2026/04/11/schedule-api.md'))
@@ -101,52 +102,56 @@ const router = createBrowserRouter([
         element: <Doc8 />
       },
       {
-        path: 'alemonjsDocs/basic/route',
+        path: 'alemonjsDocs/basic/router-sdl',
         element: <Doc9 />
       },
       {
-        path: 'alemonjsDocs/expert/class',
+        path: 'alemonjsDocs/basic/router',
         element: <Doc10 />
       },
       {
-        path: 'alemonjsDocs/expert/platforms',
+        path: 'alemonjsDocs/expert/class',
         element: <Doc11 />
       },
       {
-        path: 'alemonjsDocs/open/desktop',
+        path: 'alemonjsDocs/expert/platforms',
         element: <Doc12 />
       },
       {
-        path: 'alemonjsDocs/open/models',
+        path: 'alemonjsDocs/open/desktop',
         element: <Doc13 />
       },
       {
-        path: 'alemonjsDocs/server/route-mw',
+        path: 'alemonjsDocs/open/models',
         element: <Doc14 />
       },
       {
-        path: 'alemonjsDocs/server/route',
+        path: 'alemonjsDocs/server/route-mw',
         element: <Doc15 />
       },
       {
-        path: 'apps',
+        path: 'alemonjsDocs/server/route',
         element: <Doc16 />
       },
       {
-        path: 'config',
+        path: 'apps',
         element: <Doc17 />
       },
       {
-        path: 'environment',
+        path: 'config',
         element: <Doc18 />
       },
       {
-        path: 'intro',
+        path: 'environment',
         element: <Doc19 />
       },
       {
-        path: 'start',
+        path: 'intro',
         element: <Doc20 />
+      },
+      {
+        path: 'start',
+        element: <Doc21 />
       }
     ]
   },

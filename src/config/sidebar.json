@@ -31,7 +31,7 @@
           },
           {
             "title": "匹配路由",
-            "path": "/docs/alemonjsDocs/basic/route",
+            "path": "/docs/alemonjsDocs/basic/router",
             "position": 2
           },
           {
@@ -53,6 +53,11 @@
             "title": "中间件",
             "path": "/docs/alemonjsDocs/basic/middleware",
             "position": 6
+          },
+          {
+            "title": "路由DSL",
+            "path": "/docs/alemonjsDocs/basic/router-sdl",
+            "position": 7
           }
         ]
       },
