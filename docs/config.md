@@ -179,9 +179,18 @@ cbp:
     x-full-receive: '0' # 是否全量接收：'1' 开启，'0' 关闭
 ```
 
-## 配置管理工具
+## 脚手架工具
 
-使用 `alemonc` 命令行工具来管理配置：
+```sh
+npm i alemonjs -g
+```
+
+```bash
+# 把本地alemonjs相关包立即拉到最新
+alemonc upgrade
+# 弹出基础信息
+alemonc info
+```
 
 ```bash
 # 查看帮助
@@ -202,11 +211,4 @@ alemonc del discord
 
 # 获取配置项
 alemonc get login
-```
-
-```bash
-# 把本地alemonjs相关包立即拉到最新
-alemonc version update
-# 弹出基础信息
-alemonc info
 ```
