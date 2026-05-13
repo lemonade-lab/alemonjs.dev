@@ -5,22 +5,20 @@ sidebar_position: 7
 
 # 路由DSL
 
-试验性！
-
 将复杂的配置转为链式，同时规范化指令风格和加强匹配速度
 
 ## 最小示例
 
 ```ts
-import { Router } from '@src/router-map/main'
+import { Router } from 'alemonjs'
 
-const app = Router.create({
+const router = Router.create({
   events: ['message.create', 'private.message.create']
 })
 
-app.res({}, () => import('@src/response/resMaintenance'))
+router.res({}, () => import('@src/response/resMaintenance'))
 
-const xiuxian = app.group(
+const app = router.group(
   {
     routeText: {
       prefixes: ['/', '#', '＃', '!', '！'],
@@ -31,14 +29,12 @@ const xiuxian = app.group(
       maxWords: 2
     }
   },
-  () => import('@src/response/mwBan'),
   () => import('@src/response/mw')
 )
 
-xiuxian.use('我', () => import('@src/response/message/me/res'))
-xiuxian.use(['帮助', '修仙帮助', 'help'], () => import('@src/response/help'))
+app.use(['帮助', 'help'], () => import('@src/response/help'))
 
-export default app.define
+export default router.define
 ```
 
 ---
@@ -50,7 +46,7 @@ export default app.define
 1. `Router.create(...)`
    建路由容器，给顶层 `res` 默认事件/平台。
 
-2. `app.res(...)`
+2. `router.res(...)`
    注册顶层前置逻辑。
 
 3. `group(...)`
@@ -61,9 +57,9 @@ export default app.define
 
 ---
 
-## 什么时候用 `app.res`
+## 什么时候用 `router.res`
 
-`app.res(...)` 只放顶层前置逻辑。
+`router.res(...)` 只放顶层前置逻辑。
 
 适合放：
 
@@ -72,18 +68,10 @@ export default app.define
 - select 转义
 - 其他“消息一进来就要先检查”的逻辑
 
-### 写法 1：懒加载
+### 写法 懒加载
 
 ```ts
-app.res({}, () => import('@src/response/resGuide'))
-```
-
-### 写法 2：直接写函数
-
-```ts
-app.res({}, async (e, next) => {
-  await next()
-})
+router.res({}, () => import('@src/response/resGuide'))
 ```
 
 ### 注意
@@ -118,7 +106,7 @@ return true
 ### 基本写法
 
 ```ts
-const xiuxian = app.group(
+const app = router.group(
   {
     events: ['message.create', 'private.message.create']
   },
@@ -130,7 +118,7 @@ const xiuxian = app.group(
 ### 嵌套写法
 
 ```ts
-const captcha = xiuxian.group(
+const captcha = router.group(
   {
     fallback: {
       suggest: false
@@ -149,19 +137,19 @@ const captcha = xiuxian.group(
 ### 1. 单条命令
 
 ```ts
-xiuxian.use('我', () => import('@src/response/message/me/res'))
+app.use('我', () => import('@src/response/message/me/res'))
 ```
 
 ### 2. 多个命令共用同一个实现
 
 ```ts
-xiuxian.use(['帮助', '修仙帮助', 'help'], () => import('@src/response/help'))
+app.use(['帮助', '修仙帮助', 'help'], () => import('@src/response/help'))
 ```
 
 ### 3. 带参数规则
 
 ```ts
-xiuxian.use(
+app.use(
   {
     path: '任务设置',
     schema: {
@@ -180,7 +168,7 @@ xiuxian.use(
 ### 4. 多条配置化命令共用一个实现
 
 ```ts
-xiuxian.use(
+app.use(
   [
     { path: '学习功法', schema: skillSchema },
     { path: '隐藏功法', schema: hideSchema }
@@ -198,15 +186,15 @@ xiuxian.use(
 正确：
 
 ```ts
-xiuxian.use('签到', ...);
-xiuxian.use('任务设置', ...);
+app.use('签到', ...);
+app.use('任务设置', ...);
 ```
 
 不要写：
 
 ```ts
-xiuxian.use('/签到', ...);
-xiuxian.use('/任务设置', ...);
+app.use('/签到', ...);
+app.use('/任务设置', ...);
 ```
 
 前缀由 `routeText` 处理，不属于 key。
@@ -279,6 +267,8 @@ keyPolicy: {
 ---
 
 ## `schema` 怎么用
+
+业务通过 `useEvent()` 读取时，应使用 `event.current.__route` 访问这段上下文。
 
 命中后，路由层会自动把参数挂到：
 
