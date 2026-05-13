@@ -60,7 +60,7 @@ export default defineConfig({
             },
             {
               label: '交流群',
-              href: 'https://qm.qq.com/q/aZYMNqUQc'
+              href: 'https://qm.qq.com/q/bvI8wuy8ik'
             },
             {
               label: '本站评论',
