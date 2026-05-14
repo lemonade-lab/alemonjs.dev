@@ -16,8 +16,8 @@ label: '开源生态'
 | [load-yunzai] | 桥接层,加载所有yunzai插件         |
 | [yunzai]      | 胶水层,让你的yunzai插件单独跑起来 |
 
-[load-yunzai]: https://github.com/xiuxianjs/alemonjs-load-yunzai
-[yunzai]: https://github.com/xiuxianjs/alemonjs-yunzai
+[load-yunzai]: https://github.com/yunzaijs/alemonjs-load-yunzai
+[yunzai]: https://github.com/yunzaijs/alemonjs-yunzai
 
 ### IP
 
@@ -30,10 +30,10 @@ label: '开源生态'
 | [kuro] | 库街区(库洛) |
 | [roco] | 洛克王国世界 |
 
-[mhy]: https://github.com/xiuxianjs/alemonjs-mhy
-[miao]: https://github.com/xiuxianjs/alemonjs-miao
+[mhy]: https://github.com/yunzaijs/alemonjs-mhy
+[miao]: https://github.com/yunzaijs/alemonjs-miao
 [kuro]: https://github.com/loneyclown/alemonjs-kuro
-[roco]: https://github.com/xiuxianjs/alemonjs-roco
+[roco]: https://github.com/ningmengchongshui/alemonjs-roco
 
 ### 功能
 
