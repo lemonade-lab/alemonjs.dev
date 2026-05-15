@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 interface NavItem {
   title: string
@@ -47,6 +47,7 @@ export default function DocsSidebar({
   onClose
 }: DocsSidebarProps) {
   const location = useLocation()
+  const sidebarRef = useRef<HTMLElement | null>(null)
   const [collapsedSections, setCollapsedSections] = useState<
     Record<string, boolean>
   >({})
@@ -70,6 +71,18 @@ export default function DocsSidebar({
     }))
   }
 
+  useEffect(() => {
+    const activeItem = sidebarRef.current?.querySelector(
+      '[data-active="true"]'
+    ) as HTMLElement | null
+
+    activeItem?.scrollIntoView({
+      block: 'center',
+      inline: 'nearest',
+      behavior: 'smooth'
+    })
+  }, [location.pathname, navigation, isOpen, collapsedSections])
+
   return (
     <>
       {/* Mobile overlay */}
@@ -82,6 +95,7 @@ export default function DocsSidebar({
 
       {/* Sidebar */}
       <aside
+        ref={sidebarRef}
         className={`
         fixed top-16 left-0 z-40 w-64
         h-[calc(100vh-4rem)]
@@ -117,8 +131,16 @@ export default function DocsSidebar({
           {navigation.map((item, index) => {
             // 如果是分类（有 items）
             if (isCategory(item)) {
-              const isCollapsed =
-                collapsedSections[item.id!] ?? item.collapsed ?? false
+              const hasActiveItem = item.items?.some(subItem =>
+                isSubCategory(subItem)
+                  ? subItem.items.some(
+                      docItem => location.pathname === docItem.path
+                    )
+                  : location.pathname === subItem.path
+              )
+              const isCollapsed = hasActiveItem
+                ? false
+                : (collapsedSections[item.id!] ?? item.collapsed ?? false)
 
               return (
                 <div key={item.id || index}>
@@ -148,10 +170,14 @@ export default function DocsSidebar({
                         // 检查是否为子分类
                         if (isSubCategory(subItem)) {
                           const subCategoryId = `${item.id}-${subItem.id}`
-                          const isSubCollapsed =
-                            collapsedSections[subCategoryId] ??
-                            subItem.collapsed ??
-                            false
+                          const hasActiveSubItem = subItem.items.some(
+                            docItem => location.pathname === docItem.path
+                          )
+                          const isSubCollapsed = hasActiveSubItem
+                            ? false
+                            : ((collapsedSections[subCategoryId] ??
+                                subItem.collapsed ??
+                                false) as boolean)
 
                           return (
                             <div key={subItem.id}>
@@ -181,6 +207,9 @@ export default function DocsSidebar({
                                       <Link
                                         to={docItem.path}
                                         onClick={onClose}
+                                        data-active={
+                                          location.pathname === docItem.path
+                                        }
                                         className={`block pl-6 pr-3 py-2 rounded-lg text-sm transition-all duration-200 ${
                                           location.pathname === docItem.path
                                             ? 'bg-gradient-to-r from-blue-500 to-indigo-600 dark:from-blue-600 dark:to-indigo-700 text-white shadow-md shadow-blue-500/30 dark:shadow-blue-900/50 font-semibold'
@@ -203,6 +232,9 @@ export default function DocsSidebar({
                                 <Link
                                   to={subItem.path}
                                   onClick={onClose}
+                                  data-active={
+                                    location.pathname === subItem.path
+                                  }
                                   className={`block px-3 py-2 rounded-lg text-sm transition-all duration-200 ${
                                     location.pathname === subItem.path
                                       ? 'bg-gradient-to-r from-blue-500 to-indigo-600 dark:from-blue-600 dark:to-indigo-700 text-white shadow-md shadow-blue-500/30 dark:shadow-blue-900/50 font-semibold'
@@ -227,6 +259,7 @@ export default function DocsSidebar({
                   key={item.path || index}
                   to={item.path!}
                   onClick={onClose}
+                  data-active={location.pathname === item.path}
                   className={`block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                     location.pathname === item.path
                       ? 'bg-gradient-to-r from-blue-500 to-indigo-600 dark:from-blue-600 dark:to-indigo-700 text-white shadow-md shadow-blue-500/30 dark:shadow-blue-900/50 font-semibold'

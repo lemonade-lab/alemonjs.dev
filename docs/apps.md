@@ -5,7 +5,7 @@ label: '开源生态'
 
 # 开源生态
 
-模块机制到底是怎么回事？请点击了解[👉模块化应用](/docs/alemonjsDocs/open/models)的制作
+模块机制到底是怎么回事？请点击了解[👉模块化应用](/docs/alemonjsDocs/modules/models)的制作
 
 ### 增强
 

@@ -1,7 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import { useNavigate } from 'react-router-dom'
-import { searchContent, SearchResult } from '@/utils/searchUtils'
+import {
+  highlightSegments,
+  searchContent,
+  SearchResult
+} from '@/utils/searchUtils'
 
 interface SearchModalProps {
   isOpen: boolean
@@ -39,6 +43,20 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
     onClose()
     setQuery('')
   }
+
+  const renderHighlighted = (text: string) =>
+    highlightSegments(text, query).map((segment, index) =>
+      segment.match ? (
+        <mark
+          key={`${segment.text}-${index}`}
+          className="bg-yellow-200 px-0.5 text-inherit dark:bg-yellow-500/40"
+        >
+          {segment.text}
+        </mark>
+      ) : (
+        <span key={`${segment.text}-${index}`}>{segment.text}</span>
+      )
+    )
 
   // 键盘导航
   useEffect(() => {
@@ -174,6 +192,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
               key={result.path}
               onClick={() => handleSelect(result)}
               onMouseEnter={() => setSelectedIndex(index)}
+              data-selected={index === selectedIndex}
               className={`w-full px-6 py-4 text-left border-b border-gray-100 dark:border-gray-700 last:border-b-0 transition-colors ${
                 index === selectedIndex
                   ? 'bg-blue-50 dark:bg-blue-900/20'
@@ -198,12 +217,22 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                       </span>
                     )}
                   </div>
+                  {result.sectionTitle && (
+                    <p className="mb-1 text-xs text-gray-500 dark:text-gray-400">
+                      {result.breadcrumb.join(' / ')}
+                    </p>
+                  )}
                   <h3 className="font-medium text-gray-900 dark:text-gray-100 mb-1">
-                    {result.title}
+                    {renderHighlighted(result.title)}
                   </h3>
+                  {result.sectionTitle && (
+                    <p className="mb-1 text-sm text-blue-700 dark:text-blue-300">
+                      {renderHighlighted(result.sectionTitle)}
+                    </p>
+                  )}
                   {result.excerpt && (
                     <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-2">
-                      {result.excerpt}
+                      {renderHighlighted(result.excerpt)}
                     </p>
                   )}
                 </div>

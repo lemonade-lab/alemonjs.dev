@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 interface TocItem {
   id: string
@@ -16,6 +16,8 @@ function slugify(text = '') {
 
 export default function PageToc() {
   const [items, setItems] = useState<TocItem[]>([])
+  const [activeId, setActiveId] = useState('')
+  const navRef = useRef<HTMLElement | null>(null)
 
   useEffect(() => {
     const container = document.getElementById('doc-content')
@@ -45,31 +47,83 @@ export default function PageToc() {
     return () => mo.disconnect()
   }, [])
 
+  useEffect(() => {
+    if (!items.length) return
+
+    const updateActiveHeading = () => {
+      const headings = items
+        .map(item => document.getElementById(item.id))
+        .filter(Boolean) as HTMLElement[]
+
+      if (!headings.length) return
+
+      const offsetTop = 120
+      let current = headings[0]
+
+      for (const heading of headings) {
+        if (heading.getBoundingClientRect().top <= offsetTop) {
+          current = heading
+        } else {
+          break
+        }
+      }
+
+      setActiveId(current.id)
+    }
+
+    updateActiveHeading()
+    window.addEventListener('scroll', updateActiveHeading, { passive: true })
+    window.addEventListener('resize', updateActiveHeading)
+
+    return () => {
+      window.removeEventListener('scroll', updateActiveHeading)
+      window.removeEventListener('resize', updateActiveHeading)
+    }
+  }, [items])
+
+  useEffect(() => {
+    const activeLink = navRef.current?.querySelector(
+      '[data-active="true"]'
+    ) as HTMLElement | null
+
+    activeLink?.scrollIntoView({
+      block: 'center',
+      inline: 'nearest',
+      behavior: 'smooth'
+    })
+  }, [activeId])
+
   if (!items.length) return null
 
   return (
-    <nav className="toc hidden xl:block px-4 py-6">
+    <nav ref={navRef} className="toc hidden xl:block px-4 py-6">
       <div className="text-sm font-semibold mb-3 text-gray-700 dark:text-gray-300">
         目录
       </div>
       <ul className="space-y-1">
-        {items.map(item => (
-          <li key={item.id}>
-            <a
-              href={`#${item.id}`}
-              onClick={e => {
-                e.preventDefault()
-                const el = document.getElementById(item.id)
-                if (el)
-                  el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-              }}
-              className="toc-link block text-sm"
-              style={{ paddingLeft: `${(item.level - 1) * 12}px` }}
-            >
-              {item.text}
-            </a>
-          </li>
-        ))}
+        {items.map(item => {
+          const isActive = item.id === activeId
+
+          return (
+            <li key={item.id}>
+              <a
+                href={`#${item.id}`}
+                onClick={e => {
+                  e.preventDefault()
+                  const el = document.getElementById(item.id)
+                  if (el)
+                    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                }}
+                data-active={isActive}
+                aria-current={isActive ? 'location' : undefined}
+                className={`toc-link block text-sm ${isActive ? 'toc-link-active' : ''}`}
+                style={{ paddingLeft: `${(item.level - 1) * 12}px` }}
+              >
+                {item.text}
+              </a>
+            </li>
+          )
+        })}
       </ul>
     </nav>
   )

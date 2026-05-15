@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Outlet } from 'react-router-dom'
+import { useLayoutEffect, useState } from 'react'
+import { Outlet, useLocation } from 'react-router-dom'
 import Navbar from '@/components/Navbar'
 import BlogSidebar from '@/components/BlogSidebar'
 import BlogMeta from '@/components/BlogMeta'
@@ -7,7 +7,29 @@ import BlogPagination from '@/components/BlogPagination'
 import Footer from '@/components/Footer'
 
 export default function BlogLayout() {
+  const location = useLocation()
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+
+  useLayoutEffect(() => {
+    if (!location.hash) {
+      window.scrollTo(0, 0)
+    }
+
+    const rafId = window.requestAnimationFrame(() => {
+      if (!location.hash) {
+        window.scrollTo(0, 0)
+        return
+      }
+
+      const target = document.getElementById(location.hash.slice(1))
+      if (!target) return
+
+      const top = target.getBoundingClientRect().top + window.scrollY - 96
+      window.scrollTo({ top: Math.max(0, top), left: 0, behavior: 'auto' })
+    })
+
+    return () => window.cancelAnimationFrame(rafId)
+  }, [location.pathname, location.hash])
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950">

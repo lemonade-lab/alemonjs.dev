@@ -16,126 +16,119 @@
   },
   {
     "id": "alemonjsDocs",
-    "label": "核心设计",
+    "label": "开发手册",
     "position": 4,
     "items": [
       {
-        "id": "basic",
-        "label": "基础",
+        "id": "core",
+        "label": "核心设计",
         "position": 1,
         "items": [
           {
             "title": "响应事件",
-            "path": "/docs/alemonjsDocs/basic/response",
+            "path": "/docs/alemonjsDocs/core/response",
             "position": 1
           },
           {
             "title": "匹配路由",
-            "path": "/docs/alemonjsDocs/basic/router",
+            "path": "/docs/alemonjsDocs/core/router",
             "position": 2
           },
           {
             "title": "Hooks",
-            "path": "/docs/alemonjsDocs/basic/hook",
+            "path": "/docs/alemonjsDocs/core/hook",
             "position": 3
           },
           {
             "title": "数据格式",
-            "path": "/docs/alemonjsDocs/basic/data-type",
+            "path": "/docs/alemonjsDocs/core/data-type",
             "position": 5
           },
           {
-            "title": "应用周期",
-            "path": "/docs/alemonjsDocs/basic/cycle",
+            "title": "事件类型",
+            "path": "/docs/alemonjsDocs/core/message-type",
+            "position": 5
+          },
+          {
+            "title": "生命周期",
+            "path": "/docs/alemonjsDocs/core/cycle",
             "position": 6
           },
           {
             "title": "中间件",
-            "path": "/docs/alemonjsDocs/basic/middleware",
+            "path": "/docs/alemonjsDocs/core/middleware",
             "position": 6
           },
           {
             "title": "路由DSL",
-            "path": "/docs/alemonjsDocs/basic/router-sdl",
+            "path": "/docs/alemonjsDocs/core/router-sdl",
             "position": 7
           }
         ]
       },
       {
-        "id": "advance",
-        "label": "进阶",
+        "id": "http",
+        "label": "HTTP 服务",
         "position": 2,
         "items": [
           {
-            "title": "事件类型",
-            "path": "/docs/alemonjsDocs/advance/message-type",
-            "position": 5
-          },
-          {
-            "title": "配置读取",
-            "path": "/docs/alemonjsDocs/advance/config",
-            "position": 6
-          },
-          {
-            "title": "工具函数",
-            "path": "/docs/alemonjsDocs/advance/utils",
-            "position": 9
-          },
-          {
-            "title": "定时任务",
-            "path": "/docs/alemonjsDocs/advance/schedule",
-            "position": 10
-          }
-        ]
-      },
-      {
-        "id": "expert",
-        "label": "高阶",
-        "position": 3,
-        "items": [
-          {
-            "title": "实例对象",
-            "path": "/docs/alemonjsDocs/expert/class",
-            "position": 3
-          },
-          {
-            "title": "自定义平台",
-            "path": "/docs/alemonjsDocs/expert/platforms",
-            "position": 3
-          }
-        ]
-      },
-      {
-        "id": "open",
-        "label": "开放",
-        "position": 4,
-        "items": [
-          {
-            "title": "扩展",
-            "path": "/docs/alemonjsDocs/open/desktop",
-            "position": 7
-          },
-          {
-            "title": "模块",
-            "path": "/docs/alemonjsDocs/open/models",
-            "position": 7
-          }
-        ]
-      },
-      {
-        "id": "server",
-        "label": "接口",
-        "position": 5,
-        "items": [
-          {
             "title": "中间件路由",
-            "path": "/docs/alemonjsDocs/server/route-mw",
+            "path": "/docs/alemonjsDocs/http/route-mw",
             "position": 7
           },
           {
             "title": "接口路由",
-            "path": "/docs/alemonjsDocs/server/route",
+            "path": "/docs/alemonjsDocs/http/route",
             "position": 7
+          }
+        ]
+      },
+      {
+        "id": "modules",
+        "label": "模块与开放能力",
+        "position": 3,
+        "items": [
+          {
+            "title": "实例对象",
+            "path": "/docs/alemonjsDocs/modules/class",
+            "position": 3
+          },
+          {
+            "title": "自定义平台",
+            "path": "/docs/alemonjsDocs/modules/platforms",
+            "position": 3
+          },
+          {
+            "title": "扩展",
+            "path": "/docs/alemonjsDocs/modules/desktop",
+            "position": 7
+          },
+          {
+            "title": "模块",
+            "path": "/docs/alemonjsDocs/modules/models",
+            "position": 7
+          }
+        ]
+      },
+      {
+        "id": "advanced",
+        "label": "进阶能力",
+        "position": 4,
+        "items": [
+          {
+            "title": "配置读取",
+            "path": "/docs/alemonjsDocs/advanced/config",
+            "position": 6
+          },
+          {
+            "title": "工具函数",
+            "path": "/docs/alemonjsDocs/advanced/utils",
+            "position": 9
+          },
+          {
+            "title": "定时任务",
+            "path": "/docs/alemonjsDocs/advanced/schedule",
+            "position": 10
           }
         ]
       }

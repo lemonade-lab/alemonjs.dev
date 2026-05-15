@@ -6,18 +6,24 @@ label: '配置说明'
 
 # 配置说明
 
+:::info
+
+配置的每个字段都是可选的，需要什么就补什么，不需要则忽视
+
+:::
+
 ### 基础配置
 
 ```yaml title="alemon.config.yaml"
 # === 服务器配置 ===
-port: 17117 # CBP服务器端口，快捷参数 --port
-serverPort: 18110 # 应用服务器端口（可选，仅在需要Web服务时设置）
+port: 17117 # CBP服务器端口 （可选，仅需要外部交互时设置），快捷参数 --port 17117
+serverPort: 18110 # 应用服务器端口（可选，仅需要启动http服务时设置），快捷参数 --serverPort 17117
 
 # === 应用配置 ===
-input: 'lib/index.js' # 应用入口文件路径，快捷参数 --input
-login: 'discord' # 登录平台标识，快捷参数 --login
-url: 'ws://127.0.0.1:17117' # CBP服务器连接地址，快捷参数 --url
-is_full_receive: false # 是否全量接收消息（用于分流处理）
+input: 'lib/index.js' #（可选） 应用入口文件路径，快捷参数 --input
+login: 'discord' # （可选）登录平台标识，快捷参数 --login
+url: 'ws://127.0.0.1:17117' # （可选）CBP服务器连接地址，快捷参数 --url
+is_full_receive: false # （可选）是否全量接收消息（用于分流处理）
 ```
 
 ### 权限管理

@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 interface BlogPost {
   title: string
@@ -26,6 +26,7 @@ export default function BlogSidebar({
   onClose
 }: BlogSidebarProps) {
   const location = useLocation()
+  const sidebarRef = useRef<HTMLElement | null>(null)
   const [collapsedYears, setCollapsedYears] = useState<Record<string, boolean>>(
     {}
   )
@@ -65,6 +66,18 @@ export default function BlogSidebar({
     (a, b) => parseInt(b) - parseInt(a)
   )
 
+  useEffect(() => {
+    const activeItem = sidebarRef.current?.querySelector(
+      '[data-active="true"]'
+    ) as HTMLElement | null
+
+    activeItem?.scrollIntoView({
+      block: 'center',
+      inline: 'nearest',
+      behavior: 'smooth'
+    })
+  }, [location.pathname, groupedBlogs, isOpen, collapsedYears])
+
   return (
     <>
       {/* Mobile overlay */}
@@ -77,6 +90,7 @@ export default function BlogSidebar({
 
       {/* Sidebar */}
       <aside
+        ref={sidebarRef}
         className={`
         fixed top-16 left-0 z-40 w-64
         h-[calc(100vh-4rem)]
@@ -111,10 +125,10 @@ export default function BlogSidebar({
         <nav className="p-4 lg:p-6 space-y-2">
           {sortedYears.map(year => {
             const yearBlogs = groupedBlogs[year]
-            const isCollapsed = collapsedYears[year]
             const isAnyActive = yearBlogs.some(
               blog => location.pathname === blog.path
             )
+            const isCollapsed = isAnyActive ? false : !!collapsedYears[year]
 
             return (
               <div key={year} className="mb-2">
@@ -175,6 +189,7 @@ export default function BlogSidebar({
                           key={blog.path}
                           to={blog.path}
                           onClick={onClose}
+                          data-active={isActive}
                           className={`
                             block px-3 py-2 rounded-md text-sm transition-all duration-200
                             ${

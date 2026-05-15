@@ -36,6 +36,105 @@ interface DocRoute {
   filePath: string
   metadata: DocMetadata
   importName: string
+  content: string
+}
+
+interface HeadingNode {
+  id: string
+  title: string
+  level: number
+  content: string
+}
+
+interface SearchIndexEntry {
+  id: string
+  type: 'doc' | 'blog'
+  title: string
+  sectionTitle?: string
+  titles: string[]
+  path: string
+  excerpt: string
+  text: string
+  tags: string[]
+  date?: string
+}
+
+function slugify(text = '') {
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/<[^>]+>/g, '')
+    .replace(/`+/g, '')
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/[^a-z0-9\u4e00-\u9fa5]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+}
+
+function stripMarkdown(text: string) {
+  return text
+    .replace(/```[\s\S]*?```/g, ' ')
+    .replace(/~~~[\s\S]*?~~~/g, ' ')
+    .replace(/:::[a-zA-Z0-9_-]*/g, ' ')
+    .replace(/`([^`]+)`/g, '$1')
+    .replace(/!\[([^\]]*)\]\([^)]+\)/g, '$1')
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/^>\s?/gm, '')
+    .replace(/^#{1,6}\s+/gm, '')
+    .replace(/^\s*[-*+]\s+/gm, '')
+    .replace(/^\s*\d+\.\s+/gm, '')
+    .replace(/\|/g, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/\{[^}]+\}/g, ' ')
+    .replace(/[*_~]/g, '')
+    .replace(/\r/g, '')
+    .replace(/\n+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+function toExcerpt(text: string, maxLength = 120) {
+  const normalized = stripMarkdown(text)
+  if (normalized.length <= maxLength) return normalized
+  return `${normalized.slice(0, maxLength).trim()}...`
+}
+
+function extractHeadings(content: string): HeadingNode[] {
+  const sanitized = content
+    .replace(/```[\s\S]*?```/g, '')
+    .replace(/~~~[\s\S]*?~~~/g, '')
+  const lines = sanitized.split('\n')
+  const sections: Array<{
+    level: number
+    title: string
+    id: string
+    lines: string[]
+  }> = []
+  let current: (typeof sections)[number] | null = null
+
+  for (const line of lines) {
+    const headingMatch = line.match(/^(#{1,4})\s+(.+?)\s*$/)
+    if (headingMatch) {
+      current = {
+        level: headingMatch[1].length,
+        title: stripMarkdown(headingMatch[2]),
+        id: slugify(headingMatch[2]),
+        lines: []
+      }
+      sections.push(current)
+      continue
+    }
+
+    current?.lines.push(line)
+  }
+
+  return sections
+    .map(section => ({
+      id: section.id,
+      title: section.title,
+      level: section.level,
+      content: stripMarkdown(section.lines.join('\n'))
+    }))
+    .filter(section => section.title)
 }
 
 interface CategoryConfig {
@@ -82,8 +181,8 @@ function scanDocs(
     if (stat.isDirectory()) {
       routes.push(...scanDocs(fullPath, baseDir, counter))
     } else if (item.endsWith('.md') || item.endsWith('.mdx')) {
-      const content = fs.readFileSync(fullPath, 'utf-8')
-      const { data } = matter(content)
+      const fileContent = fs.readFileSync(fullPath, 'utf-8')
+      const { data, content } = matter(fileContent)
 
       const relativePath = path.relative(baseDir, fullPath)
       const urlPath = relativePath
@@ -97,7 +196,8 @@ function scanDocs(
         path: urlPath,
         filePath: relativePath.replace(/\\/g, '/'),
         metadata: data as DocMetadata,
-        importName
+        importName,
+        content
       })
     }
   }
@@ -130,8 +230,8 @@ function scanBlog(
     if (stat.isDirectory()) {
       routes.push(...scanBlog(fullPath, baseDir, counter))
     } else if (item.endsWith('.md') || item.endsWith('.mdx')) {
-      const content = fs.readFileSync(fullPath, 'utf-8')
-      const { data } = matter(content)
+      const fileContent = fs.readFileSync(fullPath, 'utf-8')
+      const { data, content } = matter(fileContent)
 
       const relativePath = path.relative(baseDir, fullPath)
       const urlPath = relativePath
@@ -153,7 +253,8 @@ function scanBlog(
         path: urlPath,
         filePath: relativePath.replace(/\\/g, '/'),
         metadata: { ...data, date } as DocMetadata,
-        importName
+        importName,
+        content
       })
     }
   }
@@ -166,6 +267,69 @@ function scanBlog(
   })
 
   return routes
+}
+
+function generateSearchIndex(
+  docsRoutes: DocRoute[],
+  blogRoutes: DocRoute[]
+): SearchIndexEntry[] {
+  const createEntries = (
+    routes: DocRoute[],
+    type: 'doc' | 'blog',
+    basePath: string
+  ) =>
+    routes.flatMap((route, index) => {
+      const headings = extractHeadings(route.content)
+      const title = String(
+        route.metadata.title ||
+          route.metadata.sidebar_label ||
+          route.metadata.label ||
+          headings[0]?.title ||
+          route.path
+      )
+      const tags = Array.isArray(route.metadata.tags)
+        ? route.metadata.tags.map(tag => String(tag))
+        : []
+      const pagePath = `${basePath}/${route.path}`
+      const fullText = stripMarkdown(route.content)
+      const entries: SearchIndexEntry[] = [
+        {
+          id: `${type}-page-${index}`,
+          type,
+          title,
+          titles: [title],
+          path: pagePath,
+          excerpt: toExcerpt(
+            route.metadata.description?.toString() || fullText
+          ),
+          text: fullText,
+          tags,
+          date: route.metadata.date?.toString()
+        }
+      ]
+
+      headings.forEach((heading, headingIndex) => {
+        entries.push({
+          id: `${type}-section-${index}-${headingIndex}`,
+          type,
+          title,
+          sectionTitle: heading.title,
+          titles: [title, heading.title],
+          path: `${pagePath}#${heading.id}`,
+          excerpt: toExcerpt(heading.content || fullText),
+          text: heading.content || fullText,
+          tags,
+          date: route.metadata.date?.toString()
+        })
+      })
+
+      return entries
+    })
+
+  return [
+    ...createEntries(docsRoutes, 'doc', '/docs'),
+    ...createEntries(blogRoutes, 'blog', '/blog')
+  ]
 }
 
 /**
@@ -538,6 +702,14 @@ function main() {
     'utf-8'
   )
   console.log('✅ 博客元数据已生成: src/config/blog.json')
+
+  const searchIndex = generateSearchIndex(docsRoutes, blogRoutes)
+  fs.writeFileSync(
+    path.join(srcDir, 'config', 'search-index.json'),
+    JSON.stringify(searchIndex, null, 2),
+    'utf-8'
+  )
+  console.log('✅ 搜索索引已生成: src/config/search-index.json')
 
   // 生成作者配置
   const authorsConfig = generateAuthorsConfig(blogDir)

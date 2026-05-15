@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useLayoutEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import Navbar from '@/components/Navbar'
 import DocsSidebar from '@/components/DocsSidebar'
@@ -7,7 +7,29 @@ import Footer from '@/components/Footer'
 import PageToc from '@/components/PageToc'
 
 export default function DocsLayout() {
+  const location = useLocation()
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+
+  useLayoutEffect(() => {
+    if (!location.hash) {
+      window.scrollTo(0, 0)
+    }
+
+    const rafId = window.requestAnimationFrame(() => {
+      if (!location.hash) {
+        window.scrollTo(0, 0)
+        return
+      }
+
+      const target = document.getElementById(location.hash.slice(1))
+      if (!target) return
+
+      const top = target.getBoundingClientRect().top + window.scrollY - 96
+      window.scrollTo({ top: Math.max(0, top), left: 0, behavior: 'auto' })
+    })
+
+    return () => window.cancelAnimationFrame(rafId)
+  }, [location.pathname, location.hash])
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950">
@@ -61,14 +83,4 @@ export default function DocsLayout() {
       </footer>
     </div>
   )
-}
-
-// Scroll to top on route change within docs
-export function DocsLayoutWrapper() {
-  const location = useLocation()
-  useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
-  }, [location.pathname])
-
-  return <DocsLayout />
 }

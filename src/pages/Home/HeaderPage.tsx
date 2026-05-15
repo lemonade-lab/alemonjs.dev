@@ -26,7 +26,7 @@ export default function HeaderPage() {
             onClick={() => {
               window.open(
                 'https://github.com/lemonade-lab/alemondesk/releases',
-                '_self'
+                '_blank'
               )
             }}
           >
@@ -37,7 +37,7 @@ export default function HeaderPage() {
             onClick={() => {
               window.open(
                 'https://github.com/lemonade-lab/alemongo/releases',
-                '_self'
+                '_blank'
               )
             }}
           >

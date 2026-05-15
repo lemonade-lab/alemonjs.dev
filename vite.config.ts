@@ -48,8 +48,46 @@ export default defineConfig({
     viteCompression({ algorithm: 'brotliCompress', ext: '.br' }),
     // 注册 PWA
     VitePWA({
-      registerType: 'autoUpdate',
-      outDir: outDir
+      injectRegister: false,
+      registerType: 'prompt',
+      outDir: outDir,
+      includeAssets: ['icon.ico', 'pwa-192x192.png', 'pwa-512x512.png'],
+      manifest: {
+        name: 'ALemonJS',
+        short_name: 'ALemonJS',
+        description: 'ALemonJS 官方文档与发布日志站点',
+        theme_color: '#0f172a',
+        background_color: '#f8fafc',
+        display: 'standalone',
+        lang: 'zh-CN',
+        start_url: '/',
+        icons: [
+          {
+            src: '/pwa-192x192.png',
+            sizes: '192x192',
+            type: 'image/png'
+          },
+          {
+            src: '/pwa-512x512.png',
+            sizes: '512x512',
+            type: 'image/png'
+          },
+          {
+            src: '/maskable-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'maskable'
+          }
+        ]
+      },
+      workbox: {
+        cleanupOutdatedCaches: true,
+        clientsClaim: true,
+        skipWaiting: false
+      },
+      devOptions: {
+        enabled: true
+      }
     })
   ],
   resolve: {

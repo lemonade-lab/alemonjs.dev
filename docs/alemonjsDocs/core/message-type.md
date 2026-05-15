@@ -151,18 +151,80 @@ type Events = {
 | -------- | -------- | --------------------------------------- |
 | `OpenId` | `string` | 平台开放 ID，部分平台需要此字段进行回复 |
 
-### AutoFields — 框架自动注入
+### RuntimeFields — 运行时字段
 
-以下字段由框架自动填充，适配器无需手动设置，开发者可以直接读取。
+以下字段由框架在运行时统一补齐，开发者可以直接读取。
 
-| 字段       | 类型     | 说明                           |
-| ---------- | -------- | ------------------------------ |
-| `CreateAt` | `number` | 事件创建时间戳（`Date.now()`） |
-| `DeviceId` | `string` | 来源设备编号                   |
+| 字段        | 类型      | 说明                            |
+| ----------- | --------- | ------------------------------- |
+| `IsPrivate` | `boolean` | 当前事件是否来自私聊 / 私人窗口 |
+| `IsAtMe`    | `boolean` | 当前消息是否显式 `@` 了机器人   |
+| `CreateAt`  | `number`  | 事件创建时间戳（`Date.now()`）  |
+| `DeviceId`  | `string`  | 来源设备编号                    |
+
+其中：
+
+- `IsPrivate` 统一描述当前事件是否为私域场景
+- `IsAtMe` 统一描述当前消息是否显式 mention 了机器人
+- `IsMaster` / `IsBot` 仍由核心层按统一配置完成最终归一化判断
+
+### SendState — 发送状态字段
+
+框架还会在事件对象上维护发送事实状态：
+
+| 字段             | 类型      | 说明                       |
+| ---------------- | --------- | -------------------------- |
+| `_sendAttempted` | `boolean` | 是否尝试发送过消息         |
+| `_sendSucceeded` | `boolean` | 是否至少成功发送过一次     |
+| `_lastSendError` | `unknown` | 最近一次发送失败的错误内容 |
+
+这些字段的定位是：
+
+- 框架只负责记录发送事实
+- 是否据此做 fallback，由应用自己决定
+
+为了兼容旧版本，框架仍会同步回填：
+
+- `_has_send_attempt`
+- `_has_send_success`
+- `_last_send_error`
 
 ### Expansion — 扩展字段
 
 所有事件都包含 `[key: string]: any` 索引签名，允许适配器通过 `_tag` 等自定义字段携带平台特有信息。
+
+### RouteContext — 路由上下文
+
+虽然内部仍然存在 `event.__route`，但开发时不推荐直接读取它。
+
+推荐统一通过 `useRoute()`：
+
+```ts
+import { useRoute } from 'alemonjs'
+
+export default async () => {
+  const [route] = useRoute()
+
+  if (!route.matched) {
+    return
+  }
+
+  const uid = route.param('uid')
+}
+```
+
+`useRoute()` 当前支持：
+
+- `matched`
+- `key`
+- `text`
+- `sourceText`
+- `rewrittenText`
+- `rawArgs`
+- `parsedArgs`
+- `params`
+- `param(name)`
+- `hasParam(name)`
 
 ---
 

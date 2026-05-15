@@ -1,5 +1,6 @@
 // Vite 环境变量类型定义
 /// <reference types="vite/client" />
+/// <reference types="vite-plugin-pwa/client" />
 
 interface ImportMetaEnv {
   readonly VITE_APP_TITLE: string
