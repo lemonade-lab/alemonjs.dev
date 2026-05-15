@@ -69,7 +69,19 @@ label: '开源生态'
 [openai]: https://github.com/xiuxianjs/openai
 [aichat]: https://gitee.com/suancaixianyu/alemonjs-aichat
 
-### 特殊
+### SKILL
+
+> 用于 AI 增强的 skill
+
+| 项目名           | 说明              |
+| ---------------- | ----------------- |
+| [common-dev]     | alemonjs 通用开发 |
+| [yunzai-migrate] | 迁移yunzai插件    |
+
+[common-dev]: https://github.com/lemonade-lab/alemonjs-dev-skill
+[yunzai-migrate]: https://github.com/yunzaijs/alemonjs-migrate-skill
+
+### 开发与部署
 
 | 项目名                  | 说明                                    |
 | ----------------------- | --------------------------------------- |
@@ -78,13 +90,3 @@ label: '开源生态'
 
 [code]: https://github.com/lemonade-lab/subscribe-code
 [qq-bot-socket-to-hook]: https://github.com/lemonade-lab/qq-bot
-
-### SKILL
-
-> 用于 AI 增强的 skill
-
-| 项目名   | 说明              |
-| -------- | ----------------- |
-| [common] | alemonjs 通用开发 |
-
-[common]: https://github.com/lemonade-lab/alemonjs-dev-skill
