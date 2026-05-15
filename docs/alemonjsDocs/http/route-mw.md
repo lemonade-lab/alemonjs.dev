@@ -1,45 +1,99 @@
 ---
-label: '中间件路由'
-sidebar_position: 7
+label: '路由中间件'
+sidebar_position: 8
 ---
 
-# 中间件路由
+# 路由中间件
 
 :::tip
 
-你将了解如何配置中间件，更有效的管理你的服务
+当前推荐把 HTTP 中间件直接挂到 `koaRouter` 上管理，而不是依赖隐式目录约定。
 
 :::
 
-## 中间件定义
+## 基础写法
 
-为/api/路由下的所有接口加中间件
+```ts title="src/index.ts"
+import KoaRouter from 'koa-router'
+import { defineChildren } from 'alemonjs'
 
-`/app/api/_middleware`
+const router = new KoaRouter({ prefix: '/demo' })
 
-```ts title="src/route/api/_middleware.ts"
-const myCombinedMiddleware = () => {
-  return async (ctx, next) => {
-    // 你自己的逻辑
-    ctx.state.myCustomThing = 'xxx'
+router.use(async (ctx, next) => {
+  ctx.state.requestId = crypto.randomUUID()
+  await next()
+})
 
-    // 继续走后面的中间件
-    await next()
+router.get('/ping', ctx => {
+  ctx.body = {
+    code: 200,
+    requestId: ctx.state.requestId,
+    message: 'pong'
   }
-}
+})
 
-export default myCombinedMiddleware
+export default defineChildren({
+  register() {
+    return {
+      koaRouter: router
+    }
+  }
+})
 ```
 
-为某路由下加中间件，只需要新增 \_middleware.ts 文件
+## 解析 Body
 
-## 解析Body
+可以直接使用 Koa 生态中间件，例如 `koa-bodyparser`：
 
-可以直接使用 koa 生态，加载中间件
-
-`/app/api/_middleware`
-
-```ts title="src/route/api/_middleware.ts"
+```ts title="src/index.ts"
+import KoaRouter from 'koa-router'
 import bodyParser from 'koa-bodyparser'
-export default bodyParser()
+import { defineChildren } from 'alemonjs'
+
+const router = new KoaRouter({ prefix: '/demo' })
+
+router.use(bodyParser())
+
+router.post('/echo', ctx => {
+  ctx.body = {
+    code: 200,
+    data: ctx.request.body
+  }
+})
+
+export default defineChildren({
+  register() {
+    return {
+      koaRouter: router
+    }
+  }
+})
 ```
+
+## 按前缀拆分
+
+如果一个应用里有多组 HTTP 能力，建议拆成多个 router：
+
+```ts
+const apiRouter = new KoaRouter({ prefix: '/api' })
+const adminRouter = new KoaRouter({ prefix: '/admin' })
+
+adminRouter.use(async (ctx, next) => {
+  // 管理侧鉴权
+  await next()
+})
+
+export default defineChildren({
+  register() {
+    return {
+      koaRouter: [apiRouter, adminRouter]
+    }
+  }
+})
+```
+
+## 推荐理解
+
+- 中间件跟着显式注册的 `koaRouter` 走
+- 权限、审计、Body 解析都尽量显式挂载
+- 不依赖隐式目录规则，边界会更清楚

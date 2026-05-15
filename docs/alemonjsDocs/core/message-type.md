@@ -195,9 +195,7 @@ type Events = {
 
 ### RouteContext — 路由上下文
 
-虽然内部仍然存在 `event.__route`，但开发时不推荐直接读取它。
-
-推荐统一通过 `useRoute()`：
+`event.__route`，开发时不推荐直接读取。
 
 ```ts
 import { useRoute } from 'alemonjs'
@@ -212,8 +210,6 @@ export default async () => {
   const uid = route.param('uid')
 }
 ```
-
-`useRoute()` 当前支持：
 
 - `matched`
 - `key`

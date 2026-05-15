@@ -72,14 +72,14 @@
         "position": 2,
         "items": [
           {
-            "title": "中间件路由",
-            "path": "/docs/alemonjsDocs/http/route-mw",
-            "position": 7
-          },
-          {
             "title": "接口路由",
             "path": "/docs/alemonjsDocs/http/route",
             "position": 7
+          },
+          {
+            "title": "路由中间件",
+            "path": "/docs/alemonjsDocs/http/route-mw",
+            "position": 8
           }
         ]
       },

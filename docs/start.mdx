@@ -14,7 +14,7 @@ label: '快速开始'
 
 同时也对JavaScript主流的打包工具不熟悉，
 
-请前往 https://lemonade-lab.github.io/lvyjs.dev/
+请前往 https://lemonade-lab.github.io/lvyjs.dev/ 了解框架自建的构建工具
 
 :::
 
@@ -49,6 +49,13 @@ yarn add alemonjs --registry=https://registry.npmmirror.com
 
 ```sh
 npm create alemonjs@latest -y
+```
+
+- 进入并加载
+
+```sh
+cd alemonjs
+yarn install
 ```
 
 - 启动
@@ -121,8 +128,14 @@ node index.js
 
 [`ALemonTestOne`](https://marketplace.visualstudio.com/items?itemName=lemonadex.alemonjs-testone)
 
+- 外部连接启动，确保ALemonTestOne可连接
+
+```sh
+yarn dev --port 17117
+```
+
 ## 对TS的支持
 
 推荐 使用lvyjs开发构建工具，以支持ts环境
 
-请前往 https://lemonade-lab.github.io/lvyjs.dev/ 了解
+请前往 https://lemonade-lab.github.io/lvyjs.dev/ 了解框架自建的构建工具
