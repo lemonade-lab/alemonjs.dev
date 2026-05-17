@@ -7,18 +7,9 @@ label: '连接平台'
 
 :::warning
 
-点击`Project`、`Status`可进一步了解
+点击`Project`、`Status`可打开包详细说明，进行配置密钥等信息
 
 :::
-
-```yaml title="alemon.config.yaml"
-# 基础连接例子
-
-# 以下例子对应bubble平台。包名为 @alemonjs/bubble
-# @alemonjs/为同一仓库内维护，而alemonjs-为其他开发者进行维护
-bubble:
-  token: ''
-```
 
 ## 官方
 

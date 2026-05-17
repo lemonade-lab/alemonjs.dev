@@ -6,20 +6,6 @@ label: '快速开始'
 
 # 快速开始
 
-:::tip
-
-本文默认你已经了解并熟悉NodeJS编程，
-
-如果你对NodeJS的部署和配置不熟悉，
-
-同时也对JavaScript主流的打包工具不熟悉，
-
-请前往 https://lemonade-lab.github.io/lvyjs.dev/ 了解框架自建的构建工具
-
-:::
-
-## 初始化
-
 <Tabs>
   <TabItem value="0" label="npmjs" default>
    
@@ -35,15 +21,34 @@ npm install yarn -g
 npm install yarn -g --registry=https://registry.npmmirror.com
 ```
 
-```sh
-npm init -y
-yarn add alemonjs --registry=https://registry.npmmirror.com
-```
-
   </TabItem>
 </Tabs>
 
-## 使用模板
+## 日常使用
+
+- 安装并加载
+
+```sh
+npm create alemonjs@latest -y --bot
+cd alemonb
+yarn install
+```
+
+- 启动并连接
+
+> login 参数指定连接平台，此处以qq-bot为例，不指定则仅运行
+
+```sh
+yarn app --login qq-bot
+```
+
+[点击了解如何连接平台](https://alemonjs.com/docs/environment)
+
+[点击了解如何安装插件](https://alemonjs.com/docs/apps)
+
+## 开发者
+
+### 使用模板
 
 - 获取模板
 
@@ -64,7 +69,7 @@ yarn install
 yarn dev
 ```
 
-## 手动构建
+### 手动构建
 
 - 创建启动文件
 
@@ -120,7 +125,7 @@ export default defineChildren({
 node index.js
 ```
 
-## 测试平台
+### 测试平台
 
 - 下载vscode并使用ALemonTestOne扩展
 
@@ -134,7 +139,7 @@ node index.js
 yarn dev --port 17117
 ```
 
-## 对TS的支持
+### 对TS的支持
 
 推荐 使用lvyjs开发构建工具，以支持ts环境
 

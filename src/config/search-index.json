@@ -2376,7 +2376,7 @@
     "titles": ["开源生态"],
     "path": "/docs/apps",
     "excerpt": "开源生态 模块机制到底是怎么回事？请点击了解👉模块化应用的制作 增强 最大可能的去加载现有生态的扩展 项目名 说明 ------------- --------------------------------- [load-yunzai]...",
-    "text": "开源生态 模块机制到底是怎么回事？请点击了解👉模块化应用的制作 增强 最大可能的去加载现有生态的扩展 项目名 说明 ------------- --------------------------------- [load-yunzai] 桥接层,加载所有yunzai插件 [yunzai] 胶水层,让你的yunzai插件单独跑起来 [load-yunzai]: https://github.com/yunzaijs/alemonjs-load-yunzai [yunzai]: https://github.com/yunzaijs/alemonjs-yunzai IP 通指游戏、动漫等IP专用的相关扩展 项目名 说明 ------ ------------ [mhy] 米哈游 [miao] 原神 [kuro] 库街区(库洛) [roco] 洛克王国世界 [mhy]: https://github.com/yunzaijs/alemonjs-mhy [miao]: https://github.com/yunzaijs/alemonjs-miao [kuro]: https://github.com/loneyclown/alemonjs-kuro [roco]: https://github.com/ningmengchongshui/alemonjs-roco 功能 非IP类的，功能性扩展 项目名 说明 ------------ ------------- [cheese] AI+今日运势等 [fishspeech] 语音转换工具 [cheese]: https://github.com/V2233/alemonjs-cheese [fishspeech]: https://github.com/oldcitynight/alemonjs-fishspeech-plugin 游戏 独立游戏，即可非IP，也非功能性的扩展 项目名 说明 --------- ------------ [xianyu] 扫雷等小游戏 [xiuxian] 修仙文游 [xianyu]: https://gitee.com/suancaixianyu/xianyu-plugin/tree/alemonjs/ [xiuxian]: https://github.com/xiuxianjs/xiuxian-plugin AI 项目名 说明 -------- ---------- [aichat] 猫娘AI [openai] 通用AI连接 [openai]: https://github.com/xiuxianjs/openai [aichat]: https://gitee.com/suancaixianyu/alemonjs-aichat SKILL 用于 AI 增强的 skill 项目名 说明 ---------------- ----------------- [common-dev] alemonjs 通用开发 [yunzai-migrate] 迁移yunzai插件 [common-dev]: https://github.com/lemonade-lab/alemonjs-dev-skill [yunzai-migrate]: https://github.com/yunzaijs/alemonjs-migrate-skill 开发与部署 项目名 说明 ----------------------- --------------------------------------- [code] 订阅代码 [qq-bot-socket-to-hook] 支持把单个或多个qqBot账号转为socket服务 [code]: https://github.com/lemonade-lab/subscribe-code [qq-bot-socket-to-hook]: https://github.com/lemonade-lab/qq-bot",
+    "text": "开源生态 模块机制到底是怎么回事？请点击了解👉模块化应用的制作 增强 最大可能的去加载现有生态的扩展 项目名 说明 ------------- --------------------------------- [load-yunzai] 桥接层,加载所有yunzai插件 [yunzai] 胶水层,让你的yunzai插件单独跑起来 [load-yunzai]: https://github.com/yunzaijs/alemonjs-load-yunzai [yunzai]: https://github.com/yunzaijs/alemonjs-yunzai IP 通指游戏、动漫等IP专用的相关扩展 项目名 说明 ------ ------------ [mhy] 米哈游 [miao] 原神 [kuro] 库街区(库洛) [roco] 洛克王国世界 [mhy]: https://github.com/yunzaijs/alemonjs-mhy [miao]: https://github.com/yunzaijs/alemonjs-miao [kuro]: https://github.com/loneyclown/alemonjs-kuro [roco]: https://github.com/ningmengchongshui/alemonjs-roco 功能 非IP类的，功能性扩展 项目名 说明 ------------ ----------------------- [xiangling] 香菱,机器人内部管理面板 [cheese] AI+今日运势等 [fishspeech] 语音转换工具 [xiangling]: https://github.com/QingYingX/alemonjs-xiangling [cheese]: https://github.com/V2233/alemonjs-cheese [fishspeech]: https://github.com/oldcitynight/alemonjs-fishspeech-plugin 游戏 独立游戏，即可非IP，也非功能性的扩展 项目名 说明 --------- ------------ [xianyu] 扫雷等小游戏 [xiuxian] 修仙文游 [xianyu]: https://gitee.com/suancaixianyu/xianyu-plugin/tree/alemonjs/ [xiuxian]: https://github.com/xiuxianjs/xiuxian-plugin AI 项目名 说明 -------- ---------- [aichat] 猫娘AI [openai] 通用AI连接 [openai]: https://github.com/xiuxianjs/openai [aichat]: https://gitee.com/suancaixianyu/alemonjs-aichat SKILL 用于 AI 增强的 skill 项目名 说明 ---------------- ----------------- [common-dev] alemonjs 通用开发 [yunzai-migrate] 迁移yunzai插件 [common-dev]: https://github.com/lemonade-lab/alemonjs-dev-skill [yunzai-migrate]: https://github.com/yunzaijs/alemonjs-migrate-skill 开发与部署 项目名 说明 ----------------------- --------------------------------------- [code] 订阅代码 [qq-bot-socket-to-hook] 支持把单个或多个qqBot账号转为socket服务 [code]: https://github.com/lemonade-lab/subscribe-code [qq-bot-socket-to-hook]: https://github.com/lemonade-lab/qq-bot",
     "tags": []
   },
   {
@@ -2419,8 +2419,8 @@
     "sectionTitle": "功能",
     "titles": ["开源生态", "功能"],
     "path": "/docs/apps#功能",
-    "excerpt": "非IP类的，功能性扩展 项目名 说明 ------------ ------------- [cheese] AI+今日运势等 [fishspeech] 语音转换工具 [cheese]: https://github.com/V2233/a...",
-    "text": "非IP类的，功能性扩展 项目名 说明 ------------ ------------- [cheese] AI+今日运势等 [fishspeech] 语音转换工具 [cheese]: https://github.com/V2233/alemonjs-cheese [fishspeech]: https://github.com/oldcitynight/alemonjs-fishspeech-plugin",
+    "excerpt": "非IP类的，功能性扩展 项目名 说明 ------------ ----------------------- [xiangling] 香菱,机器人内部管理面板 [cheese] AI+今日运势等 [fishspeech] 语音转换工具 [...",
+    "text": "非IP类的，功能性扩展 项目名 说明 ------------ ----------------------- [xiangling] 香菱,机器人内部管理面板 [cheese] AI+今日运势等 [fishspeech] 语音转换工具 [xiangling]: https://github.com/QingYingX/alemonjs-xiangling [cheese]: https://github.com/V2233/alemonjs-cheese [fishspeech]: https://github.com/oldcitynight/alemonjs-fishspeech-plugin",
     "tags": []
   },
   {
@@ -2626,8 +2626,8 @@
     "title": "连接平台",
     "titles": ["连接平台"],
     "path": "/docs/environment",
-    "excerpt": "连接平台 点击Project、Status可进一步了解 官方 QQ Project Status Description ------------------ ----------------------- ----------- [@al...",
-    "text": "连接平台 点击Project、Status可进一步了解 官方 QQ Project Status Description ------------------ ----------------------- ----------- [@alemonjs/qq-bot] [![qq-bot-s]][qq-bot-p] QQbot [@alemonjs/qq-bot]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/qq-bot [qq-bot-s]: https://img.shields.io/npm/v/@alemonjs/qq-bot.svg [qq-bot-p]: https://www.npmjs.com/package/@alemonjs/qq-bot Discord Project Status Description ------------------- ------------------------- ----------- [@alemonjs/discord] [![discord-s]][discord-p] Discord [@alemonjs/discord]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/discord [discord-s]: https://img.shields.io/npm/v/@alemonjs/discord.svg [discord-p]: https://www.npmjs.com/package/@alemonjs/discord KOOK Project Status Description ---------------- ------------------- ----------- [@alemonjs/kook] [![kook-s]][kook-p] KOOK [@alemonjs/kook]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/kook [kook-s]: https://img.shields.io/npm/v/@alemonjs/kook.svg [kook-p]: https://www.npmjs.com/package/@alemonjs/kook Telegram Project Status Description -------------------- --------------------------- ----------- [@alemonjs/telegram] [![telegram-s]][telegram-p] Telegram [@alemonjs/telegram]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/telegram [telegram-s]: https://img.shields.io/npm/v/@alemonjs/telegram.svg [telegram-p]: https://www.npmjs.com/package/@alemonjs/telegram 三方 第三方协议具有一定的风险性，请谨慎使用。 OneBot Project Status Description ------------------ ----------------------- ----------- [@alemonjs/onebot] [![onebot-s]][onebot-p] OneBot V11 [@alemonjs/onebot]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/onebot [onebot-s]: https://img.shields.io/npm/v/@alemonjs/onebot.svg [onebot-p]: https://www.npmjs.com/package/@alemonjs/onebot",
+    "excerpt": "连接平台 点击Project、Status可打开包详细说明，进行配置密钥等信息 官方 QQ Project Status Description ------------------ ----------------------- ----...",
+    "text": "连接平台 点击Project、Status可打开包详细说明，进行配置密钥等信息 官方 QQ Project Status Description ------------------ ----------------------- ----------- [@alemonjs/qq-bot] [![qq-bot-s]][qq-bot-p] QQbot [@alemonjs/qq-bot]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/qq-bot [qq-bot-s]: https://img.shields.io/npm/v/@alemonjs/qq-bot.svg [qq-bot-p]: https://www.npmjs.com/package/@alemonjs/qq-bot Discord Project Status Description ------------------- ------------------------- ----------- [@alemonjs/discord] [![discord-s]][discord-p] Discord [@alemonjs/discord]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/discord [discord-s]: https://img.shields.io/npm/v/@alemonjs/discord.svg [discord-p]: https://www.npmjs.com/package/@alemonjs/discord KOOK Project Status Description ---------------- ------------------- ----------- [@alemonjs/kook] [![kook-s]][kook-p] KOOK [@alemonjs/kook]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/kook [kook-s]: https://img.shields.io/npm/v/@alemonjs/kook.svg [kook-p]: https://www.npmjs.com/package/@alemonjs/kook Telegram Project Status Description -------------------- --------------------------- ----------- [@alemonjs/telegram] [![telegram-s]][telegram-p] Telegram [@alemonjs/telegram]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/telegram [telegram-s]: https://img.shields.io/npm/v/@alemonjs/telegram.svg [telegram-p]: https://www.npmjs.com/package/@alemonjs/telegram 三方 第三方协议具有一定的风险性，请谨慎使用。 OneBot Project Status Description ------------------ ----------------------- ----------- [@alemonjs/onebot] [![onebot-s]][onebot-p] OneBot V11 [@alemonjs/onebot]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/onebot [onebot-s]: https://img.shields.io/npm/v/@alemonjs/onebot.svg [onebot-p]: https://www.npmjs.com/package/@alemonjs/onebot",
     "tags": []
   },
   {
@@ -2637,8 +2637,8 @@
     "sectionTitle": "连接平台",
     "titles": ["连接平台", "连接平台"],
     "path": "/docs/environment#连接平台",
-    "excerpt": "点击Project、Status可进一步了解",
-    "text": "点击Project、Status可进一步了解",
+    "excerpt": "点击Project、Status可打开包详细说明，进行配置密钥等信息",
+    "text": "点击Project、Status可打开包详细说明，进行配置密钥等信息",
     "tags": []
   },
   {
@@ -2648,8 +2648,8 @@
     "sectionTitle": "官方",
     "titles": ["连接平台", "官方"],
     "path": "/docs/environment#官方",
-    "excerpt": "连接平台 点击Project、Status可进一步了解 官方 QQ Project Status Description ------------------ ----------------------- ----------- [@al...",
-    "text": "连接平台 点击Project、Status可进一步了解 官方 QQ Project Status Description ------------------ ----------------------- ----------- [@alemonjs/qq-bot] [![qq-bot-s]][qq-bot-p] QQbot [@alemonjs/qq-bot]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/qq-bot [qq-bot-s]: https://img.shields.io/npm/v/@alemonjs/qq-bot.svg [qq-bot-p]: https://www.npmjs.com/package/@alemonjs/qq-bot Discord Project Status Description ------------------- ------------------------- ----------- [@alemonjs/discord] [![discord-s]][discord-p] Discord [@alemonjs/discord]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/discord [discord-s]: https://img.shields.io/npm/v/@alemonjs/discord.svg [discord-p]: https://www.npmjs.com/package/@alemonjs/discord KOOK Project Status Description ---------------- ------------------- ----------- [@alemonjs/kook] [![kook-s]][kook-p] KOOK [@alemonjs/kook]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/kook [kook-s]: https://img.shields.io/npm/v/@alemonjs/kook.svg [kook-p]: https://www.npmjs.com/package/@alemonjs/kook Telegram Project Status Description -------------------- --------------------------- ----------- [@alemonjs/telegram] [![telegram-s]][telegram-p] Telegram [@alemonjs/telegram]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/telegram [telegram-s]: https://img.shields.io/npm/v/@alemonjs/telegram.svg [telegram-p]: https://www.npmjs.com/package/@alemonjs/telegram 三方 第三方协议具有一定的风险性，请谨慎使用。 OneBot Project Status Description ------------------ ----------------------- ----------- [@alemonjs/onebot] [![onebot-s]][onebot-p] OneBot V11 [@alemonjs/onebot]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/onebot [onebot-s]: https://img.shields.io/npm/v/@alemonjs/onebot.svg [onebot-p]: https://www.npmjs.com/package/@alemonjs/onebot",
+    "excerpt": "连接平台 点击Project、Status可打开包详细说明，进行配置密钥等信息 官方 QQ Project Status Description ------------------ ----------------------- ----...",
+    "text": "连接平台 点击Project、Status可打开包详细说明，进行配置密钥等信息 官方 QQ Project Status Description ------------------ ----------------------- ----------- [@alemonjs/qq-bot] [![qq-bot-s]][qq-bot-p] QQbot [@alemonjs/qq-bot]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/qq-bot [qq-bot-s]: https://img.shields.io/npm/v/@alemonjs/qq-bot.svg [qq-bot-p]: https://www.npmjs.com/package/@alemonjs/qq-bot Discord Project Status Description ------------------- ------------------------- ----------- [@alemonjs/discord] [![discord-s]][discord-p] Discord [@alemonjs/discord]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/discord [discord-s]: https://img.shields.io/npm/v/@alemonjs/discord.svg [discord-p]: https://www.npmjs.com/package/@alemonjs/discord KOOK Project Status Description ---------------- ------------------- ----------- [@alemonjs/kook] [![kook-s]][kook-p] KOOK [@alemonjs/kook]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/kook [kook-s]: https://img.shields.io/npm/v/@alemonjs/kook.svg [kook-p]: https://www.npmjs.com/package/@alemonjs/kook Telegram Project Status Description -------------------- --------------------------- ----------- [@alemonjs/telegram] [![telegram-s]][telegram-p] Telegram [@alemonjs/telegram]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/telegram [telegram-s]: https://img.shields.io/npm/v/@alemonjs/telegram.svg [telegram-p]: https://www.npmjs.com/package/@alemonjs/telegram 三方 第三方协议具有一定的风险性，请谨慎使用。 OneBot Project Status Description ------------------ ----------------------- ----------- [@alemonjs/onebot] [![onebot-s]][onebot-p] OneBot V11 [@alemonjs/onebot]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/onebot [onebot-s]: https://img.shields.io/npm/v/@alemonjs/onebot.svg [onebot-p]: https://www.npmjs.com/package/@alemonjs/onebot",
     "tags": []
   },
   {
@@ -2745,8 +2745,8 @@
     "title": "快速开始",
     "titles": ["快速开始"],
     "path": "/docs/start",
-    "excerpt": "快速开始 本文默认你已经了解并熟悉NodeJS编程， 如果你对NodeJS的部署和配置不熟悉， 同时也对JavaScript主流的打包工具不熟悉， 请前往 https://lemonade-lab.github.io/lvyjs.dev/...",
-    "text": "快速开始 本文默认你已经了解并熟悉NodeJS编程， 如果你对NodeJS的部署和配置不熟悉， 同时也对JavaScript主流的打包工具不熟悉， 请前往 https://lemonade-lab.github.io/lvyjs.dev/ 了解框架自建的构建工具 初始化 使用模板 获取模板 进入并加载 启动 手动构建 创建启动文件 模块入口文件编写逻辑 启动 测试平台 下载vscode并使用ALemonTestOne扩展 Visual Studio Code ALemonTestOne 外部连接启动，确保ALemonTestOne可连接 对TS的支持 推荐 使用lvyjs开发构建工具，以支持ts环境 请前往 https://lemonade-lab.github.io/lvyjs.dev/ 了解框架自建的构建工具",
+    "excerpt": "快速开始 日常使用 安装并加载 启动并连接 login 参数指定连接平台，此处以qq-bot为例，不指定则仅运行 点击了解如何连接平台 点击了解如何安装插件 开发者 使用模板 获取模板 进入并加载 启动 手动构建 创建启动文件 模块入口文件...",
+    "text": "快速开始 日常使用 安装并加载 启动并连接 login 参数指定连接平台，此处以qq-bot为例，不指定则仅运行 点击了解如何连接平台 点击了解如何安装插件 开发者 使用模板 获取模板 进入并加载 启动 手动构建 创建启动文件 模块入口文件编写逻辑 启动 测试平台 下载vscode并使用ALemonTestOne扩展 Visual Studio Code ALemonTestOne 外部连接启动，确保ALemonTestOne可连接 对TS的支持 推荐 使用lvyjs开发构建工具，以支持ts环境 请前往 https://lemonade-lab.github.io/lvyjs.dev/ 了解框架自建的构建工具",
     "tags": []
   },
   {
@@ -2756,23 +2756,34 @@
     "sectionTitle": "快速开始",
     "titles": ["快速开始", "快速开始"],
     "path": "/docs/start#快速开始",
-    "excerpt": "本文默认你已经了解并熟悉NodeJS编程， 如果你对NodeJS的部署和配置不熟悉， 同时也对JavaScript主流的打包工具不熟悉， 请前往 https://lemonade-lab.github.io/lvyjs.dev/ 了解框架自...",
-    "text": "本文默认你已经了解并熟悉NodeJS编程， 如果你对NodeJS的部署和配置不熟悉， 同时也对JavaScript主流的打包工具不熟悉， 请前往 https://lemonade-lab.github.io/lvyjs.dev/ 了解框架自建的构建工具",
+    "excerpt": "快速开始 日常使用 安装并加载 启动并连接 login 参数指定连接平台，此处以qq-bot为例，不指定则仅运行 点击了解如何连接平台 点击了解如何安装插件 开发者 使用模板 获取模板 进入并加载 启动 手动构建 创建启动文件 模块入口文件...",
+    "text": "快速开始 日常使用 安装并加载 启动并连接 login 参数指定连接平台，此处以qq-bot为例，不指定则仅运行 点击了解如何连接平台 点击了解如何安装插件 开发者 使用模板 获取模板 进入并加载 启动 手动构建 创建启动文件 模块入口文件编写逻辑 启动 测试平台 下载vscode并使用ALemonTestOne扩展 Visual Studio Code ALemonTestOne 外部连接启动，确保ALemonTestOne可连接 对TS的支持 推荐 使用lvyjs开发构建工具，以支持ts环境 请前往 https://lemonade-lab.github.io/lvyjs.dev/ 了解框架自建的构建工具",
     "tags": []
   },
   {
     "id": "doc-section-21-1",
     "type": "doc",
     "title": "快速开始",
-    "sectionTitle": "初始化",
-    "titles": ["快速开始", "初始化"],
-    "path": "/docs/start#初始化",
-    "excerpt": "快速开始 本文默认你已经了解并熟悉NodeJS编程， 如果你对NodeJS的部署和配置不熟悉， 同时也对JavaScript主流的打包工具不熟悉， 请前往 https://lemonade-lab.github.io/lvyjs.dev/...",
-    "text": "快速开始 本文默认你已经了解并熟悉NodeJS编程， 如果你对NodeJS的部署和配置不熟悉， 同时也对JavaScript主流的打包工具不熟悉， 请前往 https://lemonade-lab.github.io/lvyjs.dev/ 了解框架自建的构建工具 初始化 使用模板 获取模板 进入并加载 启动 手动构建 创建启动文件 模块入口文件编写逻辑 启动 测试平台 下载vscode并使用ALemonTestOne扩展 Visual Studio Code ALemonTestOne 外部连接启动，确保ALemonTestOne可连接 对TS的支持 推荐 使用lvyjs开发构建工具，以支持ts环境 请前往 https://lemonade-lab.github.io/lvyjs.dev/ 了解框架自建的构建工具",
+    "sectionTitle": "日常使用",
+    "titles": ["快速开始", "日常使用"],
+    "path": "/docs/start#日常使用",
+    "excerpt": "安装并加载 启动并连接 login 参数指定连接平台，此处以qq-bot为例，不指定则仅运行 点击了解如何连接平台 点击了解如何安装插件",
+    "text": "安装并加载 启动并连接 login 参数指定连接平台，此处以qq-bot为例，不指定则仅运行 点击了解如何连接平台 点击了解如何安装插件",
     "tags": []
   },
   {
     "id": "doc-section-21-2",
+    "type": "doc",
+    "title": "快速开始",
+    "sectionTitle": "开发者",
+    "titles": ["快速开始", "开发者"],
+    "path": "/docs/start#开发者",
+    "excerpt": "快速开始 日常使用 安装并加载 启动并连接 login 参数指定连接平台，此处以qq-bot为例，不指定则仅运行 点击了解如何连接平台 点击了解如何安装插件 开发者 使用模板 获取模板 进入并加载 启动 手动构建 创建启动文件 模块入口文件...",
+    "text": "快速开始 日常使用 安装并加载 启动并连接 login 参数指定连接平台，此处以qq-bot为例，不指定则仅运行 点击了解如何连接平台 点击了解如何安装插件 开发者 使用模板 获取模板 进入并加载 启动 手动构建 创建启动文件 模块入口文件编写逻辑 启动 测试平台 下载vscode并使用ALemonTestOne扩展 Visual Studio Code ALemonTestOne 外部连接启动，确保ALemonTestOne可连接 对TS的支持 推荐 使用lvyjs开发构建工具，以支持ts环境 请前往 https://lemonade-lab.github.io/lvyjs.dev/ 了解框架自建的构建工具",
+    "tags": []
+  },
+  {
+    "id": "doc-section-21-3",
     "type": "doc",
     "title": "快速开始",
     "sectionTitle": "使用模板",
@@ -2783,7 +2794,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-21-3",
+    "id": "doc-section-21-4",
     "type": "doc",
     "title": "快速开始",
     "sectionTitle": "手动构建",
@@ -2794,7 +2805,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-21-4",
+    "id": "doc-section-21-5",
     "type": "doc",
     "title": "快速开始",
     "sectionTitle": "测试平台",
@@ -2805,7 +2816,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-21-5",
+    "id": "doc-section-21-6",
     "type": "doc",
     "title": "快速开始",
     "sectionTitle": "对TS的支持",

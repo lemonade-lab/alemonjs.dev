@@ -39,11 +39,13 @@ label: '开源生态'
 
 > 非IP类的，功能性扩展
 
-| 项目名       | 说明          |
-| ------------ | ------------- |
-| [cheese]     | AI+今日运势等 |
-| [fishspeech] | 语音转换工具  |
+| 项目名       | 说明                    |
+| ------------ | ----------------------- |
+| [xiangling]  | 香菱,机器人内部管理面板 |
+| [cheese]     | AI+今日运势等           |
+| [fishspeech] | 语音转换工具            |
 
+[xiangling]: https://github.com/QingYingX/alemonjs-xiangling
 [cheese]: https://github.com/V2233/alemonjs-cheese
 [fishspeech]: https://github.com/oldcitynight/alemonjs-fishspeech-plugin
 
