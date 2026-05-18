@@ -140,8 +140,13 @@
     "position": 5
   },
   {
-    "title": "开源生态",
+    "title": "插件市场",
     "path": "/docs/apps",
     "position": 6
+  },
+  {
+    "title": "开源生态",
+    "path": "/docs/open",
+    "position": 7
   }
 ]

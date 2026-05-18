@@ -2372,20 +2372,20 @@
   {
     "id": "doc-page-17",
     "type": "doc",
-    "title": "开源生态",
-    "titles": ["开源生态"],
+    "title": "插件市场",
+    "titles": ["插件市场"],
     "path": "/docs/apps",
-    "excerpt": "开源生态 模块机制到底是怎么回事？请点击了解👉模块化应用的制作 增强 最大可能的去加载现有生态的扩展 项目名 说明 ------------- --------------------------------- [load-yunzai]...",
-    "text": "开源生态 模块机制到底是怎么回事？请点击了解👉模块化应用的制作 增强 最大可能的去加载现有生态的扩展 项目名 说明 ------------- --------------------------------- [load-yunzai] 桥接层,加载所有yunzai插件 [yunzai] 胶水层,让你的yunzai插件单独跑起来 [load-yunzai]: https://github.com/yunzaijs/alemonjs-load-yunzai [yunzai]: https://github.com/yunzaijs/alemonjs-yunzai IP 通指游戏、动漫等IP专用的相关扩展 项目名 说明 ------ ------------ [mhy] 米哈游 [miao] 原神 [kuro] 库街区(库洛) [roco] 洛克王国世界 [mhy]: https://github.com/yunzaijs/alemonjs-mhy [miao]: https://github.com/yunzaijs/alemonjs-miao [kuro]: https://github.com/loneyclown/alemonjs-kuro [roco]: https://github.com/ningmengchongshui/alemonjs-roco 功能 非IP类的，功能性扩展 项目名 说明 ------------ ----------------------- [xiangling] 香菱,机器人内部管理面板 [cheese] AI+今日运势等 [fishspeech] 语音转换工具 [xiangling]: https://github.com/QingYingX/alemonjs-xiangling [cheese]: https://github.com/V2233/alemonjs-cheese [fishspeech]: https://github.com/oldcitynight/alemonjs-fishspeech-plugin 游戏 独立游戏，即可非IP，也非功能性的扩展 项目名 说明 --------- ------------ [xianyu] 扫雷等小游戏 [xiuxian] 修仙文游 [xianyu]: https://gitee.com/suancaixianyu/xianyu-plugin/tree/alemonjs/ [xiuxian]: https://github.com/xiuxianjs/xiuxian-plugin AI 项目名 说明 -------- ---------- [aichat] 猫娘AI [openai] 通用AI连接 [openai]: https://github.com/xiuxianjs/openai [aichat]: https://gitee.com/suancaixianyu/alemonjs-aichat SKILL 用于 AI 增强的 skill 项目名 说明 ---------------- ----------------- [common-dev] alemonjs 通用开发 [yunzai-migrate] 迁移yunzai插件 [common-dev]: https://github.com/lemonade-lab/alemonjs-dev-skill [yunzai-migrate]: https://github.com/yunzaijs/alemonjs-migrate-skill 开发与部署 项目名 说明 ----------------------- --------------------------------------- [code] 订阅代码 [qq-bot-socket-to-hook] 支持把单个或多个qqBot账号转为socket服务 [code]: https://github.com/lemonade-lab/subscribe-code [qq-bot-socket-to-hook]: https://github.com/lemonade-lab/qq-bot",
+    "excerpt": "插件市场 模块机制到底是怎么回事？请点击了解👉模块化应用的制作 增强 最大可能的去加载现有生态的扩展 项目名 说明 ------------- --------------------------------- [load-yunzai]...",
+    "text": "插件市场 模块机制到底是怎么回事？请点击了解👉模块化应用的制作 增强 最大可能的去加载现有生态的扩展 项目名 说明 ------------- --------------------------------- [load-yunzai] 桥接层,加载所有yunzai插件 [yunzai] 胶水层,让你的yunzai插件单独跑起来 [load-yunzai]: https://github.com/yunzaijs/alemonjs-load-yunzai [yunzai]: https://github.com/yunzaijs/alemonjs-yunzai IP 通指游戏、动漫等IP专用的相关扩展 项目名 说明 ------ ------------ [mhy] 米哈游 [miao] 原神 [kuro] 库街区(库洛) [roco] 洛克王国世界 [mhy]: https://github.com/yunzaijs/alemonjs-mhy [miao]: https://github.com/yunzaijs/alemonjs-miao [kuro]: https://github.com/loneyclown/alemonjs-kuro [roco]: https://github.com/ningmengchongshui/alemonjs-roco 功能 非IP类的，功能性扩展 项目名 说明 ------------ ----------------------- [xiangling] 香菱,机器人内部管理面板 [cheese] AI+今日运势等 [fishspeech] 语音转换工具 [xiangling]: https://github.com/QingYingX/alemonjs-xiangling [cheese]: https://github.com/V2233/alemonjs-cheese [fishspeech]: https://github.com/oldcitynight/alemonjs-fishspeech-plugin 游戏 独立游戏，即可非IP，也非功能性的扩展 项目名 说明 --------- ------------ [xianyu] 扫雷等小游戏 [xiuxian] 修仙文游 [xianyu]: https://gitee.com/suancaixianyu/xianyu-plugin/tree/alemonjs/ [xiuxian]: https://github.com/xiuxianjs/xiuxian-plugin AI 项目名 说明 -------- ---------- [aichat] 猫娘AI [openai] 通用AI连接 [openai]: https://github.com/xiuxianjs/openai [aichat]: https://gitee.com/suancaixianyu/alemonjs-aichat 工具 项目名 说明 ------ -------- [code] 订阅代码 [code]: https://github.com/lemonade-lab/subscribe-code",
     "tags": []
   },
   {
     "id": "doc-section-17-0",
     "type": "doc",
-    "title": "开源生态",
-    "sectionTitle": "开源生态",
-    "titles": ["开源生态", "开源生态"],
-    "path": "/docs/apps#开源生态",
+    "title": "插件市场",
+    "sectionTitle": "插件市场",
+    "titles": ["插件市场", "插件市场"],
+    "path": "/docs/apps#插件市场",
     "excerpt": "模块机制到底是怎么回事？请点击了解👉模块化应用的制作",
     "text": "模块机制到底是怎么回事？请点击了解👉模块化应用的制作",
     "tags": []
@@ -2393,9 +2393,9 @@
   {
     "id": "doc-section-17-1",
     "type": "doc",
-    "title": "开源生态",
+    "title": "插件市场",
     "sectionTitle": "增强",
-    "titles": ["开源生态", "增强"],
+    "titles": ["插件市场", "增强"],
     "path": "/docs/apps#增强",
     "excerpt": "最大可能的去加载现有生态的扩展 项目名 说明 ------------- --------------------------------- [load-yunzai] 桥接层,加载所有yunzai插件 [yunzai] 胶水层,让你的yu...",
     "text": "最大可能的去加载现有生态的扩展 项目名 说明 ------------- --------------------------------- [load-yunzai] 桥接层,加载所有yunzai插件 [yunzai] 胶水层,让你的yunzai插件单独跑起来 [load-yunzai]: https://github.com/yunzaijs/alemonjs-load-yunzai [yunzai]: https://github.com/yunzaijs/alemonjs-yunzai",
@@ -2404,9 +2404,9 @@
   {
     "id": "doc-section-17-2",
     "type": "doc",
-    "title": "开源生态",
+    "title": "插件市场",
     "sectionTitle": "IP",
-    "titles": ["开源生态", "IP"],
+    "titles": ["插件市场", "IP"],
     "path": "/docs/apps#ip",
     "excerpt": "通指游戏、动漫等IP专用的相关扩展 项目名 说明 ------ ------------ [mhy] 米哈游 [miao] 原神 [kuro] 库街区(库洛) [roco] 洛克王国世界 [mhy]: https://github.com/...",
     "text": "通指游戏、动漫等IP专用的相关扩展 项目名 说明 ------ ------------ [mhy] 米哈游 [miao] 原神 [kuro] 库街区(库洛) [roco] 洛克王国世界 [mhy]: https://github.com/yunzaijs/alemonjs-mhy [miao]: https://github.com/yunzaijs/alemonjs-miao [kuro]: https://github.com/loneyclown/alemonjs-kuro [roco]: https://github.com/ningmengchongshui/alemonjs-roco",
@@ -2415,9 +2415,9 @@
   {
     "id": "doc-section-17-3",
     "type": "doc",
-    "title": "开源生态",
+    "title": "插件市场",
     "sectionTitle": "功能",
-    "titles": ["开源生态", "功能"],
+    "titles": ["插件市场", "功能"],
     "path": "/docs/apps#功能",
     "excerpt": "非IP类的，功能性扩展 项目名 说明 ------------ ----------------------- [xiangling] 香菱,机器人内部管理面板 [cheese] AI+今日运势等 [fishspeech] 语音转换工具 [...",
     "text": "非IP类的，功能性扩展 项目名 说明 ------------ ----------------------- [xiangling] 香菱,机器人内部管理面板 [cheese] AI+今日运势等 [fishspeech] 语音转换工具 [xiangling]: https://github.com/QingYingX/alemonjs-xiangling [cheese]: https://github.com/V2233/alemonjs-cheese [fishspeech]: https://github.com/oldcitynight/alemonjs-fishspeech-plugin",
@@ -2426,9 +2426,9 @@
   {
     "id": "doc-section-17-4",
     "type": "doc",
-    "title": "开源生态",
+    "title": "插件市场",
     "sectionTitle": "游戏",
-    "titles": ["开源生态", "游戏"],
+    "titles": ["插件市场", "游戏"],
     "path": "/docs/apps#游戏",
     "excerpt": "独立游戏，即可非IP，也非功能性的扩展 项目名 说明 --------- ------------ [xianyu] 扫雷等小游戏 [xiuxian] 修仙文游 [xianyu]: https://gitee.com/suancaixian...",
     "text": "独立游戏，即可非IP，也非功能性的扩展 项目名 说明 --------- ------------ [xianyu] 扫雷等小游戏 [xiuxian] 修仙文游 [xianyu]: https://gitee.com/suancaixianyu/xianyu-plugin/tree/alemonjs/ [xiuxian]: https://github.com/xiuxianjs/xiuxian-plugin",
@@ -2437,9 +2437,9 @@
   {
     "id": "doc-section-17-5",
     "type": "doc",
-    "title": "开源生态",
+    "title": "插件市场",
     "sectionTitle": "AI",
-    "titles": ["开源生态", "AI"],
+    "titles": ["插件市场", "AI"],
     "path": "/docs/apps#ai",
     "excerpt": "项目名 说明 -------- ---------- [aichat] 猫娘AI [openai] 通用AI连接 [openai]: https://github.com/xiuxianjs/openai [aichat]: https:/...",
     "text": "项目名 说明 -------- ---------- [aichat] 猫娘AI [openai] 通用AI连接 [openai]: https://github.com/xiuxianjs/openai [aichat]: https://gitee.com/suancaixianyu/alemonjs-aichat",
@@ -2448,23 +2448,12 @@
   {
     "id": "doc-section-17-6",
     "type": "doc",
-    "title": "开源生态",
-    "sectionTitle": "SKILL",
-    "titles": ["开源生态", "SKILL"],
-    "path": "/docs/apps#skill",
-    "excerpt": "用于 AI 增强的 skill 项目名 说明 ---------------- ----------------- [common-dev] alemonjs 通用开发 [yunzai-migrate] 迁移yunzai插件 [common...",
-    "text": "用于 AI 增强的 skill 项目名 说明 ---------------- ----------------- [common-dev] alemonjs 通用开发 [yunzai-migrate] 迁移yunzai插件 [common-dev]: https://github.com/lemonade-lab/alemonjs-dev-skill [yunzai-migrate]: https://github.com/yunzaijs/alemonjs-migrate-skill",
-    "tags": []
-  },
-  {
-    "id": "doc-section-17-7",
-    "type": "doc",
-    "title": "开源生态",
-    "sectionTitle": "开发与部署",
-    "titles": ["开源生态", "开发与部署"],
-    "path": "/docs/apps#开发与部署",
-    "excerpt": "项目名 说明 ----------------------- --------------------------------------- [code] 订阅代码 [qq-bot-socket-to-hook] 支持把单个或多个qqBot...",
-    "text": "项目名 说明 ----------------------- --------------------------------------- [code] 订阅代码 [qq-bot-socket-to-hook] 支持把单个或多个qqBot账号转为socket服务 [code]: https://github.com/lemonade-lab/subscribe-code [qq-bot-socket-to-hook]: https://github.com/lemonade-lab/qq-bot",
+    "title": "插件市场",
+    "sectionTitle": "工具",
+    "titles": ["插件市场", "工具"],
+    "path": "/docs/apps#工具",
+    "excerpt": "项目名 说明 ------ -------- [code] 订阅代码 [code]: https://github.com/lemonade-lab/subscribe-code",
+    "text": "项目名 说明 ------ -------- [code] 订阅代码 [code]: https://github.com/lemonade-lab/subscribe-code",
     "tags": []
   },
   {
@@ -2742,6 +2731,49 @@
   {
     "id": "doc-page-21",
     "type": "doc",
+    "title": "开源生态",
+    "titles": ["开源生态"],
+    "path": "/docs/open",
+    "excerpt": "开源生态 模块机制到底是怎么回事？请点击了解👉模块化应用的制作 SKILL 用于 AI 增强的 skill 项目名 说明 ---------------- ----------------- [common-dev] alemonjs 通...",
+    "text": "开源生态 模块机制到底是怎么回事？请点击了解👉模块化应用的制作 SKILL 用于 AI 增强的 skill 项目名 说明 ---------------- ----------------- [common-dev] alemonjs 通用开发 [yunzai-migrate] 迁移yunzai插件 [common-dev]: https://github.com/lemonade-lab/alemonjs-dev-skill [yunzai-migrate]: https://github.com/yunzaijs/alemonjs-migrate-skill 开发与部署 项目名 说明 ----------------------- --------------------------------------- [qq-bot-socket-to-hook] 支持把单个或多个qqBot账号转为socket服务 [qq-bot-socket-to-hook]: https://github.com/lemonade-lab/qq-bot",
+    "tags": []
+  },
+  {
+    "id": "doc-section-21-0",
+    "type": "doc",
+    "title": "开源生态",
+    "sectionTitle": "开源生态",
+    "titles": ["开源生态", "开源生态"],
+    "path": "/docs/open#开源生态",
+    "excerpt": "模块机制到底是怎么回事？请点击了解👉模块化应用的制作",
+    "text": "模块机制到底是怎么回事？请点击了解👉模块化应用的制作",
+    "tags": []
+  },
+  {
+    "id": "doc-section-21-1",
+    "type": "doc",
+    "title": "开源生态",
+    "sectionTitle": "SKILL",
+    "titles": ["开源生态", "SKILL"],
+    "path": "/docs/open#skill",
+    "excerpt": "用于 AI 增强的 skill 项目名 说明 ---------------- ----------------- [common-dev] alemonjs 通用开发 [yunzai-migrate] 迁移yunzai插件 [common...",
+    "text": "用于 AI 增强的 skill 项目名 说明 ---------------- ----------------- [common-dev] alemonjs 通用开发 [yunzai-migrate] 迁移yunzai插件 [common-dev]: https://github.com/lemonade-lab/alemonjs-dev-skill [yunzai-migrate]: https://github.com/yunzaijs/alemonjs-migrate-skill",
+    "tags": []
+  },
+  {
+    "id": "doc-section-21-2",
+    "type": "doc",
+    "title": "开源生态",
+    "sectionTitle": "开发与部署",
+    "titles": ["开源生态", "开发与部署"],
+    "path": "/docs/open#开发与部署",
+    "excerpt": "项目名 说明 ----------------------- --------------------------------------- [qq-bot-socket-to-hook] 支持把单个或多个qqBot账号转为socket服务...",
+    "text": "项目名 说明 ----------------------- --------------------------------------- [qq-bot-socket-to-hook] 支持把单个或多个qqBot账号转为socket服务 [qq-bot-socket-to-hook]: https://github.com/lemonade-lab/qq-bot",
+    "tags": []
+  },
+  {
+    "id": "doc-page-22",
+    "type": "doc",
     "title": "快速开始",
     "titles": ["快速开始"],
     "path": "/docs/start",
@@ -2750,7 +2782,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-21-0",
+    "id": "doc-section-22-0",
     "type": "doc",
     "title": "快速开始",
     "sectionTitle": "快速开始",
@@ -2761,7 +2793,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-21-1",
+    "id": "doc-section-22-1",
     "type": "doc",
     "title": "快速开始",
     "sectionTitle": "日常使用",
@@ -2772,7 +2804,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-21-2",
+    "id": "doc-section-22-2",
     "type": "doc",
     "title": "快速开始",
     "sectionTitle": "开发者",
@@ -2783,7 +2815,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-21-3",
+    "id": "doc-section-22-3",
     "type": "doc",
     "title": "快速开始",
     "sectionTitle": "使用模板",
@@ -2794,7 +2826,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-21-4",
+    "id": "doc-section-22-4",
     "type": "doc",
     "title": "快速开始",
     "sectionTitle": "手动构建",
@@ -2805,7 +2837,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-21-5",
+    "id": "doc-section-22-5",
     "type": "doc",
     "title": "快速开始",
     "sectionTitle": "测试平台",
@@ -2816,7 +2848,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-21-6",
+    "id": "doc-section-22-6",
     "type": "doc",
     "title": "快速开始",
     "sectionTitle": "对TS的支持",

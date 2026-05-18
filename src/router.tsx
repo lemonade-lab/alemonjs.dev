@@ -28,7 +28,8 @@ const Doc17 = lazy(() => import('../docs/apps.md'))
 const Doc18 = lazy(() => import('../docs/config.md'))
 const Doc19 = lazy(() => import('../docs/environment.md'))
 const Doc20 = lazy(() => import('../docs/intro.md'))
-const Doc21 = lazy(() => import('../docs/start.mdx'))
+const Doc21 = lazy(() => import('../docs/open.md'))
+const Doc22 = lazy(() => import('../docs/start.mdx'))
 
 // 自动生成的博客导入
 const Blog19 = lazy(() => import('../blog/2026/04/11/schedule-api.md'))
@@ -150,8 +151,12 @@ const router = createBrowserRouter([
         element: <Doc20 />
       },
       {
-        path: 'start',
+        path: 'open',
         element: <Doc21 />
+      },
+      {
+        path: 'start',
+        element: <Doc22 />
       }
     ]
   },
