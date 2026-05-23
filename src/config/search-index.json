@@ -1974,7 +1974,7 @@
     "titles": ["接口路由"],
     "path": "/docs/alemonjsDocs/http/route",
     "excerpt": "接口路由 默认地址 http://localhost:17117/app。 当前支持的 HTTP 能力 主应用公开 HTTP 服务 插件应用公开 HTTP 服务 defineChildren().register() 直接返回的 koaRo...",
-    "text": "接口路由 默认地址 http://localhost:17117/app。 当前支持的 HTTP 能力 主应用公开 HTTP 服务 插件应用公开 HTTP 服务 defineChildren().register() 直接返回的 koaRouter 这些能力现在都受到运行时状态控制 生命周期规则 只有 ready 才真正提供服务 如果应用当前状态是： discovered loading failed disposed 那么对应 HTTP 能力不会真正放行。 插件必须先进入 apps 管理 如果某个插件没有出现在 alemon.config.yaml 的 apps 配置中，那么： 不会进入运行时管理 不应该暴露 HTTP 服务 当前常见响应语义 未注册 / 未启用：404 初始化中：503 初始化失败：500 已卸载：410 注册路由 推荐它的原因很直接： 路由方法、前缀、入口都由代码显式声明 更容易做审计、权限和安全评审 更容易做统一中间件和权限控制 更符合“我主动注册了哪些 HTTP 能力”这个开发者心智 静态资源 /app/ 会优先访问当前应用公开的 web 根目录，例如其中的 index.html。 如果想更改静态资源访问的根目录，可在 package.json 中配置： 如果你的应用计划支持包管理，需新增 package 引用： 路径 HTML 内的路径（包括接口），请使用相对路径，而非绝对路径。 同时，推荐使用哈希路由进行前端路由导航。确保兼容性 安全 框架内置了路径安全防护： 路径遍历防护：公开 HTTP 路由的文件路径都会经过安全校验，../ 等遍历尝试会返回 403 包名校验：插件应用名会经过合法 npm 包名校验，非法名称返回 400 onHttpError 如果 API、静态资源或纯 koa-router 在处理过程中抛错，会触发： 如果返回： 则表示你已经自己处理好了 HTTP 响应，框架不会再补默认 500。",
+    "text": "接口路由 默认地址 http://localhost:17117/app。 当前支持的 HTTP 能力 主应用公开 HTTP 服务 插件应用公开 HTTP 服务 defineChildren().register() 直接返回的 koaRouter 这些能力现在都受到运行时状态控制 生命周期规则 只有 ready 才真正提供服务 如果应用当前状态是： discovered loading failed disposed 那么对应 HTTP 能力不会真正放行。 插件必须先进入 apps 管理 如果某个插件没有出现在 alemon.config.yaml 的 apps 配置中，那么： 不会进入运行时管理 不应该暴露 HTTP 服务 当前常见响应语义 未注册 / 未启用：404 初始化中：503 初始化失败：500 已卸载：410 注册路由 推荐它的原因很直接： 路由方法、前缀、入口都由代码显式声明 更容易做审计、权限和安全评审 更容易做统一中间件和权限控制 更符合“我主动注册了哪些 HTTP 能力”这个开发者心智 静态资源 /app/ 会优先访问当前应用公开的 web 根目录，例如其中的 index.html。 如果想更改静态资源访问的根目录，可在 package.json 中配置： 如果你的应用计划支持包管理，需新增 package 引用： 路径 HTML 内的路径（包括接口），请使用相对路径，而非绝对路径。 同时，推荐使用哈希路由进行前端路由导航。确保兼容性 安全 框架内置了路径安全防护： 路径遍历防护：公开 HTTP 路由的文件路径都会经过安全校验，../ 等遍历尝试会返回 403 包名校验：插件应用名会经过合法 npm 包名校验，非法名称返回 400 onHttpError 如果 API、静态资源或纯 koa-router 在处理过程中抛错，会触发： 如果返回： 则表示你已经自己处理好了 HTTP 响应，框架不会再补默认 500。 配置 不了解vite? 下面以 vite 打包配置为例 接口调用，以 axios 为例",
     "tags": []
   },
   {
@@ -2007,7 +2007,7 @@
     "titles": ["接口路由", "生命周期规则"],
     "path": "/docs/alemonjsDocs/http/route#生命周期规则",
     "excerpt": "接口路由 默认地址 http://localhost:17117/app。 当前支持的 HTTP 能力 主应用公开 HTTP 服务 插件应用公开 HTTP 服务 defineChildren().register() 直接返回的 koaRo...",
-    "text": "接口路由 默认地址 http://localhost:17117/app。 当前支持的 HTTP 能力 主应用公开 HTTP 服务 插件应用公开 HTTP 服务 defineChildren().register() 直接返回的 koaRouter 这些能力现在都受到运行时状态控制 生命周期规则 只有 ready 才真正提供服务 如果应用当前状态是： discovered loading failed disposed 那么对应 HTTP 能力不会真正放行。 插件必须先进入 apps 管理 如果某个插件没有出现在 alemon.config.yaml 的 apps 配置中，那么： 不会进入运行时管理 不应该暴露 HTTP 服务 当前常见响应语义 未注册 / 未启用：404 初始化中：503 初始化失败：500 已卸载：410 注册路由 推荐它的原因很直接： 路由方法、前缀、入口都由代码显式声明 更容易做审计、权限和安全评审 更容易做统一中间件和权限控制 更符合“我主动注册了哪些 HTTP 能力”这个开发者心智 静态资源 /app/ 会优先访问当前应用公开的 web 根目录，例如其中的 index.html。 如果想更改静态资源访问的根目录，可在 package.json 中配置： 如果你的应用计划支持包管理，需新增 package 引用： 路径 HTML 内的路径（包括接口），请使用相对路径，而非绝对路径。 同时，推荐使用哈希路由进行前端路由导航。确保兼容性 安全 框架内置了路径安全防护： 路径遍历防护：公开 HTTP 路由的文件路径都会经过安全校验，../ 等遍历尝试会返回 403 包名校验：插件应用名会经过合法 npm 包名校验，非法名称返回 400 onHttpError 如果 API、静态资源或纯 koa-router 在处理过程中抛错，会触发： 如果返回： 则表示你已经自己处理好了 HTTP 响应，框架不会再补默认 500。",
+    "text": "接口路由 默认地址 http://localhost:17117/app。 当前支持的 HTTP 能力 主应用公开 HTTP 服务 插件应用公开 HTTP 服务 defineChildren().register() 直接返回的 koaRouter 这些能力现在都受到运行时状态控制 生命周期规则 只有 ready 才真正提供服务 如果应用当前状态是： discovered loading failed disposed 那么对应 HTTP 能力不会真正放行。 插件必须先进入 apps 管理 如果某个插件没有出现在 alemon.config.yaml 的 apps 配置中，那么： 不会进入运行时管理 不应该暴露 HTTP 服务 当前常见响应语义 未注册 / 未启用：404 初始化中：503 初始化失败：500 已卸载：410 注册路由 推荐它的原因很直接： 路由方法、前缀、入口都由代码显式声明 更容易做审计、权限和安全评审 更容易做统一中间件和权限控制 更符合“我主动注册了哪些 HTTP 能力”这个开发者心智 静态资源 /app/ 会优先访问当前应用公开的 web 根目录，例如其中的 index.html。 如果想更改静态资源访问的根目录，可在 package.json 中配置： 如果你的应用计划支持包管理，需新增 package 引用： 路径 HTML 内的路径（包括接口），请使用相对路径，而非绝对路径。 同时，推荐使用哈希路由进行前端路由导航。确保兼容性 安全 框架内置了路径安全防护： 路径遍历防护：公开 HTTP 路由的文件路径都会经过安全校验，../ 等遍历尝试会返回 403 包名校验：插件应用名会经过合法 npm 包名校验，非法名称返回 400 onHttpError 如果 API、静态资源或纯 koa-router 在处理过程中抛错，会触发： 如果返回： 则表示你已经自己处理好了 HTTP 响应，框架不会再补默认 500。 配置 不了解vite? 下面以 vite 打包配置为例 接口调用，以 axios 为例",
     "tags": []
   },
   {
@@ -2096,6 +2096,17 @@
     "path": "/docs/alemonjsDocs/http/route#onhttperror",
     "excerpt": "如果 API、静态资源或纯 koa-router 在处理过程中抛错，会触发： 如果返回： 则表示你已经自己处理好了 HTTP 响应，框架不会再补默认 500。",
     "text": "如果 API、静态资源或纯 koa-router 在处理过程中抛错，会触发： 如果返回： 则表示你已经自己处理好了 HTTP 响应，框架不会再补默认 500。",
+    "tags": []
+  },
+  {
+    "id": "doc-section-12-11",
+    "type": "doc",
+    "title": "接口路由",
+    "sectionTitle": "配置",
+    "titles": ["接口路由", "配置"],
+    "path": "/docs/alemonjsDocs/http/route#配置",
+    "excerpt": "不了解vite? 下面以 vite 打包配置为例 接口调用，以 axios 为例",
+    "text": "不了解vite? 下面以 vite 打包配置为例 接口调用，以 axios 为例",
     "tags": []
   },
   {
@@ -2459,6 +2470,71 @@
   {
     "id": "doc-page-18",
     "type": "doc",
+    "title": "脚手架工具",
+    "titles": ["脚手架工具"],
+    "path": "/docs/cli",
+    "excerpt": "脚手架工具 安装 日常 配置管理 发布版本 插件仓库使用。 可按npm方式配置 .npmignore、package.json、README.md 等。 把发布到npm的库以git仓库的形式进行管理 默认自动打tab，以v0.0.1 开始，...",
+    "text": "脚手架工具 安装 日常 配置管理 发布版本 插件仓库使用。 可按npm方式配置 .npmignore、package.json、README.md 等。 把发布到npm的库以git仓库的形式进行管理 默认自动打tab，以v0.0.1 开始，指定可如下进行",
+    "tags": []
+  },
+  {
+    "id": "doc-section-18-0",
+    "type": "doc",
+    "title": "脚手架工具",
+    "sectionTitle": "脚手架工具",
+    "titles": ["脚手架工具", "脚手架工具"],
+    "path": "/docs/cli#脚手架工具",
+    "excerpt": "脚手架工具 安装 日常 配置管理 发布版本 插件仓库使用。 可按npm方式配置 .npmignore、package.json、README.md 等。 把发布到npm的库以git仓库的形式进行管理 默认自动打tab，以v0.0.1 开始，...",
+    "text": "脚手架工具 安装 日常 配置管理 发布版本 插件仓库使用。 可按npm方式配置 .npmignore、package.json、README.md 等。 把发布到npm的库以git仓库的形式进行管理 默认自动打tab，以v0.0.1 开始，指定可如下进行",
+    "tags": []
+  },
+  {
+    "id": "doc-section-18-1",
+    "type": "doc",
+    "title": "脚手架工具",
+    "sectionTitle": "安装",
+    "titles": ["脚手架工具", "安装"],
+    "path": "/docs/cli#安装",
+    "excerpt": "脚手架工具 安装 日常 配置管理 发布版本 插件仓库使用。 可按npm方式配置 .npmignore、package.json、README.md 等。 把发布到npm的库以git仓库的形式进行管理 默认自动打tab，以v0.0.1 开始，...",
+    "text": "脚手架工具 安装 日常 配置管理 发布版本 插件仓库使用。 可按npm方式配置 .npmignore、package.json、README.md 等。 把发布到npm的库以git仓库的形式进行管理 默认自动打tab，以v0.0.1 开始，指定可如下进行",
+    "tags": []
+  },
+  {
+    "id": "doc-section-18-2",
+    "type": "doc",
+    "title": "脚手架工具",
+    "sectionTitle": "日常",
+    "titles": ["脚手架工具", "日常"],
+    "path": "/docs/cli#日常",
+    "excerpt": "脚手架工具 安装 日常 配置管理 发布版本 插件仓库使用。 可按npm方式配置 .npmignore、package.json、README.md 等。 把发布到npm的库以git仓库的形式进行管理 默认自动打tab，以v0.0.1 开始，...",
+    "text": "脚手架工具 安装 日常 配置管理 发布版本 插件仓库使用。 可按npm方式配置 .npmignore、package.json、README.md 等。 把发布到npm的库以git仓库的形式进行管理 默认自动打tab，以v0.0.1 开始，指定可如下进行",
+    "tags": []
+  },
+  {
+    "id": "doc-section-18-3",
+    "type": "doc",
+    "title": "脚手架工具",
+    "sectionTitle": "配置管理",
+    "titles": ["脚手架工具", "配置管理"],
+    "path": "/docs/cli#配置管理",
+    "excerpt": "脚手架工具 安装 日常 配置管理 发布版本 插件仓库使用。 可按npm方式配置 .npmignore、package.json、README.md 等。 把发布到npm的库以git仓库的形式进行管理 默认自动打tab，以v0.0.1 开始，...",
+    "text": "脚手架工具 安装 日常 配置管理 发布版本 插件仓库使用。 可按npm方式配置 .npmignore、package.json、README.md 等。 把发布到npm的库以git仓库的形式进行管理 默认自动打tab，以v0.0.1 开始，指定可如下进行",
+    "tags": []
+  },
+  {
+    "id": "doc-section-18-4",
+    "type": "doc",
+    "title": "脚手架工具",
+    "sectionTitle": "发布版本",
+    "titles": ["脚手架工具", "发布版本"],
+    "path": "/docs/cli#发布版本",
+    "excerpt": "插件仓库使用。 可按npm方式配置 .npmignore、package.json、README.md 等。 把发布到npm的库以git仓库的形式进行管理 默认自动打tab，以v0.0.1 开始，指定可如下进行",
+    "text": "插件仓库使用。 可按npm方式配置 .npmignore、package.json、README.md 等。 把发布到npm的库以git仓库的形式进行管理 默认自动打tab，以v0.0.1 开始，指定可如下进行",
+    "tags": []
+  },
+  {
+    "id": "doc-page-19",
+    "type": "doc",
     "title": "配置说明",
     "titles": ["配置说明"],
     "path": "/docs/config",
@@ -2467,7 +2543,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-18-0",
+    "id": "doc-section-19-0",
     "type": "doc",
     "title": "配置说明",
     "sectionTitle": "配置说明",
@@ -2478,7 +2554,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-18-1",
+    "id": "doc-section-19-1",
     "type": "doc",
     "title": "配置说明",
     "sectionTitle": "基础配置",
@@ -2489,7 +2565,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-18-2",
+    "id": "doc-section-19-2",
     "type": "doc",
     "title": "配置说明",
     "sectionTitle": "权限管理",
@@ -2500,7 +2576,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-18-3",
+    "id": "doc-section-19-3",
     "type": "doc",
     "title": "配置说明",
     "sectionTitle": "消息过滤与控制",
@@ -2511,7 +2587,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-18-4",
+    "id": "doc-section-19-4",
     "type": "doc",
     "title": "配置说明",
     "sectionTitle": "消息处理器配置",
@@ -2522,7 +2598,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-18-5",
+    "id": "doc-section-19-5",
     "type": "doc",
     "title": "配置说明",
     "sectionTitle": "模块管理",
@@ -2533,7 +2609,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-18-6",
+    "id": "doc-section-19-6",
     "type": "doc",
     "title": "配置说明",
     "sectionTitle": "快捷参数",
@@ -2544,7 +2620,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-18-7",
+    "id": "doc-section-19-7",
     "type": "doc",
     "title": "配置说明",
     "sectionTitle": "基础环境变量",
@@ -2555,7 +2631,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-18-8",
+    "id": "doc-section-19-8",
     "type": "doc",
     "title": "配置说明",
     "sectionTitle": "文件路径相关",
@@ -2566,7 +2642,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-18-9",
+    "id": "doc-section-19-9",
     "type": "doc",
     "title": "配置说明",
     "sectionTitle": "运行环境",
@@ -2577,7 +2653,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-18-10",
+    "id": "doc-section-19-10",
     "type": "doc",
     "title": "配置说明",
     "sectionTitle": "CBP",
@@ -2588,7 +2664,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-18-11",
+    "id": "doc-section-19-11",
     "type": "doc",
     "title": "配置说明",
     "sectionTitle": "CBP连接配置",
@@ -2599,7 +2675,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-18-12",
+    "id": "doc-section-19-12",
     "type": "doc",
     "title": "配置说明",
     "sectionTitle": "脚手架工具",
@@ -2610,7 +2686,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-19",
+    "id": "doc-page-20",
     "type": "doc",
     "title": "连接平台",
     "titles": ["连接平台"],
@@ -2620,7 +2696,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-19-0",
+    "id": "doc-section-20-0",
     "type": "doc",
     "title": "连接平台",
     "sectionTitle": "连接平台",
@@ -2631,7 +2707,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-19-1",
+    "id": "doc-section-20-1",
     "type": "doc",
     "title": "连接平台",
     "sectionTitle": "官方",
@@ -2642,7 +2718,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-19-2",
+    "id": "doc-section-20-2",
     "type": "doc",
     "title": "连接平台",
     "sectionTitle": "QQ",
@@ -2653,7 +2729,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-19-3",
+    "id": "doc-section-20-3",
     "type": "doc",
     "title": "连接平台",
     "sectionTitle": "Discord",
@@ -2664,7 +2740,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-19-4",
+    "id": "doc-section-20-4",
     "type": "doc",
     "title": "连接平台",
     "sectionTitle": "KOOK",
@@ -2675,7 +2751,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-19-5",
+    "id": "doc-section-20-5",
     "type": "doc",
     "title": "连接平台",
     "sectionTitle": "Telegram",
@@ -2686,7 +2762,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-19-6",
+    "id": "doc-section-20-6",
     "type": "doc",
     "title": "连接平台",
     "sectionTitle": "三方",
@@ -2697,7 +2773,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-19-7",
+    "id": "doc-section-20-7",
     "type": "doc",
     "title": "连接平台",
     "sectionTitle": "OneBot",
@@ -2708,7 +2784,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-20",
+    "id": "doc-page-21",
     "type": "doc",
     "title": "简介",
     "titles": ["简介"],
@@ -2718,7 +2794,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-20-0",
+    "id": "doc-section-21-0",
     "type": "doc",
     "title": "简介",
     "sectionTitle": "简介",
@@ -2729,7 +2805,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-21",
+    "id": "doc-page-22",
     "type": "doc",
     "title": "开源生态",
     "titles": ["开源生态"],
@@ -2739,7 +2815,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-21-0",
+    "id": "doc-section-22-0",
     "type": "doc",
     "title": "开源生态",
     "sectionTitle": "开源生态",
@@ -2750,7 +2826,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-21-1",
+    "id": "doc-section-22-1",
     "type": "doc",
     "title": "开源生态",
     "sectionTitle": "SKILL",
@@ -2761,7 +2837,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-21-2",
+    "id": "doc-section-22-2",
     "type": "doc",
     "title": "开源生态",
     "sectionTitle": "开发与部署",
@@ -2772,7 +2848,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-22",
+    "id": "doc-page-23",
     "type": "doc",
     "title": "快速开始",
     "titles": ["快速开始"],
@@ -2782,7 +2858,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-22-0",
+    "id": "doc-section-23-0",
     "type": "doc",
     "title": "快速开始",
     "sectionTitle": "快速开始",
@@ -2793,7 +2869,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-22-1",
+    "id": "doc-section-23-1",
     "type": "doc",
     "title": "快速开始",
     "sectionTitle": "日常使用",
@@ -2804,7 +2880,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-22-2",
+    "id": "doc-section-23-2",
     "type": "doc",
     "title": "快速开始",
     "sectionTitle": "开发者",
@@ -2815,7 +2891,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-22-3",
+    "id": "doc-section-23-3",
     "type": "doc",
     "title": "快速开始",
     "sectionTitle": "使用模板",
@@ -2826,7 +2902,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-22-4",
+    "id": "doc-section-23-4",
     "type": "doc",
     "title": "快速开始",
     "sectionTitle": "手动构建",
@@ -2837,7 +2913,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-22-5",
+    "id": "doc-section-23-5",
     "type": "doc",
     "title": "快速开始",
     "sectionTitle": "测试平台",
@@ -2848,7 +2924,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-22-6",
+    "id": "doc-section-23-6",
     "type": "doc",
     "title": "快速开始",
     "sectionTitle": "对TS的支持",

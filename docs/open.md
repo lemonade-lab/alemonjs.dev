@@ -1,5 +1,5 @@
 ---
-sidebar_position: 7
+sidebar_position: 8
 label: '开源生态'
 ---
 

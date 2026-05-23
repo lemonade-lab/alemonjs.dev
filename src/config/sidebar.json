@@ -15,9 +15,14 @@
     "position": 3
   },
   {
+    "title": "脚手架工具",
+    "path": "/docs/cli",
+    "position": 4
+  },
+  {
     "id": "alemonjsDocs",
     "label": "开发手册",
-    "position": 4,
+    "position": 5,
     "items": [
       {
         "id": "core",
@@ -137,16 +142,16 @@
   {
     "title": "连接平台",
     "path": "/docs/environment",
-    "position": 5
+    "position": 6
   },
   {
     "title": "插件市场",
     "path": "/docs/apps",
-    "position": 6
+    "position": 7
   },
   {
     "title": "开源生态",
     "path": "/docs/open",
-    "position": 7
+    "position": 8
   }
 ]
