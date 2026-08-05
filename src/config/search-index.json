@@ -2470,80 +2470,15 @@
   {
     "id": "doc-page-18",
     "type": "doc",
-    "title": "脚手架工具",
-    "titles": ["脚手架工具"],
-    "path": "/docs/cli",
-    "excerpt": "脚手架工具 安装 日常 配置管理 发布版本 插件仓库使用。 可按npm方式配置 .npmignore、package.json、README.md 等。 把发布到npm的库以git仓库的形式进行管理 默认自动打tab，以v0.0.1 开始，...",
-    "text": "脚手架工具 安装 日常 配置管理 发布版本 插件仓库使用。 可按npm方式配置 .npmignore、package.json、README.md 等。 把发布到npm的库以git仓库的形式进行管理 默认自动打tab，以v0.0.1 开始，指定可如下进行",
-    "tags": []
-  },
-  {
-    "id": "doc-section-18-0",
-    "type": "doc",
-    "title": "脚手架工具",
-    "sectionTitle": "脚手架工具",
-    "titles": ["脚手架工具", "脚手架工具"],
-    "path": "/docs/cli#脚手架工具",
-    "excerpt": "脚手架工具 安装 日常 配置管理 发布版本 插件仓库使用。 可按npm方式配置 .npmignore、package.json、README.md 等。 把发布到npm的库以git仓库的形式进行管理 默认自动打tab，以v0.0.1 开始，...",
-    "text": "脚手架工具 安装 日常 配置管理 发布版本 插件仓库使用。 可按npm方式配置 .npmignore、package.json、README.md 等。 把发布到npm的库以git仓库的形式进行管理 默认自动打tab，以v0.0.1 开始，指定可如下进行",
-    "tags": []
-  },
-  {
-    "id": "doc-section-18-1",
-    "type": "doc",
-    "title": "脚手架工具",
-    "sectionTitle": "安装",
-    "titles": ["脚手架工具", "安装"],
-    "path": "/docs/cli#安装",
-    "excerpt": "脚手架工具 安装 日常 配置管理 发布版本 插件仓库使用。 可按npm方式配置 .npmignore、package.json、README.md 等。 把发布到npm的库以git仓库的形式进行管理 默认自动打tab，以v0.0.1 开始，...",
-    "text": "脚手架工具 安装 日常 配置管理 发布版本 插件仓库使用。 可按npm方式配置 .npmignore、package.json、README.md 等。 把发布到npm的库以git仓库的形式进行管理 默认自动打tab，以v0.0.1 开始，指定可如下进行",
-    "tags": []
-  },
-  {
-    "id": "doc-section-18-2",
-    "type": "doc",
-    "title": "脚手架工具",
-    "sectionTitle": "日常",
-    "titles": ["脚手架工具", "日常"],
-    "path": "/docs/cli#日常",
-    "excerpt": "脚手架工具 安装 日常 配置管理 发布版本 插件仓库使用。 可按npm方式配置 .npmignore、package.json、README.md 等。 把发布到npm的库以git仓库的形式进行管理 默认自动打tab，以v0.0.1 开始，...",
-    "text": "脚手架工具 安装 日常 配置管理 发布版本 插件仓库使用。 可按npm方式配置 .npmignore、package.json、README.md 等。 把发布到npm的库以git仓库的形式进行管理 默认自动打tab，以v0.0.1 开始，指定可如下进行",
-    "tags": []
-  },
-  {
-    "id": "doc-section-18-3",
-    "type": "doc",
-    "title": "脚手架工具",
-    "sectionTitle": "配置管理",
-    "titles": ["脚手架工具", "配置管理"],
-    "path": "/docs/cli#配置管理",
-    "excerpt": "脚手架工具 安装 日常 配置管理 发布版本 插件仓库使用。 可按npm方式配置 .npmignore、package.json、README.md 等。 把发布到npm的库以git仓库的形式进行管理 默认自动打tab，以v0.0.1 开始，...",
-    "text": "脚手架工具 安装 日常 配置管理 发布版本 插件仓库使用。 可按npm方式配置 .npmignore、package.json、README.md 等。 把发布到npm的库以git仓库的形式进行管理 默认自动打tab，以v0.0.1 开始，指定可如下进行",
-    "tags": []
-  },
-  {
-    "id": "doc-section-18-4",
-    "type": "doc",
-    "title": "脚手架工具",
-    "sectionTitle": "发布版本",
-    "titles": ["脚手架工具", "发布版本"],
-    "path": "/docs/cli#发布版本",
-    "excerpt": "插件仓库使用。 可按npm方式配置 .npmignore、package.json、README.md 等。 把发布到npm的库以git仓库的形式进行管理 默认自动打tab，以v0.0.1 开始，指定可如下进行",
-    "text": "插件仓库使用。 可按npm方式配置 .npmignore、package.json、README.md 等。 把发布到npm的库以git仓库的形式进行管理 默认自动打tab，以v0.0.1 开始，指定可如下进行",
-    "tags": []
-  },
-  {
-    "id": "doc-page-19",
-    "type": "doc",
     "title": "配置说明",
     "titles": ["配置说明"],
     "path": "/docs/config",
     "excerpt": "配置说明 配置的每个字段都是可选的，需要什么就补什么，不需要则忽视 基础配置 权限管理 消息过滤与控制 消息处理器配置 模块管理 快捷参数 启动时可使用的快捷参数： 基础环境变量 platform:string - 平台标识，支持的平台类型...",
-    "text": "配置说明 配置的每个字段都是可选的，需要什么就补什么，不需要则忽视 基础配置 权限管理 消息过滤与控制 消息处理器配置 模块管理 快捷参数 启动时可使用的快捷参数： 基础环境变量 platform:string - 平台标识，支持的平台类型包括： discord - Discord平台 qq - QQ平台 telegram - Telegram平台 或其他自定义平台包名（如：@alemonjs/xxx） login:string - 登录标识，通常与平台名称相同或为平台的特定实例名 url:string - CBP服务器连接地址，默认为 ws://127.0.0.1:17117 port:string number - CBP服务器端口，默认为 17117 serverPort:string number - 应用服务器端口（可选，仅在需要启动Web服务时设置） isfullreceive:string - 是否全量接收消息，可选值：'true' '1' 'false' '0' 文件路径相关 LOGPATH:string - 日志文件存储路径 PKGPATH:string - package.json 文件路径，默认为当前工作目录下的 package.json CFGPATH:string - 配置文件路径，默认为当前工作目录下的 alemon.config.yaml 运行环境 NODEENV:development production - 环境判断，用于区分开发环境和生产环境 CBP ChatBot Protocol ALemonJS的核心通信协议，负责客户端与平台之间的消息传输。 CBP连接配置 脚手架工具",
+    "text": "配置说明 配置的每个字段都是可选的，需要什么就补什么，不需要则忽视 基础配置 权限管理 消息过滤与控制 消息处理器配置 模块管理 快捷参数 启动时可使用的快捷参数： 基础环境变量 platform:string - 平台标识，支持的平台类型包括： discord - Discord平台 qq - QQ平台 telegram - Telegram平台 或其他自定义平台包名（如：@alemonjs/xxx） login:string - 登录标识，通常与平台名称相同或为平台的特定实例名 url:string - CBP服务器连接地址，默认为 ws://127.0.0.1:17117 port:string number - CBP服务器端口，默认为 17117 serverPort:string number - 应用服务器端口（可选，仅在需要启动Web服务时设置） isfullreceive:string - 是否全量接收消息，可选值：'true' '1' 'false' '0' 文件路径相关 LOGPATH:string - 日志文件存储路径 PKGPATH:string - package.json 文件路径，默认为当前工作目录下的 package.json CFGPATH:string - 配置文件路径，默认为当前工作目录下的 alemon.config.yaml 运行环境 NODEENV:development production - 环境判断，用于区分开发环境和生产环境 CBP ChatBot Protocol ALemonJS的核心通信协议，负责客户端与平台之间的消息传输。 CBP连接配置",
     "tags": []
   },
   {
-    "id": "doc-section-19-0",
+    "id": "doc-section-18-0",
     "type": "doc",
     "title": "配置说明",
     "sectionTitle": "配置说明",
@@ -2554,62 +2489,62 @@
     "tags": []
   },
   {
-    "id": "doc-section-19-1",
+    "id": "doc-section-18-1",
     "type": "doc",
     "title": "配置说明",
     "sectionTitle": "基础配置",
     "titles": ["配置说明", "基础配置"],
     "path": "/docs/config#基础配置",
     "excerpt": "配置说明 配置的每个字段都是可选的，需要什么就补什么，不需要则忽视 基础配置 权限管理 消息过滤与控制 消息处理器配置 模块管理 快捷参数 启动时可使用的快捷参数： 基础环境变量 platform:string - 平台标识，支持的平台类型...",
-    "text": "配置说明 配置的每个字段都是可选的，需要什么就补什么，不需要则忽视 基础配置 权限管理 消息过滤与控制 消息处理器配置 模块管理 快捷参数 启动时可使用的快捷参数： 基础环境变量 platform:string - 平台标识，支持的平台类型包括： discord - Discord平台 qq - QQ平台 telegram - Telegram平台 或其他自定义平台包名（如：@alemonjs/xxx） login:string - 登录标识，通常与平台名称相同或为平台的特定实例名 url:string - CBP服务器连接地址，默认为 ws://127.0.0.1:17117 port:string number - CBP服务器端口，默认为 17117 serverPort:string number - 应用服务器端口（可选，仅在需要启动Web服务时设置） isfullreceive:string - 是否全量接收消息，可选值：'true' '1' 'false' '0' 文件路径相关 LOGPATH:string - 日志文件存储路径 PKGPATH:string - package.json 文件路径，默认为当前工作目录下的 package.json CFGPATH:string - 配置文件路径，默认为当前工作目录下的 alemon.config.yaml 运行环境 NODEENV:development production - 环境判断，用于区分开发环境和生产环境 CBP ChatBot Protocol ALemonJS的核心通信协议，负责客户端与平台之间的消息传输。 CBP连接配置 脚手架工具",
+    "text": "配置说明 配置的每个字段都是可选的，需要什么就补什么，不需要则忽视 基础配置 权限管理 消息过滤与控制 消息处理器配置 模块管理 快捷参数 启动时可使用的快捷参数： 基础环境变量 platform:string - 平台标识，支持的平台类型包括： discord - Discord平台 qq - QQ平台 telegram - Telegram平台 或其他自定义平台包名（如：@alemonjs/xxx） login:string - 登录标识，通常与平台名称相同或为平台的特定实例名 url:string - CBP服务器连接地址，默认为 ws://127.0.0.1:17117 port:string number - CBP服务器端口，默认为 17117 serverPort:string number - 应用服务器端口（可选，仅在需要启动Web服务时设置） isfullreceive:string - 是否全量接收消息，可选值：'true' '1' 'false' '0' 文件路径相关 LOGPATH:string - 日志文件存储路径 PKGPATH:string - package.json 文件路径，默认为当前工作目录下的 package.json CFGPATH:string - 配置文件路径，默认为当前工作目录下的 alemon.config.yaml 运行环境 NODEENV:development production - 环境判断，用于区分开发环境和生产环境 CBP ChatBot Protocol ALemonJS的核心通信协议，负责客户端与平台之间的消息传输。 CBP连接配置",
     "tags": []
   },
   {
-    "id": "doc-section-19-2",
+    "id": "doc-section-18-2",
     "type": "doc",
     "title": "配置说明",
     "sectionTitle": "权限管理",
     "titles": ["配置说明", "权限管理"],
     "path": "/docs/config#权限管理",
     "excerpt": "配置说明 配置的每个字段都是可选的，需要什么就补什么，不需要则忽视 基础配置 权限管理 消息过滤与控制 消息处理器配置 模块管理 快捷参数 启动时可使用的快捷参数： 基础环境变量 platform:string - 平台标识，支持的平台类型...",
-    "text": "配置说明 配置的每个字段都是可选的，需要什么就补什么，不需要则忽视 基础配置 权限管理 消息过滤与控制 消息处理器配置 模块管理 快捷参数 启动时可使用的快捷参数： 基础环境变量 platform:string - 平台标识，支持的平台类型包括： discord - Discord平台 qq - QQ平台 telegram - Telegram平台 或其他自定义平台包名（如：@alemonjs/xxx） login:string - 登录标识，通常与平台名称相同或为平台的特定实例名 url:string - CBP服务器连接地址，默认为 ws://127.0.0.1:17117 port:string number - CBP服务器端口，默认为 17117 serverPort:string number - 应用服务器端口（可选，仅在需要启动Web服务时设置） isfullreceive:string - 是否全量接收消息，可选值：'true' '1' 'false' '0' 文件路径相关 LOGPATH:string - 日志文件存储路径 PKGPATH:string - package.json 文件路径，默认为当前工作目录下的 package.json CFGPATH:string - 配置文件路径，默认为当前工作目录下的 alemon.config.yaml 运行环境 NODEENV:development production - 环境判断，用于区分开发环境和生产环境 CBP ChatBot Protocol ALemonJS的核心通信协议，负责客户端与平台之间的消息传输。 CBP连接配置 脚手架工具",
+    "text": "配置说明 配置的每个字段都是可选的，需要什么就补什么，不需要则忽视 基础配置 权限管理 消息过滤与控制 消息处理器配置 模块管理 快捷参数 启动时可使用的快捷参数： 基础环境变量 platform:string - 平台标识，支持的平台类型包括： discord - Discord平台 qq - QQ平台 telegram - Telegram平台 或其他自定义平台包名（如：@alemonjs/xxx） login:string - 登录标识，通常与平台名称相同或为平台的特定实例名 url:string - CBP服务器连接地址，默认为 ws://127.0.0.1:17117 port:string number - CBP服务器端口，默认为 17117 serverPort:string number - 应用服务器端口（可选，仅在需要启动Web服务时设置） isfullreceive:string - 是否全量接收消息，可选值：'true' '1' 'false' '0' 文件路径相关 LOGPATH:string - 日志文件存储路径 PKGPATH:string - package.json 文件路径，默认为当前工作目录下的 package.json CFGPATH:string - 配置文件路径，默认为当前工作目录下的 alemon.config.yaml 运行环境 NODEENV:development production - 环境判断，用于区分开发环境和生产环境 CBP ChatBot Protocol ALemonJS的核心通信协议，负责客户端与平台之间的消息传输。 CBP连接配置",
     "tags": []
   },
   {
-    "id": "doc-section-19-3",
+    "id": "doc-section-18-3",
     "type": "doc",
     "title": "配置说明",
     "sectionTitle": "消息过滤与控制",
     "titles": ["配置说明", "消息过滤与控制"],
     "path": "/docs/config#消息过滤与控制",
     "excerpt": "配置说明 配置的每个字段都是可选的，需要什么就补什么，不需要则忽视 基础配置 权限管理 消息过滤与控制 消息处理器配置 模块管理 快捷参数 启动时可使用的快捷参数： 基础环境变量 platform:string - 平台标识，支持的平台类型...",
-    "text": "配置说明 配置的每个字段都是可选的，需要什么就补什么，不需要则忽视 基础配置 权限管理 消息过滤与控制 消息处理器配置 模块管理 快捷参数 启动时可使用的快捷参数： 基础环境变量 platform:string - 平台标识，支持的平台类型包括： discord - Discord平台 qq - QQ平台 telegram - Telegram平台 或其他自定义平台包名（如：@alemonjs/xxx） login:string - 登录标识，通常与平台名称相同或为平台的特定实例名 url:string - CBP服务器连接地址，默认为 ws://127.0.0.1:17117 port:string number - CBP服务器端口，默认为 17117 serverPort:string number - 应用服务器端口（可选，仅在需要启动Web服务时设置） isfullreceive:string - 是否全量接收消息，可选值：'true' '1' 'false' '0' 文件路径相关 LOGPATH:string - 日志文件存储路径 PKGPATH:string - package.json 文件路径，默认为当前工作目录下的 package.json CFGPATH:string - 配置文件路径，默认为当前工作目录下的 alemon.config.yaml 运行环境 NODEENV:development production - 环境判断，用于区分开发环境和生产环境 CBP ChatBot Protocol ALemonJS的核心通信协议，负责客户端与平台之间的消息传输。 CBP连接配置 脚手架工具",
+    "text": "配置说明 配置的每个字段都是可选的，需要什么就补什么，不需要则忽视 基础配置 权限管理 消息过滤与控制 消息处理器配置 模块管理 快捷参数 启动时可使用的快捷参数： 基础环境变量 platform:string - 平台标识，支持的平台类型包括： discord - Discord平台 qq - QQ平台 telegram - Telegram平台 或其他自定义平台包名（如：@alemonjs/xxx） login:string - 登录标识，通常与平台名称相同或为平台的特定实例名 url:string - CBP服务器连接地址，默认为 ws://127.0.0.1:17117 port:string number - CBP服务器端口，默认为 17117 serverPort:string number - 应用服务器端口（可选，仅在需要启动Web服务时设置） isfullreceive:string - 是否全量接收消息，可选值：'true' '1' 'false' '0' 文件路径相关 LOGPATH:string - 日志文件存储路径 PKGPATH:string - package.json 文件路径，默认为当前工作目录下的 package.json CFGPATH:string - 配置文件路径，默认为当前工作目录下的 alemon.config.yaml 运行环境 NODEENV:development production - 环境判断，用于区分开发环境和生产环境 CBP ChatBot Protocol ALemonJS的核心通信协议，负责客户端与平台之间的消息传输。 CBP连接配置",
     "tags": []
   },
   {
-    "id": "doc-section-19-4",
+    "id": "doc-section-18-4",
     "type": "doc",
     "title": "配置说明",
     "sectionTitle": "消息处理器配置",
     "titles": ["配置说明", "消息处理器配置"],
     "path": "/docs/config#消息处理器配置",
     "excerpt": "配置说明 配置的每个字段都是可选的，需要什么就补什么，不需要则忽视 基础配置 权限管理 消息过滤与控制 消息处理器配置 模块管理 快捷参数 启动时可使用的快捷参数： 基础环境变量 platform:string - 平台标识，支持的平台类型...",
-    "text": "配置说明 配置的每个字段都是可选的，需要什么就补什么，不需要则忽视 基础配置 权限管理 消息过滤与控制 消息处理器配置 模块管理 快捷参数 启动时可使用的快捷参数： 基础环境变量 platform:string - 平台标识，支持的平台类型包括： discord - Discord平台 qq - QQ平台 telegram - Telegram平台 或其他自定义平台包名（如：@alemonjs/xxx） login:string - 登录标识，通常与平台名称相同或为平台的特定实例名 url:string - CBP服务器连接地址，默认为 ws://127.0.0.1:17117 port:string number - CBP服务器端口，默认为 17117 serverPort:string number - 应用服务器端口（可选，仅在需要启动Web服务时设置） isfullreceive:string - 是否全量接收消息，可选值：'true' '1' 'false' '0' 文件路径相关 LOGPATH:string - 日志文件存储路径 PKGPATH:string - package.json 文件路径，默认为当前工作目录下的 package.json CFGPATH:string - 配置文件路径，默认为当前工作目录下的 alemon.config.yaml 运行环境 NODEENV:development production - 环境判断，用于区分开发环境和生产环境 CBP ChatBot Protocol ALemonJS的核心通信协议，负责客户端与平台之间的消息传输。 CBP连接配置 脚手架工具",
+    "text": "配置说明 配置的每个字段都是可选的，需要什么就补什么，不需要则忽视 基础配置 权限管理 消息过滤与控制 消息处理器配置 模块管理 快捷参数 启动时可使用的快捷参数： 基础环境变量 platform:string - 平台标识，支持的平台类型包括： discord - Discord平台 qq - QQ平台 telegram - Telegram平台 或其他自定义平台包名（如：@alemonjs/xxx） login:string - 登录标识，通常与平台名称相同或为平台的特定实例名 url:string - CBP服务器连接地址，默认为 ws://127.0.0.1:17117 port:string number - CBP服务器端口，默认为 17117 serverPort:string number - 应用服务器端口（可选，仅在需要启动Web服务时设置） isfullreceive:string - 是否全量接收消息，可选值：'true' '1' 'false' '0' 文件路径相关 LOGPATH:string - 日志文件存储路径 PKGPATH:string - package.json 文件路径，默认为当前工作目录下的 package.json CFGPATH:string - 配置文件路径，默认为当前工作目录下的 alemon.config.yaml 运行环境 NODEENV:development production - 环境判断，用于区分开发环境和生产环境 CBP ChatBot Protocol ALemonJS的核心通信协议，负责客户端与平台之间的消息传输。 CBP连接配置",
     "tags": []
   },
   {
-    "id": "doc-section-19-5",
+    "id": "doc-section-18-5",
     "type": "doc",
     "title": "配置说明",
     "sectionTitle": "模块管理",
     "titles": ["配置说明", "模块管理"],
     "path": "/docs/config#模块管理",
     "excerpt": "配置说明 配置的每个字段都是可选的，需要什么就补什么，不需要则忽视 基础配置 权限管理 消息过滤与控制 消息处理器配置 模块管理 快捷参数 启动时可使用的快捷参数： 基础环境变量 platform:string - 平台标识，支持的平台类型...",
-    "text": "配置说明 配置的每个字段都是可选的，需要什么就补什么，不需要则忽视 基础配置 权限管理 消息过滤与控制 消息处理器配置 模块管理 快捷参数 启动时可使用的快捷参数： 基础环境变量 platform:string - 平台标识，支持的平台类型包括： discord - Discord平台 qq - QQ平台 telegram - Telegram平台 或其他自定义平台包名（如：@alemonjs/xxx） login:string - 登录标识，通常与平台名称相同或为平台的特定实例名 url:string - CBP服务器连接地址，默认为 ws://127.0.0.1:17117 port:string number - CBP服务器端口，默认为 17117 serverPort:string number - 应用服务器端口（可选，仅在需要启动Web服务时设置） isfullreceive:string - 是否全量接收消息，可选值：'true' '1' 'false' '0' 文件路径相关 LOGPATH:string - 日志文件存储路径 PKGPATH:string - package.json 文件路径，默认为当前工作目录下的 package.json CFGPATH:string - 配置文件路径，默认为当前工作目录下的 alemon.config.yaml 运行环境 NODEENV:development production - 环境判断，用于区分开发环境和生产环境 CBP ChatBot Protocol ALemonJS的核心通信协议，负责客户端与平台之间的消息传输。 CBP连接配置 脚手架工具",
+    "text": "配置说明 配置的每个字段都是可选的，需要什么就补什么，不需要则忽视 基础配置 权限管理 消息过滤与控制 消息处理器配置 模块管理 快捷参数 启动时可使用的快捷参数： 基础环境变量 platform:string - 平台标识，支持的平台类型包括： discord - Discord平台 qq - QQ平台 telegram - Telegram平台 或其他自定义平台包名（如：@alemonjs/xxx） login:string - 登录标识，通常与平台名称相同或为平台的特定实例名 url:string - CBP服务器连接地址，默认为 ws://127.0.0.1:17117 port:string number - CBP服务器端口，默认为 17117 serverPort:string number - 应用服务器端口（可选，仅在需要启动Web服务时设置） isfullreceive:string - 是否全量接收消息，可选值：'true' '1' 'false' '0' 文件路径相关 LOGPATH:string - 日志文件存储路径 PKGPATH:string - package.json 文件路径，默认为当前工作目录下的 package.json CFGPATH:string - 配置文件路径，默认为当前工作目录下的 alemon.config.yaml 运行环境 NODEENV:development production - 环境判断，用于区分开发环境和生产环境 CBP ChatBot Protocol ALemonJS的核心通信协议，负责客户端与平台之间的消息传输。 CBP连接配置",
     "tags": []
   },
   {
-    "id": "doc-section-19-6",
+    "id": "doc-section-18-6",
     "type": "doc",
     "title": "配置说明",
     "sectionTitle": "快捷参数",
@@ -2620,7 +2555,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-19-7",
+    "id": "doc-section-18-7",
     "type": "doc",
     "title": "配置说明",
     "sectionTitle": "基础环境变量",
@@ -2631,7 +2566,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-19-8",
+    "id": "doc-section-18-8",
     "type": "doc",
     "title": "配置说明",
     "sectionTitle": "文件路径相关",
@@ -2642,7 +2577,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-19-9",
+    "id": "doc-section-18-9",
     "type": "doc",
     "title": "配置说明",
     "sectionTitle": "运行环境",
@@ -2653,7 +2588,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-19-10",
+    "id": "doc-section-18-10",
     "type": "doc",
     "title": "配置说明",
     "sectionTitle": "CBP",
@@ -2664,29 +2599,18 @@
     "tags": []
   },
   {
-    "id": "doc-section-19-11",
+    "id": "doc-section-18-11",
     "type": "doc",
     "title": "配置说明",
     "sectionTitle": "CBP连接配置",
     "titles": ["配置说明", "CBP连接配置"],
     "path": "/docs/config#cbp连接配置",
     "excerpt": "配置说明 配置的每个字段都是可选的，需要什么就补什么，不需要则忽视 基础配置 权限管理 消息过滤与控制 消息处理器配置 模块管理 快捷参数 启动时可使用的快捷参数： 基础环境变量 platform:string - 平台标识，支持的平台类型...",
-    "text": "配置说明 配置的每个字段都是可选的，需要什么就补什么，不需要则忽视 基础配置 权限管理 消息过滤与控制 消息处理器配置 模块管理 快捷参数 启动时可使用的快捷参数： 基础环境变量 platform:string - 平台标识，支持的平台类型包括： discord - Discord平台 qq - QQ平台 telegram - Telegram平台 或其他自定义平台包名（如：@alemonjs/xxx） login:string - 登录标识，通常与平台名称相同或为平台的特定实例名 url:string - CBP服务器连接地址，默认为 ws://127.0.0.1:17117 port:string number - CBP服务器端口，默认为 17117 serverPort:string number - 应用服务器端口（可选，仅在需要启动Web服务时设置） isfullreceive:string - 是否全量接收消息，可选值：'true' '1' 'false' '0' 文件路径相关 LOGPATH:string - 日志文件存储路径 PKGPATH:string - package.json 文件路径，默认为当前工作目录下的 package.json CFGPATH:string - 配置文件路径，默认为当前工作目录下的 alemon.config.yaml 运行环境 NODEENV:development production - 环境判断，用于区分开发环境和生产环境 CBP ChatBot Protocol ALemonJS的核心通信协议，负责客户端与平台之间的消息传输。 CBP连接配置 脚手架工具",
+    "text": "配置说明 配置的每个字段都是可选的，需要什么就补什么，不需要则忽视 基础配置 权限管理 消息过滤与控制 消息处理器配置 模块管理 快捷参数 启动时可使用的快捷参数： 基础环境变量 platform:string - 平台标识，支持的平台类型包括： discord - Discord平台 qq - QQ平台 telegram - Telegram平台 或其他自定义平台包名（如：@alemonjs/xxx） login:string - 登录标识，通常与平台名称相同或为平台的特定实例名 url:string - CBP服务器连接地址，默认为 ws://127.0.0.1:17117 port:string number - CBP服务器端口，默认为 17117 serverPort:string number - 应用服务器端口（可选，仅在需要启动Web服务时设置） isfullreceive:string - 是否全量接收消息，可选值：'true' '1' 'false' '0' 文件路径相关 LOGPATH:string - 日志文件存储路径 PKGPATH:string - package.json 文件路径，默认为当前工作目录下的 package.json CFGPATH:string - 配置文件路径，默认为当前工作目录下的 alemon.config.yaml 运行环境 NODEENV:development production - 环境判断，用于区分开发环境和生产环境 CBP ChatBot Protocol ALemonJS的核心通信协议，负责客户端与平台之间的消息传输。 CBP连接配置",
     "tags": []
   },
   {
-    "id": "doc-section-19-12",
-    "type": "doc",
-    "title": "配置说明",
-    "sectionTitle": "脚手架工具",
-    "titles": ["配置说明", "脚手架工具"],
-    "path": "/docs/config#脚手架工具",
-    "excerpt": "配置说明 配置的每个字段都是可选的，需要什么就补什么，不需要则忽视 基础配置 权限管理 消息过滤与控制 消息处理器配置 模块管理 快捷参数 启动时可使用的快捷参数： 基础环境变量 platform:string - 平台标识，支持的平台类型...",
-    "text": "配置说明 配置的每个字段都是可选的，需要什么就补什么，不需要则忽视 基础配置 权限管理 消息过滤与控制 消息处理器配置 模块管理 快捷参数 启动时可使用的快捷参数： 基础环境变量 platform:string - 平台标识，支持的平台类型包括： discord - Discord平台 qq - QQ平台 telegram - Telegram平台 或其他自定义平台包名（如：@alemonjs/xxx） login:string - 登录标识，通常与平台名称相同或为平台的特定实例名 url:string - CBP服务器连接地址，默认为 ws://127.0.0.1:17117 port:string number - CBP服务器端口，默认为 17117 serverPort:string number - 应用服务器端口（可选，仅在需要启动Web服务时设置） isfullreceive:string - 是否全量接收消息，可选值：'true' '1' 'false' '0' 文件路径相关 LOGPATH:string - 日志文件存储路径 PKGPATH:string - package.json 文件路径，默认为当前工作目录下的 package.json CFGPATH:string - 配置文件路径，默认为当前工作目录下的 alemon.config.yaml 运行环境 NODEENV:development production - 环境判断，用于区分开发环境和生产环境 CBP ChatBot Protocol ALemonJS的核心通信协议，负责客户端与平台之间的消息传输。 CBP连接配置 脚手架工具",
-    "tags": []
-  },
-  {
-    "id": "doc-page-20",
+    "id": "doc-page-19",
     "type": "doc",
     "title": "连接平台",
     "titles": ["连接平台"],
@@ -2696,7 +2620,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-20-0",
+    "id": "doc-section-19-0",
     "type": "doc",
     "title": "连接平台",
     "sectionTitle": "连接平台",
@@ -2707,7 +2631,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-20-1",
+    "id": "doc-section-19-1",
     "type": "doc",
     "title": "连接平台",
     "sectionTitle": "官方",
@@ -2718,7 +2642,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-20-2",
+    "id": "doc-section-19-2",
     "type": "doc",
     "title": "连接平台",
     "sectionTitle": "QQ",
@@ -2729,7 +2653,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-20-3",
+    "id": "doc-section-19-3",
     "type": "doc",
     "title": "连接平台",
     "sectionTitle": "Discord",
@@ -2740,7 +2664,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-20-4",
+    "id": "doc-section-19-4",
     "type": "doc",
     "title": "连接平台",
     "sectionTitle": "KOOK",
@@ -2751,7 +2675,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-20-5",
+    "id": "doc-section-19-5",
     "type": "doc",
     "title": "连接平台",
     "sectionTitle": "Telegram",
@@ -2762,7 +2686,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-20-6",
+    "id": "doc-section-19-6",
     "type": "doc",
     "title": "连接平台",
     "sectionTitle": "三方",
@@ -2773,7 +2697,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-20-7",
+    "id": "doc-section-19-7",
     "type": "doc",
     "title": "连接平台",
     "sectionTitle": "OneBot",
@@ -2781,6 +2705,49 @@
     "path": "/docs/environment#onebot",
     "excerpt": "Project Status Description ------------------ ----------------------- ----------- [@alemonjs/onebot] [![onebot-s]][onebo...",
     "text": "Project Status Description ------------------ ----------------------- ----------- [@alemonjs/onebot] [![onebot-s]][onebot-p] OneBot V11 [@alemonjs/onebot]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/onebot [onebot-s]: https://img.shields.io/npm/v/@alemonjs/onebot.svg [onebot-p]: https://www.npmjs.com/package/@alemonjs/onebot",
+    "tags": []
+  },
+  {
+    "id": "doc-page-20",
+    "type": "doc",
+    "title": "如何安装",
+    "titles": ["如何安装"],
+    "path": "/docs/install",
+    "excerpt": "如何安装 npm create alemonjs 已停止维护，不再用于创建项目。 使用 Setup 从 AlemonJS Setup Releases 下载对应系统的文件。Windows 直接双击；macOS 与 Linux 在下载目录中运...",
+    "text": "如何安装 npm create alemonjs 已停止维护，不再用于创建项目。 使用 Setup 从 AlemonJS Setup Releases 下载对应系统的文件。Windows 直接双击；macOS 与 Linux 在下载目录中运行： 在浏览器打开终端显示的地址（默认 http://localhost:17390），创建项目并完成平台连接。 手动构建 适合需要自行维护项目的开发者。 在 package.json 中设置 \"type\": \"module\"，然后创建入口文件： 按开发手册编写路由和响应，然后启动： 接着按连接平台配置机器人账号。",
+    "tags": []
+  },
+  {
+    "id": "doc-section-20-0",
+    "type": "doc",
+    "title": "如何安装",
+    "sectionTitle": "如何安装",
+    "titles": ["如何安装", "如何安装"],
+    "path": "/docs/install#如何安装",
+    "excerpt": "npm create alemonjs 已停止维护，不再用于创建项目。",
+    "text": "npm create alemonjs 已停止维护，不再用于创建项目。",
+    "tags": []
+  },
+  {
+    "id": "doc-section-20-1",
+    "type": "doc",
+    "title": "如何安装",
+    "sectionTitle": "使用 Setup",
+    "titles": ["如何安装", "使用 Setup"],
+    "path": "/docs/install#使用-setup",
+    "excerpt": "从 AlemonJS Setup Releases 下载对应系统的文件。Windows 直接双击；macOS 与 Linux 在下载目录中运行： 在浏览器打开终端显示的地址（默认 http://localhost:17390），创建项目并完...",
+    "text": "从 AlemonJS Setup Releases 下载对应系统的文件。Windows 直接双击；macOS 与 Linux 在下载目录中运行： 在浏览器打开终端显示的地址（默认 http://localhost:17390），创建项目并完成平台连接。",
+    "tags": []
+  },
+  {
+    "id": "doc-section-20-2",
+    "type": "doc",
+    "title": "如何安装",
+    "sectionTitle": "手动构建",
+    "titles": ["如何安装", "手动构建"],
+    "path": "/docs/install#手动构建",
+    "excerpt": "适合需要自行维护项目的开发者。 在 package.json 中设置 \"type\": \"module\"，然后创建入口文件： 按开发手册编写路由和响应，然后启动： 接着按连接平台配置机器人账号。",
+    "text": "适合需要自行维护项目的开发者。 在 package.json 中设置 \"type\": \"module\"，然后创建入口文件： 按开发手册编写路由和响应，然后启动： 接着按连接平台配置机器人账号。",
     "tags": []
   },
   {
@@ -2845,93 +2812,6 @@
     "path": "/docs/open#开发与部署",
     "excerpt": "项目名 说明 ----------------------- --------------------------------------- [qq-bot-socket-to-hook] 支持把单个或多个qqBot账号转为socket服务...",
     "text": "项目名 说明 ----------------------- --------------------------------------- [qq-bot-socket-to-hook] 支持把单个或多个qqBot账号转为socket服务 [qq-bot-socket-to-hook]: https://github.com/lemonade-lab/qq-bot",
-    "tags": []
-  },
-  {
-    "id": "doc-page-23",
-    "type": "doc",
-    "title": "快速开始",
-    "titles": ["快速开始"],
-    "path": "/docs/start",
-    "excerpt": "快速开始 日常使用 安装并加载 启动并连接 login 参数指定连接平台，此处以qq-bot为例，不指定则仅运行 点击了解如何连接平台 点击了解如何安装插件 开发者 使用模板 获取模板 进入并加载 启动 手动构建 创建启动文件 模块入口文件...",
-    "text": "快速开始 日常使用 安装并加载 启动并连接 login 参数指定连接平台，此处以qq-bot为例，不指定则仅运行 点击了解如何连接平台 点击了解如何安装插件 开发者 使用模板 获取模板 进入并加载 启动 手动构建 创建启动文件 模块入口文件编写逻辑 启动 测试平台 下载vscode并使用ALemonTestOne扩展 Visual Studio Code ALemonTestOne 外部连接启动，确保ALemonTestOne可连接 对TS的支持 推荐 使用lvyjs开发构建工具，以支持ts环境 请前往 https://lemonade-lab.github.io/lvyjs.dev/ 了解框架自建的构建工具",
-    "tags": []
-  },
-  {
-    "id": "doc-section-23-0",
-    "type": "doc",
-    "title": "快速开始",
-    "sectionTitle": "快速开始",
-    "titles": ["快速开始", "快速开始"],
-    "path": "/docs/start#快速开始",
-    "excerpt": "快速开始 日常使用 安装并加载 启动并连接 login 参数指定连接平台，此处以qq-bot为例，不指定则仅运行 点击了解如何连接平台 点击了解如何安装插件 开发者 使用模板 获取模板 进入并加载 启动 手动构建 创建启动文件 模块入口文件...",
-    "text": "快速开始 日常使用 安装并加载 启动并连接 login 参数指定连接平台，此处以qq-bot为例，不指定则仅运行 点击了解如何连接平台 点击了解如何安装插件 开发者 使用模板 获取模板 进入并加载 启动 手动构建 创建启动文件 模块入口文件编写逻辑 启动 测试平台 下载vscode并使用ALemonTestOne扩展 Visual Studio Code ALemonTestOne 外部连接启动，确保ALemonTestOne可连接 对TS的支持 推荐 使用lvyjs开发构建工具，以支持ts环境 请前往 https://lemonade-lab.github.io/lvyjs.dev/ 了解框架自建的构建工具",
-    "tags": []
-  },
-  {
-    "id": "doc-section-23-1",
-    "type": "doc",
-    "title": "快速开始",
-    "sectionTitle": "日常使用",
-    "titles": ["快速开始", "日常使用"],
-    "path": "/docs/start#日常使用",
-    "excerpt": "安装并加载 启动并连接 login 参数指定连接平台，此处以qq-bot为例，不指定则仅运行 点击了解如何连接平台 点击了解如何安装插件",
-    "text": "安装并加载 启动并连接 login 参数指定连接平台，此处以qq-bot为例，不指定则仅运行 点击了解如何连接平台 点击了解如何安装插件",
-    "tags": []
-  },
-  {
-    "id": "doc-section-23-2",
-    "type": "doc",
-    "title": "快速开始",
-    "sectionTitle": "开发者",
-    "titles": ["快速开始", "开发者"],
-    "path": "/docs/start#开发者",
-    "excerpt": "快速开始 日常使用 安装并加载 启动并连接 login 参数指定连接平台，此处以qq-bot为例，不指定则仅运行 点击了解如何连接平台 点击了解如何安装插件 开发者 使用模板 获取模板 进入并加载 启动 手动构建 创建启动文件 模块入口文件...",
-    "text": "快速开始 日常使用 安装并加载 启动并连接 login 参数指定连接平台，此处以qq-bot为例，不指定则仅运行 点击了解如何连接平台 点击了解如何安装插件 开发者 使用模板 获取模板 进入并加载 启动 手动构建 创建启动文件 模块入口文件编写逻辑 启动 测试平台 下载vscode并使用ALemonTestOne扩展 Visual Studio Code ALemonTestOne 外部连接启动，确保ALemonTestOne可连接 对TS的支持 推荐 使用lvyjs开发构建工具，以支持ts环境 请前往 https://lemonade-lab.github.io/lvyjs.dev/ 了解框架自建的构建工具",
-    "tags": []
-  },
-  {
-    "id": "doc-section-23-3",
-    "type": "doc",
-    "title": "快速开始",
-    "sectionTitle": "使用模板",
-    "titles": ["快速开始", "使用模板"],
-    "path": "/docs/start#使用模板",
-    "excerpt": "获取模板 进入并加载 启动",
-    "text": "获取模板 进入并加载 启动",
-    "tags": []
-  },
-  {
-    "id": "doc-section-23-4",
-    "type": "doc",
-    "title": "快速开始",
-    "sectionTitle": "手动构建",
-    "titles": ["快速开始", "手动构建"],
-    "path": "/docs/start#手动构建",
-    "excerpt": "创建启动文件 模块入口文件编写逻辑 启动",
-    "text": "创建启动文件 模块入口文件编写逻辑 启动",
-    "tags": []
-  },
-  {
-    "id": "doc-section-23-5",
-    "type": "doc",
-    "title": "快速开始",
-    "sectionTitle": "测试平台",
-    "titles": ["快速开始", "测试平台"],
-    "path": "/docs/start#测试平台",
-    "excerpt": "下载vscode并使用ALemonTestOne扩展 Visual Studio Code ALemonTestOne 外部连接启动，确保ALemonTestOne可连接",
-    "text": "下载vscode并使用ALemonTestOne扩展 Visual Studio Code ALemonTestOne 外部连接启动，确保ALemonTestOne可连接",
-    "tags": []
-  },
-  {
-    "id": "doc-section-23-6",
-    "type": "doc",
-    "title": "快速开始",
-    "sectionTitle": "对TS的支持",
-    "titles": ["快速开始", "对TS的支持"],
-    "path": "/docs/start#对ts的支持",
-    "excerpt": "推荐 使用lvyjs开发构建工具，以支持ts环境 请前往 https://lemonade-lab.github.io/lvyjs.dev/ 了解框架自建的构建工具",
-    "text": "推荐 使用lvyjs开发构建工具，以支持ts环境 请前往 https://lemonade-lab.github.io/lvyjs.dev/ 了解框架自建的构建工具",
     "tags": []
   },
   {

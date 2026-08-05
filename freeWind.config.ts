@@ -46,8 +46,8 @@ export default defineConfig({
               to: '/docs/intro'
             },
             {
-              label: '开始',
-              to: '/docs/start'
+              label: '如何安装',
+              to: '/docs/install'
             }
           ]
         },

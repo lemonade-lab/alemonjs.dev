@@ -45,10 +45,10 @@ export default function HeaderPage() {
           </button>
           <Link
             className="bg-white dark:bg-gray-800 text-blue-600 dark:text-blue-400 border-2 border-blue-500 dark:border-blue-600 hover:border-blue-600 dark:hover:border-blue-500 rounded-lg px-4 sm:px-6 py-2 sm:py-3 hover:bg-blue-50 dark:hover:bg-gray-700 transition-all duration-300 text-sm sm:text-base flex-1 sm:flex-none min-w-[120px] text-center font-semibold  hover:-translate-y-0.5"
-            to="docs/intro"
+            to="/docs/install"
           >
             <button>
-              <Translate> 🚀快速开始</Translate>
+              <Translate> 🚀开始安装</Translate>
             </button>
           </Link>
         </div>

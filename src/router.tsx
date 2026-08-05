@@ -25,12 +25,11 @@ const Doc14 = lazy(() => import('../docs/alemonjsDocs/modules/desktop.md'))
 const Doc15 = lazy(() => import('../docs/alemonjsDocs/modules/models.md'))
 const Doc16 = lazy(() => import('../docs/alemonjsDocs/modules/platforms.md'))
 const Doc17 = lazy(() => import('../docs/apps.md'))
-const Doc18 = lazy(() => import('../docs/cli.md'))
-const Doc19 = lazy(() => import('../docs/config.md'))
-const Doc20 = lazy(() => import('../docs/environment.md'))
+const Doc18 = lazy(() => import('../docs/config.md'))
+const Doc19 = lazy(() => import('../docs/environment.md'))
+const Doc20 = lazy(() => import('../docs/install.mdx'))
 const Doc21 = lazy(() => import('../docs/intro.md'))
 const Doc22 = lazy(() => import('../docs/open.md'))
-const Doc23 = lazy(() => import('../docs/start.mdx'))
 
 // 自动生成的博客导入
 const Blog19 = lazy(() => import('../blog/2026/04/11/schedule-api.md'))
@@ -140,15 +139,15 @@ const router = createBrowserRouter([
         element: <Doc17 />
       },
       {
-        path: 'cli',
+        path: 'config',
         element: <Doc18 />
       },
       {
-        path: 'config',
+        path: 'environment',
         element: <Doc19 />
       },
       {
-        path: 'environment',
+        path: 'install',
         element: <Doc20 />
       },
       {
@@ -158,10 +157,6 @@ const router = createBrowserRouter([
       {
         path: 'open',
         element: <Doc22 />
-      },
-      {
-        path: 'start',
-        element: <Doc23 />
       }
     ]
   },

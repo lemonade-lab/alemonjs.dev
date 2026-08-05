@@ -5,19 +5,14 @@
     "position": 1
   },
   {
-    "title": "快速开始",
-    "path": "/docs/start",
+    "title": "如何安装",
+    "path": "/docs/install",
     "position": 2
   },
   {
     "title": "配置说明",
     "path": "/docs/config",
     "position": 3
-  },
-  {
-    "title": "脚手架工具",
-    "path": "/docs/cli",
-    "position": 4
   },
   {
     "id": "alemonjsDocs",
