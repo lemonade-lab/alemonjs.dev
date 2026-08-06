@@ -1,11 +1,26 @@
 import classNames from 'classnames'
 import { useInView } from 'react-intersection-observer'
+import img0 from '@/assets/img/web/phone.png'
 import img1 from '@/assets/img/web/info.png'
 import img2 from '@/assets/img/dt/cat.png'
 import img3 from '@/assets/img/dt/home.png'
 import { Image } from 'antd'
 
 const items = [
+  {
+    url: img0,
+    title: '手机启动',
+    docs: '立即安装立即体验',
+    position: 'right',
+    link: 'https://github.com/lemonade-lab/alemonapp'
+  },
+  {
+    url: img3,
+    title: '桌面启动',
+    docs: '立即安装立即启动机器人',
+    position: 'left',
+    link: 'https://github.com/lemonade-lab/alemondesk'
+  },
   {
     url: img1,
     title: 'WEB面板',
@@ -19,13 +34,6 @@ const items = [
     docs: '不必登录平台即可测试代码',
     position: 'left',
     link: 'https://marketplace.visualstudio.com/items?itemName=lemonadex.alemonjs-testone'
-  },
-  {
-    url: img3,
-    title: '桌面启动',
-    docs: '立即安装立即启动机器人',
-    position: 'right',
-    link: 'https://github.com/lemonade-lab/alemondesk'
   }
 ]
 

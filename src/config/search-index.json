@@ -2615,8 +2615,8 @@
     "title": "连接平台",
     "titles": ["连接平台"],
     "path": "/docs/environment",
-    "excerpt": "连接平台 选择平台包后，按包的 README 配置密钥并连接机器人。点击项目名或版本号可查看详情。 官方 项目 版本 说明 --- --- --- [@alemonjs/qq-bot] [![qq-bot-s]][qq-bot-p] QQ...",
-    "text": "连接平台 选择平台包后，按包的 README 配置密钥并连接机器人。点击项目名或版本号可查看详情。 官方 项目 版本 说明 --- --- --- [@alemonjs/qq-bot] [![qq-bot-s]][qq-bot-p] QQ Bot [@alemonjs/discord] [![discord-s]][discord-p] Discord [@alemonjs/kook] [![kook-s]][kook-p] KOOK [@alemonjs/telegram] [![telegram-s]][telegram-p] Telegram [@alemonjs/qq-bot]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/qq-bot [qq-bot-s]: https://img.shields.io/npm/v/@alemonjs/qq-bot.svg [qq-bot-p]: https://www.npmjs.com/package/@alemonjs/qq-bot [@alemonjs/discord]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/discord [discord-s]: https://img.shields.io/npm/v/@alemonjs/discord.svg [discord-p]: https://www.npmjs.com/package/@alemonjs/discord [@alemonjs/kook]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/kook [kook-s]: https://img.shields.io/npm/v/@alemonjs/kook.svg [kook-p]: https://www.npmjs.com/package/@alemonjs/kook [@alemonjs/telegram]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/telegram [telegram-s]: https://img.shields.io/npm/v/@alemonjs/telegram.svg [telegram-p]: https://www.npmjs.com/package/@alemonjs/telegram 第三方 第三方协议可能存在风险，请谨慎使用。 项目 版本 说明 --- --- --- [@alemonjs/onebot] [![onebot-s]][onebot-p] OneBot V11 [@alemonjs/onebot]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/onebot [onebot-s]: https://img.shields.io/npm/v/@alemonjs/onebot.svg [onebot-p]: https://www.npmjs.com/package/@alemonjs/onebot",
+    "excerpt": "连接平台 选择平台包后，按包的 README 配置密钥并连接机器人。点击项目名或版本号可查看详情。 官方 项目 版本 说明 -------------------- --------------------------- --------...",
+    "text": "连接平台 选择平台包后，按包的 README 配置密钥并连接机器人。点击项目名或版本号可查看详情。 官方 项目 版本 说明 -------------------- --------------------------- -------- [@alemonjs/qq-bot] [![qq-bot-s]][qq-bot-p] QQ Bot [@alemonjs/discord] [![discord-s]][discord-p] Discord [@alemonjs/kook] [![kook-s]][kook-p] KOOK [@alemonjs/telegram] [![telegram-s]][telegram-p] Telegram [@alemonjs/qq-bot]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/qq-bot [qq-bot-s]: https://img.shields.io/npm/v/@alemonjs/qq-bot.svg [qq-bot-p]: https://www.npmjs.com/package/@alemonjs/qq-bot [@alemonjs/discord]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/discord [discord-s]: https://img.shields.io/npm/v/@alemonjs/discord.svg [discord-p]: https://www.npmjs.com/package/@alemonjs/discord [@alemonjs/kook]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/kook [kook-s]: https://img.shields.io/npm/v/@alemonjs/kook.svg [kook-p]: https://www.npmjs.com/package/@alemonjs/kook [@alemonjs/telegram]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/telegram [telegram-s]: https://img.shields.io/npm/v/@alemonjs/telegram.svg [telegram-p]: https://www.npmjs.com/package/@alemonjs/telegram 第三方 第三方协议可能存在风险，请谨慎使用。 项目 版本 说明 ------------------ ----------------------- ---------- [@alemonjs/onebot] [![onebot-s]][onebot-p] OneBot V11 [@alemonjs/onebot]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/onebot [onebot-s]: https://img.shields.io/npm/v/@alemonjs/onebot.svg [onebot-p]: https://www.npmjs.com/package/@alemonjs/onebot",
     "tags": []
   },
   {
@@ -2637,8 +2637,8 @@
     "sectionTitle": "官方",
     "titles": ["连接平台", "官方"],
     "path": "/docs/environment#官方",
-    "excerpt": "项目 版本 说明 --- --- --- [@alemonjs/qq-bot] [![qq-bot-s]][qq-bot-p] QQ Bot [@alemonjs/discord] [![discord-s]][discord-p] Dis...",
-    "text": "项目 版本 说明 --- --- --- [@alemonjs/qq-bot] [![qq-bot-s]][qq-bot-p] QQ Bot [@alemonjs/discord] [![discord-s]][discord-p] Discord [@alemonjs/kook] [![kook-s]][kook-p] KOOK [@alemonjs/telegram] [![telegram-s]][telegram-p] Telegram [@alemonjs/qq-bot]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/qq-bot [qq-bot-s]: https://img.shields.io/npm/v/@alemonjs/qq-bot.svg [qq-bot-p]: https://www.npmjs.com/package/@alemonjs/qq-bot [@alemonjs/discord]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/discord [discord-s]: https://img.shields.io/npm/v/@alemonjs/discord.svg [discord-p]: https://www.npmjs.com/package/@alemonjs/discord [@alemonjs/kook]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/kook [kook-s]: https://img.shields.io/npm/v/@alemonjs/kook.svg [kook-p]: https://www.npmjs.com/package/@alemonjs/kook [@alemonjs/telegram]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/telegram [telegram-s]: https://img.shields.io/npm/v/@alemonjs/telegram.svg [telegram-p]: https://www.npmjs.com/package/@alemonjs/telegram",
+    "excerpt": "项目 版本 说明 -------------------- --------------------------- -------- [@alemonjs/qq-bot] [![qq-bot-s]][qq-bot-p] QQ Bot [@a...",
+    "text": "项目 版本 说明 -------------------- --------------------------- -------- [@alemonjs/qq-bot] [![qq-bot-s]][qq-bot-p] QQ Bot [@alemonjs/discord] [![discord-s]][discord-p] Discord [@alemonjs/kook] [![kook-s]][kook-p] KOOK [@alemonjs/telegram] [![telegram-s]][telegram-p] Telegram [@alemonjs/qq-bot]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/qq-bot [qq-bot-s]: https://img.shields.io/npm/v/@alemonjs/qq-bot.svg [qq-bot-p]: https://www.npmjs.com/package/@alemonjs/qq-bot [@alemonjs/discord]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/discord [discord-s]: https://img.shields.io/npm/v/@alemonjs/discord.svg [discord-p]: https://www.npmjs.com/package/@alemonjs/discord [@alemonjs/kook]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/kook [kook-s]: https://img.shields.io/npm/v/@alemonjs/kook.svg [kook-p]: https://www.npmjs.com/package/@alemonjs/kook [@alemonjs/telegram]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/telegram [telegram-s]: https://img.shields.io/npm/v/@alemonjs/telegram.svg [telegram-p]: https://www.npmjs.com/package/@alemonjs/telegram",
     "tags": []
   },
   {
@@ -2648,8 +2648,8 @@
     "sectionTitle": "第三方",
     "titles": ["连接平台", "第三方"],
     "path": "/docs/environment#第三方",
-    "excerpt": "第三方协议可能存在风险，请谨慎使用。 项目 版本 说明 --- --- --- [@alemonjs/onebot] [![onebot-s]][onebot-p] OneBot V11 [@alemonjs/onebot]: https:...",
-    "text": "第三方协议可能存在风险，请谨慎使用。 项目 版本 说明 --- --- --- [@alemonjs/onebot] [![onebot-s]][onebot-p] OneBot V11 [@alemonjs/onebot]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/onebot [onebot-s]: https://img.shields.io/npm/v/@alemonjs/onebot.svg [onebot-p]: https://www.npmjs.com/package/@alemonjs/onebot",
+    "excerpt": "第三方协议可能存在风险，请谨慎使用。 项目 版本 说明 ------------------ ----------------------- ---------- [@alemonjs/onebot] [![onebot-s]][onebo...",
+    "text": "第三方协议可能存在风险，请谨慎使用。 项目 版本 说明 ------------------ ----------------------- ---------- [@alemonjs/onebot] [![onebot-s]][onebot-p] OneBot V11 [@alemonjs/onebot]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/onebot [onebot-s]: https://img.shields.io/npm/v/@alemonjs/onebot.svg [onebot-p]: https://www.npmjs.com/package/@alemonjs/onebot",
     "tags": []
   },
   {
@@ -2658,8 +2658,8 @@
     "title": "如何安装",
     "titles": ["如何安装"],
     "path": "/docs/install",
-    "excerpt": "如何安装 npm create alemonjs 已停止维护，不再用于创建项目。 使用 Setup 从 AlemonJS Setup Releases 下载对应系统的文件。Windows 直接双击；macOS 与 Linux 在下载目录中运...",
-    "text": "如何安装 npm create alemonjs 已停止维护，不再用于创建项目。 使用 Setup 从 AlemonJS Setup Releases 下载对应系统的文件。Windows 直接双击；macOS 与 Linux 在下载目录中运行： 在浏览器打开终端显示的地址（默认 http://localhost:17390），创建项目并完成平台连接。 手动构建 适合需要自行维护项目的开发者。 在 package.json 中设置 \"type\": \"module\"，然后创建入口文件： 按开发手册编写路由和响应，然后启动： 接着按连接平台配置机器人账号。",
+    "excerpt": "如何安装 npm create alemonjs 已停止维护，不再用于创建项目。 使用 ALemonX 从 ALemonX Releases 下载对应系统的文件。Windows 直接双击；macOS 与 Linux 在下载目录中运行： 在浏...",
+    "text": "如何安装 npm create alemonjs 已停止维护，不再用于创建项目。 使用 ALemonX 从 ALemonX Releases 下载对应系统的文件。Windows 直接双击；macOS 与 Linux 在下载目录中运行： 在浏览器打开终端显示的地址（默认 http://localhost:17390），创建项目并完成平台连接。 了解什么是 ALemonX，请 点击访问 手动构建 适合需要自行维护项目的开发者。 在 package.json 中设置 \"type\": \"module\"，然后创建入口文件： 按开发手册编写路由和响应，然后启动： 接着按连接平台配置机器人账号。",
     "tags": []
   },
   {
@@ -2677,11 +2677,11 @@
     "id": "doc-section-20-1",
     "type": "doc",
     "title": "如何安装",
-    "sectionTitle": "使用 Setup",
-    "titles": ["如何安装", "使用 Setup"],
-    "path": "/docs/install#使用-setup",
-    "excerpt": "从 AlemonJS Setup Releases 下载对应系统的文件。Windows 直接双击；macOS 与 Linux 在下载目录中运行： 在浏览器打开终端显示的地址（默认 http://localhost:17390），创建项目并完...",
-    "text": "从 AlemonJS Setup Releases 下载对应系统的文件。Windows 直接双击；macOS 与 Linux 在下载目录中运行： 在浏览器打开终端显示的地址（默认 http://localhost:17390），创建项目并完成平台连接。",
+    "sectionTitle": "使用 ALemonX",
+    "titles": ["如何安装", "使用 ALemonX"],
+    "path": "/docs/install#使用-alemonx",
+    "excerpt": "从 ALemonX Releases 下载对应系统的文件。Windows 直接双击；macOS 与 Linux 在下载目录中运行： 在浏览器打开终端显示的地址（默认 http://localhost:17390），创建项目并完成平台连接。...",
+    "text": "从 ALemonX Releases 下载对应系统的文件。Windows 直接双击；macOS 与 Linux 在下载目录中运行： 在浏览器打开终端显示的地址（默认 http://localhost:17390），创建项目并完成平台连接。 了解什么是 ALemonX，请 点击访问",
     "tags": []
   },
   {
