@@ -2383,6 +2383,38 @@
   {
     "id": "doc-page-17",
     "type": "doc",
+    "title": "X插件",
+    "titles": ["X插件"],
+    "path": "/docs/apps-x",
+    "excerpt": "X插件 X机制到底是怎么回事？请点击了解 alemonx 的制作 基础 项目名 说明 --------- ---------------- [network] 系统网络与防火墙 [network]: https://github.com/l...",
+    "text": "X插件 X机制到底是怎么回事？请点击了解 alemonx 的制作 基础 项目名 说明 --------- ---------------- [network] 系统网络与防火墙 [network]: https://github.com/lemonade-lab/alemonx-network",
+    "tags": []
+  },
+  {
+    "id": "doc-section-17-0",
+    "type": "doc",
+    "title": "X插件",
+    "sectionTitle": "X插件",
+    "titles": ["X插件", "X插件"],
+    "path": "/docs/apps-x#x插件",
+    "excerpt": "X机制到底是怎么回事？请点击了解 alemonx 的制作",
+    "text": "X机制到底是怎么回事？请点击了解 alemonx 的制作",
+    "tags": []
+  },
+  {
+    "id": "doc-section-17-1",
+    "type": "doc",
+    "title": "X插件",
+    "sectionTitle": "基础",
+    "titles": ["X插件", "基础"],
+    "path": "/docs/apps-x#基础",
+    "excerpt": "项目名 说明 --------- ---------------- [network] 系统网络与防火墙 [network]: https://github.com/lemonade-lab/alemonx-network",
+    "text": "项目名 说明 --------- ---------------- [network] 系统网络与防火墙 [network]: https://github.com/lemonade-lab/alemonx-network",
+    "tags": []
+  },
+  {
+    "id": "doc-page-18",
+    "type": "doc",
     "title": "插件市场",
     "titles": ["插件市场"],
     "path": "/docs/apps",
@@ -2391,7 +2423,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-17-0",
+    "id": "doc-section-18-0",
     "type": "doc",
     "title": "插件市场",
     "sectionTitle": "插件市场",
@@ -2402,7 +2434,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-17-1",
+    "id": "doc-section-18-1",
     "type": "doc",
     "title": "插件市场",
     "sectionTitle": "增强",
@@ -2413,7 +2445,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-17-2",
+    "id": "doc-section-18-2",
     "type": "doc",
     "title": "插件市场",
     "sectionTitle": "IP",
@@ -2424,7 +2456,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-17-3",
+    "id": "doc-section-18-3",
     "type": "doc",
     "title": "插件市场",
     "sectionTitle": "功能",
@@ -2435,7 +2467,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-17-4",
+    "id": "doc-section-18-4",
     "type": "doc",
     "title": "插件市场",
     "sectionTitle": "游戏",
@@ -2446,7 +2478,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-17-5",
+    "id": "doc-section-18-5",
     "type": "doc",
     "title": "插件市场",
     "sectionTitle": "AI",
@@ -2457,7 +2489,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-17-6",
+    "id": "doc-section-18-6",
     "type": "doc",
     "title": "插件市场",
     "sectionTitle": "工具",
@@ -2468,7 +2500,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-18",
+    "id": "doc-page-19",
     "type": "doc",
     "title": "配置说明",
     "titles": ["配置说明"],
@@ -2478,7 +2510,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-18-0",
+    "id": "doc-section-19-0",
     "type": "doc",
     "title": "配置说明",
     "sectionTitle": "配置说明",
@@ -2489,7 +2521,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-18-1",
+    "id": "doc-section-19-1",
     "type": "doc",
     "title": "配置说明",
     "sectionTitle": "基础配置",
@@ -2500,7 +2532,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-18-2",
+    "id": "doc-section-19-2",
     "type": "doc",
     "title": "配置说明",
     "sectionTitle": "权限管理",
@@ -2511,7 +2543,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-18-3",
+    "id": "doc-section-19-3",
     "type": "doc",
     "title": "配置说明",
     "sectionTitle": "消息过滤与控制",
@@ -2522,7 +2554,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-18-4",
+    "id": "doc-section-19-4",
     "type": "doc",
     "title": "配置说明",
     "sectionTitle": "消息处理器配置",
@@ -2533,7 +2565,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-18-5",
+    "id": "doc-section-19-5",
     "type": "doc",
     "title": "配置说明",
     "sectionTitle": "模块管理",
@@ -2544,7 +2576,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-18-6",
+    "id": "doc-section-19-6",
     "type": "doc",
     "title": "配置说明",
     "sectionTitle": "快捷参数",
@@ -2555,7 +2587,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-18-7",
+    "id": "doc-section-19-7",
     "type": "doc",
     "title": "配置说明",
     "sectionTitle": "基础环境变量",
@@ -2566,7 +2598,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-18-8",
+    "id": "doc-section-19-8",
     "type": "doc",
     "title": "配置说明",
     "sectionTitle": "文件路径相关",
@@ -2577,7 +2609,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-18-9",
+    "id": "doc-section-19-9",
     "type": "doc",
     "title": "配置说明",
     "sectionTitle": "运行环境",
@@ -2588,7 +2620,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-18-10",
+    "id": "doc-section-19-10",
     "type": "doc",
     "title": "配置说明",
     "sectionTitle": "CBP",
@@ -2599,7 +2631,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-18-11",
+    "id": "doc-section-19-11",
     "type": "doc",
     "title": "配置说明",
     "sectionTitle": "CBP连接配置",
@@ -2610,7 +2642,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-19",
+    "id": "doc-page-20",
     "type": "doc",
     "title": "连接平台",
     "titles": ["连接平台"],
@@ -2620,7 +2652,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-19-0",
+    "id": "doc-section-20-0",
     "type": "doc",
     "title": "连接平台",
     "sectionTitle": "连接平台",
@@ -2631,7 +2663,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-19-1",
+    "id": "doc-section-20-1",
     "type": "doc",
     "title": "连接平台",
     "sectionTitle": "官方",
@@ -2642,7 +2674,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-19-2",
+    "id": "doc-section-20-2",
     "type": "doc",
     "title": "连接平台",
     "sectionTitle": "第三方",
@@ -2653,7 +2685,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-20",
+    "id": "doc-page-21",
     "type": "doc",
     "title": "如何安装",
     "titles": ["如何安装"],
@@ -2663,7 +2695,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-20-0",
+    "id": "doc-section-21-0",
     "type": "doc",
     "title": "如何安装",
     "sectionTitle": "如何安装",
@@ -2674,7 +2706,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-20-1",
+    "id": "doc-section-21-1",
     "type": "doc",
     "title": "如何安装",
     "sectionTitle": "使用 ALemonX",
@@ -2685,7 +2717,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-20-2",
+    "id": "doc-section-21-2",
     "type": "doc",
     "title": "如何安装",
     "sectionTitle": "手动构建",
@@ -2696,7 +2728,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-21",
+    "id": "doc-page-22",
     "type": "doc",
     "title": "简介",
     "titles": ["简介"],
@@ -2706,7 +2738,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-21-0",
+    "id": "doc-section-22-0",
     "type": "doc",
     "title": "简介",
     "sectionTitle": "简介",
@@ -2717,7 +2749,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-22",
+    "id": "doc-page-23",
     "type": "doc",
     "title": "开源生态",
     "titles": ["开源生态"],
@@ -2727,7 +2759,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-22-0",
+    "id": "doc-section-23-0",
     "type": "doc",
     "title": "开源生态",
     "sectionTitle": "开源生态",
@@ -2738,7 +2770,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-22-1",
+    "id": "doc-section-23-1",
     "type": "doc",
     "title": "开源生态",
     "sectionTitle": "SKILL",
@@ -2749,7 +2781,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-22-2",
+    "id": "doc-section-23-2",
     "type": "doc",
     "title": "开源生态",
     "sectionTitle": "开发与部署",
