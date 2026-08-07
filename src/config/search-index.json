@@ -2386,8 +2386,8 @@
     "title": "X插件",
     "titles": ["X插件"],
     "path": "/docs/apps-x",
-    "excerpt": "X插件 X机制到底是怎么回事？请点击了解 alemonx 的制作 基础 项目名 说明 --------- ---------------- [network] 系统网络与防火墙 [network]: https://github.com/l...",
-    "text": "X插件 X机制到底是怎么回事？请点击了解 alemonx 的制作 基础 项目名 说明 --------- ---------------- [network] 系统网络与防火墙 [network]: https://github.com/lemonade-lab/alemonx-network",
+    "excerpt": "X插件 X插件机制到底是怎么回事？请点击了解 alemonx 的制作 基础 项目名 说明 --------- ---------------- [network] 系统网络与防火墙 [network]: https://github.com...",
+    "text": "X插件 X插件机制到底是怎么回事？请点击了解 alemonx 的制作 基础 项目名 说明 --------- ---------------- [network] 系统网络与防火墙 [network]: https://github.com/lemonade-lab/alemonx-network",
     "tags": []
   },
   {
@@ -2397,8 +2397,8 @@
     "sectionTitle": "X插件",
     "titles": ["X插件", "X插件"],
     "path": "/docs/apps-x#x插件",
-    "excerpt": "X机制到底是怎么回事？请点击了解 alemonx 的制作",
-    "text": "X机制到底是怎么回事？请点击了解 alemonx 的制作",
+    "excerpt": "X插件机制到底是怎么回事？请点击了解 alemonx 的制作",
+    "text": "X插件机制到底是怎么回事？请点击了解 alemonx 的制作",
     "tags": []
   },
   {
