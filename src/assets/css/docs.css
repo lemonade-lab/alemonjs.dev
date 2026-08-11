@@ -19,6 +19,124 @@
   @apply rounded-lg;
 }
 
+/* 代码高亮随 html.dark 切换，不依赖系统主题。 */
+.hljs {
+  color: #24292e;
+  background: transparent;
+}
+
+.hljs-doctag,
+.hljs-keyword,
+.hljs-meta .hljs-keyword,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-variable.language_ {
+  color: #d73a49;
+}
+
+.hljs-title,
+.hljs-title.class_,
+.hljs-title.class_.inherited__,
+.hljs-title.function_ {
+  color: #6f42c1;
+}
+
+.hljs-attr,
+.hljs-attribute,
+.hljs-literal,
+.hljs-meta,
+.hljs-number,
+.hljs-operator,
+.hljs-variable,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-id {
+  color: #005cc5;
+}
+
+.hljs-regexp,
+.hljs-string,
+.hljs-meta .hljs-string {
+  color: #032f62;
+}
+
+.hljs-built_in,
+.hljs-symbol {
+  color: #e36209;
+}
+
+.hljs-comment,
+.hljs-code,
+.hljs-formula {
+  color: #6a737d;
+}
+
+.hljs-name,
+.hljs-quote,
+.hljs-selector-tag,
+.hljs-selector-pseudo {
+  color: #22863a;
+}
+
+html.dark .hljs {
+  color: #c9d1d9;
+}
+
+html.dark .hljs-doctag,
+html.dark .hljs-keyword,
+html.dark .hljs-meta .hljs-keyword,
+html.dark .hljs-template-tag,
+html.dark .hljs-template-variable,
+html.dark .hljs-type,
+html.dark .hljs-variable.language_ {
+  color: #ff7b72;
+}
+
+html.dark .hljs-title,
+html.dark .hljs-title.class_,
+html.dark .hljs-title.class_.inherited__,
+html.dark .hljs-title.function_ {
+  color: #d2a8ff;
+}
+
+html.dark .hljs-attr,
+html.dark .hljs-attribute,
+html.dark .hljs-literal,
+html.dark .hljs-meta,
+html.dark .hljs-number,
+html.dark .hljs-operator,
+html.dark .hljs-variable,
+html.dark .hljs-selector-attr,
+html.dark .hljs-selector-class,
+html.dark .hljs-selector-id {
+  color: #79c0ff;
+}
+
+html.dark .hljs-regexp,
+html.dark .hljs-string,
+html.dark .hljs-meta .hljs-string {
+  color: #a5d6ff;
+}
+
+html.dark .hljs-built_in,
+html.dark .hljs-symbol {
+  color: #ffa657;
+}
+
+html.dark .hljs-comment,
+html.dark .hljs-code,
+html.dark .hljs-formula {
+  color: #8b949e;
+}
+
+html.dark .hljs-name,
+html.dark .hljs-quote,
+html.dark .hljs-selector-tag,
+html.dark .hljs-selector-pseudo {
+  color: #7ee787;
+}
+
 /* Admonition 样式 */
 .admonition {
   @apply my-6 p-4 border-l-4 rounded;
@@ -244,4 +362,70 @@ html {
 
 html.dark ::selection {
   @apply bg-blue-900 text-blue-100;
+}
+
+/* 文档内容使用站点中性色，不再混用 slate、gray 与 blue。 */
+.prose,
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose p,
+.prose li,
+.prose td,
+.prose th,
+.toc-link,
+.toc-link-active {
+  color: var(--text);
+}
+
+.prose h1,
+.prose h2,
+.prose hr,
+.prose th,
+.prose td {
+  border-color: var(--line);
+}
+
+.prose a,
+.toc-link-active {
+  color: var(--text);
+  text-decoration-color: var(--text-muted);
+}
+
+.prose a:hover,
+.toc-link:hover {
+  color: var(--text);
+  text-decoration-color: var(--text);
+}
+
+.prose code,
+.prose th {
+  background: var(--surface-muted);
+  color: var(--text);
+}
+
+.prose pre {
+  background: var(--code-surface);
+  border-color: var(--line);
+  color: var(--text);
+}
+
+.prose pre code {
+  color: inherit;
+}
+
+.prose blockquote {
+  border-color: var(--text-muted);
+  color: var(--text-muted);
+}
+
+.toc-link {
+  color: var(--text-muted);
+}
+
+::selection,
+html.dark ::selection {
+  background: var(--accent);
+  color: var(--accent-contrast);
 }

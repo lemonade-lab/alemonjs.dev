@@ -9,6 +9,10 @@ export default function Navbar() {
   const { theme, toggleTheme } = useTheme()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isSearchOpen, setIsSearchOpen] = useState(false)
+  const navigationItemClass =
+    'text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md'
+  const mobileNavigationItemClass =
+    'block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-[var(--surface-muted)]'
 
   // 键盘快捷键 Cmd/Ctrl + K 打开搜索
   useEffect(() => {
@@ -24,7 +28,7 @@ export default function Navbar() {
   }, [])
 
   return (
-    <nav className="fixed top-0 z-50 w-full border-b border-white/20 dark:border-gray-700/50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl supports-[backdrop-filter]:bg-white/70 dark:supports-[backdrop-filter]:bg-gray-900/70 shadow-lg shadow-black/5 dark:shadow-black/20">
+    <nav className="fixed top-0 z-50 w-full border-b border-[var(--line)] bg-[var(--surface)] backdrop-blur-xl shadow-lg shadow-black/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
@@ -62,7 +66,7 @@ export default function Navbar() {
                 </svg>
               )}
               {navbar.title && (
-                <span className="text-lg font-bold text-gray-900 dark:text-gray-100">
+                <span className="text-lg font-bold text-[var(--text)]">
                   {navbar.title}
                 </span>
               )}
@@ -79,7 +83,7 @@ export default function Navbar() {
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm font-medium text-gray-700 transition-colors hover:text-black hover:bg-gray-50 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-800 px-3 py-2 rounded-md"
+                    className={navigationItemClass}
                   >
                     {item.label}
                   </a>
@@ -89,7 +93,7 @@ export default function Navbar() {
                   <Link
                     key={index}
                     to={item.to.startsWith('/') ? item.to : `/${item.to}`}
-                    className="text-sm font-medium text-gray-700 transition-colors hover:text-black hover:bg-gray-50 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-800 px-3 py-2 rounded-md"
+                    className={navigationItemClass}
                   >
                     {item.label}
                   </Link>
@@ -99,7 +103,7 @@ export default function Navbar() {
                   <Link
                     key={index}
                     to="/docs/alemonx/getting-started/quick-start"
-                    className="text-sm font-medium text-gray-700 transition-colors hover:text-black hover:bg-gray-50 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-800 px-3 py-2 rounded-md"
+                    className={navigationItemClass}
                   >
                     {item.label}
                   </Link>
@@ -111,7 +115,7 @@ export default function Navbar() {
             {/* Search Button */}
             <button
               onClick={() => setIsSearchOpen(true)}
-              className="flex items-center gap-2 text-sm font-medium text-gray-700 transition-colors hover:text-black hover:bg-gray-50 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-800 px-3 py-2 rounded-md border border-gray-300 dark:border-gray-600"
+              className="flex items-center gap-2 text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md border border-[var(--line)]"
               title="搜索 (⌘K)"
             >
               <svg
@@ -128,7 +132,7 @@ export default function Navbar() {
                 />
               </svg>
               <span className="hidden lg:inline">搜索</span>
-              <kbd className="hidden lg:inline-flex items-center px-1.5 py-0.5 text-xs font-mono bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded">
+              <kbd className="hidden lg:inline-flex items-center px-1.5 py-0.5 text-xs font-mono bg-[var(--surface-muted)] border border-[var(--line)] rounded">
                 ⌘K
               </kbd>
             </button>
@@ -136,7 +140,7 @@ export default function Navbar() {
             {/* Theme Toggle Button */}
             <button
               onClick={toggleTheme}
-              className="text-gray-700 transition-colors hover:text-black hover:bg-gray-50 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-800 p-2 rounded-md"
+              className="text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] p-2 rounded-md"
               title={theme === 'light' ? '切换到暗色模式' : '切换到亮色模式'}
             >
               {theme === 'light' ? (
@@ -174,7 +178,7 @@ export default function Navbar() {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-black hover:bg-gray-100 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-black dark:focus:ring-white"
+            className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-[var(--surface-muted)] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[var(--accent)]"
             aria-expanded="false"
           >
             <span className="sr-only">打开主菜单</span>
@@ -213,7 +217,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden border-t border-gray-200 dark:border-gray-700">
+        <div className="md:hidden border-t border-[var(--line)] bg-[var(--surface)]">
           <div className="px-2 pt-2 pb-3 space-y-1">
             {navbar.items.map((item, index) => {
               if ('href' in item && item.href) {
@@ -223,7 +227,7 @@ export default function Navbar() {
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-black hover:bg-gray-50 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-800"
+                    className={mobileNavigationItemClass}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {item.label}
@@ -234,7 +238,7 @@ export default function Navbar() {
                   <Link
                     key={index}
                     to={item.to.startsWith('/') ? item.to : `/${item.to}`}
-                    className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-black hover:bg-gray-50 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-800"
+                    className={mobileNavigationItemClass}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {item.label}
@@ -245,7 +249,7 @@ export default function Navbar() {
                   <Link
                     key={index}
                     to="/docs/alemonx/getting-started/quick-start"
-                    className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-black hover:bg-gray-50 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-800"
+                    className={mobileNavigationItemClass}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {item.label}
@@ -261,7 +265,7 @@ export default function Navbar() {
                 setIsSearchOpen(true)
                 setIsMobileMenuOpen(false)
               }}
-              className="flex items-center w-full px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-black hover:bg-gray-50 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-800"
+              className="flex items-center w-full px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-[var(--surface-muted)]"
             >
               <svg
                 className="h-5 w-5 mr-2"
@@ -285,7 +289,7 @@ export default function Navbar() {
                 toggleTheme()
                 setIsMobileMenuOpen(false)
               }}
-              className="flex items-center w-full px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-black hover:bg-gray-50 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-800"
+              className="flex items-center w-full px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-[var(--surface-muted)]"
             >
               {theme === 'light' ? (
                 <>

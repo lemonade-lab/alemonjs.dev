@@ -30,8 +30,8 @@ export function Tabs({ children, defaultValue }: TabsProps) {
             onClick={() => setActiveTab(tab.props.value)}
             className={`px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium transition-all duration-200 whitespace-nowrap ${
               activeTab === tab.props.value
-                ? 'bg-white dark:bg-gray-900 text-blue-600 dark:text-blue-400 border-b-2 border-blue-600 dark:border-blue-400 shadow-sm'
-                : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-white/50 dark:hover:bg-gray-800/50'
+                ? 'bg-[var(--surface)] text-[var(--text)] border-b-2 border-[var(--accent)] shadow-sm'
+                : 'text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-[var(--surface-muted)]'
             }`}
           >
             {tab.props.label}
@@ -66,7 +66,7 @@ export function Admonition({
       icon: '📝',
       title: 'NOTE',
       className:
-        'bg-gray-50 dark:bg-gray-800/50 border-gray-400 dark:border-gray-600 text-gray-900 dark:text-gray-100'
+        'bg-[var(--surface-muted)] border-[var(--line)] text-[var(--text)]'
     },
     tip: {
       icon: '💡',
@@ -127,13 +127,13 @@ export function Details({ summary, children }: DetailsProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <details className="my-3 sm:my-4 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden shadow-sm hover:shadow-md dark:shadow-gray-900/50 dark:hover:shadow-blue-900/30 transition-shadow duration-200">
+    <details className="my-3 sm:my-4 border border-[var(--line)] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200">
       <summary
         onClick={e => {
           e.preventDefault()
           setIsOpen(!isOpen)
         }}
-        className="px-3 sm:px-4 py-2 sm:py-3 bg-gray-50 dark:bg-gray-800 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors font-medium text-gray-900 dark:text-gray-100 select-none flex items-center justify-between text-sm sm:text-base"
+        className="px-3 sm:px-4 py-2 sm:py-3 bg-[var(--surface-muted)] cursor-pointer hover:bg-[var(--surface)] transition-colors font-medium text-[var(--text)] select-none flex items-center justify-between text-sm sm:text-base"
       >
         <span className="flex-1 pr-2">{summary}</span>
         <svg
@@ -151,7 +151,7 @@ export function Details({ summary, children }: DetailsProps) {
         </svg>
       </summary>
       {isOpen && (
-        <div className="px-3 sm:px-4 py-2 sm:py-3 prose prose-sm max-w-none dark:bg-gray-800/50">
+        <div className="px-3 sm:px-4 py-2 sm:py-3 prose prose-sm max-w-none bg-[var(--surface)]">
           {children}
         </div>
       )}
@@ -175,7 +175,7 @@ function CodeBlock({ children }) {
       <div className="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150">
         <button
           onClick={handleCopy}
-          className="inline-flex items-center gap-2 px-2.5 py-1.5 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-xs rounded-md shadow-sm hover:bg-gray-50 dark:hover:bg-gray-800"
+          className="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]"
         >
           复制
         </button>

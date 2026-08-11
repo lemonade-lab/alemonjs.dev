@@ -4,8 +4,37 @@
 @import url('animate.css');
 @import './docs.css';
 
+:root {
+  --canvas: #f7f7f5;
+  --surface: #ffffff;
+  --surface-muted: #ecece8;
+  --text: #171716;
+  --text-muted: #686863;
+  --line: #deded8;
+  --accent: #171716;
+  --accent-contrast: #ffffff;
+  --code-surface: #efefeb;
+}
+
+html.dark {
+  --canvas: #0d0d0d;
+  --surface: #171717;
+  --surface-muted: #232323;
+  --text: #f2f2ee;
+  --text-muted: #a6a6a0;
+  --line: #30302d;
+  --accent: #f2f2ee;
+  --accent-contrast: #171716;
+  --code-surface: #1c1c1c;
+}
+
 html {
   scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
 }
 
 html,
@@ -18,14 +47,8 @@ body {
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
-  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
-}
-
-/* 暗色主题 */
-html.dark,
-html.dark body {
-  background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
-  color: #e2e8f0;
+  background: var(--canvas);
+  color: var(--text);
 }
 
 #root {
@@ -57,30 +80,30 @@ html.dark body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: var(--surface-muted);
   border-radius: 4px;
 }
 
 html.dark ::-webkit-scrollbar-track {
-  background: #1e293b;
+  background: var(--surface-muted);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #94a3b8 0%, #64748b 100%);
+  background: #9a9a94;
   border-radius: 4px;
   transition: background 0.3s ease;
 }
 
 html.dark ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #475569 0%, #334155 100%);
+  background: #4a4a46;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #64748b 0%, #475569 100%);
+  background: #73736e;
 }
 
 html.dark ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #334155 0%, #1e293b 100%);
+  background: #696964;
 }
 
 /* 平滑动画 */

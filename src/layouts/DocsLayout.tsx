@@ -32,7 +32,7 @@ export default function DocsLayout() {
   }, [location.pathname, location.hash])
 
   return (
-    <div className="min-h-screen bg-[#f7f7f5] dark:bg-[#0d0d0d]">
+    <div className="min-h-screen bg-[var(--canvas)] text-[var(--text)]">
       <Navbar />
       {/* Fixed sidebar */}
       <DocsSidebar
@@ -46,10 +46,10 @@ export default function DocsLayout() {
       {/* Main content with margins to account for fixed sidebars */}
       <main className="pt-16 lg:ml-64 xl:mr-64">
         {/* Mobile sidebar toggle button */}
-        <div className="lg:hidden sticky top-16 z-20 bg-white dark:bg-gray-900 border-b dark:border-gray-700 px-4 py-3">
+        <div className="lg:hidden sticky top-16 z-20 bg-[var(--surface)] border-b border-[var(--line)] px-4 py-3">
           <button
             onClick={() => setIsSidebarOpen(true)}
-            className="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors"
+            className="flex items-center space-x-2 text-[var(--text-muted)] hover:text-[var(--text)] transition-colors"
           >
             <svg
               className="h-5 w-5"
@@ -71,7 +71,7 @@ export default function DocsLayout() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
           <article
             id="doc-content"
-            className="prose prose-sm sm:prose-base lg:prose-lg prose-slate max-w-none"
+            className="prose prose-sm sm:prose-base lg:prose-lg prose-slate dark:prose-invert max-w-none"
           >
             <Outlet />
           </article>

@@ -99,17 +99,17 @@ export default function DocsSidebar({
         className={`
         fixed top-16 left-0 z-40 w-64
         h-[calc(100vh-4rem)]
-        border-r border-gray-200 dark:border-white/10 bg-[#f7f7f5] dark:bg-[#0d0d0d]
+        border-r border-[var(--line)] bg-[var(--canvas)] text-[var(--text)]
         overflow-y-auto shadow-xl lg:shadow-none
         transition-all duration-300 ease-out
         ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
       `}
       >
         {/* Mobile close button */}
-        <div className="lg:hidden flex justify-end border-b dark:border-gray-700">
+        <div className="lg:hidden flex justify-end border-b border-[var(--line)]">
           <button
             onClick={onClose}
-            className="p-2 rounded-md text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+            className="p-2 rounded-md text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-[var(--surface-muted)]"
           >
             <svg
               className="h-6 w-6"
@@ -138,7 +138,7 @@ export default function DocsSidebar({
                 <div key={item.id || index}>
                   <button
                     onClick={() => toggleSection(item.id!)}
-                    className="flex items-center justify-between w-full px-3 text-sm font-bold text-gray-900 dark:text-gray-100 uppercase tracking-wider mb-3 hover:text-black dark:hover:text-white transition-all duration-200 group"
+                    className="flex items-center justify-between w-full px-3 text-sm font-bold text-[var(--text)] uppercase tracking-wider mb-3 hover:bg-[var(--surface-muted)] transition-all duration-200 group"
                   >
                     {item.label}
                     <svg
@@ -172,7 +172,7 @@ export default function DocsSidebar({
                             <div key={subItem.id}>
                               <button
                                 onClick={() => toggleSection(subCategoryId)}
-                                className="flex items-center justify-between w-full pl-6 pr-3 text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2 hover:text-black dark:hover:text-white transition-colors"
+                                className="flex items-center justify-between w-full pl-6 pr-3 text-xs font-semibold text-[var(--text-muted)] mb-2 hover:text-[var(--text)] transition-colors"
                               >
                                 {subItem.label}
                                 <svg
@@ -201,8 +201,8 @@ export default function DocsSidebar({
                                         }
                                         className={`block pl-6 pr-3 py-2 rounded-lg text-sm transition-all duration-200 ${
                                           location.pathname === docItem.path
-                                            ? 'bg-black text-white dark:bg-white dark:text-black font-semibold'
-                                            : 'text-gray-700 dark:text-gray-300 hover:bg-black/5 dark:hover:bg-white/10 hover:text-black dark:hover:text-white'
+                                            ? 'bg-[var(--accent)] text-[var(--accent-contrast)] font-semibold'
+                                            : 'text-[var(--text-muted)] hover:bg-[var(--surface-muted)] hover:text-[var(--text)]'
                                         }`}
                                       >
                                         {docItem.title}
@@ -226,8 +226,8 @@ export default function DocsSidebar({
                                   }
                                   className={`block px-3 py-2 rounded-lg text-sm transition-all duration-200 ${
                                     location.pathname === subItem.path
-                                      ? 'bg-black text-white dark:bg-white dark:text-black font-semibold'
-                                      : 'text-gray-700 dark:text-gray-300 hover:bg-black/5 dark:hover:bg-white/10 hover:text-black dark:hover:text-white'
+                                      ? 'bg-[var(--accent)] text-[var(--accent-contrast)] font-semibold'
+                                      : 'text-[var(--text-muted)] hover:bg-[var(--surface-muted)] hover:text-[var(--text)]'
                                   }`}
                                 >
                                   {subItem.title}
@@ -251,8 +251,8 @@ export default function DocsSidebar({
                   data-active={location.pathname === item.path}
                   className={`block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                     location.pathname === item.path
-                      ? 'bg-black text-white dark:bg-white dark:text-black font-semibold'
-                      : 'text-gray-700 dark:text-gray-300 hover:bg-black/5 dark:hover:bg-white/10 hover:text-black dark:hover:text-white'
+                      ? 'bg-[var(--accent)] text-[var(--accent-contrast)] font-semibold'
+                      : 'text-[var(--text-muted)] hover:bg-[var(--surface-muted)] hover:text-[var(--text)]'
                   }`}
                 >
                   {item.title}

@@ -97,7 +97,7 @@ export default function PageToc() {
 
   return (
     <nav ref={navRef} className="toc hidden xl:block px-4 py-6">
-      <div className="text-sm font-semibold mb-3 text-gray-700 dark:text-gray-300">
+      <div className="text-sm font-semibold mb-3 text-[var(--text-muted)]">
         目录
       </div>
       <ul className="space-y-1">
