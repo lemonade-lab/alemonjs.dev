@@ -7,31 +7,30 @@ export default defineConfig({
   themeConfig: {
     navbar: {
       logo: {
-        alt: 'ALemonJS Logo',
+        alt: 'ALemonX Logo',
         src: 'me.png'
       },
-      title: 'ALemonJS',
+      title: 'ALemonX',
       items: [
         {
-          position: 'left',
+          to: '/docs/install',
           label: '文档',
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar'
+          position: 'left'
         },
         {
           to: 'blog',
-          label: '版本记录',
+          label: '更新',
           position: 'left'
         },
         {
           position: 'right',
-          label: '编辑',
-          href: 'https://github.com/lemonade-lab/alemonjs.dev/blob/main/docs/intro.md'
+          label: 'GitHub',
+          href: 'https://github.com/lemonade-lab/alemonx'
         },
         {
           position: 'right',
-          label: 'GitHub',
-          href: 'https://github.com/lemonade-lab/alemonjs'
+          label: '下载',
+          href: 'https://github.com/lemonade-lab/alemonx/releases'
         }
       ]
     },
@@ -39,58 +38,54 @@ export default defineConfig({
       style: 'dark',
       links: [
         {
-          title: '教程',
+          title: '创建项目',
           items: [
             {
-              label: '简介',
-              to: '/docs/intro'
+              label: '快速开始',
+              to: '/docs/alemonx/getting-started/quick-start'
             },
             {
-              label: '如何安装',
-              to: '/docs/install'
+              label: '项目管理',
+              to: '/docs/alemonx/use/projects/create-or-import'
             }
           ]
         },
         {
-          title: '社区',
+          title: '相关工具',
           items: [
             {
-              label: '捆绑打包器',
-              href: 'https://lemonade-lab.github.io/lvyjs.dev/'
+              label: 'AlemonJS',
+              to: '/docs/alemonjsDocs/getting-started/overview'
             },
             {
-              label: '交流群',
-              href: 'https://qm.qq.com/q/bvI8wuy8ik'
+              label: '插件与扩展',
+              to: '/docs/alemonx/ecosystem/plugins'
             },
             {
-              label: '本站评论',
-              href: 'https://github.com/lemonade-lab/alemonjs.dev/discussions'
+              label: '开源仓库',
+              to: '/docs/alemonx/ecosystem/open-source'
             }
           ]
         },
         {
-          title: '更多',
+          title: '下载与更新',
           items: [
             {
-              label: '框架源码',
-              href: 'https://github.com/lemonade-lab/alemonjs'
+              label: '版本更新',
+              to: '/blog'
             },
             {
-              label: 'VSCode扩展',
-              href: 'https://marketplace.visualstudio.com/items?itemName=lemonadex.alemonjs-testone'
+              label: 'ALemonX Releases',
+              href: 'https://github.com/lemonade-lab/alemonx/releases'
             },
             {
-              label: '机器人单例-桌面版',
-              href: 'https://github.com/lemonade-lab/alemondesk'
-            },
-            {
-              label: '机器人群面板-WEB版',
-              href: 'https://github.com/lemonade-lab/alemongo'
+              label: '社区讨论',
+              href: 'https://github.com/lemonade-lab/alemonx/discussions'
             }
           ]
         }
       ],
-      copyright: `Released under the MIT License. (dev) <br/> Copyright © 2024-present Lemonade-Lab & ALemonJS Contributors </span> <br> ${link}`
+      copyright: `Released under the MIT License. <br/> Copyright © 2024-present Lemonade-Lab & ALemonX Contributors </span> <br> ${link}`
     }
   }
 })

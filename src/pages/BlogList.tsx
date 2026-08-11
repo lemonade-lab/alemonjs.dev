@@ -39,6 +39,17 @@ export default function BlogList() {
 
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+      <header className="mb-8 sm:mb-10">
+        <p className="text-sm font-semibold tracking-[0.16em] text-blue-600 dark:text-blue-400">
+          PRODUCT UPDATES
+        </p>
+        <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-950 dark:text-white sm:text-4xl">
+          产品更新
+        </h1>
+        <p className="mt-3 text-gray-600 dark:text-gray-300">
+          按产品筛选 ALemonX 与 AlemonJS 的发布记录。
+        </p>
+      </header>
       {/* 标签过滤 */}
       {allTags.length > 0 && (
         <div className="mb-6 sm:mb-8 flex flex-wrap gap-2">

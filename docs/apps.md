@@ -1,6 +1,6 @@
 ---
 sidebar_position: 7
-label: '插件市场'
+label: 'ALemonJS插件'
 ---
 
 # 插件市场

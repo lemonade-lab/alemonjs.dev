@@ -33,7 +33,14 @@ export default function Navbar() {
               to="/"
               className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
             >
-              {navbar.logo.src.match(/\.(svg|png|jpg|jpeg|gif)$/i) ? (
+              {navbar.title === 'ALemonX' ? (
+                <span
+                  aria-hidden="true"
+                  className="grid h-8 w-8 place-items-center rounded-lg bg-black text-sm font-semibold text-white dark:bg-white dark:text-black"
+                >
+                  X
+                </span>
+              ) : navbar.logo.src.match(/\.(svg|png|jpg|jpeg|gif)$/i) ? (
                 <img
                   src={`/${navbar.logo.src}`}
                   alt={navbar.logo.alt}
@@ -72,7 +79,7 @@ export default function Navbar() {
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors px-3 py-2 rounded-md hover:bg-gray-50 dark:hover:bg-gray-800"
+                    className="text-sm font-medium text-gray-700 transition-colors hover:text-black hover:bg-gray-50 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-800 px-3 py-2 rounded-md"
                   >
                     {item.label}
                   </a>
@@ -82,7 +89,7 @@ export default function Navbar() {
                   <Link
                     key={index}
                     to={item.to.startsWith('/') ? item.to : `/${item.to}`}
-                    className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors px-3 py-2 rounded-md hover:bg-gray-50 dark:hover:bg-gray-800"
+                    className="text-sm font-medium text-gray-700 transition-colors hover:text-black hover:bg-gray-50 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-800 px-3 py-2 rounded-md"
                   >
                     {item.label}
                   </Link>
@@ -91,8 +98,8 @@ export default function Navbar() {
                 return (
                   <Link
                     key={index}
-                    to="/docs/intro"
-                    className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors px-3 py-2 rounded-md hover:bg-gray-50 dark:hover:bg-gray-800"
+                    to="/docs/alemonx/getting-started/quick-start"
+                    className="text-sm font-medium text-gray-700 transition-colors hover:text-black hover:bg-gray-50 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-800 px-3 py-2 rounded-md"
                   >
                     {item.label}
                   </Link>
@@ -104,7 +111,7 @@ export default function Navbar() {
             {/* Search Button */}
             <button
               onClick={() => setIsSearchOpen(true)}
-              className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors px-3 py-2 rounded-md hover:bg-gray-50 dark:hover:bg-gray-800 border border-gray-300 dark:border-gray-600"
+              className="flex items-center gap-2 text-sm font-medium text-gray-700 transition-colors hover:text-black hover:bg-gray-50 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-800 px-3 py-2 rounded-md border border-gray-300 dark:border-gray-600"
               title="搜索 (⌘K)"
             >
               <svg
@@ -129,7 +136,7 @@ export default function Navbar() {
             {/* Theme Toggle Button */}
             <button
               onClick={toggleTheme}
-              className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors p-2 rounded-md hover:bg-gray-50 dark:hover:bg-gray-800"
+              className="text-gray-700 transition-colors hover:text-black hover:bg-gray-50 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-800 p-2 rounded-md"
               title={theme === 'light' ? '切换到暗色模式' : '切换到亮色模式'}
             >
               {theme === 'light' ? (
@@ -167,7 +174,7 @@ export default function Navbar() {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
+            className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-black hover:bg-gray-100 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-black dark:focus:ring-white"
             aria-expanded="false"
           >
             <span className="sr-only">打开主菜单</span>
@@ -216,7 +223,7 @@ export default function Navbar() {
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-800"
+                    className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-black hover:bg-gray-50 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-800"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {item.label}
@@ -227,7 +234,7 @@ export default function Navbar() {
                   <Link
                     key={index}
                     to={item.to.startsWith('/') ? item.to : `/${item.to}`}
-                    className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-800"
+                    className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-black hover:bg-gray-50 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-800"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {item.label}
@@ -237,8 +244,8 @@ export default function Navbar() {
                 return (
                   <Link
                     key={index}
-                    to="/docs/intro"
-                    className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-800"
+                    to="/docs/alemonx/getting-started/quick-start"
+                    className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-black hover:bg-gray-50 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-800"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {item.label}
@@ -254,7 +261,7 @@ export default function Navbar() {
                 setIsSearchOpen(true)
                 setIsMobileMenuOpen(false)
               }}
-              className="flex items-center w-full px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-800"
+              className="flex items-center w-full px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-black hover:bg-gray-50 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-800"
             >
               <svg
                 className="h-5 w-5 mr-2"
@@ -278,7 +285,7 @@ export default function Navbar() {
                 toggleTheme()
                 setIsMobileMenuOpen(false)
               }}
-              className="flex items-center w-full px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-800"
+              className="flex items-center w-full px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-black hover:bg-gray-50 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-800"
             >
               {theme === 'light' ? (
                 <>

@@ -53,9 +53,9 @@ export default defineConfig({
       outDir: outDir,
       includeAssets: ['icon.ico', 'pwa-192x192.png', 'pwa-512x512.png'],
       manifest: {
-        name: 'ALemonJS',
-        short_name: 'ALemonJS',
-        description: 'ALemonJS 官方文档与发布日志站点',
+        name: 'ALemonX',
+        short_name: 'ALemonX',
+        description: '创建项目、运行命令、管理进程和 Agent 任务',
         theme_color: '#0f172a',
         background_color: '#f8fafc',
         display: 'standalone',

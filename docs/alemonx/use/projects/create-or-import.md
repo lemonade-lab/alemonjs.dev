@@ -1,0 +1,21 @@
+---
+title: 项目与配置
+description: 创建模板、导入本地目录或克隆 Git 仓库。
+sidebar_position: 1
+---
+
+# 项目与配置
+
+## 创建
+
+向导可生成 AlemonJS 机器人或开发模板，并选择语言、包管理器、Git 与 PM2。目标目录已存在时不会覆盖。
+
+## 导入
+
+导入本地 Node.js 项目，或从 Git URL 克隆。项目页会读取 `package.json`、脚本与运行配置，再显示可执行操作。
+
+## 配置
+
+在工作台编辑运行配置、连接与包配置。`.env`、`.npmrc` 和机器人连接配置的未保存内容不会写入浏览器本地存储。
+
+下一步：[运行](/docs/alemonx/use/runtime/run-and-monitor)。

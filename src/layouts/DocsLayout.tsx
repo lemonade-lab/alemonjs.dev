@@ -32,7 +32,7 @@ export default function DocsLayout() {
   }, [location.pathname, location.hash])
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950">
+    <div className="min-h-screen bg-[#f7f7f5] dark:bg-[#0d0d0d]">
       <Navbar />
       {/* Fixed sidebar */}
       <DocsSidebar
@@ -49,7 +49,7 @@ export default function DocsLayout() {
         <div className="lg:hidden sticky top-16 z-20 bg-white dark:bg-gray-900 border-b dark:border-gray-700 px-4 py-3">
           <button
             onClick={() => setIsSidebarOpen(true)}
-            className="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+            className="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors"
           >
             <svg
               className="h-5 w-5"

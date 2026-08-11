@@ -1,57 +1,46 @@
 import { Link } from 'react-router-dom'
-import homeLogo from '@/assets/img/alemon.png'
 
-const Translate = (props: { children: React.ReactNode }) => (
-  <>{props.children}</>
-)
-
-const TextReveal = (props: { text: string }) => <>{props.text}</>
+const workbench = '/images/alemonx-workbench.png'
 
 export default function HeaderPage() {
   return (
-    <header className="flex flex-col items-center justify-center pt-8 sm:pt-12 relative px-4">
-      <img className="w-64 md:w-80 lg:w-96" />
-      <div className="flex flex-col items-center text-center max-w-2xl mx-auto">
-        <img
-          src={homeLogo}
-          className="max-w-[280px] sm:max-w-80 w-full"
-          alt="ALemonJS Logo"
-        />
-        <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-4 px-4">
-          <TextReveal text="基于 JavaScript 所构建的聊天平台机器人开发框架" />
+    <header className="overflow-hidden rounded-[2rem] bg-[#0a0a0a] px-6 pb-0 pt-12 text-white sm:px-10 sm:pt-16 lg:px-16 lg:pt-20">
+      <div className="mx-auto max-w-5xl text-center">
+        <p className="text-sm font-medium tracking-[0.22em] text-white/60">
+          ALemonX
         </p>
-        <div className="flex flex-wrap justify-center gap-2 sm:gap-4 my-4 w-full px-4">
-          <button
-            className="bg-blue-500 cu dark:bg-blue-600 text-white rounded-md px-4 sm:px-6 py-2 sm:py-3 hover:bg-blue-600 dark:hover:bg-blue-700 transition text-sm sm:text-base flex-1 sm:flex-none min-w-[120px] text-center "
-            onClick={() => {
-              window.open(
-                'https://github.com/lemonade-lab/alemondesk/releases',
-                '_blank'
-              )
-            }}
+        <h1 className="mx-auto mt-5 max-w-4xl text-5xl font-semibold tracking-[-0.06em] sm:text-7xl lg:text-8xl">
+          在本机创建、运行
+          <br />
+          和管理项目。
+        </h1>
+        <p className="mx-auto mt-7 max-w-xl text-base leading-7 text-white/65 sm:text-lg">
+          导入代码库，运行命令并查看日志；创建任务后审阅和批准 Agent 操作。
+        </p>
+        <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <a
+            className="rounded-full bg-white px-5 py-3 text-sm font-semibold text-black transition hover:bg-white/85"
+            href="https://github.com/lemonade-lab/alemonx/releases"
+            target="_blank"
+            rel="noreferrer"
           >
-            <Translate> ⚡️安装桌面</Translate>
-          </button>
-          <button
-            className="bg-gradient-to-r from-indigo-500 to-indigo-600 hover:from-indigo-600 hover:to-indigo-700 text-white rounded-lg px-4 sm:px-6 py-2 sm:py-3 transition-all duration-300 text-sm sm:text-base flex-1 sm:flex-none min-w-[120px] text-center  hover:-translate-y-0.5"
-            onClick={() => {
-              window.open(
-                'https://github.com/lemonade-lab/alemongo/releases',
-                '_blank'
-              )
-            }}
-          >
-            <Translate> 💡安装Web</Translate>
-          </button>
+            下载 ALemonX
+          </a>
           <Link
-            className="bg-white dark:bg-gray-800 text-blue-600 dark:text-blue-400 border-2 border-blue-500 dark:border-blue-600 hover:border-blue-600 dark:hover:border-blue-500 rounded-lg px-4 sm:px-6 py-2 sm:py-3 hover:bg-blue-50 dark:hover:bg-gray-700 transition-all duration-300 text-sm sm:text-base flex-1 sm:flex-none min-w-[120px] text-center font-semibold  hover:-translate-y-0.5"
-            to="/docs/install"
+            className="rounded-full border border-white/25 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+            to="/docs/alemonx/getting-started/quick-start"
           >
-            <button>
-              <Translate> 🚀开始安装</Translate>
-            </button>
+            快速开始
           </Link>
         </div>
+      </div>
+      <div className="relative mx-auto mt-14 max-w-6xl sm:mt-16">
+        <div className="pointer-events-none absolute inset-x-[12%] -top-10 h-24 bg-blue-500/30 blur-3xl" />
+        <img
+          src={workbench}
+          alt="ALemonX 工作台"
+          className="relative block w-full rounded-t-2xl border border-b-0 border-white/15 shadow-[0_-18px_70px_rgba(59,130,246,0.2)]"
+        />
       </div>
     </header>
   )

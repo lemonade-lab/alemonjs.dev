@@ -9,16 +9,16 @@ label: '连接平台'
 
 ### 官方
 
-| 项目                       | 版本                                    | 说明                   |
-| -------------------------- | --------------------------------------- | ---------------------- |
-| [@alemonjs/qq-bot]         | [![qq-bot-s]][qq-bot-p]                 | QQ Bot                 |
-| [@alemonjs/wechat-clawbot] | [![wechat-clawbot-s]][wechat-clawbot-p] | wechat claw            |
-| [@alemonjs/discord]        | [![discord-s]][discord-p]               | Discord                |
-| [@alemonjs/kook]           | [![kook-s]][kook-p]                     | KOOK                   |
-| [@alemonjs/telegram]       | [![telegram-s]][telegram-p]             | Telegram               |
-| [@alemonjs/bubble]         | [![bubble-s]][bubble-p]                 | Bubble                 |
-| [@alemonjs/qq-guild-bot]   | [![qq-guild-bot-s]][qq-guild-bot]       | QQBotGuild(请用qq-bot) |
-| [@alemonjs/qq-group-bot]   | [![qq-group-bot-s]][qq-group-bot]       | QQBotGroup(请用qq-bot) |
+| 项目                       | 版本                                    | 说明                     |
+| -------------------------- | --------------------------------------- | ------------------------ |
+| [@alemonjs/qq-bot]         | [![qq-bot-s]][qq-bot-p]                 | QQ Bot                   |
+| [@alemonjs/wechat-clawbot] | [![wechat-clawbot-s]][wechat-clawbot-p] | wechat claw              |
+| [@alemonjs/discord]        | [![discord-s]][discord-p]               | Discord                  |
+| [@alemonjs/kook]           | [![kook-s]][kook-p]                     | KOOK                     |
+| [@alemonjs/telegram]       | [![telegram-s]][telegram-p]             | Telegram                 |
+| [@alemonjs/bubble]         | [![bubble-s]][bubble-p]                 | Bubble                   |
+| [@alemonjs/qq-guild-bot]   | [![qq-guild-bot-s]][qq-guild-bot-p]     | QQBotGuild(请改用qq-bot) |
+| [@alemonjs/qq-group-bot]   | [![qq-group-bot-s]][qq-group-bot-p]     | QQBotGroup(请改用qq-bot) |
 
 [@alemonjs/qq-bot]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/qq-bot
 [qq-bot-s]: https://img.shields.io/npm/v/@alemonjs/qq-bot.svg
@@ -49,11 +49,11 @@ label: '连接平台'
 
 > 第三方协议可能存在风险，请谨慎使用。
 
-| 项目               | 版本                    | 说明           |
-| ------------------ | ----------------------- | -------------- |
-| [@alemonjs/onebot] | [![onebot-s]][onebot-p] | OneBot V11     |
-| [@alemonjs/qq]     | [![qq-s]][qq-p]         | qq(请用OneBot) |
-| [@alemonjs/wechat] | [![wechat-s]][wechat-p] | wechat         |
+| 项目               | 版本                    | 说明             |
+| ------------------ | ----------------------- | ---------------- |
+| [@alemonjs/onebot] | [![onebot-s]][onebot-p] | OneBot V11&V12   |
+| [@alemonjs/qq]     | [![qq-s]][qq-p]         | qq(请改用OneBot) |
+| [@alemonjs/wechat] | [![wechat-s]][wechat-p] | wechat           |
 
 [@alemonjs/onebot]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/onebot
 [onebot-s]: https://img.shields.io/npm/v/@alemonjs/onebot.svg

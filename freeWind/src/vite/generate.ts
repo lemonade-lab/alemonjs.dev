@@ -24,6 +24,7 @@ interface DocMetadata {
   sidebar_label?: string | undefined
   slug?: string
   tags?: string[]
+  product?: string
   authors?: string | string[]
   date?: string
   hide_title?: boolean
@@ -290,6 +291,10 @@ function generateSearchIndex(
       const tags = Array.isArray(route.metadata.tags)
         ? route.metadata.tags.map(tag => String(tag))
         : []
+      if (type === 'blog') {
+        const product = String(route.metadata.product || 'AlemonJS')
+        if (!tags.includes(product)) tags.push(product)
+      }
       const pagePath = `${basePath}/${route.path}`
       const fullText = stripMarkdown(route.content)
       const entries: SearchIndexEntry[] = [
@@ -396,7 +401,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Navigate to="/docs/intro" replace />
+        element: <Navigate to="/docs/alemonx/getting-started/quick-start" replace />
       },
 ${docRouteConfigs}
     ]
@@ -425,40 +430,33 @@ export default router
 /**
  * 生成侧边栏配置 - 支持多层级分类
  */
-function generateSidebarConfig(docsRoutes: DocRoute[], docsDir: string): any {
-  const rootItems: {
+function generateSidebarConfig(docsRoutes: DocRoute[], docsDir: string) {
+  type SidebarDocument = {
     title: string
     path: string
     position: number
-  }[] = []
+  }
 
   interface SubCategory {
     id: string
     label: string
     position: number
     collapsed?: boolean
-    items: Array<{
-      title: string
-      path: string
-      position: number
-    }>
+    items: SidebarDocument[]
   }
 
-  const categories: Record<
-    string,
-    {
-      id: string
-      label: string
-      position: number
-      collapsed?: boolean
-      items?: Array<{
-        title: string
-        path: string
-        position: number
-      }>
-      subCategories?: Record<string, SubCategory>
-    }
-  > = {}
+  type SidebarCategory = {
+    id: string
+    label: string
+    position: number
+    collapsed?: boolean
+    items?: Array<SidebarDocument | SubCategory>
+    subCategories?: Record<string, SubCategory>
+  }
+
+  const rootItems: SidebarDocument[] = []
+
+  const categories: Record<string, SidebarCategory> = {}
 
   // 分组文档
   docsRoutes.forEach(route => {
@@ -486,7 +484,7 @@ function generateSidebarConfig(docsRoutes: DocRoute[], docsDir: string): any {
         categories[mainCategory] = {
           id: mainCategory,
           label: categoryConfig?.label || mainCategory,
-          position: categoryConfig?.position || 999,
+          position: categoryConfig?.position ?? 999,
           collapsed: categoryConfig?.collapsed,
           subCategories: {} as Record<string, SubCategory>
         }
@@ -517,7 +515,7 @@ function generateSidebarConfig(docsRoutes: DocRoute[], docsDir: string): any {
           subCats[subCategory] = {
             id: subCategory,
             label: subCategoryConfig?.label || subCategory,
-            position: subCategoryConfig?.position || 999,
+            position: subCategoryConfig?.position ?? 999,
             collapsed: subCategoryConfig?.collapsed,
             items: []
           }
@@ -539,10 +537,10 @@ function generateSidebarConfig(docsRoutes: DocRoute[], docsDir: string): any {
   rootItems.sort((a, b) => a.position - b.position)
 
   // 处理分类
-  const result: any[] = []
+  const result: Array<Omit<SidebarCategory, 'subCategories'>> = []
 
   // 处理主分类
-  Object.values(categories).forEach((category: any) => {
+  Object.values(categories).forEach(category => {
     // 转换子分类为数组
     if (
       category.subCategories &&
@@ -558,10 +556,10 @@ function generateSidebarConfig(docsRoutes: DocRoute[], docsDir: string): any {
       category.items = subCats
     } else if (category.items) {
       // 排序主分类的文档
-      category.items.sort((a: any, b: any) => a.position - b.position)
+      category.items.sort((a, b) => a.position - b.position)
     }
 
-    delete category.subCategories
+    category.subCategories = undefined
     result.push(category)
   })
 
@@ -687,14 +685,21 @@ function main() {
   console.log('✅ 侧边栏配置已生成: src/config/sidebar.json')
 
   // 生成博客元数据
-  const blogMeta = blogRoutes.map(route => ({
-    title: route.metadata.title,
-    description: route.metadata.description,
-    date: route.metadata.date,
-    path: `/blog/${route.path}`,
-    tags: route.metadata.tags || [],
-    authors: route.metadata.authors
-  }))
+  const blogMeta = blogRoutes.map(route => {
+    const tags = Array.isArray(route.metadata.tags)
+      ? route.metadata.tags.map(tag => String(tag))
+      : []
+    const product = String(route.metadata.product || 'AlemonJS')
+    if (!tags.includes(product)) tags.push(product)
+    return {
+      title: route.metadata.title,
+      description: route.metadata.description,
+      date: route.metadata.date,
+      path: `/blog/${route.path}`,
+      tags,
+      authors: route.metadata.authors
+    }
+  })
   fs.mkdirSync(path.join(srcDir, 'config'), { recursive: true })
   fs.writeFileSync(
     path.join(srcDir, 'config', 'blog.json'),

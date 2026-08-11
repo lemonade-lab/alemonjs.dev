@@ -1,0 +1,41 @@
+---
+title: 快速开始
+description: 创建 AlemonJS 项目，编写路由并连接一个聊天平台。
+sidebar_position: 2
+---
+
+# 快速开始
+
+## 创建项目
+
+使用 [ALemonX 工作站开始](/docs/alemonx/getting-started/quick-start) 创建机器人项目，或手动执行：
+
+```bash
+mkdir my-alemonjs-app
+cd my-alemonjs-app
+npm init -y
+npm install alemonjs
+```
+
+在 `package.json` 中设置 `"type": "module"`，再创建入口文件：
+
+```js title="index.js"
+import { start } from 'alemonjs'
+
+start('src/index.js')
+```
+
+## 编写路由
+
+在 `src/index.js` 中处理消息：
+
+```ts
+import { useMessage, Format } from 'alemonjs'
+
+export default () => {
+  const [message] = useMessage()
+  message.send({ format: Format.create().addText('hello') })
+}
+```
+
+运行 `node index.js`，再按[连接平台](/docs/environment)配置账号并发送一条测试消息。

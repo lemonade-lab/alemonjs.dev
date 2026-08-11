@@ -1,24 +1,143 @@
 [
   {
-    "title": "简介",
-    "path": "/docs/intro",
-    "position": 1
-  },
-  {
     "title": "如何安装",
     "path": "/docs/install",
     "position": 2
   },
   {
-    "title": "配置说明",
-    "path": "/docs/config",
-    "position": 3
+    "id": "alemonx",
+    "label": "ALemonX",
+    "position": 2,
+    "collapsed": true,
+    "items": [
+      {
+        "id": "getting-started",
+        "label": "开始",
+        "position": 0,
+        "collapsed": true,
+        "items": [
+          {
+            "title": "工作站开始",
+            "path": "/docs/alemonx/getting-started/quick-start",
+            "position": 1
+          }
+        ]
+      },
+      {
+        "id": "use",
+        "label": "使用",
+        "position": 1,
+        "collapsed": true,
+        "items": [
+          {
+            "title": "Agent 协作",
+            "path": "/docs/alemonx/use/agent/collaboration",
+            "position": 1
+          },
+          {
+            "title": "插件与 WebView",
+            "path": "/docs/alemonx/use/extensions/plugins-and-webview",
+            "position": 1
+          },
+          {
+            "title": "AI 运维",
+            "path": "/docs/alemonx/use/operations/ai-operations",
+            "position": 1
+          },
+          {
+            "title": "项目与配置",
+            "path": "/docs/alemonx/use/projects/create-or-import",
+            "position": 1
+          },
+          {
+            "title": "运行与交付",
+            "path": "/docs/alemonx/use/runtime/run-and-monitor",
+            "position": 1
+          },
+          {
+            "title": "MCP 接入",
+            "path": "/docs/alemonx/use/agent/mcp",
+            "position": 2
+          },
+          {
+            "title": "权限与安全",
+            "path": "/docs/alemonx/use/operations/access-and-safety",
+            "position": 2
+          }
+        ]
+      },
+      {
+        "id": "develop",
+        "label": "开发",
+        "position": 2,
+        "collapsed": true,
+        "items": [
+          {
+            "title": "系统插件",
+            "path": "/docs/alemonx/develop/system-plugins",
+            "position": 2
+          },
+          {
+            "title": "WebView",
+            "path": "/docs/alemonx/develop/webview",
+            "position": 3
+          }
+        ]
+      },
+      {
+        "id": "reference",
+        "label": "参考",
+        "position": 3,
+        "collapsed": true,
+        "items": [
+          {
+            "title": "CLI",
+            "path": "/docs/alemonx/reference/cli",
+            "position": 1
+          },
+          {
+            "title": "MCP",
+            "path": "/docs/alemonx/reference/mcp",
+            "position": 2
+          },
+          {
+            "title": "插件清单",
+            "path": "/docs/alemonx/reference/plugin-manifest",
+            "position": 3
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "alemonjsDocs",
-    "label": "开发手册",
-    "position": 5,
+    "label": "机器人开发",
+    "position": 3,
+    "collapsed": true,
     "items": [
+      {
+        "id": "getting-started",
+        "label": "开始",
+        "position": 0,
+        "collapsed": true,
+        "items": [
+          {
+            "title": "简介",
+            "path": "/docs/alemonjsDocs/getting-started/intro",
+            "position": 1
+          },
+          {
+            "title": "快速开始",
+            "path": "/docs/alemonjsDocs/getting-started/quick-start",
+            "position": 2
+          },
+          {
+            "title": "配置说明",
+            "path": "/docs/alemonjsDocs/getting-started/config",
+            "position": 3
+          }
+        ]
+      },
       {
         "id": "core",
         "label": "核心设计",
@@ -140,12 +259,12 @@
     "position": 6
   },
   {
-    "title": "插件市场",
+    "title": "ALemonJS插件",
     "path": "/docs/apps",
     "position": 7
   },
   {
-    "title": "X插件",
+    "title": "ALemonX插件",
     "path": "/docs/apps-x",
     "position": 8
   },

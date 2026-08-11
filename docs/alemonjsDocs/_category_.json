@@ -1,6 +1,7 @@
 {
-  "label": "开发手册",
-  "position": 5,
+  "label": "机器人开发",
+  "position": 3,
+  "collapsed": true,
   "link": {
     "type": "generated-index"
   }

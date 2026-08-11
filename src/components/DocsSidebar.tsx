@@ -99,7 +99,7 @@ export default function DocsSidebar({
         className={`
         fixed top-16 left-0 z-40 w-64
         h-[calc(100vh-4rem)]
-        border-r border-gray-200/60 dark:border-gray-700/60 bg-gradient-to-b from-white via-gray-50/50 to-white dark:from-gray-900 dark:via-gray-800/50 dark:to-gray-900
+        border-r border-gray-200 dark:border-white/10 bg-[#f7f7f5] dark:bg-[#0d0d0d]
         overflow-y-auto shadow-xl lg:shadow-none
         transition-all duration-300 ease-out
         ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
@@ -131,22 +131,14 @@ export default function DocsSidebar({
           {navigation.map((item, index) => {
             // 如果是分类（有 items）
             if (isCategory(item)) {
-              const hasActiveItem = item.items?.some(subItem =>
-                isSubCategory(subItem)
-                  ? subItem.items.some(
-                      docItem => location.pathname === docItem.path
-                    )
-                  : location.pathname === subItem.path
-              )
-              const isCollapsed = hasActiveItem
-                ? false
-                : (collapsedSections[item.id!] ?? item.collapsed ?? false)
+              const isCollapsed =
+                collapsedSections[item.id!] ?? item.collapsed ?? true
 
               return (
                 <div key={item.id || index}>
                   <button
                     onClick={() => toggleSection(item.id!)}
-                    className="flex items-center justify-between w-full px-3 text-sm font-bold text-gray-900 dark:text-gray-100 uppercase tracking-wider mb-3 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200 group"
+                    className="flex items-center justify-between w-full px-3 text-sm font-bold text-gray-900 dark:text-gray-100 uppercase tracking-wider mb-3 hover:text-black dark:hover:text-white transition-all duration-200 group"
                   >
                     {item.label}
                     <svg
@@ -170,20 +162,17 @@ export default function DocsSidebar({
                         // 检查是否为子分类
                         if (isSubCategory(subItem)) {
                           const subCategoryId = `${item.id}-${subItem.id}`
-                          const hasActiveSubItem = subItem.items.some(
-                            docItem => location.pathname === docItem.path
-                          )
-                          const isSubCollapsed = hasActiveSubItem
-                            ? false
-                            : ((collapsedSections[subCategoryId] ??
-                                subItem.collapsed ??
-                                false) as boolean)
+                          const isSubCollapsed = (collapsedSections[
+                            subCategoryId
+                          ] ??
+                            subItem.collapsed ??
+                            true) as boolean
 
                           return (
                             <div key={subItem.id}>
                               <button
                                 onClick={() => toggleSection(subCategoryId)}
-                                className="flex items-center justify-between w-full pl-6 pr-3 text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                                className="flex items-center justify-between w-full pl-6 pr-3 text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2 hover:text-black dark:hover:text-white transition-colors"
                               >
                                 {subItem.label}
                                 <svg
@@ -212,8 +201,8 @@ export default function DocsSidebar({
                                         }
                                         className={`block pl-6 pr-3 py-2 rounded-lg text-sm transition-all duration-200 ${
                                           location.pathname === docItem.path
-                                            ? 'bg-gradient-to-r from-blue-500 to-indigo-600 dark:from-blue-600 dark:to-indigo-700 text-white shadow-md shadow-blue-500/30 dark:shadow-blue-900/50 font-semibold'
-                                            : 'text-gray-700 dark:text-gray-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 dark:hover:from-blue-900/20 dark:hover:to-indigo-900/20 hover:text-blue-600 dark:hover:text-blue-400 hover:shadow-sm'
+                                            ? 'bg-black text-white dark:bg-white dark:text-black font-semibold'
+                                            : 'text-gray-700 dark:text-gray-300 hover:bg-black/5 dark:hover:bg-white/10 hover:text-black dark:hover:text-white'
                                         }`}
                                       >
                                         {docItem.title}
@@ -237,8 +226,8 @@ export default function DocsSidebar({
                                   }
                                   className={`block px-3 py-2 rounded-lg text-sm transition-all duration-200 ${
                                     location.pathname === subItem.path
-                                      ? 'bg-gradient-to-r from-blue-500 to-indigo-600 dark:from-blue-600 dark:to-indigo-700 text-white shadow-md shadow-blue-500/30 dark:shadow-blue-900/50 font-semibold'
-                                      : 'text-gray-700 dark:text-gray-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 dark:hover:from-blue-900/20 dark:hover:to-indigo-900/20 hover:text-blue-600 dark:hover:text-blue-400 hover:shadow-sm'
+                                      ? 'bg-black text-white dark:bg-white dark:text-black font-semibold'
+                                      : 'text-gray-700 dark:text-gray-300 hover:bg-black/5 dark:hover:bg-white/10 hover:text-black dark:hover:text-white'
                                   }`}
                                 >
                                   {subItem.title}
@@ -262,8 +251,8 @@ export default function DocsSidebar({
                   data-active={location.pathname === item.path}
                   className={`block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                     location.pathname === item.path
-                      ? 'bg-gradient-to-r from-blue-500 to-indigo-600 dark:from-blue-600 dark:to-indigo-700 text-white shadow-md shadow-blue-500/30 dark:shadow-blue-900/50 font-semibold'
-                      : 'text-gray-700 dark:text-gray-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 dark:hover:from-blue-900/20 dark:hover:to-indigo-900/20 hover:text-blue-600 dark:hover:text-blue-400 hover:shadow-sm'
+                      ? 'bg-black text-white dark:bg-white dark:text-black font-semibold'
+                      : 'text-gray-700 dark:text-gray-300 hover:bg-black/5 dark:hover:bg-white/10 hover:text-black dark:hover:text-white'
                   }`}
                 >
                   {item.title}
