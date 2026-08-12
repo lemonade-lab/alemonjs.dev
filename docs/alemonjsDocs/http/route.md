@@ -90,7 +90,7 @@ export default defineChildren({
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AlemonJS</title>
+    <title>ALemonJS</title>
   </head>
   <body>
     <div id="root">hello word !</div>

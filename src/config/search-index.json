@@ -2047,6 +2047,49 @@
   {
     "id": "doc-page-12",
     "type": "doc",
+    "title": "如何安装",
+    "titles": ["如何安装"],
+    "path": "/docs/alemonjsDocs/getting-started/install",
+    "excerpt": "使用 ALemonX 创建机器人项目，或手动安装 ALemonJS。",
+    "text": "如何安装 npm create alemonjs 已停止维护，不再用于创建项目。 使用 ALemonX 从 ALemonX Releases 下载对应系统的文件。Windows 直接双击；macOS 与 Linux 在下载目录中运行： 在浏览器打开终端显示的地址（默认 http://localhost:17390），创建项目并完成平台连接。 了解什么是 ALemonX，请 点击访问 手动构建 适合需要自行维护项目的开发者。 在 package.json 中设置 \"type\": \"module\"，然后创建入口文件： 按开发手册编写路由和响应，然后启动： 接着按连接平台配置机器人账号。",
+    "tags": []
+  },
+  {
+    "id": "doc-section-12-0",
+    "type": "doc",
+    "title": "如何安装",
+    "sectionTitle": "如何安装",
+    "titles": ["如何安装", "如何安装"],
+    "path": "/docs/alemonjsDocs/getting-started/install#如何安装",
+    "excerpt": "npm create alemonjs 已停止维护，不再用于创建项目。",
+    "text": "npm create alemonjs 已停止维护，不再用于创建项目。",
+    "tags": []
+  },
+  {
+    "id": "doc-section-12-1",
+    "type": "doc",
+    "title": "如何安装",
+    "sectionTitle": "使用 ALemonX",
+    "titles": ["如何安装", "使用 ALemonX"],
+    "path": "/docs/alemonjsDocs/getting-started/install#使用-alemonx",
+    "excerpt": "从 ALemonX Releases 下载对应系统的文件。Windows 直接双击；macOS 与 Linux 在下载目录中运行： 在浏览器打开终端显示的地址（默认 http://localhost:17390），创建项目并完成平台连接。...",
+    "text": "从 ALemonX Releases 下载对应系统的文件。Windows 直接双击；macOS 与 Linux 在下载目录中运行： 在浏览器打开终端显示的地址（默认 http://localhost:17390），创建项目并完成平台连接。 了解什么是 ALemonX，请 点击访问",
+    "tags": []
+  },
+  {
+    "id": "doc-section-12-2",
+    "type": "doc",
+    "title": "如何安装",
+    "sectionTitle": "手动构建",
+    "titles": ["如何安装", "手动构建"],
+    "path": "/docs/alemonjsDocs/getting-started/install#手动构建",
+    "excerpt": "适合需要自行维护项目的开发者。 在 package.json 中设置 \"type\": \"module\"，然后创建入口文件： 按开发手册编写路由和响应，然后启动： 接着按连接平台配置机器人账号。",
+    "text": "适合需要自行维护项目的开发者。 在 package.json 中设置 \"type\": \"module\"，然后创建入口文件： 按开发手册编写路由和响应，然后启动： 接着按连接平台配置机器人账号。",
+    "tags": []
+  },
+  {
+    "id": "doc-page-13",
+    "type": "doc",
     "title": "简介",
     "titles": ["简介"],
     "path": "/docs/alemonjsDocs/getting-started/intro",
@@ -2055,7 +2098,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-12-0",
+    "id": "doc-section-13-0",
     "type": "doc",
     "title": "简介",
     "sectionTitle": "简介",
@@ -2066,17 +2109,17 @@
     "tags": []
   },
   {
-    "id": "doc-page-13",
+    "id": "doc-page-14",
     "type": "doc",
     "title": "快速开始",
     "titles": ["快速开始"],
     "path": "/docs/alemonjsDocs/getting-started/quick-start",
-    "excerpt": "创建 AlemonJS 项目，编写路由并连接一个聊天平台。",
+    "excerpt": "创建 ALemonJS 项目，编写路由并连接一个聊天平台。",
     "text": "快速开始 创建项目 使用 ALemonX 工作站开始 创建机器人项目，或手动执行： 在 package.json 中设置 \"type\": \"module\"，再创建入口文件： 编写路由 在 src/index.js 中处理消息： 运行 node index.js，再按连接平台配置账号并发送一条测试消息。",
     "tags": []
   },
   {
-    "id": "doc-section-13-0",
+    "id": "doc-section-14-0",
     "type": "doc",
     "title": "快速开始",
     "sectionTitle": "快速开始",
@@ -2087,7 +2130,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-13-1",
+    "id": "doc-section-14-1",
     "type": "doc",
     "title": "快速开始",
     "sectionTitle": "创建项目",
@@ -2098,7 +2141,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-13-2",
+    "id": "doc-section-14-2",
     "type": "doc",
     "title": "快速开始",
     "sectionTitle": "编写路由",
@@ -2109,7 +2152,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-14",
+    "id": "doc-page-15",
     "type": "doc",
     "title": "路由中间件",
     "titles": ["路由中间件"],
@@ -2119,7 +2162,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-14-0",
+    "id": "doc-section-15-0",
     "type": "doc",
     "title": "路由中间件",
     "sectionTitle": "路由中间件",
@@ -2130,7 +2173,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-14-1",
+    "id": "doc-section-15-1",
     "type": "doc",
     "title": "路由中间件",
     "sectionTitle": "基础写法",
@@ -2141,7 +2184,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-14-2",
+    "id": "doc-section-15-2",
     "type": "doc",
     "title": "路由中间件",
     "sectionTitle": "解析 Body",
@@ -2152,7 +2195,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-14-3",
+    "id": "doc-section-15-3",
     "type": "doc",
     "title": "路由中间件",
     "sectionTitle": "按前缀拆分",
@@ -2163,7 +2206,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-14-4",
+    "id": "doc-section-15-4",
     "type": "doc",
     "title": "路由中间件",
     "sectionTitle": "推荐理解",
@@ -2174,7 +2217,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-15",
+    "id": "doc-page-16",
     "type": "doc",
     "title": "接口路由",
     "titles": ["接口路由"],
@@ -2184,7 +2227,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-15-0",
+    "id": "doc-section-16-0",
     "type": "doc",
     "title": "接口路由",
     "sectionTitle": "接口路由",
@@ -2195,7 +2238,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-15-1",
+    "id": "doc-section-16-1",
     "type": "doc",
     "title": "接口路由",
     "sectionTitle": "当前支持的 HTTP 能力",
@@ -2206,7 +2249,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-15-2",
+    "id": "doc-section-16-2",
     "type": "doc",
     "title": "接口路由",
     "sectionTitle": "生命周期规则",
@@ -2217,7 +2260,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-15-3",
+    "id": "doc-section-16-3",
     "type": "doc",
     "title": "接口路由",
     "sectionTitle": "只有 ready 才真正提供服务",
@@ -2228,7 +2271,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-15-4",
+    "id": "doc-section-16-4",
     "type": "doc",
     "title": "接口路由",
     "sectionTitle": "插件必须先进入 apps 管理",
@@ -2239,7 +2282,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-15-5",
+    "id": "doc-section-16-5",
     "type": "doc",
     "title": "接口路由",
     "sectionTitle": "当前常见响应语义",
@@ -2250,7 +2293,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-15-6",
+    "id": "doc-section-16-6",
     "type": "doc",
     "title": "接口路由",
     "sectionTitle": "注册路由",
@@ -2261,7 +2304,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-15-7",
+    "id": "doc-section-16-7",
     "type": "doc",
     "title": "接口路由",
     "sectionTitle": "静态资源",
@@ -2272,7 +2315,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-15-8",
+    "id": "doc-section-16-8",
     "type": "doc",
     "title": "接口路由",
     "sectionTitle": "路径",
@@ -2283,7 +2326,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-15-9",
+    "id": "doc-section-16-9",
     "type": "doc",
     "title": "接口路由",
     "sectionTitle": "安全",
@@ -2294,7 +2337,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-15-10",
+    "id": "doc-section-16-10",
     "type": "doc",
     "title": "接口路由",
     "sectionTitle": "onHttpError",
@@ -2305,7 +2348,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-15-11",
+    "id": "doc-section-16-11",
     "type": "doc",
     "title": "接口路由",
     "sectionTitle": "配置",
@@ -2316,7 +2359,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-16",
+    "id": "doc-page-17",
     "type": "doc",
     "title": "实例对象",
     "titles": ["实例对象"],
@@ -2326,7 +2369,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-16-0",
+    "id": "doc-section-17-0",
     "type": "doc",
     "title": "实例对象",
     "sectionTitle": "实例对象",
@@ -2337,7 +2380,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-17",
+    "id": "doc-page-18",
     "type": "doc",
     "title": "扩展",
     "titles": ["扩展"],
@@ -2347,7 +2390,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-17-0",
+    "id": "doc-section-18-0",
     "type": "doc",
     "title": "扩展",
     "sectionTitle": "扩展",
@@ -2358,7 +2401,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-17-1",
+    "id": "doc-section-18-1",
     "type": "doc",
     "title": "扩展",
     "sectionTitle": "如何识别的",
@@ -2369,7 +2412,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-17-2",
+    "id": "doc-section-18-2",
     "type": "doc",
     "title": "扩展",
     "sectionTitle": "服务端",
@@ -2380,7 +2423,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-17-3",
+    "id": "doc-section-18-3",
     "type": "doc",
     "title": "扩展",
     "sectionTitle": "配置",
@@ -2391,7 +2434,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-17-4",
+    "id": "doc-section-18-4",
     "type": "doc",
     "title": "扩展",
     "sectionTitle": "桌面端",
@@ -2402,7 +2445,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-17-5",
+    "id": "doc-section-18-5",
     "type": "doc",
     "title": "扩展",
     "sectionTitle": "配置",
@@ -2413,7 +2456,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-17-6",
+    "id": "doc-section-18-6",
     "type": "doc",
     "title": "扩展",
     "sectionTitle": "指令",
@@ -2424,7 +2467,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-17-7",
+    "id": "doc-section-18-7",
     "type": "doc",
     "title": "扩展",
     "sectionTitle": "view.",
@@ -2435,7 +2478,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-17-8",
+    "id": "doc-section-18-8",
     "type": "doc",
     "title": "扩展",
     "sectionTitle": "app.",
@@ -2446,7 +2489,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-17-9",
+    "id": "doc-section-18-9",
     "type": "doc",
     "title": "扩展",
     "sectionTitle": "周期",
@@ -2457,7 +2500,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-17-10",
+    "id": "doc-section-18-10",
     "type": "doc",
     "title": "扩展",
     "sectionTitle": "通知推送",
@@ -2468,7 +2511,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-17-11",
+    "id": "doc-section-18-11",
     "type": "doc",
     "title": "扩展",
     "sectionTitle": "渲染",
@@ -2479,7 +2522,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-17-12",
+    "id": "doc-section-18-12",
     "type": "doc",
     "title": "扩展",
     "sectionTitle": "从webview到app",
@@ -2490,7 +2533,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-17-13",
+    "id": "doc-section-18-13",
     "type": "doc",
     "title": "扩展",
     "sectionTitle": "从app到webview",
@@ -2501,7 +2544,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-17-14",
+    "id": "doc-section-18-14",
     "type": "doc",
     "title": "扩展",
     "sectionTitle": "主题",
@@ -2512,7 +2555,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-17-15",
+    "id": "doc-section-18-15",
     "type": "doc",
     "title": "扩展",
     "sectionTitle": "资源路径",
@@ -2523,7 +2566,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-18",
+    "id": "doc-page-19",
     "type": "doc",
     "title": "模块",
     "titles": ["模块"],
@@ -2533,7 +2576,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-18-0",
+    "id": "doc-section-19-0",
     "type": "doc",
     "title": "模块",
     "sectionTitle": "模块",
@@ -2544,7 +2587,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-18-1",
+    "id": "doc-section-19-1",
     "type": "doc",
     "title": "模块",
     "sectionTitle": "本地模块化",
@@ -2555,7 +2598,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-19",
+    "id": "doc-page-20",
     "type": "doc",
     "title": "自定义平台",
     "titles": ["自定义平台"],
@@ -2565,7 +2608,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-19-0",
+    "id": "doc-section-20-0",
     "type": "doc",
     "title": "自定义平台",
     "sectionTitle": "自定义平台",
@@ -2576,7 +2619,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-19-1",
+    "id": "doc-section-20-1",
     "type": "doc",
     "title": "自定义平台",
     "sectionTitle": "导出",
@@ -2587,17 +2630,17 @@
     "tags": []
   },
   {
-    "id": "doc-page-20",
+    "id": "doc-page-21",
     "type": "doc",
     "title": "系统插件",
     "titles": ["系统插件"],
     "path": "/docs/alemonx/develop/system-plugins",
     "excerpt": "使用 alx.json、Web 页面和执行器扩展本机管理功能。",
-    "text": "系统插件 系统插件用于网络检查、系统服务或防火墙等本机管理操作。机器人命令、机器人配置页和 WebView 放在机器人插件中，不放在系统插件中。 创建目录 声明清单 alx.json 必须包含 id、name、version、entry 与 web.root。id 使用小写字母、数字和连字符；web.root 指向插件目录内的静态页面目录。 执行动作 页面向 POST /api/v1/setup/plugins/ /actions 发送 action、confirm 与 params。执行器从标准输入读取一个 JSON 请求，并只向标准输出写入一个 JSON 响应。 下一步：插件清单、WebView。",
+    "text": "系统插件 系统插件用于网络检查、系统服务或防火墙等本机管理操作。机器人命令、机器人配置页和 WebView 放在机器人插件中，不放在系统插件中。 创建目录 声明清单 alx.json 必须包含 id、name、version、entry 与 web.root。id 使用小写字母、数字和连字符；web.root 指向插件目录内的静态页面目录。 执行动作 页面向 POST /api/v1/setup/plugins/ /actions 发送 action、confirm 与 params。执行器从标准输入读取一个 JSON 请求，并只向标准输出写入一个 JSON 响应。",
     "tags": []
   },
   {
-    "id": "doc-section-20-0",
+    "id": "doc-section-21-0",
     "type": "doc",
     "title": "系统插件",
     "sectionTitle": "系统插件",
@@ -2608,18 +2651,18 @@
     "tags": []
   },
   {
-    "id": "doc-section-20-1",
+    "id": "doc-section-21-1",
     "type": "doc",
     "title": "系统插件",
     "sectionTitle": "创建目录",
     "titles": ["系统插件", "创建目录"],
     "path": "/docs/alemonx/develop/system-plugins#创建目录",
     "excerpt": "系统插件 系统插件用于网络检查、系统服务或防火墙等本机管理操作。机器人命令、机器人配置页和 WebView 放在机器人插件中，不放在系统插件中。 创建目录 声明清单 alx.json 必须包含 id、name、version、entry 与...",
-    "text": "系统插件 系统插件用于网络检查、系统服务或防火墙等本机管理操作。机器人命令、机器人配置页和 WebView 放在机器人插件中，不放在系统插件中。 创建目录 声明清单 alx.json 必须包含 id、name、version、entry 与 web.root。id 使用小写字母、数字和连字符；web.root 指向插件目录内的静态页面目录。 执行动作 页面向 POST /api/v1/setup/plugins/ /actions 发送 action、confirm 与 params。执行器从标准输入读取一个 JSON 请求，并只向标准输出写入一个 JSON 响应。 下一步：插件清单、WebView。",
+    "text": "系统插件 系统插件用于网络检查、系统服务或防火墙等本机管理操作。机器人命令、机器人配置页和 WebView 放在机器人插件中，不放在系统插件中。 创建目录 声明清单 alx.json 必须包含 id、name、version、entry 与 web.root。id 使用小写字母、数字和连字符；web.root 指向插件目录内的静态页面目录。 执行动作 页面向 POST /api/v1/setup/plugins/ /actions 发送 action、confirm 与 params。执行器从标准输入读取一个 JSON 请求，并只向标准输出写入一个 JSON 响应。",
     "tags": []
   },
   {
-    "id": "doc-section-20-2",
+    "id": "doc-section-21-2",
     "type": "doc",
     "title": "系统插件",
     "sectionTitle": "声明清单",
@@ -2630,18 +2673,18 @@
     "tags": []
   },
   {
-    "id": "doc-section-20-3",
+    "id": "doc-section-21-3",
     "type": "doc",
     "title": "系统插件",
     "sectionTitle": "执行动作",
     "titles": ["系统插件", "执行动作"],
     "path": "/docs/alemonx/develop/system-plugins#执行动作",
-    "excerpt": "页面向 POST /api/v1/setup/plugins/ /actions 发送 action、confirm 与 params。执行器从标准输入读取一个 JSON 请求，并只向标准输出写入一个 JSON 响应。 下一步：插件清单、W...",
-    "text": "页面向 POST /api/v1/setup/plugins/ /actions 发送 action、confirm 与 params。执行器从标准输入读取一个 JSON 请求，并只向标准输出写入一个 JSON 响应。 下一步：插件清单、WebView。",
+    "excerpt": "页面向 POST /api/v1/setup/plugins/ /actions 发送 action、confirm 与 params。执行器从标准输入读取一个 JSON 请求，并只向标准输出写入一个 JSON 响应。",
+    "text": "页面向 POST /api/v1/setup/plugins/ /actions 发送 action、confirm 与 params。执行器从标准输入读取一个 JSON 请求，并只向标准输出写入一个 JSON 响应。",
     "tags": []
   },
   {
-    "id": "doc-page-21",
+    "id": "doc-page-22",
     "type": "doc",
     "title": "WebView",
     "titles": ["WebView"],
@@ -2651,7 +2694,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-21-0",
+    "id": "doc-section-22-0",
     "type": "doc",
     "title": "WebView",
     "sectionTitle": "WebView",
@@ -2662,7 +2705,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-21-1",
+    "id": "doc-section-22-1",
     "type": "doc",
     "title": "WebView",
     "sectionTitle": "页面通信",
@@ -2673,28 +2716,28 @@
     "tags": []
   },
   {
-    "id": "doc-page-22",
+    "id": "doc-page-23",
     "type": "doc",
     "title": "工作站开始",
     "titles": ["工作站开始"],
     "path": "/docs/alemonx/getting-started/quick-start",
     "excerpt": "下载 alx，打开工作台，创建项目并运行一次任务。",
-    "text": "工作站开始 启动 从 Releases 下载 alx。Windows 直接运行；macOS 与 Linux： 在浏览器打开终端显示的地址，默认是 http://127.0.0.1:17390。 创建或导入项目 选择“创建项目”，或导入本地目录、克隆 Git 仓库。 在项目页完成环境与依赖检查。 使用前台运行查看输出，或使用 PM2 启动后台进程。 创建任务 填写任务目标，阅读计划后批准写入操作。完成后打开任务报告查看验证输出。 下一步：项目、运行、Agent。",
+    "text": "工作站开始 启动 从 Releases 下载 alx。Windows 直接运行；macOS 与 Linux： 在浏览器打开终端显示的地址，默认是 http://127.0.0.1:17390。 创建或导入项目 选择“创建项目”，或导入本地目录、克隆 Git 仓库。 在项目页完成环境与依赖检查。 使用前台运行查看输出，或使用 PM2 启动后台进程。 创建任务 填写任务目标，阅读计划后批准写入操作。完成后打开任务报告查看验证输出。",
     "tags": []
   },
   {
-    "id": "doc-section-22-0",
+    "id": "doc-section-23-0",
     "type": "doc",
     "title": "工作站开始",
     "sectionTitle": "工作站开始",
     "titles": ["工作站开始", "工作站开始"],
     "path": "/docs/alemonx/getting-started/quick-start#工作站开始",
     "excerpt": "工作站开始 启动 从 Releases 下载 alx。Windows 直接运行；macOS 与 Linux： 在浏览器打开终端显示的地址，默认是 http://127.0.0.1:17390。 创建或导入项目 选择“创建项目”，或导入本地目...",
-    "text": "工作站开始 启动 从 Releases 下载 alx。Windows 直接运行；macOS 与 Linux： 在浏览器打开终端显示的地址，默认是 http://127.0.0.1:17390。 创建或导入项目 选择“创建项目”，或导入本地目录、克隆 Git 仓库。 在项目页完成环境与依赖检查。 使用前台运行查看输出，或使用 PM2 启动后台进程。 创建任务 填写任务目标，阅读计划后批准写入操作。完成后打开任务报告查看验证输出。 下一步：项目、运行、Agent。",
+    "text": "工作站开始 启动 从 Releases 下载 alx。Windows 直接运行；macOS 与 Linux： 在浏览器打开终端显示的地址，默认是 http://127.0.0.1:17390。 创建或导入项目 选择“创建项目”，或导入本地目录、克隆 Git 仓库。 在项目页完成环境与依赖检查。 使用前台运行查看输出，或使用 PM2 启动后台进程。 创建任务 填写任务目标，阅读计划后批准写入操作。完成后打开任务报告查看验证输出。",
     "tags": []
   },
   {
-    "id": "doc-section-22-1",
+    "id": "doc-section-23-1",
     "type": "doc",
     "title": "工作站开始",
     "sectionTitle": "启动",
@@ -2705,7 +2748,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-22-2",
+    "id": "doc-section-23-2",
     "type": "doc",
     "title": "工作站开始",
     "sectionTitle": "创建或导入项目",
@@ -2716,18 +2759,18 @@
     "tags": []
   },
   {
-    "id": "doc-section-22-3",
+    "id": "doc-section-23-3",
     "type": "doc",
     "title": "工作站开始",
     "sectionTitle": "创建任务",
     "titles": ["工作站开始", "创建任务"],
     "path": "/docs/alemonx/getting-started/quick-start#创建任务",
-    "excerpt": "填写任务目标，阅读计划后批准写入操作。完成后打开任务报告查看验证输出。 下一步：项目、运行、Agent。",
-    "text": "填写任务目标，阅读计划后批准写入操作。完成后打开任务报告查看验证输出。 下一步：项目、运行、Agent。",
+    "excerpt": "填写任务目标，阅读计划后批准写入操作。完成后打开任务报告查看验证输出。",
+    "text": "填写任务目标，阅读计划后批准写入操作。完成后打开任务报告查看验证输出。",
     "tags": []
   },
   {
-    "id": "doc-page-23",
+    "id": "doc-page-24",
     "type": "doc",
     "title": "CLI",
     "titles": ["CLI"],
@@ -2737,7 +2780,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-23-0",
+    "id": "doc-section-24-0",
     "type": "doc",
     "title": "CLI",
     "sectionTitle": "CLI",
@@ -2748,7 +2791,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-24",
+    "id": "doc-page-25",
     "type": "doc",
     "title": "MCP",
     "titles": ["MCP"],
@@ -2758,7 +2801,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-24-0",
+    "id": "doc-section-25-0",
     "type": "doc",
     "title": "MCP",
     "sectionTitle": "MCP",
@@ -2769,7 +2812,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-24-1",
+    "id": "doc-section-25-1",
     "type": "doc",
     "title": "MCP",
     "sectionTitle": "stdio",
@@ -2780,7 +2823,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-24-2",
+    "id": "doc-section-25-2",
     "type": "doc",
     "title": "MCP",
     "sectionTitle": "HTTP",
@@ -2791,7 +2834,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-24-3",
+    "id": "doc-section-25-3",
     "type": "doc",
     "title": "MCP",
     "sectionTitle": "写入",
@@ -2802,7 +2845,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-25",
+    "id": "doc-page-26",
     "type": "doc",
     "title": "插件清单",
     "titles": ["插件清单"],
@@ -2812,7 +2855,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-25-0",
+    "id": "doc-section-26-0",
     "type": "doc",
     "title": "插件清单",
     "sectionTitle": "插件清单",
@@ -2823,7 +2866,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-26",
+    "id": "doc-page-27",
     "type": "doc",
     "title": "Agent 协作",
     "titles": ["Agent 协作"],
@@ -2833,7 +2876,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-26-0",
+    "id": "doc-section-27-0",
     "type": "doc",
     "title": "Agent 协作",
     "sectionTitle": "Agent 协作",
@@ -2844,7 +2887,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-27",
+    "id": "doc-page-28",
     "type": "doc",
     "title": "MCP 接入",
     "titles": ["MCP 接入"],
@@ -2854,7 +2897,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-27-0",
+    "id": "doc-section-28-0",
     "type": "doc",
     "title": "MCP 接入",
     "sectionTitle": "MCP 接入",
@@ -2865,7 +2908,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-27-1",
+    "id": "doc-section-28-1",
     "type": "doc",
     "title": "MCP 接入",
     "sectionTitle": "stdio",
@@ -2876,7 +2919,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-27-2",
+    "id": "doc-section-28-2",
     "type": "doc",
     "title": "MCP 接入",
     "sectionTitle": "Streamable HTTP",
@@ -2887,7 +2930,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-28",
+    "id": "doc-page-29",
     "type": "doc",
     "title": "插件与 WebView",
     "titles": ["插件与 WebView"],
@@ -2897,7 +2940,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-28-0",
+    "id": "doc-section-29-0",
     "type": "doc",
     "title": "插件与 WebView",
     "sectionTitle": "插件与 WebView",
@@ -2908,7 +2951,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-29",
+    "id": "doc-page-30",
     "type": "doc",
     "title": "权限与安全",
     "titles": ["权限与安全"],
@@ -2918,7 +2961,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-29-0",
+    "id": "doc-section-30-0",
     "type": "doc",
     "title": "权限与安全",
     "sectionTitle": "权限与安全",
@@ -2929,7 +2972,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-30",
+    "id": "doc-page-31",
     "type": "doc",
     "title": "AI 运维",
     "titles": ["AI 运维"],
@@ -2939,7 +2982,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-30-0",
+    "id": "doc-section-31-0",
     "type": "doc",
     "title": "AI 运维",
     "sectionTitle": "AI 运维",
@@ -2950,39 +2993,39 @@
     "tags": []
   },
   {
-    "id": "doc-page-31",
+    "id": "doc-page-32",
     "type": "doc",
     "title": "项目与配置",
     "titles": ["项目与配置"],
     "path": "/docs/alemonx/use/projects/create-or-import",
     "excerpt": "创建模板、导入本地目录或克隆 Git 仓库。",
-    "text": "项目与配置 创建 向导可生成 AlemonJS 机器人或开发模板，并选择语言、包管理器、Git 与 PM2。目标目录已存在时不会覆盖。 导入 导入本地 Node.js 项目，或从 Git URL 克隆。项目页会读取 package.json、脚本与运行配置，再显示可执行操作。 配置 在工作台编辑运行配置、连接与包配置。.env、.npmrc 和机器人连接配置的未保存内容不会写入浏览器本地存储。 下一步：运行。",
+    "text": "项目与配置 创建 向导可生成 ALemonJS 机器人或开发模板，并选择语言、包管理器、Git 与 PM2。目标目录已存在时不会覆盖。 导入 导入本地 Node.js 项目，或从 Git URL 克隆。项目页会读取 package.json、脚本与运行配置，再显示可执行操作。 配置 在工作台编辑运行配置、连接与包配置。.env、.npmrc 和机器人连接配置的未保存内容不会写入浏览器本地存储。",
     "tags": []
   },
   {
-    "id": "doc-section-31-0",
+    "id": "doc-section-32-0",
     "type": "doc",
     "title": "项目与配置",
     "sectionTitle": "项目与配置",
     "titles": ["项目与配置", "项目与配置"],
     "path": "/docs/alemonx/use/projects/create-or-import#项目与配置",
-    "excerpt": "项目与配置 创建 向导可生成 AlemonJS 机器人或开发模板，并选择语言、包管理器、Git 与 PM2。目标目录已存在时不会覆盖。 导入 导入本地 Node.js 项目，或从 Git URL 克隆。项目页会读取 package.json...",
-    "text": "项目与配置 创建 向导可生成 AlemonJS 机器人或开发模板，并选择语言、包管理器、Git 与 PM2。目标目录已存在时不会覆盖。 导入 导入本地 Node.js 项目，或从 Git URL 克隆。项目页会读取 package.json、脚本与运行配置，再显示可执行操作。 配置 在工作台编辑运行配置、连接与包配置。.env、.npmrc 和机器人连接配置的未保存内容不会写入浏览器本地存储。 下一步：运行。",
+    "excerpt": "项目与配置 创建 向导可生成 ALemonJS 机器人或开发模板，并选择语言、包管理器、Git 与 PM2。目标目录已存在时不会覆盖。 导入 导入本地 Node.js 项目，或从 Git URL 克隆。项目页会读取 package.json...",
+    "text": "项目与配置 创建 向导可生成 ALemonJS 机器人或开发模板，并选择语言、包管理器、Git 与 PM2。目标目录已存在时不会覆盖。 导入 导入本地 Node.js 项目，或从 Git URL 克隆。项目页会读取 package.json、脚本与运行配置，再显示可执行操作。 配置 在工作台编辑运行配置、连接与包配置。.env、.npmrc 和机器人连接配置的未保存内容不会写入浏览器本地存储。",
     "tags": []
   },
   {
-    "id": "doc-section-31-1",
+    "id": "doc-section-32-1",
     "type": "doc",
     "title": "项目与配置",
     "sectionTitle": "创建",
     "titles": ["项目与配置", "创建"],
     "path": "/docs/alemonx/use/projects/create-or-import#创建",
-    "excerpt": "向导可生成 AlemonJS 机器人或开发模板，并选择语言、包管理器、Git 与 PM2。目标目录已存在时不会覆盖。",
-    "text": "向导可生成 AlemonJS 机器人或开发模板，并选择语言、包管理器、Git 与 PM2。目标目录已存在时不会覆盖。",
+    "excerpt": "向导可生成 ALemonJS 机器人或开发模板，并选择语言、包管理器、Git 与 PM2。目标目录已存在时不会覆盖。",
+    "text": "向导可生成 ALemonJS 机器人或开发模板，并选择语言、包管理器、Git 与 PM2。目标目录已存在时不会覆盖。",
     "tags": []
   },
   {
-    "id": "doc-section-31-2",
+    "id": "doc-section-32-2",
     "type": "doc",
     "title": "项目与配置",
     "sectionTitle": "导入",
@@ -2993,18 +3036,18 @@
     "tags": []
   },
   {
-    "id": "doc-section-31-3",
+    "id": "doc-section-32-3",
     "type": "doc",
     "title": "项目与配置",
     "sectionTitle": "配置",
     "titles": ["项目与配置", "配置"],
     "path": "/docs/alemonx/use/projects/create-or-import#配置",
-    "excerpt": "在工作台编辑运行配置、连接与包配置。.env、.npmrc 和机器人连接配置的未保存内容不会写入浏览器本地存储。 下一步：运行。",
-    "text": "在工作台编辑运行配置、连接与包配置。.env、.npmrc 和机器人连接配置的未保存内容不会写入浏览器本地存储。 下一步：运行。",
+    "excerpt": "在工作台编辑运行配置、连接与包配置。.env、.npmrc 和机器人连接配置的未保存内容不会写入浏览器本地存储。",
+    "text": "在工作台编辑运行配置、连接与包配置。.env、.npmrc 和机器人连接配置的未保存内容不会写入浏览器本地存储。",
     "tags": []
   },
   {
-    "id": "doc-page-32",
+    "id": "doc-page-33",
     "type": "doc",
     "title": "运行与交付",
     "titles": ["运行与交付"],
@@ -3014,7 +3057,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-32-0",
+    "id": "doc-section-33-0",
     "type": "doc",
     "title": "运行与交付",
     "sectionTitle": "运行与交付",
@@ -3025,7 +3068,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-32-1",
+    "id": "doc-section-33-1",
     "type": "doc",
     "title": "运行与交付",
     "sectionTitle": "开发运行",
@@ -3036,7 +3079,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-32-2",
+    "id": "doc-section-33-2",
     "type": "doc",
     "title": "运行与交付",
     "sectionTitle": "PM2",
@@ -3047,7 +3090,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-32-3",
+    "id": "doc-section-33-3",
     "type": "doc",
     "title": "运行与交付",
     "sectionTitle": "Git 与发布",
@@ -3058,7 +3101,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-33",
+    "id": "doc-page-34",
     "type": "doc",
     "title": "ALemonX插件",
     "titles": ["ALemonX插件"],
@@ -3068,7 +3111,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-33-0",
+    "id": "doc-section-34-0",
     "type": "doc",
     "title": "ALemonX插件",
     "sectionTitle": "X插件",
@@ -3079,7 +3122,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-33-1",
+    "id": "doc-section-34-1",
     "type": "doc",
     "title": "ALemonX插件",
     "sectionTitle": "基础",
@@ -3090,7 +3133,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-34",
+    "id": "doc-page-35",
     "type": "doc",
     "title": "ALemonJS插件",
     "titles": ["ALemonJS插件"],
@@ -3100,7 +3143,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-34-0",
+    "id": "doc-section-35-0",
     "type": "doc",
     "title": "ALemonJS插件",
     "sectionTitle": "插件市场",
@@ -3111,7 +3154,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-34-1",
+    "id": "doc-section-35-1",
     "type": "doc",
     "title": "ALemonJS插件",
     "sectionTitle": "增强",
@@ -3122,7 +3165,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-34-2",
+    "id": "doc-section-35-2",
     "type": "doc",
     "title": "ALemonJS插件",
     "sectionTitle": "IP",
@@ -3133,7 +3176,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-34-3",
+    "id": "doc-section-35-3",
     "type": "doc",
     "title": "ALemonJS插件",
     "sectionTitle": "功能",
@@ -3144,7 +3187,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-34-4",
+    "id": "doc-section-35-4",
     "type": "doc",
     "title": "ALemonJS插件",
     "sectionTitle": "游戏",
@@ -3155,7 +3198,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-34-5",
+    "id": "doc-section-35-5",
     "type": "doc",
     "title": "ALemonJS插件",
     "sectionTitle": "AI",
@@ -3166,7 +3209,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-34-6",
+    "id": "doc-section-35-6",
     "type": "doc",
     "title": "ALemonJS插件",
     "sectionTitle": "工具",
@@ -3177,7 +3220,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-35",
+    "id": "doc-page-36",
     "type": "doc",
     "title": "连接平台",
     "titles": ["连接平台"],
@@ -3187,7 +3230,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-35-0",
+    "id": "doc-section-36-0",
     "type": "doc",
     "title": "连接平台",
     "sectionTitle": "连接平台",
@@ -3198,7 +3241,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-35-1",
+    "id": "doc-section-36-1",
     "type": "doc",
     "title": "连接平台",
     "sectionTitle": "官方",
@@ -3209,7 +3252,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-35-2",
+    "id": "doc-section-36-2",
     "type": "doc",
     "title": "连接平台",
     "sectionTitle": "第三方",
@@ -3217,49 +3260,6 @@
     "path": "/docs/environment#第三方",
     "excerpt": "第三方协议可能存在风险，请谨慎使用。 项目 版本 说明 ------------------ ----------------------- ---------------- [@alemonjs/onebot] [![onebot-s]]...",
     "text": "第三方协议可能存在风险，请谨慎使用。 项目 版本 说明 ------------------ ----------------------- ---------------- [@alemonjs/onebot] [![onebot-s]][onebot-p] OneBot V11&V12 [@alemonjs/qq] [![qq-s]][qq-p] qq(请改用OneBot) [@alemonjs/wechat] [![wechat-s]][wechat-p] wechat [@alemonjs/onebot]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/onebot [onebot-s]: https://img.shields.io/npm/v/@alemonjs/onebot.svg [onebot-p]: https://www.npmjs.com/package/@alemonjs/onebot [@alemonjs/qq]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/qq [qq-s]: https://img.shields.io/npm/v/@alemonjs/qq.svg [qq-p]: https://www.npmjs.com/package/@alemonjs/qq [@alemonjs/wechat]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/wechat [wechat-s]: https://img.shields.io/npm/v/@alemonjs/wechat.svg [wechat-p]: https://www.npmjs.com/package/@alemonjs/wechat",
-    "tags": []
-  },
-  {
-    "id": "doc-page-36",
-    "type": "doc",
-    "title": "如何安装",
-    "titles": ["如何安装"],
-    "path": "/docs/install",
-    "excerpt": "如何安装 npm create alemonjs 已停止维护，不再用于创建项目。 使用 ALemonX 从 ALemonX Releases 下载对应系统的文件。Windows 直接双击；macOS 与 Linux 在下载目录中运行： 在浏...",
-    "text": "如何安装 npm create alemonjs 已停止维护，不再用于创建项目。 使用 ALemonX 从 ALemonX Releases 下载对应系统的文件。Windows 直接双击；macOS 与 Linux 在下载目录中运行： 在浏览器打开终端显示的地址（默认 http://localhost:17390），创建项目并完成平台连接。 了解什么是 ALemonX，请 点击访问 手动构建 适合需要自行维护项目的开发者。 在 package.json 中设置 \"type\": \"module\"，然后创建入口文件： 按开发手册编写路由和响应，然后启动： 接着按连接平台配置机器人账号。",
-    "tags": []
-  },
-  {
-    "id": "doc-section-36-0",
-    "type": "doc",
-    "title": "如何安装",
-    "sectionTitle": "如何安装",
-    "titles": ["如何安装", "如何安装"],
-    "path": "/docs/install#如何安装",
-    "excerpt": "npm create alemonjs 已停止维护，不再用于创建项目。",
-    "text": "npm create alemonjs 已停止维护，不再用于创建项目。",
-    "tags": []
-  },
-  {
-    "id": "doc-section-36-1",
-    "type": "doc",
-    "title": "如何安装",
-    "sectionTitle": "使用 ALemonX",
-    "titles": ["如何安装", "使用 ALemonX"],
-    "path": "/docs/install#使用-alemonx",
-    "excerpt": "从 ALemonX Releases 下载对应系统的文件。Windows 直接双击；macOS 与 Linux 在下载目录中运行： 在浏览器打开终端显示的地址（默认 http://localhost:17390），创建项目并完成平台连接。...",
-    "text": "从 ALemonX Releases 下载对应系统的文件。Windows 直接双击；macOS 与 Linux 在下载目录中运行： 在浏览器打开终端显示的地址（默认 http://localhost:17390），创建项目并完成平台连接。 了解什么是 ALemonX，请 点击访问",
-    "tags": []
-  },
-  {
-    "id": "doc-section-36-2",
-    "type": "doc",
-    "title": "如何安装",
-    "sectionTitle": "手动构建",
-    "titles": ["如何安装", "手动构建"],
-    "path": "/docs/install#手动构建",
-    "excerpt": "适合需要自行维护项目的开发者。 在 package.json 中设置 \"type\": \"module\"，然后创建入口文件： 按开发手册编写路由和响应，然后启动： 接着按连接平台配置机器人账号。",
-    "text": "适合需要自行维护项目的开发者。 在 package.json 中设置 \"type\": \"module\"，然后创建入口文件： 按开发手册编写路由和响应，然后启动： 接着按连接平台配置机器人账号。",
     "tags": []
   },
   {
@@ -3313,7 +3313,7 @@
     "path": "/blog/2026/04/11/schedule-api",
     "excerpt": "框架定时任务",
     "text": "定时任务 API 新增框架统一管理的定时任务系统，替代原生 setInterval / setTimeout，插件卸载时自动清理。 新增 API setInterval / setTimeout 替代原生同名函数，由框架统一管理生命周期。 setCron 基于 cron 库的 cron 表达式定时任务。 pauseSchedule / resumeSchedule 支持暂停和恢复已注册的定时任务。 listSchedule 查看当前所有定时任务状态。",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2026-04-11"
   },
   {
@@ -3325,7 +3325,7 @@
     "path": "/blog/2026/04/11/schedule-api#定时任务-api",
     "excerpt": "新增框架统一管理的定时任务系统，替代原生 setInterval / setTimeout，插件卸载时自动清理。",
     "text": "新增框架统一管理的定时任务系统，替代原生 setInterval / setTimeout，插件卸载时自动清理。",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2026-04-11"
   },
   {
@@ -3337,7 +3337,7 @@
     "path": "/blog/2026/04/11/schedule-api#新增-api",
     "excerpt": "定时任务 API 新增框架统一管理的定时任务系统，替代原生 setInterval / setTimeout，插件卸载时自动清理。 新增 API setInterval / setTimeout 替代原生同名函数，由框架统一管理生命周期。...",
     "text": "定时任务 API 新增框架统一管理的定时任务系统，替代原生 setInterval / setTimeout，插件卸载时自动清理。 新增 API setInterval / setTimeout 替代原生同名函数，由框架统一管理生命周期。 setCron 基于 cron 库的 cron 表达式定时任务。 pauseSchedule / resumeSchedule 支持暂停和恢复已注册的定时任务。 listSchedule 查看当前所有定时任务状态。",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2026-04-11"
   },
   {
@@ -3349,7 +3349,7 @@
     "path": "/blog/2026/04/11/schedule-api#setinterval-settimeout",
     "excerpt": "替代原生同名函数，由框架统一管理生命周期。",
     "text": "替代原生同名函数，由框架统一管理生命周期。",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2026-04-11"
   },
   {
@@ -3361,7 +3361,7 @@
     "path": "/blog/2026/04/11/schedule-api#setcron",
     "excerpt": "基于 cron 库的 cron 表达式定时任务。",
     "text": "基于 cron 库的 cron 表达式定时任务。",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2026-04-11"
   },
   {
@@ -3373,7 +3373,7 @@
     "path": "/blog/2026/04/11/schedule-api#pauseschedule-resumeschedule",
     "excerpt": "支持暂停和恢复已注册的定时任务。",
     "text": "支持暂停和恢复已注册的定时任务。",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2026-04-11"
   },
   {
@@ -3385,7 +3385,7 @@
     "path": "/blog/2026/04/11/schedule-api#listschedule",
     "excerpt": "查看当前所有定时任务状态。",
     "text": "查看当前所有定时任务状态。",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2026-04-11"
   },
   {
@@ -3396,7 +3396,7 @@
     "path": "/blog/2026/04/01/v2.1.52",
     "excerpt": "hooks增强",
     "text": "更新记录 支持 hooks 模式 useEvent 安全的读取 event 和 next，handler 无需声明参数 FormatEvent 链式构建器 平台适配器现在统一使用 FormatEvent 链式构建器创建事件对象，根据事件名自动约束可用方法。 方法可用性一览 事件 Guild Channel User Text Media Open ----------------------------- :---: :-----: :--: :--: :---: :--: message.create ✓ ✓ ✓ ✓ ✓ ✓ private.message.create ✓ ✓ ✓ ✓ interaction.create ✓ ✓ ✓ ✓ ✓ private.interaction.create ✓ ✓ ✓ guild.join / guild.exit ✓ ✓ ✓ member.\\ (5种) ✓ ✓ ✓ notice.create ✓ ✓ ✓ message.delete / pin ✓ ✓ channel.\\ (3种) ✓ ✓ guild.update ✓ ✓ private.friend.\\ / guild.add ✓ private.notice.create ✓ private.message.delete addPlatform / addMessage / add 所有事件均可调用 新增事件类型 事件系统扩展至 27 种，新增以下事件： 事件名 说明 ----------------------- -------------------- message.pin 消息置顶 channel.update 频道更新 guild.update 服务器/群组更新 member.ban 成员封禁 member.unban 成员解封 member.update 成员信息更新 notice.create 公共通知（戳一戳等） private.notice.create 私有通知 private.friend.remove 好友移除 所有平台适配器的 hook MAP 已同步覆盖全部 27 种事件。 EventBuilder 类型安全增强 EventBuilder .value 的类型从 Partial 改为 Events[T]，确保类型系统中事件对象始终是完整的。 安全加固 路径遍历防护 接口路由新增 safePath() 安全函数，所有 /app/ 和 /apps/:app/ 路由的文件路径均经过校验，防止 ../ 路径遍历攻击。 包名注入防护 /apps/:app/ 路由新增 isValidPackageName() 校验，阻止通过非法包名（如 ../../etc）进行路径注入。",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2026-04-01"
   },
   {
@@ -3408,7 +3408,7 @@
     "path": "/blog/2026/04/01/v2.1.52#更新记录",
     "excerpt": "更新记录 支持 hooks 模式 useEvent 安全的读取 event 和 next，handler 无需声明参数 FormatEvent 链式构建器 平台适配器现在统一使用 FormatEvent 链式构建器创建事件对象，根据事件名自...",
     "text": "更新记录 支持 hooks 模式 useEvent 安全的读取 event 和 next，handler 无需声明参数 FormatEvent 链式构建器 平台适配器现在统一使用 FormatEvent 链式构建器创建事件对象，根据事件名自动约束可用方法。 方法可用性一览 事件 Guild Channel User Text Media Open ----------------------------- :---: :-----: :--: :--: :---: :--: message.create ✓ ✓ ✓ ✓ ✓ ✓ private.message.create ✓ ✓ ✓ ✓ interaction.create ✓ ✓ ✓ ✓ ✓ private.interaction.create ✓ ✓ ✓ guild.join / guild.exit ✓ ✓ ✓ member.\\ (5种) ✓ ✓ ✓ notice.create ✓ ✓ ✓ message.delete / pin ✓ ✓ channel.\\ (3种) ✓ ✓ guild.update ✓ ✓ private.friend.\\ / guild.add ✓ private.notice.create ✓ private.message.delete addPlatform / addMessage / add 所有事件均可调用 新增事件类型 事件系统扩展至 27 种，新增以下事件： 事件名 说明 ----------------------- -------------------- message.pin 消息置顶 channel.update 频道更新 guild.update 服务器/群组更新 member.ban 成员封禁 member.unban 成员解封 member.update 成员信息更新 notice.create 公共通知（戳一戳等） private.notice.create 私有通知 private.friend.remove 好友移除 所有平台适配器的 hook MAP 已同步覆盖全部 27 种事件。 EventBuilder 类型安全增强 EventBuilder .value 的类型从 Partial 改为 Events[T]，确保类型系统中事件对象始终是完整的。 安全加固 路径遍历防护 接口路由新增 safePath() 安全函数，所有 /app/ 和 /apps/:app/ 路由的文件路径均经过校验，防止 ../ 路径遍历攻击。 包名注入防护 /apps/:app/ 路由新增 isValidPackageName() 校验，阻止通过非法包名（如 ../../etc）进行路径注入。",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2026-04-01"
   },
   {
@@ -3420,7 +3420,7 @@
     "path": "/blog/2026/04/01/v2.1.52#支持-hooks-模式",
     "excerpt": "更新记录 支持 hooks 模式 useEvent 安全的读取 event 和 next，handler 无需声明参数 FormatEvent 链式构建器 平台适配器现在统一使用 FormatEvent 链式构建器创建事件对象，根据事件名自...",
     "text": "更新记录 支持 hooks 模式 useEvent 安全的读取 event 和 next，handler 无需声明参数 FormatEvent 链式构建器 平台适配器现在统一使用 FormatEvent 链式构建器创建事件对象，根据事件名自动约束可用方法。 方法可用性一览 事件 Guild Channel User Text Media Open ----------------------------- :---: :-----: :--: :--: :---: :--: message.create ✓ ✓ ✓ ✓ ✓ ✓ private.message.create ✓ ✓ ✓ ✓ interaction.create ✓ ✓ ✓ ✓ ✓ private.interaction.create ✓ ✓ ✓ guild.join / guild.exit ✓ ✓ ✓ member.\\ (5种) ✓ ✓ ✓ notice.create ✓ ✓ ✓ message.delete / pin ✓ ✓ channel.\\ (3种) ✓ ✓ guild.update ✓ ✓ private.friend.\\ / guild.add ✓ private.notice.create ✓ private.message.delete addPlatform / addMessage / add 所有事件均可调用 新增事件类型 事件系统扩展至 27 种，新增以下事件： 事件名 说明 ----------------------- -------------------- message.pin 消息置顶 channel.update 频道更新 guild.update 服务器/群组更新 member.ban 成员封禁 member.unban 成员解封 member.update 成员信息更新 notice.create 公共通知（戳一戳等） private.notice.create 私有通知 private.friend.remove 好友移除 所有平台适配器的 hook MAP 已同步覆盖全部 27 种事件。 EventBuilder 类型安全增强 EventBuilder .value 的类型从 Partial 改为 Events[T]，确保类型系统中事件对象始终是完整的。 安全加固 路径遍历防护 接口路由新增 safePath() 安全函数，所有 /app/ 和 /apps/:app/ 路由的文件路径均经过校验，防止 ../ 路径遍历攻击。 包名注入防护 /apps/:app/ 路由新增 isValidPackageName() 校验，阻止通过非法包名（如 ../../etc）进行路径注入。",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2026-04-01"
   },
   {
@@ -3432,7 +3432,7 @@
     "path": "/blog/2026/04/01/v2.1.52#useevent",
     "excerpt": "安全的读取 event 和 next，handler 无需声明参数",
     "text": "安全的读取 event 和 next，handler 无需声明参数",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2026-04-01"
   },
   {
@@ -3444,7 +3444,7 @@
     "path": "/blog/2026/04/01/v2.1.52#formatevent-链式构建器",
     "excerpt": "平台适配器现在统一使用 FormatEvent 链式构建器创建事件对象，根据事件名自动约束可用方法。",
     "text": "平台适配器现在统一使用 FormatEvent 链式构建器创建事件对象，根据事件名自动约束可用方法。",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2026-04-01"
   },
   {
@@ -3456,7 +3456,7 @@
     "path": "/blog/2026/04/01/v2.1.52#方法可用性一览",
     "excerpt": "事件 Guild Channel User Text Media Open ----------------------------- :---: :-----: :--: :--: :---: :--: message.create ✓...",
     "text": "事件 Guild Channel User Text Media Open ----------------------------- :---: :-----: :--: :--: :---: :--: message.create ✓ ✓ ✓ ✓ ✓ ✓ private.message.create ✓ ✓ ✓ ✓ interaction.create ✓ ✓ ✓ ✓ ✓ private.interaction.create ✓ ✓ ✓ guild.join / guild.exit ✓ ✓ ✓ member.\\ (5种) ✓ ✓ ✓ notice.create ✓ ✓ ✓ message.delete / pin ✓ ✓ channel.\\ (3种) ✓ ✓ guild.update ✓ ✓ private.friend.\\ / guild.add ✓ private.notice.create ✓ private.message.delete addPlatform / addMessage / add 所有事件均可调用",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2026-04-01"
   },
   {
@@ -3468,7 +3468,7 @@
     "path": "/blog/2026/04/01/v2.1.52#新增事件类型",
     "excerpt": "事件系统扩展至 27 种，新增以下事件： 事件名 说明 ----------------------- -------------------- message.pin 消息置顶 channel.update 频道更新 guild.upda...",
     "text": "事件系统扩展至 27 种，新增以下事件： 事件名 说明 ----------------------- -------------------- message.pin 消息置顶 channel.update 频道更新 guild.update 服务器/群组更新 member.ban 成员封禁 member.unban 成员解封 member.update 成员信息更新 notice.create 公共通知（戳一戳等） private.notice.create 私有通知 private.friend.remove 好友移除 所有平台适配器的 hook MAP 已同步覆盖全部 27 种事件。",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2026-04-01"
   },
   {
@@ -3480,7 +3480,7 @@
     "path": "/blog/2026/04/01/v2.1.52#eventbuilder-类型安全增强",
     "excerpt": "EventBuilder .value 的类型从 Partial 改为 Events[T]，确保类型系统中事件对象始终是完整的。",
     "text": "EventBuilder .value 的类型从 Partial 改为 Events[T]，确保类型系统中事件对象始终是完整的。",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2026-04-01"
   },
   {
@@ -3492,7 +3492,7 @@
     "path": "/blog/2026/04/01/v2.1.52#安全加固",
     "excerpt": "更新记录 支持 hooks 模式 useEvent 安全的读取 event 和 next，handler 无需声明参数 FormatEvent 链式构建器 平台适配器现在统一使用 FormatEvent 链式构建器创建事件对象，根据事件名自...",
     "text": "更新记录 支持 hooks 模式 useEvent 安全的读取 event 和 next，handler 无需声明参数 FormatEvent 链式构建器 平台适配器现在统一使用 FormatEvent 链式构建器创建事件对象，根据事件名自动约束可用方法。 方法可用性一览 事件 Guild Channel User Text Media Open ----------------------------- :---: :-----: :--: :--: :---: :--: message.create ✓ ✓ ✓ ✓ ✓ ✓ private.message.create ✓ ✓ ✓ ✓ interaction.create ✓ ✓ ✓ ✓ ✓ private.interaction.create ✓ ✓ ✓ guild.join / guild.exit ✓ ✓ ✓ member.\\ (5种) ✓ ✓ ✓ notice.create ✓ ✓ ✓ message.delete / pin ✓ ✓ channel.\\ (3种) ✓ ✓ guild.update ✓ ✓ private.friend.\\ / guild.add ✓ private.notice.create ✓ private.message.delete addPlatform / addMessage / add 所有事件均可调用 新增事件类型 事件系统扩展至 27 种，新增以下事件： 事件名 说明 ----------------------- -------------------- message.pin 消息置顶 channel.update 频道更新 guild.update 服务器/群组更新 member.ban 成员封禁 member.unban 成员解封 member.update 成员信息更新 notice.create 公共通知（戳一戳等） private.notice.create 私有通知 private.friend.remove 好友移除 所有平台适配器的 hook MAP 已同步覆盖全部 27 种事件。 EventBuilder 类型安全增强 EventBuilder .value 的类型从 Partial 改为 Events[T]，确保类型系统中事件对象始终是完整的。 安全加固 路径遍历防护 接口路由新增 safePath() 安全函数，所有 /app/ 和 /apps/:app/ 路由的文件路径均经过校验，防止 ../ 路径遍历攻击。 包名注入防护 /apps/:app/ 路由新增 isValidPackageName() 校验，阻止通过非法包名（如 ../../etc）进行路径注入。",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2026-04-01"
   },
   {
@@ -3504,7 +3504,7 @@
     "path": "/blog/2026/04/01/v2.1.52#路径遍历防护",
     "excerpt": "接口路由新增 safePath() 安全函数，所有 /app/ 和 /apps/:app/ 路由的文件路径均经过校验，防止 ../ 路径遍历攻击。",
     "text": "接口路由新增 safePath() 安全函数，所有 /app/ 和 /apps/:app/ 路由的文件路径均经过校验，防止 ../ 路径遍历攻击。",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2026-04-01"
   },
   {
@@ -3516,7 +3516,7 @@
     "path": "/blog/2026/04/01/v2.1.52#包名注入防护",
     "excerpt": "/apps/:app/ 路由新增 isValidPackageName() 校验，阻止通过非法包名（如 ../../etc）进行路径注入。",
     "text": "/apps/:app/ 路由新增 isValidPackageName() 校验，阻止通过非法包名（如 ../../etc）进行路径注入。",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2026-04-01"
   },
   {
@@ -3527,7 +3527,7 @@
     "path": "/blog/2026/02/28/v2.1.43",
     "excerpt": "链式调用",
     "text": "更新记录 增强 v8 解析兼容性 默认无端口模式 修复若干兼容性BUG 主动消息 部分平台可能仅支持有限或不支持主动消息机制",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2026-02-28"
   },
   {
@@ -3539,7 +3539,7 @@
     "path": "/blog/2026/02/28/v2.1.43#更新记录",
     "excerpt": "增强 v8 解析兼容性 默认无端口模式 修复若干兼容性BUG 主动消息 部分平台可能仅支持有限或不支持主动消息机制",
     "text": "增强 v8 解析兼容性 默认无端口模式 修复若干兼容性BUG 主动消息 部分平台可能仅支持有限或不支持主动消息机制",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2026-02-28"
   },
   {
@@ -3550,7 +3550,7 @@
     "path": "/blog/2026/02/26/v2.1.22",
     "excerpt": "链式调用",
     "text": "更新记录 一个例子展示升级后的写法",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2026-02-26"
   },
   {
@@ -3562,7 +3562,7 @@
     "path": "/blog/2026/02/26/v2.1.22#更新记录",
     "excerpt": "一个例子展示升级后的写法",
     "text": "一个例子展示升级后的写法",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2026-02-26"
   },
   {
@@ -3573,7 +3573,7 @@
     "path": "/blog/2026/01/22/v2.1.17",
     "excerpt": "针对useSubscribe的优化",
     "text": "更新记录 useSubscribe 已经修复，不可以在回调中调用 subscribe.cancel(sub) 的限制",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2026-01-22"
   },
   {
@@ -3585,7 +3585,7 @@
     "path": "/blog/2026/01/22/v2.1.17#更新记录",
     "excerpt": "更新记录 useSubscribe 已经修复，不可以在回调中调用 subscribe.cancel(sub) 的限制",
     "text": "更新记录 useSubscribe 已经修复，不可以在回调中调用 subscribe.cancel(sub) 的限制",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2026-01-22"
   },
   {
@@ -3597,7 +3597,7 @@
     "path": "/blog/2026/01/22/v2.1.17#usesubscribe",
     "excerpt": "已经修复，不可以在回调中调用 subscribe.cancel(sub) 的限制",
     "text": "已经修复，不可以在回调中调用 subscribe.cancel(sub) 的限制",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2026-01-22"
   },
   {
@@ -3608,7 +3608,7 @@
     "path": "/blog/2026/01/08/v2.1.15",
     "excerpt": "主要是一些比较重要的修复和优化",
     "text": "更新记录 utils 修复 Regular 处理带Flags的正则时,出现代码崩溃 useMe definePlatform 自定义平台使用， 内部使用进程来控制声明周期，以支持崩溃自启 getMessageIntent 试验中",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2026-01-08"
   },
   {
@@ -3620,7 +3620,7 @@
     "path": "/blog/2026/01/08/v2.1.15#更新记录",
     "excerpt": "utils 修复 Regular 处理带Flags的正则时,出现代码崩溃 useMe definePlatform 自定义平台使用， 内部使用进程来控制声明周期，以支持崩溃自启 getMessageIntent 试验中",
     "text": "utils 修复 Regular 处理带Flags的正则时,出现代码崩溃 useMe definePlatform 自定义平台使用， 内部使用进程来控制声明周期，以支持崩溃自启 getMessageIntent 试验中",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2026-01-08"
   },
   {
@@ -3631,7 +3631,7 @@
     "path": "/blog/2025/05/30/v2.1.0",
     "excerpt": "全新稳定版本推送",
     "text": "更新记录 除却订阅hook外，其他内容都将向下兼容。 一 、新增用于内部的cbp协议，扩展性更强。如支持作为服务，让子服务进行连接。同时也支持了在现有服务上定义接口 二、 新增局部的响应中间件。 三、增强加载平台包和应用执行的稳定性，主要是实现代码崩溃可自动重启。 四、优化hook的设计，包括消息发送和事件订阅等。 五、支持更多的个性化配置。 六、新增更直观且执行效率更高的路由系统。 七、支持发送md、buttons等数据格式。 八、整理了一批常用的工具函数。 九、新增更适用于新架构的hook，以调用平台原生接口。 十、修复若干BUG。 新功能示例 useSubscribe !!! useSubscribe 和 2.0 不兼容 useMessage useClient defineResponse 支持定义路由规则来更细致化的控制和管理响应。有效提高匹配效率。 defineMiddleware 支持定义中间件路由规则来更细致化的控制和管理响应。有效提高匹配效率。 Route 执行优先级 框架对于res和mw的收集，完全依靠目录&文件的顺序， 也就是说，所见的层级结构，就是匹配的优先级。 比如 response/1/res.ts 的优先级比 response/2/res.ts 高 因为在 response目录下，1 > 2，目录名为1的文件排在了目录名为2的前面。 在框架里，支持使用 res..ts 和 mw..ts 命名， 因此 response/1/res.1.ts 的优先级比 response/1/res.2.ts 高 因为在 response/1目录下，1 > 2，文件名为res.1的文件排在了文件名为res.2的前面。 应用优先级 依赖于 配置文件 应用的优先级 alemonjs-openai 比 alemonjs-game 高",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2025-05-30"
   },
   {
@@ -3643,7 +3643,7 @@
     "path": "/blog/2025/05/30/v2.1.0#更新记录",
     "excerpt": "除却订阅hook外，其他内容都将向下兼容。 一 、新增用于内部的cbp协议，扩展性更强。如支持作为服务，让子服务进行连接。同时也支持了在现有服务上定义接口 二、 新增局部的响应中间件。 三、增强加载平台包和应用执行的稳定性，主要是实现代码崩...",
     "text": "除却订阅hook外，其他内容都将向下兼容。 一 、新增用于内部的cbp协议，扩展性更强。如支持作为服务，让子服务进行连接。同时也支持了在现有服务上定义接口 二、 新增局部的响应中间件。 三、增强加载平台包和应用执行的稳定性，主要是实现代码崩溃可自动重启。 四、优化hook的设计，包括消息发送和事件订阅等。 五、支持更多的个性化配置。 六、新增更直观且执行效率更高的路由系统。 七、支持发送md、buttons等数据格式。 八、整理了一批常用的工具函数。 九、新增更适用于新架构的hook，以调用平台原生接口。 十、修复若干BUG。",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2025-05-30"
   },
   {
@@ -3655,7 +3655,7 @@
     "path": "/blog/2025/05/30/v2.1.0#新功能示例",
     "excerpt": "更新记录 除却订阅hook外，其他内容都将向下兼容。 一 、新增用于内部的cbp协议，扩展性更强。如支持作为服务，让子服务进行连接。同时也支持了在现有服务上定义接口 二、 新增局部的响应中间件。 三、增强加载平台包和应用执行的稳定性，主要是...",
     "text": "更新记录 除却订阅hook外，其他内容都将向下兼容。 一 、新增用于内部的cbp协议，扩展性更强。如支持作为服务，让子服务进行连接。同时也支持了在现有服务上定义接口 二、 新增局部的响应中间件。 三、增强加载平台包和应用执行的稳定性，主要是实现代码崩溃可自动重启。 四、优化hook的设计，包括消息发送和事件订阅等。 五、支持更多的个性化配置。 六、新增更直观且执行效率更高的路由系统。 七、支持发送md、buttons等数据格式。 八、整理了一批常用的工具函数。 九、新增更适用于新架构的hook，以调用平台原生接口。 十、修复若干BUG。 新功能示例 useSubscribe !!! useSubscribe 和 2.0 不兼容 useMessage useClient defineResponse 支持定义路由规则来更细致化的控制和管理响应。有效提高匹配效率。 defineMiddleware 支持定义中间件路由规则来更细致化的控制和管理响应。有效提高匹配效率。 Route 执行优先级 框架对于res和mw的收集，完全依靠目录&文件的顺序， 也就是说，所见的层级结构，就是匹配的优先级。 比如 response/1/res.ts 的优先级比 response/2/res.ts 高 因为在 response目录下，1 > 2，目录名为1的文件排在了目录名为2的前面。 在框架里，支持使用 res..ts 和 mw..ts 命名， 因此 response/1/res.1.ts 的优先级比 response/1/res.2.ts 高 因为在 response/1目录下，1 > 2，文件名为res.1的文件排在了文件名为res.2的前面。 应用优先级 依赖于 配置文件 应用的优先级 alemonjs-openai 比 alemonjs-game 高",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2025-05-30"
   },
   {
@@ -3667,7 +3667,7 @@
     "path": "/blog/2025/05/30/v2.1.0#usesubscribe",
     "excerpt": "!!! useSubscribe 和 2.0 不兼容",
     "text": "!!! useSubscribe 和 2.0 不兼容",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2025-05-30"
   },
   {
@@ -3679,7 +3679,7 @@
     "path": "/blog/2025/05/30/v2.1.0#usemessage",
     "excerpt": "更新记录 除却订阅hook外，其他内容都将向下兼容。 一 、新增用于内部的cbp协议，扩展性更强。如支持作为服务，让子服务进行连接。同时也支持了在现有服务上定义接口 二、 新增局部的响应中间件。 三、增强加载平台包和应用执行的稳定性，主要是...",
     "text": "更新记录 除却订阅hook外，其他内容都将向下兼容。 一 、新增用于内部的cbp协议，扩展性更强。如支持作为服务，让子服务进行连接。同时也支持了在现有服务上定义接口 二、 新增局部的响应中间件。 三、增强加载平台包和应用执行的稳定性，主要是实现代码崩溃可自动重启。 四、优化hook的设计，包括消息发送和事件订阅等。 五、支持更多的个性化配置。 六、新增更直观且执行效率更高的路由系统。 七、支持发送md、buttons等数据格式。 八、整理了一批常用的工具函数。 九、新增更适用于新架构的hook，以调用平台原生接口。 十、修复若干BUG。 新功能示例 useSubscribe !!! useSubscribe 和 2.0 不兼容 useMessage useClient defineResponse 支持定义路由规则来更细致化的控制和管理响应。有效提高匹配效率。 defineMiddleware 支持定义中间件路由规则来更细致化的控制和管理响应。有效提高匹配效率。 Route 执行优先级 框架对于res和mw的收集，完全依靠目录&文件的顺序， 也就是说，所见的层级结构，就是匹配的优先级。 比如 response/1/res.ts 的优先级比 response/2/res.ts 高 因为在 response目录下，1 > 2，目录名为1的文件排在了目录名为2的前面。 在框架里，支持使用 res..ts 和 mw..ts 命名， 因此 response/1/res.1.ts 的优先级比 response/1/res.2.ts 高 因为在 response/1目录下，1 > 2，文件名为res.1的文件排在了文件名为res.2的前面。 应用优先级 依赖于 配置文件 应用的优先级 alemonjs-openai 比 alemonjs-game 高",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2025-05-30"
   },
   {
@@ -3691,7 +3691,7 @@
     "path": "/blog/2025/05/30/v2.1.0#useclient",
     "excerpt": "更新记录 除却订阅hook外，其他内容都将向下兼容。 一 、新增用于内部的cbp协议，扩展性更强。如支持作为服务，让子服务进行连接。同时也支持了在现有服务上定义接口 二、 新增局部的响应中间件。 三、增强加载平台包和应用执行的稳定性，主要是...",
     "text": "更新记录 除却订阅hook外，其他内容都将向下兼容。 一 、新增用于内部的cbp协议，扩展性更强。如支持作为服务，让子服务进行连接。同时也支持了在现有服务上定义接口 二、 新增局部的响应中间件。 三、增强加载平台包和应用执行的稳定性，主要是实现代码崩溃可自动重启。 四、优化hook的设计，包括消息发送和事件订阅等。 五、支持更多的个性化配置。 六、新增更直观且执行效率更高的路由系统。 七、支持发送md、buttons等数据格式。 八、整理了一批常用的工具函数。 九、新增更适用于新架构的hook，以调用平台原生接口。 十、修复若干BUG。 新功能示例 useSubscribe !!! useSubscribe 和 2.0 不兼容 useMessage useClient defineResponse 支持定义路由规则来更细致化的控制和管理响应。有效提高匹配效率。 defineMiddleware 支持定义中间件路由规则来更细致化的控制和管理响应。有效提高匹配效率。 Route 执行优先级 框架对于res和mw的收集，完全依靠目录&文件的顺序， 也就是说，所见的层级结构，就是匹配的优先级。 比如 response/1/res.ts 的优先级比 response/2/res.ts 高 因为在 response目录下，1 > 2，目录名为1的文件排在了目录名为2的前面。 在框架里，支持使用 res..ts 和 mw..ts 命名， 因此 response/1/res.1.ts 的优先级比 response/1/res.2.ts 高 因为在 response/1目录下，1 > 2，文件名为res.1的文件排在了文件名为res.2的前面。 应用优先级 依赖于 配置文件 应用的优先级 alemonjs-openai 比 alemonjs-game 高",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2025-05-30"
   },
   {
@@ -3703,7 +3703,7 @@
     "path": "/blog/2025/05/30/v2.1.0#defineresponse",
     "excerpt": "支持定义路由规则来更细致化的控制和管理响应。有效提高匹配效率。",
     "text": "支持定义路由规则来更细致化的控制和管理响应。有效提高匹配效率。",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2025-05-30"
   },
   {
@@ -3715,7 +3715,7 @@
     "path": "/blog/2025/05/30/v2.1.0#definemiddleware",
     "excerpt": "支持定义中间件路由规则来更细致化的控制和管理响应。有效提高匹配效率。",
     "text": "支持定义中间件路由规则来更细致化的控制和管理响应。有效提高匹配效率。",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2025-05-30"
   },
   {
@@ -3727,7 +3727,7 @@
     "path": "/blog/2025/05/30/v2.1.0#route",
     "excerpt": "更新记录 除却订阅hook外，其他内容都将向下兼容。 一 、新增用于内部的cbp协议，扩展性更强。如支持作为服务，让子服务进行连接。同时也支持了在现有服务上定义接口 二、 新增局部的响应中间件。 三、增强加载平台包和应用执行的稳定性，主要是...",
     "text": "更新记录 除却订阅hook外，其他内容都将向下兼容。 一 、新增用于内部的cbp协议，扩展性更强。如支持作为服务，让子服务进行连接。同时也支持了在现有服务上定义接口 二、 新增局部的响应中间件。 三、增强加载平台包和应用执行的稳定性，主要是实现代码崩溃可自动重启。 四、优化hook的设计，包括消息发送和事件订阅等。 五、支持更多的个性化配置。 六、新增更直观且执行效率更高的路由系统。 七、支持发送md、buttons等数据格式。 八、整理了一批常用的工具函数。 九、新增更适用于新架构的hook，以调用平台原生接口。 十、修复若干BUG。 新功能示例 useSubscribe !!! useSubscribe 和 2.0 不兼容 useMessage useClient defineResponse 支持定义路由规则来更细致化的控制和管理响应。有效提高匹配效率。 defineMiddleware 支持定义中间件路由规则来更细致化的控制和管理响应。有效提高匹配效率。 Route 执行优先级 框架对于res和mw的收集，完全依靠目录&文件的顺序， 也就是说，所见的层级结构，就是匹配的优先级。 比如 response/1/res.ts 的优先级比 response/2/res.ts 高 因为在 response目录下，1 > 2，目录名为1的文件排在了目录名为2的前面。 在框架里，支持使用 res..ts 和 mw..ts 命名， 因此 response/1/res.1.ts 的优先级比 response/1/res.2.ts 高 因为在 response/1目录下，1 > 2，文件名为res.1的文件排在了文件名为res.2的前面。 应用优先级 依赖于 配置文件 应用的优先级 alemonjs-openai 比 alemonjs-game 高",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2025-05-30"
   },
   {
@@ -3739,7 +3739,7 @@
     "path": "/blog/2025/05/30/v2.1.0#执行优先级",
     "excerpt": "框架对于res和mw的收集，完全依靠目录&文件的顺序， 也就是说，所见的层级结构，就是匹配的优先级。 比如 response/1/res.ts 的优先级比 response/2/res.ts 高 因为在 response目录下，1 > 2，...",
     "text": "框架对于res和mw的收集，完全依靠目录&文件的顺序， 也就是说，所见的层级结构，就是匹配的优先级。 比如 response/1/res.ts 的优先级比 response/2/res.ts 高 因为在 response目录下，1 > 2，目录名为1的文件排在了目录名为2的前面。 在框架里，支持使用 res..ts 和 mw..ts 命名， 因此 response/1/res.1.ts 的优先级比 response/1/res.2.ts 高 因为在 response/1目录下，1 > 2，文件名为res.1的文件排在了文件名为res.2的前面。",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2025-05-30"
   },
   {
@@ -3751,7 +3751,7 @@
     "path": "/blog/2025/05/30/v2.1.0#应用优先级",
     "excerpt": "依赖于 配置文件 应用的优先级 alemonjs-openai 比 alemonjs-game 高",
     "text": "依赖于 配置文件 应用的优先级 alemonjs-openai 比 alemonjs-game 高",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2025-05-30"
   },
   {
@@ -3762,7 +3762,7 @@
     "path": "/blog/2025/05/13/v2.0.16",
     "excerpt": "更新",
     "text": "更新记录 简化Selects 原来的 更改为 废弃 useObserver 废弃 应使用 useSubscribe createDataFormat 废弃 应使用format 新增 useSends",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2025-05-13"
   },
   {
@@ -3774,7 +3774,7 @@
     "path": "/blog/2025/05/13/v2.0.16#更新记录",
     "excerpt": "简化Selects 原来的 更改为 废弃 useObserver 废弃 应使用 useSubscribe createDataFormat 废弃 应使用format 新增 useSends",
     "text": "简化Selects 原来的 更改为 废弃 useObserver 废弃 应使用 useSubscribe createDataFormat 废弃 应使用format 新增 useSends",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2025-05-13"
   },
   {
@@ -3785,7 +3785,7 @@
     "path": "/blog/2025/03/26/v2.0.4",
     "excerpt": "更新",
     "text": "更新记录 【Fix】中间件的regular 没生效。 【Feat】支持return对象以描述其他行为 【Feat】支持内部存储实例",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2025-03-26"
   },
   {
@@ -3797,7 +3797,7 @@
     "path": "/blog/2025/03/26/v2.0.4#更新记录",
     "excerpt": "【Fix】中间件的regular 没生效。 【Feat】支持return对象以描述其他行为 【Feat】支持内部存储实例",
     "text": "【Fix】中间件的regular 没生效。 【Feat】支持return对象以描述其他行为 【Feat】支持内部存储实例",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2025-03-26"
   },
   {
@@ -3808,7 +3808,7 @@
     "path": "/blog/2025/03/14/v2.0.0",
     "excerpt": "更新",
     "text": "更新记录 jsx",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2025-03-14"
   },
   {
@@ -3820,7 +3820,7 @@
     "path": "/blog/2025/03/14/v2.0.0#更新记录",
     "excerpt": "jsx",
     "text": "jsx",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2025-03-14"
   },
   {
@@ -3831,7 +3831,7 @@
     "path": "/blog/2025/02/12/v2.0.0-rc.94",
     "excerpt": "更新",
     "text": "更新记录 主动消息 部分平台可能仅支持有限或不支持主动消息机制 数据格式",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2025-02-12"
   },
   {
@@ -3843,7 +3843,7 @@
     "path": "/blog/2025/02/12/v2.0.0-rc.94#更新记录",
     "excerpt": "主动消息 部分平台可能仅支持有限或不支持主动消息机制 数据格式",
     "text": "主动消息 部分平台可能仅支持有限或不支持主动消息机制 数据格式",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2025-02-12"
   },
   {
@@ -3854,7 +3854,7 @@
     "path": "/blog/2025/01/09/v2.0.0-rc.88",
     "excerpt": "更新",
     "text": "更新记录 图片数据扩展",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2025-01-09"
   },
   {
@@ -3866,7 +3866,7 @@
     "path": "/blog/2025/01/09/v2.0.0-rc.88#更新记录",
     "excerpt": "图片数据扩展",
     "text": "图片数据扩展",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2025-01-09"
   },
   {
@@ -3877,7 +3877,7 @@
     "path": "/blog/2025/01/07/v2.0.0-rc.84",
     "excerpt": "更新",
     "text": "更新记录 订阅事件数据结构更改为链表 避免随着事件的增加，而数据长度增加",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2025-01-07"
   },
   {
@@ -3889,7 +3889,7 @@
     "path": "/blog/2025/01/07/v2.0.0-rc.84#更新记录",
     "excerpt": "订阅事件数据结构更改为链表 避免随着事件的增加，而数据长度增加",
     "text": "订阅事件数据结构更改为链表 避免随着事件的增加，而数据长度增加",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2025-01-07"
   },
   {
@@ -3900,7 +3900,7 @@
     "path": "/blog/2025/01/02/v2.0.0-rc.81",
     "excerpt": "更新",
     "text": "更新记录 useState 声明res/mw的状态,可用于管理是否启用 可以在任意地方订阅状态的更改。 分组 复用逻辑,共用一个next",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2025-01-02"
   },
   {
@@ -3912,7 +3912,7 @@
     "path": "/blog/2025/01/02/v2.0.0-rc.81#更新记录",
     "excerpt": "useState 声明res/mw的状态,可用于管理是否启用 可以在任意地方订阅状态的更改。 分组 复用逻辑,共用一个next",
     "text": "useState 声明res/mw的状态,可用于管理是否启用 可以在任意地方订阅状态的更改。 分组 复用逻辑,共用一个next",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2025-01-02"
   },
   {
@@ -3923,7 +3923,7 @@
     "path": "/blog/2024/12/31/2.0.0-rc.78",
     "excerpt": "更新",
     "text": "更新记录 新增regular",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2024-12-31"
   },
   {
@@ -3935,7 +3935,7 @@
     "path": "/blog/2024/12/31/2.0.0-rc.78#更新记录",
     "excerpt": "新增regular",
     "text": "新增regular",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2024-12-31"
   },
   {
@@ -3946,7 +3946,7 @@
     "path": "/blog/2024/12/28/2.0.0-rc.76",
     "excerpt": "更新",
     "text": "更新记录 新增useSubscribe 新增next(bool)",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2024-12-28"
   },
   {
@@ -3958,7 +3958,7 @@
     "path": "/blog/2024/12/28/2.0.0-rc.76#更新记录",
     "excerpt": "新增useSubscribe 新增next(bool)",
     "text": "新增useSubscribe 新增next(bool)",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2024-12-28"
   },
   {
@@ -3969,7 +3969,7 @@
     "path": "/blog/2024/12/24/2.0.0-rc.74",
     "excerpt": "更新",
     "text": "更新记录 优化OnMiddleware写法 新增 useMention 用户头像获取方式更改为异步 新增Text style、Mention options getConfig 支持获取 argv onstart 更改为 start 删除 useParse、 删除 MessageBody",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2024-12-24"
   },
   {
@@ -3981,7 +3981,7 @@
     "path": "/blog/2024/12/24/2.0.0-rc.74#更新记录",
     "excerpt": "优化OnMiddleware写法 新增 useMention 用户头像获取方式更改为异步 新增Text style、Mention options getConfig 支持获取 argv onstart 更改为 start 删除 usePa...",
     "text": "优化OnMiddleware写法 新增 useMention 用户头像获取方式更改为异步 新增Text style、Mention options getConfig 支持获取 argv onstart 更改为 start 删除 useParse、 删除 MessageBody",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2024-12-24"
   },
   {
@@ -3992,7 +3992,7 @@
     "path": "/blog/2024/11/18/2.0.0-rc.54",
     "excerpt": "更新",
     "text": "更新记录 支持多个事件选择 支持非消息体事件响应",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2024-11-18"
   },
   {
@@ -4004,7 +4004,7 @@
     "path": "/blog/2024/11/18/2.0.0-rc.54#更新记录",
     "excerpt": "支持多个事件选择 支持非消息体事件响应",
     "text": "支持多个事件选择 支持非消息体事件响应",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2024-11-18"
   },
   {
@@ -4015,7 +4015,7 @@
     "path": "/blog/2024/11/09/2.0.0-rc.44",
     "excerpt": "更新",
     "text": "更新记录 增加中间件 修复模块扩展",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2024-11-09"
   },
   {
@@ -4027,7 +4027,7 @@
     "path": "/blog/2024/11/09/2.0.0-rc.44#更新记录",
     "excerpt": "增加中间件 修复模块扩展",
     "text": "增加中间件 修复模块扩展",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2024-11-09"
   },
   {
@@ -4038,7 +4038,7 @@
     "path": "/blog/2024/10/09/2.0.0-rc.33",
     "excerpt": "更新",
     "text": "更新记录 增加配置管理器 增加被动链接redis 支持css预处理 支持非js模块导入 新增开发/打包/运行配置 全新版本 支持指定参数启动 支持获取文本消息 支持获取 AT 消息 支持发送文本消息 支持观察者 hook 支持图片消息 支持 public 消息创建监听 基于文件系统的匹配机制 环境统一为 tsx 提供自定义平台函数 支持热更新配置",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2024-10-09"
   },
   {
@@ -4050,7 +4050,7 @@
     "path": "/blog/2024/10/09/2.0.0-rc.33#更新记录",
     "excerpt": "增加配置管理器 增加被动链接redis 支持css预处理 支持非js模块导入 新增开发/打包/运行配置 全新版本 支持指定参数启动 支持获取文本消息 支持获取 AT 消息 支持发送文本消息 支持观察者 hook 支持图片消息 支持 publ...",
     "text": "增加配置管理器 增加被动链接redis 支持css预处理 支持非js模块导入 新增开发/打包/运行配置 全新版本 支持指定参数启动 支持获取文本消息 支持获取 AT 消息 支持发送文本消息 支持观察者 hook 支持图片消息 支持 public 消息创建监听 基于文件系统的匹配机制 环境统一为 tsx 提供自定义平台函数 支持热更新配置",
-    "tags": ["更新", "AlemonJS"],
+    "tags": ["更新", "ALemonJS"],
     "date": "2024-10-09"
   }
 ]

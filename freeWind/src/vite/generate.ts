@@ -29,6 +29,7 @@ interface DocMetadata {
   date?: string
   hide_title?: boolean
   hide_table_of_contents?: boolean
+  redirect_to?: string
   [key: string]: unknown
 }
 
@@ -279,57 +280,59 @@ function generateSearchIndex(
     type: 'doc' | 'blog',
     basePath: string
   ) =>
-    routes.flatMap((route, index) => {
-      const headings = extractHeadings(route.content)
-      const title = String(
-        route.metadata.title ||
-          route.metadata.sidebar_label ||
-          route.metadata.label ||
-          headings[0]?.title ||
-          route.path
-      )
-      const tags = Array.isArray(route.metadata.tags)
-        ? route.metadata.tags.map(tag => String(tag))
-        : []
-      if (type === 'blog') {
-        const product = String(route.metadata.product || 'AlemonJS')
-        if (!tags.includes(product)) tags.push(product)
-      }
-      const pagePath = `${basePath}/${route.path}`
-      const fullText = stripMarkdown(route.content)
-      const entries: SearchIndexEntry[] = [
-        {
-          id: `${type}-page-${index}`,
-          type,
-          title,
-          titles: [title],
-          path: pagePath,
-          excerpt: toExcerpt(
-            route.metadata.description?.toString() || fullText
-          ),
-          text: fullText,
-          tags,
-          date: route.metadata.date?.toString()
+    routes
+      .filter(route => typeof route.metadata.redirect_to !== 'string')
+      .flatMap((route, index) => {
+        const headings = extractHeadings(route.content)
+        const title = String(
+          route.metadata.title ||
+            route.metadata.sidebar_label ||
+            route.metadata.label ||
+            headings[0]?.title ||
+            route.path
+        )
+        const tags = Array.isArray(route.metadata.tags)
+          ? route.metadata.tags.map(tag => String(tag))
+          : []
+        if (type === 'blog') {
+          const product = String(route.metadata.product || 'ALemonJS')
+          if (!tags.includes(product)) tags.push(product)
         }
-      ]
+        const pagePath = `${basePath}/${route.path}`
+        const fullText = stripMarkdown(route.content)
+        const entries: SearchIndexEntry[] = [
+          {
+            id: `${type}-page-${index}`,
+            type,
+            title,
+            titles: [title],
+            path: pagePath,
+            excerpt: toExcerpt(
+              route.metadata.description?.toString() || fullText
+            ),
+            text: fullText,
+            tags,
+            date: route.metadata.date?.toString()
+          }
+        ]
 
-      headings.forEach((heading, headingIndex) => {
-        entries.push({
-          id: `${type}-section-${index}-${headingIndex}`,
-          type,
-          title,
-          sectionTitle: heading.title,
-          titles: [title, heading.title],
-          path: `${pagePath}#${heading.id}`,
-          excerpt: toExcerpt(heading.content || fullText),
-          text: heading.content || fullText,
-          tags,
-          date: route.metadata.date?.toString()
+        headings.forEach((heading, headingIndex) => {
+          entries.push({
+            id: `${type}-section-${index}-${headingIndex}`,
+            type,
+            title,
+            sectionTitle: heading.title,
+            titles: [title, heading.title],
+            path: `${pagePath}#${heading.id}`,
+            excerpt: toExcerpt(heading.content || fullText),
+            text: heading.content || fullText,
+            tags,
+            date: route.metadata.date?.toString()
+          })
         })
-      })
 
-      return entries
-    })
+        return entries
+      })
 
   return [
     ...createEntries(docsRoutes, 'doc', '/docs'),
@@ -345,6 +348,7 @@ function generateRouterCode(
   blogRoutes: DocRoute[]
 ): string {
   const docImports = docsRoutes
+    .filter(route => typeof route.metadata.redirect_to !== 'string')
     .map(
       route =>
         `const ${route.importName} = lazy(() => import('../docs/${route.filePath}'))`
@@ -359,12 +363,19 @@ function generateRouterCode(
     .join('\n')
 
   const docRouteConfigs = docsRoutes
-    .map(
-      route => `      {
+    .map(route => {
+      const redirectTo = route.metadata.redirect_to
+      if (typeof redirectTo === 'string' && redirectTo.startsWith('/')) {
+        return `      {
+        path: '${route.path}',
+        element: <Navigate to="${redirectTo}" replace />
+      }`
+      }
+      return `      {
         path: '${route.path}',
         element: <${route.importName} />
       }`
-    )
+    })
     .join(',\n')
 
   const blogRouteConfigs = blogRoutes
@@ -460,6 +471,8 @@ function generateSidebarConfig(docsRoutes: DocRoute[], docsDir: string) {
 
   // 分组文档
   docsRoutes.forEach(route => {
+    if (typeof route.metadata.redirect_to === 'string') return
+
     const parts = route.path.split('/')
 
     if (parts.length === 1) {
@@ -689,7 +702,7 @@ function main() {
     const tags = Array.isArray(route.metadata.tags)
       ? route.metadata.tags.map(tag => String(tag))
       : []
-    const product = String(route.metadata.product || 'AlemonJS')
+    const product = String(route.metadata.product || 'ALemonJS')
     if (!tags.includes(product)) tags.push(product)
     return {
       title: route.metadata.title,

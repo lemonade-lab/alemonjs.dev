@@ -54,7 +54,7 @@ export default defineConfig({
           title: '相关工具',
           items: [
             {
-              label: 'AlemonJS',
+              label: 'ALemonJS',
               to: '/docs/alemonjsDocs/getting-started/overview'
             },
             {

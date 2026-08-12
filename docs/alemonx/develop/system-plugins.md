@@ -25,5 +25,3 @@ plugins/
 ## 执行动作
 
 页面向 `POST /api/v1/setup/plugins/<id>/actions` 发送 `action`、`confirm` 与 `params`。执行器从标准输入读取一个 JSON 请求，并只向标准输出写入一个 JSON 响应。
-
-下一步：[插件清单](/docs/alemonx/reference/plugin-manifest)、[WebView](/docs/alemonx/develop/webview)。

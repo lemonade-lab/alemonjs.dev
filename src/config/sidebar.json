@@ -1,10 +1,5 @@
 [
   {
-    "title": "如何安装",
-    "path": "/docs/install",
-    "position": 2
-  },
-  {
     "id": "alemonx",
     "label": "ALemonX",
     "position": 2,
@@ -127,14 +122,19 @@
             "position": 1
           },
           {
+            "title": "如何安装",
+            "path": "/docs/alemonjsDocs/getting-started/install",
+            "position": 2
+          },
+          {
             "title": "快速开始",
             "path": "/docs/alemonjsDocs/getting-started/quick-start",
-            "position": 2
+            "position": 3
           },
           {
             "title": "配置说明",
             "path": "/docs/alemonjsDocs/getting-started/config",
-            "position": 3
+            "position": 4
           }
         ]
       },

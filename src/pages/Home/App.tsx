@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <div className="flex-1 bg-[#f7f7f5] pt-16 dark:bg-[#0d0d0d]">
+      <div className="flex-1 bg-[var(--canvas)] pt-16 text-[var(--text)]">
         <div className="mx-auto max-w-7xl px-4 pb-16 pt-5 sm:px-6 sm:pt-8 lg:px-8">
           <HeaderPage />
           <div className="mt-24 sm:mt-32">

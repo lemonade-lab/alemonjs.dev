@@ -47,7 +47,7 @@ export default function BlogList() {
           产品更新
         </h1>
         <p className="mt-3 text-gray-600 dark:text-gray-300">
-          按产品筛选 ALemonX 与 AlemonJS 的发布记录。
+          按产品筛选 ALemonX 与 ALemonJS 的发布记录。
         </p>
       </header>
       {/* 标签过滤 */}

@@ -8,7 +8,7 @@ sidebar_position: 1
 
 ## 创建
 
-向导可生成 AlemonJS 机器人或开发模板，并选择语言、包管理器、Git 与 PM2。目标目录已存在时不会覆盖。
+向导可生成 ALemonJS 机器人或开发模板，并选择语言、包管理器、Git 与 PM2。目标目录已存在时不会覆盖。
 
 ## 导入
 
@@ -17,5 +17,3 @@ sidebar_position: 1
 ## 配置
 
 在工作台编辑运行配置、连接与包配置。`.env`、`.npmrc` 和机器人连接配置的未保存内容不会写入浏览器本地存储。
-
-下一步：[运行](/docs/alemonx/use/runtime/run-and-monitor)。

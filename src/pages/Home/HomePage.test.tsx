@@ -5,7 +5,7 @@ import { describe, expect, it } from 'vitest'
 import HomePage from './HomePage'
 
 describe('HomePage', () => {
-  it('lets visitors manually browse ecosystem products', async () => {
+  it('lets visitors select ecosystem products from the fixed dot navigation', async () => {
     const user = userEvent.setup()
 
     render(
@@ -14,14 +14,14 @@ describe('HomePage', () => {
       </BrowserRouter>
     )
 
-    expect(screen.getByText('AlemonJS')).toBeTruthy()
+    expect(screen.getByText('ALemonJS')).toBeTruthy()
     expect(
       screen
-        .getByRole('tab', { name: '查看 AlemonJS' })
+        .getByRole('tab', { name: '查看 ALemonJS' })
         .getAttribute('aria-selected')
     ).toBe('true')
 
-    await user.click(screen.getByRole('button', { name: '查看下一个生态产品' }))
+    await user.click(screen.getByRole('tab', { name: '查看 ALemonJS TestOne' }))
 
     expect(screen.getByText('ALemonJS TestOne')).toBeTruthy()
     expect(
@@ -29,6 +29,32 @@ describe('HomePage', () => {
         .getByRole('tab', { name: '查看 ALemonJS TestOne' })
         .getAttribute('aria-selected')
     ).toBe('true')
+  })
+
+  it('includes the mobile product in the ecosystem carousel', () => {
+    render(
+      <BrowserRouter>
+        <HomePage />
+      </BrowserRouter>
+    )
+
+    expect(screen.getByRole('tab', { name: '查看 ALemonApp' })).toBeTruthy()
+  })
+
+  it('uses the direct APK download for ALemonApp', async () => {
+    const user = userEvent.setup()
+
+    render(
+      <BrowserRouter>
+        <HomePage />
+      </BrowserRouter>
+    )
+
+    await user.click(screen.getByRole('tab', { name: '查看 ALemonApp' }))
+
+    expect(
+      screen.getByRole('link', { name: /下载移动端/ }).getAttribute('href')
+    ).toBe('https://download.alemonjs.com/application/alemonapp/app.apk')
   })
 
   it('supports keyboard navigation for the image carousel', async () => {
