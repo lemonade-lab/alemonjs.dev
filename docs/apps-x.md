@@ -1,6 +1,6 @@
 ---
-sidebar_position: 8
-label: 'ALemonX插件'
+sidebar_position: 9
+label: 'X插件'
 ---
 
 # X插件

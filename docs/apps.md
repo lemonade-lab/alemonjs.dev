@@ -1,9 +1,9 @@
 ---
 sidebar_position: 7
-label: 'ALemonJS插件'
+label: 'JS插件'
 ---
 
-# 插件市场
+# JS插件
 
 模块机制到底是怎么回事？请点击了解[👉模块化应用](/docs/alemonjsDocs/modules/models)的制作
 
@@ -11,13 +11,11 @@ label: 'ALemonJS插件'
 
 > 最大可能的去加载现有生态的扩展
 
-| 项目名        | 说明                                             |
-| ------------- | ------------------------------------------------ |
-| [load-yunzai] | 桥接层,加载所有yunzai插件,完整yunzai环境         |
-| [yunzai]      | 胶水层,让yunzai插件单独跑起来,仅限过渡性插件使用 |
+| 项目名        | 说明                                                 |
+| ------------- | ---------------------------------------------------- |
+| [load-yunzai] | 桥接层,加载所有Yunzai插件,拥有完整且可管理Yunzai环境 |
 
 [load-yunzai]: https://github.com/yunzaijs/alemonjs-load-yunzai
-[yunzai]: https://github.com/yunzaijs/alemonjs-yunzai
 
 ### IP
 

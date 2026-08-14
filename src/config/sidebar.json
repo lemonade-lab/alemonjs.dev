@@ -259,18 +259,23 @@
     "position": 6
   },
   {
-    "title": "ALemonJS插件",
+    "title": "JS插件",
     "path": "/docs/apps",
     "position": 7
   },
   {
-    "title": "ALemonX插件",
-    "path": "/docs/apps-x",
+    "title": "JS模块",
+    "path": "/docs/apps-module",
     "position": 8
+  },
+  {
+    "title": "X插件",
+    "path": "/docs/apps-x",
+    "position": 9
   },
   {
     "title": "开源生态",
     "path": "/docs/open",
-    "position": 8
+    "position": 9
   }
 ]

@@ -61,10 +61,11 @@ const Doc32 = lazy(
 const Doc33 = lazy(
   () => import('../docs/alemonx/use/runtime/run-and-monitor.md')
 )
-const Doc34 = lazy(() => import('../docs/apps-x.md'))
-const Doc35 = lazy(() => import('../docs/apps.md'))
-const Doc36 = lazy(() => import('../docs/environment.md'))
-const Doc38 = lazy(() => import('../docs/open.md'))
+const Doc34 = lazy(() => import('../docs/apps-module.md'))
+const Doc35 = lazy(() => import('../docs/apps-x.md'))
+const Doc36 = lazy(() => import('../docs/apps.md'))
+const Doc37 = lazy(() => import('../docs/environment.md'))
+const Doc39 = lazy(() => import('../docs/open.md'))
 
 // 自动生成的博客导入
 const Blog19 = lazy(() => import('../blog/2026/04/11/schedule-api.md'))
@@ -240,16 +241,20 @@ const router = createBrowserRouter([
         element: <Doc33 />
       },
       {
-        path: 'apps-x',
+        path: 'apps-module',
         element: <Doc34 />
       },
       {
-        path: 'apps',
+        path: 'apps-x',
         element: <Doc35 />
       },
       {
-        path: 'environment',
+        path: 'apps',
         element: <Doc36 />
+      },
+      {
+        path: 'environment',
+        element: <Doc37 />
       },
       {
         path: 'install',
@@ -259,7 +264,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'open',
-        element: <Doc38 />
+        element: <Doc39 />
       }
     ]
   },
