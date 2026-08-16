@@ -52,15 +52,19 @@ label: '连接平台'
 | 项目               | 版本                    | 说明             |
 | ------------------ | ----------------------- | ---------------- |
 | [@alemonjs/onebot] | [![onebot-s]][onebot-p] | OneBot V11&V12   |
-| [@alemonjs/qq]     | [![qq-s]][qq-p]         | qq(请改用OneBot) |
+| [@alemonjs/milky]  | [![milky-s]][milky-p]   | Milky            |
 | [@alemonjs/wechat] | [![wechat-s]][wechat-p] | wechat           |
+| [@alemonjs/qq]     | [![qq-s]][qq-p]         | qq(请改用OneBot) |
 
 [@alemonjs/onebot]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/onebot
 [onebot-s]: https://img.shields.io/npm/v/@alemonjs/onebot.svg
 [onebot-p]: https://www.npmjs.com/package/@alemonjs/onebot
-[@alemonjs/qq]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/qq
-[qq-s]: https://img.shields.io/npm/v/@alemonjs/qq.svg
-[qq-p]: https://www.npmjs.com/package/@alemonjs/qq
+[@alemonjs/milky]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/milky
+[milky-s]: https://img.shields.io/npm/v/@alemonjs/milky.svg
+[milky-p]: https://www.npmjs.com/package/@alemonjs/milky
 [@alemonjs/wechat]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/wechat
 [wechat-s]: https://img.shields.io/npm/v/@alemonjs/wechat.svg
 [wechat-p]: https://www.npmjs.com/package/@alemonjs/wechat
+[@alemonjs/qq]: https://github.com/lemonade-lab/alemonjs/tree/main/packages/qq
+[qq-s]: https://img.shields.io/npm/v/@alemonjs/qq.svg
+[qq-p]: https://www.npmjs.com/package/@alemonjs/qq
