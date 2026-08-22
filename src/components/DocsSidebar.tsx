@@ -64,10 +64,11 @@ export default function DocsSidebar({
       })
   }, [])
 
-  const toggleSection = (section: string) => {
+  const toggleSection = (section: string, isCollapsed: boolean) => {
     setCollapsedSections(prev => ({
       ...prev,
-      [section]: !prev[section]
+      // 首次点击时沿用配置中的初始状态，而不是对 undefined 取反。
+      [section]: !(prev[section] ?? isCollapsed)
     }))
   }
 
@@ -137,7 +138,7 @@ export default function DocsSidebar({
               return (
                 <div key={item.id || index}>
                   <button
-                    onClick={() => toggleSection(item.id!)}
+                    onClick={() => toggleSection(item.id!, isCollapsed)}
                     className="flex items-center justify-between w-full px-3 text-sm font-bold text-[var(--text)] uppercase tracking-wider mb-3 hover:bg-[var(--surface-muted)] transition-all duration-200 group"
                   >
                     {item.label}
@@ -171,7 +172,9 @@ export default function DocsSidebar({
                           return (
                             <div key={subItem.id}>
                               <button
-                                onClick={() => toggleSection(subCategoryId)}
+                                onClick={() =>
+                                  toggleSection(subCategoryId, isSubCollapsed)
+                                }
                                 className="flex items-center justify-between w-full pl-6 pr-3 text-xs font-semibold text-[var(--text-muted)] mb-2 hover:text-[var(--text)] transition-colors"
                               >
                                 {subItem.label}

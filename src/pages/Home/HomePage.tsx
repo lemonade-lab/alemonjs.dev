@@ -2,8 +2,8 @@ import { useRef, useState, type KeyboardEvent, type TouchEvent } from 'react'
 import { Link } from 'react-router-dom'
 import alemonJSImage from '@/assets/img/alemon.png'
 import testOneImage from '@/assets/img/dt/cat.png'
-import alemonDeskImage from '@/assets/img/dt/home.png'
-import alemonGoImage from '@/assets/img/web/info.png'
+// import alemonDeskImage from '@/assets/img/dt/home.png'
+// import alemonGoImage from '@/assets/img/web/info.png'
 import alemonAppImage from '@/assets/img/web/phone.png'
 
 const features = [
@@ -61,6 +61,15 @@ const features = [
 
 const products = [
   {
+    name: 'ALemonAPP',
+    type: '移动端项目',
+    description: '安装APP=启动机器人，人手一只机器人不在话下',
+    image: alemonAppImage,
+    imageClass: 'object-contain bg-[#f5f6fa] p-3 sm:p-5',
+    link: 'https://download.alemonjs.com/application/alemonapp/app.apk',
+    action: '下载移动端'
+  },
+  {
     name: 'ALemonJS',
     type: '机器人开发框架',
     description: '创建机器人项目，配置路由、事件、消息和平台适配。',
@@ -77,33 +86,6 @@ const products = [
     imageClass: 'object-cover',
     link: 'https://marketplace.visualstudio.com/items?itemName=lemonadex.alemonjs-testone',
     action: '查看扩展'
-  },
-  {
-    name: 'ALemonDesk',
-    type: '历史桌面产品',
-    description: '下载旧版桌面端，继续使用已有的 ALemonDesk 项目。',
-    image: alemonDeskImage,
-    imageClass: 'object-cover',
-    link: 'https://github.com/lemonade-lab/alemondesk/releases',
-    action: '查看旧版'
-  },
-  {
-    name: 'ALemonGo',
-    type: '历史 Web 面板',
-    description: '下载旧版 Web 管理面板，继续管理已有的机器人群。',
-    image: alemonGoImage,
-    imageClass: 'object-cover',
-    link: 'https://github.com/lemonade-lab/alemongo/releases',
-    action: '查看旧版'
-  },
-  {
-    name: 'ALemonApp',
-    type: '移动端项目',
-    description: '在手机上查看机器人状态、完成基础配置并快速开始使用。',
-    image: alemonAppImage,
-    imageClass: 'object-contain bg-[#f5f6fa] p-3 sm:p-5',
-    link: 'https://download.alemonjs.com/application/alemonapp/app.apk',
-    action: '下载移动端'
   }
 ]
 

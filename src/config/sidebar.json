@@ -12,6 +12,11 @@
         "collapsed": true,
         "items": [
           {
+            "title": "如何安装",
+            "path": "/docs/alemonx/getting-started/install",
+            "position": 1
+          },
+          {
             "title": "工作站开始",
             "path": "/docs/alemonx/getting-started/quick-start",
             "position": 1

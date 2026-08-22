@@ -38,36 +38,38 @@ const Doc19 = lazy(() => import('../docs/alemonjsDocs/modules/models.md'))
 const Doc20 = lazy(() => import('../docs/alemonjsDocs/modules/platforms.md'))
 const Doc21 = lazy(() => import('../docs/alemonx/develop/system-plugins.md'))
 const Doc22 = lazy(() => import('../docs/alemonx/develop/webview.md'))
-const Doc23 = lazy(
+const Doc23 = lazy(() => import('../docs/alemonx/getting-started/install.mdx'))
+const Doc24 = lazy(
   () => import('../docs/alemonx/getting-started/quick-start.mdx')
 )
-const Doc24 = lazy(() => import('../docs/alemonx/reference/cli.md'))
-const Doc25 = lazy(() => import('../docs/alemonx/reference/mcp.md'))
-const Doc26 = lazy(() => import('../docs/alemonx/reference/plugin-manifest.md'))
-const Doc27 = lazy(() => import('../docs/alemonx/use/agent/collaboration.md'))
-const Doc28 = lazy(() => import('../docs/alemonx/use/agent/mcp.md'))
-const Doc29 = lazy(
+const Doc25 = lazy(() => import('../docs/alemonx/reference/cli.md'))
+const Doc26 = lazy(() => import('../docs/alemonx/reference/mcp.md'))
+const Doc27 = lazy(() => import('../docs/alemonx/reference/plugin-manifest.md'))
+const Doc28 = lazy(() => import('../docs/alemonx/use/agent/collaboration.md'))
+const Doc29 = lazy(() => import('../docs/alemonx/use/agent/mcp.md'))
+const Doc30 = lazy(
   () => import('../docs/alemonx/use/extensions/plugins-and-webview.md')
 )
-const Doc30 = lazy(
+const Doc31 = lazy(
   () => import('../docs/alemonx/use/operations/access-and-safety.md')
 )
-const Doc31 = lazy(
+const Doc32 = lazy(
   () => import('../docs/alemonx/use/operations/ai-operations.md')
 )
-const Doc32 = lazy(
+const Doc33 = lazy(
   () => import('../docs/alemonx/use/projects/create-or-import.md')
 )
-const Doc33 = lazy(
+const Doc34 = lazy(
   () => import('../docs/alemonx/use/runtime/run-and-monitor.md')
 )
-const Doc34 = lazy(() => import('../docs/apps-module.md'))
-const Doc35 = lazy(() => import('../docs/apps-x.md'))
-const Doc36 = lazy(() => import('../docs/apps.md'))
-const Doc37 = lazy(() => import('../docs/environment.md'))
+const Doc35 = lazy(() => import('../docs/apps-module.md'))
+const Doc36 = lazy(() => import('../docs/apps-x.md'))
+const Doc37 = lazy(() => import('../docs/apps.md'))
+const Doc38 = lazy(() => import('../docs/environment.md'))
 const Doc39 = lazy(() => import('../docs/open.md'))
 
 // 自动生成的博客导入
+const Blog20 = lazy(() => import('../blog/2026/08/22/alemonx-push.md'))
 const Blog19 = lazy(() => import('../blog/2026/04/11/schedule-api.md'))
 const Blog18 = lazy(() => import('../blog/2026/04/01/v2.1.52.md'))
 const Blog17 = lazy(() => import('../blog/2026/02/28/v2.1.43.md'))
@@ -197,70 +199,68 @@ const router = createBrowserRouter([
         element: <Doc22 />
       },
       {
-        path: 'alemonx/getting-started/quick-start',
+        path: 'alemonx/getting-started/install',
         element: <Doc23 />
       },
       {
-        path: 'alemonx/reference/cli',
+        path: 'alemonx/getting-started/quick-start',
         element: <Doc24 />
       },
       {
-        path: 'alemonx/reference/mcp',
+        path: 'alemonx/reference/cli',
         element: <Doc25 />
       },
       {
-        path: 'alemonx/reference/plugin-manifest',
+        path: 'alemonx/reference/mcp',
         element: <Doc26 />
       },
       {
-        path: 'alemonx/use/agent/collaboration',
+        path: 'alemonx/reference/plugin-manifest',
         element: <Doc27 />
       },
       {
-        path: 'alemonx/use/agent/mcp',
+        path: 'alemonx/use/agent/collaboration',
         element: <Doc28 />
       },
       {
-        path: 'alemonx/use/extensions/plugins-and-webview',
+        path: 'alemonx/use/agent/mcp',
         element: <Doc29 />
       },
       {
-        path: 'alemonx/use/operations/access-and-safety',
+        path: 'alemonx/use/extensions/plugins-and-webview',
         element: <Doc30 />
       },
       {
-        path: 'alemonx/use/operations/ai-operations',
+        path: 'alemonx/use/operations/access-and-safety',
         element: <Doc31 />
       },
       {
-        path: 'alemonx/use/projects/create-or-import',
+        path: 'alemonx/use/operations/ai-operations',
         element: <Doc32 />
       },
       {
-        path: 'alemonx/use/runtime/run-and-monitor',
+        path: 'alemonx/use/projects/create-or-import',
         element: <Doc33 />
       },
       {
-        path: 'apps-module',
+        path: 'alemonx/use/runtime/run-and-monitor',
         element: <Doc34 />
       },
       {
-        path: 'apps-x',
+        path: 'apps-module',
         element: <Doc35 />
       },
       {
-        path: 'apps',
+        path: 'apps-x',
         element: <Doc36 />
       },
       {
-        path: 'environment',
+        path: 'apps',
         element: <Doc37 />
       },
       {
-        path: 'install',
-        element: (
-          <Navigate to="/docs/alemonjsDocs/getting-started/install" replace />
-        )
+        path: 'environment',
+        element: <Doc38 />
       },
       {
         path: 'open',
@@ -275,6 +275,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <BlogList />
+      },
+      {
+        path: '2026/08/22/alemonx-push',
+        element: <Blog20 />
       },
       {
         path: '2026/04/11/schedule-api',

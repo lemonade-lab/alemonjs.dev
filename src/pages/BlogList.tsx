@@ -43,12 +43,6 @@ export default function BlogList() {
         <p className="text-sm font-semibold tracking-[0.16em] text-blue-600 dark:text-blue-400">
           PRODUCT UPDATES
         </p>
-        <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-950 dark:text-white sm:text-4xl">
-          产品更新
-        </h1>
-        <p className="mt-3 text-gray-600 dark:text-gray-300">
-          按产品筛选 ALemonX 与 ALemonJS 的发布记录。
-        </p>
       </header>
       {/* 标签过滤 */}
       {allTags.length > 0 && (
