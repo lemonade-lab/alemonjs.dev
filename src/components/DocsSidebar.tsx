@@ -139,7 +139,7 @@ export default function DocsSidebar({
                 <div key={item.id || index}>
                   <button
                     onClick={() => toggleSection(item.id!, isCollapsed)}
-                    className="flex items-center justify-between w-full px-3 text-sm font-bold text-[var(--text)] uppercase tracking-wider mb-3 hover:bg-[var(--surface-muted)] transition-all duration-200 group"
+                    className="flex py-2 items-center justify-between w-full px-3 text-sm font-bold rounded-md text-[var(--text)] uppercase tracking-wider mb-3 hover:bg-[var(--surface-muted)] transition-all duration-200 group"
                   >
                     {item.label}
                     <svg
@@ -175,7 +175,7 @@ export default function DocsSidebar({
                                 onClick={() =>
                                   toggleSection(subCategoryId, isSubCollapsed)
                                 }
-                                className="flex items-center justify-between w-full pl-6 pr-3 text-xs font-semibold text-[var(--text-muted)] mb-2 hover:text-[var(--text)] transition-colors"
+                                className="flex py-2 rounded-md items-center justify-between w-full pl-6 pr-3 text-xs font-semibold text-[var(--text-muted)] mb-2 hover:text-[var(--text)] transition-colors"
                               >
                                 {subItem.label}
                                 <svg

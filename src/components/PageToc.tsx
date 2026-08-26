@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 
 interface TocItem {
   id: string
@@ -15,6 +16,7 @@ function slugify(text = '') {
 }
 
 export default function PageToc() {
+  const location = useLocation()
   const [items, setItems] = useState<TocItem[]>([])
   const [activeId, setActiveId] = useState('')
   const navRef = useRef<HTMLElement | null>(null)
@@ -26,26 +28,37 @@ export default function PageToc() {
     const build = () => {
       const nodes = container.querySelectorAll('h1,h2,h3,h4')
       const next: TocItem[] = []
-      nodes.forEach(node => {
+      const usedIds = new Map<string, number>()
+
+      nodes.forEach((node, index) => {
         const el = node as HTMLElement
         const text = el.innerText || el.textContent || ''
-        let id = el.id
-        if (!id) {
-          id = slugify(text)
-          el.id = id
-        }
+        const baseId = el.id || slugify(text) || `heading-${index + 1}`
+        const occurrence = (usedIds.get(baseId) || 0) + 1
+        usedIds.set(baseId, occurrence)
+        const id = occurrence === 1 ? baseId : `${baseId}-${occurrence}`
+
+        // Markdown can contain同名标题。确保每个标题都有唯一锚点，
+        // 否则目录链接和滚动高亮会指向同一个元素。
+        if (el.id !== id) el.id = id
+
         const level = Number(el.tagName.replace('H', '')) || 1
         next.push({ id, text: text.trim(), level })
       })
       setItems(next)
     }
 
-    build()
+    // 路由切换时先清空旧页面的目录，避免 Suspense 切换期间残留旧标题。
+    setItems([])
+    const frameId = window.requestAnimationFrame(build)
 
     const mo = new MutationObserver(build)
     mo.observe(container, { childList: true, subtree: true })
-    return () => mo.disconnect()
-  }, [])
+    return () => {
+      window.cancelAnimationFrame(frameId)
+      mo.disconnect()
+    }
+  }, [location.pathname])
 
   useEffect(() => {
     if (!items.length) return
@@ -97,9 +110,6 @@ export default function PageToc() {
 
   return (
     <nav ref={navRef} className="toc hidden xl:block px-4 py-6">
-      <div className="text-sm font-semibold mb-3 text-[var(--text-muted)]">
-        目录
-      </div>
       <ul className="space-y-1">
         {items.map(item => {
           const isActive = item.id === activeId
