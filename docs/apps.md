@@ -14,8 +14,10 @@ label: 'JS插件'
 | 项目名        | 说明                                                 |
 | ------------- | ---------------------------------------------------- |
 | [load-yunzai] | 桥接层,加载所有Yunzai插件,拥有完整且可管理Yunzai环境 |
+| [load-gscore] | 桥接层,加载所有GsCore插件,拥有完整且可管理GsCore环境 |
 
 [load-yunzai]: https://github.com/yunzaijs/alemonjs-load-yunzai
+[load-gscore]: https://github.com/xiuxianjs/alemonjs-load-gscore
 
 ### IP
 
