@@ -1,84 +1,98 @@
-name: Publish ALemonAPP APK
+name: Publish ALemonAPP Release
 
 on:
   push:
     tags:
-      - 'app-v*'
+      - 'alemonapp-v*'
 
 permissions:
   contents: write
 
 concurrency:
-  group: app-release-${{ github.ref }}
+  group: alemonapp-release-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
-  publish:
-    name: Download and publish APK
+  download:
+    name: Download ${{ matrix.file }}
     runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: true
+      matrix:
+        file:
+          - output-metadata.json
+          - latest.json
+          - app-universal-release.apk
+          - app-arm64-v8a-release.apk
 
     steps:
-      - name: Resolve tag and download address
-        id: release
+      - name: Download release file
         shell: bash
         env:
-          CONFIGURED_UPDATE_BASE_URL: ${{ vars.ALEMONAPP_UPDATE_BASE_URL }}
-          CONFIGURED_APK_SHA256: ${{ vars.ALEMONAPP_APK_SHA256 }}
+          UPDATE_BASE_URL: ${{ vars.ALEMONAPP_UPDATE_BASE_URL }}
+          APK_SHA256: ${{ vars.ALEMONAPP_APK_SHA256 }}
+          FILE_NAME: ${{ matrix.file }}
         run: |
           set -euo pipefail
 
           tag_name="${GITHUB_REF_NAME}"
-          if [[ ! "$tag_name" =~ ^app-v[0-9]+\.[0-9]+\.[0-9]+([-.][0-9A-Za-z.-]+)?$ ]]; then
-            echo "Tag must match app-vMAJOR.MINOR.PATCH, received: $tag_name" >&2
+          if [[ ! "$tag_name" =~ ^alemonapp-v[0-9]+\.[0-9]+\.[0-9]+([-.][0-9A-Za-z.-]+)?$ ]]; then
+            echo "Tag must match alemonapp-vMAJOR.MINOR.PATCH, received: $tag_name" >&2
             exit 1
           fi
 
-          update_base_url="${CONFIGURED_UPDATE_BASE_URL:-https://download.alemonjs.com/application/alemonapp}"
+          update_base_url="${UPDATE_BASE_URL:-https://download.alemonjs.com/application/alemonapp}"
           update_base_url="${update_base_url%/}"
-          echo "tag_name=$tag_name" >> "$GITHUB_OUTPUT"
-          echo "update_base_url=$update_base_url" >> "$GITHUB_OUTPUT"
+          mkdir -p artifacts
 
-          if [[ -n "$CONFIGURED_APK_SHA256" ]]; then
-            echo "apk_sha256=$CONFIGURED_APK_SHA256" >> "$GITHUB_OUTPUT"
+          curl --fail --location --retry 5 --retry-delay 3 \
+            --connect-timeout 20 --max-time 900 \
+            "$update_base_url/$FILE_NAME" \
+            -o "artifacts/$FILE_NAME"
+
+          test -s "artifacts/$FILE_NAME"
+          file "artifacts/$FILE_NAME"
+
+          if [[ "$FILE_NAME" == "output-metadata.json" || "$FILE_NAME" == "latest.json" ]]; then
+            jq empty "artifacts/$FILE_NAME"
           fi
 
-      - name: Download release files from update address
-        env:
-          UPDATE_BASE_URL: ${{ steps.release.outputs.update_base_url }}
-        run: |
-          set -euo pipefail
-          mkdir -p artifacts
-          for file_name in \
-            output-metadata.json \
-            latest.json \
-            app-universal-release.apk \
-            app-arm64-v8a-release.apk; do
-            echo "Downloading $file_name"
-            curl --fail --location --retry 5 --retry-delay 3 \
-              --connect-timeout 20 --max-time 900 \
-              "$UPDATE_BASE_URL/$file_name" \
-              -o "artifacts/$file_name"
-            test -s "artifacts/$file_name"
-            file "artifacts/$file_name"
-          done
+          if [[ "$FILE_NAME" == "app-universal-release.apk" && -n "$APK_SHA256" ]]; then
+            echo "$APK_SHA256  artifacts/$FILE_NAME" | sha256sum --check
+          fi
 
-          jq empty artifacts/output-metadata.json
-          jq empty artifacts/latest.json
+      - name: Store downloaded file
+        uses: actions/upload-artifact@v4
+        with:
+          name: alemonapp-${{ matrix.file }}
+          path: artifacts/${{ matrix.file }}
+          if-no-files-found: error
+          retention-days: 1
 
-      - name: Verify APK checksum
-        if: ${{ steps.release.outputs.apk_sha256 != '' }}
-        env:
-          APK_SHA256: ${{ steps.release.outputs.apk_sha256 }}
-        run: |
-          set -euo pipefail
-          echo "$APK_SHA256  artifacts/app-universal-release.apk" | sha256sum --check
+  publish:
+    name: Publish GitHub Release
+    needs: download
+    runs-on: ubuntu-24.04
 
-      - name: Publish GitHub Release asset
+    steps:
+      - name: Collect downloaded files
+        uses: actions/download-artifact@v4
+        with:
+          pattern: alemonapp-*
+          path: artifacts
+          merge-multiple: true
+
+      - name: Publish GitHub Release assets
         env:
           GH_TOKEN: ${{ github.token }}
-          TAG_NAME: ${{ steps.release.outputs.tag_name }}
+          TAG_NAME: ${{ github.ref_name }}
         run: |
           set -euo pipefail
+          test -s artifacts/output-metadata.json
+          test -s artifacts/latest.json
+          test -s artifacts/app-universal-release.apk
+          test -s artifacts/app-arm64-v8a-release.apk
+
           if gh release view "$TAG_NAME" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
             gh release upload "$TAG_NAME" \
               artifacts/output-metadata.json \
