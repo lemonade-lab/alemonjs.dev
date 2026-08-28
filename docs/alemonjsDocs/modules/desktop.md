@@ -28,7 +28,7 @@ node_modules/                 // Node.js 依赖包
 
 ## 服务端
 
-### 配置
+### 服务端配置
 
 ```json title="package.json"
 {
@@ -68,7 +68,7 @@ node_modules/                 // Node.js 依赖包
 
 ## 桌面端
 
-### 配置
+### 桌面端配置
 
 ```json title="package.json"
 {

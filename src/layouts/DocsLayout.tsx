@@ -5,6 +5,7 @@ import DocsSidebar from '@/components/DocsSidebar'
 import DocPagination from '@/components/DocPagination'
 import Footer from '@/components/Footer'
 import PageToc from '@/components/PageToc'
+import RouteMeta from '@/components/RouteMeta'
 
 export default function DocsLayout() {
   const location = useLocation()
@@ -33,6 +34,7 @@ export default function DocsLayout() {
 
   return (
     <div className="min-h-screen bg-[var(--canvas)] text-[var(--text)]">
+      <RouteMeta />
       <Navbar />
       {/* Fixed sidebar */}
       <DocsSidebar

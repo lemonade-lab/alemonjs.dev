@@ -1,97 +1,71 @@
-import { lazy } from 'react'
-import { createBrowserRouter, Navigate } from 'react-router-dom'
+import { type ComponentType } from 'react'
+import {
+  createBrowserRouter,
+  Navigate,
+  redirect,
+  type RouteObject
+} from 'react-router-dom'
 import DocsLayout from '@/layouts/DocsLayout'
 import BlogLayout from '@/layouts/BlogLayout'
+import NotFound from '@/pages/NotFound'
+import RouteError from '@/pages/RouteError'
+import rawRouteManifest from '@/config/route-manifest.json'
 
-const Home = lazy(() => import('@/pages/Home/App'))
-const BlogList = lazy(() => import('@/pages/BlogList'))
+import Home from '@/pages/Home/App'
+import BlogList from '@/pages/BlogList'
 
-// 自动生成的文档导入
-const Doc0 = lazy(() => import('../docs/alemonjsDocs/advanced/config.md'))
-const Doc1 = lazy(() => import('../docs/alemonjsDocs/advanced/schedule.md'))
-const Doc2 = lazy(() => import('../docs/alemonjsDocs/advanced/utils.md'))
-const Doc3 = lazy(() => import('../docs/alemonjsDocs/core/cycle.md'))
-const Doc4 = lazy(() => import('../docs/alemonjsDocs/core/data-type.md'))
-const Doc5 = lazy(() => import('../docs/alemonjsDocs/core/hook.mdx'))
-const Doc6 = lazy(() => import('../docs/alemonjsDocs/core/message-type.md'))
-const Doc7 = lazy(() => import('../docs/alemonjsDocs/core/middleware.md'))
-const Doc8 = lazy(() => import('../docs/alemonjsDocs/core/response.md'))
-const Doc9 = lazy(() => import('../docs/alemonjsDocs/core/router-sdl.md'))
-const Doc10 = lazy(() => import('../docs/alemonjsDocs/core/router.md'))
-const Doc11 = lazy(
-  () => import('../docs/alemonjsDocs/getting-started/config.md')
-)
-const Doc12 = lazy(
-  () => import('../docs/alemonjsDocs/getting-started/install.mdx')
-)
-const Doc13 = lazy(
-  () => import('../docs/alemonjsDocs/getting-started/intro.md')
-)
-const Doc14 = lazy(
-  () => import('../docs/alemonjsDocs/getting-started/quick-start.mdx')
-)
-const Doc15 = lazy(() => import('../docs/alemonjsDocs/http/route-mw.md'))
-const Doc16 = lazy(() => import('../docs/alemonjsDocs/http/route.md'))
-const Doc17 = lazy(() => import('../docs/alemonjsDocs/modules/class.md'))
-const Doc18 = lazy(() => import('../docs/alemonjsDocs/modules/desktop.md'))
-const Doc19 = lazy(() => import('../docs/alemonjsDocs/modules/models.md'))
-const Doc20 = lazy(() => import('../docs/alemonjsDocs/modules/platforms.md'))
-const Doc21 = lazy(() => import('../docs/alemonx/develop/system-plugins.md'))
-const Doc22 = lazy(() => import('../docs/alemonx/develop/webview.md'))
-const Doc23 = lazy(() => import('../docs/alemonx/getting-started/install.mdx'))
-const Doc24 = lazy(
-  () => import('../docs/alemonx/getting-started/quick-start.mdx')
-)
-const Doc25 = lazy(() => import('../docs/alemonx/reference/cli.md'))
-const Doc26 = lazy(() => import('../docs/alemonx/reference/mcp.md'))
-const Doc27 = lazy(() => import('../docs/alemonx/reference/plugin-manifest.md'))
-const Doc28 = lazy(() => import('../docs/alemonx/use/agent/collaboration.md'))
-const Doc29 = lazy(() => import('../docs/alemonx/use/agent/mcp.md'))
-const Doc30 = lazy(
-  () => import('../docs/alemonx/use/extensions/plugins-and-webview.md')
-)
-const Doc31 = lazy(
-  () => import('../docs/alemonx/use/operations/access-and-safety.md')
-)
-const Doc32 = lazy(
-  () => import('../docs/alemonx/use/operations/ai-operations.md')
-)
-const Doc33 = lazy(
-  () => import('../docs/alemonx/use/projects/create-or-import.md')
-)
-const Doc34 = lazy(
-  () => import('../docs/alemonx/use/runtime/run-and-monitor.md')
-)
-const Doc35 = lazy(() => import('../docs/apps-module.md'))
-const Doc36 = lazy(() => import('../docs/apps-x.md'))
-const Doc37 = lazy(() => import('../docs/apps.md'))
-const Doc38 = lazy(() => import('../docs/environment.md'))
-const Doc39 = lazy(() => import('../docs/open.md'))
+// Vite 在构建期将匹配到的 Markdown/MDX 文件编译成模块索引。
+const docModules = import.meta.glob('../docs/**/*.{md,mdx}')
+const blogModules = import.meta.glob('../blog/**/*.{md,mdx}')
 
-// 自动生成的博客导入
-const Blog20 = lazy(() => import('../blog/2026/08/22/alemonx-push.md'))
-const Blog19 = lazy(() => import('../blog/2026/04/11/schedule-api.md'))
-const Blog18 = lazy(() => import('../blog/2026/04/01/v2.1.52.md'))
-const Blog17 = lazy(() => import('../blog/2026/02/28/v2.1.43.md'))
-const Blog16 = lazy(() => import('../blog/2026/02/26/v2.1.22.md'))
-const Blog15 = lazy(() => import('../blog/2026/01/22/v2.1.17.md'))
-const Blog14 = lazy(() => import('../blog/2026/01/08/v2.1.15.md'))
-const Blog13 = lazy(() => import('../blog/2025/05/30/v2.1.0.md'))
-const Blog12 = lazy(() => import('../blog/2025/05/13/v2.0.16.md'))
-const Blog11 = lazy(() => import('../blog/2025/03/26/v2.0.4.md'))
-const Blog10 = lazy(() => import('../blog/2025/03/14/v2.0.0.md'))
-const Blog9 = lazy(() => import('../blog/2025/02/12/v2.0.0-rc.94.md'))
-const Blog8 = lazy(() => import('../blog/2025/01/09/v2.0.0-rc.88.md'))
-const Blog7 = lazy(() => import('../blog/2025/01/07/v2.0.0-rc.84.md'))
-const Blog6 = lazy(() => import('../blog/2025/01/02/v2.0.0-rc.81.md'))
-const Blog5 = lazy(() => import('../blog/2024/12/31/2.0.0-rc.78.md'))
-const Blog4 = lazy(() => import('../blog/2024/12/28/2.0.0-rc.76.md'))
-const Blog3 = lazy(() => import('../blog/2024/12/24/2.0.0-rc.74.md'))
-const Blog2 = lazy(() => import('../blog/2024/11/18/2.0.0-rc.54.md'))
-const Blog1 = lazy(() => import('../blog/2024/11/09/2.0.0-rc.44.md'))
-const Blog0 = lazy(() => import('../blog/2024/10/09/2.0.0-rc.33.md'))
+interface RouteEntry {
+  id: string
+  type: 'doc' | 'blog'
+  path: string
+  filePath: string
+  title?: string
+  description?: string
+  date?: string
+  version?: string
+  locale?: string
+  updatedAt?: string
+  redirectTo?: string
+  metadata: Record<string, unknown>
+}
 
-const router = createBrowserRouter([
+const routeManifest = rawRouteManifest as RouteEntry[]
+
+function getContentModule(entry: RouteEntry) {
+  const modules = entry.type === 'doc' ? docModules : blogModules
+  const prefix = entry.type === 'doc' ? '../docs/' : '../blog/'
+  const loader = modules[prefix + entry.filePath]
+
+  if (!loader) {
+    throw new Error('找不到内容模块: ' + prefix + entry.filePath)
+  }
+
+  return loader as () => Promise<{ default: ComponentType }>
+}
+
+function createContentRoute(entry: RouteEntry) {
+  const routePath = entry.path.replace(/^\/(docs|blog)\//, '')
+
+  if (entry.redirectTo?.startsWith('/')) {
+    return {
+      path: routePath,
+      loader: () => redirect(entry.redirectTo!)
+    }
+  }
+
+  return {
+    path: routePath,
+    lazy: async () => ({
+      Component: (await getContentModule(entry)()).default
+    })
+  }
+}
+
+export const routes = [
   {
     path: '/',
     element: <Home />
@@ -99,6 +73,7 @@ const router = createBrowserRouter([
   {
     path: '/docs',
     element: <DocsLayout />,
+    errorElement: <RouteError />,
     children: [
       {
         index: true,
@@ -106,266 +81,33 @@ const router = createBrowserRouter([
           <Navigate to="/docs/alemonx/getting-started/quick-start" replace />
         )
       },
-      {
-        path: 'alemonjsDocs/advanced/config',
-        element: <Doc0 />
-      },
-      {
-        path: 'alemonjsDocs/advanced/schedule',
-        element: <Doc1 />
-      },
-      {
-        path: 'alemonjsDocs/advanced/utils',
-        element: <Doc2 />
-      },
-      {
-        path: 'alemonjsDocs/core/cycle',
-        element: <Doc3 />
-      },
-      {
-        path: 'alemonjsDocs/core/data-type',
-        element: <Doc4 />
-      },
-      {
-        path: 'alemonjsDocs/core/hook',
-        element: <Doc5 />
-      },
-      {
-        path: 'alemonjsDocs/core/message-type',
-        element: <Doc6 />
-      },
-      {
-        path: 'alemonjsDocs/core/middleware',
-        element: <Doc7 />
-      },
-      {
-        path: 'alemonjsDocs/core/response',
-        element: <Doc8 />
-      },
-      {
-        path: 'alemonjsDocs/core/router-sdl',
-        element: <Doc9 />
-      },
-      {
-        path: 'alemonjsDocs/core/router',
-        element: <Doc10 />
-      },
-      {
-        path: 'alemonjsDocs/getting-started/config',
-        element: <Doc11 />
-      },
-      {
-        path: 'alemonjsDocs/getting-started/install',
-        element: <Doc12 />
-      },
-      {
-        path: 'alemonjsDocs/getting-started/intro',
-        element: <Doc13 />
-      },
-      {
-        path: 'alemonjsDocs/getting-started/quick-start',
-        element: <Doc14 />
-      },
-      {
-        path: 'alemonjsDocs/http/route-mw',
-        element: <Doc15 />
-      },
-      {
-        path: 'alemonjsDocs/http/route',
-        element: <Doc16 />
-      },
-      {
-        path: 'alemonjsDocs/modules/class',
-        element: <Doc17 />
-      },
-      {
-        path: 'alemonjsDocs/modules/desktop',
-        element: <Doc18 />
-      },
-      {
-        path: 'alemonjsDocs/modules/models',
-        element: <Doc19 />
-      },
-      {
-        path: 'alemonjsDocs/modules/platforms',
-        element: <Doc20 />
-      },
-      {
-        path: 'alemonx/develop/system-plugins',
-        element: <Doc21 />
-      },
-      {
-        path: 'alemonx/develop/webview',
-        element: <Doc22 />
-      },
-      {
-        path: 'alemonx/getting-started/install',
-        element: <Doc23 />
-      },
-      {
-        path: 'alemonx/getting-started/quick-start',
-        element: <Doc24 />
-      },
-      {
-        path: 'alemonx/reference/cli',
-        element: <Doc25 />
-      },
-      {
-        path: 'alemonx/reference/mcp',
-        element: <Doc26 />
-      },
-      {
-        path: 'alemonx/reference/plugin-manifest',
-        element: <Doc27 />
-      },
-      {
-        path: 'alemonx/use/agent/collaboration',
-        element: <Doc28 />
-      },
-      {
-        path: 'alemonx/use/agent/mcp',
-        element: <Doc29 />
-      },
-      {
-        path: 'alemonx/use/extensions/plugins-and-webview',
-        element: <Doc30 />
-      },
-      {
-        path: 'alemonx/use/operations/access-and-safety',
-        element: <Doc31 />
-      },
-      {
-        path: 'alemonx/use/operations/ai-operations',
-        element: <Doc32 />
-      },
-      {
-        path: 'alemonx/use/projects/create-or-import',
-        element: <Doc33 />
-      },
-      {
-        path: 'alemonx/use/runtime/run-and-monitor',
-        element: <Doc34 />
-      },
-      {
-        path: 'apps-module',
-        element: <Doc35 />
-      },
-      {
-        path: 'apps-x',
-        element: <Doc36 />
-      },
-      {
-        path: 'apps',
-        element: <Doc37 />
-      },
-      {
-        path: 'environment',
-        element: <Doc38 />
-      },
-      {
-        path: 'open',
-        element: <Doc39 />
-      }
+      ...routeManifest
+        .filter(entry => entry.type === 'doc')
+        .map(createContentRoute)
     ]
   },
   {
     path: '/blog',
     element: <BlogLayout />,
+    errorElement: <RouteError />,
     children: [
       {
         index: true,
         element: <BlogList />
       },
-      {
-        path: '2026/08/22/alemonx-push',
-        element: <Blog20 />
-      },
-      {
-        path: '2026/04/11/schedule-api',
-        element: <Blog19 />
-      },
-      {
-        path: '2026/04/01/v2.1.52',
-        element: <Blog18 />
-      },
-      {
-        path: '2026/02/28/v2.1.43',
-        element: <Blog17 />
-      },
-      {
-        path: '2026/02/26/v2.1.22',
-        element: <Blog16 />
-      },
-      {
-        path: '2026/01/22/v2.1.17',
-        element: <Blog15 />
-      },
-      {
-        path: '2026/01/08/v2.1.15',
-        element: <Blog14 />
-      },
-      {
-        path: '2025/05/30/v2.1.0',
-        element: <Blog13 />
-      },
-      {
-        path: '2025/05/13/v2.0.16',
-        element: <Blog12 />
-      },
-      {
-        path: '2025/03/26/v2.0.4',
-        element: <Blog11 />
-      },
-      {
-        path: '2025/03/14/v2.0.0',
-        element: <Blog10 />
-      },
-      {
-        path: '2025/02/12/v2.0.0-rc.94',
-        element: <Blog9 />
-      },
-      {
-        path: '2025/01/09/v2.0.0-rc.88',
-        element: <Blog8 />
-      },
-      {
-        path: '2025/01/07/v2.0.0-rc.84',
-        element: <Blog7 />
-      },
-      {
-        path: '2025/01/02/v2.0.0-rc.81',
-        element: <Blog6 />
-      },
-      {
-        path: '2024/12/31/2.0.0-rc.78',
-        element: <Blog5 />
-      },
-      {
-        path: '2024/12/28/2.0.0-rc.76',
-        element: <Blog4 />
-      },
-      {
-        path: '2024/12/24/2.0.0-rc.74',
-        element: <Blog3 />
-      },
-      {
-        path: '2024/11/18/2.0.0-rc.54',
-        element: <Blog2 />
-      },
-      {
-        path: '2024/11/09/2.0.0-rc.44',
-        element: <Blog1 />
-      },
-      {
-        path: '2024/10/09/2.0.0-rc.33',
-        element: <Blog0 />
-      }
+      ...routeManifest
+        .filter(entry => entry.type === 'blog')
+        .map(createContentRoute)
     ]
   },
   {
     path: '*',
-    element: <Navigate to="/" replace />
+    element: <NotFound />
   }
-])
+] satisfies RouteObject[]
 
-export default router
+export function createAppRouter() {
+  return createBrowserRouter(routes)
+}
+
+export { routeManifest }

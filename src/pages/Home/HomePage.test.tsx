@@ -14,10 +14,10 @@ describe('HomePage', () => {
       </BrowserRouter>
     )
 
-    expect(screen.getByText('ALemonJS')).toBeTruthy()
+    expect(screen.getByText('ALemonAPP')).toBeTruthy()
     expect(
       screen
-        .getByRole('tab', { name: '查看 ALemonJS' })
+        .getByRole('tab', { name: '查看 ALemonAPP' })
         .getAttribute('aria-selected')
     ).toBe('true')
 
@@ -38,7 +38,7 @@ describe('HomePage', () => {
       </BrowserRouter>
     )
 
-    expect(screen.getByRole('tab', { name: '查看 ALemonApp' })).toBeTruthy()
+    expect(screen.getByRole('tab', { name: '查看 ALemonAPP' })).toBeTruthy()
   })
 
   it('uses the direct APK download for ALemonApp', async () => {
@@ -50,7 +50,7 @@ describe('HomePage', () => {
       </BrowserRouter>
     )
 
-    await user.click(screen.getByRole('tab', { name: '查看 ALemonApp' }))
+    await user.click(screen.getByRole('tab', { name: '查看 ALemonAPP' }))
 
     expect(
       screen.getByRole('link', { name: /下载移动端/ }).getAttribute('href')
@@ -71,6 +71,6 @@ describe('HomePage', () => {
     await user.click(screen.getByLabelText(/ALemonX 生态产品/))
     await user.keyboard('{ArrowRight}')
 
-    expect(screen.getByText('ALemonJS TestOne')).toBeTruthy()
+    expect(screen.getByText('ALemonJS')).toBeTruthy()
   })
 })

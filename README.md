@@ -73,9 +73,29 @@ yarn dev
 执行生产构建和本地预览：
 
 ```bash
-yarn build
+yarn build:static
 yarn preview
 ```
+
+`yarn build:static` 会依次生成客户端资源、服务端渲染 bundle，以及首页、文档和博客的目录式 `index.html`。也可以拆开执行：
+
+```bash
+yarn check-content
+yarn build:client
+yarn build:server
+yarn prerender
+yarn validate-static
+```
+
+Nginx 建议优先返回真实文件或目录，再回退到 SPA 入口：
+
+```nginx
+location / {
+  try_files $uri $uri/ /index.html;
+}
+```
+
+HTML 使用短缓存或 `no-cache`；带 hash 的 JS、CSS 和图片可使用长期 `immutable` 缓存；`sitemap.xml`、`rss.xml` 和 `robots.txt` 建议短缓存。
 
 运行质量检查：
 

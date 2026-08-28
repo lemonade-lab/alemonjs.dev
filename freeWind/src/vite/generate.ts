@@ -30,6 +30,9 @@ interface DocMetadata {
   hide_title?: boolean
   hide_table_of_contents?: boolean
   redirect_to?: string
+  version?: string
+  locale?: string
+  updatedAt?: string
   [key: string]: unknown
 }
 
@@ -37,9 +40,25 @@ interface DocRoute {
   path: string
   filePath: string
   metadata: DocMetadata
-  importName: string
   content: string
 }
+
+interface RouteManifestEntry {
+  id: string
+  type: 'doc' | 'blog'
+  path: string
+  filePath: string
+  title?: string
+  description?: string
+  date?: string
+  version?: string
+  locale?: string
+  updatedAt?: string
+  redirectTo?: string
+  metadata: DocMetadata
+}
+
+const SITE_URL = 'https://alemonjs.dev'
 
 interface HeadingNode {
   id: string
@@ -163,11 +182,7 @@ function readCategoryConfig(dirPath: string): CategoryConfig | null {
 /**
  * 扫描目录获取所有文档
  */
-function scanDocs(
-  docsDir: string,
-  baseDir: string = docsDir,
-  counter = { value: 0 }
-): DocRoute[] {
+function scanDocs(docsDir: string, baseDir: string = docsDir): DocRoute[] {
   const routes: DocRoute[] = []
 
   if (!fs.existsSync(docsDir)) {
@@ -181,7 +196,7 @@ function scanDocs(
     const stat = fs.statSync(fullPath)
 
     if (stat.isDirectory()) {
-      routes.push(...scanDocs(fullPath, baseDir, counter))
+      routes.push(...scanDocs(fullPath, baseDir))
     } else if (item.endsWith('.md') || item.endsWith('.mdx')) {
       const fileContent = fs.readFileSync(fullPath, 'utf-8')
       const { data, content } = matter(fileContent)
@@ -192,13 +207,10 @@ function scanDocs(
         .replace(/\.(md|mdx)$/, '')
         .replace(/\/index$/, '')
 
-      const importName = `Doc${counter.value++}`
-
       routes.push({
         path: urlPath,
         filePath: relativePath.replace(/\\/g, '/'),
         metadata: data as DocMetadata,
-        importName,
         content
       })
     }
@@ -210,11 +222,7 @@ function scanDocs(
 /**
  * 扫描博客
  */
-function scanBlog(
-  blogDir: string,
-  baseDir: string = blogDir,
-  counter = { value: 0 }
-): DocRoute[] {
+function scanBlog(blogDir: string, baseDir: string = blogDir): DocRoute[] {
   const routes: DocRoute[] = []
 
   if (!fs.existsSync(blogDir)) {
@@ -230,7 +238,7 @@ function scanBlog(
     const stat = fs.statSync(fullPath)
 
     if (stat.isDirectory()) {
-      routes.push(...scanBlog(fullPath, baseDir, counter))
+      routes.push(...scanBlog(fullPath, baseDir))
     } else if (item.endsWith('.md') || item.endsWith('.mdx')) {
       const fileContent = fs.readFileSync(fullPath, 'utf-8')
       const { data, content } = matter(fileContent)
@@ -249,13 +257,10 @@ function scanBlog(
         }
       }
 
-      const importName = `Blog${counter.value++}`
-
       routes.push({
         path: urlPath,
         filePath: relativePath.replace(/\\/g, '/'),
         metadata: { ...data, date } as DocMetadata,
-        importName,
         content
       })
     }
@@ -295,7 +300,7 @@ function generateSearchIndex(
           ? route.metadata.tags.map(tag => String(tag))
           : []
         if (type === 'blog') {
-          const product = String(route.metadata.product || 'ALemonJS')
+          const product = String(route.metadata.product || '')
           if (!tags.includes(product)) tags.push(product)
         }
         const pagePath = `${basePath}/${route.path}`
@@ -341,101 +346,217 @@ function generateSearchIndex(
 }
 
 /**
- * 生成路由代码
+ * 生成运行时路由所需的轻量 Manifest。
+ * 组件本身不放入 JSON，而是在 router.tsx 中通过 import.meta.glob 索引。
  */
-function generateRouterCode(
+function generateRouteManifest(
   docsRoutes: DocRoute[],
   blogRoutes: DocRoute[]
-): string {
-  const docImports = docsRoutes
-    .filter(route => typeof route.metadata.redirect_to !== 'string')
-    .map(
-      route =>
-        `const ${route.importName} = lazy(() => import('../docs/${route.filePath}'))`
-    )
-    .join('\n')
+): RouteManifestEntry[] {
+  const createEntries = (
+    routes: DocRoute[],
+    type: 'doc' | 'blog',
+    basePath: string
+  ): RouteManifestEntry[] =>
+    routes.map(route => ({
+      id: `${type}:${route.filePath}`,
+      type,
+      path: `${basePath}/${route.path}`.replace(/\/+/g, '/'),
+      filePath: route.filePath,
+      title:
+        route.metadata.title ||
+        route.metadata.sidebar_label ||
+        (typeof route.metadata.label === 'string'
+          ? route.metadata.label
+          : undefined),
+      description: route.metadata.description || toExcerpt(route.content),
+      date: route.metadata.date,
+      version:
+        typeof route.metadata.version === 'string'
+          ? route.metadata.version
+          : undefined,
+      locale:
+        typeof route.metadata.locale === 'string'
+          ? route.metadata.locale
+          : undefined,
+      updatedAt:
+        typeof route.metadata.updatedAt === 'string'
+          ? route.metadata.updatedAt
+          : undefined,
+      redirectTo: route.metadata.redirect_to,
+      metadata: route.metadata
+    }))
 
-  const blogImports = blogRoutes
-    .map(
-      route =>
-        `const ${route.importName} = lazy(() => import('../blog/${route.filePath}'))`
-    )
-    .join('\n')
+  return [
+    ...createEntries(docsRoutes, 'doc', '/docs'),
+    ...createEntries(blogRoutes, 'blog', '/blog')
+  ]
+}
 
-  const docRouteConfigs = docsRoutes
-    .map(route => {
-      const redirectTo = route.metadata.redirect_to
-      if (typeof redirectTo === 'string' && redirectTo.startsWith('/')) {
-        return `      {
-        path: '${route.path}',
-        element: <Navigate to="${redirectTo}" replace />
-      }`
+function validateRoutes(entries: RouteManifestEntry[]) {
+  const seen = new Map<string, string>()
+  const knownPaths = new Set(entries.map(entry => entry.path))
+  knownPaths.add('/')
+  knownPaths.add('/docs')
+  knownPaths.add('/blog')
+  const strict = process.env.CONTENT_STRICT === '1'
+  const problems: string[] = []
+  const ids = new Set<string>()
+
+  for (const entry of entries) {
+    if (ids.has(entry.id)) problems.push(`Manifest id 重复: ${entry.id}`)
+    ids.add(entry.id)
+    const previous = seen.get(entry.path)
+    if (previous) {
+      problems.push(
+        `路由冲突: ${entry.path} (${previous} 与 ${entry.filePath})`
+      )
+      continue
+    }
+
+    seen.set(entry.path, entry.filePath)
+
+    const sourceFile = path.join(
+      process.cwd(),
+      entry.type === 'doc' ? 'docs' : 'blog',
+      entry.filePath
+    )
+    if (!fs.existsSync(sourceFile)) {
+      problems.push(`Manifest 文件不存在或无法匹配 glob: ${entry.filePath}`)
+    }
+
+    if (!entry.metadata.title && !entry.metadata.label) {
+      console.warn(`⚠️  缺少标题: ${entry.filePath}`)
+    }
+
+    if (
+      entry.metadata.sidebar_position !== undefined &&
+      typeof entry.metadata.sidebar_position !== 'number'
+    ) {
+      problems.push(`sidebar_position 必须是数字: ${entry.filePath}`)
+    }
+
+    if (entry.date && Number.isNaN(new Date(entry.date).getTime())) {
+      problems.push(`date 不是有效日期: ${entry.filePath}`)
+    }
+
+    if (
+      entry.metadata.authors !== undefined &&
+      typeof entry.metadata.authors !== 'string' &&
+      !Array.isArray(entry.metadata.authors)
+    ) {
+      problems.push(`authors 必须是字符串或数组: ${entry.filePath}`)
+    }
+
+    if (
+      entry.metadata.version !== undefined &&
+      typeof entry.metadata.version !== 'string'
+    ) {
+      problems.push(`version 必须是字符串: ${entry.filePath}`)
+    }
+    if (
+      entry.metadata.locale !== undefined &&
+      typeof entry.metadata.locale !== 'string'
+    ) {
+      problems.push(`locale 必须是字符串: ${entry.filePath}`)
+    }
+    if (
+      entry.metadata.updatedAt !== undefined &&
+      (typeof entry.metadata.updatedAt !== 'string' ||
+        Number.isNaN(new Date(entry.metadata.updatedAt).getTime()))
+    ) {
+      problems.push(`updatedAt 必须是有效日期: ${entry.filePath}`)
+    }
+
+    if (entry.redirectTo && !entry.redirectTo.startsWith('/')) {
+      problems.push(`redirect_to 必须使用站内绝对路径: ${entry.filePath}`)
+    } else if (entry.redirectTo) {
+      const target = entry.redirectTo.split('#')[0]
+      if (!knownPaths.has(target)) {
+        problems.push(`redirect_to 目标不存在: ${entry.filePath} -> ${target}`)
       }
-      return `      {
-        path: '${route.path}',
-        element: <${route.importName} />
-      }`
-    })
-    .join(',\n')
-
-  const blogRouteConfigs = blogRoutes
-    .map(
-      route => `      {
-        path: '${route.path}',
-        element: <${route.importName} />
-      }`
-    )
-    .join(',\n')
-
-  return `import { lazy } from 'react'
-import { createBrowserRouter, Navigate } from 'react-router-dom'
-import DocsLayout from '@/layouts/DocsLayout'
-import BlogLayout from '@/layouts/BlogLayout'
-
-const Home = lazy(() => import('@/pages/Home/App'))
-const BlogList = lazy(() => import('@/pages/BlogList'))
-
-// 自动生成的文档导入
-${docImports}
-
-// 自动生成的博客导入
-${blogImports}
-
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Home />
-  },
-  {
-    path: '/docs',
-    element: <DocsLayout />,
-    children: [
-      {
-        index: true,
-        element: <Navigate to="/docs/alemonx/getting-started/quick-start" replace />
-      },
-${docRouteConfigs}
-    ]
-  },
-  {
-    path: '/blog',
-    element: <BlogLayout />,
-    children: [
-      {
-        index: true,
-        element: <BlogList />
-      },
-${blogRouteConfigs}
-    ]
-  },
-  {
-    path: '*',
-    element: <Navigate to="/" replace />
+    }
   }
-])
 
-export default router
-`
+  if (problems.length && strict) {
+    throw new Error(`内容校验失败:\n- ${problems.join('\n- ')}`)
+  }
+
+  problems.forEach(problem => console.warn(`⚠️  ${problem}`))
+}
+
+function validateInternalLinks(
+  routes: DocRoute[],
+  entries: RouteManifestEntry[]
+) {
+  const knownPaths = new Set(entries.map(entry => entry.path))
+  knownPaths.add('/')
+  knownPaths.add('/docs')
+  knownPaths.add('/blog')
+  const strict = process.env.CONTENT_STRICT === '1'
+  const problems: string[] = []
+  const linkPattern = /\]\((\/[^)\s]+)(?:#[^)\s]+)?\)/g
+
+  routes.forEach(route => {
+    const headingIds = new Set<string>()
+    for (const heading of extractHeadings(route.content)) {
+      if (headingIds.has(heading.id)) {
+        problems.push(`${route.filePath} 存在重复 heading ID: ${heading.id}`)
+      }
+      headingIds.add(heading.id)
+    }
+
+    for (const match of route.content.matchAll(linkPattern)) {
+      const target = match[1].split(/[?#]/)[0]
+      if (!knownPaths.has(target)) {
+        problems.push(`${route.filePath} -> ${target}`)
+      }
+    }
+  })
+
+  if (problems.length) {
+    const message = `发现 ${problems.length} 个内部链接不存在:\n- ${problems.join('\n- ')}`
+    if (strict) throw new Error(message)
+    console.warn(`⚠️  ${message}`)
+  }
+}
+
+function escapeXml(value: string) {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;')
+}
+
+function generateSitemap(entries: RouteManifestEntry[]) {
+  const urls = entries
+    .filter(entry => !entry.redirectTo && entry.metadata.noindex !== true)
+    .map(entry => {
+      const lastmod = entry.date
+        ? `\n    <lastmod>${escapeXml(entry.date)}</lastmod>`
+        : ''
+      return `  <url>\n    <loc>${escapeXml(`${SITE_URL}${entry.path}`)}</loc>${lastmod}\n  </url>`
+    })
+
+  urls.unshift(`  <url>\n    <loc>${SITE_URL}/</loc>\n  </url>`)
+
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>\n`
+}
+
+function generateRss(entries: RouteManifestEntry[]) {
+  const items = entries
+    .filter(entry => entry.type === 'blog' && !entry.redirectTo)
+    .slice(0, 20)
+    .map(entry => {
+      const title = entry.title || entry.path
+      const description = entry.description || ''
+      const pubDate = entry.date ? new Date(entry.date).toUTCString() : ''
+      return `    <item>\n      <title>${escapeXml(title)}</title>\n      <link>${escapeXml(`${SITE_URL}${entry.path}`)}</link>\n      <guid isPermaLink="true">${escapeXml(`${SITE_URL}${entry.path}`)}</guid>\n      <description>${escapeXml(description)}</description>${pubDate ? `\n      <pubDate>${escapeXml(pubDate)}</pubDate>` : ''}\n    </item>`
+    })
+
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0">\n  <channel>\n    <title>ALemonX 更新</title>\n    <link>${SITE_URL}/blog</link>\n    <description>ALemonX 产品更新与开发日志</description>\n${items.join('\n')}\n  </channel>\n</rss>\n`
 }
 
 /**
@@ -683,10 +804,38 @@ function main() {
   console.log(`📄 找到 ${docsRoutes.length} 个文档`)
   console.log(`📝 找到 ${blogRoutes.length} 个博客`)
 
-  // 生成路由文件
-  const routerCode = generateRouterCode(docsRoutes, blogRoutes)
-  fs.writeFileSync(path.join(srcDir, 'router.tsx'), routerCode, 'utf-8')
-  console.log('✅ 路由文件已生成: src/router.tsx')
+  const routeManifest = generateRouteManifest(docsRoutes, blogRoutes)
+  validateRoutes(routeManifest)
+  validateInternalLinks([...docsRoutes, ...blogRoutes], routeManifest)
+  fs.mkdirSync(path.join(srcDir, 'config'), { recursive: true })
+  fs.writeFileSync(
+    path.join(srcDir, 'config', 'route-manifest.json'),
+    JSON.stringify(routeManifest, null, 2),
+    'utf-8'
+  )
+  console.log('✅ 路由 Manifest 已生成: src/config/route-manifest.json')
+
+  const publicDir = path.join(rootDir, 'public')
+  fs.mkdirSync(publicDir, { recursive: true })
+  fs.writeFileSync(
+    path.join(publicDir, 'sitemap.xml'),
+    generateSitemap(routeManifest),
+    'utf-8'
+  )
+  fs.writeFileSync(
+    path.join(publicDir, 'robots.txt'),
+    `User-agent: *\nAllow: /\nSitemap: ${SITE_URL}/sitemap.xml\n`,
+    'utf-8'
+  )
+  fs.writeFileSync(
+    path.join(publicDir, 'rss.xml'),
+    generateRss(routeManifest),
+    'utf-8'
+  )
+  console.log('✅ sitemap.xml、robots.txt、rss.xml 已生成: public/')
+
+  // 路由由 src/router.tsx 中的 Manifest + import.meta.glob 组合生成，
+  // 这里不再改写应用源码，避免内容生成器与路由源码产生漂移。
 
   // 生成侧边栏配置
   const sidebarConfig = generateSidebarConfig(docsRoutes, docsDir)
@@ -702,7 +851,7 @@ function main() {
     const tags = Array.isArray(route.metadata.tags)
       ? route.metadata.tags.map(tag => String(tag))
       : []
-    const product = String(route.metadata.product || 'ALemonJS')
+    const product = String(route.metadata.product || '')
     if (!tags.includes(product)) tags.push(product)
     return {
       title: route.metadata.title,

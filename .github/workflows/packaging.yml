@@ -43,8 +43,7 @@ jobs:
 
       - name: Build dependencies
         run: |
-          yarn generate
-          yarn build
+          yarn build:static
 
       - name: Install rsync
         run: |

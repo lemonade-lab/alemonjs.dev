@@ -9,8 +9,6 @@ const execAsync = promisify(exec)
 let isGenerating = false
 let pendingRegenerate = false
 
-const NODE_ENV = process.env.NODE_ENV === 'development'
-
 const generate = 'tsx freeWind/src/vite/generate.ts'
 
 /**
@@ -19,6 +17,7 @@ const generate = 'tsx freeWind/src/vite/generate.ts'
 export default function docsWatcherPlugin(): Plugin {
   let watcher: ReturnType<typeof watch> | null = null
   let rootDir = ''
+  let isDevServer = false
 
   async function regenerateRoutes() {
     if (isGenerating) {
@@ -49,11 +48,12 @@ export default function docsWatcherPlugin(): Plugin {
 
     configResolved(config) {
       rootDir = config.root
+      isDevServer = config.command === 'serve'
     },
 
     async buildStart() {
       // 生产模式下：构建前生成一次路由
-      if (!NODE_ENV) {
+      if (!isDevServer) {
         console.log('\n🔨 生产构建：生成路由文件...')
         try {
           await execAsync(generate, { cwd: rootDir })

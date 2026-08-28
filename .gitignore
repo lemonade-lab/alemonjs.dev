@@ -23,5 +23,7 @@ dist
 *.sln
 *.sw?
 
-/scripts
+!/scripts/
+!/scripts/*.ts
+dist-server
 /packages

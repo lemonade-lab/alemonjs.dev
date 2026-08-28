@@ -5,6 +5,7 @@ import BlogSidebar from '@/components/BlogSidebar'
 import BlogMeta from '@/components/BlogMeta'
 import BlogPagination from '@/components/BlogPagination'
 import Footer from '@/components/Footer'
+import RouteMeta from '@/components/RouteMeta'
 
 export default function BlogLayout() {
   const location = useLocation()
@@ -33,6 +34,7 @@ export default function BlogLayout() {
 
   return (
     <div className="min-h-screen bg-[var(--canvas)] text-[var(--text)]">
+      <RouteMeta />
       <Navbar />
       {/* Fixed sidebar */}
       <BlogSidebar

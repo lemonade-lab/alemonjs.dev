@@ -1,5 +1,4 @@
 import MiniSearch from 'minisearch'
-import searchIndexData from '@/config/search-index.json'
 
 interface SearchDocument {
   id: string
@@ -26,36 +25,48 @@ export interface SearchResult {
   breadcrumb: string[]
 }
 
-const searchDocuments = searchIndexData as SearchDocument[]
+let miniSearch: MiniSearch<SearchDocument> | null = null
+let searchIndexPromise: Promise<MiniSearch<SearchDocument>> | null = null
 
-const miniSearch = new MiniSearch<SearchDocument>({
-  fields: ['title', 'sectionTitle', 'titles', 'text', 'excerpt', 'tags'],
-  storeFields: [
-    'title',
-    'sectionTitle',
-    'titles',
-    'path',
-    'type',
-    'excerpt',
-    'date',
-    'text',
-    'tags'
-  ],
-  searchOptions: {
-    boost: {
-      title: 8,
-      sectionTitle: 5,
-      titles: 4,
-      tags: 3,
-      excerpt: 2,
-      text: 1
-    },
-    prefix: term => term.length >= 2,
-    fuzzy: term => (term.length >= 4 ? 0.2 : false)
-  }
-})
+function loadSearchIndex() {
+  if (miniSearch) return Promise.resolve(miniSearch)
+  if (searchIndexPromise) return searchIndexPromise
 
-miniSearch.addAll(searchDocuments)
+  searchIndexPromise = import('@/config/search-index.json').then(data => {
+    const index = new MiniSearch<SearchDocument>({
+      fields: ['title', 'sectionTitle', 'titles', 'text', 'excerpt', 'tags'],
+      storeFields: [
+        'title',
+        'sectionTitle',
+        'titles',
+        'path',
+        'type',
+        'excerpt',
+        'date',
+        'text',
+        'tags'
+      ],
+      searchOptions: {
+        boost: {
+          title: 8,
+          sectionTitle: 5,
+          titles: 4,
+          tags: 3,
+          excerpt: 2,
+          text: 1
+        },
+        prefix: term => term.length >= 2,
+        fuzzy: term => (term.length >= 4 ? 0.2 : false)
+      }
+    })
+
+    index.addAll((data.default || data) as SearchDocument[])
+    miniSearch = index
+    return index
+  })
+
+  return searchIndexPromise
+}
 
 function normalizeQuery(query: string) {
   return query.trim().replace(/\s+/g, ' ')
@@ -87,9 +98,14 @@ function extractSnippet(text: string, query: string, maxLength = 100) {
   return `${prefix}${normalizedText.slice(start, end).trim()}${suffix}`
 }
 
-export function searchContent(query: string, limit = 10): SearchResult[] {
+export async function searchContent(
+  query: string,
+  limit = 10
+): Promise<SearchResult[]> {
   const normalizedQuery = normalizeQuery(query)
   if (!normalizedQuery) return []
+
+  const index = await loadSearchIndex()
 
   const terms = normalizedQuery.split(' ').filter(Boolean)
   const joinedTerms = terms.join(' ')
@@ -98,7 +114,7 @@ export function searchContent(query: string, limit = 10): SearchResult[] {
   const merged = new Map<string, SearchHit>()
 
   for (const currentQuery of searchQueries) {
-    const results = miniSearch.search(currentQuery, {
+    const results = index.search(currentQuery, {
       combineWith: 'AND'
     })
 

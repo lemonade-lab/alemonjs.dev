@@ -17,8 +17,9 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 
 export default function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>(() => {
+    if (typeof window === 'undefined') return 'light'
     // 从 localStorage 读取主题，或使用系统偏好
-    const savedTheme = localStorage.getItem('theme') as Theme | null
+    const savedTheme = window.localStorage.getItem('theme') as Theme | null
     if (savedTheme) return savedTheme
 
     // 检测系统主题偏好
@@ -33,12 +34,13 @@ export default function ThemeProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     // 应用主题到 document
+    if (typeof document === 'undefined') return
     const root = document.documentElement
     root.classList.remove('light', 'dark')
     root.classList.add(theme)
 
     // 保存到 localStorage
-    localStorage.setItem('theme', theme)
+    window.localStorage.setItem('theme', theme)
   }, [theme])
 
   const toggleTheme = () => {

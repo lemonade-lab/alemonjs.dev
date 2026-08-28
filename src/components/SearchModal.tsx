@@ -21,13 +21,24 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
 
   // 搜索
   useEffect(() => {
-    if (query.trim()) {
-      const searchResults = searchContent(query, 10)
-      setResults(searchResults)
-      setSelectedIndex(0)
-    } else {
+    let cancelled = false
+
+    if (!query.trim()) {
       setResults([])
       setSelectedIndex(0)
+      return () => {
+        cancelled = true
+      }
+    }
+
+    searchContent(query, 10).then(searchResults => {
+      if (cancelled) return
+      setResults(searchResults)
+      setSelectedIndex(0)
+    })
+
+    return () => {
+      cancelled = true
     }
   }, [query])
 

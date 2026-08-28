@@ -27,7 +27,7 @@ workspace/                统一工作区（默认 <运行目录>/workspace）
 
 ## 脚本安装
 
-### Windows
+### Windows（脚本安装）
 
 在 PowerShell 执行：
 
@@ -81,7 +81,7 @@ curl -fsSL https://raw.githubusercontent.com/lemonade-lab/alemonx/main/scripts/i
 
 下载得到的ZIP压缩包解压可得执行包，
 
-### Windows
+### Windows（手动安装）
 
 > 遇到权限问题可尝试超级管理员启动
 

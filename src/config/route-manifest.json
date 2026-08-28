@@ -1,0 +1,877 @@
+[
+  {
+    "id": "doc:alemonjsDocs/advanced/config.md",
+    "type": "doc",
+    "path": "/docs/alemonjsDocs/advanced/config",
+    "filePath": "alemonjsDocs/advanced/config.md",
+    "title": "配置读取",
+    "description": "配置读取 读取框架配置 getConfigValue getConfig onWatchConfigValue",
+    "metadata": {
+      "label": "配置读取",
+      "sidebar_position": 6
+    }
+  },
+  {
+    "id": "doc:alemonjsDocs/advanced/schedule.md",
+    "type": "doc",
+    "path": "/docs/alemonjsDocs/advanced/schedule",
+    "filePath": "alemonjsDocs/advanced/schedule.md",
+    "title": "定时任务",
+    "description": "定时任务 框架提供了替代原生 setInterval / setTimeout 的定时任务 API，由框架统一管理生命周期。插件卸载或热重载时，所有关联的定时任务会自动清理，避免内存泄漏。 基础用法 setInterval 替代原生 set...",
+    "metadata": {
+      "label": "定时任务",
+      "sidebar_position": 10
+    }
+  },
+  {
+    "id": "doc:alemonjsDocs/advanced/utils.md",
+    "type": "doc",
+    "path": "/docs/alemonjsDocs/advanced/utils",
+    "filePath": "alemonjsDocs/advanced/utils.md",
+    "title": "工具函数",
+    "description": "工具函数 框架内置了一些常用的方法，以减少开发成本 Regular 继承于RegExp的class getPublicIP 获取公网IP，如果有的话 基于 public-ip Counter 计数器 createQRCode 把指定内容转为...",
+    "metadata": {
+      "label": "工具函数",
+      "sidebar_position": 9
+    }
+  },
+  {
+    "id": "doc:alemonjsDocs/core/cycle.md",
+    "type": "doc",
+    "path": "/docs/alemonjsDocs/core/cycle",
+    "filePath": "alemonjsDocs/core/cycle.md",
+    "title": "生命周期",
+    "description": "生命周期 框架现在建议把运行时理解成三条主线：应用阶段、事件阶段、HTTP 服务阶段。 应用阶段 onCreated() 应用刚创建时触发。适合放： 轻量初始化 读取静态配置 建立不依赖路由索引的准备逻辑 不建议把明显阻塞启动的重逻辑直接塞...",
+    "metadata": {
+      "label": "生命周期",
+      "sidebar_position": 6
+    }
+  },
+  {
+    "id": "doc:alemonjsDocs/core/data-type.md",
+    "type": "doc",
+    "path": "/docs/alemonjsDocs/core/data-type",
+    "filePath": "alemonjsDocs/core/data-type.md",
+    "title": "数据格式",
+    "description": "数据格式 使用相同的 API 构建消息内容，由各平台包负责将其转换为平台原生格式。 消息发送的返回值为 Result[]，即 [res1, res2, ...]。数组中的每一项对应一次实际的平台 API 调用。 核心原则：不支持的数据格式，...",
+    "metadata": {
+      "label": "数据格式",
+      "sidebar_position": 5
+    }
+  },
+  {
+    "id": "doc:alemonjsDocs/core/hook.mdx",
+    "type": "doc",
+    "path": "/docs/alemonjsDocs/core/hook",
+    "filePath": "alemonjsDocs/core/hook.mdx",
+    "title": "Hooks",
+    "description": "Hooks hook 在 response 中会自动劫持 event 上下文，也可显式传入，特别是非 response 上下文中调用。通过 useEvent 可获取当前事件和 next 回调。 useMessage 消息发送、删除、编辑、置...",
+    "metadata": {
+      "label": "Hooks",
+      "sidebar_position": 3
+    }
+  },
+  {
+    "id": "doc:alemonjsDocs/core/message-type.md",
+    "type": "doc",
+    "path": "/docs/alemonjsDocs/core/message-type",
+    "filePath": "alemonjsDocs/core/message-type.md",
+    "title": "事件类型",
+    "description": "事件类型 命名规则： . . 无前缀：公域事件（群/频道/服务器内发生） private. 前缀：私域事件（私聊/好友/一对一场景） 事件总览 基础字段 所有事件都由以下基础类型组合而成。理解它们是理解每个事件字段的前提。 Platform...",
+    "metadata": {
+      "label": "事件类型",
+      "sidebar_position": 5
+    }
+  },
+  {
+    "id": "doc:alemonjsDocs/core/middleware.md",
+    "type": "doc",
+    "path": "/docs/alemonjsDocs/core/middleware",
+    "filePath": "alemonjsDocs/core/middleware.md",
+    "title": "中间件",
+    "description": "中间件 主要分为局部中间件和全局中间件，可对指定事件类型的 event 进行修改并向下传递 局部中间件 在 defineRouter 中通过分组实现。handler 返回 true 则允许继续执行 children 中的后续响应 最终执行...",
+    "metadata": {
+      "label": "中间件",
+      "sidebar_position": 6
+    }
+  },
+  {
+    "id": "doc:alemonjsDocs/core/response.md",
+    "type": "doc",
+    "path": "/docs/alemonjsDocs/core/response",
+    "filePath": "alemonjsDocs/core/response.md",
+    "title": "响应事件",
+    "description": "响应事件 useEvent 安全的读取 event 和 next 执行周期 中间件之前 subscribe(create) > 中间件时 middleware > 中间件之后/响应之前 subscribe(mount) > 响应时 resp...",
+    "metadata": {
+      "label": "响应事件",
+      "sidebar_position": 1
+    }
+  },
+  {
+    "id": "doc:alemonjsDocs/core/router-sdl.md",
+    "type": "doc",
+    "path": "/docs/alemonjsDocs/core/router-sdl",
+    "filePath": "alemonjsDocs/core/router-sdl.md",
+    "title": "路由DSL",
+    "description": "路由DSL 将复杂的配置转为链式，同时规范化指令风格和加强匹配速度 最小示例 --- 一眼看懂 这套路由只用 4 个东西： Router.create(...) 建路由容器，给顶层 res 默认事件/平台。 router.res(...)...",
+    "metadata": {
+      "label": "路由DSL",
+      "sidebar_position": 7
+    }
+  },
+  {
+    "id": "doc:alemonjsDocs/core/router.md",
+    "type": "doc",
+    "path": "/docs/alemonjsDocs/core/router",
+    "filePath": "alemonjsDocs/core/router.md",
+    "title": "匹配路由",
+    "description": "匹配路由 defineRouter 路由匹配模式 每个路由项可配置三种匹配模式，按性能从高到低排列： 模式 字段 性能 说明 -------- --------- ---- --------------------------------...",
+    "metadata": {
+      "label": "匹配路由",
+      "sidebar_position": 2
+    }
+  },
+  {
+    "id": "doc:alemonjsDocs/getting-started/config.md",
+    "type": "doc",
+    "path": "/docs/alemonjsDocs/getting-started/config",
+    "filePath": "alemonjsDocs/getting-started/config.md",
+    "title": "配置说明",
+    "description": "配置说明 配置的每个字段都是可选的，需要什么就补什么，不需要则忽视 基础配置 权限管理 消息过滤与控制 消息处理器配置 模块管理 快捷参数 启动时可使用的快捷参数： 基础环境变量 platform:string - 平台标识，支持的平台类型...",
+    "metadata": {
+      "sidebar_position": 4,
+      "show_giscus": 1,
+      "label": "配置说明"
+    }
+  },
+  {
+    "id": "doc:alemonjsDocs/getting-started/install.mdx",
+    "type": "doc",
+    "path": "/docs/alemonjsDocs/getting-started/install",
+    "filePath": "alemonjsDocs/getting-started/install.mdx",
+    "title": "如何安装",
+    "description": "使用 ALemonX 创建机器人项目，或手动安装 ALemonJS。",
+    "metadata": {
+      "title": "如何安装",
+      "description": "使用 ALemonX 创建机器人项目，或手动安装 ALemonJS。",
+      "sidebar_position": 2
+    }
+  },
+  {
+    "id": "doc:alemonjsDocs/getting-started/intro.md",
+    "type": "doc",
+    "path": "/docs/alemonjsDocs/getting-started/intro",
+    "filePath": "alemonjsDocs/getting-started/intro.md",
+    "title": "简介",
+    "description": "简介 ALemonJS ( 发音为 /əˈlemən/ ) 基于 JavaScript 所构建的聊天平台机器人开发框架 在本文中，描述 ALemonJS 都称为“框架”。 框架主要通过定义响应函数来描述不同类型的事件将要执行的内容。",
+    "metadata": {
+      "sidebar_position": 1,
+      "label": "简介"
+    }
+  },
+  {
+    "id": "doc:alemonjsDocs/getting-started/quick-start.mdx",
+    "type": "doc",
+    "path": "/docs/alemonjsDocs/getting-started/quick-start",
+    "filePath": "alemonjsDocs/getting-started/quick-start.mdx",
+    "title": "快速开始",
+    "description": "创建 ALemonJS 项目，编写路由并连接一个聊天平台。",
+    "metadata": {
+      "title": "快速开始",
+      "description": "创建 ALemonJS 项目，编写路由并连接一个聊天平台。",
+      "sidebar_position": 3
+    }
+  },
+  {
+    "id": "doc:alemonjsDocs/http/route-mw.md",
+    "type": "doc",
+    "path": "/docs/alemonjsDocs/http/route-mw",
+    "filePath": "alemonjsDocs/http/route-mw.md",
+    "title": "路由中间件",
+    "description": "路由中间件 当前推荐把 HTTP 中间件直接挂到 koaRouter 上管理，而不是依赖隐式目录约定。 基础写法 解析 Body 可以直接使用 Koa 生态中间件，例如 koa-bodyparser： 按前缀拆分 如果一个应用里有多组 HT...",
+    "metadata": {
+      "label": "路由中间件",
+      "sidebar_position": 8
+    }
+  },
+  {
+    "id": "doc:alemonjsDocs/http/route.md",
+    "type": "doc",
+    "path": "/docs/alemonjsDocs/http/route",
+    "filePath": "alemonjsDocs/http/route.md",
+    "title": "接口路由",
+    "description": "接口路由 默认地址 http://localhost:17117/app。 当前支持的 HTTP 能力 主应用公开 HTTP 服务 插件应用公开 HTTP 服务 defineChildren().register() 直接返回的 koaRo...",
+    "metadata": {
+      "label": "接口路由",
+      "sidebar_position": 7
+    }
+  },
+  {
+    "id": "doc:alemonjsDocs/modules/class.md",
+    "type": "doc",
+    "path": "/docs/alemonjsDocs/modules/class",
+    "filePath": "alemonjsDocs/modules/class.md",
+    "title": "实例对象",
+    "description": "实例对象 内部开放的，对全局有影响的实例对象",
+    "metadata": {
+      "label": "实例对象",
+      "sidebar_position": 3
+    }
+  },
+  {
+    "id": "doc:alemonjsDocs/modules/desktop.md",
+    "type": "doc",
+    "path": "/docs/alemonjsDocs/modules/desktop",
+    "filePath": "alemonjsDocs/modules/desktop.md",
+    "title": "扩展",
+    "description": "扩展 如何开发扩展并推送到npmjs 如何识别的 会读取nodemodules/pkg-name/package.json 解析并得到main 以入口文件的目录为工程目录 服务端 服务端配置 桌面端 桌面端配置 指令 注意command有2...",
+    "metadata": {
+      "label": "扩展",
+      "sidebar_position": 7
+    }
+  },
+  {
+    "id": "doc:alemonjsDocs/modules/models.md",
+    "type": "doc",
+    "path": "/docs/alemonjsDocs/modules/models",
+    "filePath": "alemonjsDocs/modules/models.md",
+    "title": "模块",
+    "description": "模块 如果进行模块化和模块化处理仓库 本地模块化 安装仓库到packages目录下 把packages目录下的本地模块都视为模块依赖 重新安装依赖 框架配置设置apps",
+    "metadata": {
+      "label": "模块",
+      "sidebar_position": 7
+    }
+  },
+  {
+    "id": "doc:alemonjsDocs/modules/platforms.md",
+    "type": "doc",
+    "path": "/docs/alemonjsDocs/modules/platforms",
+    "filePath": "alemonjsDocs/modules/platforms.md",
+    "title": "自定义平台",
+    "description": "自定义平台 对接任意开放平台和框架 导出",
+    "metadata": {
+      "label": "自定义平台",
+      "sidebar_position": 3
+    }
+  },
+  {
+    "id": "doc:alemonx/develop/system-plugins.md",
+    "type": "doc",
+    "path": "/docs/alemonx/develop/system-plugins",
+    "filePath": "alemonx/develop/system-plugins.md",
+    "title": "系统插件",
+    "description": "使用 alx.json、Web 页面和执行器扩展本机管理功能。",
+    "metadata": {
+      "title": "系统插件",
+      "description": "使用 alx.json、Web 页面和执行器扩展本机管理功能。",
+      "sidebar_position": 2
+    }
+  },
+  {
+    "id": "doc:alemonx/develop/webview.md",
+    "type": "doc",
+    "path": "/docs/alemonx/develop/webview",
+    "filePath": "alemonx/develop/webview.md",
+    "title": "WebView",
+    "description": "在机器人插件中注册侧栏页面，并使用消息桥和 API 代理。",
+    "metadata": {
+      "title": "WebView",
+      "description": "在机器人插件中注册侧栏页面，并使用消息桥和 API 代理。",
+      "sidebar_position": 3
+    }
+  },
+  {
+    "id": "doc:alemonx/getting-started/install.mdx",
+    "type": "doc",
+    "path": "/docs/alemonx/getting-started/install",
+    "filePath": "alemonx/getting-started/install.mdx",
+    "title": "如何安装",
+    "description": "安装ALemonX",
+    "metadata": {
+      "title": "如何安装",
+      "description": "安装ALemonX",
+      "sidebar_position": 1
+    }
+  },
+  {
+    "id": "doc:alemonx/getting-started/quick-start.mdx",
+    "type": "doc",
+    "path": "/docs/alemonx/getting-started/quick-start",
+    "filePath": "alemonx/getting-started/quick-start.mdx",
+    "title": "工作站开始",
+    "description": "下载 alx，打开工作台，创建项目并运行一次任务。",
+    "metadata": {
+      "title": "工作站开始",
+      "description": "下载 alx，打开工作台，创建项目并运行一次任务。",
+      "sidebar_position": 1
+    }
+  },
+  {
+    "id": "doc:alemonx/reference/cli.md",
+    "type": "doc",
+    "path": "/docs/alemonx/reference/cli",
+    "filePath": "alemonx/reference/cli.md",
+    "title": "CLI",
+    "description": "使用 alx 启动工作台、管理服务、插件、认证和发布。",
+    "metadata": {
+      "title": "CLI",
+      "description": "使用 alx 启动工作台、管理服务、插件、认证和发布。",
+      "sidebar_position": 1
+    }
+  },
+  {
+    "id": "doc:alemonx/reference/mcp.md",
+    "type": "doc",
+    "path": "/docs/alemonx/reference/mcp",
+    "filePath": "alemonx/reference/mcp.md",
+    "title": "MCP",
+    "description": "配置 stdio 或本机 HTTP MCP，并限制项目目录和写入操作。",
+    "metadata": {
+      "title": "MCP",
+      "description": "配置 stdio 或本机 HTTP MCP，并限制项目目录和写入操作。",
+      "sidebar_position": 2
+    }
+  },
+  {
+    "id": "doc:alemonx/reference/plugin-manifest.md",
+    "type": "doc",
+    "path": "/docs/alemonx/reference/plugin-manifest",
+    "filePath": "alemonx/reference/plugin-manifest.md",
+    "title": "插件清单",
+    "description": "为系统插件配置 alx.json 的执行器、页面和导航入口。",
+    "metadata": {
+      "title": "插件清单",
+      "description": "为系统插件配置 alx.json 的执行器、页面和导航入口。",
+      "sidebar_position": 3
+    }
+  },
+  {
+    "id": "doc:alemonx/use/agent/collaboration.md",
+    "type": "doc",
+    "path": "/docs/alemonx/use/agent/collaboration",
+    "filePath": "alemonx/use/agent/collaboration.md",
+    "title": "Agent 协作",
+    "description": "创建任务、审阅计划、批准写入操作并查看验证输出。",
+    "metadata": {
+      "title": "Agent 协作",
+      "description": "创建任务、审阅计划、批准写入操作并查看验证输出。",
+      "sidebar_position": 1
+    }
+  },
+  {
+    "id": "doc:alemonx/use/agent/mcp.md",
+    "type": "doc",
+    "path": "/docs/alemonx/use/agent/mcp",
+    "filePath": "alemonx/use/agent/mcp.md",
+    "title": "MCP 接入",
+    "description": "在本机 Agent 客户端中配置 alx mcp 或 mcp-http。",
+    "metadata": {
+      "title": "MCP 接入",
+      "description": "在本机 Agent 客户端中配置 alx mcp 或 mcp-http。",
+      "sidebar_position": 2
+    }
+  },
+  {
+    "id": "doc:alemonx/use/extensions/plugins-and-webview.md",
+    "type": "doc",
+    "path": "/docs/alemonx/use/extensions/plugins-and-webview",
+    "filePath": "alemonx/use/extensions/plugins-and-webview.md",
+    "title": "插件与 WebView",
+    "description": "为机器人项目配置侧栏入口和静态 WebView 页面。",
+    "metadata": {
+      "title": "插件与 WebView",
+      "description": "为机器人项目配置侧栏入口和静态 WebView 页面。",
+      "sidebar_position": 1
+    }
+  },
+  {
+    "id": "doc:alemonx/use/operations/access-and-safety.md",
+    "type": "doc",
+    "path": "/docs/alemonx/use/operations/access-and-safety",
+    "filePath": "alemonx/use/operations/access-and-safety.md",
+    "title": "权限与安全",
+    "description": "配置访问目录、登录、角色和高风险操作记录。",
+    "metadata": {
+      "title": "权限与安全",
+      "description": "配置访问目录、登录、角色和高风险操作记录。",
+      "sidebar_position": 2
+    }
+  },
+  {
+    "id": "doc:alemonx/use/operations/ai-operations.md",
+    "type": "doc",
+    "path": "/docs/alemonx/use/operations/ai-operations",
+    "filePath": "alemonx/use/operations/ai-operations.md",
+    "title": "AI 运维",
+    "description": "设置观察模式、审批维护操作、查看验证结果和回滚。",
+    "metadata": {
+      "title": "AI 运维",
+      "description": "设置观察模式、审批维护操作、查看验证结果和回滚。",
+      "sidebar_position": 1
+    }
+  },
+  {
+    "id": "doc:alemonx/use/projects/create-or-import.md",
+    "type": "doc",
+    "path": "/docs/alemonx/use/projects/create-or-import",
+    "filePath": "alemonx/use/projects/create-or-import.md",
+    "title": "项目与配置",
+    "description": "创建模板、导入本地目录或克隆 Git 仓库。",
+    "metadata": {
+      "title": "项目与配置",
+      "description": "创建模板、导入本地目录或克隆 Git 仓库。",
+      "sidebar_position": 1
+    }
+  },
+  {
+    "id": "doc:alemonx/use/runtime/run-and-monitor.md",
+    "type": "doc",
+    "path": "/docs/alemonx/use/runtime/run-and-monitor",
+    "filePath": "alemonx/use/runtime/run-and-monitor.md",
+    "title": "运行与交付",
+    "description": "在项目页运行命令、管理 PM2、查看 Git 状态和发布操作。",
+    "metadata": {
+      "title": "运行与交付",
+      "description": "在项目页运行命令、管理 PM2、查看 Git 状态和发布操作。",
+      "sidebar_position": 1
+    }
+  },
+  {
+    "id": "doc:apps-module.md",
+    "type": "doc",
+    "path": "/docs/apps-module",
+    "filePath": "apps-module.md",
+    "title": "JS模块",
+    "description": "JS模块 数据 项目 版本 说明 -------------- --------------- ------------ [@alemonjs/db] [![db-s]][db-p] 数据连接管理 [@alemonjs/db]: https...",
+    "metadata": {
+      "sidebar_position": 8,
+      "label": "JS模块"
+    }
+  },
+  {
+    "id": "doc:apps-x.md",
+    "type": "doc",
+    "path": "/docs/apps-x",
+    "filePath": "apps-x.md",
+    "title": "X插件",
+    "description": "X插件 X插件机制到底是怎么回事？请点击了解 alemonx 的制作 基础 项目名 说明 --------- ---------------- [network] 系统网络与防火墙 [qq] qq协议管理 [finder] 文件管理器 [d...",
+    "metadata": {
+      "sidebar_position": 9,
+      "label": "X插件"
+    }
+  },
+  {
+    "id": "doc:apps.md",
+    "type": "doc",
+    "path": "/docs/apps",
+    "filePath": "apps.md",
+    "title": "JS插件",
+    "description": "JS插件 模块机制到底是怎么回事？请点击了解👉模块化应用的制作 增强 最大可能的去加载现有生态的扩展 项目名 说明 ------------- -----------------------------------------------...",
+    "metadata": {
+      "sidebar_position": 7,
+      "label": "JS插件"
+    }
+  },
+  {
+    "id": "doc:environment.md",
+    "type": "doc",
+    "path": "/docs/environment",
+    "filePath": "environment.md",
+    "title": "连接平台",
+    "description": "连接平台 点击项目名或版本号可查看详情。 官方 项目 版本 说明 -------------------------- --------------------------------------- --------------------...",
+    "metadata": {
+      "sidebar_position": 6,
+      "label": "连接平台"
+    }
+  },
+  {
+    "id": "doc:open.md",
+    "type": "doc",
+    "path": "/docs/open",
+    "filePath": "open.md",
+    "title": "开源生态",
+    "description": "开源生态 模块机制到底是怎么回事？请点击了解👉模块化应用的制作 SKILL 用于 AI 增强的 skill 项目名 说明 ---------------- ----------------- [common-dev] alemonjs 通...",
+    "metadata": {
+      "sidebar_position": 9,
+      "label": "开源生态"
+    }
+  },
+  {
+    "id": "blog:2026/08/22/alemonx-push.md",
+    "type": "blog",
+    "path": "/blog/2026/08/22/alemonx-push",
+    "filePath": "2026/08/22/alemonx-push.md",
+    "title": "X0.2.19",
+    "description": "基础可用",
+    "date": "2026-08-22",
+    "metadata": {
+      "title": "X0.2.19",
+      "description": "基础可用",
+      "authors": "ningmengchongshui",
+      "tags": ["alemonx"],
+      "image": "https://i.imgur.com/mErPwqL.png",
+      "hide_table_of_contents": false,
+      "date": "2026-08-22"
+    }
+  },
+  {
+    "id": "blog:2026/04/11/schedule-api.md",
+    "type": "blog",
+    "path": "/blog/2026/04/11/schedule-api",
+    "filePath": "2026/04/11/schedule-api.md",
+    "title": "V2.1.57",
+    "description": "框架定时任务",
+    "date": "2026-04-11",
+    "metadata": {
+      "title": "V2.1.57",
+      "description": "框架定时任务",
+      "authors": "ningmengchongshui",
+      "tags": ["alemonjs"],
+      "image": "https://i.imgur.com/mErPwqL.png",
+      "hide_table_of_contents": false,
+      "date": "2026-04-11"
+    }
+  },
+  {
+    "id": "blog:2026/04/01/v2.1.52.md",
+    "type": "blog",
+    "path": "/blog/2026/04/01/v2.1.52",
+    "filePath": "2026/04/01/v2.1.52.md",
+    "title": "V2.1.52",
+    "description": "hooks增强",
+    "date": "2026-04-01",
+    "metadata": {
+      "title": "V2.1.52",
+      "description": "hooks增强",
+      "authors": "ningmengchongshui",
+      "tags": ["alemonjs"],
+      "image": "https://i.imgur.com/mErPwqL.png",
+      "hide_table_of_contents": false,
+      "date": "2026-04-01"
+    }
+  },
+  {
+    "id": "blog:2026/02/28/v2.1.43.md",
+    "type": "blog",
+    "path": "/blog/2026/02/28/v2.1.43",
+    "filePath": "2026/02/28/v2.1.43.md",
+    "title": "V2.1.43",
+    "description": "链式调用",
+    "date": "2026-02-28",
+    "metadata": {
+      "title": "V2.1.43",
+      "description": "链式调用",
+      "authors": "ningmengchongshui",
+      "tags": ["alemonjs"],
+      "image": "https://i.imgur.com/mErPwqL.png",
+      "hide_table_of_contents": false,
+      "date": "2026-02-28"
+    }
+  },
+  {
+    "id": "blog:2026/02/26/v2.1.22.md",
+    "type": "blog",
+    "path": "/blog/2026/02/26/v2.1.22",
+    "filePath": "2026/02/26/v2.1.22.md",
+    "title": "V2.1.22",
+    "description": "链式调用",
+    "date": "2026-02-26",
+    "metadata": {
+      "title": "V2.1.22",
+      "description": "链式调用",
+      "authors": "ningmengchongshui",
+      "tags": ["alemonjs"],
+      "image": "https://i.imgur.com/mErPwqL.png",
+      "hide_table_of_contents": false,
+      "date": "2026-02-26"
+    }
+  },
+  {
+    "id": "blog:2026/01/22/v2.1.17.md",
+    "type": "blog",
+    "path": "/blog/2026/01/22/v2.1.17",
+    "filePath": "2026/01/22/v2.1.17.md",
+    "title": "V2.1.17",
+    "description": "针对useSubscribe的优化",
+    "date": "2026-01-22",
+    "metadata": {
+      "title": "V2.1.17",
+      "description": "针对useSubscribe的优化",
+      "authors": "ningmengchongshui",
+      "tags": ["alemonjs"],
+      "image": "https://i.imgur.com/mErPwqL.png",
+      "hide_table_of_contents": false,
+      "date": "2026-01-22"
+    }
+  },
+  {
+    "id": "blog:2026/01/08/v2.1.15.md",
+    "type": "blog",
+    "path": "/blog/2026/01/08/v2.1.15",
+    "filePath": "2026/01/08/v2.1.15.md",
+    "title": "V2.1.15",
+    "description": "主要是一些比较重要的修复和优化",
+    "date": "2026-01-08",
+    "metadata": {
+      "title": "V2.1.15",
+      "description": "主要是一些比较重要的修复和优化",
+      "authors": "ningmengchongshui",
+      "tags": ["alemonjs"],
+      "image": "https://i.imgur.com/mErPwqL.png",
+      "hide_table_of_contents": false,
+      "date": "2026-01-08"
+    }
+  },
+  {
+    "id": "blog:2025/05/30/v2.1.0.md",
+    "type": "blog",
+    "path": "/blog/2025/05/30/v2.1.0",
+    "filePath": "2025/05/30/v2.1.0.md",
+    "title": "V2.1.0",
+    "description": "全新稳定版本推送",
+    "date": "2025-05-30",
+    "metadata": {
+      "title": "V2.1.0",
+      "description": "全新稳定版本推送",
+      "authors": "ningmengchongshui",
+      "tags": ["alemonjs"],
+      "image": "https://i.imgur.com/mErPwqL.png",
+      "hide_table_of_contents": false,
+      "date": "2025-05-30"
+    }
+  },
+  {
+    "id": "blog:2025/05/13/v2.0.16.md",
+    "type": "blog",
+    "path": "/blog/2025/05/13/v2.0.16",
+    "filePath": "2025/05/13/v2.0.16.md",
+    "title": "V2.0.16",
+    "description": "更新",
+    "date": "2025-05-13",
+    "metadata": {
+      "title": "V2.0.16",
+      "description": "更新",
+      "authors": "ningmengchongshui",
+      "tags": ["alemonjs"],
+      "image": "https://i.imgur.com/mErPwqL.png",
+      "hide_table_of_contents": false,
+      "date": "2025-05-13"
+    }
+  },
+  {
+    "id": "blog:2025/03/26/v2.0.4.md",
+    "type": "blog",
+    "path": "/blog/2025/03/26/v2.0.4",
+    "filePath": "2025/03/26/v2.0.4.md",
+    "title": "V2.0.4",
+    "description": "更新",
+    "date": "2025-03-26",
+    "metadata": {
+      "title": "V2.0.4",
+      "description": "更新",
+      "authors": "ningmengchongshui",
+      "tags": ["alemonjs"],
+      "image": "https://i.imgur.com/mErPwqL.png",
+      "hide_table_of_contents": false,
+      "date": "2025-03-26"
+    }
+  },
+  {
+    "id": "blog:2025/03/14/v2.0.0.md",
+    "type": "blog",
+    "path": "/blog/2025/03/14/v2.0.0",
+    "filePath": "2025/03/14/v2.0.0.md",
+    "title": "V2.0.0",
+    "description": "更新",
+    "date": "2025-03-14",
+    "metadata": {
+      "title": "V2.0.0",
+      "description": "更新",
+      "authors": "ningmengchongshui",
+      "tags": ["alemonjs"],
+      "image": "https://i.imgur.com/mErPwqL.png",
+      "hide_table_of_contents": false,
+      "date": "2025-03-14"
+    }
+  },
+  {
+    "id": "blog:2025/02/12/v2.0.0-rc.94.md",
+    "type": "blog",
+    "path": "/blog/2025/02/12/v2.0.0-rc.94",
+    "filePath": "2025/02/12/v2.0.0-rc.94.md",
+    "title": "V2.0.0-rc.94",
+    "description": "更新",
+    "date": "2025-02-12",
+    "metadata": {
+      "title": "V2.0.0-rc.94",
+      "description": "更新",
+      "authors": "ningmengchongshui",
+      "tags": ["alemonjs"],
+      "image": "https://i.imgur.com/mErPwqL.png",
+      "hide_table_of_contents": false,
+      "date": "2025-02-12"
+    }
+  },
+  {
+    "id": "blog:2025/01/09/v2.0.0-rc.88.md",
+    "type": "blog",
+    "path": "/blog/2025/01/09/v2.0.0-rc.88",
+    "filePath": "2025/01/09/v2.0.0-rc.88.md",
+    "title": "V2.0.0-rc.88",
+    "description": "更新",
+    "date": "2025-01-09",
+    "metadata": {
+      "title": "V2.0.0-rc.88",
+      "description": "更新",
+      "authors": "ningmengchongshui",
+      "tags": ["alemonjs"],
+      "image": "https://i.imgur.com/mErPwqL.png",
+      "hide_table_of_contents": false,
+      "date": "2025-01-09"
+    }
+  },
+  {
+    "id": "blog:2025/01/07/v2.0.0-rc.84.md",
+    "type": "blog",
+    "path": "/blog/2025/01/07/v2.0.0-rc.84",
+    "filePath": "2025/01/07/v2.0.0-rc.84.md",
+    "title": "V2.0.0-rc.84",
+    "description": "更新",
+    "date": "2025-01-07",
+    "metadata": {
+      "title": "V2.0.0-rc.84",
+      "description": "更新",
+      "authors": "ningmengchongshui",
+      "tags": ["alemonjs"],
+      "image": "https://i.imgur.com/mErPwqL.png",
+      "hide_table_of_contents": false,
+      "date": "2025-01-07"
+    }
+  },
+  {
+    "id": "blog:2025/01/02/v2.0.0-rc.81.md",
+    "type": "blog",
+    "path": "/blog/2025/01/02/v2.0.0-rc.81",
+    "filePath": "2025/01/02/v2.0.0-rc.81.md",
+    "title": "V2.0.0-rc.81",
+    "description": "更新",
+    "date": "2025-01-02",
+    "metadata": {
+      "title": "V2.0.0-rc.81",
+      "description": "更新",
+      "authors": "ningmengchongshui",
+      "tags": ["alemonjs"],
+      "image": "https://i.imgur.com/mErPwqL.png",
+      "hide_table_of_contents": false,
+      "date": "2025-01-02"
+    }
+  },
+  {
+    "id": "blog:2024/12/31/2.0.0-rc.78.md",
+    "type": "blog",
+    "path": "/blog/2024/12/31/2.0.0-rc.78",
+    "filePath": "2024/12/31/2.0.0-rc.78.md",
+    "title": "V2.0.0-rc.78",
+    "description": "更新",
+    "date": "2024-12-31",
+    "metadata": {
+      "title": "V2.0.0-rc.78",
+      "description": "更新",
+      "authors": "ningmengchongshui",
+      "tags": ["alemonjs"],
+      "image": "https://i.imgur.com/mErPwqL.png",
+      "hide_table_of_contents": false,
+      "date": "2024-12-31"
+    }
+  },
+  {
+    "id": "blog:2024/12/28/2.0.0-rc.76.md",
+    "type": "blog",
+    "path": "/blog/2024/12/28/2.0.0-rc.76",
+    "filePath": "2024/12/28/2.0.0-rc.76.md",
+    "title": "V2.0.0-rc.76",
+    "description": "更新",
+    "date": "2024-12-28",
+    "metadata": {
+      "title": "V2.0.0-rc.76",
+      "description": "更新",
+      "authors": "ningmengchongshui",
+      "tags": ["alemonjs"],
+      "image": "https://i.imgur.com/mErPwqL.png",
+      "hide_table_of_contents": false,
+      "date": "2024-12-28"
+    }
+  },
+  {
+    "id": "blog:2024/12/24/2.0.0-rc.74.md",
+    "type": "blog",
+    "path": "/blog/2024/12/24/2.0.0-rc.74",
+    "filePath": "2024/12/24/2.0.0-rc.74.md",
+    "title": "V2.0.0-rc.74",
+    "description": "更新",
+    "date": "2024-12-24",
+    "metadata": {
+      "title": "V2.0.0-rc.74",
+      "description": "更新",
+      "authors": "ningmengchongshui",
+      "tags": ["alemonjs"],
+      "image": "https://i.imgur.com/mErPwqL.png",
+      "hide_table_of_contents": false,
+      "date": "2024-12-24"
+    }
+  },
+  {
+    "id": "blog:2024/11/18/2.0.0-rc.54.md",
+    "type": "blog",
+    "path": "/blog/2024/11/18/2.0.0-rc.54",
+    "filePath": "2024/11/18/2.0.0-rc.54.md",
+    "title": "V2.0.0-rc.54",
+    "description": "更新",
+    "date": "2024-11-18",
+    "metadata": {
+      "title": "V2.0.0-rc.54",
+      "description": "更新",
+      "authors": "ningmengchongshui",
+      "tags": ["alemonjs"],
+      "image": "https://i.imgur.com/mErPwqL.png",
+      "hide_table_of_contents": false,
+      "date": "2024-11-18"
+    }
+  },
+  {
+    "id": "blog:2024/11/09/2.0.0-rc.44.md",
+    "type": "blog",
+    "path": "/blog/2024/11/09/2.0.0-rc.44",
+    "filePath": "2024/11/09/2.0.0-rc.44.md",
+    "title": "V2.0.0-rc.44",
+    "description": "更新",
+    "date": "2024-11-09",
+    "metadata": {
+      "title": "V2.0.0-rc.44",
+      "description": "更新",
+      "authors": "ningmengchongshui",
+      "tags": ["alemonjs"],
+      "image": "https://i.imgur.com/mErPwqL.png",
+      "hide_table_of_contents": false,
+      "date": "2024-11-09"
+    }
+  },
+  {
+    "id": "blog:2024/10/09/2.0.0-rc.33.md",
+    "type": "blog",
+    "path": "/blog/2024/10/09/2.0.0-rc.33",
+    "filePath": "2024/10/09/2.0.0-rc.33.md",
+    "title": "V2.0.0-rc.33",
+    "description": "更新",
+    "date": "2024-10-09",
+    "metadata": {
+      "title": "V2.0.0-rc.33",
+      "description": "更新",
+      "authors": "ningmengchongshui",
+      "tags": ["alemonjs"],
+      "image": "https://i.imgur.com/mErPwqL.png",
+      "hide_table_of_contents": false,
+      "date": "2024-10-09"
+    }
+  }
+]

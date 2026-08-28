@@ -217,9 +217,7 @@ export default function HomePage() {
               打开已有产品。
             </h2>
           </div>
-          <ActionLink link="/docs/alemonx/ecosystem/overview">
-            查看生态
-          </ActionLink>
+          <ActionLink link="/docs/apps">查看生态</ActionLink>
         </div>
         <div
           className="grid overflow-hidden rounded-[2rem] border border-[var(--line)] bg-[var(--surface-muted)] outline-none lg:grid-cols-[0.92fr_1.08fr]"

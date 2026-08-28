@@ -15,7 +15,8 @@ import rehypeCodeTitle from './freeWind/src/vite/rehype-code-title'
 
 const NODE_ENV = process.env.NODE_ENV === 'development'
 
-const outDir = './dist'
+const isSsrBuild = process.argv.includes('--ssr')
+const outDir = isSsrBuild ? './dist-server' : './dist'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -133,7 +134,7 @@ export default defineConfig({
     rollupOptions: {
       output: {
         dir: outDir,
-        entryFileNames: 'js/[name]-[hash].js',
+        entryFileNames: isSsrBuild ? '[name].js' : 'js/[name]-[hash].js',
         chunkFileNames: 'js/[name]-[hash].js',
         assetFileNames: ({ name }) => {
           // 自动根据文件类型分类存放
@@ -141,19 +142,20 @@ export default defineConfig({
           if (ext) return `assets/${ext}/[name]-[hash][extname]`
           return 'assets/[name]-[hash][extname]'
         },
-        experimentalMinChunkSize: 1000 * 200, // 200KB
-        manualChunks: {
-          'react-vendor': [
-            'react',
-            'react-dom',
-            'react-router-dom',
-            'react-router',
-            'react-redux',
-            'redux',
-            '@reduxjs/toolkit'
-          ],
-          'utils-vendor': ['axios', 'dayjs', 'classnames']
-        }
+        manualChunks: isSsrBuild
+          ? undefined
+          : {
+              'react-vendor': [
+                'react',
+                'react-dom',
+                'react-router-dom',
+                'react-router',
+                'react-redux',
+                'redux',
+                '@reduxjs/toolkit'
+              ],
+              'utils-vendor': ['axios', 'dayjs', 'classnames']
+            }
       }
     }
   }
