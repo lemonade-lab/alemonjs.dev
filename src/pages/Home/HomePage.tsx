@@ -66,7 +66,7 @@ const products = [
     description: '安装APP=启动机器人，人手一只机器人不在话下',
     image: alemonAppImage,
     imageClass: 'object-contain bg-[#f5f6fa] p-3 sm:p-5',
-    link: 'https://download.alemonjs.com/application/alemonapp/app.apk',
+    link: 'https://download.alemonjs.com/application/alemonapp/app-universal-release.apk',
     action: '下载移动端'
   },
   {

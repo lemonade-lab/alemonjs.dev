@@ -54,7 +54,9 @@ describe('HomePage', () => {
 
     expect(
       screen.getByRole('link', { name: /下载移动端/ }).getAttribute('href')
-    ).toBe('https://download.alemonjs.com/application/alemonapp/app.apk')
+    ).toBe(
+      'https://download.alemonjs.com/application/alemonapp/app-universal-release.apk'
+    )
   })
 
   it('supports keyboard navigation for the image carousel', async () => {
