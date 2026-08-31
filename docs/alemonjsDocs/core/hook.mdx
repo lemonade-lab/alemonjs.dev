@@ -153,6 +153,8 @@ export default () => {
 - `next()` — 保持订阅
 - `next(true)` — 保持订阅且传递给下一个订阅
 - `next(true, true)` — 保持订阅且传递给下一个周期
+
+> 如果要实现带状态的多轮交互流程，推荐使用[事件上下文](/docs/alemonjsDocs/core/context)。`useSubscribe` 更适合临时事件监听和生命周期订阅。
 ```
 
 ## `useMember`
@@ -437,6 +439,45 @@ export default async () => {
 | `upload`      | `{ type, url?, data?, name? }`             | 上传媒体文件 |
 | `sendChannel` | `{ type, url?, data?, name?, channelId? }` | 发送到频道   |
 | `sendUser`    | `{ userId, type, url?, data?, name? }`     | 发送到用户   |
+
+`upload`、`sendChannel` 和 `sendUser` 支持 `url`、`data`、`filePath`、`fileId` 四种媒体来源，但一次只能提供一种来源。针对具有明确目标的群组或 C2C 场景，也可以使用：
+
+```ts
+await media.send({
+  target: { targetId: '123', scope: 'channel' },
+  type: 'image',
+  url: 'https://example.com/img.png'
+})
+```
+
+## `useConnection`
+
+> 查询机器人当前的连接状态。
+
+```ts
+import { useConnection } from 'alemonjs'
+
+const [{ getStatus }] = useConnection()
+const result = await getStatus({ BotId: 'bot-id' })
+```
+
+如果平台不支持该能力，会返回 `Warn` 结果；调用方应通过返回值的 `code` 判断结果。
+
+## `useInteraction`
+
+> 确认平台交互事件，例如按钮或命令交互。
+
+```ts
+import { useInteraction } from 'alemonjs'
+
+const [{ ack }] = useInteraction()
+const result = await ack({
+  InteractionId: 'interaction-id',
+  code: 0
+})
+```
+
+如果不传 `InteractionId`，Hook 会尝试从当前事件上下文读取；如果平台不支持交互确认，会返回 `Warn` 结果。
 
 `type` 可选值：`'image'` | `'audio'` | `'video'` | `'file'`
 

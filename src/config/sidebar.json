@@ -1,9 +1,14 @@
 [
   {
+    "title": "简介",
+    "path": "/docs/intro",
+    "position": 1
+  },
+  {
     "id": "alemonx",
     "label": "ALemonX",
     "position": 2,
-    "collapsed": true,
+    "collapsed": false,
     "items": [
       {
         "id": "getting-started",
@@ -27,7 +32,7 @@
         "id": "use",
         "label": "使用",
         "position": 1,
-        "collapsed": true,
+        "collapsed": false,
         "items": [
           {
             "title": "Agent 协作",
@@ -55,32 +60,77 @@
             "position": 1
           },
           {
+            "title": "用户手册",
+            "path": "/docs/alemonx/use/user-manual",
+            "position": 1
+          },
+          {
             "title": "MCP 接入",
             "path": "/docs/alemonx/use/agent/mcp",
+            "position": 2
+          },
+          {
+            "title": "Agent 任务状态机",
+            "path": "/docs/alemonx/use/agent/task-lifecycle",
             "position": 2
           },
           {
             "title": "权限与安全",
             "path": "/docs/alemonx/use/operations/access-and-safety",
             "position": 2
+          },
+          {
+            "title": "依赖源管理",
+            "path": "/docs/alemonx/use/operations/dependency-sources",
+            "position": 2
+          },
+          {
+            "title": "Agent 运维与发布报告",
+            "path": "/docs/alemonx/use/operations/agent-release-report",
+            "position": 3
+          },
+          {
+            "title": "Docker 部署",
+            "path": "/docs/alemonx/use/operations/docker",
+            "position": 3
+          },
+          {
+            "title": "故障排查",
+            "path": "/docs/alemonx/use/operations/troubleshooting",
+            "position": 4
           }
         ]
       },
       {
         "id": "develop",
-        "label": "开发",
+        "label": "开发者",
         "position": 2,
-        "collapsed": true,
+        "collapsed": false,
         "items": [
           {
-            "title": "系统插件",
+            "title": "官方插件模板与可运行示例",
+            "path": "/docs/alemonx/develop/plugin-template",
+            "position": 1
+          },
+          {
+            "title": "系统插件开发",
             "path": "/docs/alemonx/develop/system-plugins",
-            "position": 2
+            "position": 1
           },
           {
             "title": "WebView",
             "path": "/docs/alemonx/develop/webview",
             "position": 3
+          },
+          {
+            "title": "机器人应用页",
+            "path": "/docs/alemonx/develop/bot-app-page",
+            "position": 4
+          },
+          {
+            "title": "机器人构建规范",
+            "path": "/docs/alemonx/develop/build",
+            "position": 5
           }
         ]
       },
@@ -88,7 +138,7 @@
         "id": "reference",
         "label": "参考",
         "position": 3,
-        "collapsed": true,
+        "collapsed": false,
         "items": [
           {
             "title": "CLI",
@@ -101,9 +151,19 @@
             "position": 2
           },
           {
+            "title": "MCP 工具参考",
+            "path": "/docs/alemonx/reference/mcp-tools",
+            "position": 3
+          },
+          {
             "title": "插件清单",
             "path": "/docs/alemonx/reference/plugin-manifest",
             "position": 3
+          },
+          {
+            "title": "版本兼容矩阵",
+            "path": "/docs/alemonx/reference/compatibility",
+            "position": 4
           }
         ]
       }
@@ -121,11 +181,6 @@
         "position": 0,
         "collapsed": true,
         "items": [
-          {
-            "title": "简介",
-            "path": "/docs/alemonjsDocs/getting-started/intro",
-            "position": 1
-          },
           {
             "title": "如何安装",
             "path": "/docs/alemonjsDocs/getting-started/install",
@@ -162,6 +217,11 @@
             "title": "Hooks",
             "path": "/docs/alemonjsDocs/core/hook",
             "position": 3
+          },
+          {
+            "title": "事件上下文",
+            "path": "/docs/alemonjsDocs/core/context",
+            "position": 4
           },
           {
             "title": "数据格式",

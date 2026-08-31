@@ -13,7 +13,7 @@ export default defineConfig({
       title: 'ALemonX',
       items: [
         {
-          to: '/docs/alemonx/getting-started/install',
+          to: '/docs/intro',
           label: '文档',
           position: 'left'
         },
@@ -24,8 +24,13 @@ export default defineConfig({
         },
         {
           position: 'right',
-          label: 'GitHub',
+          label: '源码',
           href: 'https://github.com/lemonade-lab/alemonx'
+        },
+        {
+          position: 'right',
+          label: '框架',
+          href: 'https://github.com/lemonade-lab/alemonjs'
         },
         {
           position: 'right',
@@ -55,7 +60,7 @@ export default defineConfig({
           items: [
             {
               label: 'ALemonJS',
-              to: '/docs/alemonjsDocs/getting-started/intro'
+              to: '/docs/alemonjsDocs/getting-started/install'
             },
             {
               label: '插件与扩展',
@@ -71,15 +76,15 @@ export default defineConfig({
           title: '下载与更新',
           items: [
             {
-              label: '版本更新',
+              label: 'X版本更新',
               to: '/blog'
             },
             {
-              label: '发布列表',
+              label: 'X发布列表',
               href: 'https://github.com/lemonade-lab/alemonx/releases'
             },
             {
-              label: '社区讨论',
+              label: 'X社区讨论',
               href: 'https://github.com/lemonade-lab/alemonx/discussions'
             }
           ]

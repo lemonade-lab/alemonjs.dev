@@ -27,7 +27,7 @@ export default function HeaderPage() {
           </a>
           <Link
             className="rounded-full border border-white/25 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
-            to="/docs/alemonx/getting-started/quick-start"
+            to="/docs/alemonx/getting-started/install"
           >
             快速开始
           </Link>

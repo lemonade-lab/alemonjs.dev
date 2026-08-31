@@ -5,6 +5,13 @@
     <link>https://alemonjs.dev/blog</link>
     <description>ALemonX 产品更新与开发日志</description>
     <item>
+      <title>V2.1.97</title>
+      <link>https://alemonjs.dev/blog/2026/08/31/v2.1.97</link>
+      <guid isPermaLink="true">https://alemonjs.dev/blog/2026/08/31/v2.1.97</guid>
+      <description>新增事件上下文能力，补充连接、交互和目标媒体 API</description>
+      <pubDate>Mon, 31 Aug 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
       <title>X0.2.19</title>
       <link>https://alemonjs.dev/blog/2026/08/22/alemonx-push</link>
       <guid isPermaLink="true">https://alemonjs.dev/blog/2026/08/22/alemonx-push</guid>
@@ -136,13 +143,6 @@
       <guid isPermaLink="true">https://alemonjs.dev/blog/2024/11/18/2.0.0-rc.54</guid>
       <description>更新</description>
       <pubDate>Mon, 18 Nov 2024 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>V2.0.0-rc.44</title>
-      <link>https://alemonjs.dev/blog/2024/11/09/2.0.0-rc.44</link>
-      <guid isPermaLink="true">https://alemonjs.dev/blog/2024/11/09/2.0.0-rc.44</guid>
-      <description>更新</description>
-      <pubDate>Sat, 09 Nov 2024 00:00:00 GMT</pubDate>
     </item>
   </channel>
 </rss>

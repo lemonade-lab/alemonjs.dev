@@ -13,6 +13,9 @@
     <loc>https://alemonjs.dev/docs/alemonjsDocs/advanced/utils</loc>
   </url>
   <url>
+    <loc>https://alemonjs.dev/docs/alemonjsDocs/core/context</loc>
+  </url>
+  <url>
     <loc>https://alemonjs.dev/docs/alemonjsDocs/core/cycle</loc>
   </url>
   <url>
@@ -43,9 +46,6 @@
     <loc>https://alemonjs.dev/docs/alemonjsDocs/getting-started/install</loc>
   </url>
   <url>
-    <loc>https://alemonjs.dev/docs/alemonjsDocs/getting-started/intro</loc>
-  </url>
-  <url>
     <loc>https://alemonjs.dev/docs/alemonjsDocs/getting-started/quick-start</loc>
   </url>
   <url>
@@ -67,6 +67,15 @@
     <loc>https://alemonjs.dev/docs/alemonjsDocs/modules/platforms</loc>
   </url>
   <url>
+    <loc>https://alemonjs.dev/docs/alemonx/develop/bot-app-page</loc>
+  </url>
+  <url>
+    <loc>https://alemonjs.dev/docs/alemonx/develop/build</loc>
+  </url>
+  <url>
+    <loc>https://alemonjs.dev/docs/alemonx/develop/plugin-template</loc>
+  </url>
+  <url>
     <loc>https://alemonjs.dev/docs/alemonx/develop/system-plugins</loc>
   </url>
   <url>
@@ -79,7 +88,16 @@
     <loc>https://alemonjs.dev/docs/alemonx/getting-started/quick-start</loc>
   </url>
   <url>
+    <loc>https://alemonjs.dev/docs/alemonx/overview</loc>
+  </url>
+  <url>
     <loc>https://alemonjs.dev/docs/alemonx/reference/cli</loc>
+  </url>
+  <url>
+    <loc>https://alemonjs.dev/docs/alemonx/reference/compatibility</loc>
+  </url>
+  <url>
+    <loc>https://alemonjs.dev/docs/alemonx/reference/mcp-tools</loc>
   </url>
   <url>
     <loc>https://alemonjs.dev/docs/alemonx/reference/mcp</loc>
@@ -94,19 +112,37 @@
     <loc>https://alemonjs.dev/docs/alemonx/use/agent/mcp</loc>
   </url>
   <url>
+    <loc>https://alemonjs.dev/docs/alemonx/use/agent/task-lifecycle</loc>
+  </url>
+  <url>
     <loc>https://alemonjs.dev/docs/alemonx/use/extensions/plugins-and-webview</loc>
   </url>
   <url>
     <loc>https://alemonjs.dev/docs/alemonx/use/operations/access-and-safety</loc>
   </url>
   <url>
+    <loc>https://alemonjs.dev/docs/alemonx/use/operations/agent-release-report</loc>
+  </url>
+  <url>
     <loc>https://alemonjs.dev/docs/alemonx/use/operations/ai-operations</loc>
+  </url>
+  <url>
+    <loc>https://alemonjs.dev/docs/alemonx/use/operations/dependency-sources</loc>
+  </url>
+  <url>
+    <loc>https://alemonjs.dev/docs/alemonx/use/operations/docker</loc>
+  </url>
+  <url>
+    <loc>https://alemonjs.dev/docs/alemonx/use/operations/troubleshooting</loc>
   </url>
   <url>
     <loc>https://alemonjs.dev/docs/alemonx/use/projects/create-or-import</loc>
   </url>
   <url>
     <loc>https://alemonjs.dev/docs/alemonx/use/runtime/run-and-monitor</loc>
+  </url>
+  <url>
+    <loc>https://alemonjs.dev/docs/alemonx/use/user-manual</loc>
   </url>
   <url>
     <loc>https://alemonjs.dev/docs/apps-module</loc>
@@ -121,7 +157,14 @@
     <loc>https://alemonjs.dev/docs/environment</loc>
   </url>
   <url>
+    <loc>https://alemonjs.dev/docs/intro</loc>
+  </url>
+  <url>
     <loc>https://alemonjs.dev/docs/open</loc>
+  </url>
+  <url>
+    <loc>https://alemonjs.dev/blog/2026/08/31/v2.1.97</loc>
+    <lastmod>2026-08-31</lastmod>
   </url>
   <url>
     <loc>https://alemonjs.dev/blog/2026/08/22/alemonx-push</loc>
