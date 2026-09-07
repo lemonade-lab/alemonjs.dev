@@ -1,5 +1,5 @@
 ---
-title: WebView
+title: 机器人应用页
 description: 在机器人插件中注册侧栏页面，并使用消息桥和 API 代理。
 sidebar_position: 3
 ---

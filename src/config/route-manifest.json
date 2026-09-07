@@ -171,19 +171,6 @@
     }
   },
   {
-    "id": "doc:alemonjsDocs/getting-started/quick-start.mdx",
-    "type": "doc",
-    "path": "/docs/alemonjsDocs/getting-started/quick-start",
-    "filePath": "alemonjsDocs/getting-started/quick-start.mdx",
-    "title": "快速开始",
-    "description": "创建 ALemonJS 项目，编写路由并连接一个聊天平台。",
-    "metadata": {
-      "title": "快速开始",
-      "description": "创建 ALemonJS 项目，编写路由并连接一个聊天平台。",
-      "sidebar_position": 3
-    }
-  },
-  {
     "id": "doc:alemonjsDocs/http/route-mw.md",
     "type": "doc",
     "path": "/docs/alemonjsDocs/http/route-mw",
@@ -225,7 +212,7 @@
     "path": "/docs/alemonjsDocs/modules/desktop",
     "filePath": "alemonjsDocs/modules/desktop.md",
     "title": "扩展",
-    "description": "扩展 如何开发扩展并推送到npmjs 如何识别的 会读取nodemodules/pkg-name/package.json 解析并得到main 以入口文件的目录为工程目录 服务端 服务端配置 桌面端 桌面端配置 指令 注意command有2...",
+    "description": "扩展 如何开发扩展并推送到npmjs 如何识别的 会读取nodemodules/pkg-name/package.json 解析并得到main 以入口文件的目录为工程目录 服务端 服务端配置",
     "metadata": {
       "label": "扩展",
       "sidebar_position": 7
@@ -256,19 +243,6 @@
     }
   },
   {
-    "id": "doc:alemonx/develop/bot-app-page.md",
-    "type": "doc",
-    "path": "/docs/alemonx/develop/bot-app-page",
-    "filePath": "alemonx/develop/bot-app-page.md",
-    "title": "机器人应用页",
-    "description": "为机器人插件提供静态应用页面，并通过受限 API 与机器人通信。",
-    "metadata": {
-      "title": "机器人应用页",
-      "description": "为机器人插件提供静态应用页面，并通过受限 API 与机器人通信。",
-      "sidebar_position": 4
-    }
-  },
-  {
     "id": "doc:alemonx/develop/build.md",
     "type": "doc",
     "path": "/docs/alemonx/develop/build",
@@ -279,19 +253,6 @@
       "title": "机器人构建规范",
       "description": "了解 ALemonX 如何识别机器人构建入口、bundle 输出和嵌套前端项目。",
       "sidebar_position": 5
-    }
-  },
-  {
-    "id": "doc:alemonx/develop/plugin-template.md",
-    "type": "doc",
-    "path": "/docs/alemonx/develop/plugin-template",
-    "filePath": "alemonx/develop/plugin-template.md",
-    "title": "官方插件模板与可运行示例",
-    "description": "使用最小 Node.js 系统插件模板创建一个可发现、可运行、可调试的 ALemonX 插件。",
-    "metadata": {
-      "title": "官方插件模板与可运行示例",
-      "description": "使用最小 Node.js 系统插件模板创建一个可发现、可运行、可调试的 ALemonX 插件。",
-      "sidebar_position": 1
     }
   },
   {
@@ -312,10 +273,10 @@
     "type": "doc",
     "path": "/docs/alemonx/develop/webview",
     "filePath": "alemonx/develop/webview.md",
-    "title": "WebView",
+    "title": "机器人应用页",
     "description": "在机器人插件中注册侧栏页面，并使用消息桥和 API 代理。",
     "metadata": {
-      "title": "WebView",
+      "title": "机器人应用页",
       "description": "在机器人插件中注册侧栏页面，并使用消息桥和 API 代理。",
       "sidebar_position": 3
     }
@@ -351,11 +312,11 @@
     "type": "doc",
     "path": "/docs/alemonx/overview",
     "filePath": "alemonx/overview.md",
-    "title": "ALemonX 文档总览",
-    "description": "面向用户、机器人开发者、系统插件开发者和运维人员的 ALemonX 文档入口。",
+    "title": "ALemonX",
+    "description": "ALemonX 的安装入口，以及机器人和扩展开发文档。",
     "metadata": {
-      "title": "ALemonX 文档总览",
-      "description": "面向用户、机器人开发者、系统插件开发者和运维人员的 ALemonX 文档入口。",
+      "title": "ALemonX",
+      "description": "ALemonX 的安装入口，以及机器人和扩展开发文档。",
       "sidebar_position": 0
     }
   },
@@ -370,19 +331,6 @@
       "title": "CLI",
       "description": "使用 alx 启动工作台、管理服务、插件、认证和发布。",
       "sidebar_position": 1
-    }
-  },
-  {
-    "id": "doc:alemonx/reference/compatibility.md",
-    "type": "doc",
-    "path": "/docs/alemonx/reference/compatibility",
-    "filePath": "alemonx/reference/compatibility.md",
-    "title": "版本兼容矩阵",
-    "description": "ALemonX、ALemonJS、Node.js、MCP 与系统插件运行时的版本边界和升级策略。",
-    "metadata": {
-      "title": "版本兼容矩阵",
-      "description": "ALemonX、ALemonJS、Node.js、MCP 与系统插件运行时的版本边界和升级策略。",
-      "sidebar_position": 4
     }
   },
   {
@@ -422,175 +370,6 @@
       "title": "插件清单",
       "description": "为系统插件配置 alx.json 的执行器、页面和导航入口。",
       "sidebar_position": 3
-    }
-  },
-  {
-    "id": "doc:alemonx/use/agent/collaboration.md",
-    "type": "doc",
-    "path": "/docs/alemonx/use/agent/collaboration",
-    "filePath": "alemonx/use/agent/collaboration.md",
-    "title": "Agent 协作",
-    "description": "创建任务、审阅计划、批准写入操作并查看验证输出。",
-    "metadata": {
-      "title": "Agent 协作",
-      "description": "创建任务、审阅计划、批准写入操作并查看验证输出。",
-      "sidebar_position": 1
-    }
-  },
-  {
-    "id": "doc:alemonx/use/agent/mcp.md",
-    "type": "doc",
-    "path": "/docs/alemonx/use/agent/mcp",
-    "filePath": "alemonx/use/agent/mcp.md",
-    "title": "MCP 接入",
-    "description": "在本机 Agent 客户端中配置 alx mcp 或 mcp-http。",
-    "metadata": {
-      "title": "MCP 接入",
-      "description": "在本机 Agent 客户端中配置 alx mcp 或 mcp-http。",
-      "sidebar_position": 2
-    }
-  },
-  {
-    "id": "doc:alemonx/use/agent/task-lifecycle.md",
-    "type": "doc",
-    "path": "/docs/alemonx/use/agent/task-lifecycle",
-    "filePath": "alemonx/use/agent/task-lifecycle.md",
-    "title": "Agent 任务状态机",
-    "description": "了解任务计划、审批、执行、验证、暂停、恢复与终止之间的状态转换。",
-    "metadata": {
-      "title": "Agent 任务状态机",
-      "description": "了解任务计划、审批、执行、验证、暂停、恢复与终止之间的状态转换。",
-      "sidebar_position": 2
-    }
-  },
-  {
-    "id": "doc:alemonx/use/extensions/plugins-and-webview.md",
-    "type": "doc",
-    "path": "/docs/alemonx/use/extensions/plugins-and-webview",
-    "filePath": "alemonx/use/extensions/plugins-and-webview.md",
-    "title": "插件与 WebView",
-    "description": "为机器人项目配置侧栏入口和静态 WebView 页面。",
-    "metadata": {
-      "title": "插件与 WebView",
-      "description": "为机器人项目配置侧栏入口和静态 WebView 页面。",
-      "sidebar_position": 1
-    }
-  },
-  {
-    "id": "doc:alemonx/use/operations/access-and-safety.md",
-    "type": "doc",
-    "path": "/docs/alemonx/use/operations/access-and-safety",
-    "filePath": "alemonx/use/operations/access-and-safety.md",
-    "title": "权限与安全",
-    "description": "配置访问目录、登录、角色和高风险操作记录。",
-    "metadata": {
-      "title": "权限与安全",
-      "description": "配置访问目录、登录、角色和高风险操作记录。",
-      "sidebar_position": 2
-    }
-  },
-  {
-    "id": "doc:alemonx/use/operations/agent-release-report.md",
-    "type": "doc",
-    "path": "/docs/alemonx/use/operations/agent-release-report",
-    "filePath": "alemonx/use/operations/agent-release-report.md",
-    "title": "Agent 运维与发布报告",
-    "description": "Agent、自动维护、告警、指标、灰度与回滚的生产验收和发布门禁。",
-    "metadata": {
-      "title": "Agent 运维与发布报告",
-      "description": "Agent、自动维护、告警、指标、灰度与回滚的生产验收和发布门禁。",
-      "sidebar_position": 3
-    }
-  },
-  {
-    "id": "doc:alemonx/use/operations/ai-operations.md",
-    "type": "doc",
-    "path": "/docs/alemonx/use/operations/ai-operations",
-    "filePath": "alemonx/use/operations/ai-operations.md",
-    "title": "AI 运维",
-    "description": "设置观察模式、审批维护操作、查看验证结果和回滚。",
-    "metadata": {
-      "title": "AI 运维",
-      "description": "设置观察模式、审批维护操作、查看验证结果和回滚。",
-      "sidebar_position": 1
-    }
-  },
-  {
-    "id": "doc:alemonx/use/operations/dependency-sources.md",
-    "type": "doc",
-    "path": "/docs/alemonx/use/operations/dependency-sources",
-    "filePath": "alemonx/use/operations/dependency-sources.md",
-    "title": "依赖源管理",
-    "description": "了解 ALemonX 对 DNF/YUM、APT 和镜像源的检查、备份与安全边界。",
-    "metadata": {
-      "title": "依赖源管理",
-      "description": "了解 ALemonX 对 DNF/YUM、APT 和镜像源的检查、备份与安全边界。",
-      "sidebar_position": 2
-    }
-  },
-  {
-    "id": "doc:alemonx/use/operations/docker.md",
-    "type": "doc",
-    "path": "/docs/alemonx/use/operations/docker",
-    "filePath": "alemonx/use/operations/docker.md",
-    "title": "Docker 部署",
-    "description": "使用 Docker 部署 ALemonX，并正确持久化工作区、配置和插件数据。",
-    "metadata": {
-      "title": "Docker 部署",
-      "description": "使用 Docker 部署 ALemonX，并正确持久化工作区、配置和插件数据。",
-      "sidebar_position": 3
-    }
-  },
-  {
-    "id": "doc:alemonx/use/operations/troubleshooting.md",
-    "type": "doc",
-    "path": "/docs/alemonx/use/operations/troubleshooting",
-    "filePath": "alemonx/use/operations/troubleshooting.md",
-    "title": "故障排查",
-    "description": "处理端口、服务、依赖、机器人运行和 Agent 操作中的常见问题。",
-    "metadata": {
-      "title": "故障排查",
-      "description": "处理端口、服务、依赖、机器人运行和 Agent 操作中的常见问题。",
-      "sidebar_position": 4
-    }
-  },
-  {
-    "id": "doc:alemonx/use/projects/create-or-import.md",
-    "type": "doc",
-    "path": "/docs/alemonx/use/projects/create-or-import",
-    "filePath": "alemonx/use/projects/create-or-import.md",
-    "title": "项目与配置",
-    "description": "创建模板、导入本地目录或克隆 Git 仓库。",
-    "metadata": {
-      "title": "项目与配置",
-      "description": "创建模板、导入本地目录或克隆 Git 仓库。",
-      "sidebar_position": 1
-    }
-  },
-  {
-    "id": "doc:alemonx/use/runtime/run-and-monitor.md",
-    "type": "doc",
-    "path": "/docs/alemonx/use/runtime/run-and-monitor",
-    "filePath": "alemonx/use/runtime/run-and-monitor.md",
-    "title": "运行与交付",
-    "description": "在项目页运行命令、管理 PM2、查看 Git 状态和发布操作。",
-    "metadata": {
-      "title": "运行与交付",
-      "description": "在项目页运行命令、管理 PM2、查看 Git 状态和发布操作。",
-      "sidebar_position": 1
-    }
-  },
-  {
-    "id": "doc:alemonx/use/user-manual.md",
-    "type": "doc",
-    "path": "/docs/alemonx/use/user-manual",
-    "filePath": "alemonx/use/user-manual.md",
-    "title": "用户手册",
-    "description": "从安装、项目管理到运行、调试、发布和安全运维，完整了解 ALemonX。",
-    "metadata": {
-      "title": "用户手册",
-      "description": "从安装、项目管理到运行、调试、发布和安全运维，完整了解 ALemonX。",
-      "sidebar_position": 1
     }
   },
   {
@@ -646,12 +425,12 @@
     "type": "doc",
     "path": "/docs/intro",
     "filePath": "intro.md",
-    "title": "简介",
-    "description": "ALemonX 官方文档总览：了解工作台、机器人项目、ALemonJS 框架与系统插件之间的关系。",
+    "title": "文档",
+    "description": "ALemonX、机器人开发与生态文档的内容一览。",
     "metadata": {
       "sidebar_position": 1,
-      "label": "简介",
-      "description": "ALemonX 官方文档总览：了解工作台、机器人项目、ALemonJS 框架与系统插件之间的关系。"
+      "label": "文档",
+      "description": "ALemonX、机器人开发与生态文档的内容一览。"
     }
   },
   {

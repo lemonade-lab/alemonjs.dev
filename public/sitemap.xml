@@ -46,9 +46,6 @@
     <loc>https://alemonjs.dev/docs/alemonjsDocs/getting-started/install</loc>
   </url>
   <url>
-    <loc>https://alemonjs.dev/docs/alemonjsDocs/getting-started/quick-start</loc>
-  </url>
-  <url>
     <loc>https://alemonjs.dev/docs/alemonjsDocs/http/route-mw</loc>
   </url>
   <url>
@@ -67,13 +64,7 @@
     <loc>https://alemonjs.dev/docs/alemonjsDocs/modules/platforms</loc>
   </url>
   <url>
-    <loc>https://alemonjs.dev/docs/alemonx/develop/bot-app-page</loc>
-  </url>
-  <url>
     <loc>https://alemonjs.dev/docs/alemonx/develop/build</loc>
-  </url>
-  <url>
-    <loc>https://alemonjs.dev/docs/alemonx/develop/plugin-template</loc>
   </url>
   <url>
     <loc>https://alemonjs.dev/docs/alemonx/develop/system-plugins</loc>
@@ -94,9 +85,6 @@
     <loc>https://alemonjs.dev/docs/alemonx/reference/cli</loc>
   </url>
   <url>
-    <loc>https://alemonjs.dev/docs/alemonx/reference/compatibility</loc>
-  </url>
-  <url>
     <loc>https://alemonjs.dev/docs/alemonx/reference/mcp-tools</loc>
   </url>
   <url>
@@ -104,45 +92,6 @@
   </url>
   <url>
     <loc>https://alemonjs.dev/docs/alemonx/reference/plugin-manifest</loc>
-  </url>
-  <url>
-    <loc>https://alemonjs.dev/docs/alemonx/use/agent/collaboration</loc>
-  </url>
-  <url>
-    <loc>https://alemonjs.dev/docs/alemonx/use/agent/mcp</loc>
-  </url>
-  <url>
-    <loc>https://alemonjs.dev/docs/alemonx/use/agent/task-lifecycle</loc>
-  </url>
-  <url>
-    <loc>https://alemonjs.dev/docs/alemonx/use/extensions/plugins-and-webview</loc>
-  </url>
-  <url>
-    <loc>https://alemonjs.dev/docs/alemonx/use/operations/access-and-safety</loc>
-  </url>
-  <url>
-    <loc>https://alemonjs.dev/docs/alemonx/use/operations/agent-release-report</loc>
-  </url>
-  <url>
-    <loc>https://alemonjs.dev/docs/alemonx/use/operations/ai-operations</loc>
-  </url>
-  <url>
-    <loc>https://alemonjs.dev/docs/alemonx/use/operations/dependency-sources</loc>
-  </url>
-  <url>
-    <loc>https://alemonjs.dev/docs/alemonx/use/operations/docker</loc>
-  </url>
-  <url>
-    <loc>https://alemonjs.dev/docs/alemonx/use/operations/troubleshooting</loc>
-  </url>
-  <url>
-    <loc>https://alemonjs.dev/docs/alemonx/use/projects/create-or-import</loc>
-  </url>
-  <url>
-    <loc>https://alemonjs.dev/docs/alemonx/use/runtime/run-and-monitor</loc>
-  </url>
-  <url>
-    <loc>https://alemonjs.dev/docs/alemonx/use/user-manual</loc>
   </url>
   <url>
     <loc>https://alemonjs.dev/docs/apps-module</loc>

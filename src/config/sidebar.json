@@ -1,6 +1,6 @@
 [
   {
-    "title": "简介",
+    "title": "文档",
     "path": "/docs/intro",
     "position": 1
   },
@@ -29,103 +29,20 @@
         ]
       },
       {
-        "id": "use",
-        "label": "使用",
-        "position": 1,
-        "collapsed": false,
-        "items": [
-          {
-            "title": "Agent 协作",
-            "path": "/docs/alemonx/use/agent/collaboration",
-            "position": 1
-          },
-          {
-            "title": "插件与 WebView",
-            "path": "/docs/alemonx/use/extensions/plugins-and-webview",
-            "position": 1
-          },
-          {
-            "title": "AI 运维",
-            "path": "/docs/alemonx/use/operations/ai-operations",
-            "position": 1
-          },
-          {
-            "title": "项目与配置",
-            "path": "/docs/alemonx/use/projects/create-or-import",
-            "position": 1
-          },
-          {
-            "title": "运行与交付",
-            "path": "/docs/alemonx/use/runtime/run-and-monitor",
-            "position": 1
-          },
-          {
-            "title": "用户手册",
-            "path": "/docs/alemonx/use/user-manual",
-            "position": 1
-          },
-          {
-            "title": "MCP 接入",
-            "path": "/docs/alemonx/use/agent/mcp",
-            "position": 2
-          },
-          {
-            "title": "Agent 任务状态机",
-            "path": "/docs/alemonx/use/agent/task-lifecycle",
-            "position": 2
-          },
-          {
-            "title": "权限与安全",
-            "path": "/docs/alemonx/use/operations/access-and-safety",
-            "position": 2
-          },
-          {
-            "title": "依赖源管理",
-            "path": "/docs/alemonx/use/operations/dependency-sources",
-            "position": 2
-          },
-          {
-            "title": "Agent 运维与发布报告",
-            "path": "/docs/alemonx/use/operations/agent-release-report",
-            "position": 3
-          },
-          {
-            "title": "Docker 部署",
-            "path": "/docs/alemonx/use/operations/docker",
-            "position": 3
-          },
-          {
-            "title": "故障排查",
-            "path": "/docs/alemonx/use/operations/troubleshooting",
-            "position": 4
-          }
-        ]
-      },
-      {
         "id": "develop",
         "label": "开发者",
         "position": 2,
         "collapsed": false,
         "items": [
           {
-            "title": "官方插件模板与可运行示例",
-            "path": "/docs/alemonx/develop/plugin-template",
-            "position": 1
-          },
-          {
             "title": "系统插件开发",
             "path": "/docs/alemonx/develop/system-plugins",
             "position": 1
           },
           {
-            "title": "WebView",
+            "title": "机器人应用页",
             "path": "/docs/alemonx/develop/webview",
             "position": 3
-          },
-          {
-            "title": "机器人应用页",
-            "path": "/docs/alemonx/develop/bot-app-page",
-            "position": 4
           },
           {
             "title": "机器人构建规范",
@@ -159,11 +76,6 @@
             "title": "插件清单",
             "path": "/docs/alemonx/reference/plugin-manifest",
             "position": 3
-          },
-          {
-            "title": "版本兼容矩阵",
-            "path": "/docs/alemonx/reference/compatibility",
-            "position": 4
           }
         ]
       }
@@ -185,11 +97,6 @@
             "title": "如何安装",
             "path": "/docs/alemonjsDocs/getting-started/install",
             "position": 2
-          },
-          {
-            "title": "快速开始",
-            "path": "/docs/alemonjsDocs/getting-started/quick-start",
-            "position": 3
           },
           {
             "title": "配置说明",

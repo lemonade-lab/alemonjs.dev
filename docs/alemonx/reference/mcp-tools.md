@@ -6,7 +6,7 @@ sidebar_position: 3
 
 # MCP 工具级参考
 
-本页是 [MCP 接入](/docs/alemonx/use/agent/mcp) 的工具索引。工具通过 stdio 或 Streamable HTTP 提供，返回文本结果和 `structuredContent`；以结构化字段为准，不要解析人类可读文本来判断状态。
+本页是 MCP 工具索引。工具通过 stdio 或 Streamable HTTP 提供，返回文本结果和 `structuredContent`；以结构化字段为准，不要解析人类可读文本来判断状态。
 
 ## 调用约定
 

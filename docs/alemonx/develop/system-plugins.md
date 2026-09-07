@@ -8,14 +8,6 @@ sidebar_position: 1
 
 系统插件是运行在 ALemonX 工作台中的扩展单元，用于为工作台增加全局的本机管理能力，例如网络检查、防火墙管理、Docker 管理、系统服务控制和硬件信息展示。
 
-本文面向系统插件开发者，重点说明插件如何被发现、如何与工作台通信、如何执行动作，以及如何安全地扩展宿主能力。
-
-:::warning 边界
-
-系统插件服务的是 **ALemonX 工作台本身**。机器人命令、机器人配置页和机器人应用页面属于机器人插件，不应放进系统插件。
-
-:::
-
 ## 运行模型
 
 一个系统插件由 Web 面板和可选执行器组成：
@@ -321,5 +313,5 @@ POST /api/v1/setup/plugins/<id>/upload
 
 - [插件清单](/docs/alemonx/reference/plugin-manifest)
 - [WebView 与扩展页面](/docs/alemonx/develop/webview)
-- [插件与 WebView 使用说明](/docs/alemonx/use/extensions/plugins-and-webview)
+- [机器人应用页](/docs/alemonx/develop/webview)
 - [源码项目开发文档](https://github.com/lemonade-lab/alemonx/blob/main/docs/plugin-development.md)
