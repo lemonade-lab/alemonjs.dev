@@ -43,15 +43,19 @@ export default defineConfig({
       style: 'dark',
       links: [
         {
-          title: '创建项目',
+          title: '了解',
           items: [
             {
               label: '如何安装',
               to: '/docs/alemonx/getting-started/install'
             },
             {
-              label: 'X插件',
+              label: 'X系统插件',
               to: '/docs/apps-x'
+            },
+            {
+              label: '加入社区',
+              to: 'https://qm.qq.com/q/AIiSecyPlK'
             }
           ]
         },
@@ -59,16 +63,20 @@ export default defineConfig({
           title: '相关工具',
           items: [
             {
-              label: 'ALemonJS',
+              label: '机器人框架',
               to: '/docs/alemonjsDocs/getting-started/install'
             },
             {
-              label: '插件与扩展',
+              label: '机器人插件',
               to: '/docs/apps'
             },
             {
-              label: '共同模块',
+              label: '机器人模块',
               to: '/docs/apps-module'
+            },
+            {
+              label: '机器人平台',
+              to: '/docs/environment'
             }
           ]
         },

@@ -19,11 +19,11 @@ export default function HeaderPage() {
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <a
             className="rounded-full bg-white px-5 py-3 text-sm font-semibold text-black transition hover:bg-white/85"
-            href="https://github.com/lemonade-lab/alemonx/releases"
+            href="https://xcloud.alemonjs.com"
             target="_blank"
             rel="noreferrer"
           >
-            下载 ALemonX
+            在线体验
           </a>
           <Link
             className="rounded-full border border-white/25 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
