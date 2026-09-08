@@ -24,6 +24,11 @@ export default defineConfig({
         },
         {
           position: 'right',
+          label: '下载',
+          href: 'https://github.com/lemonade-lab/alemonx/releases'
+        },
+        {
+          position: 'right',
           label: '源码',
           href: 'https://github.com/lemonade-lab/alemonx'
         },
@@ -34,8 +39,8 @@ export default defineConfig({
         },
         {
           position: 'right',
-          label: '下载',
-          href: 'https://github.com/lemonade-lab/alemonx/releases'
+          label: '编辑',
+          href: 'https://github.com/lemonade-lab/alemonjs.dev'
         }
       ]
     },
