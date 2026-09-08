@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/icon.ico" />
+    <link rel="apple-touch-icon" href="/pwa-192x192.png" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="ALemonX 更新"
+      href="/rss.xml"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta
+      name="description"
+      content="使用 ALemonX 创建或导入项目，运行命令，管理进程，并批准 Agent 任务。"
+    />
+    <meta property="og:title" content="ALemonX · 创建、运行和管理项目" />
+    <meta
+      property="og:description"
+      content="导入代码库，运行命令，查看日志，创建并批准 Agent 任务。"
+    />
+    <meta property="og:image" content="https://alemonjs.dev/og.png" />
+    <meta property="og:image:alt" content="ALemonX Local Agent Workstation" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>路由DSL · ALemonX</title>
+    <meta name="description" content="路由DSL 将复杂的配置转为链式，同时规范化指令风格和加强匹配速度 最小示例 --- 一眼看懂 这套路由只用 4 个东西： Router.create(...) 建路由容器，给顶层 res 默认事件/平台。 router.res(...)..." />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://alemonjs.dev/docs/alemonjsDocs/core/router-sdl" />
+    <meta property="og:title" content="路由DSL" />
+    <meta property="og:description" content="路由DSL 将复杂的配置转为链式，同时规范化指令风格和加强匹配速度 最小示例 --- 一眼看懂 这套路由只用 4 个东西： Router.create(...) 建路由容器，给顶层 res 默认事件/平台。 router.res(...)..." />
+    <meta property="og:image" content="https://alemonjs.dev/og.png" />
+    <script type="application/ld+json">{"@context":"https://schema.org","name":"路由DSL","description":"路由DSL 将复杂的配置转为链式，同时规范化指令风格和加强匹配速度 最小示例 --- 一眼看懂 这套路由只用 4 个东西： Router.create(...) 建路由容器，给顶层 res 默认事件/平台。 router.res(...)...","url":"https://alemonjs.dev/docs/alemonjsDocs/core/router-sdl","@type":"TechArticle","image":"https://alemonjs.dev/og.png","inLanguage":"zh-CN"}</script>
+    <script type="module" crossorigin src="/js/index-DMHucpII.js"></script>
+    <link rel="modulepreload" crossorigin href="/js/react-vendor-BiYJcYmU.js">
+    <link rel="stylesheet" crossorigin href="/assets/css/index-C7IOt2lH.css">
+    <script type="module">import.meta.url;import("_").catch(()=>1);(async function*(){})().next();window.__vite_is_modern_browser=true</script>
+    <script type="module">!function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy chunks, syntax error above and the same error below should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>
+  <link rel="manifest" href="/manifest.webmanifest"></head>
+
+  <body>
+    <div id="root"><div class="css-dev-only-do-not-override-p45i5k ant-app css-var-root"><div class="min-h-screen bg-[var(--canvas)] text-[var(--text)]"><nav class="fixed top-0 z-50 w-full border-b border-[var(--line)] bg-[var(--surface)] backdrop-blur-xl shadow-lg shadow-black/5"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex h-16 items-center justify-between"><div class="flex items-center"><a class="flex items-center space-x-2 hover:opacity-80 transition-opacity" href="/" data-discover="true"><span aria-hidden="true" class="grid h-8 w-8 place-items-center rounded-lg bg-black text-sm font-semibold text-white dark:bg-white dark:text-black">X</span><span class="text-lg font-bold text-[var(--text)]">ALemonX</span></a></div><div class="hidden md:flex items-center space-x-6"><a class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md" href="/docs/intro" data-discover="true">文档</a><a class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md" href="/blog" data-discover="true">更新</a><a href="https://github.com/lemonade-lab/alemonx/releases" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md">下载</a><a href="https://github.com/lemonade-lab/alemonx" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md">源码</a><a href="https://github.com/lemonade-lab/alemonjs" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md">框架</a><a href="https://github.com/lemonade-lab/alemonjs.dev" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md">编辑</a><button class="flex items-center gap-2 text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md border border-[var(--line)]" title="搜索 (⌘K)"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg><span class="hidden lg:inline">搜索</span><kbd class="hidden lg:inline-flex items-center px-1.5 py-0.5 text-xs font-mono bg-[var(--surface-muted)] border border-[var(--line)] rounded">⌘K</kbd></button><button class="text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] p-2 rounded-md" title="切换到暗色模式"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><button class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-[var(--surface-muted)] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[var(--accent)]" aria-expanded="false"><span class="sr-only">打开主菜单</span><svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg></button></div></div></nav><aside class="
+        fixed top-16 left-0 z-40 w-64
+        h-[calc(100vh-4rem)]
+        border-r border-[var(--line)] bg-[var(--canvas)] text-[var(--text)]
+        overflow-y-auto shadow-xl lg:shadow-none
+        transition-all duration-300 ease-out
+        -translate-x-full lg:translate-x-0
+      "><div class="lg:hidden flex justify-end border-b border-[var(--line)]"><button class="p-2 rounded-md text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-[var(--surface-muted)]"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button></div><nav class="p-4 lg:p-6 space-y-2"></nav></aside><aside class="hidden xl:fixed xl:block xl:top-16 xl:bottom-0 xl:right-0 xl:w-64 xl:overflow-y-auto xl:z-10"></aside><main class="pt-16 lg:ml-64 xl:mr-64"><div class="lg:hidden sticky top-16 z-20 bg-[var(--surface)] border-b border-[var(--line)] px-4 py-3"><button class="flex items-center space-x-2 text-[var(--text-muted)] hover:text-[var(--text)] transition-colors"><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg><span class="text-sm font-medium">目录</span></button></div><div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8"><article id="doc-content" class="prose prose-sm sm:prose-base lg:prose-lg prose-slate dark:prose-invert max-w-none"><h1>路由DSL</h1>
+<p>将复杂的配置转为链式，同时规范化指令风格和加强匹配速度</p>
+<h2>最小示例</h2>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">Router</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+
+<span class="hljs-keyword">const</span> router = <span class="hljs-title class_">Router</span>.<span class="hljs-title function_">create</span>({
+  <span class="hljs-attr">events</span>: [<span class="hljs-string">&#x27;message.create&#x27;</span>, <span class="hljs-string">&#x27;private.message.create&#x27;</span>]
+})
+
+router.<span class="hljs-title function_">res</span>({}, <span class="hljs-function">() =&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">&#x27;@src/response/resMaintenance&#x27;</span>))
+
+<span class="hljs-keyword">const</span> app = router.<span class="hljs-title function_">group</span>(
+  {
+    <span class="hljs-attr">routeText</span>: {
+      <span class="hljs-attr">prefixes</span>: [<span class="hljs-string">&#x27;/&#x27;</span>, <span class="hljs-string">&#x27;#&#x27;</span>, <span class="hljs-string">&#x27;＃&#x27;</span>, <span class="hljs-string">&#x27;!&#x27;</span>, <span class="hljs-string">&#x27;！&#x27;</span>],
+      <span class="hljs-attr">stripPrefix</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">allowBare</span>: <span class="hljs-literal">true</span>
+    },
+    <span class="hljs-attr">keyPolicy</span>: {
+      <span class="hljs-attr">maxWords</span>: <span class="hljs-number">2</span>
+    }
+  },
+  <span class="hljs-function">() =&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">&#x27;@src/response/mw&#x27;</span>)
+)
+
+app.<span class="hljs-title function_">use</span>([<span class="hljs-string">&#x27;帮助&#x27;</span>, <span class="hljs-string">&#x27;help&#x27;</span>], <span class="hljs-function">() =&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">&#x27;@src/response/help&#x27;</span>))
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> router.<span class="hljs-property">define</span>
+</code></pre></div>
+<hr/>
+<h2>一眼看懂</h2>
+<p>这套路由只用 4 个东西：</p>
+<ol>
+<li>
+<p><code>Router.create(...)</code>
+建路由容器，给顶层 <code>res</code> 默认事件/平台。</p>
+</li>
+<li>
+<p><code>router.res(...)</code>
+注册顶层前置逻辑。</p>
+</li>
+<li>
+<p><code>group(...)</code>
+建一组共享中间件、共享输入规则的命令组。</p>
+</li>
+<li>
+<p><code>use(...)</code>
+注册具体命令。</p>
+</li>
+</ol>
+<hr/>
+<h2>什么时候用 <code>router.res</code></h2>
+<p><code>router.res(...)</code> 只放顶层前置逻辑。</p>
+<p>适合放：</p>
+<ul>
+<li>维护模式</li>
+<li>新手引导</li>
+<li>select 转义</li>
+<li>其他“消息一进来就要先检查”的逻辑</li>
+</ul>
+<h3>写法 懒加载</h3>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts">router.<span class="hljs-title function_">res</span>({}, <span class="hljs-function">() =&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">&#x27;@src/response/resGuide&#x27;</span>))
+</code></pre></div>
+<h3>注意</h3>
+<p>顶层 <code>res</code> 往后放行要用：</p>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts"><span class="hljs-title function_">next</span>()
+</code></pre></div>
+<p>不要指望：</p>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts"><span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+</code></pre></div>
+<hr/>
+<h2>什么时候用 <code>group</code></h2>
+<p><code>group(...)</code> 表示“这一组命令共享同一套规则”。</p>
+<p>适合放：</p>
+<ul>
+<li>共享中间件</li>
+<li>输入前缀规则</li>
+<li>key 提取规则</li>
+<li>fallback 提示策略</li>
+<li>redispatch 深度</li>
+<li>duplicateKey 策略</li>
+</ul>
+<h3>基本写法</h3>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts"><span class="hljs-keyword">const</span> app = router.<span class="hljs-title function_">group</span>(
+  {
+    <span class="hljs-attr">events</span>: [<span class="hljs-string">&#x27;message.create&#x27;</span>, <span class="hljs-string">&#x27;private.message.create&#x27;</span>]
+  },
+  <span class="hljs-function">() =&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">&#x27;@src/response/mwBan&#x27;</span>),
+  <span class="hljs-function">() =&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">&#x27;@src/response/mw&#x27;</span>)
+)
+</code></pre></div>
+<h3>嵌套写法</h3>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts"><span class="hljs-keyword">const</span> captcha = router.<span class="hljs-title function_">group</span>(
+  {
+    <span class="hljs-attr">fallback</span>: {
+      <span class="hljs-attr">suggest</span>: <span class="hljs-literal">false</span>
+    }
+  },
+  <span class="hljs-function">() =&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">&#x27;@src/response/mwCaptcha&#x27;</span>)
+)
+</code></pre></div>
+<hr/>
+<h2>什么时候用 <code>use</code></h2>
+<p><code>use(...)</code> 注册具体命令。</p>
+<h3>1. 单条命令</h3>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts">app.<span class="hljs-title function_">use</span>(<span class="hljs-string">&#x27;我&#x27;</span>, <span class="hljs-function">() =&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">&#x27;@src/response/message/me/res&#x27;</span>))
+</code></pre></div>
+<h3>2. 多个命令共用同一个实现</h3>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts">app.<span class="hljs-title function_">use</span>([<span class="hljs-string">&#x27;帮助&#x27;</span>, <span class="hljs-string">&#x27;修仙帮助&#x27;</span>, <span class="hljs-string">&#x27;help&#x27;</span>], <span class="hljs-function">() =&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">&#x27;@src/response/help&#x27;</span>))
+</code></pre></div>
+<h3>3. 带参数规则</h3>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts">app.<span class="hljs-title function_">use</span>(
+  {
+    <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;任务设置&#x27;</span>,
+    <span class="hljs-attr">schema</span>: {
+      <span class="hljs-attr">usage</span>: <span class="hljs-string">&#x27;/任务设置 &lt;槽位&gt; &lt;步骤&gt; &lt;内容&gt;&#x27;</span>,
+      <span class="hljs-attr">args</span>: [
+        { <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;slot&#x27;</span>, <span class="hljs-attr">rules</span>: [{ <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;number&#x27;</span>, <span class="hljs-attr">min</span>: <span class="hljs-number">1</span> }] },
+        { <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;step&#x27;</span>, <span class="hljs-attr">rules</span>: [{ <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;number&#x27;</span>, <span class="hljs-attr">min</span>: <span class="hljs-number">1</span> }] },
+        { <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;content&#x27;</span>, <span class="hljs-attr">rules</span>: [{ <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;rest&#x27;</span> }] }
+      ]
+    }
+  },
+  <span class="hljs-function">() =&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">&#x27;@src/response/task/settings/res&#x27;</span>)
+)
+</code></pre></div>
+<h3>4. 多条配置化命令共用一个实现</h3>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts">app.<span class="hljs-title function_">use</span>(
+  [
+    { <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;学习功法&#x27;</span>, <span class="hljs-attr">schema</span>: skillSchema },
+    { <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;隐藏功法&#x27;</span>, <span class="hljs-attr">schema</span>: hideSchema }
+  ],
+  <span class="hljs-function">() =&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">&#x27;@src/response/skillBook/res&#x27;</span>)
+)
+</code></pre></div>
+<hr/>
+<h2>key 怎么写</h2>
+<h3>内部 key 一律不带前缀</h3>
+<p>正确：</p>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts">app.<span class="hljs-title function_">use</span>(<span class="hljs-string">&#x27;签到&#x27;</span>, ...);
+app.<span class="hljs-title function_">use</span>(<span class="hljs-string">&#x27;任务设置&#x27;</span>, ...);
+</code></pre></div>
+<p>不要写：</p>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts">app.<span class="hljs-title function_">use</span>(<span class="hljs-string">&#x27;/签到&#x27;</span>, ...);
+app.<span class="hljs-title function_">use</span>(<span class="hljs-string">&#x27;/任务设置&#x27;</span>, ...);
+</code></pre></div>
+<p>前缀由 <code>routeText</code> 处理，不属于 key。</p>
+<hr/>
+<h2><code>routeText</code> 怎么配</h2>
+<p><code>routeText</code> 用来处理输入前缀，不改原始 <code>MessageText</code>，只影响路由命中。</p>
+<h3>常见写法</h3>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts"><span class="hljs-attr">routeText</span>: {
+  <span class="hljs-attr">prefixes</span>: [<span class="hljs-string">&#x27;/&#x27;</span>, <span class="hljs-string">&#x27;#&#x27;</span>, <span class="hljs-string">&#x27;＃&#x27;</span>, <span class="hljs-string">&#x27;!&#x27;</span>, <span class="hljs-string">&#x27;！&#x27;</span>],
+  <span class="hljs-attr">stripPrefix</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">allowBare</span>: <span class="hljs-literal">true</span>
+}
+</code></pre></div>
+<p>含义：</p>
+<ul>
+<li>允许这些前缀</li>
+<li>匹配时去掉前缀</li>
+<li>不带前缀也能匹配</li>
+</ul>
+<h3>按平台单独配置</h3>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts"><span class="hljs-attr">routeText</span>: {
+  <span class="hljs-attr">prefixes</span>: [<span class="hljs-string">&#x27;/&#x27;</span>, <span class="hljs-string">&#x27;#&#x27;</span>],
+  <span class="hljs-attr">stripPrefix</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">allowBare</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">byPlatform</span>: {
+    [discordPlatform]: {
+      <span class="hljs-attr">prefixes</span>: [<span class="hljs-string">&#x27;/&#x27;</span>],
+      <span class="hljs-attr">stripPrefix</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">allowBare</span>: <span class="hljs-literal">false</span>
+    }
+  }
+}
+</code></pre></div>
+<p>这表示：</p>
+<ul>
+<li>默认支持 <code>/</code> 和 <code>#</code></li>
+<li>Discord 只允许 <code>/</code></li>
+</ul>
+<hr/>
+<h2><code>keyPolicy</code> 怎么配</h2>
+<p>控制命中时按几词取 key。</p>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts"><span class="hljs-attr">keyPolicy</span>: {
+  <span class="hljs-attr">maxWords</span>: <span class="hljs-number">2</span>
+}
+</code></pre></div>
+<p>支持：</p>
+<ul>
+<li><code>1</code>
+只按第一个词取 key</li>
+<li><code>2</code>
+优先前两个词，再退回一个词</li>
+</ul>
+<p>一般命令组保持 <code>2</code> 就行。</p>
+<hr/>
+<h2><code>schema</code> 怎么用</h2>
+<p>业务通过 <code>useEvent()</code> 读取时，应使用 <code>event.current.__route</code> 访问这段上下文。</p>
+<p>命中后，路由层会自动把参数挂到：</p>
+<ul>
+<li><code>e.__route.rawArgs</code></li>
+<li><code>e.__route.parsedArgs</code></li>
+<li><code>e.__route.params</code></li>
+</ul>
+<p>推荐业务代码直接读：</p>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts">e.<span class="hljs-property">__route</span>.<span class="hljs-property">params</span>
+</code></pre></div>
+<p>不要再自己拆：</p>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts">e.<span class="hljs-property">MessageText</span>
+</code></pre></div>
+<h3>示例</h3>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts"><span class="hljs-keyword">const</span> { slot, step, content } = e.<span class="hljs-property">__route</span>.<span class="hljs-property">params</span>
+</code></pre></div>
+<hr/>
+<h2>fallback 怎么配</h2>
+<p>当用户输入没命中时，是否提示“更接近哪个指令”。</p>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts"><span class="hljs-attr">fallback</span>: {
+  <span class="hljs-attr">suggest</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">maxDistance</span>: <span class="hljs-number">2</span>,
+  <span class="hljs-attr">minInputLength</span>: <span class="hljs-number">2</span>,
+  <span class="hljs-attr">allowPrefixMatch</span>: <span class="hljs-literal">true</span>
+}
+</code></pre></div>
+<p>常见用法：</p>
+<ul>
+<li>想完全关闭提示：</li>
+</ul>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts"><span class="hljs-attr">fallback</span>: {
+  <span class="hljs-attr">suggest</span>: <span class="hljs-literal">false</span>
+}
+</code></pre></div>
+<hr/>
+<h2>duplicateKey 怎么配</h2>
+<p>同一事件下，重复注册同一个 key 时怎么处理。</p>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts"><span class="hljs-attr">duplicateKey</span>: <span class="hljs-string">&#x27;warn&#x27;</span>
+</code></pre></div>
+<p>支持：</p>
+<ul>
+<li><code>ignore</code></li>
+<li><code>warn</code></li>
+<li><code>throw</code></li>
+</ul>
+<p>推荐：</p>
+<ul>
+<li>开发期用 <code>warn</code> 或 <code>throw</code></li>
+</ul>
+<hr/>
+<h2>redispatch 怎么配</h2>
+<p>当某个 importer 改写了 <code>MessageText</code>，是否允许重新分发。</p>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts"><span class="hljs-attr">redispatch</span>: {
+  <span class="hljs-attr">maxDepth</span>: <span class="hljs-number">3</span>
+}
+</code></pre></div>
+<p>典型场景：</p>
+<ul>
+<li>任务系统把 <code>/任务 签到</code> 翻译成真实命令，再继续走后续路由</li>
+</ul>
+<hr/></article><nav class="flex justify-between items-center gap-4 pt-8 mt-8 border-t border-gray-200 dark:border-gray-700"><div class="flex-1"><a class="group flex flex-col hover:bg-gray-50 dark:hover:bg-gray-800 p-4 rounded-lg transition-colors" href="/docs/alemonjsDocs/core/middleware" data-discover="true"><span class="text-sm text-gray-500 dark:text-gray-400 mb-1 flex items-center"><svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>上一页</span><span class="text-blue-600 dark:text-blue-400 group-hover:underline font-medium">中间件</span></a></div><div class="flex-1 text-right"><a class="group flex flex-col items-end hover:bg-gray-50 dark:hover:bg-gray-800 p-4 rounded-lg transition-colors" href="/docs/alemonjsDocs/http/route" data-discover="true"><span class="text-sm text-gray-500 dark:text-gray-400 mb-1 flex items-center">下一页<svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></span><span class="text-blue-600 dark:text-blue-400 group-hover:underline font-medium">接口路由</span></a></div></nav></div></main><footer class="lg:ml-64 xl:mr-64"><footer class="mt-auto border-t border-[var(--line)] bg-[var(--surface)] text-[var(--text-muted)]"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12"><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8"><div class="text-center sm:text-left"><h3 class="text-sm font-semibold uppercase tracking-wider mb-3 sm:mb-4 text-[var(--text)]">了解</h3><ul class="space-y-2"><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/alemonx/getting-started/install" data-discover="true">如何安装</a></li><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/apps-x" data-discover="true">X系统插件</a></li><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="https://qm.qq.com/q/AIiSecyPlK">加入社区</a></li></ul></div><div class="text-center sm:text-left"><h3 class="text-sm font-semibold uppercase tracking-wider mb-3 sm:mb-4 text-[var(--text)]">相关工具</h3><ul class="space-y-2"><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/alemonjsDocs/getting-started/install" data-discover="true">机器人框架</a></li><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/apps" data-discover="true">机器人插件</a></li><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/apps-module" data-discover="true">机器人模块</a></li><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/environment" data-discover="true">机器人平台</a></li></ul></div><div class="text-center sm:text-left"><h3 class="text-sm font-semibold uppercase tracking-wider mb-3 sm:mb-4 text-[var(--text)]">下载与更新</h3><ul class="space-y-2"><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/blog" data-discover="true">X版本更新</a></li><li><a href="https://github.com/lemonade-lab/alemonx/releases" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-[var(--text)] transition-colors duration-200">X发布列表</a></li><li><a href="https://github.com/lemonade-lab/alemonx/discussions" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-[var(--text)] transition-colors duration-200">X社区讨论</a></li></ul></div></div><div class="pt-6 sm:pt-8 border-t border-[var(--line)] text-sm text-center text-[var(--text-muted)]"><div>Released under the MIT License. <br/> Copyright © 2024-present Lemonade-Lab & ALemonX Contributors </span> <br> <a  href="https://beian.miit.gov.cn/" target="_blank">津ICP备2023004480号</a></div></div></div></footer></footer></div></div></div>
+    <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
+    <script nomodule crossorigin id="vite-legacy-polyfill" src="/js/polyfills-legacy-DMY7g4vQ.js"></script>
+    <script nomodule crossorigin id="vite-legacy-entry" data-src="/js/index-legacy-m1vIKjwy.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
+  </body>
+</html>

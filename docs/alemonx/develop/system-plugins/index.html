@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/icon.ico" />
+    <link rel="apple-touch-icon" href="/pwa-192x192.png" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="ALemonX 更新"
+      href="/rss.xml"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta
+      name="description"
+      content="使用 ALemonX 创建或导入项目，运行命令，管理进程，并批准 Agent 任务。"
+    />
+    <meta property="og:title" content="ALemonX · 创建、运行和管理项目" />
+    <meta
+      property="og:description"
+      content="导入代码库，运行命令，查看日志，创建并批准 Agent 任务。"
+    />
+    <meta property="og:image" content="https://alemonjs.dev/og.png" />
+    <meta property="og:image:alt" content="ALemonX Local Agent Workstation" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>系统插件开发 · ALemonX</title>
+    <meta name="description" content="了解 ALemonX 系统插件的边界、目录结构、通讯协议、宿主能力与安全机制。" />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://alemonjs.dev/docs/alemonx/develop/system-plugins" />
+    <meta property="og:title" content="系统插件开发" />
+    <meta property="og:description" content="了解 ALemonX 系统插件的边界、目录结构、通讯协议、宿主能力与安全机制。" />
+    <meta property="og:image" content="https://alemonjs.dev/og.png" />
+    <script type="application/ld+json">{"@context":"https://schema.org","name":"系统插件开发","description":"了解 ALemonX 系统插件的边界、目录结构、通讯协议、宿主能力与安全机制。","url":"https://alemonjs.dev/docs/alemonx/develop/system-plugins","@type":"TechArticle","image":"https://alemonjs.dev/og.png","inLanguage":"zh-CN"}</script>
+    <script type="module" crossorigin src="/js/index-DMHucpII.js"></script>
+    <link rel="modulepreload" crossorigin href="/js/react-vendor-BiYJcYmU.js">
+    <link rel="stylesheet" crossorigin href="/assets/css/index-C7IOt2lH.css">
+    <script type="module">import.meta.url;import("_").catch(()=>1);(async function*(){})().next();window.__vite_is_modern_browser=true</script>
+    <script type="module">!function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy chunks, syntax error above and the same error below should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>
+  <link rel="manifest" href="/manifest.webmanifest"></head>
+
+  <body>
+    <div id="root"><div class="css-dev-only-do-not-override-p45i5k ant-app css-var-root"><div class="min-h-screen bg-[var(--canvas)] text-[var(--text)]"><nav class="fixed top-0 z-50 w-full border-b border-[var(--line)] bg-[var(--surface)] backdrop-blur-xl shadow-lg shadow-black/5"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex h-16 items-center justify-between"><div class="flex items-center"><a class="flex items-center space-x-2 hover:opacity-80 transition-opacity" href="/" data-discover="true"><span aria-hidden="true" class="grid h-8 w-8 place-items-center rounded-lg bg-black text-sm font-semibold text-white dark:bg-white dark:text-black">X</span><span class="text-lg font-bold text-[var(--text)]">ALemonX</span></a></div><div class="hidden md:flex items-center space-x-6"><a class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md" href="/docs/intro" data-discover="true">文档</a><a class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md" href="/blog" data-discover="true">更新</a><a href="https://github.com/lemonade-lab/alemonx/releases" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md">下载</a><a href="https://github.com/lemonade-lab/alemonx" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md">源码</a><a href="https://github.com/lemonade-lab/alemonjs" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md">框架</a><a href="https://github.com/lemonade-lab/alemonjs.dev" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md">编辑</a><button class="flex items-center gap-2 text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md border border-[var(--line)]" title="搜索 (⌘K)"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg><span class="hidden lg:inline">搜索</span><kbd class="hidden lg:inline-flex items-center px-1.5 py-0.5 text-xs font-mono bg-[var(--surface-muted)] border border-[var(--line)] rounded">⌘K</kbd></button><button class="text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] p-2 rounded-md" title="切换到暗色模式"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><button class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-[var(--surface-muted)] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[var(--accent)]" aria-expanded="false"><span class="sr-only">打开主菜单</span><svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg></button></div></div></nav><aside class="
+        fixed top-16 left-0 z-40 w-64
+        h-[calc(100vh-4rem)]
+        border-r border-[var(--line)] bg-[var(--canvas)] text-[var(--text)]
+        overflow-y-auto shadow-xl lg:shadow-none
+        transition-all duration-300 ease-out
+        -translate-x-full lg:translate-x-0
+      "><div class="lg:hidden flex justify-end border-b border-[var(--line)]"><button class="p-2 rounded-md text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-[var(--surface-muted)]"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button></div><nav class="p-4 lg:p-6 space-y-2"></nav></aside><aside class="hidden xl:fixed xl:block xl:top-16 xl:bottom-0 xl:right-0 xl:w-64 xl:overflow-y-auto xl:z-10"></aside><main class="pt-16 lg:ml-64 xl:mr-64"><div class="lg:hidden sticky top-16 z-20 bg-[var(--surface)] border-b border-[var(--line)] px-4 py-3"><button class="flex items-center space-x-2 text-[var(--text-muted)] hover:text-[var(--text)] transition-colors"><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg><span class="text-sm font-medium">目录</span></button></div><div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8"><article id="doc-content" class="prose prose-sm sm:prose-base lg:prose-lg prose-slate dark:prose-invert max-w-none"><h1>系统插件开发</h1>
+<p>系统插件是运行在 ALemonX 工作台中的扩展单元，用于为工作台增加全局的本机管理能力，例如网络检查、防火墙管理、Docker 管理、系统服务控制和硬件信息展示。</p>
+<h2>运行模型</h2>
+<p>一个系统插件由 Web 面板和可选执行器组成：</p>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-text">系统面板页（Web）
+        │  POST /api/v1/setup/plugins/&lt;id&gt;/actions
+        ▼
+ALemonX 宿主（alx）
+  身份校验、权限确认、任务互斥、进度、审计
+        │  stdin / stdout / stderr
+        ▼
+执行器（独立进程）
+  真正执行网络、系统、Docker 等本机操作
+</code></pre></div>
+<p>宿主不会在“发现插件”时执行插件代码。列出、渲染、启用和停用插件只读取清单和静态页面；只有用户调用动作时，宿主才会启动对应执行器。</p>
+<p>每个变更动作都会启动一次独立进程。这样可以让动作结束后释放资源，也可以把执行器崩溃限制在单次任务中。</p>
+<h2>插件结构</h2>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-text">my-status/
+├── alx.json              # 插件清单，必填
+├── web/
+│   └── index.html        # 系统面板页，必填
+├── runner/
+│   └── main.mjs          # 执行器，可选
+├── dist/                 # 发布包中的平台文件，可选
+└── .alx-install.json     # 宿主生成，禁止手工维护
+</code></pre></div>
+<p>插件的用户数据不要写入代码目录。宿主会注入 <code>ALX_PLUGIN_STORE</code>，插件应将数据库、登录态、下载缓存和可恢复配置保存到该目录。</p>
+<p>插件发现位置按优先级排列：</p>
+<ol>
+<li><code>&lt;workspace&gt;/plugins/</code>：用户安装插件的目录；</li>
+<li>程序提供的 <code>plugins/</code>：随程序安装的插件；</li>
+<li>用户配置目录中的旧版 <code>alx/plugins/</code>：仅用于兼容发现。</li>
+</ol>
+<p>同一个 <code>id</code> 只使用优先级最高的插件。插件目录和 <code>alx.json</code> 支持热更新，通常不需要重启工作台。</p>
+<h2>最小插件</h2>
+<h3><code>alx.json</code></h3>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;my-status&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;系统状态&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;version&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;1.0.0&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;runtime&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;node&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;entry&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;darwin-arm64&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;runner/main.mjs&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;linux-amd64&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;runner/main.mjs&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;windows-amd64&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;runner/main.mjs&quot;</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;web&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span> <span class="hljs-attr">&quot;root&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;web&quot;</span> <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;navigation&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;label&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;系统状态&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;icon&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;activity&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;order&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">10</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre></div>
+<p><code>id</code> 必须匹配 <code>^[a-z][a-z0-9-]{1,63}$</code>。<code>entry</code> 和 <code>web.root</code> 必须位于插件目录内，不能使用绝对路径、<code>..</code> 或符号链接逃逸。</p>
+<h3>执行器</h3>
+<p>执行器从标准输入读取一个 JSON 请求，并且只向标准输出写入一个 JSON 响应。日志应写到标准错误：</p>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-js"><span class="hljs-keyword">import</span> process <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;node:process&#x27;</span>
+
+<span class="hljs-keyword">try</span> {
+  <span class="hljs-keyword">const</span> input = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(<span class="hljs-keyword">await</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Response</span>(process.<span class="hljs-property">stdin</span>).<span class="hljs-title function_">text</span>())
+
+  <span class="hljs-keyword">if</span> (input.<span class="hljs-property">protocol</span> !== <span class="hljs-string">&#x27;alx/v1&#x27;</span> || input.<span class="hljs-property">method</span> !== <span class="hljs-string">&#x27;run&#x27;</span>) {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;不支持的 ALX 插件协议&#x27;</span>)
+  }
+  <span class="hljs-keyword">if</span> (input.<span class="hljs-property">action</span> !== <span class="hljs-string">&#x27;check&#x27;</span>) {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;未知操作&#x27;</span>)
+  }
+
+  process.<span class="hljs-property">stdout</span>.<span class="hljs-title function_">write</span>(
+    <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>({
+      <span class="hljs-attr">output</span>: <span class="hljs-string">&#x27;✓ 检查完成。&#x27;</span>,
+      <span class="hljs-attr">data</span>: { <span class="hljs-attr">ok</span>: <span class="hljs-literal">true</span> }
+    })
+  )
+} <span class="hljs-keyword">catch</span> (error) {
+  process.<span class="hljs-property">stdout</span>.<span class="hljs-title function_">write</span>(
+    <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>({
+      <span class="hljs-attr">error</span>: <span class="hljs-title class_">String</span>(error?.<span class="hljs-property">message</span> || error)
+    })
+  )
+}
+</code></pre></div>
+<h2>通讯协议</h2>
+<p>宿主启动执行器后，通过 stdin 发送：</p>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;protocol&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;alx/v1&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;method&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;run&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;action&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;network-check&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;params&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span> <span class="hljs-attr">&quot;host&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;example.com&quot;</span> <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;confirm&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span>
+<span class="hljs-punctuation">}</span>
+</code></pre></div>
+<p>执行器必须向 stdout 输出唯一一个 JSON 对象：</p>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;output&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;✓ 网络检查完成。&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;data&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span> <span class="hljs-attr">&quot;latency&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">42</span> <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre></div>
+<p>失败时仍然输出合法 JSON，并设置 <code>error</code>：</p>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;output&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;已完成检查。&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;error&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;需要管理员权限&quot;</span>
+<span class="hljs-punctuation">}</span>
+</code></pre></div>
+<p>stdout 中不能混入调试文本，否则宿主无法解析响应。需要实时反馈时，可以向 stderr 输出进度帧：</p>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-text">@alx-progress {&quot;stage&quot;:&quot;checking&quot;,&quot;percent&quot;:50,&quot;message&quot;:&quot;正在检查…&quot;}
+</code></pre></div>
+<h3>任务生命周期</h3>
+<p>普通变更动作是异步任务：</p>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-text">POST /api/v1/setup/plugins/my-status/actions
+        ↓ 202 Accepted
+GET /api/v1/robot/tasks
+        ↓
+running → completed / failed
+</code></pre></div>
+<p>同一个插件同一时间只能执行一个变更动作。重复提交相同动作会复用现有任务，冲突动作返回 <code>409</code>。</p>
+<p>只读状态可以在清单中声明 <code>statusActions</code>，通过状态接口读取。此类请求不创建任务，并会被宿主短暂合并缓存，适合面板轮询。</p>
+<h2>清单能力</h2>
+<table><thead><tr><th>字段</th><th>作用</th></tr></thead><tbody><tr><td><code>web</code></td><td>声明系统面板静态页面</td></tr><tr><td><code>services</code></td><td>声明需要由宿主代理的本地回环服务</td></tr><tr><td><code>statusActions</code></td><td>声明无参数、只读、适合快速轮询的动作</td></tr><tr><td><code>uploads</code></td><td>声明浏览器上传文件和大小上限</td></tr><tr><td><code>media</code></td><td>声明由执行器生成的二维码、截图等媒体数据</td></tr><tr><td><code>privilegedOperations</code></td><td>声明需要管理员授权的动作</td></tr><tr><td><code>development</code></td><td>声明源码开发会话中的 runner、前端和服务</td></tr></tbody></table>
+<p>清单只是能力白名单，不是业务逻辑。动作名称和参数仍必须在执行器中自行校验，不能因为宿主接受了 <code>action</code> 就直接执行任意命令。</p>
+<h2>系统面板与 <code>ALXHost</code></h2>
+<p><code>web.root</code> 会被宿主以同源路径托管：</p>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-text">/api/v1/setup/plugins/web/&lt;id&gt;/index.html
+</code></pre></div>
+<p>宿主会自动注入 <code>host-bridge.js</code>，页面可以使用 <code>window.ALXHost</code> 调用受控宿主能力：</p>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-js"><span class="hljs-keyword">const</span> info = <span class="hljs-keyword">await</span> <span class="hljs-variable language_">window</span>.<span class="hljs-property">ALXHost</span>.<span class="hljs-title function_">info</span>(<span class="hljs-string">&#x27;my-status&#x27;</span>)
+<span class="hljs-keyword">const</span> context = <span class="hljs-keyword">await</span> <span class="hljs-variable language_">window</span>.<span class="hljs-property">ALXHost</span>.<span class="hljs-title function_">context</span>(<span class="hljs-string">&#x27;my-status&#x27;</span>, [<span class="hljs-string">&#x27;robot&#x27;</span>, <span class="hljs-string">&#x27;network&#x27;</span>])
+<span class="hljs-keyword">const</span> paths = <span class="hljs-keyword">await</span> <span class="hljs-variable language_">window</span>.<span class="hljs-property">ALXHost</span>.<span class="hljs-property">finder</span>.<span class="hljs-title function_">pick</span>(<span class="hljs-string">&#x27;my-status&#x27;</span>, <span class="hljs-string">&#x27;runtime-directory&#x27;</span>)
+<span class="hljs-keyword">await</span> <span class="hljs-variable language_">window</span>.<span class="hljs-property">ALXHost</span>.<span class="hljs-property">desktop</span>.<span class="hljs-title function_">open</span>(<span class="hljs-string">&#x27;my-status&#x27;</span>, paths[<span class="hljs-number">0</span>])
+<span class="hljs-keyword">await</span> <span class="hljs-variable language_">window</span>.<span class="hljs-property">ALXHost</span>.<span class="hljs-property">notification</span>.<span class="hljs-title function_">send</span>(<span class="hljs-string">&#x27;my-status&#x27;</span>, <span class="hljs-string">&#x27;检查完成&#x27;</span>)
+</code></pre></div>
+<p>常用能力包括：</p>
+<ul>
+<li><code>context</code>：读取脱敏的机器人和网络上下文；</li>
+<li><code>finder.pick</code>：请求宿主打开文件或目录选择器；</li>
+<li><code>desktop.open</code>：请求系统打开路径或 URL；</li>
+<li><code>clipboard</code>：读写系统剪贴板；</li>
+<li><code>notification</code>：发送系统通知；</li>
+<li><code>network.fetch</code>：受限的 GET / HEAD 网络请求；</li>
+<li><code>webview.open</code>：打开由工作台管理的插件页面。</li>
+</ul>
+<p>页面不能直接访问宿主文件系统、插件存储目录或管理员权限。需要读写文件时，应由页面调用一个受控 runner 动作。</p>
+<h2>本地服务与上传</h2>
+<h3>本地服务</h3>
+<p>插件可以声明回环服务，宿主只代理清单中允许的服务：</p>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;services&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;api&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;host&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;127.0.0.1&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;port&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">18080</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;websocket&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">}</span>
+</code></pre></div>
+<p>面板通过以下路径访问：</p>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-text">/api/v1/services/&lt;plugin&gt;/&lt;service&gt;/...
+</code></pre></div>
+<p>动态端口也必须由宿主代理，并且目标被强制限制为 <code>127.0.0.1</code>，不能借插件服务访问任意内网地址。</p>
+<h3>文件上传</h3>
+<p>文件上传使用专用的 <code>multipart/form-data</code> 接口，不要把文件内容塞进普通 JSON 参数：</p>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-text">POST /api/v1/setup/plugins/&lt;id&gt;/upload
+</code></pre></div>
+<p>宿主会限制大小、暂存文件、清理文件名，并将暂存目录通过参数传给 runner。插件应校验文件类型、内容和目标路径，不能把浏览器传入的文件名直接拼接到系统路径。</p>
+<h2>特权操作与审计</h2>
+<p>需要 sudo、UAC、Polkit 或其他管理员能力的操作，必须在 <code>privilegedOperations</code> 中声明。典型流程是：</p>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-text">面板请求 preflight
+        ↓
+宿主检查清单与当前系统授权模式
+        ↓
+用户确认或完成系统授权
+        ↓
+宿主启动 runnerAction
+        ↓
+记录审计结果
+</code></pre></div>
+<p>宿主负责授权、进程启动、进度转发和审计；插件负责动作语义、参数校验和平台细节。危险动作应该提供可读的计划说明和最小权限范围，不能把“执行任意 shell 命令”作为插件 API。</p>
+<h2>源码开发会话</h2>
+<p>开发阶段可以登记一个源码目录，由工作台管理前端开发服务、runner 和本地服务：</p>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;development&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;entry&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span> <span class="hljs-attr">&quot;go&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;runner/main.go&quot;</span> <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;web&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">&quot;mode&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;dev-server&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;command&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">&quot;program&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;pnpm&quot;</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">&quot;args&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;dev&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;--port&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;${ALX_PLUGIN_DEV_PORT}&quot;</span><span class="hljs-punctuation">]</span>
+      <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;healthPath&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/&quot;</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre></div>
+<p>源码会话的启动、停止、重启、构建和日志均由工作台管理。开发 Web 服务仍然通过宿主同源代理访问，不能为了 HMR 而额外暴露任意公网端口。</p>
+<h2>发布与安装</h2>
+<p>发布插件时，应为每个平台准备对应的 runner 资产，并在 GitHub Release 中提供压缩包和校验信息。宿主安装时会：</p>
+<ol>
+<li>读取并校验 <code>alx.json</code>；</li>
+<li>检查插件 ID、路径和平台兼容性；</li>
+<li>解包到工作区插件目录；</li>
+<li>写入安装元数据；</li>
+<li>启用插件并提供系统面板。</li>
+</ol>
+<p>旧目录插件会以兼容模式发现。迁移时宿主会复制到工作区并保留原目录，不应由插件自行删除旧数据。</p>
+<h2>安全开发规范</h2>
+<ul>
+<li>不要在 stdout 输出日志，只输出协议 JSON；</li>
+<li>所有动作都使用白名单，不执行未经校验的命令和参数；</li>
+<li>不要依赖浏览器传入的路径、文件名或 URL；</li>
+<li>不要把密钥、数据库和缓存写入插件代码目录；</li>
+<li>大文件使用上传通道或下载 Broker，不使用普通网络代理；</li>
+<li>特权操作必须声明、预检、确认并产生审计记录；</li>
+<li>Web 页面只通过 <code>ALXHost</code> 获取宿主能力；</li>
+<li>处理 <code>ALX_PLUGIN_INSTALL_MODE</code>，兼容 <code>development</code> 和 <code>legacy-local</code> 安装；</li>
+<li>在不同系统和架构上分别测试 runner；</li>
+<li>不要把系统插件和机器人插件的页面、配置、命令混在一起。</li>
+</ul>
+<h2>相关文档</h2>
+<ul>
+<li><a href="/docs/alemonx/reference/plugin-manifest">插件清单</a></li>
+<li><a href="/docs/alemonx/develop/webview">WebView 与扩展页面</a></li>
+<li><a href="/docs/alemonx/develop/webview">机器人应用页</a></li>
+<li><a href="https://github.com/lemonade-lab/alemonx/blob/main/docs/plugin-development.md">源码项目开发文档</a></li>
+</ul></article><nav class="flex justify-between items-center gap-4 pt-8 mt-8 border-t border-gray-200 dark:border-gray-700"><div class="flex-1"><a class="group flex flex-col hover:bg-gray-50 dark:hover:bg-gray-800 p-4 rounded-lg transition-colors" href="/docs/alemonx/getting-started/quick-start" data-discover="true"><span class="text-sm text-gray-500 dark:text-gray-400 mb-1 flex items-center"><svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>上一页</span><span class="text-blue-600 dark:text-blue-400 group-hover:underline font-medium">工作站开始</span></a></div><div class="flex-1 text-right"><a class="group flex flex-col items-end hover:bg-gray-50 dark:hover:bg-gray-800 p-4 rounded-lg transition-colors" href="/docs/alemonx/develop/webview" data-discover="true"><span class="text-sm text-gray-500 dark:text-gray-400 mb-1 flex items-center">下一页<svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></span><span class="text-blue-600 dark:text-blue-400 group-hover:underline font-medium">机器人应用页</span></a></div></nav></div></main><footer class="lg:ml-64 xl:mr-64"><footer class="mt-auto border-t border-[var(--line)] bg-[var(--surface)] text-[var(--text-muted)]"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12"><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8"><div class="text-center sm:text-left"><h3 class="text-sm font-semibold uppercase tracking-wider mb-3 sm:mb-4 text-[var(--text)]">了解</h3><ul class="space-y-2"><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/alemonx/getting-started/install" data-discover="true">如何安装</a></li><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/apps-x" data-discover="true">X系统插件</a></li><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="https://qm.qq.com/q/AIiSecyPlK">加入社区</a></li></ul></div><div class="text-center sm:text-left"><h3 class="text-sm font-semibold uppercase tracking-wider mb-3 sm:mb-4 text-[var(--text)]">相关工具</h3><ul class="space-y-2"><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/alemonjsDocs/getting-started/install" data-discover="true">机器人框架</a></li><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/apps" data-discover="true">机器人插件</a></li><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/apps-module" data-discover="true">机器人模块</a></li><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/environment" data-discover="true">机器人平台</a></li></ul></div><div class="text-center sm:text-left"><h3 class="text-sm font-semibold uppercase tracking-wider mb-3 sm:mb-4 text-[var(--text)]">下载与更新</h3><ul class="space-y-2"><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/blog" data-discover="true">X版本更新</a></li><li><a href="https://github.com/lemonade-lab/alemonx/releases" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-[var(--text)] transition-colors duration-200">X发布列表</a></li><li><a href="https://github.com/lemonade-lab/alemonx/discussions" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-[var(--text)] transition-colors duration-200">X社区讨论</a></li></ul></div></div><div class="pt-6 sm:pt-8 border-t border-[var(--line)] text-sm text-center text-[var(--text-muted)]"><div>Released under the MIT License. <br/> Copyright © 2024-present Lemonade-Lab & ALemonX Contributors </span> <br> <a  href="https://beian.miit.gov.cn/" target="_blank">津ICP备2023004480号</a></div></div></div></footer></footer></div></div></div>
+    <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
+    <script nomodule crossorigin id="vite-legacy-polyfill" src="/js/polyfills-legacy-DMY7g4vQ.js"></script>
+    <script nomodule crossorigin id="vite-legacy-entry" data-src="/js/index-legacy-m1vIKjwy.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
+  </body>
+</html>

@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/icon.ico" />
+    <link rel="apple-touch-icon" href="/pwa-192x192.png" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="ALemonX 更新"
+      href="/rss.xml"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta
+      name="description"
+      content="使用 ALemonX 创建或导入项目，运行命令，管理进程，并批准 Agent 任务。"
+    />
+    <meta property="og:title" content="ALemonX · 创建、运行和管理项目" />
+    <meta
+      property="og:description"
+      content="导入代码库，运行命令，查看日志，创建并批准 Agent 任务。"
+    />
+    <meta property="og:image" content="https://alemonjs.dev/og.png" />
+    <meta property="og:image:alt" content="ALemonX Local Agent Workstation" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>生命周期 · ALemonX</title>
+    <meta name="description" content="生命周期 框架现在建议把运行时理解成三条主线：应用阶段、事件阶段、HTTP 服务阶段。 应用阶段 onCreated() 应用刚创建时触发。适合放： 轻量初始化 读取静态配置 建立不依赖路由索引的准备逻辑 不建议把明显阻塞启动的重逻辑直接塞..." />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://alemonjs.dev/docs/alemonjsDocs/core/cycle" />
+    <meta property="og:title" content="生命周期" />
+    <meta property="og:description" content="生命周期 框架现在建议把运行时理解成三条主线：应用阶段、事件阶段、HTTP 服务阶段。 应用阶段 onCreated() 应用刚创建时触发。适合放： 轻量初始化 读取静态配置 建立不依赖路由索引的准备逻辑 不建议把明显阻塞启动的重逻辑直接塞..." />
+    <meta property="og:image" content="https://alemonjs.dev/og.png" />
+    <script type="application/ld+json">{"@context":"https://schema.org","name":"生命周期","description":"生命周期 框架现在建议把运行时理解成三条主线：应用阶段、事件阶段、HTTP 服务阶段。 应用阶段 onCreated() 应用刚创建时触发。适合放： 轻量初始化 读取静态配置 建立不依赖路由索引的准备逻辑 不建议把明显阻塞启动的重逻辑直接塞...","url":"https://alemonjs.dev/docs/alemonjsDocs/core/cycle","@type":"TechArticle","image":"https://alemonjs.dev/og.png","inLanguage":"zh-CN"}</script>
+    <script type="module" crossorigin src="/js/index-DMHucpII.js"></script>
+    <link rel="modulepreload" crossorigin href="/js/react-vendor-BiYJcYmU.js">
+    <link rel="stylesheet" crossorigin href="/assets/css/index-C7IOt2lH.css">
+    <script type="module">import.meta.url;import("_").catch(()=>1);(async function*(){})().next();window.__vite_is_modern_browser=true</script>
+    <script type="module">!function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy chunks, syntax error above and the same error below should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>
+  <link rel="manifest" href="/manifest.webmanifest"></head>
+
+  <body>
+    <div id="root"><div class="css-dev-only-do-not-override-p45i5k ant-app css-var-root"><div class="min-h-screen bg-[var(--canvas)] text-[var(--text)]"><nav class="fixed top-0 z-50 w-full border-b border-[var(--line)] bg-[var(--surface)] backdrop-blur-xl shadow-lg shadow-black/5"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex h-16 items-center justify-between"><div class="flex items-center"><a class="flex items-center space-x-2 hover:opacity-80 transition-opacity" href="/" data-discover="true"><span aria-hidden="true" class="grid h-8 w-8 place-items-center rounded-lg bg-black text-sm font-semibold text-white dark:bg-white dark:text-black">X</span><span class="text-lg font-bold text-[var(--text)]">ALemonX</span></a></div><div class="hidden md:flex items-center space-x-6"><a class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md" href="/docs/intro" data-discover="true">文档</a><a class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md" href="/blog" data-discover="true">更新</a><a href="https://github.com/lemonade-lab/alemonx/releases" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md">下载</a><a href="https://github.com/lemonade-lab/alemonx" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md">源码</a><a href="https://github.com/lemonade-lab/alemonjs" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md">框架</a><a href="https://github.com/lemonade-lab/alemonjs.dev" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md">编辑</a><button class="flex items-center gap-2 text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md border border-[var(--line)]" title="搜索 (⌘K)"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg><span class="hidden lg:inline">搜索</span><kbd class="hidden lg:inline-flex items-center px-1.5 py-0.5 text-xs font-mono bg-[var(--surface-muted)] border border-[var(--line)] rounded">⌘K</kbd></button><button class="text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] p-2 rounded-md" title="切换到暗色模式"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><button class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-[var(--surface-muted)] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[var(--accent)]" aria-expanded="false"><span class="sr-only">打开主菜单</span><svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg></button></div></div></nav><aside class="
+        fixed top-16 left-0 z-40 w-64
+        h-[calc(100vh-4rem)]
+        border-r border-[var(--line)] bg-[var(--canvas)] text-[var(--text)]
+        overflow-y-auto shadow-xl lg:shadow-none
+        transition-all duration-300 ease-out
+        -translate-x-full lg:translate-x-0
+      "><div class="lg:hidden flex justify-end border-b border-[var(--line)]"><button class="p-2 rounded-md text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-[var(--surface-muted)]"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button></div><nav class="p-4 lg:p-6 space-y-2"></nav></aside><aside class="hidden xl:fixed xl:block xl:top-16 xl:bottom-0 xl:right-0 xl:w-64 xl:overflow-y-auto xl:z-10"></aside><main class="pt-16 lg:ml-64 xl:mr-64"><div class="lg:hidden sticky top-16 z-20 bg-[var(--surface)] border-b border-[var(--line)] px-4 py-3"><button class="flex items-center space-x-2 text-[var(--text-muted)] hover:text-[var(--text)] transition-colors"><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg><span class="text-sm font-medium">目录</span></button></div><div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8"><article id="doc-content" class="prose prose-sm sm:prose-base lg:prose-lg prose-slate dark:prose-invert max-w-none"><h1>生命周期</h1>
+<div class="my-4 sm:my-6 p-3 sm:p-4 border-l-4 rounded-r-lg bg-blue-50 dark:bg-blue-900/30 border-blue-500 dark:border-blue-600 text-blue-900 dark:text-blue-300 shadow-sm"><div class="flex items-center gap-2 font-semibold mb-2 text-xs sm:text-sm uppercase"><span class="text-base sm:text-lg">ℹ️</span><span>INFO</span></div><div class="prose pmax-w-none [&amp;&gt;*:first-child]:mt-0 [&amp;&gt;*:last-child]:mb-0"><p>框架现在建议把运行时理解成三条主线：<strong>应用阶段</strong>、<strong>事件阶段</strong>、<strong>HTTP 服务阶段</strong>。</p></div></div>
+<h2>应用阶段</h2>
+<h3><code>onCreated()</code></h3>
+<p>应用刚创建时触发。适合放：</p>
+<ul>
+<li>轻量初始化</li>
+<li>读取静态配置</li>
+<li>建立不依赖路由索引的准备逻辑</li>
+</ul>
+<p>不建议把明显阻塞启动的重逻辑直接塞在模块顶层，应该尽量收进生命周期回调。</p>
+<h3><code>onMounted(store)</code></h3>
+<p>兼容旧写法的初始化钩子。它发生在索引建立完成后、应用进入 <code>ready</code> 前。</p>
+<p>适合做：</p>
+<ul>
+<li>数据库连接</li>
+<li>缓存准备</li>
+<li>外部依赖初始化</li>
+<li>基于 <code>store.response</code>、<code>store.middleware</code> 的准备工作</li>
+</ul>
+<p>新项目仍然可以用它，但更推荐把“正式进入可服务状态前的最后检查”放到 <code>onReady</code>。</p>
+<h3><code>onReady(store)</code></h3>
+<p>推荐的新钩子。发生在 <code>onMounted</code> 之后、运行时状态进入 <code>ready</code> 之前。</p>
+<p>如果这里抛错，应用不会进入 <code>ready</code>。</p>
+<p>适合做：</p>
+<ul>
+<li>最终依赖校验</li>
+<li>输出 ready 日志</li>
+<li>启动依赖应用已可服务的后台逻辑</li>
+</ul>
+<h3><code>onDispose(error)</code></h3>
+<p>推荐的新销毁钩子。适合统一清理：</p>
+<ul>
+<li>关闭数据库连接</li>
+<li>停止轮询</li>
+<li>释放本地资源</li>
+<li>落盘临时状态</li>
+</ul>
+<h3><code>unMounted(error)</code></h3>
+<p>兼容旧写法的卸载钩子。新代码更推荐统一使用 <code>onDispose</code>。</p>
+<h2>事件阶段</h2>
+<h3><code>onEventStart({ event, name })</code></h3>
+<p>事件刚进入主处理链时触发。它更适合做<strong>通知、埋点和 trace</strong>，而不是承担复杂业务逻辑。</p>
+<p>适合做：</p>
+<ul>
+<li>入口日志</li>
+<li>trace 注入</li>
+<li>轻量上下文准备</li>
+</ul>
+<h3><code>onEventError({ event, error, appName, phase })</code></h3>
+<p>事件处理期间，某个已归属到应用的错误被捕获后触发。</p>
+<p>当前 <code>phase</code> 可能包括：</p>
+<ul>
+<li><code>middleware</code></li>
+<li><code>response</code></li>
+<li><code>subscribe</code></li>
+<li><code>route</code></li>
+</ul>
+<p>只有显式返回 <code>&#x27;continue&#x27;</code> 时，框架才会继续当前事件链；其它返回值都会终止默认后续流程。</p>
+<h3><code>onEventFinished({ event, name, reason, duration, hasSendAttempted, hasSendSucceeded, lastSendError })</code></h3>
+<p>事件生命周期结束时触发。适合做：</p>
+<ul>
+<li>总耗时统计</li>
+<li>审计日志</li>
+<li>fallback 判断</li>
+<li>发送结果判断</li>
+<li>统一收口埋点</li>
+</ul>
+<p>当前 <code>reason</code> 可能包括：</p>
+<ul>
+<li><code>filtered</code></li>
+<li><code>completed</code></li>
+<li><code>consumed</code></li>
+<li><code>error</code></li>
+</ul>
+<h3>事件期回调可直接使用 Hook</h3>
+<p><code>onEventStart</code>、<code>onEventError</code>、<code>onEventFinished</code> 都处在事件上下文链中，因此可以直接使用：</p>
+<ul>
+<li><code>useEvent()</code></li>
+<li><code>useMessage()</code></li>
+<li><code>useRoute()</code></li>
+</ul>
+<p>通常不需要再手动把 <code>event</code> 一层层往下传。</p>
+<h2>HTTP 服务阶段</h2>
+<h3><code>onHttpError({ ctx, error, appName, path, method, kind })</code></h3>
+<p>应用的 HTTP 能力处理出错时触发。当前 <code>kind</code> 可能包括：</p>
+<ul>
+<li><code>api</code></li>
+<li><code>web</code></li>
+<li><code>koa-router</code></li>
+</ul>
+<p>如果显式返回 <code>&#x27;handled&#x27;</code>，表示你已经自己写好了响应，框架不会再补默认 500。</p>
+<h2>运行时状态观察</h2>
+<h3><code>onRuntimeStatusChange({ appName, previousStatus, status, error })</code></h3>
+<p>应用运行时状态变化通知。适合：</p>
+<ul>
+<li>调试面板</li>
+<li>生命周期日志</li>
+<li>监控采集</li>
+<li>开发期观察状态流转</li>
+</ul>
+<p>当前状态主要包括：</p>
+<ul>
+<li><code>discovered</code></li>
+<li><code>loading</code></li>
+<li><code>ready</code></li>
+<li><code>failed</code></li>
+<li><code>disposed</code></li>
+</ul>
+<h2>哪些回调可以改变默认流程</h2>
+<p>当前只有两类回调允许显式改变框架默认行为：</p>
+<ul>
+<li><code>onEventError(...)</code>
+<ul>
+<li>返回 <code>&#x27;continue&#x27;</code>：继续当前事件链</li>
+<li>其它返回值：终止当前事件链</li>
+</ul>
+</li>
+<li><code>onHttpError(...)</code>
+<ul>
+<li>返回 <code>&#x27;handled&#x27;</code>：表示你已经自行处理了 HTTP 响应</li>
+</ul>
+</li>
+</ul>
+<p>其它回调都应理解为<strong>生命周期通知</strong>，而不是新的中间件系统。</p>
+<h2>推荐写法</h2>
+<div class="code-block-with-title"><div class="code-block-header">src/index.ts</div><div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts"><span class="hljs-keyword">import</span> {
+  defineChildren,
+  useEvent,
+  useMessage,
+  useRoute,
+  <span class="hljs-title class_">Format</span>,
+  logger
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineChildren</span>({
+  <span class="hljs-title function_">onCreated</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// 创建阶段</span>
+  },
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">onMounted</span>(<span class="hljs-params">store</span>) {
+    <span class="hljs-comment">// 初始化阶段</span>
+  },
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">onReady</span>(<span class="hljs-params">store</span>) {
+    <span class="hljs-comment">// 即将进入 ready</span>
+  },
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">onEventStart</span>(<span class="hljs-params">{ name }</span>) {
+    <span class="hljs-keyword">const</span> [event] = <span class="hljs-title function_">useEvent</span>()
+    logger.<span class="hljs-title function_">debug</span>(<span class="hljs-string">`<span class="hljs-subst">${name}</span>: <span class="hljs-subst">${event.UserId}</span>`</span>)
+  },
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">onEventError</span>(<span class="hljs-params">{ phase }</span>) {
+    <span class="hljs-keyword">if</span> (phase === <span class="hljs-string">&#x27;subscribe&#x27;</span>) {
+      <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;continue&#x27;</span>
+    }
+  },
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">onEventFinished</span>(<span class="hljs-params">{ reason, duration }</span>) {
+    logger.<span class="hljs-title function_">info</span>(<span class="hljs-string">`<span class="hljs-subst">${reason}</span> <span class="hljs-subst">${duration}</span>ms`</span>)
+  },
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">onHttpError</span>(<span class="hljs-params">{ ctx, appName, kind }</span>) {
+    ctx.<span class="hljs-property">status</span> = <span class="hljs-number">500</span>
+    ctx.<span class="hljs-property">body</span> = {
+      <span class="hljs-attr">code</span>: <span class="hljs-number">500</span>,
+      <span class="hljs-attr">message</span>: <span class="hljs-string">`<span class="hljs-subst">${appName}</span> <span class="hljs-subst">${kind}</span> error`</span>
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;handled&#x27;</span>
+  },
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">onRuntimeStatusChange</span>(<span class="hljs-params">{ appName, previousStatus, status }</span>) {
+    logger.<span class="hljs-title function_">info</span>(<span class="hljs-string">`<span class="hljs-subst">${appName}</span>: <span class="hljs-subst">${previousStatus ?? <span class="hljs-string">&#x27;none&#x27;</span>}</span> -&gt; <span class="hljs-subst">${status}</span>`</span>)
+  },
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">onDispose</span>(<span class="hljs-params">error</span>) {
+    <span class="hljs-comment">// 统一清理</span>
+  },
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">unMounted</span>(<span class="hljs-params">error</span>) {
+    <span class="hljs-comment">// 兼容旧写法</span>
+  }
+})
+</code></pre></div></div></article><nav class="flex justify-between items-center gap-4 pt-8 mt-8 border-t border-gray-200 dark:border-gray-700"><div class="flex-1"><a class="group flex flex-col hover:bg-gray-50 dark:hover:bg-gray-800 p-4 rounded-lg transition-colors" href="/docs/alemonjsDocs/core/message-type" data-discover="true"><span class="text-sm text-gray-500 dark:text-gray-400 mb-1 flex items-center"><svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>上一页</span><span class="text-blue-600 dark:text-blue-400 group-hover:underline font-medium">事件类型</span></a></div><div class="flex-1 text-right"><a class="group flex flex-col items-end hover:bg-gray-50 dark:hover:bg-gray-800 p-4 rounded-lg transition-colors" href="/docs/alemonjsDocs/core/middleware" data-discover="true"><span class="text-sm text-gray-500 dark:text-gray-400 mb-1 flex items-center">下一页<svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></span><span class="text-blue-600 dark:text-blue-400 group-hover:underline font-medium">中间件</span></a></div></nav></div></main><footer class="lg:ml-64 xl:mr-64"><footer class="mt-auto border-t border-[var(--line)] bg-[var(--surface)] text-[var(--text-muted)]"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12"><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8"><div class="text-center sm:text-left"><h3 class="text-sm font-semibold uppercase tracking-wider mb-3 sm:mb-4 text-[var(--text)]">了解</h3><ul class="space-y-2"><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/alemonx/getting-started/install" data-discover="true">如何安装</a></li><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/apps-x" data-discover="true">X系统插件</a></li><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="https://qm.qq.com/q/AIiSecyPlK">加入社区</a></li></ul></div><div class="text-center sm:text-left"><h3 class="text-sm font-semibold uppercase tracking-wider mb-3 sm:mb-4 text-[var(--text)]">相关工具</h3><ul class="space-y-2"><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/alemonjsDocs/getting-started/install" data-discover="true">机器人框架</a></li><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/apps" data-discover="true">机器人插件</a></li><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/apps-module" data-discover="true">机器人模块</a></li><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/environment" data-discover="true">机器人平台</a></li></ul></div><div class="text-center sm:text-left"><h3 class="text-sm font-semibold uppercase tracking-wider mb-3 sm:mb-4 text-[var(--text)]">下载与更新</h3><ul class="space-y-2"><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/blog" data-discover="true">X版本更新</a></li><li><a href="https://github.com/lemonade-lab/alemonx/releases" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-[var(--text)] transition-colors duration-200">X发布列表</a></li><li><a href="https://github.com/lemonade-lab/alemonx/discussions" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-[var(--text)] transition-colors duration-200">X社区讨论</a></li></ul></div></div><div class="pt-6 sm:pt-8 border-t border-[var(--line)] text-sm text-center text-[var(--text-muted)]"><div>Released under the MIT License. <br/> Copyright © 2024-present Lemonade-Lab & ALemonX Contributors </span> <br> <a  href="https://beian.miit.gov.cn/" target="_blank">津ICP备2023004480号</a></div></div></div></footer></footer></div></div></div>
+    <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
+    <script nomodule crossorigin id="vite-legacy-polyfill" src="/js/polyfills-legacy-DMY7g4vQ.js"></script>
+    <script nomodule crossorigin id="vite-legacy-entry" data-src="/js/index-legacy-m1vIKjwy.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
+  </body>
+</html>

@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/icon.ico" />
+    <link rel="apple-touch-icon" href="/pwa-192x192.png" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="ALemonX 更新"
+      href="/rss.xml"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta
+      name="description"
+      content="使用 ALemonX 创建或导入项目，运行命令，管理进程，并批准 Agent 任务。"
+    />
+    <meta property="og:title" content="ALemonX · 创建、运行和管理项目" />
+    <meta
+      property="og:description"
+      content="导入代码库，运行命令，查看日志，创建并批准 Agent 任务。"
+    />
+    <meta property="og:image" content="https://alemonjs.dev/og.png" />
+    <meta property="og:image:alt" content="ALemonX Local Agent Workstation" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>事件类型 · ALemonX</title>
+    <meta name="description" content="事件类型 命名规则： . . 无前缀：公域事件（群/频道/服务器内发生） private. 前缀：私域事件（私聊/好友/一对一场景） 事件总览 基础字段 所有事件都由以下基础类型组合而成。理解它们是理解每个事件字段的前提。 Platform..." />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://alemonjs.dev/docs/alemonjsDocs/core/message-type" />
+    <meta property="og:title" content="事件类型" />
+    <meta property="og:description" content="事件类型 命名规则： . . 无前缀：公域事件（群/频道/服务器内发生） private. 前缀：私域事件（私聊/好友/一对一场景） 事件总览 基础字段 所有事件都由以下基础类型组合而成。理解它们是理解每个事件字段的前提。 Platform..." />
+    <meta property="og:image" content="https://alemonjs.dev/og.png" />
+    <script type="application/ld+json">{"@context":"https://schema.org","name":"事件类型","description":"事件类型 命名规则： . . 无前缀：公域事件（群/频道/服务器内发生） private. 前缀：私域事件（私聊/好友/一对一场景） 事件总览 基础字段 所有事件都由以下基础类型组合而成。理解它们是理解每个事件字段的前提。 Platform...","url":"https://alemonjs.dev/docs/alemonjsDocs/core/message-type","@type":"TechArticle","image":"https://alemonjs.dev/og.png","inLanguage":"zh-CN"}</script>
+    <script type="module" crossorigin src="/js/index-DMHucpII.js"></script>
+    <link rel="modulepreload" crossorigin href="/js/react-vendor-BiYJcYmU.js">
+    <link rel="stylesheet" crossorigin href="/assets/css/index-C7IOt2lH.css">
+    <script type="module">import.meta.url;import("_").catch(()=>1);(async function*(){})().next();window.__vite_is_modern_browser=true</script>
+    <script type="module">!function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy chunks, syntax error above and the same error below should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>
+  <link rel="manifest" href="/manifest.webmanifest"></head>
+
+  <body>
+    <div id="root"><div class="css-dev-only-do-not-override-p45i5k ant-app css-var-root"><div class="min-h-screen bg-[var(--canvas)] text-[var(--text)]"><nav class="fixed top-0 z-50 w-full border-b border-[var(--line)] bg-[var(--surface)] backdrop-blur-xl shadow-lg shadow-black/5"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex h-16 items-center justify-between"><div class="flex items-center"><a class="flex items-center space-x-2 hover:opacity-80 transition-opacity" href="/" data-discover="true"><span aria-hidden="true" class="grid h-8 w-8 place-items-center rounded-lg bg-black text-sm font-semibold text-white dark:bg-white dark:text-black">X</span><span class="text-lg font-bold text-[var(--text)]">ALemonX</span></a></div><div class="hidden md:flex items-center space-x-6"><a class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md" href="/docs/intro" data-discover="true">文档</a><a class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md" href="/blog" data-discover="true">更新</a><a href="https://github.com/lemonade-lab/alemonx/releases" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md">下载</a><a href="https://github.com/lemonade-lab/alemonx" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md">源码</a><a href="https://github.com/lemonade-lab/alemonjs" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md">框架</a><a href="https://github.com/lemonade-lab/alemonjs.dev" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md">编辑</a><button class="flex items-center gap-2 text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md border border-[var(--line)]" title="搜索 (⌘K)"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg><span class="hidden lg:inline">搜索</span><kbd class="hidden lg:inline-flex items-center px-1.5 py-0.5 text-xs font-mono bg-[var(--surface-muted)] border border-[var(--line)] rounded">⌘K</kbd></button><button class="text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] p-2 rounded-md" title="切换到暗色模式"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><button class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-[var(--surface-muted)] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[var(--accent)]" aria-expanded="false"><span class="sr-only">打开主菜单</span><svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg></button></div></div></nav><aside class="
+        fixed top-16 left-0 z-40 w-64
+        h-[calc(100vh-4rem)]
+        border-r border-[var(--line)] bg-[var(--canvas)] text-[var(--text)]
+        overflow-y-auto shadow-xl lg:shadow-none
+        transition-all duration-300 ease-out
+        -translate-x-full lg:translate-x-0
+      "><div class="lg:hidden flex justify-end border-b border-[var(--line)]"><button class="p-2 rounded-md text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-[var(--surface-muted)]"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button></div><nav class="p-4 lg:p-6 space-y-2"></nav></aside><aside class="hidden xl:fixed xl:block xl:top-16 xl:bottom-0 xl:right-0 xl:w-64 xl:overflow-y-auto xl:z-10"></aside><main class="pt-16 lg:ml-64 xl:mr-64"><div class="lg:hidden sticky top-16 z-20 bg-[var(--surface)] border-b border-[var(--line)] px-4 py-3"><button class="flex items-center space-x-2 text-[var(--text-muted)] hover:text-[var(--text)] transition-colors"><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg><span class="text-sm font-medium">目录</span></button></div><div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8"><article id="doc-content" class="prose prose-sm sm:prose-base lg:prose-lg prose-slate dark:prose-invert max-w-none"><h1>事件类型</h1>
+<p>命名规则：<code>{scope?}.{resource}.{action}</code></p>
+<ul>
+<li><strong>无前缀</strong>：公域事件（群/频道/服务器内发生）</li>
+<li><strong><code>private.</code> 前缀</strong>：私域事件（私聊/好友/一对一场景）</li>
+</ul>
+<h2>事件总览</h2>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">Events</span> = {
+  <span class="hljs-comment">// ── 消息事件 ──</span>
+  <span class="hljs-string">&#x27;message.create&#x27;</span>: <span class="hljs-title class_">PublicEventMessageCreate</span>
+  <span class="hljs-string">&#x27;message.update&#x27;</span>: <span class="hljs-title class_">PublicEventMessageUpdate</span>
+  <span class="hljs-string">&#x27;message.delete&#x27;</span>: <span class="hljs-title class_">PublicEventMessageDelete</span>
+  <span class="hljs-string">&#x27;message.reaction.add&#x27;</span>: <span class="hljs-title class_">PublicEventMessageReactionAdd</span>
+  <span class="hljs-string">&#x27;message.reaction.remove&#x27;</span>: <span class="hljs-title class_">PublicEventMessageReactionRemove</span>
+  <span class="hljs-string">&#x27;message.pin&#x27;</span>: <span class="hljs-title class_">PublicEventMessagePin</span>
+
+  <span class="hljs-comment">// ── 交互事件 ──</span>
+  <span class="hljs-string">&#x27;interaction.create&#x27;</span>: <span class="hljs-title class_">PublicEventInteractionCreate</span>
+
+  <span class="hljs-comment">// ── 频道事件 ──</span>
+  <span class="hljs-string">&#x27;channel.create&#x27;</span>: <span class="hljs-title class_">PublicEventChannelCreate</span>
+  <span class="hljs-string">&#x27;channel.delete&#x27;</span>: <span class="hljs-title class_">PublicEventChannelDelete</span>
+  <span class="hljs-string">&#x27;channel.update&#x27;</span>: <span class="hljs-title class_">PublicEventChannelUpdate</span>
+
+  <span class="hljs-comment">// ── 服务器事件 ──</span>
+  <span class="hljs-string">&#x27;guild.join&#x27;</span>: <span class="hljs-title class_">PublicEventGuildJoin</span>
+  <span class="hljs-string">&#x27;guild.exit&#x27;</span>: <span class="hljs-title class_">PublicEventGuildExit</span>
+  <span class="hljs-string">&#x27;guild.update&#x27;</span>: <span class="hljs-title class_">PublicEventGuildUpdate</span>
+
+  <span class="hljs-comment">// ── 成员事件 ──</span>
+  <span class="hljs-string">&#x27;member.add&#x27;</span>: <span class="hljs-title class_">PublicEventMemberAdd</span>
+  <span class="hljs-string">&#x27;member.remove&#x27;</span>: <span class="hljs-title class_">PublicEventMemberRemove</span>
+  <span class="hljs-string">&#x27;member.ban&#x27;</span>: <span class="hljs-title class_">PublicEventMemberBan</span>
+  <span class="hljs-string">&#x27;member.unban&#x27;</span>: <span class="hljs-title class_">PublicEventMemberUnban</span>
+  <span class="hljs-string">&#x27;member.update&#x27;</span>: <span class="hljs-title class_">PublicEventMemberUpdate</span>
+
+  <span class="hljs-comment">// ── 通知事件 ──</span>
+  <span class="hljs-string">&#x27;notice.create&#x27;</span>: <span class="hljs-title class_">PublicEventNoticeCreate</span>
+
+  <span class="hljs-comment">// ── 私域消息事件 ──</span>
+  <span class="hljs-string">&#x27;private.message.create&#x27;</span>: <span class="hljs-title class_">PrivateEventMessageCreate</span>
+  <span class="hljs-string">&#x27;private.message.update&#x27;</span>: <span class="hljs-title class_">PrivateEventMessageUpdate</span>
+  <span class="hljs-string">&#x27;private.message.delete&#x27;</span>: <span class="hljs-title class_">PrivateEventMessageDelete</span>
+
+  <span class="hljs-comment">// ── 私域交互事件 ──</span>
+  <span class="hljs-string">&#x27;private.interaction.create&#x27;</span>: <span class="hljs-title class_">PrivateEventInteractionCreate</span>
+
+  <span class="hljs-comment">// ── 私域关系事件 ──</span>
+  <span class="hljs-string">&#x27;private.friend.add&#x27;</span>: <span class="hljs-title class_">PrivateEventRequestFriendAdd</span>
+  <span class="hljs-string">&#x27;private.friend.remove&#x27;</span>: <span class="hljs-title class_">PrivateEventRequestFriendRemove</span>
+  <span class="hljs-string">&#x27;private.guild.add&#x27;</span>: <span class="hljs-title class_">PrivateEventRequestGuildAdd</span>
+
+  <span class="hljs-comment">// ── 私域通知事件 ──</span>
+  <span class="hljs-string">&#x27;private.notice.create&#x27;</span>: <span class="hljs-title class_">PrivateEventNoticeCreate</span>
+}
+</code></pre></div>
+<h2>基础字段</h2>
+<p>所有事件都由以下基础类型组合而成。理解它们是理解每个事件字段的前提。</p>
+<h3>Platform — 平台信息</h3>
+<p>每个事件都必定包含的字段。</p>
+<table><thead><tr><th>字段</th><th>类型</th><th>必填</th><th>说明</th></tr></thead><tbody><tr><td><code>Platform</code></td><td><code>string</code></td><td>✅</td><td>平台标识，如 <code>&#x27;onebot&#x27;</code>、<code>&#x27;discord&#x27;</code>、<code>&#x27;kook&#x27;</code></td></tr><tr><td><code>BotId</code></td><td><code>string</code></td><td>❌</td><td>当前机器人的用户 ID</td></tr><tr><td><code>value</code></td><td><code>any</code></td><td>✅</td><td>原始协议数据，用于 <code>useValue()</code> 获取平台特有字段</td></tr></tbody></table>
+<h3>Guild — 服务器/群</h3>
+<p>公域事件中标识消息所在的服务器或群。</p>
+<table><thead><tr><th>字段</th><th>类型</th><th>说明</th></tr></thead><tbody><tr><td><code>GuildId</code></td><td><code>string</code></td><td>服务器/群 ID</td></tr><tr><td><code>SpaceId</code></td><td><code>string</code></td><td>空间 ID，通常与 <code>GuildId</code> 相同</td></tr></tbody></table>
+<h3>Channel — 子频道</h3>
+<p>公域事件中标识具体的聊天频道。对于不支持子频道的平台（如 QQ 群），<code>ChannelId</code> 等于 <code>GuildId</code>。</p>
+<table><thead><tr><th>字段</th><th>类型</th><th>说明</th></tr></thead><tbody><tr><td><code>ChannelId</code></td><td><code>string</code></td><td>子频道 ID</td></tr></tbody></table>
+<h3>User — 用户信息</h3>
+<p>标识触发事件的用户。</p>
+<table><thead><tr><th>字段</th><th>类型</th><th>必填</th><th>说明</th></tr></thead><tbody><tr><td><code>UserId</code></td><td><code>string</code></td><td>✅</td><td>用户在平台上的原始 ID</td></tr><tr><td><code>UserKey</code></td><td><code>string</code></td><td>✅</td><td>跨平台唯一标识，由 <code>${Platform}:${UserId}</code> 哈希生成</td></tr><tr><td><code>UserName</code></td><td><code>string</code></td><td>❌</td><td>用户昵称</td></tr><tr><td><code>UserAvatar</code></td><td><code>string</code></td><td>❌</td><td>头像地址，支持 <code>https://</code>、<code>http://</code>、<code>base64://</code>、<code>file://</code></td></tr><tr><td><code>IsMaster</code></td><td><code>boolean</code></td><td>✅</td><td>是否为机器人主人（在配置中设定）</td></tr><tr><td><code>IsBot</code></td><td><code>boolean</code></td><td>✅</td><td>是否为机器人用户</td></tr></tbody></table>
+<h3>Message — 消息标识</h3>
+<p>标识一条具体的消息。</p>
+<table><thead><tr><th>字段</th><th>类型</th><th>必填</th><th>说明</th></tr></thead><tbody><tr><td><code>MessageId</code></td><td><code>string</code></td><td>✅</td><td>消息唯一 ID</td></tr><tr><td><code>ReplyId</code></td><td><code>string</code></td><td>❌</td><td>当消息为回复时，被回复消息的 ID</td></tr></tbody></table>
+<h3>MessageText — 文本内容</h3>
+<p>仅消息创建和交互创建事件携带。</p>
+<table><thead><tr><th>字段</th><th>类型</th><th>说明</th></tr></thead><tbody><tr><td><code>MessageText</code></td><td><code>string</code></td><td>消息的纯文本内容</td></tr></tbody></table>
+<h3>MessageMedia — 媒体内容</h3>
+<p>仅消息创建事件携带。</p>
+<table><thead><tr><th>字段</th><th>类型</th><th>说明</th></tr></thead><tbody><tr><td><code>MessageMedia</code></td><td><code>MessageMediaItem[]</code></td><td>媒体附件列表（可选）</td></tr></tbody></table>
+<p>每个 <code>MessageMediaItem</code> 包含：</p>
+<table><thead><tr><th>字段</th><th>类型</th><th>说明</th></tr></thead><tbody><tr><td><code>Type</code></td><td><code>&#x27;image&#x27; | &#x27;audio&#x27; | &#x27;video&#x27; | &#x27;file&#x27; | &#x27;sticker&#x27; | &#x27;animation&#x27;</code></td><td>媒体类型</td></tr><tr><td><code>Url</code></td><td><code>string</code></td><td>媒体资源 URL</td></tr><tr><td><code>FileId</code></td><td><code>string</code></td><td>平台返回的文件标识</td></tr><tr><td><code>FileName</code></td><td><code>string</code></td><td>文件名</td></tr><tr><td><code>FileSize</code></td><td><code>number</code></td><td>文件大小（字节）</td></tr><tr><td><code>MimeType</code></td><td><code>string</code></td><td>MIME 类型</td></tr></tbody></table>
+<h3>MessageOpen — 开放标识</h3>
+<p>仅消息创建和交互创建事件携带。</p>
+<table><thead><tr><th>字段</th><th>类型</th><th>说明</th></tr></thead><tbody><tr><td><code>OpenId</code></td><td><code>string</code></td><td>平台开放 ID，部分平台需要此字段进行回复</td></tr></tbody></table>
+<h3>RuntimeFields — 运行时字段</h3>
+<p>以下字段由框架在运行时统一补齐，开发者可以直接读取。</p>
+<table><thead><tr><th>字段</th><th>类型</th><th>说明</th></tr></thead><tbody><tr><td><code>IsPrivate</code></td><td><code>boolean</code></td><td>当前事件是否来自私聊 / 私人窗口</td></tr><tr><td><code>IsAtMe</code></td><td><code>boolean</code></td><td>当前消息是否显式 <code>@</code> 了机器人</td></tr><tr><td><code>CreateAt</code></td><td><code>number</code></td><td>事件创建时间戳（<code>Date.now()</code>）</td></tr><tr><td><code>DeviceId</code></td><td><code>string</code></td><td>来源设备编号</td></tr></tbody></table>
+<p>其中：</p>
+<ul>
+<li><code>IsPrivate</code> 统一描述当前事件是否为私域场景</li>
+<li><code>IsAtMe</code> 统一描述当前消息是否显式 mention 了机器人</li>
+<li><code>IsMaster</code> / <code>IsBot</code> 仍由核心层按统一配置完成最终归一化判断</li>
+</ul>
+<h3>SendState — 发送状态字段</h3>
+<p>框架还会在事件对象上维护发送事实状态：</p>
+<table><thead><tr><th>字段</th><th>类型</th><th>说明</th></tr></thead><tbody><tr><td><code>_sendAttempted</code></td><td><code>boolean</code></td><td>是否尝试发送过消息</td></tr><tr><td><code>_sendSucceeded</code></td><td><code>boolean</code></td><td>是否至少成功发送过一次</td></tr><tr><td><code>_lastSendError</code></td><td><code>unknown</code></td><td>最近一次发送失败的错误内容</td></tr></tbody></table>
+<p>这些字段的定位是：</p>
+<ul>
+<li>框架只负责记录发送事实</li>
+<li>是否据此做 fallback，由应用自己决定</li>
+</ul>
+<p>为了兼容旧版本，框架仍会同步回填：</p>
+<ul>
+<li><code>_has_send_attempt</code></li>
+<li><code>_has_send_success</code></li>
+<li><code>_last_send_error</code></li>
+</ul>
+<h3>Expansion — 扩展字段</h3>
+<p>所有事件都包含 <code>[key: string]: any</code> 索引签名，允许适配器通过 <code>_tag</code> 等自定义字段携带平台特有信息。</p>
+<h3>RouteContext — 路由上下文</h3>
+<p><code>event.__route</code>，开发时不推荐直接读取。</p>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts"><span class="hljs-keyword">import</span> { useRoute } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> [route] = <span class="hljs-title function_">useRoute</span>()
+
+  <span class="hljs-keyword">if</span> (!route.<span class="hljs-property">matched</span>) {
+    <span class="hljs-keyword">return</span>
+  }
+
+  <span class="hljs-keyword">const</span> uid = route.<span class="hljs-title function_">param</span>(<span class="hljs-string">&#x27;uid&#x27;</span>)
+}
+</code></pre></div>
+<ul>
+<li><code>matched</code></li>
+<li><code>key</code></li>
+<li><code>text</code></li>
+<li><code>sourceText</code></li>
+<li><code>rewrittenText</code></li>
+<li><code>rawArgs</code></li>
+<li><code>parsedArgs</code></li>
+<li><code>params</code></li>
+<li><code>param(name)</code></li>
+<li><code>hasParam(name)</code></li>
+</ul>
+<hr/>
+<h2>公域事件</h2>
+<h3>message.create</h3>
+<p><strong>群/频道新消息</strong>。这是最常用的事件，用户在群或频道中发送消息时触发。</p>
+<p>组成：<code>platform</code> + <code>Guild</code> + <code>Channel</code> + <code>Message</code> + <code>User</code> + <code>MessageText</code> + <code>MessageMedia</code> + <code>MessageOpen</code></p>
+<h3>message.update</h3>
+<p><strong>群/频道消息编辑</strong>。用户编辑已发送的消息时触发。</p>
+<p>组成：<code>platform</code> + <code>Guild</code> + <code>Channel</code> + <code>Message</code> + <code>User</code></p>
+<blockquote>
+<p>不是所有平台都支持消息编辑事件。</p>
+</blockquote>
+<h3>message.delete</h3>
+<p><strong>群/频道消息撤回</strong>。消息被撤回或删除时触发。</p>
+<p>组成：<code>platform</code> + <code>Guild</code> + <code>Channel</code> + <code>Message</code></p>
+<blockquote>
+<p>通常只有 <code>MessageId</code> 可用，不携带消息内容和用户信息。</p>
+</blockquote>
+<h3>message.reaction.add</h3>
+<p><strong>表态/表情回应添加</strong>。用户对消息添加表情回应时触发。</p>
+<p>组成：<code>platform</code> + <code>Guild</code> + <code>Channel</code> + <code>Message</code></p>
+<h3>message.reaction.remove</h3>
+<p><strong>表态/表情回应移除</strong>。用户移除已有的表情回应时触发。</p>
+<p>组成：<code>platform</code> + <code>Guild</code> + <code>Channel</code> + <code>Message</code></p>
+<h3>message.pin</h3>
+<p><strong>消息置顶</strong>。消息被置顶或取消置顶时触发。</p>
+<p>组成：<code>platform</code> + <code>Guild</code> + <code>Channel</code> + <code>Message</code></p>
+<hr/>
+<h3>interaction.create</h3>
+<p><strong>公域交互事件</strong>。用户点击按钮、提交表单、使用斜杠命令等交互组件时触发。</p>
+<p>组成：<code>platform</code> + <code>Guild</code> + <code>Channel</code> + <code>Message</code> + <code>User</code> + <code>MessageText</code> + <code>MessageOpen</code></p>
+<hr/>
+<h3>channel.create</h3>
+<p><strong>子频道创建</strong>。服务器中新建子频道时触发。</p>
+<p>组成：<code>platform</code> + <code>Guild</code> + <code>Channel</code> + <code>Message</code></p>
+<blockquote>
+<p>仅支持频道层级结构的平台（如 Discord、Kook、QQ 频道）会触发此事件。</p>
+</blockquote>
+<h3>channel.delete</h3>
+<p><strong>子频道删除</strong>。服务器中删除子频道时触发。</p>
+<p>组成：<code>platform</code> + <code>Guild</code> + <code>Channel</code> + <code>Message</code></p>
+<h3>channel.update</h3>
+<p><strong>子频道更新</strong>。子频道名称、权限等属性变更时触发。</p>
+<p>组成：<code>platform</code> + <code>Guild</code> + <code>Channel</code> + <code>Message</code></p>
+<hr/>
+<h3>guild.join</h3>
+<p><strong>机器人加入服务器/群</strong>。机器人被添加到新的服务器或群时触发。</p>
+<p>组成：<code>platform</code> + <code>Guild</code> + <code>Channel</code> + <code>Message</code> + <code>User</code></p>
+<h3>guild.exit</h3>
+<p><strong>机器人退出服务器/群</strong>。机器人被移出或主动退出服务器/群时触发。</p>
+<p>组成：<code>platform</code> + <code>Guild</code> + <code>Channel</code> + <code>Message</code> + <code>User</code></p>
+<h3>guild.update</h3>
+<p><strong>服务器/群信息更新</strong>。服务器名称、图标、设置等属性变更时触发。</p>
+<p>组成：<code>platform</code> + <code>Guild</code> + <code>Channel</code> + <code>Message</code></p>
+<hr/>
+<h3>member.add</h3>
+<p><strong>成员加入</strong>。新用户加入服务器/群时触发。</p>
+<p>组成：<code>platform</code> + <code>Guild</code> + <code>Channel</code> + <code>Message</code> + <code>User</code></p>
+<h3>member.remove</h3>
+<p><strong>成员离开</strong>。用户离开或被踢出服务器/群时触发。</p>
+<p>组成：<code>platform</code> + <code>Guild</code> + <code>Channel</code> + <code>Message</code> + <code>User</code></p>
+<h3>member.ban</h3>
+<p><strong>成员封禁/禁言</strong>。成员被封禁或禁言时触发。</p>
+<p>组成：<code>platform</code> + <code>Guild</code> + <code>Channel</code> + <code>Message</code> + <code>User</code></p>
+<h3>member.unban</h3>
+<p><strong>成员解封/解禁</strong>。成员被解除封禁或禁言时触发。</p>
+<p>组成：<code>platform</code> + <code>Guild</code> + <code>Channel</code> + <code>Message</code> + <code>User</code></p>
+<h3>member.update</h3>
+<p><strong>成员属性变更</strong>。成员的角色、管理权限等属性发生变化时触发。</p>
+<p>组成：<code>platform</code> + <code>Guild</code> + <code>Channel</code> + <code>Message</code> + <code>User</code></p>
+<blockquote>
+<p>典型场景：管理员设置/取消、角色变更。</p>
+</blockquote>
+<hr/>
+<h3>notice.create</h3>
+<p><strong>公域平台通知</strong>。不属于消息、成员变动的其他平台级通知事件。</p>
+<p>组成：<code>platform</code> + <code>Guild</code> + <code>Channel</code> + <code>Message</code> + <code>User</code></p>
+<blockquote>
+<p>典型场景：戳一戳、运气王、荣誉变更等平台特有的互动通知。可通过 <code>useValue()</code> 获取原始数据以区分具体通知类型。</p>
+</blockquote>
+<hr/>
+<h2>私域事件</h2>
+<h3>private.message.create</h3>
+<p><strong>私聊新消息</strong>。用户通过私聊/好友会话向机器人发送消息时触发。</p>
+<p>组成：<code>platform</code> + <code>Message</code> + <code>User</code> + <code>MessageText</code> + <code>MessageMedia</code> + <code>MessageOpen</code></p>
+<blockquote>
+<p>与 <code>message.create</code> 的区别：不含 <code>Guild</code> 和 <code>Channel</code> 字段。</p>
+</blockquote>
+<h3>private.message.update</h3>
+<p><strong>私聊消息编辑</strong>。私聊中的消息被编辑时触发。</p>
+<p>组成：<code>platform</code> + <code>Message</code> + <code>User</code></p>
+<h3>private.message.delete</h3>
+<p><strong>私聊消息撤回</strong>。私聊中的消息被撤回时触发。</p>
+<p>组成：<code>platform</code> + <code>Message</code></p>
+<hr/>
+<h3>private.interaction.create</h3>
+<p><strong>私域交互事件</strong>。私聊中用户与交互组件交互时触发。</p>
+<p>组成：<code>platform</code> + <code>Message</code> + <code>User</code> + <code>MessageText</code> + <code>MessageOpen</code></p>
+<hr/>
+<h3>private.friend.add</h3>
+<p><strong>好友添加</strong>。收到好友申请或好友关系建立时触发。</p>
+<p>组成：<code>platform</code> + <code>Message</code> + <code>User</code></p>
+<h3>private.friend.remove</h3>
+<p><strong>好友移除</strong>。好友关系解除时触发。</p>
+<p>组成：<code>platform</code> + <code>Message</code> + <code>User</code></p>
+<h3>private.guild.add</h3>
+<p><strong>入群/入服务器请求</strong>。用户申请加入群或服务器时触发。</p>
+<p>组成：<code>platform</code> + <code>Message</code> + <code>User</code></p>
+<hr/>
+<h3>private.notice.create</h3>
+<p><strong>私域平台通知</strong>。私聊场景下的平台特有通知事件。</p>
+<p>组成：<code>platform</code> + <code>Message</code> + <code>User</code></p>
+<hr/>
+<h2>类型工具</h2>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts"><span class="hljs-comment">// 携带消息体的事件集合（支持 Words 文本匹配的事件）</span>
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">EventsMessageCreate</span> = <span class="hljs-title class_">Pick</span>&lt;
+  <span class="hljs-title class_">Events</span>,
+  | <span class="hljs-string">&#x27;message.create&#x27;</span>
+  | <span class="hljs-string">&#x27;private.message.create&#x27;</span>
+  | <span class="hljs-string">&#x27;interaction.create&#x27;</span>
+  | <span class="hljs-string">&#x27;private.interaction.create&#x27;</span>
+&gt;
+
+<span class="hljs-comment">// 所有事件名的联合类型</span>
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">EventKeys</span> = keyof <span class="hljs-title class_">Events</span>
+
+<span class="hljs-comment">// 所有事件类型的联合类型</span>
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">EventsEnum</span> = <span class="hljs-title class_">Events</span>[<span class="hljs-title class_">EventKeys</span>]
+</code></pre></div>
+<h2>FormatEvent 链式构建器</h2>
+<p>平台适配器使用 <code>FormatEvent</code> 链式构建事件对象。<code>EventBuilder&lt;T&gt;</code> 根据事件名 <code>T</code> 自动约束可调用的方法——不符合事件类型定义的方法在编译期即产生类型错误。</p>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">FormatEvent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+
+<span class="hljs-comment">// message.create 拥有全部字段方法</span>
+<span class="hljs-keyword">const</span> msg = <span class="hljs-title class_">FormatEvent</span>.<span class="hljs-title function_">create</span>(<span class="hljs-string">&#x27;message.create&#x27;</span>)
+  .<span class="hljs-title function_">addPlatform</span>({ <span class="hljs-title class_">Platform</span>: <span class="hljs-string">&#x27;discord&#x27;</span>, <span class="hljs-attr">value</span>: raw, <span class="hljs-title class_">BotId</span>: botId })
+  .<span class="hljs-title function_">addGuild</span>({ <span class="hljs-title class_">GuildId</span>: <span class="hljs-string">&#x27;g1&#x27;</span>, <span class="hljs-title class_">SpaceId</span>: <span class="hljs-string">&#x27;s1&#x27;</span> })
+  .<span class="hljs-title function_">addChannel</span>({ <span class="hljs-title class_">ChannelId</span>: <span class="hljs-string">&#x27;c1&#x27;</span> })
+  .<span class="hljs-title function_">addUser</span>({ <span class="hljs-title class_">UserId</span>: <span class="hljs-string">&#x27;u1&#x27;</span>, <span class="hljs-title class_">UserKey</span>: <span class="hljs-string">&#x27;k1&#x27;</span>, <span class="hljs-title class_">IsMaster</span>: <span class="hljs-literal">false</span>, <span class="hljs-title class_">IsBot</span>: <span class="hljs-literal">false</span> })
+  .<span class="hljs-title function_">addMessage</span>({ <span class="hljs-title class_">MessageId</span>: <span class="hljs-string">&#x27;m1&#x27;</span> })
+  .<span class="hljs-title function_">addText</span>({ <span class="hljs-title class_">MessageText</span>: <span class="hljs-string">&#x27;hello&#x27;</span> })
+  .<span class="hljs-title function_">addMedia</span>({ <span class="hljs-title class_">MessageMedia</span>: [{ <span class="hljs-title class_">Type</span>: <span class="hljs-string">&#x27;image&#x27;</span>, <span class="hljs-title class_">Url</span>: <span class="hljs-string">&#x27;...&#x27;</span> }] })
+  .<span class="hljs-title function_">addOpen</span>({ <span class="hljs-title class_">OpenId</span>: <span class="hljs-string">&#x27;o1&#x27;</span> }).<span class="hljs-property">value</span>
+
+<span class="hljs-comment">// guild.join 不含 Text/Media/Open，调用会类型报错</span>
+<span class="hljs-keyword">const</span> join = <span class="hljs-title class_">FormatEvent</span>.<span class="hljs-title function_">create</span>(<span class="hljs-string">&#x27;guild.join&#x27;</span>)
+  .<span class="hljs-title function_">addPlatform</span>({ <span class="hljs-title class_">Platform</span>: <span class="hljs-string">&#x27;qq&#x27;</span>, <span class="hljs-attr">value</span>: raw, <span class="hljs-title class_">BotId</span>: botId })
+  .<span class="hljs-title function_">addGuild</span>({ <span class="hljs-title class_">GuildId</span>: <span class="hljs-string">&#x27;g1&#x27;</span>, <span class="hljs-title class_">SpaceId</span>: <span class="hljs-string">&#x27;s1&#x27;</span> })
+  .<span class="hljs-title function_">addChannel</span>({ <span class="hljs-title class_">ChannelId</span>: <span class="hljs-string">&#x27;c1&#x27;</span> })
+  .<span class="hljs-title function_">addUser</span>({ <span class="hljs-title class_">UserId</span>: <span class="hljs-string">&#x27;u1&#x27;</span>, <span class="hljs-title class_">UserKey</span>: <span class="hljs-string">&#x27;k1&#x27;</span>, <span class="hljs-title class_">IsMaster</span>: <span class="hljs-literal">false</span>, <span class="hljs-title class_">IsBot</span>: <span class="hljs-literal">false</span> })
+  .<span class="hljs-title function_">addMessage</span>({ <span class="hljs-title class_">MessageId</span>: <span class="hljs-string">&#x27;&#x27;</span> }).<span class="hljs-property">value</span>
+</code></pre></div>
+<h3>方法可用性</h3>
+<p><code>addPlatform</code> / <code>addMessage</code> / <code>add</code> — 所有事件均可调用。其余方法按事件类型约束：</p>
+<table><thead><tr><th>事件</th><th style="text-align:center">Guild</th><th style="text-align:center">Channel</th><th style="text-align:center">User</th><th style="text-align:center">Text</th><th style="text-align:center">Media</th><th style="text-align:center">Open</th></tr></thead><tbody><tr><td>message.create</td><td style="text-align:center">✓</td><td style="text-align:center">✓</td><td style="text-align:center">✓</td><td style="text-align:center">✓</td><td style="text-align:center">✓</td><td style="text-align:center">✓</td></tr><tr><td>private.message.create</td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center">✓</td><td style="text-align:center">✓</td><td style="text-align:center">✓</td><td style="text-align:center">✓</td></tr><tr><td>interaction.create</td><td style="text-align:center">✓</td><td style="text-align:center">✓</td><td style="text-align:center">✓</td><td style="text-align:center">✓</td><td style="text-align:center"></td><td style="text-align:center">✓</td></tr><tr><td>private.interaction.create</td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center">✓</td><td style="text-align:center">✓</td><td style="text-align:center"></td><td style="text-align:center">✓</td></tr><tr><td>guild.join / guild.exit</td><td style="text-align:center">✓</td><td style="text-align:center">✓</td><td style="text-align:center">✓</td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td></tr><tr><td>member.* (5种)</td><td style="text-align:center">✓</td><td style="text-align:center">✓</td><td style="text-align:center">✓</td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td></tr><tr><td>notice.create</td><td style="text-align:center">✓</td><td style="text-align:center">✓</td><td style="text-align:center">✓</td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td></tr><tr><td>message.delete / pin</td><td style="text-align:center">✓</td><td style="text-align:center">✓</td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td></tr><tr><td>channel.* (3种)</td><td style="text-align:center">✓</td><td style="text-align:center">✓</td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td></tr><tr><td>guild.update</td><td style="text-align:center">✓</td><td style="text-align:center">✓</td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td></tr><tr><td>private.friend.* / guild.add</td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center">✓</td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td></tr><tr><td>private.notice.create</td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center">✓</td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td></tr><tr><td>private.message.delete</td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td></tr></tbody></table>
+<h3>自定义扩展字段</h3>
+<p>通过 <code>add()</code> 方法附加平台特有字段。所有 key 自动加 <code>_</code> 前缀存储，避免与标准字段冲突：</p>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts"><span class="hljs-title class_">FormatEvent</span>.<span class="hljs-title function_">create</span>(<span class="hljs-string">&#x27;message.create&#x27;</span>)
+  .<span class="hljs-title function_">addPlatform</span>({ <span class="hljs-title class_">Platform</span>: <span class="hljs-string">&#x27;qq&#x27;</span>, <span class="hljs-attr">value</span>: raw, <span class="hljs-title class_">BotId</span>: botId })
+  <span class="hljs-comment">// ...其他标准字段</span>
+  .<span class="hljs-title function_">add</span>({ <span class="hljs-attr">tag</span>: <span class="hljs-string">&#x27;GROUP_AT_MESSAGE_CREATE&#x27;</span>, <span class="hljs-attr">rawType</span>: <span class="hljs-string">&#x27;group&#x27;</span> }).<span class="hljs-property">value</span>
+<span class="hljs-comment">// 实际存储为 { _tag: &#x27;...&#x27;, _rawType: &#x27;...&#x27; }</span>
+</code></pre></div>
+<blockquote>
+<p>使用 <code>wrapEvent()</code> 包装后，读取时无需 <code>_</code> 前缀：<code>event.tag</code> 自动读取 <code>event._tag</code>。</p>
+</blockquote></article><nav class="flex justify-between items-center gap-4 pt-8 mt-8 border-t border-gray-200 dark:border-gray-700"><div class="flex-1"><a class="group flex flex-col hover:bg-gray-50 dark:hover:bg-gray-800 p-4 rounded-lg transition-colors" href="/docs/alemonjsDocs/core/data-type" data-discover="true"><span class="text-sm text-gray-500 dark:text-gray-400 mb-1 flex items-center"><svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>上一页</span><span class="text-blue-600 dark:text-blue-400 group-hover:underline font-medium">数据格式</span></a></div><div class="flex-1 text-right"><a class="group flex flex-col items-end hover:bg-gray-50 dark:hover:bg-gray-800 p-4 rounded-lg transition-colors" href="/docs/alemonjsDocs/core/cycle" data-discover="true"><span class="text-sm text-gray-500 dark:text-gray-400 mb-1 flex items-center">下一页<svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></span><span class="text-blue-600 dark:text-blue-400 group-hover:underline font-medium">生命周期</span></a></div></nav></div></main><footer class="lg:ml-64 xl:mr-64"><footer class="mt-auto border-t border-[var(--line)] bg-[var(--surface)] text-[var(--text-muted)]"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12"><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8"><div class="text-center sm:text-left"><h3 class="text-sm font-semibold uppercase tracking-wider mb-3 sm:mb-4 text-[var(--text)]">了解</h3><ul class="space-y-2"><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/alemonx/getting-started/install" data-discover="true">如何安装</a></li><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/apps-x" data-discover="true">X系统插件</a></li><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="https://qm.qq.com/q/AIiSecyPlK">加入社区</a></li></ul></div><div class="text-center sm:text-left"><h3 class="text-sm font-semibold uppercase tracking-wider mb-3 sm:mb-4 text-[var(--text)]">相关工具</h3><ul class="space-y-2"><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/alemonjsDocs/getting-started/install" data-discover="true">机器人框架</a></li><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/apps" data-discover="true">机器人插件</a></li><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/apps-module" data-discover="true">机器人模块</a></li><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/environment" data-discover="true">机器人平台</a></li></ul></div><div class="text-center sm:text-left"><h3 class="text-sm font-semibold uppercase tracking-wider mb-3 sm:mb-4 text-[var(--text)]">下载与更新</h3><ul class="space-y-2"><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/blog" data-discover="true">X版本更新</a></li><li><a href="https://github.com/lemonade-lab/alemonx/releases" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-[var(--text)] transition-colors duration-200">X发布列表</a></li><li><a href="https://github.com/lemonade-lab/alemonx/discussions" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-[var(--text)] transition-colors duration-200">X社区讨论</a></li></ul></div></div><div class="pt-6 sm:pt-8 border-t border-[var(--line)] text-sm text-center text-[var(--text-muted)]"><div>Released under the MIT License. <br/> Copyright © 2024-present Lemonade-Lab & ALemonX Contributors </span> <br> <a  href="https://beian.miit.gov.cn/" target="_blank">津ICP备2023004480号</a></div></div></div></footer></footer></div></div></div>
+    <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
+    <script nomodule crossorigin id="vite-legacy-polyfill" src="/js/polyfills-legacy-DMY7g4vQ.js"></script>
+    <script nomodule crossorigin id="vite-legacy-entry" data-src="/js/index-legacy-m1vIKjwy.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
+  </body>
+</html>

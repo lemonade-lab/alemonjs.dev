@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/icon.ico" />
+    <link rel="apple-touch-icon" href="/pwa-192x192.png" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="ALemonX 更新"
+      href="/rss.xml"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta
+      name="description"
+      content="使用 ALemonX 创建或导入项目，运行命令，管理进程，并批准 Agent 任务。"
+    />
+    <meta property="og:title" content="ALemonX · 创建、运行和管理项目" />
+    <meta
+      property="og:description"
+      content="导入代码库，运行命令，查看日志，创建并批准 Agent 任务。"
+    />
+    <meta property="og:image" content="https://alemonjs.dev/og.png" />
+    <meta property="og:image:alt" content="ALemonX Local Agent Workstation" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>Hooks · ALemonX</title>
+    <meta name="description" content="Hooks hook 在 response 中会自动劫持 event 上下文，也可显式传入，特别是非 response 上下文中调用。通过 useEvent 可获取当前事件和 next 回调。 useMessage 消息发送、删除、编辑、置..." />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://alemonjs.dev/docs/alemonjsDocs/core/hook" />
+    <meta property="og:title" content="Hooks" />
+    <meta property="og:description" content="Hooks hook 在 response 中会自动劫持 event 上下文，也可显式传入，特别是非 response 上下文中调用。通过 useEvent 可获取当前事件和 next 回调。 useMessage 消息发送、删除、编辑、置..." />
+    <meta property="og:image" content="https://alemonjs.dev/og.png" />
+    <script type="application/ld+json">{"@context":"https://schema.org","name":"Hooks","description":"Hooks hook 在 response 中会自动劫持 event 上下文，也可显式传入，特别是非 response 上下文中调用。通过 useEvent 可获取当前事件和 next 回调。 useMessage 消息发送、删除、编辑、置...","url":"https://alemonjs.dev/docs/alemonjsDocs/core/hook","@type":"TechArticle","image":"https://alemonjs.dev/og.png","inLanguage":"zh-CN"}</script>
+    <script type="module" crossorigin src="/js/index-DMHucpII.js"></script>
+    <link rel="modulepreload" crossorigin href="/js/react-vendor-BiYJcYmU.js">
+    <link rel="stylesheet" crossorigin href="/assets/css/index-C7IOt2lH.css">
+    <script type="module">import.meta.url;import("_").catch(()=>1);(async function*(){})().next();window.__vite_is_modern_browser=true</script>
+    <script type="module">!function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy chunks, syntax error above and the same error below should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>
+  <link rel="manifest" href="/manifest.webmanifest"></head>
+
+  <body>
+    <div id="root"><div class="css-dev-only-do-not-override-p45i5k ant-app css-var-root"><div class="min-h-screen bg-[var(--canvas)] text-[var(--text)]"><nav class="fixed top-0 z-50 w-full border-b border-[var(--line)] bg-[var(--surface)] backdrop-blur-xl shadow-lg shadow-black/5"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex h-16 items-center justify-between"><div class="flex items-center"><a class="flex items-center space-x-2 hover:opacity-80 transition-opacity" href="/" data-discover="true"><span aria-hidden="true" class="grid h-8 w-8 place-items-center rounded-lg bg-black text-sm font-semibold text-white dark:bg-white dark:text-black">X</span><span class="text-lg font-bold text-[var(--text)]">ALemonX</span></a></div><div class="hidden md:flex items-center space-x-6"><a class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md" href="/docs/intro" data-discover="true">文档</a><a class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md" href="/blog" data-discover="true">更新</a><a href="https://github.com/lemonade-lab/alemonx/releases" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md">下载</a><a href="https://github.com/lemonade-lab/alemonx" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md">源码</a><a href="https://github.com/lemonade-lab/alemonjs" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md">框架</a><a href="https://github.com/lemonade-lab/alemonjs.dev" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md">编辑</a><button class="flex items-center gap-2 text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md border border-[var(--line)]" title="搜索 (⌘K)"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg><span class="hidden lg:inline">搜索</span><kbd class="hidden lg:inline-flex items-center px-1.5 py-0.5 text-xs font-mono bg-[var(--surface-muted)] border border-[var(--line)] rounded">⌘K</kbd></button><button class="text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] p-2 rounded-md" title="切换到暗色模式"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><button class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-[var(--surface-muted)] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[var(--accent)]" aria-expanded="false"><span class="sr-only">打开主菜单</span><svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg></button></div></div></nav><aside class="
+        fixed top-16 left-0 z-40 w-64
+        h-[calc(100vh-4rem)]
+        border-r border-[var(--line)] bg-[var(--canvas)] text-[var(--text)]
+        overflow-y-auto shadow-xl lg:shadow-none
+        transition-all duration-300 ease-out
+        -translate-x-full lg:translate-x-0
+      "><div class="lg:hidden flex justify-end border-b border-[var(--line)]"><button class="p-2 rounded-md text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-[var(--surface-muted)]"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button></div><nav class="p-4 lg:p-6 space-y-2"></nav></aside><aside class="hidden xl:fixed xl:block xl:top-16 xl:bottom-0 xl:right-0 xl:w-64 xl:overflow-y-auto xl:z-10"></aside><main class="pt-16 lg:ml-64 xl:mr-64"><div class="lg:hidden sticky top-16 z-20 bg-[var(--surface)] border-b border-[var(--line)] px-4 py-3"><button class="flex items-center space-x-2 text-[var(--text-muted)] hover:text-[var(--text)] transition-colors"><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg><span class="text-sm font-medium">目录</span></button></div><div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8"><article id="doc-content" class="prose prose-sm sm:prose-base lg:prose-lg prose-slate dark:prose-invert max-w-none"><h1>Hooks</h1>
+<div class="my-4 sm:my-6 p-3 sm:p-4 border-l-4 rounded-r-lg bg-blue-50 dark:bg-blue-900/30 border-blue-500 dark:border-blue-600 text-blue-900 dark:text-blue-300 shadow-sm"><div class="flex items-center gap-2 font-semibold mb-2 text-xs sm:text-sm uppercase"><span class="text-base sm:text-lg">ℹ️</span><span>INFO</span></div><div class="prose pmax-w-none [&amp;&gt;*:first-child]:mt-0 [&amp;&gt;*:last-child]:mb-0"><p>hook 在 response 中会自动劫持 event 上下文，也可显式传入，特别是非 response 上下文中调用。通过 <code>useEvent</code> 可获取当前事件和 next 回调。</p></div></div>
+<h2><code>useMessage</code></h2>
+<blockquote>
+<p>消息发送、删除、编辑、置顶等操作</p>
+</blockquote>
+<div class="code-block-with-title"><div class="code-block-header">src/response/**/*/res.ts</div><div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts"><span class="hljs-keyword">import</span> { useEvent, useMessage, <span class="hljs-title class_">Format</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> [event] = <span class="hljs-title function_">useEvent</span>()
+  <span class="hljs-keyword">const</span> [message] = <span class="hljs-title function_">useMessage</span>()
+
+  <span class="hljs-comment">// 发送消息</span>
+  <span class="hljs-keyword">const</span> format = <span class="hljs-title class_">Format</span>.<span class="hljs-title function_">create</span>().<span class="hljs-title function_">addText</span>(<span class="hljs-string">&#x27;hello word&#x27;</span>)
+  message.<span class="hljs-title function_">send</span>({ format })
+
+  <span class="hljs-comment">// 删除消息</span>
+  <span class="hljs-keyword">await</span> message.<span class="hljs-title function_">delete</span>({ <span class="hljs-attr">messageId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">MessageId</span> })
+
+  <span class="hljs-comment">// 编辑消息</span>
+  <span class="hljs-keyword">await</span> message.<span class="hljs-title function_">edit</span>({
+    <span class="hljs-attr">format</span>: <span class="hljs-title class_">Format</span>.<span class="hljs-title function_">create</span>().<span class="hljs-title function_">addText</span>(<span class="hljs-string">&#x27;edited&#x27;</span>),
+    <span class="hljs-attr">messageId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">MessageId</span>
+  })
+
+  <span class="hljs-comment">// 置顶 / 取消置顶</span>
+  <span class="hljs-keyword">await</span> message.<span class="hljs-title function_">pin</span>({ <span class="hljs-attr">messageId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">MessageId</span> })
+  <span class="hljs-keyword">await</span> message.<span class="hljs-title function_">unpin</span>({ <span class="hljs-attr">messageId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">MessageId</span> })
+
+  <span class="hljs-comment">// 获取消息详情</span>
+  <span class="hljs-keyword">const</span> detail = <span class="hljs-keyword">await</span> message.<span class="hljs-title function_">get</span>({ <span class="hljs-attr">messageId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">MessageId</span> })
+}
+</code></pre></div></div>
+<table><thead><tr><th>方法</th><th>参数</th><th>说明</th></tr></thead><tbody><tr><td><code>send</code></td><td><code>{ format, replyId? }</code> 或 <code>DataEnums[]</code></td><td>发送消息</td></tr><tr><td><code>delete</code></td><td><code>{ messageId? }</code></td><td>删除消息</td></tr><tr><td><code>edit</code></td><td><code>{ format, messageId? }</code></td><td>编辑消息</td></tr><tr><td><code>pin</code></td><td><code>{ messageId? }</code></td><td>置顶消息</td></tr><tr><td><code>unpin</code></td><td><code>{ messageId? }</code></td><td>取消置顶</td></tr><tr><td><code>get</code></td><td><code>{ messageId? }</code></td><td>获取消息详情</td></tr></tbody></table>
+<h2><code>useMention</code></h2>
+<blockquote>
+<p>解析得到被提及（@）的数据</p>
+</blockquote>
+<div class="code-block-with-title"><div class="code-block-header">response/**/*/res.ts</div><div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts"><span class="hljs-keyword">import</span> { useMention } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> [mention] = <span class="hljs-title function_">useMention</span>()
+  <span class="hljs-comment">// 查找用户类型的 @ 提及，默认排除 bot</span>
+  <span class="hljs-keyword">const</span> user = <span class="hljs-keyword">await</span> mention.<span class="hljs-title function_">findOne</span>()
+  <span class="hljs-keyword">if</span> (!user.<span class="hljs-property">count</span> || !user.<span class="hljs-property">data</span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-comment">// 未找到用户</span>
+  }
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;User:&#x27;</span>, user)
+}
+</code></pre></div></div>
+<p><code>find</code> 返回所有匹配的提及用户数组，<code>findOne</code> 返回第一个匹配用户。</p>
+<p>支持的过滤选项：</p>
+<table><thead><tr><th>选项</th><th>类型</th><th>说明</th></tr></thead><tbody><tr><td><code>UserId</code></td><td><code>string</code></td><td>按用户ID过滤</td></tr><tr><td><code>UserKey</code></td><td><code>string</code></td><td>按用户Key过滤</td></tr><tr><td><code>UserName</code></td><td><code>string</code></td><td>按用户名过滤</td></tr><tr><td><code>IsMaster</code></td><td><code>boolean</code></td><td>是否为主人</td></tr><tr><td><code>IsBot</code></td><td><code>boolean</code></td><td>是否为机器人（默认排除）</td></tr></tbody></table>
+<h2><code>useSubscribe</code></h2>
+<blockquote>
+<p>订阅模式，在某个事件周期中进行观察</p>
+</blockquote>
+<div class="code-block-with-title"><div class="code-block-header">response/**/*/res.ts</div><div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">Format</span>, useMessage, useSubscribe } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-title function_">default</span> () =&gt; {
+  <span class="hljs-keyword">const</span> [message] = <span class="hljs-title function_">useMessage</span>()
+  <span class="hljs-keyword">const</span> [subscribe] = <span class="hljs-title function_">useSubscribe</span>([<span class="hljs-string">&#x27;message.create&#x27;</span>, <span class="hljs-string">&#x27;private.message.create&#x27;</span>])
+
+  message.<span class="hljs-title function_">send</span>({
+    <span class="hljs-attr">format</span>: <span class="hljs-title class_">Format</span>.<span class="hljs-title function_">create</span>().<span class="hljs-title function_">addText</span>(<span class="hljs-string">&#x27;请输入密码&#x27;</span>)
+  })
+
+  <span class="hljs-comment">// 订阅 res 挂载之前的事件</span>
+  <span class="hljs-keyword">const</span> sub = subscribe.<span class="hljs-title function_">mount</span>(
+    <span class="hljs-function">(<span class="hljs-params">event, next</span>) =&gt;</span> {
+      <span class="hljs-keyword">const</span> [message] = <span class="hljs-title function_">useMessage</span>(event)
+      <span class="hljs-keyword">const</span> text = event.<span class="hljs-property">MessageText</span>
+
+      <span class="hljs-keyword">if</span> (text === <span class="hljs-string">&#x27;123456&#x27;</span>) {
+        message.<span class="hljs-title function_">send</span>({
+          <span class="hljs-attr">format</span>: <span class="hljs-title class_">Format</span>.<span class="hljs-title function_">create</span>().<span class="hljs-title function_">addText</span>(<span class="hljs-string">&#x27;密码正确&#x27;</span>)
+        })
+        <span class="hljs-built_in">clearTimeout</span>(timeout)
+      } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (text == <span class="hljs-string">&#x27;/close&#x27;</span>) {
+        message.<span class="hljs-title function_">send</span>({
+          <span class="hljs-attr">format</span>: <span class="hljs-title class_">Format</span>.<span class="hljs-title function_">create</span>().<span class="hljs-title function_">addText</span>(<span class="hljs-string">&#x27;取消登录&#x27;</span>)
+        })
+        <span class="hljs-built_in">clearTimeout</span>(timeout)
+      } <span class="hljs-keyword">else</span> {
+        message.<span class="hljs-title function_">send</span>({
+          <span class="hljs-attr">format</span>: <span class="hljs-title class_">Format</span>.<span class="hljs-title function_">create</span>().<span class="hljs-title function_">addText</span>(<span class="hljs-string">&#x27;密码不正确&#x27;</span>)
+        })
+        <span class="hljs-comment">// 保持订阅</span>
+        <span class="hljs-title function_">next</span>()
+      }
+    },
+    [<span class="hljs-string">&#x27;UserId&#x27;</span>]
+  )
+
+  <span class="hljs-keyword">const</span> timeout = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+    subscribe.<span class="hljs-title function_">cancel</span>(sub)
+    message.<span class="hljs-title function_">send</span>({
+      <span class="hljs-attr">format</span>: <span class="hljs-title class_">Format</span>.<span class="hljs-title function_">create</span>().<span class="hljs-title function_">addText</span>(<span class="hljs-string">&#x27;登录超时&#x27;</span>)
+    })
+  }, <span class="hljs-number">1000</span> * <span class="hljs-number">10</span>)
+}
+</code></pre></div></div>
+<h3>订阅时机</h3>
+<p><code>useSubscribe</code> 提供三种订阅时机：</p>
+<table><thead><tr><th>方法</th><th>说明</th></tr></thead><tbody><tr><td><code>subscribe.create(callback, keys)</code></td><td>在响应体创建时触发</td></tr><tr><td><code>subscribe.mount(callback, keys)</code></td><td>在中间件之后、响应之前触发</td></tr><tr><td><code>subscribe.unmount(callback, keys)</code></td><td>在响应之后触发</td></tr><tr><td><code>subscribe.cancel(sub)</code></td><td>取消订阅</td></tr></tbody></table>
+<p><code>keys</code> 参数指定用于匹配事件的字段名（如 <code>[&#x27;UserId&#x27;]</code>），只有这些字段值相同的事件才会触发订阅回调。</p>
+<h3>next 控制</h3>
+<p>订阅回调中的 <code>next</code> 行为：</p>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code>- `next()` — 保持订阅
+- `next(true)` — 保持订阅且传递给下一个订阅
+- `next(true, true)` — 保持订阅且传递给下一个周期
+
+&gt; 如果要实现带状态的多轮交互流程，推荐使用[事件上下文](/docs/alemonjsDocs/core/context)。`useSubscribe` 更适合临时事件监听和生命周期订阅。
+</code></pre></div>
+<h2><code>useMember</code></h2>
+<blockquote>
+<p>成员管理：查询、踢出、封禁、禁言、名片等</p>
+</blockquote>
+<div class="code-block-with-title"><div class="code-block-header">response/**/*/res.ts</div><div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts"><span class="hljs-keyword">import</span> { useEvent, useMember } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> [event] = <span class="hljs-title function_">useEvent</span>()
+  <span class="hljs-keyword">const</span> [member] = <span class="hljs-title function_">useMember</span>()
+
+  <span class="hljs-comment">// 获取成员信息</span>
+  <span class="hljs-keyword">const</span> info = <span class="hljs-keyword">await</span> member.<span class="hljs-title function_">info</span>({ <span class="hljs-attr">userId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">UserId</span> })
+
+  <span class="hljs-comment">// 获取成员列表</span>
+  <span class="hljs-keyword">const</span> list = <span class="hljs-keyword">await</span> member.<span class="hljs-title function_">list</span>({ <span class="hljs-attr">guildId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">GuildId</span> })
+
+  <span class="hljs-comment">// 搜索成员</span>
+  <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> member.<span class="hljs-title function_">search</span>({ <span class="hljs-attr">keyword</span>: <span class="hljs-string">&#x27;管理&#x27;</span> })
+
+  <span class="hljs-comment">// 踢出成员</span>
+  <span class="hljs-keyword">await</span> member.<span class="hljs-title function_">kick</span>({ <span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;123&#x27;</span> })
+
+  <span class="hljs-comment">// 封禁 / 解封</span>
+  <span class="hljs-keyword">await</span> member.<span class="hljs-title function_">ban</span>({ <span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;123&#x27;</span>, <span class="hljs-attr">reason</span>: <span class="hljs-string">&#x27;违规&#x27;</span>, <span class="hljs-attr">duration</span>: <span class="hljs-number">3600</span> })
+  <span class="hljs-keyword">await</span> member.<span class="hljs-title function_">unban</span>({ <span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;123&#x27;</span> })
+
+  <span class="hljs-comment">// 禁言（秒），0 = 解除</span>
+  <span class="hljs-keyword">await</span> member.<span class="hljs-title function_">mute</span>({ <span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;123&#x27;</span>, <span class="hljs-attr">duration</span>: <span class="hljs-number">60</span> })
+
+  <span class="hljs-comment">// 设置管理员</span>
+  <span class="hljs-keyword">await</span> member.<span class="hljs-title function_">admin</span>({ <span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;123&#x27;</span>, <span class="hljs-attr">enable</span>: <span class="hljs-literal">true</span> })
+
+  <span class="hljs-comment">// 设置名片</span>
+  <span class="hljs-keyword">await</span> member.<span class="hljs-title function_">card</span>({ <span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;123&#x27;</span>, <span class="hljs-attr">card</span>: <span class="hljs-string">&#x27;新昵称&#x27;</span> })
+
+  <span class="hljs-comment">// 设置专属头衔</span>
+  <span class="hljs-keyword">await</span> member.<span class="hljs-title function_">title</span>({ <span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;123&#x27;</span>, <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;VIP&#x27;</span>, <span class="hljs-attr">duration</span>: -<span class="hljs-number">1</span> })
+}
+</code></pre></div></div>
+<table><thead><tr><th>方法</th><th>参数</th><th>说明</th></tr></thead><tbody><tr><td><code>info</code></td><td><code>{ userId, guildId? }</code></td><td>获取成员信息</td></tr><tr><td><code>list</code></td><td><code>{ guildId?, pagination? }</code></td><td>获取成员列表</td></tr><tr><td><code>search</code></td><td><code>{ keyword, guildId?, limit? }</code></td><td>搜索成员</td></tr><tr><td><code>kick</code></td><td><code>{ userId, guildId? }</code></td><td>踢出成员</td></tr><tr><td><code>ban</code></td><td><code>{ userId, guildId?, reason?, duration? }</code></td><td>封禁成员</td></tr><tr><td><code>unban</code></td><td><code>{ userId, guildId? }</code></td><td>解封成员</td></tr><tr><td><code>mute</code></td><td><code>{ userId, duration, guildId? }</code></td><td>禁言成员</td></tr><tr><td><code>admin</code></td><td><code>{ userId, enable, guildId? }</code></td><td>设置管理员</td></tr><tr><td><code>card</code></td><td><code>{ userId, card, guildId? }</code></td><td>设置名片</td></tr><tr><td><code>title</code></td><td><code>{ userId, title, guildId?, duration? }</code></td><td>设置专属头衔</td></tr></tbody></table>
+<h2><code>useChannel</code></h2>
+<blockquote>
+<p>频道管理：查询、创建、更新、删除</p>
+</blockquote>
+<div class="code-block-with-title"><div class="code-block-header">response/**/*/res.ts</div><div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts"><span class="hljs-keyword">import</span> { useEvent, useChannel } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> [event] = <span class="hljs-title function_">useEvent</span>()
+  <span class="hljs-keyword">const</span> [channel] = <span class="hljs-title function_">useChannel</span>()
+
+  <span class="hljs-comment">// 获取频道信息</span>
+  <span class="hljs-keyword">const</span> info = <span class="hljs-keyword">await</span> channel.<span class="hljs-title function_">info</span>({ <span class="hljs-attr">channelId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">ChannelId</span> })
+
+  <span class="hljs-comment">// 获取频道列表</span>
+  <span class="hljs-keyword">const</span> list = <span class="hljs-keyword">await</span> channel.<span class="hljs-title function_">list</span>({ <span class="hljs-attr">guildId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">GuildId</span> })
+
+  <span class="hljs-comment">// 创建频道</span>
+  <span class="hljs-keyword">await</span> channel.<span class="hljs-title function_">create</span>({ <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;新频道&#x27;</span>, <span class="hljs-attr">guildId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">GuildId</span> })
+
+  <span class="hljs-comment">// 更新频道</span>
+  <span class="hljs-keyword">await</span> channel.<span class="hljs-title function_">update</span>({
+    <span class="hljs-attr">channelId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">ChannelId</span>,
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;改名&#x27;</span>,
+    <span class="hljs-attr">topic</span>: <span class="hljs-string">&#x27;新话题&#x27;</span>
+  })
+
+  <span class="hljs-comment">// 删除频道</span>
+  <span class="hljs-keyword">await</span> channel.<span class="hljs-title function_">delete</span>({ <span class="hljs-attr">channelId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">ChannelId</span> })
+}
+</code></pre></div></div>
+<table><thead><tr><th>方法</th><th>参数</th><th>说明</th></tr></thead><tbody><tr><td><code>info</code></td><td><code>{ channelId? }</code></td><td>获取频道信息</td></tr><tr><td><code>list</code></td><td><code>{ guildId? }</code></td><td>获取频道列表</td></tr><tr><td><code>create</code></td><td><code>{ name, type?, parentId?, guildId? }</code></td><td>创建频道</td></tr><tr><td><code>update</code></td><td><code>{ channelId, name?, topic?, position? }</code></td><td>更新频道</td></tr><tr><td><code>delete</code></td><td><code>{ channelId }</code></td><td>删除频道</td></tr></tbody></table>
+<h2><code>useGuild</code></h2>
+<blockquote>
+<p>服务器/公会管理</p>
+</blockquote>
+<div class="code-block-with-title"><div class="code-block-header">response/**/*/res.ts</div><div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts"><span class="hljs-keyword">import</span> { useEvent, useGuild } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> [event] = <span class="hljs-title function_">useEvent</span>()
+  <span class="hljs-keyword">const</span> [guild] = <span class="hljs-title function_">useGuild</span>()
+
+  <span class="hljs-comment">// 获取服务器信息</span>
+  <span class="hljs-keyword">const</span> info = <span class="hljs-keyword">await</span> guild.<span class="hljs-title function_">info</span>({ <span class="hljs-attr">guildId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">GuildId</span> })
+
+  <span class="hljs-comment">// 获取服务器列表</span>
+  <span class="hljs-keyword">const</span> list = <span class="hljs-keyword">await</span> guild.<span class="hljs-title function_">list</span>()
+
+  <span class="hljs-comment">// 更新服务器设置</span>
+  <span class="hljs-keyword">await</span> guild.<span class="hljs-title function_">update</span>({ <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;新名称&#x27;</span> })
+
+  <span class="hljs-comment">// 退出服务器</span>
+  <span class="hljs-keyword">await</span> guild.<span class="hljs-title function_">leave</span>({ <span class="hljs-attr">guildId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">GuildId</span> })
+
+  <span class="hljs-comment">// 全员禁言</span>
+  <span class="hljs-keyword">await</span> guild.<span class="hljs-title function_">mute</span>({ <span class="hljs-attr">enable</span>: <span class="hljs-literal">true</span> })
+}
+</code></pre></div></div>
+<table><thead><tr><th>方法</th><th>参数</th><th>说明</th></tr></thead><tbody><tr><td><code>info</code></td><td><code>{ guildId? }</code></td><td>获取服务器信息</td></tr><tr><td><code>list</code></td><td>无</td><td>获取服务器列表</td></tr><tr><td><code>update</code></td><td><code>{ name?, guildId? }</code></td><td>更新服务器设置</td></tr><tr><td><code>leave</code></td><td><code>{ guildId?, isDismiss? }</code></td><td>退出/解散服务器</td></tr><tr><td><code>mute</code></td><td><code>{ enable, guildId? }</code></td><td>全员禁言</td></tr></tbody></table>
+<h2><code>useRole</code></h2>
+<blockquote>
+<p>角色管理：创建、更新、删除、分配、移除</p>
+</blockquote>
+<div class="code-block-with-title"><div class="code-block-header">response/**/*/res.ts</div><div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts"><span class="hljs-keyword">import</span> { useEvent, useRole } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> [event] = <span class="hljs-title function_">useEvent</span>()
+  <span class="hljs-keyword">const</span> [role] = <span class="hljs-title function_">useRole</span>()
+
+  <span class="hljs-comment">// 获取角色列表</span>
+  <span class="hljs-keyword">const</span> list = <span class="hljs-keyword">await</span> role.<span class="hljs-title function_">list</span>({ <span class="hljs-attr">guildId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">GuildId</span> })
+
+  <span class="hljs-comment">// 创建角色</span>
+  <span class="hljs-keyword">const</span> created = <span class="hljs-keyword">await</span> role.<span class="hljs-title function_">create</span>({ <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;VIP&#x27;</span>, <span class="hljs-attr">color</span>: <span class="hljs-number">0xff0000</span> })
+
+  <span class="hljs-comment">// 更新角色</span>
+  <span class="hljs-keyword">await</span> role.<span class="hljs-title function_">update</span>({ <span class="hljs-attr">roleId</span>: <span class="hljs-string">&#x27;123&#x27;</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;超级VIP&#x27;</span> })
+
+  <span class="hljs-comment">// 删除角色</span>
+  <span class="hljs-keyword">await</span> role.<span class="hljs-title function_">delete</span>({ <span class="hljs-attr">roleId</span>: <span class="hljs-string">&#x27;123&#x27;</span> })
+
+  <span class="hljs-comment">// 分配 / 移除角色</span>
+  <span class="hljs-keyword">await</span> role.<span class="hljs-title function_">assign</span>({ <span class="hljs-attr">userId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">UserId</span>, <span class="hljs-attr">roleId</span>: <span class="hljs-string">&#x27;123&#x27;</span> })
+  <span class="hljs-keyword">await</span> role.<span class="hljs-title function_">remove</span>({ <span class="hljs-attr">userId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">UserId</span>, <span class="hljs-attr">roleId</span>: <span class="hljs-string">&#x27;123&#x27;</span> })
+}
+</code></pre></div></div>
+<table><thead><tr><th>方法</th><th>参数</th><th>说明</th></tr></thead><tbody><tr><td><code>list</code></td><td><code>{ guildId? }</code></td><td>获取角色列表</td></tr><tr><td><code>create</code></td><td><code>{ name, color?, permissions?, guildId? }</code></td><td>创建角色</td></tr><tr><td><code>update</code></td><td><code>{ roleId, name?, color?, permissions?, guildId? }</code></td><td>更新角色</td></tr><tr><td><code>delete</code></td><td><code>{ roleId, guildId? }</code></td><td>删除角色</td></tr><tr><td><code>assign</code></td><td><code>{ userId, roleId, guildId? }</code></td><td>分配角色</td></tr><tr><td><code>remove</code></td><td><code>{ userId, roleId, guildId? }</code></td><td>移除角色</td></tr></tbody></table>
+<h2><code>useReaction</code></h2>
+<blockquote>
+<p>表情回应管理</p>
+</blockquote>
+<div class="code-block-with-title"><div class="code-block-header">response/**/*/res.ts</div><div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts"><span class="hljs-keyword">import</span> { useEvent, useReaction } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> [event] = <span class="hljs-title function_">useEvent</span>()
+  <span class="hljs-keyword">const</span> [reaction] = <span class="hljs-title function_">useReaction</span>()
+
+  <span class="hljs-comment">// 添加表情回应</span>
+  <span class="hljs-keyword">await</span> reaction.<span class="hljs-title function_">add</span>({ <span class="hljs-attr">emojiId</span>: <span class="hljs-string">&#x27;👍&#x27;</span> })
+
+  <span class="hljs-comment">// 移除表情回应</span>
+  <span class="hljs-keyword">await</span> reaction.<span class="hljs-title function_">remove</span>({ <span class="hljs-attr">emojiId</span>: <span class="hljs-string">&#x27;👍&#x27;</span>, <span class="hljs-attr">messageId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">MessageId</span> })
+
+  <span class="hljs-comment">// 获取回应用户列表</span>
+  <span class="hljs-keyword">const</span> list = <span class="hljs-keyword">await</span> reaction.<span class="hljs-title function_">list</span>({ <span class="hljs-attr">emojiId</span>: <span class="hljs-string">&#x27;👍&#x27;</span>, <span class="hljs-attr">limit</span>: <span class="hljs-number">20</span> })
+}
+</code></pre></div></div>
+<table><thead><tr><th>方法</th><th>参数</th><th>说明</th></tr></thead><tbody><tr><td><code>add</code></td><td><code>{ emojiId, messageId? }</code></td><td>添加表情回应</td></tr><tr><td><code>remove</code></td><td><code>{ emojiId, messageId? }</code></td><td>移除表情回应</td></tr><tr><td><code>list</code></td><td><code>{ emojiId, messageId?, limit? }</code></td><td>获取回应用户列表</td></tr></tbody></table>
+<h2><code>useMe</code></h2>
+<blockquote>
+<p>获取当前 Bot 自身信息</p>
+</blockquote>
+<div class="code-block-with-title"><div class="code-block-header">response/**/*/res.ts</div><div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts"><span class="hljs-keyword">import</span> { useMe } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> [me] = <span class="hljs-title function_">useMe</span>()
+
+  <span class="hljs-keyword">const</span> info = <span class="hljs-keyword">await</span> me.<span class="hljs-title function_">info</span>()
+  <span class="hljs-keyword">const</span> guilds = <span class="hljs-keyword">await</span> me.<span class="hljs-title function_">guilds</span>()
+  <span class="hljs-keyword">const</span> threads = <span class="hljs-keyword">await</span> me.<span class="hljs-title function_">threads</span>()
+  <span class="hljs-keyword">const</span> friends = <span class="hljs-keyword">await</span> me.<span class="hljs-title function_">friends</span>()
+}
+</code></pre></div></div>
+<table><thead><tr><th>方法</th><th>说明</th></tr></thead><tbody><tr><td><code>info</code></td><td>获取 Bot 个人信息</td></tr><tr><td><code>guilds</code></td><td>获取加入的服务器列表</td></tr><tr><td><code>threads</code></td><td>获取私聊线程列表</td></tr><tr><td><code>friends</code></td><td>获取好友列表</td></tr></tbody></table>
+<h2><code>useUser</code></h2>
+<blockquote>
+<p>用户信息查询（无需服务器上下文）</p>
+</blockquote>
+<div class="code-block-with-title"><div class="code-block-header">response/**/*/res.ts</div><div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts"><span class="hljs-keyword">import</span> { useEvent, useUser } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> [event] = <span class="hljs-title function_">useEvent</span>()
+  <span class="hljs-keyword">const</span> [user] = <span class="hljs-title function_">useUser</span>()
+  <span class="hljs-keyword">const</span> info = <span class="hljs-keyword">await</span> user.<span class="hljs-title function_">info</span>({ <span class="hljs-attr">userId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">UserId</span> })
+}
+</code></pre></div></div>
+<table><thead><tr><th>方法</th><th>参数</th><th>说明</th></tr></thead><tbody><tr><td><code>info</code></td><td><code>{ userId }</code></td><td>获取用户信息</td></tr></tbody></table>
+<h2><code>useRequest</code></h2>
+<blockquote>
+<p>处理好友请求、入群请求等</p>
+</blockquote>
+<div class="code-block-with-title"><div class="code-block-header">response/**/*/res.ts</div><div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts"><span class="hljs-keyword">import</span> { useRequest } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> [request] = <span class="hljs-title function_">useRequest</span>()
+
+  <span class="hljs-comment">// 同意好友请求</span>
+  <span class="hljs-keyword">await</span> request.<span class="hljs-title function_">friend</span>({ <span class="hljs-attr">flag</span>: <span class="hljs-string">&#x27;xxx&#x27;</span>, <span class="hljs-attr">approve</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">remark</span>: <span class="hljs-string">&#x27;备注&#x27;</span> })
+
+  <span class="hljs-comment">// 同意入群请求</span>
+  <span class="hljs-keyword">await</span> request.<span class="hljs-title function_">guild</span>({ <span class="hljs-attr">flag</span>: <span class="hljs-string">&#x27;xxx&#x27;</span>, <span class="hljs-attr">subType</span>: <span class="hljs-string">&#x27;add&#x27;</span>, <span class="hljs-attr">approve</span>: <span class="hljs-literal">true</span> })
+}
+</code></pre></div></div>
+<table><thead><tr><th>方法</th><th>参数</th><th>说明</th></tr></thead><tbody><tr><td><code>friend</code></td><td><code>{ flag, approve, remark? }</code></td><td>处理好友请求</td></tr><tr><td><code>guild</code></td><td><code>{ flag, subType, approve, reason? }</code></td><td>处理入群/服务器请求</td></tr></tbody></table>
+<h2><code>useMedia</code></h2>
+<blockquote>
+<p>媒体管理：上传、发送图片/音频/视频/文件</p>
+</blockquote>
+<div class="code-block-with-title"><div class="code-block-header">response/**/*/res.ts</div><div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts"><span class="hljs-keyword">import</span> { useMedia } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> [media] = <span class="hljs-title function_">useMedia</span>()
+
+  <span class="hljs-comment">// 上传媒体（仅上传，不发送）</span>
+  <span class="hljs-keyword">await</span> media.<span class="hljs-title function_">upload</span>({ <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;image&#x27;</span>, <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;https://example.com/img.png&#x27;</span> })
+
+  <span class="hljs-comment">// 发送媒体到频道</span>
+  <span class="hljs-keyword">await</span> media.<span class="hljs-title function_">sendChannel</span>({ <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;image&#x27;</span>, <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;https://example.com/img.png&#x27;</span> })
+
+  <span class="hljs-comment">// 发送媒体到用户</span>
+  <span class="hljs-keyword">await</span> media.<span class="hljs-title function_">sendUser</span>({
+    <span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;123&#x27;</span>,
+    <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;audio&#x27;</span>,
+    <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;https://example.com/a.mp3&#x27;</span>
+  })
+}
+</code></pre></div></div>
+<table><thead><tr><th>方法</th><th>参数</th><th>说明</th></tr></thead><tbody><tr><td><code>upload</code></td><td><code>{ type, url?, data?, name? }</code></td><td>上传媒体文件</td></tr><tr><td><code>sendChannel</code></td><td><code>{ type, url?, data?, name?, channelId? }</code></td><td>发送到频道</td></tr><tr><td><code>sendUser</code></td><td><code>{ userId, type, url?, data?, name? }</code></td><td>发送到用户</td></tr></tbody></table>
+<p><code>upload</code>、<code>sendChannel</code> 和 <code>sendUser</code> 支持 <code>url</code>、<code>data</code>、<code>filePath</code>、<code>fileId</code> 四种媒体来源，但一次只能提供一种来源。针对具有明确目标的群组或 C2C 场景，也可以使用：</p>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts"><span class="hljs-keyword">await</span> media.<span class="hljs-title function_">send</span>({
+  <span class="hljs-attr">target</span>: { <span class="hljs-attr">targetId</span>: <span class="hljs-string">&#x27;123&#x27;</span>, <span class="hljs-attr">scope</span>: <span class="hljs-string">&#x27;channel&#x27;</span> },
+  <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;image&#x27;</span>,
+  <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;https://example.com/img.png&#x27;</span>
+})
+</code></pre></div>
+<h2><code>useConnection</code></h2>
+<blockquote>
+<p>查询机器人当前的连接状态。</p>
+</blockquote>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts"><span class="hljs-keyword">import</span> { useConnection } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+
+<span class="hljs-keyword">const</span> [{ getStatus }] = <span class="hljs-title function_">useConnection</span>()
+<span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> <span class="hljs-title function_">getStatus</span>({ <span class="hljs-title class_">BotId</span>: <span class="hljs-string">&#x27;bot-id&#x27;</span> })
+</code></pre></div>
+<p>如果平台不支持该能力，会返回 <code>Warn</code> 结果；调用方应通过返回值的 <code>code</code> 判断结果。</p>
+<h2><code>useInteraction</code></h2>
+<blockquote>
+<p>确认平台交互事件，例如按钮或命令交互。</p>
+</blockquote>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts"><span class="hljs-keyword">import</span> { useInteraction } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+
+<span class="hljs-keyword">const</span> [{ ack }] = <span class="hljs-title function_">useInteraction</span>()
+<span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> <span class="hljs-title function_">ack</span>({
+  <span class="hljs-title class_">InteractionId</span>: <span class="hljs-string">&#x27;interaction-id&#x27;</span>,
+  <span class="hljs-attr">code</span>: <span class="hljs-number">0</span>
+})
+</code></pre></div>
+<p>如果不传 <code>InteractionId</code>，Hook 会尝试从当前事件上下文读取；如果平台不支持交互确认，会返回 <code>Warn</code> 结果。</p>
+<p><code>type</code> 可选值：<code>&#x27;image&#x27;</code> | <code>&#x27;audio&#x27;</code> | <code>&#x27;video&#x27;</code> | <code>&#x27;file&#x27;</code></p>
+<h2><code>useHistory</code></h2>
+<blockquote>
+<p>消息历史记录</p>
+</blockquote>
+<div class="code-block-with-title"><div class="code-block-header">response/**/*/res.ts</div><div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts"><span class="hljs-keyword">import</span> { useEvent, useHistory } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> [event] = <span class="hljs-title function_">useEvent</span>()
+  <span class="hljs-keyword">const</span> [history] = <span class="hljs-title function_">useHistory</span>()
+  <span class="hljs-keyword">const</span> messages = <span class="hljs-keyword">await</span> history.<span class="hljs-title function_">list</span>({
+    <span class="hljs-attr">limit</span>: <span class="hljs-number">50</span>,
+    <span class="hljs-attr">before</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">MessageId</span>
+  })
+}
+</code></pre></div></div>
+<table><thead><tr><th>方法</th><th>参数</th><th>说明</th></tr></thead><tbody><tr><td><code>list</code></td><td><code>{ channelId?, limit?, before?, after? }</code></td><td>获取消息历史</td></tr></tbody></table>
+<h2><code>usePermission</code></h2>
+<blockquote>
+<p>频道权限管理</p>
+</blockquote>
+<div class="code-block-with-title"><div class="code-block-header">response/**/*/res.ts</div><div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts"><span class="hljs-keyword">import</span> { useEvent, usePermission } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> [event] = <span class="hljs-title function_">useEvent</span>()
+  <span class="hljs-keyword">const</span> [permission] = <span class="hljs-title function_">usePermission</span>()
+
+  <span class="hljs-comment">// 获取权限</span>
+  <span class="hljs-keyword">const</span> perm = <span class="hljs-keyword">await</span> permission.<span class="hljs-title function_">get</span>({ <span class="hljs-attr">userId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">UserId</span> })
+
+  <span class="hljs-comment">// 设置权限</span>
+  <span class="hljs-keyword">await</span> permission.<span class="hljs-title function_">set</span>({ <span class="hljs-attr">userId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">UserId</span>, <span class="hljs-attr">allow</span>: <span class="hljs-string">&#x27;1&#x27;</span>, <span class="hljs-attr">deny</span>: <span class="hljs-string">&#x27;0&#x27;</span> })
+}
+</code></pre></div></div>
+<table><thead><tr><th>方法</th><th>参数</th><th>说明</th></tr></thead><tbody><tr><td><code>get</code></td><td><code>{ userId, channelId? }</code></td><td>获取权限</td></tr><tr><td><code>set</code></td><td><code>{ userId, allow?, deny?, channelId? }</code></td><td>设置权限</td></tr></tbody></table>
+<h2><code>useAnnounce</code></h2>
+<blockquote>
+<p>频道公告管理</p>
+</blockquote>
+<div class="code-block-with-title"><div class="code-block-header">response/**/*/res.ts</div><div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts"><span class="hljs-keyword">import</span> { useEvent, useAnnounce } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> [event] = <span class="hljs-title function_">useEvent</span>()
+  <span class="hljs-keyword">const</span> [announce] = <span class="hljs-title function_">useAnnounce</span>()
+
+  <span class="hljs-comment">// 设置公告</span>
+  <span class="hljs-keyword">await</span> announce.<span class="hljs-title function_">set</span>({ <span class="hljs-attr">messageId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">MessageId</span> })
+
+  <span class="hljs-comment">// 删除公告</span>
+  <span class="hljs-keyword">await</span> announce.<span class="hljs-title function_">remove</span>({ <span class="hljs-attr">messageId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">MessageId</span> })
+}
+</code></pre></div></div>
+<table><thead><tr><th>方法</th><th>参数</th><th>说明</th></tr></thead><tbody><tr><td><code>set</code></td><td><code>{ messageId, channelId?, guildId? }</code></td><td>设置公告</td></tr><tr><td><code>remove</code></td><td><code>{ messageId?, guildId? }</code></td><td>删除公告</td></tr></tbody></table>
+<h2><code>useClient</code></h2>
+<blockquote>
+<p>映射平台原生接口类，用于调用平台特有 API</p>
+</blockquote>
+<div class="code-block-with-title"><div class="code-block-header">src/response/**/*/res.ts</div><div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts"><span class="hljs-keyword">import</span> { <span class="hljs-variable constant_">API</span>, platform } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@alemonjs/qq-bot&#x27;</span>
+<span class="hljs-keyword">import</span> { useEvent, useClient } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+<span class="hljs-keyword">export</span> <span class="hljs-title function_">default</span> () =&gt; {
+  <span class="hljs-keyword">const</span> [event] = <span class="hljs-title function_">useEvent</span>()
+  <span class="hljs-keyword">if</span> (event.<span class="hljs-property">current</span>.<span class="hljs-property">Platform</span> === platform) {
+    <span class="hljs-keyword">const</span> [client] = <span class="hljs-title function_">useClient</span>(<span class="hljs-variable constant_">API</span>)
+    client.<span class="hljs-title function_">usersMe</span>()
+  }
+}
+</code></pre></div></div></article><nav class="flex justify-between items-center gap-4 pt-8 mt-8 border-t border-gray-200 dark:border-gray-700"><div class="flex-1"><a class="group flex flex-col hover:bg-gray-50 dark:hover:bg-gray-800 p-4 rounded-lg transition-colors" href="/docs/alemonjsDocs/core/router" data-discover="true"><span class="text-sm text-gray-500 dark:text-gray-400 mb-1 flex items-center"><svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>上一页</span><span class="text-blue-600 dark:text-blue-400 group-hover:underline font-medium">匹配路由</span></a></div><div class="flex-1 text-right"><a class="group flex flex-col items-end hover:bg-gray-50 dark:hover:bg-gray-800 p-4 rounded-lg transition-colors" href="/docs/alemonjsDocs/core/context" data-discover="true"><span class="text-sm text-gray-500 dark:text-gray-400 mb-1 flex items-center">下一页<svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></span><span class="text-blue-600 dark:text-blue-400 group-hover:underline font-medium">事件上下文</span></a></div></nav></div></main><footer class="lg:ml-64 xl:mr-64"><footer class="mt-auto border-t border-[var(--line)] bg-[var(--surface)] text-[var(--text-muted)]"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12"><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8"><div class="text-center sm:text-left"><h3 class="text-sm font-semibold uppercase tracking-wider mb-3 sm:mb-4 text-[var(--text)]">了解</h3><ul class="space-y-2"><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/alemonx/getting-started/install" data-discover="true">如何安装</a></li><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/apps-x" data-discover="true">X系统插件</a></li><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="https://qm.qq.com/q/AIiSecyPlK">加入社区</a></li></ul></div><div class="text-center sm:text-left"><h3 class="text-sm font-semibold uppercase tracking-wider mb-3 sm:mb-4 text-[var(--text)]">相关工具</h3><ul class="space-y-2"><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/alemonjsDocs/getting-started/install" data-discover="true">机器人框架</a></li><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/apps" data-discover="true">机器人插件</a></li><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/apps-module" data-discover="true">机器人模块</a></li><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/environment" data-discover="true">机器人平台</a></li></ul></div><div class="text-center sm:text-left"><h3 class="text-sm font-semibold uppercase tracking-wider mb-3 sm:mb-4 text-[var(--text)]">下载与更新</h3><ul class="space-y-2"><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/blog" data-discover="true">X版本更新</a></li><li><a href="https://github.com/lemonade-lab/alemonx/releases" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-[var(--text)] transition-colors duration-200">X发布列表</a></li><li><a href="https://github.com/lemonade-lab/alemonx/discussions" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-[var(--text)] transition-colors duration-200">X社区讨论</a></li></ul></div></div><div class="pt-6 sm:pt-8 border-t border-[var(--line)] text-sm text-center text-[var(--text-muted)]"><div>Released under the MIT License. <br/> Copyright © 2024-present Lemonade-Lab & ALemonX Contributors </span> <br> <a  href="https://beian.miit.gov.cn/" target="_blank">津ICP备2023004480号</a></div></div></div></footer></footer></div></div></div>
+    <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
+    <script nomodule crossorigin id="vite-legacy-polyfill" src="/js/polyfills-legacy-DMY7g4vQ.js"></script>
+    <script nomodule crossorigin id="vite-legacy-entry" data-src="/js/index-legacy-m1vIKjwy.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
+  </body>
+</html>
