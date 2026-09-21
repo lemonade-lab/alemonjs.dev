@@ -103,7 +103,7 @@ export default defineConfig({
           ]
         }
       ],
-      copyright: `Released under the MIT License. <br/> Copyright © 2024-present Lemonade-Lab & ALemonX Contributors </span> <br> ${link}`
+      copyright: `Released under the MIT License. <br/> Copyright © 2024-present LemonadeX </span> <br> ${link}`
     }
   }
 })

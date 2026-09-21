@@ -540,7 +540,7 @@
     "titles": ["数据格式"],
     "path": "/docs/alemonjsDocs/core/data-type",
     "excerpt": "数据格式 使用相同的 API 构建消息内容，由各平台包负责将其转换为平台原生格式。 消息发送的返回值为 Result[]，即 [res1, res2, ...]。数组中的每一项对应一次实际的平台 API 调用。 核心原则：不支持的数据格式，...",
-    "text": "数据格式 使用相同的 API 构建消息内容，由各平台包负责将其转换为平台原生格式。 消息发送的返回值为 Result[]，即 [res1, res2, ...]。数组中的每一项对应一次实际的平台 API 调用。 核心原则：不支持的数据格式，一律逐步降级到 Text。媒体消息无法向后合并时，优先发送媒体，再发后续内容。Markdown 与 Text 互相转换：平台支持哪个，就合并到哪个格式发送，始终只产出一条消息。 Text Image Image&Text 💡 不推荐使用的操作 Mention&Text Audio Video Attachment 💡 即File，为避免和js全局对象冲突，用Attachment代替 ButtonGroup ⚠️ 框架把按钮视为一组5\\5的排列，超过将不确保有效发送或渲染absorb MarkDownabsorb MarkdownOriginal 三级优先级 消息中可能同时包含多种数据类型。平台包按照以下优先级从高到低处理： --- 发送规则 高优先级优先发送 当存在优先级 1 的媒体内容时，先发媒体。如果平台支持图文合并（如 caption），则低优先级内容随媒体一起发出，只产出一次调用。如果不支持合并，则拆分为多次：先发媒体，再发后续内容。 MD 与 Text 互为转换 Markdown 和 Text 是同一层信息的两种表达。调用发送时：平台支持 Markdown → Text 内容合并进 Markdown，只发一条 [res(md)]平台不支持 Markdown → Markdown 降级为纯文本，合并到 Text，只发一条 [res(text)] 不论平台是否支持，MD 和 Text 不会分成两次 API 调用。它们必须合并为一个格式输出。 不支持的格式逐步降级到 Text 任何平台不支持的数据类型，都会先尝试转为同优先级的替代格式，最终兜底到 Text： 无高优先级内容时依次降级 如果消息中没有媒体，直接检查优先级 2；如果也没有，发送优先级 3 纯文本。全空则返回 []。 --- 发送流程 ---",
+    "text": "数据格式 使用相同的 API 构建消息内容，由各平台包负责将其转换为平台原生格式。 消息发送的返回值为 Result[]，即 [res1, res2, ...]。数组中的每一项对应一次实际的平台 API 调用。 核心原则：不支持的数据格式，一律逐步降级到 Text。媒体消息无法向后合并时，优先发送媒体，再发后续内容。Markdown 与 Text 互相转换：平台支持哪个，就合并到哪个格式发送，始终只产出一条消息。 Text Image Image&Text 💡 不推荐使用的操作 Mention&Text Audio Video Attachment 💡 即File，为避免和js全局对象冲突，用Attachment代替 ButtonGroup ⚠️ 框架把按钮视为一组5\\5的排列，超过将不确保有效发送或渲染absorb MarkDown addBlockquote 的嵌套内容使用 Markdown 构建器或节点数组表达。平台不支持原生引用时，会按平台规则降级为文本。 absorb MarkdownOriginal 三级优先级 消息中可能同时包含多种数据类型。平台包按照以下优先级从高到低处理： --- 发送规则 高优先级优先发送 当存在优先级 1 的媒体内容时，先发媒体。如果平台支持图文合并（如 caption），则低优先级内容随媒体一起发出，只产出一次调用。如果不支持合并，则拆分为多次：先发媒体，再发后续内容。 MD 与 Text 互为转换 Markdown 和 Text 是同一层信息的两种表达。调用发送时：平台支持 Markdown → Text 内容合并进 Markdown，只发一条 [res(md)]平台不支持 Markdown → Markdown 降级为纯文本，合并到 Text，只发一条 [res(text)] 不论平台是否支持，MD 和 Text 不会分成两次 API 调用。它们必须合并为一个格式输出。 不支持的格式逐步降级到 Text 任何平台不支持的数据类型，都会先尝试转为同优先级的替代格式，最终兜底到 Text： 无高优先级内容时依次降级 如果消息中没有媒体，直接检查优先级 2；如果也没有，发送优先级 3 纯文本。全空则返回 []。 --- 发送流程 ---",
     "tags": []
   },
   {
@@ -562,7 +562,7 @@
     "titles": ["数据格式", "Text"],
     "path": "/docs/alemonjsDocs/core/data-type#text",
     "excerpt": "数据格式 使用相同的 API 构建消息内容，由各平台包负责将其转换为平台原生格式。 消息发送的返回值为 Result[]，即 [res1, res2, ...]。数组中的每一项对应一次实际的平台 API 调用。 核心原则：不支持的数据格式，...",
-    "text": "数据格式 使用相同的 API 构建消息内容，由各平台包负责将其转换为平台原生格式。 消息发送的返回值为 Result[]，即 [res1, res2, ...]。数组中的每一项对应一次实际的平台 API 调用。 核心原则：不支持的数据格式，一律逐步降级到 Text。媒体消息无法向后合并时，优先发送媒体，再发后续内容。Markdown 与 Text 互相转换：平台支持哪个，就合并到哪个格式发送，始终只产出一条消息。 Text Image Image&Text 💡 不推荐使用的操作 Mention&Text Audio Video Attachment 💡 即File，为避免和js全局对象冲突，用Attachment代替 ButtonGroup ⚠️ 框架把按钮视为一组5\\5的排列，超过将不确保有效发送或渲染absorb MarkDownabsorb MarkdownOriginal 三级优先级 消息中可能同时包含多种数据类型。平台包按照以下优先级从高到低处理： --- 发送规则 高优先级优先发送 当存在优先级 1 的媒体内容时，先发媒体。如果平台支持图文合并（如 caption），则低优先级内容随媒体一起发出，只产出一次调用。如果不支持合并，则拆分为多次：先发媒体，再发后续内容。 MD 与 Text 互为转换 Markdown 和 Text 是同一层信息的两种表达。调用发送时：平台支持 Markdown → Text 内容合并进 Markdown，只发一条 [res(md)]平台不支持 Markdown → Markdown 降级为纯文本，合并到 Text，只发一条 [res(text)] 不论平台是否支持，MD 和 Text 不会分成两次 API 调用。它们必须合并为一个格式输出。 不支持的格式逐步降级到 Text 任何平台不支持的数据类型，都会先尝试转为同优先级的替代格式，最终兜底到 Text： 无高优先级内容时依次降级 如果消息中没有媒体，直接检查优先级 2；如果也没有，发送优先级 3 纯文本。全空则返回 []。 --- 发送流程 ---",
+    "text": "数据格式 使用相同的 API 构建消息内容，由各平台包负责将其转换为平台原生格式。 消息发送的返回值为 Result[]，即 [res1, res2, ...]。数组中的每一项对应一次实际的平台 API 调用。 核心原则：不支持的数据格式，一律逐步降级到 Text。媒体消息无法向后合并时，优先发送媒体，再发后续内容。Markdown 与 Text 互相转换：平台支持哪个，就合并到哪个格式发送，始终只产出一条消息。 Text Image Image&Text 💡 不推荐使用的操作 Mention&Text Audio Video Attachment 💡 即File，为避免和js全局对象冲突，用Attachment代替 ButtonGroup ⚠️ 框架把按钮视为一组5\\5的排列，超过将不确保有效发送或渲染absorb MarkDown addBlockquote 的嵌套内容使用 Markdown 构建器或节点数组表达。平台不支持原生引用时，会按平台规则降级为文本。 absorb MarkdownOriginal 三级优先级 消息中可能同时包含多种数据类型。平台包按照以下优先级从高到低处理： --- 发送规则 高优先级优先发送 当存在优先级 1 的媒体内容时，先发媒体。如果平台支持图文合并（如 caption），则低优先级内容随媒体一起发出，只产出一次调用。如果不支持合并，则拆分为多次：先发媒体，再发后续内容。 MD 与 Text 互为转换 Markdown 和 Text 是同一层信息的两种表达。调用发送时：平台支持 Markdown → Text 内容合并进 Markdown，只发一条 [res(md)]平台不支持 Markdown → Markdown 降级为纯文本，合并到 Text，只发一条 [res(text)] 不论平台是否支持，MD 和 Text 不会分成两次 API 调用。它们必须合并为一个格式输出。 不支持的格式逐步降级到 Text 任何平台不支持的数据类型，都会先尝试转为同优先级的替代格式，最终兜底到 Text： 无高优先级内容时依次降级 如果消息中没有媒体，直接检查优先级 2；如果也没有，发送优先级 3 纯文本。全空则返回 []。 --- 发送流程 ---",
     "tags": []
   },
   {
@@ -573,7 +573,7 @@
     "titles": ["数据格式", "Image"],
     "path": "/docs/alemonjsDocs/core/data-type#image",
     "excerpt": "数据格式 使用相同的 API 构建消息内容，由各平台包负责将其转换为平台原生格式。 消息发送的返回值为 Result[]，即 [res1, res2, ...]。数组中的每一项对应一次实际的平台 API 调用。 核心原则：不支持的数据格式，...",
-    "text": "数据格式 使用相同的 API 构建消息内容，由各平台包负责将其转换为平台原生格式。 消息发送的返回值为 Result[]，即 [res1, res2, ...]。数组中的每一项对应一次实际的平台 API 调用。 核心原则：不支持的数据格式，一律逐步降级到 Text。媒体消息无法向后合并时，优先发送媒体，再发后续内容。Markdown 与 Text 互相转换：平台支持哪个，就合并到哪个格式发送，始终只产出一条消息。 Text Image Image&Text 💡 不推荐使用的操作 Mention&Text Audio Video Attachment 💡 即File，为避免和js全局对象冲突，用Attachment代替 ButtonGroup ⚠️ 框架把按钮视为一组5\\5的排列，超过将不确保有效发送或渲染absorb MarkDownabsorb MarkdownOriginal 三级优先级 消息中可能同时包含多种数据类型。平台包按照以下优先级从高到低处理： --- 发送规则 高优先级优先发送 当存在优先级 1 的媒体内容时，先发媒体。如果平台支持图文合并（如 caption），则低优先级内容随媒体一起发出，只产出一次调用。如果不支持合并，则拆分为多次：先发媒体，再发后续内容。 MD 与 Text 互为转换 Markdown 和 Text 是同一层信息的两种表达。调用发送时：平台支持 Markdown → Text 内容合并进 Markdown，只发一条 [res(md)]平台不支持 Markdown → Markdown 降级为纯文本，合并到 Text，只发一条 [res(text)] 不论平台是否支持，MD 和 Text 不会分成两次 API 调用。它们必须合并为一个格式输出。 不支持的格式逐步降级到 Text 任何平台不支持的数据类型，都会先尝试转为同优先级的替代格式，最终兜底到 Text： 无高优先级内容时依次降级 如果消息中没有媒体，直接检查优先级 2；如果也没有，发送优先级 3 纯文本。全空则返回 []。 --- 发送流程 ---",
+    "text": "数据格式 使用相同的 API 构建消息内容，由各平台包负责将其转换为平台原生格式。 消息发送的返回值为 Result[]，即 [res1, res2, ...]。数组中的每一项对应一次实际的平台 API 调用。 核心原则：不支持的数据格式，一律逐步降级到 Text。媒体消息无法向后合并时，优先发送媒体，再发后续内容。Markdown 与 Text 互相转换：平台支持哪个，就合并到哪个格式发送，始终只产出一条消息。 Text Image Image&Text 💡 不推荐使用的操作 Mention&Text Audio Video Attachment 💡 即File，为避免和js全局对象冲突，用Attachment代替 ButtonGroup ⚠️ 框架把按钮视为一组5\\5的排列，超过将不确保有效发送或渲染absorb MarkDown addBlockquote 的嵌套内容使用 Markdown 构建器或节点数组表达。平台不支持原生引用时，会按平台规则降级为文本。 absorb MarkdownOriginal 三级优先级 消息中可能同时包含多种数据类型。平台包按照以下优先级从高到低处理： --- 发送规则 高优先级优先发送 当存在优先级 1 的媒体内容时，先发媒体。如果平台支持图文合并（如 caption），则低优先级内容随媒体一起发出，只产出一次调用。如果不支持合并，则拆分为多次：先发媒体，再发后续内容。 MD 与 Text 互为转换 Markdown 和 Text 是同一层信息的两种表达。调用发送时：平台支持 Markdown → Text 内容合并进 Markdown，只发一条 [res(md)]平台不支持 Markdown → Markdown 降级为纯文本，合并到 Text，只发一条 [res(text)] 不论平台是否支持，MD 和 Text 不会分成两次 API 调用。它们必须合并为一个格式输出。 不支持的格式逐步降级到 Text 任何平台不支持的数据类型，都会先尝试转为同优先级的替代格式，最终兜底到 Text： 无高优先级内容时依次降级 如果消息中没有媒体，直接检查优先级 2；如果也没有，发送优先级 3 纯文本。全空则返回 []。 --- 发送流程 ---",
     "tags": []
   },
   {
@@ -595,7 +595,7 @@
     "titles": ["数据格式", "Mention&Text"],
     "path": "/docs/alemonjsDocs/core/data-type#mention-text",
     "excerpt": "数据格式 使用相同的 API 构建消息内容，由各平台包负责将其转换为平台原生格式。 消息发送的返回值为 Result[]，即 [res1, res2, ...]。数组中的每一项对应一次实际的平台 API 调用。 核心原则：不支持的数据格式，...",
-    "text": "数据格式 使用相同的 API 构建消息内容，由各平台包负责将其转换为平台原生格式。 消息发送的返回值为 Result[]，即 [res1, res2, ...]。数组中的每一项对应一次实际的平台 API 调用。 核心原则：不支持的数据格式，一律逐步降级到 Text。媒体消息无法向后合并时，优先发送媒体，再发后续内容。Markdown 与 Text 互相转换：平台支持哪个，就合并到哪个格式发送，始终只产出一条消息。 Text Image Image&Text 💡 不推荐使用的操作 Mention&Text Audio Video Attachment 💡 即File，为避免和js全局对象冲突，用Attachment代替 ButtonGroup ⚠️ 框架把按钮视为一组5\\5的排列，超过将不确保有效发送或渲染absorb MarkDownabsorb MarkdownOriginal 三级优先级 消息中可能同时包含多种数据类型。平台包按照以下优先级从高到低处理： --- 发送规则 高优先级优先发送 当存在优先级 1 的媒体内容时，先发媒体。如果平台支持图文合并（如 caption），则低优先级内容随媒体一起发出，只产出一次调用。如果不支持合并，则拆分为多次：先发媒体，再发后续内容。 MD 与 Text 互为转换 Markdown 和 Text 是同一层信息的两种表达。调用发送时：平台支持 Markdown → Text 内容合并进 Markdown，只发一条 [res(md)]平台不支持 Markdown → Markdown 降级为纯文本，合并到 Text，只发一条 [res(text)] 不论平台是否支持，MD 和 Text 不会分成两次 API 调用。它们必须合并为一个格式输出。 不支持的格式逐步降级到 Text 任何平台不支持的数据类型，都会先尝试转为同优先级的替代格式，最终兜底到 Text： 无高优先级内容时依次降级 如果消息中没有媒体，直接检查优先级 2；如果也没有，发送优先级 3 纯文本。全空则返回 []。 --- 发送流程 ---",
+    "text": "数据格式 使用相同的 API 构建消息内容，由各平台包负责将其转换为平台原生格式。 消息发送的返回值为 Result[]，即 [res1, res2, ...]。数组中的每一项对应一次实际的平台 API 调用。 核心原则：不支持的数据格式，一律逐步降级到 Text。媒体消息无法向后合并时，优先发送媒体，再发后续内容。Markdown 与 Text 互相转换：平台支持哪个，就合并到哪个格式发送，始终只产出一条消息。 Text Image Image&Text 💡 不推荐使用的操作 Mention&Text Audio Video Attachment 💡 即File，为避免和js全局对象冲突，用Attachment代替 ButtonGroup ⚠️ 框架把按钮视为一组5\\5的排列，超过将不确保有效发送或渲染absorb MarkDown addBlockquote 的嵌套内容使用 Markdown 构建器或节点数组表达。平台不支持原生引用时，会按平台规则降级为文本。 absorb MarkdownOriginal 三级优先级 消息中可能同时包含多种数据类型。平台包按照以下优先级从高到低处理： --- 发送规则 高优先级优先发送 当存在优先级 1 的媒体内容时，先发媒体。如果平台支持图文合并（如 caption），则低优先级内容随媒体一起发出，只产出一次调用。如果不支持合并，则拆分为多次：先发媒体，再发后续内容。 MD 与 Text 互为转换 Markdown 和 Text 是同一层信息的两种表达。调用发送时：平台支持 Markdown → Text 内容合并进 Markdown，只发一条 [res(md)]平台不支持 Markdown → Markdown 降级为纯文本，合并到 Text，只发一条 [res(text)] 不论平台是否支持，MD 和 Text 不会分成两次 API 调用。它们必须合并为一个格式输出。 不支持的格式逐步降级到 Text 任何平台不支持的数据类型，都会先尝试转为同优先级的替代格式，最终兜底到 Text： 无高优先级内容时依次降级 如果消息中没有媒体，直接检查优先级 2；如果也没有，发送优先级 3 纯文本。全空则返回 []。 --- 发送流程 ---",
     "tags": []
   },
   {
@@ -606,7 +606,7 @@
     "titles": ["数据格式", "Audio"],
     "path": "/docs/alemonjsDocs/core/data-type#audio",
     "excerpt": "数据格式 使用相同的 API 构建消息内容，由各平台包负责将其转换为平台原生格式。 消息发送的返回值为 Result[]，即 [res1, res2, ...]。数组中的每一项对应一次实际的平台 API 调用。 核心原则：不支持的数据格式，...",
-    "text": "数据格式 使用相同的 API 构建消息内容，由各平台包负责将其转换为平台原生格式。 消息发送的返回值为 Result[]，即 [res1, res2, ...]。数组中的每一项对应一次实际的平台 API 调用。 核心原则：不支持的数据格式，一律逐步降级到 Text。媒体消息无法向后合并时，优先发送媒体，再发后续内容。Markdown 与 Text 互相转换：平台支持哪个，就合并到哪个格式发送，始终只产出一条消息。 Text Image Image&Text 💡 不推荐使用的操作 Mention&Text Audio Video Attachment 💡 即File，为避免和js全局对象冲突，用Attachment代替 ButtonGroup ⚠️ 框架把按钮视为一组5\\5的排列，超过将不确保有效发送或渲染absorb MarkDownabsorb MarkdownOriginal 三级优先级 消息中可能同时包含多种数据类型。平台包按照以下优先级从高到低处理： --- 发送规则 高优先级优先发送 当存在优先级 1 的媒体内容时，先发媒体。如果平台支持图文合并（如 caption），则低优先级内容随媒体一起发出，只产出一次调用。如果不支持合并，则拆分为多次：先发媒体，再发后续内容。 MD 与 Text 互为转换 Markdown 和 Text 是同一层信息的两种表达。调用发送时：平台支持 Markdown → Text 内容合并进 Markdown，只发一条 [res(md)]平台不支持 Markdown → Markdown 降级为纯文本，合并到 Text，只发一条 [res(text)] 不论平台是否支持，MD 和 Text 不会分成两次 API 调用。它们必须合并为一个格式输出。 不支持的格式逐步降级到 Text 任何平台不支持的数据类型，都会先尝试转为同优先级的替代格式，最终兜底到 Text： 无高优先级内容时依次降级 如果消息中没有媒体，直接检查优先级 2；如果也没有，发送优先级 3 纯文本。全空则返回 []。 --- 发送流程 ---",
+    "text": "数据格式 使用相同的 API 构建消息内容，由各平台包负责将其转换为平台原生格式。 消息发送的返回值为 Result[]，即 [res1, res2, ...]。数组中的每一项对应一次实际的平台 API 调用。 核心原则：不支持的数据格式，一律逐步降级到 Text。媒体消息无法向后合并时，优先发送媒体，再发后续内容。Markdown 与 Text 互相转换：平台支持哪个，就合并到哪个格式发送，始终只产出一条消息。 Text Image Image&Text 💡 不推荐使用的操作 Mention&Text Audio Video Attachment 💡 即File，为避免和js全局对象冲突，用Attachment代替 ButtonGroup ⚠️ 框架把按钮视为一组5\\5的排列，超过将不确保有效发送或渲染absorb MarkDown addBlockquote 的嵌套内容使用 Markdown 构建器或节点数组表达。平台不支持原生引用时，会按平台规则降级为文本。 absorb MarkdownOriginal 三级优先级 消息中可能同时包含多种数据类型。平台包按照以下优先级从高到低处理： --- 发送规则 高优先级优先发送 当存在优先级 1 的媒体内容时，先发媒体。如果平台支持图文合并（如 caption），则低优先级内容随媒体一起发出，只产出一次调用。如果不支持合并，则拆分为多次：先发媒体，再发后续内容。 MD 与 Text 互为转换 Markdown 和 Text 是同一层信息的两种表达。调用发送时：平台支持 Markdown → Text 内容合并进 Markdown，只发一条 [res(md)]平台不支持 Markdown → Markdown 降级为纯文本，合并到 Text，只发一条 [res(text)] 不论平台是否支持，MD 和 Text 不会分成两次 API 调用。它们必须合并为一个格式输出。 不支持的格式逐步降级到 Text 任何平台不支持的数据类型，都会先尝试转为同优先级的替代格式，最终兜底到 Text： 无高优先级内容时依次降级 如果消息中没有媒体，直接检查优先级 2；如果也没有，发送优先级 3 纯文本。全空则返回 []。 --- 发送流程 ---",
     "tags": []
   },
   {
@@ -617,7 +617,7 @@
     "titles": ["数据格式", "Video"],
     "path": "/docs/alemonjsDocs/core/data-type#video",
     "excerpt": "数据格式 使用相同的 API 构建消息内容，由各平台包负责将其转换为平台原生格式。 消息发送的返回值为 Result[]，即 [res1, res2, ...]。数组中的每一项对应一次实际的平台 API 调用。 核心原则：不支持的数据格式，...",
-    "text": "数据格式 使用相同的 API 构建消息内容，由各平台包负责将其转换为平台原生格式。 消息发送的返回值为 Result[]，即 [res1, res2, ...]。数组中的每一项对应一次实际的平台 API 调用。 核心原则：不支持的数据格式，一律逐步降级到 Text。媒体消息无法向后合并时，优先发送媒体，再发后续内容。Markdown 与 Text 互相转换：平台支持哪个，就合并到哪个格式发送，始终只产出一条消息。 Text Image Image&Text 💡 不推荐使用的操作 Mention&Text Audio Video Attachment 💡 即File，为避免和js全局对象冲突，用Attachment代替 ButtonGroup ⚠️ 框架把按钮视为一组5\\5的排列，超过将不确保有效发送或渲染absorb MarkDownabsorb MarkdownOriginal 三级优先级 消息中可能同时包含多种数据类型。平台包按照以下优先级从高到低处理： --- 发送规则 高优先级优先发送 当存在优先级 1 的媒体内容时，先发媒体。如果平台支持图文合并（如 caption），则低优先级内容随媒体一起发出，只产出一次调用。如果不支持合并，则拆分为多次：先发媒体，再发后续内容。 MD 与 Text 互为转换 Markdown 和 Text 是同一层信息的两种表达。调用发送时：平台支持 Markdown → Text 内容合并进 Markdown，只发一条 [res(md)]平台不支持 Markdown → Markdown 降级为纯文本，合并到 Text，只发一条 [res(text)] 不论平台是否支持，MD 和 Text 不会分成两次 API 调用。它们必须合并为一个格式输出。 不支持的格式逐步降级到 Text 任何平台不支持的数据类型，都会先尝试转为同优先级的替代格式，最终兜底到 Text： 无高优先级内容时依次降级 如果消息中没有媒体，直接检查优先级 2；如果也没有，发送优先级 3 纯文本。全空则返回 []。 --- 发送流程 ---",
+    "text": "数据格式 使用相同的 API 构建消息内容，由各平台包负责将其转换为平台原生格式。 消息发送的返回值为 Result[]，即 [res1, res2, ...]。数组中的每一项对应一次实际的平台 API 调用。 核心原则：不支持的数据格式，一律逐步降级到 Text。媒体消息无法向后合并时，优先发送媒体，再发后续内容。Markdown 与 Text 互相转换：平台支持哪个，就合并到哪个格式发送，始终只产出一条消息。 Text Image Image&Text 💡 不推荐使用的操作 Mention&Text Audio Video Attachment 💡 即File，为避免和js全局对象冲突，用Attachment代替 ButtonGroup ⚠️ 框架把按钮视为一组5\\5的排列，超过将不确保有效发送或渲染absorb MarkDown addBlockquote 的嵌套内容使用 Markdown 构建器或节点数组表达。平台不支持原生引用时，会按平台规则降级为文本。 absorb MarkdownOriginal 三级优先级 消息中可能同时包含多种数据类型。平台包按照以下优先级从高到低处理： --- 发送规则 高优先级优先发送 当存在优先级 1 的媒体内容时，先发媒体。如果平台支持图文合并（如 caption），则低优先级内容随媒体一起发出，只产出一次调用。如果不支持合并，则拆分为多次：先发媒体，再发后续内容。 MD 与 Text 互为转换 Markdown 和 Text 是同一层信息的两种表达。调用发送时：平台支持 Markdown → Text 内容合并进 Markdown，只发一条 [res(md)]平台不支持 Markdown → Markdown 降级为纯文本，合并到 Text，只发一条 [res(text)] 不论平台是否支持，MD 和 Text 不会分成两次 API 调用。它们必须合并为一个格式输出。 不支持的格式逐步降级到 Text 任何平台不支持的数据类型，都会先尝试转为同优先级的替代格式，最终兜底到 Text： 无高优先级内容时依次降级 如果消息中没有媒体，直接检查优先级 2；如果也没有，发送优先级 3 纯文本。全空则返回 []。 --- 发送流程 ---",
     "tags": []
   },
   {
@@ -649,8 +649,8 @@
     "sectionTitle": "MarkDown",
     "titles": ["数据格式", "MarkDown"],
     "path": "/docs/alemonjsDocs/core/data-type#markdown",
-    "excerpt": "absorb",
-    "text": "absorb",
+    "excerpt": "addBlockquote 的嵌套内容使用 Markdown 构建器或节点数组表达。平台不支持原生引用时，会按平台规则降级为文本。 absorb",
+    "text": "addBlockquote 的嵌套内容使用 Markdown 构建器或节点数组表达。平台不支持原生引用时，会按平台规则降级为文本。 absorb",
     "tags": []
   },
   {
@@ -661,7 +661,7 @@
     "titles": ["数据格式", "MarkdownOriginal"],
     "path": "/docs/alemonjsDocs/core/data-type#markdownoriginal",
     "excerpt": "数据格式 使用相同的 API 构建消息内容，由各平台包负责将其转换为平台原生格式。 消息发送的返回值为 Result[]，即 [res1, res2, ...]。数组中的每一项对应一次实际的平台 API 调用。 核心原则：不支持的数据格式，...",
-    "text": "数据格式 使用相同的 API 构建消息内容，由各平台包负责将其转换为平台原生格式。 消息发送的返回值为 Result[]，即 [res1, res2, ...]。数组中的每一项对应一次实际的平台 API 调用。 核心原则：不支持的数据格式，一律逐步降级到 Text。媒体消息无法向后合并时，优先发送媒体，再发后续内容。Markdown 与 Text 互相转换：平台支持哪个，就合并到哪个格式发送，始终只产出一条消息。 Text Image Image&Text 💡 不推荐使用的操作 Mention&Text Audio Video Attachment 💡 即File，为避免和js全局对象冲突，用Attachment代替 ButtonGroup ⚠️ 框架把按钮视为一组5\\5的排列，超过将不确保有效发送或渲染absorb MarkDownabsorb MarkdownOriginal 三级优先级 消息中可能同时包含多种数据类型。平台包按照以下优先级从高到低处理： --- 发送规则 高优先级优先发送 当存在优先级 1 的媒体内容时，先发媒体。如果平台支持图文合并（如 caption），则低优先级内容随媒体一起发出，只产出一次调用。如果不支持合并，则拆分为多次：先发媒体，再发后续内容。 MD 与 Text 互为转换 Markdown 和 Text 是同一层信息的两种表达。调用发送时：平台支持 Markdown → Text 内容合并进 Markdown，只发一条 [res(md)]平台不支持 Markdown → Markdown 降级为纯文本，合并到 Text，只发一条 [res(text)] 不论平台是否支持，MD 和 Text 不会分成两次 API 调用。它们必须合并为一个格式输出。 不支持的格式逐步降级到 Text 任何平台不支持的数据类型，都会先尝试转为同优先级的替代格式，最终兜底到 Text： 无高优先级内容时依次降级 如果消息中没有媒体，直接检查优先级 2；如果也没有，发送优先级 3 纯文本。全空则返回 []。 --- 发送流程 ---",
+    "text": "数据格式 使用相同的 API 构建消息内容，由各平台包负责将其转换为平台原生格式。 消息发送的返回值为 Result[]，即 [res1, res2, ...]。数组中的每一项对应一次实际的平台 API 调用。 核心原则：不支持的数据格式，一律逐步降级到 Text。媒体消息无法向后合并时，优先发送媒体，再发后续内容。Markdown 与 Text 互相转换：平台支持哪个，就合并到哪个格式发送，始终只产出一条消息。 Text Image Image&Text 💡 不推荐使用的操作 Mention&Text Audio Video Attachment 💡 即File，为避免和js全局对象冲突，用Attachment代替 ButtonGroup ⚠️ 框架把按钮视为一组5\\5的排列，超过将不确保有效发送或渲染absorb MarkDown addBlockquote 的嵌套内容使用 Markdown 构建器或节点数组表达。平台不支持原生引用时，会按平台规则降级为文本。 absorb MarkdownOriginal 三级优先级 消息中可能同时包含多种数据类型。平台包按照以下优先级从高到低处理： --- 发送规则 高优先级优先发送 当存在优先级 1 的媒体内容时，先发媒体。如果平台支持图文合并（如 caption），则低优先级内容随媒体一起发出，只产出一次调用。如果不支持合并，则拆分为多次：先发媒体，再发后续内容。 MD 与 Text 互为转换 Markdown 和 Text 是同一层信息的两种表达。调用发送时：平台支持 Markdown → Text 内容合并进 Markdown，只发一条 [res(md)]平台不支持 Markdown → Markdown 降级为纯文本，合并到 Text，只发一条 [res(text)] 不论平台是否支持，MD 和 Text 不会分成两次 API 调用。它们必须合并为一个格式输出。 不支持的格式逐步降级到 Text 任何平台不支持的数据类型，都会先尝试转为同优先级的替代格式，最终兜底到 Text： 无高优先级内容时依次降级 如果消息中没有媒体，直接检查优先级 2；如果也没有，发送优先级 3 纯文本。全空则返回 []。 --- 发送流程 ---",
     "tags": []
   },
   {
@@ -683,7 +683,7 @@
     "titles": ["数据格式", "发送规则"],
     "path": "/docs/alemonjsDocs/core/data-type#发送规则",
     "excerpt": "数据格式 使用相同的 API 构建消息内容，由各平台包负责将其转换为平台原生格式。 消息发送的返回值为 Result[]，即 [res1, res2, ...]。数组中的每一项对应一次实际的平台 API 调用。 核心原则：不支持的数据格式，...",
-    "text": "数据格式 使用相同的 API 构建消息内容，由各平台包负责将其转换为平台原生格式。 消息发送的返回值为 Result[]，即 [res1, res2, ...]。数组中的每一项对应一次实际的平台 API 调用。 核心原则：不支持的数据格式，一律逐步降级到 Text。媒体消息无法向后合并时，优先发送媒体，再发后续内容。Markdown 与 Text 互相转换：平台支持哪个，就合并到哪个格式发送，始终只产出一条消息。 Text Image Image&Text 💡 不推荐使用的操作 Mention&Text Audio Video Attachment 💡 即File，为避免和js全局对象冲突，用Attachment代替 ButtonGroup ⚠️ 框架把按钮视为一组5\\5的排列，超过将不确保有效发送或渲染absorb MarkDownabsorb MarkdownOriginal 三级优先级 消息中可能同时包含多种数据类型。平台包按照以下优先级从高到低处理： --- 发送规则 高优先级优先发送 当存在优先级 1 的媒体内容时，先发媒体。如果平台支持图文合并（如 caption），则低优先级内容随媒体一起发出，只产出一次调用。如果不支持合并，则拆分为多次：先发媒体，再发后续内容。 MD 与 Text 互为转换 Markdown 和 Text 是同一层信息的两种表达。调用发送时：平台支持 Markdown → Text 内容合并进 Markdown，只发一条 [res(md)]平台不支持 Markdown → Markdown 降级为纯文本，合并到 Text，只发一条 [res(text)] 不论平台是否支持，MD 和 Text 不会分成两次 API 调用。它们必须合并为一个格式输出。 不支持的格式逐步降级到 Text 任何平台不支持的数据类型，都会先尝试转为同优先级的替代格式，最终兜底到 Text： 无高优先级内容时依次降级 如果消息中没有媒体，直接检查优先级 2；如果也没有，发送优先级 3 纯文本。全空则返回 []。 --- 发送流程 ---",
+    "text": "数据格式 使用相同的 API 构建消息内容，由各平台包负责将其转换为平台原生格式。 消息发送的返回值为 Result[]，即 [res1, res2, ...]。数组中的每一项对应一次实际的平台 API 调用。 核心原则：不支持的数据格式，一律逐步降级到 Text。媒体消息无法向后合并时，优先发送媒体，再发后续内容。Markdown 与 Text 互相转换：平台支持哪个，就合并到哪个格式发送，始终只产出一条消息。 Text Image Image&Text 💡 不推荐使用的操作 Mention&Text Audio Video Attachment 💡 即File，为避免和js全局对象冲突，用Attachment代替 ButtonGroup ⚠️ 框架把按钮视为一组5\\5的排列，超过将不确保有效发送或渲染absorb MarkDown addBlockquote 的嵌套内容使用 Markdown 构建器或节点数组表达。平台不支持原生引用时，会按平台规则降级为文本。 absorb MarkdownOriginal 三级优先级 消息中可能同时包含多种数据类型。平台包按照以下优先级从高到低处理： --- 发送规则 高优先级优先发送 当存在优先级 1 的媒体内容时，先发媒体。如果平台支持图文合并（如 caption），则低优先级内容随媒体一起发出，只产出一次调用。如果不支持合并，则拆分为多次：先发媒体，再发后续内容。 MD 与 Text 互为转换 Markdown 和 Text 是同一层信息的两种表达。调用发送时：平台支持 Markdown → Text 内容合并进 Markdown，只发一条 [res(md)]平台不支持 Markdown → Markdown 降级为纯文本，合并到 Text，只发一条 [res(text)] 不论平台是否支持，MD 和 Text 不会分成两次 API 调用。它们必须合并为一个格式输出。 不支持的格式逐步降级到 Text 任何平台不支持的数据类型，都会先尝试转为同优先级的替代格式，最终兜底到 Text： 无高优先级内容时依次降级 如果消息中没有媒体，直接检查优先级 2；如果也没有，发送优先级 3 纯文本。全空则返回 []。 --- 发送流程 ---",
     "tags": []
   },
   {
@@ -748,7 +748,7 @@
     "titles": ["Hooks"],
     "path": "/docs/alemonjsDocs/core/hook",
     "excerpt": "Hooks hook 在 response 中会自动劫持 event 上下文，也可显式传入，特别是非 response 上下文中调用。通过 useEvent 可获取当前事件和 next 回调。 useMessage 消息发送、删除、编辑、置...",
-    "text": "Hooks hook 在 response 中会自动劫持 event 上下文，也可显式传入，特别是非 response 上下文中调用。通过 useEvent 可获取当前事件和 next 回调。 useMessage 消息发送、删除、编辑、置顶等操作 方法 参数 说明 -------- --------------------------------------- ------------ send 或 DataEnums[] 发送消息 delete 删除消息 edit 编辑消息 pin 置顶消息 unpin 取消置顶 get 获取消息详情 useMention 解析得到被提及（@）的数据 find 返回所有匹配的提及用户数组，findOne 返回第一个匹配用户。 支持的过滤选项： 选项 类型 说明 ---------- --------- ------------------------ UserId string 按用户ID过滤 UserKey string 按用户Key过滤 UserName string 按用户名过滤 IsMaster boolean 是否为主人 IsBot boolean 是否为机器人（默认排除） useSubscribe 订阅模式，在某个事件周期中进行观察 订阅时机 useSubscribe 提供三种订阅时机： 方法 说明 ----------------------------------- -------------------------- subscribe.create(callback, keys) 在响应体创建时触发 subscribe.mount(callback, keys) 在中间件之后、响应之前触发 subscribe.unmount(callback, keys) 在响应之后触发 subscribe.cancel(sub) 取消订阅 keys 参数指定用于匹配事件的字段名（如 ['UserId']），只有这些字段值相同的事件才会触发订阅回调。 next 控制 订阅回调中的 next 行为： useMember 成员管理：查询、踢出、封禁、禁言、名片等 方法 参数 说明 -------- ------------------------------------------ ------------ info 获取成员信息 list 获取成员列表 search 搜索成员 kick 踢出成员 ban 封禁成员 unban 解封成员 mute 禁言成员 admin 设置管理员 card 设置名片 title 设置专属头衔 useChannel 频道管理：查询、创建、更新、删除 方法 参数 说明 -------- ----------------------------------------- ------------ info 获取频道信息 list 获取频道列表 create 创建频道 update 更新频道 delete 删除频道 useGuild 服务器/公会管理 方法 参数 说明 -------- -------------------------- --------------- info 获取服务器信息 list 无 获取服务器列表 update 更新服务器设置 leave 退出/解散服务器 mute 全员禁言 useRole 角色管理：创建、更新、删除、分配、移除 方法 参数 说明 -------- --------------------------------------------------- ------------ list 获取角色列表 create 创建角色 update 更新角色 delete 删除角色 assign 分配角色 remove 移除角色 useReaction 表情回应管理 方法 参数 说明 -------- --------------------------------- ---------------- add 添加表情回应 remove 移除表情回应 list 获取回应用户列表 useMe 获取当前 Bot 自身信息 方法 说明 --------- -------------------- info 获取 Bot 个人信息 guilds 获取加入的服务器列表 threads 获取私聊线程列表 friends 获取好友列表 useUser 用户信息查询（无需服务器上下文） 方法 参数 说明 ------ ------------ ------------ info 获取用户信息 useRequest 处理好友请求、入群请求等 方法 参数 说明 -------- ------------------------------------- ------------------- friend 处理好友请求 guild 处理入群/服务器请求 useMedia 媒体管理：上传、发送图片/音频/视频/文件 方法 参数 说明 ------------- ------------------------------------------ ------------ upload 上传媒体文件 sendChannel 发送到频道 sendUser 发送到用户 upload、sendChannel 和 sendUser 支持 url、data、filePath、fileId 四种媒体来源，但一次只能提供一种来源。针对具有明确目标的群组或 C2C 场景，也可以使用： useConnection 查询机器人当前的连接状态。 如果平台不支持该能力，会返回 Warn 结果；调用方应通过返回值的 code 判断结果。 useInteraction 确认平台交互事件，例如按钮或命令交互。 如果不传 InteractionId，Hook 会尝试从当前事件上下文读取；如果平台不支持交互确认，会返回 Warn 结果。 type 可选值：'image' 'audio' 'video' 'file' useHistory 消息历史记录 方法 参数 说明 ------ ----------------------------------------- ------------ list 获取消息历史 usePermission 频道权限管理 方法 参数 说明 ----- --------------------------------------- -------- get 获取权限 set 设置权限 useAnnounce 频道公告管理 方法 参数 说明 -------- ------------------------------------- -------- set 设置公告 remove 删除公告 useClient 映射平台原生接口类，用于调用平台特有 API",
+    "text": "Hooks hook 在 response 中会自动劫持 event 上下文，也可显式传入，特别是非 response 上下文中调用。通过 useEvent 可获取当前事件和 next 回调。 useMessage 消息发送、删除、编辑、置顶等操作 方法 参数 说明 -------- --------------------------------------- ------------ send 或 DataEnums[] 发送消息 delete 删除消息 edit 编辑消息 pin 置顶消息 unpin 取消置顶 get 获取消息详情 useMention 解析得到被提及（@）的数据 find 返回所有匹配的提及用户数组，findOne 返回第一个匹配用户。 支持的过滤选项： 选项 类型 说明 ---------- --------- ------------------------ UserId string 按用户ID过滤 UserKey string 按用户Key过滤 UserName string 按用户名过滤 IsMaster boolean 是否为主人 IsBot boolean 是否为机器人（默认排除） useSubscribe 订阅模式，在某个事件周期中进行观察 订阅时机 useSubscribe 提供三种订阅时机： 方法 说明 ----------------------------------- -------------------------- subscribe.create(callback, keys) 在响应体创建时触发 subscribe.mount(callback, keys) 在中间件之后、响应之前触发 subscribe.unmount(callback, keys) 在响应之后触发 subscribe.cancel(sub) 取消订阅 keys 参数指定用于匹配事件的字段名（如 ['UserId']），只有这些字段值相同的事件才会触发订阅回调。 next 控制 订阅回调中的 next 行为： useMember 成员管理：查询、踢出、封禁、禁言、名片等 方法 参数 说明 -------- ------------------------------------------ ------------ info 获取成员信息 list 获取成员列表 search 搜索成员 kick 踢出成员 ban 封禁成员 unban 解封成员 mute 禁言成员 admin 设置管理员 card 设置名片 title 设置专属头衔 useChannel 频道管理：查询、创建、更新、删除 方法 参数 说明 -------- ----------------------------------------- ------------ info 获取频道信息 list 获取频道列表 create 创建频道 update 更新频道 delete 删除频道 useGuild 服务器/公会管理 方法 参数 说明 -------- -------------------------- --------------- info 获取服务器信息 list 无 获取服务器列表 update 更新服务器设置 leave 退出/解散服务器 mute 全员禁言 useRole 角色管理：创建、更新、删除、分配、移除 方法 参数 说明 -------- --------------------------------------------------- ------------ list 获取角色列表 create 创建角色 update 更新角色 delete 删除角色 assign 分配角色 remove 移除角色 useReaction 表情回应管理 方法 参数 说明 -------- --------------------------------- ---------------- add 添加表情回应 remove 移除表情回应 list 获取回应用户列表 useMe 获取当前 Bot 自身信息 方法 说明 --------- -------------------- info 获取 Bot 个人信息 guilds 获取加入的服务器列表 threads 获取私聊线程列表 friends 获取好友列表 useUser 用户信息查询（无需服务器上下文） 方法 参数 说明 ------ ------------ ------------ info 获取用户信息 useRequest 处理好友请求、入群请求等 方法 参数 说明 -------- ------------------------------------- ------------------- friend 处理好友请求 guild 处理入群/服务器请求 useMedia 媒体管理：上传、发送图片/音频/视频/文件 方法 参数 说明 ------------- ------------------------------------------ ------------ upload 上传媒体文件 sendChannel 发送到频道 sendUser 发送到用户 upload、sendChannel 和 sendUser 支持 url、data、filePath、fileId 四种媒体来源，但一次只能提供一种来源。针对具有明确目标的群组或 C2C 场景，也可以使用： useConnection 查询机器人当前的连接状态。 如果平台不支持该能力，会返回 Warn 结果；调用方应通过返回值的 code 判断结果。 useInteraction 确认平台交互事件，例如按钮或命令交互。 如果不传 InteractionId，Hook 会尝试从当前事件上下文读取；如果平台不支持交互确认，会返回 Warn 结果。 type 可选值：'image' 'audio' 'video' 'file' useHistory 消息历史记录 方法 参数 说明 ------ ----------------------------------------- ------------ list 获取消息历史 usePermission 频道权限管理 方法 参数 说明 ----- --------------------------------------- -------- get 获取权限 set 设置权限 useAnnounce 频道公告管理 方法 参数 说明 -------- ------------------------------------- -------- set 设置公告 remove 删除公告 Forum&Audio&ChannelSettings Hook 能力 --- --- useSchedule 查询、创建、更新和删除定时内容 useForum 查询、创建和删除帖子 / 主题 useAudio 控制音频、加入或离开音频频道、查询在线状态 useChannelSettings 查询消息频率、权限，申请接口权限和打开私聊会话 useMenu&usePanel useMenu 管理会话菜单；usePanel 管理命令面板及其可见目标。命令面板支持命令、链接、管理员限制和目标用户 / 群组： useClient 映射平台原生接口类，用于调用平台特有 API",
     "tags": []
   },
   {
@@ -973,6 +973,28 @@
   },
   {
     "id": "doc-section-6-20",
+    "type": "doc",
+    "title": "Hooks",
+    "sectionTitle": "Forum&Audio&ChannelSettings",
+    "titles": ["Hooks", "Forum&Audio&ChannelSettings"],
+    "path": "/docs/alemonjsDocs/core/hook#forum-audio-channelsettings",
+    "excerpt": "Hook 能力 --- --- useSchedule 查询、创建、更新和删除定时内容 useForum 查询、创建和删除帖子 / 主题 useAudio 控制音频、加入或离开音频频道、查询在线状态 useChannelSettings 查...",
+    "text": "Hook 能力 --- --- useSchedule 查询、创建、更新和删除定时内容 useForum 查询、创建和删除帖子 / 主题 useAudio 控制音频、加入或离开音频频道、查询在线状态 useChannelSettings 查询消息频率、权限，申请接口权限和打开私聊会话",
+    "tags": []
+  },
+  {
+    "id": "doc-section-6-21",
+    "type": "doc",
+    "title": "Hooks",
+    "sectionTitle": "useMenu&usePanel",
+    "titles": ["Hooks", "useMenu&usePanel"],
+    "path": "/docs/alemonjsDocs/core/hook#usemenu-usepanel",
+    "excerpt": "useMenu 管理会话菜单；usePanel 管理命令面板及其可见目标。命令面板支持命令、链接、管理员限制和目标用户 / 群组：",
+    "text": "useMenu 管理会话菜单；usePanel 管理命令面板及其可见目标。命令面板支持命令、链接、管理员限制和目标用户 / 群组：",
+    "tags": []
+  },
+  {
+    "id": "doc-section-6-22",
     "type": "doc",
     "title": "Hooks",
     "sectionTitle": "useClient",
@@ -2160,7 +2182,7 @@
     "titles": ["如何安装"],
     "path": "/docs/alemonjsDocs/getting-started/install",
     "excerpt": "使用 ALemonX 创建机器人项目，或手动安装 ALemonJS。",
-    "text": "如何安装 npm create alemonjs 已停止维护，不再用于创建项目。 ALemonX 安装 点击查看 如何安装 ALemonX npm 安装 需要有nodejs环境 手动构建 适合需要自行维护项目的开发者。 在 package.json 中设置 \"type\": \"module\"，然后创建index.js入口文件： 按开发手册编写路由和响应，然后启动： 接着按连接平台配置机器人账号。",
+    "text": "如何安装 ALemonX 安装 点击查看 如何安装 ALemonX npm 安装 需要有nodejs环境 手动构建 适合需要自行维护项目的开发者。 在 package.json 中设置 \"type\": \"module\"，然后创建index.js入口文件： 按开发手册编写路由和响应，然后启动： 接着按连接平台配置机器人账号。",
     "tags": []
   },
   {
@@ -2170,8 +2192,8 @@
     "sectionTitle": "如何安装",
     "titles": ["如何安装", "如何安装"],
     "path": "/docs/alemonjsDocs/getting-started/install#如何安装",
-    "excerpt": "npm create alemonjs 已停止维护，不再用于创建项目。",
-    "text": "npm create alemonjs 已停止维护，不再用于创建项目。",
+    "excerpt": "如何安装 ALemonX 安装 点击查看 如何安装 ALemonX npm 安装 需要有nodejs环境 手动构建 适合需要自行维护项目的开发者。 在 package.json 中设置 \"type\": \"module\"，然后创建index....",
+    "text": "如何安装 ALemonX 安装 点击查看 如何安装 ALemonX npm 安装 需要有nodejs环境 手动构建 适合需要自行维护项目的开发者。 在 package.json 中设置 \"type\": \"module\"，然后创建index.js入口文件： 按开发手册编写路由和响应，然后启动： 接着按连接平台配置机器人账号。",
     "tags": []
   },
   {
@@ -2210,6 +2232,137 @@
   {
     "id": "doc-page-14",
     "type": "doc",
+    "title": "终端工具",
+    "titles": ["终端工具"],
+    "path": "/docs/alemonjsDocs/getting-started/terminal-tools",
+    "excerpt": "安装并使用 alemonc 管理配置、平台、运行和发布。",
+    "text": "终端工具 alemonc 是 ALemonJS 项目的命令行工具，用于配置管理、平台管理、运行、版本更新和发布。 安装 在项目中安装 推荐将 alemonjs 安装到项目开发依赖中： 安装后可以直接使用项目内的命令： 也可以使用当前包管理器对应的执行方式： 全局安装 如果希望在任意目录直接输入 alemonc： 基本使用 在包含 package.json 和 alemon.config.yaml 的项目目录中运行命令。 配置管理 set 支持使用点号访问嵌套配置。配置命令会直接修改项目中的 alemon.config.yaml。 运行项目 run 执行 package.json 中指定的脚本；start 读取 package.json 的 main 入口启动项目。 平台管理与登录 platform add 会安装并注册对应的 @alemonjs/ 平台包；login 通过交互式提示把平台凭证保存到 alemon.config.yaml。 项目信息与版本更新 info 输出 Node.js、项目、依赖、配置摘要和包管理器信息；version update 检查并更新项目中的 alemonjs 与 @alemonjs/ 依赖。 分支管理 命令会根据当天日期创建并切换到 dev-YYYYMMDD-feature-name 分支，不会覆盖已存在的分支。 发布 发布前确保工作区干净，并先使用预演确认构建产物： publish 默认先执行 npm run build，再构建并发布当前包。主分支默认发布到 release 并创建版本标签；其他分支发布到对应的 -release 产物分支，不自动创建标签。--dry-run 不会推送分支或创建标签。 查看全部参数：",
+    "tags": []
+  },
+  {
+    "id": "doc-section-14-0",
+    "type": "doc",
+    "title": "终端工具",
+    "sectionTitle": "终端工具",
+    "titles": ["终端工具", "终端工具"],
+    "path": "/docs/alemonjsDocs/getting-started/terminal-tools#终端工具",
+    "excerpt": "alemonc 是 ALemonJS 项目的命令行工具，用于配置管理、平台管理、运行、版本更新和发布。",
+    "text": "alemonc 是 ALemonJS 项目的命令行工具，用于配置管理、平台管理、运行、版本更新和发布。",
+    "tags": []
+  },
+  {
+    "id": "doc-section-14-1",
+    "type": "doc",
+    "title": "终端工具",
+    "sectionTitle": "安装",
+    "titles": ["终端工具", "安装"],
+    "path": "/docs/alemonjsDocs/getting-started/terminal-tools#安装",
+    "excerpt": "终端工具 alemonc 是 ALemonJS 项目的命令行工具，用于配置管理、平台管理、运行、版本更新和发布。 安装 在项目中安装 推荐将 alemonjs 安装到项目开发依赖中： 安装后可以直接使用项目内的命令： 也可以使用当前包管理器...",
+    "text": "终端工具 alemonc 是 ALemonJS 项目的命令行工具，用于配置管理、平台管理、运行、版本更新和发布。 安装 在项目中安装 推荐将 alemonjs 安装到项目开发依赖中： 安装后可以直接使用项目内的命令： 也可以使用当前包管理器对应的执行方式： 全局安装 如果希望在任意目录直接输入 alemonc： 基本使用 在包含 package.json 和 alemon.config.yaml 的项目目录中运行命令。 配置管理 set 支持使用点号访问嵌套配置。配置命令会直接修改项目中的 alemon.config.yaml。 运行项目 run 执行 package.json 中指定的脚本；start 读取 package.json 的 main 入口启动项目。 平台管理与登录 platform add 会安装并注册对应的 @alemonjs/ 平台包；login 通过交互式提示把平台凭证保存到 alemon.config.yaml。 项目信息与版本更新 info 输出 Node.js、项目、依赖、配置摘要和包管理器信息；version update 检查并更新项目中的 alemonjs 与 @alemonjs/ 依赖。 分支管理 命令会根据当天日期创建并切换到 dev-YYYYMMDD-feature-name 分支，不会覆盖已存在的分支。 发布 发布前确保工作区干净，并先使用预演确认构建产物： publish 默认先执行 npm run build，再构建并发布当前包。主分支默认发布到 release 并创建版本标签；其他分支发布到对应的 -release 产物分支，不自动创建标签。--dry-run 不会推送分支或创建标签。 查看全部参数：",
+    "tags": []
+  },
+  {
+    "id": "doc-section-14-2",
+    "type": "doc",
+    "title": "终端工具",
+    "sectionTitle": "在项目中安装",
+    "titles": ["终端工具", "在项目中安装"],
+    "path": "/docs/alemonjsDocs/getting-started/terminal-tools#在项目中安装",
+    "excerpt": "推荐将 alemonjs 安装到项目开发依赖中： 安装后可以直接使用项目内的命令： 也可以使用当前包管理器对应的执行方式：",
+    "text": "推荐将 alemonjs 安装到项目开发依赖中： 安装后可以直接使用项目内的命令： 也可以使用当前包管理器对应的执行方式：",
+    "tags": []
+  },
+  {
+    "id": "doc-section-14-3",
+    "type": "doc",
+    "title": "终端工具",
+    "sectionTitle": "全局安装",
+    "titles": ["终端工具", "全局安装"],
+    "path": "/docs/alemonjsDocs/getting-started/terminal-tools#全局安装",
+    "excerpt": "如果希望在任意目录直接输入 alemonc：",
+    "text": "如果希望在任意目录直接输入 alemonc：",
+    "tags": []
+  },
+  {
+    "id": "doc-section-14-4",
+    "type": "doc",
+    "title": "终端工具",
+    "sectionTitle": "基本使用",
+    "titles": ["终端工具", "基本使用"],
+    "path": "/docs/alemonjsDocs/getting-started/terminal-tools#基本使用",
+    "excerpt": "在包含 package.json 和 alemon.config.yaml 的项目目录中运行命令。",
+    "text": "在包含 package.json 和 alemon.config.yaml 的项目目录中运行命令。",
+    "tags": []
+  },
+  {
+    "id": "doc-section-14-5",
+    "type": "doc",
+    "title": "终端工具",
+    "sectionTitle": "配置管理",
+    "titles": ["终端工具", "配置管理"],
+    "path": "/docs/alemonjsDocs/getting-started/terminal-tools#配置管理",
+    "excerpt": "set 支持使用点号访问嵌套配置。配置命令会直接修改项目中的 alemon.config.yaml。",
+    "text": "set 支持使用点号访问嵌套配置。配置命令会直接修改项目中的 alemon.config.yaml。",
+    "tags": []
+  },
+  {
+    "id": "doc-section-14-6",
+    "type": "doc",
+    "title": "终端工具",
+    "sectionTitle": "运行项目",
+    "titles": ["终端工具", "运行项目"],
+    "path": "/docs/alemonjsDocs/getting-started/terminal-tools#运行项目",
+    "excerpt": "run 执行 package.json 中指定的脚本；start 读取 package.json 的 main 入口启动项目。",
+    "text": "run 执行 package.json 中指定的脚本；start 读取 package.json 的 main 入口启动项目。",
+    "tags": []
+  },
+  {
+    "id": "doc-section-14-7",
+    "type": "doc",
+    "title": "终端工具",
+    "sectionTitle": "平台管理与登录",
+    "titles": ["终端工具", "平台管理与登录"],
+    "path": "/docs/alemonjsDocs/getting-started/terminal-tools#平台管理与登录",
+    "excerpt": "platform add 会安装并注册对应的 @alemonjs/ 平台包；login 通过交互式提示把平台凭证保存到 alemon.config.yaml。",
+    "text": "platform add 会安装并注册对应的 @alemonjs/ 平台包；login 通过交互式提示把平台凭证保存到 alemon.config.yaml。",
+    "tags": []
+  },
+  {
+    "id": "doc-section-14-8",
+    "type": "doc",
+    "title": "终端工具",
+    "sectionTitle": "项目信息与版本更新",
+    "titles": ["终端工具", "项目信息与版本更新"],
+    "path": "/docs/alemonjsDocs/getting-started/terminal-tools#项目信息与版本更新",
+    "excerpt": "info 输出 Node.js、项目、依赖、配置摘要和包管理器信息；version update 检查并更新项目中的 alemonjs 与 @alemonjs/ 依赖。",
+    "text": "info 输出 Node.js、项目、依赖、配置摘要和包管理器信息；version update 检查并更新项目中的 alemonjs 与 @alemonjs/ 依赖。",
+    "tags": []
+  },
+  {
+    "id": "doc-section-14-9",
+    "type": "doc",
+    "title": "终端工具",
+    "sectionTitle": "分支管理",
+    "titles": ["终端工具", "分支管理"],
+    "path": "/docs/alemonjsDocs/getting-started/terminal-tools#分支管理",
+    "excerpt": "命令会根据当天日期创建并切换到 dev-YYYYMMDD-feature-name 分支，不会覆盖已存在的分支。",
+    "text": "命令会根据当天日期创建并切换到 dev-YYYYMMDD-feature-name 分支，不会覆盖已存在的分支。",
+    "tags": []
+  },
+  {
+    "id": "doc-section-14-10",
+    "type": "doc",
+    "title": "终端工具",
+    "sectionTitle": "发布",
+    "titles": ["终端工具", "发布"],
+    "path": "/docs/alemonjsDocs/getting-started/terminal-tools#发布",
+    "excerpt": "发布前确保工作区干净，并先使用预演确认构建产物： publish 默认先执行 npm run build，再构建并发布当前包。主分支默认发布到 release 并创建版本标签；其他分支发布到对应的 -release 产物分支，不自动创建标签...",
+    "text": "发布前确保工作区干净，并先使用预演确认构建产物： publish 默认先执行 npm run build，再构建并发布当前包。主分支默认发布到 release 并创建版本标签；其他分支发布到对应的 -release 产物分支，不自动创建标签。--dry-run 不会推送分支或创建标签。 查看全部参数：",
+    "tags": []
+  },
+  {
+    "id": "doc-page-15",
+    "type": "doc",
     "title": "路由中间件",
     "titles": ["路由中间件"],
     "path": "/docs/alemonjsDocs/http/route-mw",
@@ -2218,7 +2371,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-14-0",
+    "id": "doc-section-15-0",
     "type": "doc",
     "title": "路由中间件",
     "sectionTitle": "路由中间件",
@@ -2229,7 +2382,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-14-1",
+    "id": "doc-section-15-1",
     "type": "doc",
     "title": "路由中间件",
     "sectionTitle": "基础写法",
@@ -2240,7 +2393,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-14-2",
+    "id": "doc-section-15-2",
     "type": "doc",
     "title": "路由中间件",
     "sectionTitle": "解析 Body",
@@ -2251,7 +2404,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-14-3",
+    "id": "doc-section-15-3",
     "type": "doc",
     "title": "路由中间件",
     "sectionTitle": "按前缀拆分",
@@ -2262,7 +2415,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-14-4",
+    "id": "doc-section-15-4",
     "type": "doc",
     "title": "路由中间件",
     "sectionTitle": "推荐理解",
@@ -2273,7 +2426,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-15",
+    "id": "doc-page-16",
     "type": "doc",
     "title": "接口路由",
     "titles": ["接口路由"],
@@ -2283,7 +2436,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-15-0",
+    "id": "doc-section-16-0",
     "type": "doc",
     "title": "接口路由",
     "sectionTitle": "接口路由",
@@ -2294,7 +2447,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-15-1",
+    "id": "doc-section-16-1",
     "type": "doc",
     "title": "接口路由",
     "sectionTitle": "当前支持的 HTTP 能力",
@@ -2305,7 +2458,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-15-2",
+    "id": "doc-section-16-2",
     "type": "doc",
     "title": "接口路由",
     "sectionTitle": "生命周期规则",
@@ -2316,7 +2469,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-15-3",
+    "id": "doc-section-16-3",
     "type": "doc",
     "title": "接口路由",
     "sectionTitle": "只有 ready 才真正提供服务",
@@ -2327,7 +2480,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-15-4",
+    "id": "doc-section-16-4",
     "type": "doc",
     "title": "接口路由",
     "sectionTitle": "插件必须先进入 apps 管理",
@@ -2338,7 +2491,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-15-5",
+    "id": "doc-section-16-5",
     "type": "doc",
     "title": "接口路由",
     "sectionTitle": "当前常见响应语义",
@@ -2349,7 +2502,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-15-6",
+    "id": "doc-section-16-6",
     "type": "doc",
     "title": "接口路由",
     "sectionTitle": "注册路由",
@@ -2360,7 +2513,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-15-7",
+    "id": "doc-section-16-7",
     "type": "doc",
     "title": "接口路由",
     "sectionTitle": "静态资源",
@@ -2371,7 +2524,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-15-8",
+    "id": "doc-section-16-8",
     "type": "doc",
     "title": "接口路由",
     "sectionTitle": "路径",
@@ -2382,7 +2535,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-15-9",
+    "id": "doc-section-16-9",
     "type": "doc",
     "title": "接口路由",
     "sectionTitle": "安全",
@@ -2393,7 +2546,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-15-10",
+    "id": "doc-section-16-10",
     "type": "doc",
     "title": "接口路由",
     "sectionTitle": "onHttpError",
@@ -2404,7 +2557,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-15-11",
+    "id": "doc-section-16-11",
     "type": "doc",
     "title": "接口路由",
     "sectionTitle": "配置",
@@ -2415,7 +2568,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-16",
+    "id": "doc-page-17",
     "type": "doc",
     "title": "实例对象",
     "titles": ["实例对象"],
@@ -2425,7 +2578,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-16-0",
+    "id": "doc-section-17-0",
     "type": "doc",
     "title": "实例对象",
     "sectionTitle": "实例对象",
@@ -2436,7 +2589,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-17",
+    "id": "doc-page-18",
     "type": "doc",
     "title": "扩展",
     "titles": ["扩展"],
@@ -2446,7 +2599,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-17-0",
+    "id": "doc-section-18-0",
     "type": "doc",
     "title": "扩展",
     "sectionTitle": "扩展",
@@ -2457,7 +2610,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-17-1",
+    "id": "doc-section-18-1",
     "type": "doc",
     "title": "扩展",
     "sectionTitle": "如何识别的",
@@ -2468,7 +2621,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-17-2",
+    "id": "doc-section-18-2",
     "type": "doc",
     "title": "扩展",
     "sectionTitle": "服务端",
@@ -2479,7 +2632,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-17-3",
+    "id": "doc-section-18-3",
     "type": "doc",
     "title": "扩展",
     "sectionTitle": "服务端配置",
@@ -2490,7 +2643,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-18",
+    "id": "doc-page-19",
     "type": "doc",
     "title": "模块",
     "titles": ["模块"],
@@ -2500,7 +2653,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-18-0",
+    "id": "doc-section-19-0",
     "type": "doc",
     "title": "模块",
     "sectionTitle": "模块",
@@ -2511,7 +2664,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-18-1",
+    "id": "doc-section-19-1",
     "type": "doc",
     "title": "模块",
     "sectionTitle": "本地模块化",
@@ -2522,17 +2675,17 @@
     "tags": []
   },
   {
-    "id": "doc-page-19",
+    "id": "doc-page-20",
     "type": "doc",
     "title": "自定义平台",
     "titles": ["自定义平台"],
     "path": "/docs/alemonjsDocs/modules/platforms",
-    "excerpt": "自定义平台 对接任意开放平台和框架 导出",
-    "text": "自定义平台 对接任意开放平台和框架 导出",
+    "excerpt": "自定义平台 对接任意开放平台和框架 导出 目标与统一动作 平台适配器除了推送标准事件，还应处理框架统一的目标对象和动作请求。目标范围使用 ActionTarget 表示： 适配器可按平台能力处理消息、媒体、成员、频道、交互和请求等动作。无法...",
+    "text": "自定义平台 对接任意开放平台和框架 导出 目标与统一动作 平台适配器除了推送标准事件，还应处理框架统一的目标对象和动作请求。目标范围使用 ActionTarget 表示： 适配器可按平台能力处理消息、媒体、成员、频道、交互和请求等动作。无法支持的动作应返回明确的 Warn 或 Fail 结果，不要静默丢弃请求。需要从事件外主动调用时，调用方会通过目标对象提供群组、频道或用户范围。 媒体动作支持图片、音频、视频和文件；上传来源一次只能选择 URL、Base64、文件路径或已有文件 ID 之一。平台不支持的 Markdown、媒体或交互节点应按平台规则降级。",
     "tags": []
   },
   {
-    "id": "doc-section-19-0",
+    "id": "doc-section-20-0",
     "type": "doc",
     "title": "自定义平台",
     "sectionTitle": "自定义平台",
@@ -2543,18 +2696,29 @@
     "tags": []
   },
   {
-    "id": "doc-section-19-1",
+    "id": "doc-section-20-1",
     "type": "doc",
     "title": "自定义平台",
     "sectionTitle": "导出",
     "titles": ["自定义平台", "导出"],
     "path": "/docs/alemonjsDocs/modules/platforms#导出",
-    "excerpt": "自定义平台 对接任意开放平台和框架 导出",
-    "text": "自定义平台 对接任意开放平台和框架 导出",
+    "excerpt": "自定义平台 对接任意开放平台和框架 导出 目标与统一动作 平台适配器除了推送标准事件，还应处理框架统一的目标对象和动作请求。目标范围使用 ActionTarget 表示： 适配器可按平台能力处理消息、媒体、成员、频道、交互和请求等动作。无法...",
+    "text": "自定义平台 对接任意开放平台和框架 导出 目标与统一动作 平台适配器除了推送标准事件，还应处理框架统一的目标对象和动作请求。目标范围使用 ActionTarget 表示： 适配器可按平台能力处理消息、媒体、成员、频道、交互和请求等动作。无法支持的动作应返回明确的 Warn 或 Fail 结果，不要静默丢弃请求。需要从事件外主动调用时，调用方会通过目标对象提供群组、频道或用户范围。 媒体动作支持图片、音频、视频和文件；上传来源一次只能选择 URL、Base64、文件路径或已有文件 ID 之一。平台不支持的 Markdown、媒体或交互节点应按平台规则降级。",
     "tags": []
   },
   {
-    "id": "doc-page-20",
+    "id": "doc-section-20-2",
+    "type": "doc",
+    "title": "自定义平台",
+    "sectionTitle": "目标与统一动作",
+    "titles": ["自定义平台", "目标与统一动作"],
+    "path": "/docs/alemonjsDocs/modules/platforms#目标与统一动作",
+    "excerpt": "平台适配器除了推送标准事件，还应处理框架统一的目标对象和动作请求。目标范围使用 ActionTarget 表示： 适配器可按平台能力处理消息、媒体、成员、频道、交互和请求等动作。无法支持的动作应返回明确的 Warn 或 Fail 结果，不要...",
+    "text": "平台适配器除了推送标准事件，还应处理框架统一的目标对象和动作请求。目标范围使用 ActionTarget 表示： 适配器可按平台能力处理消息、媒体、成员、频道、交互和请求等动作。无法支持的动作应返回明确的 Warn 或 Fail 结果，不要静默丢弃请求。需要从事件外主动调用时，调用方会通过目标对象提供群组、频道或用户范围。 媒体动作支持图片、音频、视频和文件；上传来源一次只能选择 URL、Base64、文件路径或已有文件 ID 之一。平台不支持的 Markdown、媒体或交互节点应按平台规则降级。",
+    "tags": []
+  },
+  {
+    "id": "doc-page-21",
     "type": "doc",
     "title": "机器人构建规范",
     "titles": ["机器人构建规范"],
@@ -2564,7 +2728,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-20-0",
+    "id": "doc-section-21-0",
     "type": "doc",
     "title": "机器人构建规范",
     "sectionTitle": "机器人构建规范",
@@ -2575,7 +2739,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-20-1",
+    "id": "doc-section-21-1",
     "type": "doc",
     "title": "机器人构建规范",
     "sectionTitle": "构建入口优先级",
@@ -2586,7 +2750,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-20-2",
+    "id": "doc-section-21-2",
     "type": "doc",
     "title": "机器人构建规范",
     "sectionTitle": "推荐产物",
@@ -2597,7 +2761,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-21",
+    "id": "doc-page-22",
     "type": "doc",
     "title": "系统插件开发",
     "titles": ["系统插件开发"],
@@ -2607,7 +2771,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-21-0",
+    "id": "doc-section-22-0",
     "type": "doc",
     "title": "系统插件开发",
     "sectionTitle": "系统插件开发",
@@ -2618,7 +2782,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-21-1",
+    "id": "doc-section-22-1",
     "type": "doc",
     "title": "系统插件开发",
     "sectionTitle": "运行模型",
@@ -2629,7 +2793,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-21-2",
+    "id": "doc-section-22-2",
     "type": "doc",
     "title": "系统插件开发",
     "sectionTitle": "插件结构",
@@ -2640,7 +2804,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-21-3",
+    "id": "doc-section-22-3",
     "type": "doc",
     "title": "系统插件开发",
     "sectionTitle": "最小插件",
@@ -2651,7 +2815,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-21-4",
+    "id": "doc-section-22-4",
     "type": "doc",
     "title": "系统插件开发",
     "sectionTitle": "alx.json",
@@ -2662,7 +2826,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-21-5",
+    "id": "doc-section-22-5",
     "type": "doc",
     "title": "系统插件开发",
     "sectionTitle": "执行器",
@@ -2673,7 +2837,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-21-6",
+    "id": "doc-section-22-6",
     "type": "doc",
     "title": "系统插件开发",
     "sectionTitle": "通讯协议",
@@ -2684,7 +2848,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-21-7",
+    "id": "doc-section-22-7",
     "type": "doc",
     "title": "系统插件开发",
     "sectionTitle": "任务生命周期",
@@ -2695,7 +2859,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-21-8",
+    "id": "doc-section-22-8",
     "type": "doc",
     "title": "系统插件开发",
     "sectionTitle": "清单能力",
@@ -2706,7 +2870,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-21-9",
+    "id": "doc-section-22-9",
     "type": "doc",
     "title": "系统插件开发",
     "sectionTitle": "系统面板与 ALXHost",
@@ -2717,7 +2881,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-21-10",
+    "id": "doc-section-22-10",
     "type": "doc",
     "title": "系统插件开发",
     "sectionTitle": "本地服务与上传",
@@ -2728,7 +2892,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-21-11",
+    "id": "doc-section-22-11",
     "type": "doc",
     "title": "系统插件开发",
     "sectionTitle": "本地服务",
@@ -2739,7 +2903,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-21-12",
+    "id": "doc-section-22-12",
     "type": "doc",
     "title": "系统插件开发",
     "sectionTitle": "文件上传",
@@ -2750,7 +2914,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-21-13",
+    "id": "doc-section-22-13",
     "type": "doc",
     "title": "系统插件开发",
     "sectionTitle": "特权操作与审计",
@@ -2761,7 +2925,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-21-14",
+    "id": "doc-section-22-14",
     "type": "doc",
     "title": "系统插件开发",
     "sectionTitle": "源码开发会话",
@@ -2772,7 +2936,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-21-15",
+    "id": "doc-section-22-15",
     "type": "doc",
     "title": "系统插件开发",
     "sectionTitle": "发布与安装",
@@ -2783,7 +2947,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-21-16",
+    "id": "doc-section-22-16",
     "type": "doc",
     "title": "系统插件开发",
     "sectionTitle": "安全开发规范",
@@ -2794,7 +2958,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-21-17",
+    "id": "doc-section-22-17",
     "type": "doc",
     "title": "系统插件开发",
     "sectionTitle": "相关文档",
@@ -2805,7 +2969,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-22",
+    "id": "doc-page-23",
     "type": "doc",
     "title": "机器人应用页",
     "titles": ["机器人应用页"],
@@ -2815,7 +2979,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-22-0",
+    "id": "doc-section-23-0",
     "type": "doc",
     "title": "机器人应用页",
     "sectionTitle": "WebView",
@@ -2826,7 +2990,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-22-1",
+    "id": "doc-section-23-1",
     "type": "doc",
     "title": "机器人应用页",
     "sectionTitle": "页面通信",
@@ -2837,7 +3001,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-22-2",
+    "id": "doc-section-23-2",
     "type": "doc",
     "title": "机器人应用页",
     "sectionTitle": "页面生命周期",
@@ -2848,7 +3012,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-23",
+    "id": "doc-page-24",
     "type": "doc",
     "title": "如何安装",
     "titles": ["如何安装"],
@@ -2858,7 +3022,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-23-0",
+    "id": "doc-section-24-0",
     "type": "doc",
     "title": "如何安装",
     "sectionTitle": "如何安装",
@@ -2869,7 +3033,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-23-1",
+    "id": "doc-section-24-1",
     "type": "doc",
     "title": "如何安装",
     "sectionTitle": "脚本安装",
@@ -2880,7 +3044,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-23-2",
+    "id": "doc-section-24-2",
     "type": "doc",
     "title": "如何安装",
     "sectionTitle": "Windows（脚本安装）",
@@ -2891,7 +3055,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-23-3",
+    "id": "doc-section-24-3",
     "type": "doc",
     "title": "如何安装",
     "sectionTitle": "Linux",
@@ -2902,7 +3066,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-23-4",
+    "id": "doc-section-24-4",
     "type": "doc",
     "title": "如何安装",
     "sectionTitle": "macOS",
@@ -2913,7 +3077,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-23-5",
+    "id": "doc-section-24-5",
     "type": "doc",
     "title": "如何安装",
     "sectionTitle": "FreeBSD",
@@ -2924,7 +3088,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-23-6",
+    "id": "doc-section-24-6",
     "type": "doc",
     "title": "如何安装",
     "sectionTitle": "手动安装",
@@ -2935,7 +3099,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-23-7",
+    "id": "doc-section-24-7",
     "type": "doc",
     "title": "如何安装",
     "sectionTitle": "Windows（手动安装）",
@@ -2946,7 +3110,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-23-8",
+    "id": "doc-section-24-8",
     "type": "doc",
     "title": "如何安装",
     "sectionTitle": "macOS / Linux / FreeBSD",
@@ -2957,7 +3121,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-23-9",
+    "id": "doc-section-24-9",
     "type": "doc",
     "title": "如何安装",
     "sectionTitle": "Docker",
@@ -2968,7 +3132,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-24",
+    "id": "doc-page-25",
     "type": "doc",
     "title": "工作站开始",
     "titles": ["工作站开始"],
@@ -2978,7 +3142,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-24-0",
+    "id": "doc-section-25-0",
     "type": "doc",
     "title": "工作站开始",
     "sectionTitle": "工作站开始",
@@ -2989,7 +3153,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-24-1",
+    "id": "doc-section-25-1",
     "type": "doc",
     "title": "工作站开始",
     "sectionTitle": "引导安装",
@@ -3000,7 +3164,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-24-2",
+    "id": "doc-section-25-2",
     "type": "doc",
     "title": "工作站开始",
     "sectionTitle": "创建或导入项目",
@@ -3011,7 +3175,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-24-3",
+    "id": "doc-section-25-3",
     "type": "doc",
     "title": "工作站开始",
     "sectionTitle": "创建任务",
@@ -3022,7 +3186,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-25",
+    "id": "doc-page-26",
     "type": "doc",
     "title": "ALemonX",
     "titles": ["ALemonX"],
@@ -3032,7 +3196,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-25-0",
+    "id": "doc-section-26-0",
     "type": "doc",
     "title": "ALemonX",
     "sectionTitle": "ALemonX",
@@ -3043,7 +3207,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-26",
+    "id": "doc-page-27",
     "type": "doc",
     "title": "CLI",
     "titles": ["CLI"],
@@ -3053,7 +3217,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-26-0",
+    "id": "doc-section-27-0",
     "type": "doc",
     "title": "CLI",
     "sectionTitle": "CLI",
@@ -3064,7 +3228,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-26-1",
+    "id": "doc-section-27-1",
     "type": "doc",
     "title": "CLI",
     "sectionTitle": "监听与工作区",
@@ -3075,7 +3239,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-26-2",
+    "id": "doc-section-27-2",
     "type": "doc",
     "title": "CLI",
     "sectionTitle": "后台服务",
@@ -3086,7 +3250,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-27",
+    "id": "doc-page-28",
     "type": "doc",
     "title": "MCP 工具参考",
     "titles": ["MCP 工具参考"],
@@ -3096,7 +3260,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-27-0",
+    "id": "doc-section-28-0",
     "type": "doc",
     "title": "MCP 工具参考",
     "sectionTitle": "MCP 工具级参考",
@@ -3107,7 +3271,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-27-1",
+    "id": "doc-section-28-1",
     "type": "doc",
     "title": "MCP 工具参考",
     "sectionTitle": "调用约定",
@@ -3118,7 +3282,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-27-2",
+    "id": "doc-section-28-2",
     "type": "doc",
     "title": "MCP 工具参考",
     "sectionTitle": "工具目录",
@@ -3129,7 +3293,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-27-3",
+    "id": "doc-section-28-3",
     "type": "doc",
     "title": "MCP 工具参考",
     "sectionTitle": "上下文与生态信息",
@@ -3140,7 +3304,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-27-4",
+    "id": "doc-section-28-4",
     "type": "doc",
     "title": "MCP 工具参考",
     "sectionTitle": "环境与项目检查",
@@ -3151,7 +3315,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-27-5",
+    "id": "doc-section-28-5",
     "type": "doc",
     "title": "MCP 工具参考",
     "sectionTitle": "项目与配置",
@@ -3162,7 +3326,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-27-6",
+    "id": "doc-section-28-6",
     "type": "doc",
     "title": "MCP 工具参考",
     "sectionTitle": "运行、构建与发布",
@@ -3173,7 +3337,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-27-7",
+    "id": "doc-section-28-7",
     "type": "doc",
     "title": "MCP 工具参考",
     "sectionTitle": "Agent、插件与系统状态",
@@ -3184,7 +3348,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-27-8",
+    "id": "doc-section-28-8",
     "type": "doc",
     "title": "MCP 工具参考",
     "sectionTitle": "推荐调用序列",
@@ -3195,7 +3359,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-28",
+    "id": "doc-page-29",
     "type": "doc",
     "title": "MCP",
     "titles": ["MCP"],
@@ -3205,7 +3369,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-28-0",
+    "id": "doc-section-29-0",
     "type": "doc",
     "title": "MCP",
     "sectionTitle": "MCP",
@@ -3216,7 +3380,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-28-1",
+    "id": "doc-section-29-1",
     "type": "doc",
     "title": "MCP",
     "sectionTitle": "stdio",
@@ -3227,7 +3391,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-28-2",
+    "id": "doc-section-29-2",
     "type": "doc",
     "title": "MCP",
     "sectionTitle": "HTTP",
@@ -3238,7 +3402,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-28-3",
+    "id": "doc-section-29-3",
     "type": "doc",
     "title": "MCP",
     "sectionTitle": "写入",
@@ -3249,7 +3413,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-28-4",
+    "id": "doc-section-29-4",
     "type": "doc",
     "title": "MCP",
     "sectionTitle": "选择连接方式",
@@ -3260,7 +3424,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-28-5",
+    "id": "doc-section-29-5",
     "type": "doc",
     "title": "MCP",
     "sectionTitle": "安全边界",
@@ -3271,7 +3435,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-29",
+    "id": "doc-page-30",
     "type": "doc",
     "title": "插件清单",
     "titles": ["插件清单"],
@@ -3281,7 +3445,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-29-0",
+    "id": "doc-section-30-0",
     "type": "doc",
     "title": "插件清单",
     "sectionTitle": "插件清单",
@@ -3292,7 +3456,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-30",
+    "id": "doc-page-31",
     "type": "doc",
     "title": "JS模块",
     "titles": ["JS模块"],
@@ -3302,7 +3466,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-30-0",
+    "id": "doc-section-31-0",
     "type": "doc",
     "title": "JS模块",
     "sectionTitle": "JS模块",
@@ -3313,7 +3477,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-30-1",
+    "id": "doc-section-31-1",
     "type": "doc",
     "title": "JS模块",
     "sectionTitle": "数据",
@@ -3324,7 +3488,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-30-2",
+    "id": "doc-section-31-2",
     "type": "doc",
     "title": "JS模块",
     "sectionTitle": "通讯",
@@ -3335,7 +3499,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-30-3",
+    "id": "doc-section-31-3",
     "type": "doc",
     "title": "JS模块",
     "sectionTitle": "生图",
@@ -3346,7 +3510,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-30-4",
+    "id": "doc-section-31-4",
     "type": "doc",
     "title": "JS模块",
     "sectionTitle": "开发",
@@ -3357,7 +3521,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-31",
+    "id": "doc-page-32",
     "type": "doc",
     "title": "X插件",
     "titles": ["X插件"],
@@ -3367,7 +3531,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-31-0",
+    "id": "doc-section-32-0",
     "type": "doc",
     "title": "X插件",
     "sectionTitle": "X插件",
@@ -3378,7 +3542,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-31-1",
+    "id": "doc-section-32-1",
     "type": "doc",
     "title": "X插件",
     "sectionTitle": "基础",
@@ -3389,7 +3553,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-32",
+    "id": "doc-page-33",
     "type": "doc",
     "title": "JS插件",
     "titles": ["JS插件"],
@@ -3399,7 +3563,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-32-0",
+    "id": "doc-section-33-0",
     "type": "doc",
     "title": "JS插件",
     "sectionTitle": "JS插件",
@@ -3410,7 +3574,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-32-1",
+    "id": "doc-section-33-1",
     "type": "doc",
     "title": "JS插件",
     "sectionTitle": "增强",
@@ -3421,7 +3585,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-32-2",
+    "id": "doc-section-33-2",
     "type": "doc",
     "title": "JS插件",
     "sectionTitle": "IP",
@@ -3432,7 +3596,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-32-3",
+    "id": "doc-section-33-3",
     "type": "doc",
     "title": "JS插件",
     "sectionTitle": "功能",
@@ -3443,7 +3607,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-32-4",
+    "id": "doc-section-33-4",
     "type": "doc",
     "title": "JS插件",
     "sectionTitle": "游戏",
@@ -3454,7 +3618,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-32-5",
+    "id": "doc-section-33-5",
     "type": "doc",
     "title": "JS插件",
     "sectionTitle": "AI",
@@ -3465,7 +3629,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-32-6",
+    "id": "doc-section-33-6",
     "type": "doc",
     "title": "JS插件",
     "sectionTitle": "工具",
@@ -3476,7 +3640,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-33",
+    "id": "doc-page-34",
     "type": "doc",
     "title": "连接平台",
     "titles": ["连接平台"],
@@ -3486,7 +3650,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-33-0",
+    "id": "doc-section-34-0",
     "type": "doc",
     "title": "连接平台",
     "sectionTitle": "连接平台",
@@ -3497,7 +3661,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-33-1",
+    "id": "doc-section-34-1",
     "type": "doc",
     "title": "连接平台",
     "sectionTitle": "官方",
@@ -3508,7 +3672,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-33-2",
+    "id": "doc-section-34-2",
     "type": "doc",
     "title": "连接平台",
     "sectionTitle": "第三方",
@@ -3519,7 +3683,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-34",
+    "id": "doc-page-35",
     "type": "doc",
     "title": "文档",
     "titles": ["文档"],
@@ -3529,7 +3693,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-34-0",
+    "id": "doc-section-35-0",
     "type": "doc",
     "title": "文档",
     "sectionTitle": "文档",
@@ -3540,7 +3704,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-34-1",
+    "id": "doc-section-35-1",
     "type": "doc",
     "title": "文档",
     "sectionTitle": "ALemonX",
@@ -3551,7 +3715,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-34-2",
+    "id": "doc-section-35-2",
     "type": "doc",
     "title": "文档",
     "sectionTitle": "机器人开发",
@@ -3562,7 +3726,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-34-3",
+    "id": "doc-section-35-3",
     "type": "doc",
     "title": "文档",
     "sectionTitle": "生态",
@@ -3573,7 +3737,7 @@
     "tags": []
   },
   {
-    "id": "doc-page-35",
+    "id": "doc-page-36",
     "type": "doc",
     "title": "开源生态",
     "titles": ["开源生态"],
@@ -3583,7 +3747,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-35-0",
+    "id": "doc-section-36-0",
     "type": "doc",
     "title": "开源生态",
     "sectionTitle": "开源生态",
@@ -3594,7 +3758,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-35-1",
+    "id": "doc-section-36-1",
     "type": "doc",
     "title": "开源生态",
     "sectionTitle": "SKILL",
@@ -3605,7 +3769,7 @@
     "tags": []
   },
   {
-    "id": "doc-section-35-2",
+    "id": "doc-section-36-2",
     "type": "doc",
     "title": "开源生态",
     "sectionTitle": "开发与部署",
@@ -3618,6 +3782,77 @@
   {
     "id": "blog-page-0",
     "type": "blog",
+    "title": "V2.1.109",
+    "titles": ["V2.1.109"],
+    "path": "/blog/2026/09/21/v2.1.109",
+    "excerpt": "扩展统一 Hook、消息格式、QQ Bot 能力和平台适配",
+    "text": "更新记录 本次更新根据 ALemonJS 仓库近期提交整理，覆盖核心包、官方平台包和 alemonc 工具链的新增内容。 核心接口 Markdown 引用支持 Markdown 节点和节点数组，可表达多行、空段落和嵌套引用。 新增并扩展频道内容 Hook：useSchedule、useForum、useAudio 和 useChannelSettings。 新增菜单和命令面板 Hook：useMenu、usePanel。 统一 Action 上下文和 ActionTarget，支持从事件、群组、频道及私聊上下文解析目标。 扩展媒体上传、分片上传、主动发送和流式消息类型。 useMe、useGuild、useMember、useRole、usePermission、useReaction、useRequest 等 Hook 补充更多查询和管理动作。 QQ Bot 增加群聊和 C2C 非频道事件及框架动作。 支持命令面板、菜单、入群申请、申请策略、白名单和成员管理。 补充群禁言、黑名单、连接网关、媒体上传和流式消息能力。 拆分并整理 QQ Bot 的 API、事件、消息、框架和快速开始文档。 平台适配 新增微信个人号 iLink ClawBot 平台适配器。 扩展抖音桌面端和抖音机器人适配器，补充登录、网关、消息、媒体和联系人能力。 Discord、KOOK、Bubble、Telegram、OneBot、Milky、Wechaty、企业微信等平台补充 Markdown 引用转换和降级处理。 工具链与运行时 alemonc 增加分支和发布相关操作，并完善发布参数处理。 CBP 运行时继续补充连接、登录和进程间通信能力。 平台适配器收到不支持的统一动作时，应返回明确结果，便于调用方判断能力范围。",
+    "tags": ["alemonjs", ""],
+    "date": "2026-09-21"
+  },
+  {
+    "id": "blog-section-0-0",
+    "type": "blog",
+    "title": "V2.1.109",
+    "sectionTitle": "更新记录",
+    "titles": ["V2.1.109", "更新记录"],
+    "path": "/blog/2026/09/21/v2.1.109#更新记录",
+    "excerpt": "本次更新根据 ALemonJS 仓库近期提交整理，覆盖核心包、官方平台包和 alemonc 工具链的新增内容。",
+    "text": "本次更新根据 ALemonJS 仓库近期提交整理，覆盖核心包、官方平台包和 alemonc 工具链的新增内容。",
+    "tags": ["alemonjs", ""],
+    "date": "2026-09-21"
+  },
+  {
+    "id": "blog-section-0-1",
+    "type": "blog",
+    "title": "V2.1.109",
+    "sectionTitle": "核心接口",
+    "titles": ["V2.1.109", "核心接口"],
+    "path": "/blog/2026/09/21/v2.1.109#核心接口",
+    "excerpt": "Markdown 引用支持 Markdown 节点和节点数组，可表达多行、空段落和嵌套引用。 新增并扩展频道内容 Hook：useSchedule、useForum、useAudio 和 useChannelSettings。 新增菜单和命...",
+    "text": "Markdown 引用支持 Markdown 节点和节点数组，可表达多行、空段落和嵌套引用。 新增并扩展频道内容 Hook：useSchedule、useForum、useAudio 和 useChannelSettings。 新增菜单和命令面板 Hook：useMenu、usePanel。 统一 Action 上下文和 ActionTarget，支持从事件、群组、频道及私聊上下文解析目标。 扩展媒体上传、分片上传、主动发送和流式消息类型。 useMe、useGuild、useMember、useRole、usePermission、useReaction、useRequest 等 Hook 补充更多查询和管理动作。",
+    "tags": ["alemonjs", ""],
+    "date": "2026-09-21"
+  },
+  {
+    "id": "blog-section-0-2",
+    "type": "blog",
+    "title": "V2.1.109",
+    "sectionTitle": "QQ Bot",
+    "titles": ["V2.1.109", "QQ Bot"],
+    "path": "/blog/2026/09/21/v2.1.109#qq-bot",
+    "excerpt": "增加群聊和 C2C 非频道事件及框架动作。 支持命令面板、菜单、入群申请、申请策略、白名单和成员管理。 补充群禁言、黑名单、连接网关、媒体上传和流式消息能力。 拆分并整理 QQ Bot 的 API、事件、消息、框架和快速开始文档。",
+    "text": "增加群聊和 C2C 非频道事件及框架动作。 支持命令面板、菜单、入群申请、申请策略、白名单和成员管理。 补充群禁言、黑名单、连接网关、媒体上传和流式消息能力。 拆分并整理 QQ Bot 的 API、事件、消息、框架和快速开始文档。",
+    "tags": ["alemonjs", ""],
+    "date": "2026-09-21"
+  },
+  {
+    "id": "blog-section-0-3",
+    "type": "blog",
+    "title": "V2.1.109",
+    "sectionTitle": "平台适配",
+    "titles": ["V2.1.109", "平台适配"],
+    "path": "/blog/2026/09/21/v2.1.109#平台适配",
+    "excerpt": "新增微信个人号 iLink ClawBot 平台适配器。 扩展抖音桌面端和抖音机器人适配器，补充登录、网关、消息、媒体和联系人能力。 Discord、KOOK、Bubble、Telegram、OneBot、Milky、Wechaty、企业微...",
+    "text": "新增微信个人号 iLink ClawBot 平台适配器。 扩展抖音桌面端和抖音机器人适配器，补充登录、网关、消息、媒体和联系人能力。 Discord、KOOK、Bubble、Telegram、OneBot、Milky、Wechaty、企业微信等平台补充 Markdown 引用转换和降级处理。",
+    "tags": ["alemonjs", ""],
+    "date": "2026-09-21"
+  },
+  {
+    "id": "blog-section-0-4",
+    "type": "blog",
+    "title": "V2.1.109",
+    "sectionTitle": "工具链与运行时",
+    "titles": ["V2.1.109", "工具链与运行时"],
+    "path": "/blog/2026/09/21/v2.1.109#工具链与运行时",
+    "excerpt": "alemonc 增加分支和发布相关操作，并完善发布参数处理。 CBP 运行时继续补充连接、登录和进程间通信能力。 平台适配器收到不支持的统一动作时，应返回明确结果，便于调用方判断能力范围。",
+    "text": "alemonc 增加分支和发布相关操作，并完善发布参数处理。 CBP 运行时继续补充连接、登录和进程间通信能力。 平台适配器收到不支持的统一动作时，应返回明确结果，便于调用方判断能力范围。",
+    "tags": ["alemonjs", ""],
+    "date": "2026-09-21"
+  },
+  {
+    "id": "blog-page-1",
+    "type": "blog",
     "title": "V2.1.97",
     "titles": ["V2.1.97"],
     "path": "/blog/2026/08/31/v2.1.97",
@@ -3627,7 +3862,7 @@
     "date": "2026-08-31"
   },
   {
-    "id": "blog-section-0-0",
+    "id": "blog-section-1-0",
     "type": "blog",
     "title": "V2.1.97",
     "sectionTitle": "更新记录",
@@ -3639,7 +3874,7 @@
     "date": "2026-08-31"
   },
   {
-    "id": "blog-section-0-1",
+    "id": "blog-section-1-1",
     "type": "blog",
     "title": "V2.1.97",
     "sectionTitle": "2.1.57–2.1.65：定时任务、Discord 与路由能力",
@@ -3651,7 +3886,7 @@
     "date": "2026-08-31"
   },
   {
-    "id": "blog-section-0-2",
+    "id": "blog-section-1-2",
     "type": "blog",
     "title": "V2.1.97",
     "sectionTitle": "2.1.66–2.1.80：路由、交互与消息能力增强",
@@ -3663,7 +3898,7 @@
     "date": "2026-08-31"
   },
   {
-    "id": "blog-section-0-3",
+    "id": "blog-section-1-3",
     "type": "blog",
     "title": "V2.1.97",
     "sectionTitle": "2.1.81–2.1.92：运行时、生命周期与发布体系",
@@ -3675,7 +3910,7 @@
     "date": "2026-08-31"
   },
   {
-    "id": "blog-section-0-4",
+    "id": "blog-section-1-4",
     "type": "blog",
     "title": "V2.1.97",
     "sectionTitle": "新增事件上下文",
@@ -3687,7 +3922,7 @@
     "date": "2026-08-31"
   },
   {
-    "id": "blog-section-0-5",
+    "id": "blog-section-1-5",
     "type": "blog",
     "title": "V2.1.97",
     "sectionTitle": "2.1.93–2.1.97：平台目标、QQ 与运行时更新",
@@ -3699,7 +3934,7 @@
     "date": "2026-08-31"
   },
   {
-    "id": "blog-section-0-6",
+    "id": "blog-section-1-6",
     "type": "blog",
     "title": "V2.1.97",
     "sectionTitle": "新增 useConnection",
@@ -3711,7 +3946,7 @@
     "date": "2026-08-31"
   },
   {
-    "id": "blog-section-0-7",
+    "id": "blog-section-1-7",
     "type": "blog",
     "title": "V2.1.97",
     "sectionTitle": "新增 useInteraction",
@@ -3723,7 +3958,7 @@
     "date": "2026-08-31"
   },
   {
-    "id": "blog-section-0-8",
+    "id": "blog-section-1-8",
     "type": "blog",
     "title": "V2.1.97",
     "sectionTitle": "useMedia 能力扩展",
@@ -3735,7 +3970,7 @@
     "date": "2026-08-31"
   },
   {
-    "id": "blog-section-0-9",
+    "id": "blog-section-1-9",
     "type": "blog",
     "title": "V2.1.97",
     "sectionTitle": "useMessage 发送失败提示",
@@ -3747,7 +3982,7 @@
     "date": "2026-08-31"
   },
   {
-    "id": "blog-section-0-10",
+    "id": "blog-section-1-10",
     "type": "blog",
     "title": "V2.1.97",
     "sectionTitle": "相关提交",
@@ -3759,7 +3994,7 @@
     "date": "2026-08-31"
   },
   {
-    "id": "blog-page-1",
+    "id": "blog-page-2",
     "type": "blog",
     "title": "X0.2.19",
     "titles": ["X0.2.19"],
@@ -3770,7 +4005,7 @@
     "date": "2026-08-22"
   },
   {
-    "id": "blog-section-1-0",
+    "id": "blog-section-2-0",
     "type": "blog",
     "title": "X0.2.19",
     "sectionTitle": "机器人的本地工作台",
@@ -3782,7 +4017,7 @@
     "date": "2026-08-22"
   },
   {
-    "id": "blog-section-1-1",
+    "id": "blog-section-2-1",
     "type": "blog",
     "title": "X0.2.19",
     "sectionTitle": "目录布局",
@@ -3794,7 +4029,7 @@
     "date": "2026-08-22"
   },
   {
-    "id": "blog-section-1-2",
+    "id": "blog-section-2-2",
     "type": "blog",
     "title": "X0.2.19",
     "sectionTitle": "脚本安装",
@@ -3806,7 +4041,7 @@
     "date": "2026-08-22"
   },
   {
-    "id": "blog-section-1-3",
+    "id": "blog-section-2-3",
     "type": "blog",
     "title": "X0.2.19",
     "sectionTitle": "Windows（脚本安装）",
@@ -3818,7 +4053,7 @@
     "date": "2026-08-22"
   },
   {
-    "id": "blog-section-1-4",
+    "id": "blog-section-2-4",
     "type": "blog",
     "title": "X0.2.19",
     "sectionTitle": "Linux",
@@ -3830,7 +4065,7 @@
     "date": "2026-08-22"
   },
   {
-    "id": "blog-section-1-5",
+    "id": "blog-section-2-5",
     "type": "blog",
     "title": "X0.2.19",
     "sectionTitle": "macOS",
@@ -3842,7 +4077,7 @@
     "date": "2026-08-22"
   },
   {
-    "id": "blog-section-1-6",
+    "id": "blog-section-2-6",
     "type": "blog",
     "title": "X0.2.19",
     "sectionTitle": "FreeBSD",
@@ -3854,7 +4089,7 @@
     "date": "2026-08-22"
   },
   {
-    "id": "blog-section-1-7",
+    "id": "blog-section-2-7",
     "type": "blog",
     "title": "X0.2.19",
     "sectionTitle": "手动安装",
@@ -3866,7 +4101,7 @@
     "date": "2026-08-22"
   },
   {
-    "id": "blog-section-1-8",
+    "id": "blog-section-2-8",
     "type": "blog",
     "title": "X0.2.19",
     "sectionTitle": "Windows（手动安装）",
@@ -3878,7 +4113,7 @@
     "date": "2026-08-22"
   },
   {
-    "id": "blog-section-1-9",
+    "id": "blog-section-2-9",
     "type": "blog",
     "title": "X0.2.19",
     "sectionTitle": "macOS / Linux / FreeBSD",
@@ -3890,7 +4125,7 @@
     "date": "2026-08-22"
   },
   {
-    "id": "blog-section-1-10",
+    "id": "blog-section-2-10",
     "type": "blog",
     "title": "X0.2.19",
     "sectionTitle": "Docker",
@@ -3902,7 +4137,7 @@
     "date": "2026-08-22"
   },
   {
-    "id": "blog-page-2",
+    "id": "blog-page-3",
     "type": "blog",
     "title": "V2.1.57",
     "titles": ["V2.1.57"],
@@ -3913,7 +4148,7 @@
     "date": "2026-04-11"
   },
   {
-    "id": "blog-section-2-0",
+    "id": "blog-section-3-0",
     "type": "blog",
     "title": "V2.1.57",
     "sectionTitle": "定时任务 API",
@@ -3925,7 +4160,7 @@
     "date": "2026-04-11"
   },
   {
-    "id": "blog-section-2-1",
+    "id": "blog-section-3-1",
     "type": "blog",
     "title": "V2.1.57",
     "sectionTitle": "新增 API",
@@ -3937,7 +4172,7 @@
     "date": "2026-04-11"
   },
   {
-    "id": "blog-section-2-2",
+    "id": "blog-section-3-2",
     "type": "blog",
     "title": "V2.1.57",
     "sectionTitle": "setInterval / setTimeout",
@@ -3949,7 +4184,7 @@
     "date": "2026-04-11"
   },
   {
-    "id": "blog-section-2-3",
+    "id": "blog-section-3-3",
     "type": "blog",
     "title": "V2.1.57",
     "sectionTitle": "setCron",
@@ -3961,7 +4196,7 @@
     "date": "2026-04-11"
   },
   {
-    "id": "blog-section-2-4",
+    "id": "blog-section-3-4",
     "type": "blog",
     "title": "V2.1.57",
     "sectionTitle": "pauseSchedule / resumeSchedule",
@@ -3973,7 +4208,7 @@
     "date": "2026-04-11"
   },
   {
-    "id": "blog-section-2-5",
+    "id": "blog-section-3-5",
     "type": "blog",
     "title": "V2.1.57",
     "sectionTitle": "listSchedule",
@@ -3985,7 +4220,7 @@
     "date": "2026-04-11"
   },
   {
-    "id": "blog-page-3",
+    "id": "blog-page-4",
     "type": "blog",
     "title": "V2.1.52",
     "titles": ["V2.1.52"],
@@ -3996,7 +4231,7 @@
     "date": "2026-04-01"
   },
   {
-    "id": "blog-section-3-0",
+    "id": "blog-section-4-0",
     "type": "blog",
     "title": "V2.1.52",
     "sectionTitle": "更新记录",
@@ -4008,7 +4243,7 @@
     "date": "2026-04-01"
   },
   {
-    "id": "blog-section-3-1",
+    "id": "blog-section-4-1",
     "type": "blog",
     "title": "V2.1.52",
     "sectionTitle": "支持 hooks 模式",
@@ -4020,7 +4255,7 @@
     "date": "2026-04-01"
   },
   {
-    "id": "blog-section-3-2",
+    "id": "blog-section-4-2",
     "type": "blog",
     "title": "V2.1.52",
     "sectionTitle": "useEvent",
@@ -4032,7 +4267,7 @@
     "date": "2026-04-01"
   },
   {
-    "id": "blog-section-3-3",
+    "id": "blog-section-4-3",
     "type": "blog",
     "title": "V2.1.52",
     "sectionTitle": "FormatEvent 链式构建器",
@@ -4044,7 +4279,7 @@
     "date": "2026-04-01"
   },
   {
-    "id": "blog-section-3-4",
+    "id": "blog-section-4-4",
     "type": "blog",
     "title": "V2.1.52",
     "sectionTitle": "方法可用性一览",
@@ -4056,7 +4291,7 @@
     "date": "2026-04-01"
   },
   {
-    "id": "blog-section-3-5",
+    "id": "blog-section-4-5",
     "type": "blog",
     "title": "V2.1.52",
     "sectionTitle": "新增事件类型",
@@ -4068,7 +4303,7 @@
     "date": "2026-04-01"
   },
   {
-    "id": "blog-section-3-6",
+    "id": "blog-section-4-6",
     "type": "blog",
     "title": "V2.1.52",
     "sectionTitle": "EventBuilder 类型安全增强",
@@ -4080,7 +4315,7 @@
     "date": "2026-04-01"
   },
   {
-    "id": "blog-section-3-7",
+    "id": "blog-section-4-7",
     "type": "blog",
     "title": "V2.1.52",
     "sectionTitle": "安全加固",
@@ -4092,7 +4327,7 @@
     "date": "2026-04-01"
   },
   {
-    "id": "blog-section-3-8",
+    "id": "blog-section-4-8",
     "type": "blog",
     "title": "V2.1.52",
     "sectionTitle": "路径遍历防护",
@@ -4104,7 +4339,7 @@
     "date": "2026-04-01"
   },
   {
-    "id": "blog-section-3-9",
+    "id": "blog-section-4-9",
     "type": "blog",
     "title": "V2.1.52",
     "sectionTitle": "包名注入防护",
@@ -4116,7 +4351,7 @@
     "date": "2026-04-01"
   },
   {
-    "id": "blog-page-4",
+    "id": "blog-page-5",
     "type": "blog",
     "title": "V2.1.43",
     "titles": ["V2.1.43"],
@@ -4127,7 +4362,7 @@
     "date": "2026-02-28"
   },
   {
-    "id": "blog-section-4-0",
+    "id": "blog-section-5-0",
     "type": "blog",
     "title": "V2.1.43",
     "sectionTitle": "更新记录",
@@ -4139,7 +4374,7 @@
     "date": "2026-02-28"
   },
   {
-    "id": "blog-page-5",
+    "id": "blog-page-6",
     "type": "blog",
     "title": "V2.1.22",
     "titles": ["V2.1.22"],
@@ -4150,7 +4385,7 @@
     "date": "2026-02-26"
   },
   {
-    "id": "blog-section-5-0",
+    "id": "blog-section-6-0",
     "type": "blog",
     "title": "V2.1.22",
     "sectionTitle": "更新记录",
@@ -4162,7 +4397,7 @@
     "date": "2026-02-26"
   },
   {
-    "id": "blog-page-6",
+    "id": "blog-page-7",
     "type": "blog",
     "title": "V2.1.17",
     "titles": ["V2.1.17"],
@@ -4173,7 +4408,7 @@
     "date": "2026-01-22"
   },
   {
-    "id": "blog-section-6-0",
+    "id": "blog-section-7-0",
     "type": "blog",
     "title": "V2.1.17",
     "sectionTitle": "更新记录",
@@ -4185,7 +4420,7 @@
     "date": "2026-01-22"
   },
   {
-    "id": "blog-section-6-1",
+    "id": "blog-section-7-1",
     "type": "blog",
     "title": "V2.1.17",
     "sectionTitle": "useSubscribe",
@@ -4197,7 +4432,7 @@
     "date": "2026-01-22"
   },
   {
-    "id": "blog-page-7",
+    "id": "blog-page-8",
     "type": "blog",
     "title": "V2.1.15",
     "titles": ["V2.1.15"],
@@ -4208,7 +4443,7 @@
     "date": "2026-01-08"
   },
   {
-    "id": "blog-section-7-0",
+    "id": "blog-section-8-0",
     "type": "blog",
     "title": "V2.1.15",
     "sectionTitle": "更新记录",
@@ -4220,7 +4455,7 @@
     "date": "2026-01-08"
   },
   {
-    "id": "blog-page-8",
+    "id": "blog-page-9",
     "type": "blog",
     "title": "V2.1.0",
     "titles": ["V2.1.0"],
@@ -4231,7 +4466,7 @@
     "date": "2025-05-30"
   },
   {
-    "id": "blog-section-8-0",
+    "id": "blog-section-9-0",
     "type": "blog",
     "title": "V2.1.0",
     "sectionTitle": "更新记录",
@@ -4243,7 +4478,7 @@
     "date": "2025-05-30"
   },
   {
-    "id": "blog-section-8-1",
+    "id": "blog-section-9-1",
     "type": "blog",
     "title": "V2.1.0",
     "sectionTitle": "新功能示例",
@@ -4255,7 +4490,7 @@
     "date": "2025-05-30"
   },
   {
-    "id": "blog-section-8-2",
+    "id": "blog-section-9-2",
     "type": "blog",
     "title": "V2.1.0",
     "sectionTitle": "useSubscribe",
@@ -4267,7 +4502,7 @@
     "date": "2025-05-30"
   },
   {
-    "id": "blog-section-8-3",
+    "id": "blog-section-9-3",
     "type": "blog",
     "title": "V2.1.0",
     "sectionTitle": "useMessage",
@@ -4279,7 +4514,7 @@
     "date": "2025-05-30"
   },
   {
-    "id": "blog-section-8-4",
+    "id": "blog-section-9-4",
     "type": "blog",
     "title": "V2.1.0",
     "sectionTitle": "useClient",
@@ -4291,7 +4526,7 @@
     "date": "2025-05-30"
   },
   {
-    "id": "blog-section-8-5",
+    "id": "blog-section-9-5",
     "type": "blog",
     "title": "V2.1.0",
     "sectionTitle": "defineResponse",
@@ -4303,7 +4538,7 @@
     "date": "2025-05-30"
   },
   {
-    "id": "blog-section-8-6",
+    "id": "blog-section-9-6",
     "type": "blog",
     "title": "V2.1.0",
     "sectionTitle": "defineMiddleware",
@@ -4315,7 +4550,7 @@
     "date": "2025-05-30"
   },
   {
-    "id": "blog-section-8-7",
+    "id": "blog-section-9-7",
     "type": "blog",
     "title": "V2.1.0",
     "sectionTitle": "Route",
@@ -4327,7 +4562,7 @@
     "date": "2025-05-30"
   },
   {
-    "id": "blog-section-8-8",
+    "id": "blog-section-9-8",
     "type": "blog",
     "title": "V2.1.0",
     "sectionTitle": "执行优先级",
@@ -4339,7 +4574,7 @@
     "date": "2025-05-30"
   },
   {
-    "id": "blog-section-8-9",
+    "id": "blog-section-9-9",
     "type": "blog",
     "title": "V2.1.0",
     "sectionTitle": "应用优先级",
@@ -4351,7 +4586,7 @@
     "date": "2025-05-30"
   },
   {
-    "id": "blog-page-9",
+    "id": "blog-page-10",
     "type": "blog",
     "title": "V2.0.16",
     "titles": ["V2.0.16"],
@@ -4362,7 +4597,7 @@
     "date": "2025-05-13"
   },
   {
-    "id": "blog-section-9-0",
+    "id": "blog-section-10-0",
     "type": "blog",
     "title": "V2.0.16",
     "sectionTitle": "更新记录",
@@ -4374,7 +4609,7 @@
     "date": "2025-05-13"
   },
   {
-    "id": "blog-page-10",
+    "id": "blog-page-11",
     "type": "blog",
     "title": "V2.0.4",
     "titles": ["V2.0.4"],
@@ -4385,7 +4620,7 @@
     "date": "2025-03-26"
   },
   {
-    "id": "blog-section-10-0",
+    "id": "blog-section-11-0",
     "type": "blog",
     "title": "V2.0.4",
     "sectionTitle": "更新记录",
@@ -4397,7 +4632,7 @@
     "date": "2025-03-26"
   },
   {
-    "id": "blog-page-11",
+    "id": "blog-page-12",
     "type": "blog",
     "title": "V2.0.0",
     "titles": ["V2.0.0"],
@@ -4408,7 +4643,7 @@
     "date": "2025-03-14"
   },
   {
-    "id": "blog-section-11-0",
+    "id": "blog-section-12-0",
     "type": "blog",
     "title": "V2.0.0",
     "sectionTitle": "更新记录",
@@ -4420,7 +4655,7 @@
     "date": "2025-03-14"
   },
   {
-    "id": "blog-page-12",
+    "id": "blog-page-13",
     "type": "blog",
     "title": "V2.0.0-rc.94",
     "titles": ["V2.0.0-rc.94"],
@@ -4431,7 +4666,7 @@
     "date": "2025-02-12"
   },
   {
-    "id": "blog-section-12-0",
+    "id": "blog-section-13-0",
     "type": "blog",
     "title": "V2.0.0-rc.94",
     "sectionTitle": "更新记录",
@@ -4443,7 +4678,7 @@
     "date": "2025-02-12"
   },
   {
-    "id": "blog-page-13",
+    "id": "blog-page-14",
     "type": "blog",
     "title": "V2.0.0-rc.88",
     "titles": ["V2.0.0-rc.88"],
@@ -4454,7 +4689,7 @@
     "date": "2025-01-09"
   },
   {
-    "id": "blog-section-13-0",
+    "id": "blog-section-14-0",
     "type": "blog",
     "title": "V2.0.0-rc.88",
     "sectionTitle": "更新记录",
@@ -4466,7 +4701,7 @@
     "date": "2025-01-09"
   },
   {
-    "id": "blog-page-14",
+    "id": "blog-page-15",
     "type": "blog",
     "title": "V2.0.0-rc.84",
     "titles": ["V2.0.0-rc.84"],
@@ -4477,7 +4712,7 @@
     "date": "2025-01-07"
   },
   {
-    "id": "blog-section-14-0",
+    "id": "blog-section-15-0",
     "type": "blog",
     "title": "V2.0.0-rc.84",
     "sectionTitle": "更新记录",
@@ -4489,7 +4724,7 @@
     "date": "2025-01-07"
   },
   {
-    "id": "blog-page-15",
+    "id": "blog-page-16",
     "type": "blog",
     "title": "V2.0.0-rc.81",
     "titles": ["V2.0.0-rc.81"],
@@ -4500,7 +4735,7 @@
     "date": "2025-01-02"
   },
   {
-    "id": "blog-section-15-0",
+    "id": "blog-section-16-0",
     "type": "blog",
     "title": "V2.0.0-rc.81",
     "sectionTitle": "更新记录",
@@ -4512,7 +4747,7 @@
     "date": "2025-01-02"
   },
   {
-    "id": "blog-page-16",
+    "id": "blog-page-17",
     "type": "blog",
     "title": "V2.0.0-rc.78",
     "titles": ["V2.0.0-rc.78"],
@@ -4523,7 +4758,7 @@
     "date": "2024-12-31"
   },
   {
-    "id": "blog-section-16-0",
+    "id": "blog-section-17-0",
     "type": "blog",
     "title": "V2.0.0-rc.78",
     "sectionTitle": "更新记录",
@@ -4535,7 +4770,7 @@
     "date": "2024-12-31"
   },
   {
-    "id": "blog-page-17",
+    "id": "blog-page-18",
     "type": "blog",
     "title": "V2.0.0-rc.76",
     "titles": ["V2.0.0-rc.76"],
@@ -4546,7 +4781,7 @@
     "date": "2024-12-28"
   },
   {
-    "id": "blog-section-17-0",
+    "id": "blog-section-18-0",
     "type": "blog",
     "title": "V2.0.0-rc.76",
     "sectionTitle": "更新记录",
@@ -4558,7 +4793,7 @@
     "date": "2024-12-28"
   },
   {
-    "id": "blog-page-18",
+    "id": "blog-page-19",
     "type": "blog",
     "title": "V2.0.0-rc.74",
     "titles": ["V2.0.0-rc.74"],
@@ -4569,7 +4804,7 @@
     "date": "2024-12-24"
   },
   {
-    "id": "blog-section-18-0",
+    "id": "blog-section-19-0",
     "type": "blog",
     "title": "V2.0.0-rc.74",
     "sectionTitle": "更新记录",
@@ -4581,7 +4816,7 @@
     "date": "2024-12-24"
   },
   {
-    "id": "blog-page-19",
+    "id": "blog-page-20",
     "type": "blog",
     "title": "V2.0.0-rc.54",
     "titles": ["V2.0.0-rc.54"],
@@ -4592,7 +4827,7 @@
     "date": "2024-11-18"
   },
   {
-    "id": "blog-section-19-0",
+    "id": "blog-section-20-0",
     "type": "blog",
     "title": "V2.0.0-rc.54",
     "sectionTitle": "更新记录",
@@ -4604,7 +4839,7 @@
     "date": "2024-11-18"
   },
   {
-    "id": "blog-page-20",
+    "id": "blog-page-21",
     "type": "blog",
     "title": "V2.0.0-rc.44",
     "titles": ["V2.0.0-rc.44"],
@@ -4615,7 +4850,7 @@
     "date": "2024-11-09"
   },
   {
-    "id": "blog-section-20-0",
+    "id": "blog-section-21-0",
     "type": "blog",
     "title": "V2.0.0-rc.44",
     "sectionTitle": "更新记录",
@@ -4627,7 +4862,7 @@
     "date": "2024-11-09"
   },
   {
-    "id": "blog-page-21",
+    "id": "blog-page-22",
     "type": "blog",
     "title": "V2.0.0-rc.33",
     "titles": ["V2.0.0-rc.33"],
@@ -4638,7 +4873,7 @@
     "date": "2024-10-09"
   },
   {
-    "id": "blog-section-21-0",
+    "id": "blog-section-22-0",
     "type": "blog",
     "title": "V2.0.0-rc.33",
     "sectionTitle": "更新记录",

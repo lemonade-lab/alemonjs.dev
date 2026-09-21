@@ -127,3 +127,19 @@ const main = () => {
 
 export default definePlatform({ main });
 ```
+
+## 目标与统一动作
+
+平台适配器除了推送标准事件，还应处理框架统一的目标对象和动作请求。目标范围使用 `ActionTarget` 表示：
+
+```ts
+type ActionTarget = {
+  scope: 'group' | 'channel' | 'c2c' | 'direct'
+  targetId: string
+  BotId?: string
+}
+```
+
+适配器可按平台能力处理消息、媒体、成员、频道、交互和请求等动作。无法支持的动作应返回明确的 `Warn` 或 `Fail` 结果，不要静默丢弃请求。需要从事件外主动调用时，调用方会通过目标对象提供群组、频道或用户范围。
+
+媒体动作支持图片、音频、视频和文件；上传来源一次只能选择 URL、Base64、文件路径或已有文件 ID 之一。平台不支持的 Markdown、媒体或交互节点应按平台规则降级。

@@ -5,6 +5,13 @@
     <link>https://alemonjs.dev/blog</link>
     <description>ALemonX 产品更新与开发日志</description>
     <item>
+      <title>V2.1.109</title>
+      <link>https://alemonjs.dev/blog/2026/09/21/v2.1.109</link>
+      <guid isPermaLink="true">https://alemonjs.dev/blog/2026/09/21/v2.1.109</guid>
+      <description>扩展统一 Hook、消息格式、QQ Bot 能力和平台适配</description>
+      <pubDate>Mon, 21 Sep 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
       <title>V2.1.97</title>
       <link>https://alemonjs.dev/blog/2026/08/31/v2.1.97</link>
       <guid isPermaLink="true">https://alemonjs.dev/blog/2026/08/31/v2.1.97</guid>
@@ -136,13 +143,6 @@
       <guid isPermaLink="true">https://alemonjs.dev/blog/2024/12/24/2.0.0-rc.74</guid>
       <description>更新</description>
       <pubDate>Tue, 24 Dec 2024 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>V2.0.0-rc.54</title>
-      <link>https://alemonjs.dev/blog/2024/11/18/2.0.0-rc.54</link>
-      <guid isPermaLink="true">https://alemonjs.dev/blog/2024/11/18/2.0.0-rc.54</guid>
-      <description>更新</description>
-      <pubDate>Mon, 18 Nov 2024 00:00:00 GMT</pubDate>
     </item>
   </channel>
 </rss>

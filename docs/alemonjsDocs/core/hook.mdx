@@ -547,6 +547,49 @@ export default async () => {
 | `set`    | `{ messageId, channelId?, guildId? }` | 设置公告 |
 | `remove` | `{ messageId?, guildId? }`            | 删除公告 |
 
+## `Forum&Audio&ChannelSettings`
+
+| Hook                 | 能力                                           |
+| -------------------- | ---------------------------------------------- |
+| `useSchedule`        | 查询、创建、更新和删除定时内容                 |
+| `useForum`           | 查询、创建和删除帖子 / 主题                    |
+| `useAudio`           | 控制音频、加入或离开音频频道、查询在线状态     |
+| `useChannelSettings` | 查询消息频率、权限，申请接口权限和打开私聊会话 |
+
+```ts
+import { useSchedule, useForum } from 'alemonjs'
+
+const [{ list }] = useSchedule()
+const schedules = await list({ channelId: 'channel-id' })
+
+const [{ create }] = useForum()
+await create({
+  channelId: 'channel-id',
+  title: '主题标题',
+  content: '主题内容',
+  format: 1
+})
+```
+
+## `useMenu&usePanel`
+
+`useMenu` 管理会话菜单；`usePanel` 管理命令面板及其可见目标。命令面板支持命令、链接、管理员限制和目标用户 / 群组：
+
+```ts
+import { useMenu, usePanel } from 'alemonjs'
+
+const [{ set }] = useMenu()
+await set({
+  items: [
+    { name: '帮助', type: 'message', text: '/help' },
+    { name: '文档', type: 'link', url: 'https://alemonjs.com' }
+  ]
+})
+
+const [{ list }] = usePanel()
+const panels = await list({ scope: 'group' })
+```
+
 ## `useClient`
 
 > 映射平台原生接口类，用于调用平台特有 API

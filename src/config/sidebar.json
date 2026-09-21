@@ -102,6 +102,11 @@
             "title": "配置说明",
             "path": "/docs/alemonjsDocs/getting-started/config",
             "position": 4
+          },
+          {
+            "title": "终端工具",
+            "path": "/docs/alemonjsDocs/getting-started/terminal-tools",
+            "position": 5
           }
         ]
       },

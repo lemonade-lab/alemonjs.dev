@@ -260,8 +260,12 @@ export default () => {
     )
     // 无序列表
     .addList('无序列表', '无序列表', '无序列表', '无序列表', '无序列表')
-    // 块引用 \n>XXX
-    .addBlockquote('块引用')
+    // 块引用：使用 Markdown 节点嵌套
+    .addBlockquote(
+      Format.createMarkdown()
+        .addText('块引用')
+        .addBlockquote(Format.createMarkdown().addText('嵌套引用'))
+    )
     // \n\n 结束
     .addNewline(2)
     // 水平分割线
@@ -272,6 +276,8 @@ export default () => {
   message.send({ format })
 }
 ```
+
+`addBlockquote` 的嵌套内容使用 Markdown 构建器或节点数组表达。平台不支持原生引用时，会按平台规则降级为文本。
 
 - absorb
 
