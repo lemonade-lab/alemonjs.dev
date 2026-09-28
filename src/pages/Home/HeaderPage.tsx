@@ -17,14 +17,14 @@ export default function HeaderPage() {
           创建或导入项目，运行服务和查看日志；为修复、开发与检查创建任务并批准操作。
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <a
+          {/* <a
             className="rounded-full bg-white px-5 py-3 text-sm font-semibold text-black transition hover:bg-white/85"
             href="https://xcloud.alemonjs.com"
             target="_blank"
             rel="noreferrer"
           >
             在线体验
-          </a>
+          </a> */}
           <Link
             className="rounded-full border border-white/25 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
             to="/docs/alemonx/getting-started/install"
