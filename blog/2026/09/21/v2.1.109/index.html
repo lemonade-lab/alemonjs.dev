@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/icon.ico" />
+    <link rel="apple-touch-icon" href="/pwa-192x192.png" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="ALemonX 更新"
+      href="/rss.xml"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta
+      name="description"
+      content="使用 ALemonX 创建或导入项目，运行命令，管理进程，并批准 Agent 任务。"
+    />
+    <meta property="og:title" content="ALemonX · 创建、运行和管理项目" />
+    <meta
+      property="og:description"
+      content="导入代码库，运行命令，查看日志，创建并批准 Agent 任务。"
+    />
+    <meta property="og:image" content="https://alemonjs.dev/og.png" />
+    <meta property="og:image:alt" content="ALemonX Local Agent Workstation" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>V2.1.109 · ALemonX</title>
+    <meta name="description" content="扩展统一 Hook、消息格式、QQ Bot 能力和平台适配" />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://alemonjs.dev/blog/2026/09/21/v2.1.109" />
+    <meta property="og:title" content="V2.1.109" />
+    <meta property="og:description" content="扩展统一 Hook、消息格式、QQ Bot 能力和平台适配" />
+    <meta property="og:image" content="https://i.imgur.com/mErPwqL.png" />
+    <script type="application/ld+json">{"@context":"https://schema.org","name":"V2.1.109","description":"扩展统一 Hook、消息格式、QQ Bot 能力和平台适配","url":"https://alemonjs.dev/blog/2026/09/21/v2.1.109","@type":"BlogPosting","datePublished":"2026-09-21","image":"https://i.imgur.com/mErPwqL.png"}</script>
+    <script type="module" crossorigin src="/js/index-Ck2gT_HS.js"></script>
+    <link rel="modulepreload" crossorigin href="/js/rolldown-runtime-DcNxTHDL.js">
+    <link rel="modulepreload" crossorigin href="/js/react-vendor-Bt8ERwK0.js">
+    <link rel="stylesheet" crossorigin href="/assets/css/index-BiygSeJ-.css">
+    <script type="module">import'data:text/javascript,if(!import.meta.resolve)throw Error("import.meta.resolve not supported")';import.meta.url;import("_").catch(()=>1);(async function*(){})().next();window.__vite_is_modern_browser=true</script>
+    <script type="module">!function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy chunks, syntax error above and the same error below should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>
+  <link rel="manifest" href="/manifest.webmanifest"></head>
+
+  <body>
+    <div id="root"><link rel="preload" as="image" href="https://avatars.githubusercontent.com/u/110824794?v=4"/><div class="css-dev-only-do-not-override-p45i5k ant-app css-var-root"><div class="min-h-screen bg-[var(--canvas)] text-[var(--text)]"><nav class="fixed top-0 z-50 w-full border-b border-[var(--line)] bg-[var(--surface)] backdrop-blur-xl shadow-lg shadow-black/5"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex h-16 items-center justify-between"><div class="flex items-center"><a class="flex items-center space-x-2 hover:opacity-80 transition-opacity" href="/" data-discover="true"><span aria-hidden="true" class="grid h-8 w-8 place-items-center rounded-lg bg-black text-sm font-semibold text-white dark:bg-white dark:text-black">X</span><span class="text-lg font-bold text-[var(--text)]">ALemonX</span></a></div><div class="hidden lg:flex items-center space-x-6"><a class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md" href="/docs/intro" data-discover="true">文档</a><a class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md" href="/docs/alemonx/getting-started/quick-start" data-discover="true">工作台</a><a class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md" href="/docs/alemonjsDocs/overview" data-discover="true">机器人</a><a class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md" href="/docs/help/overview" data-discover="true">常见问题</a><a class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md" href="/blog" data-discover="true">博客</a><a href="https://open.alemonjs.com" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md">生态资源</a><a href="https://github.com/lemonade-lab/alemonx/releases" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md">工作台下载</a><a href="https://github.com/lemonade-lab/alemonx" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md">工作台源码</a><button class="flex items-center gap-2 text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md border border-[var(--line)]" title="搜索 (⌘K)"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg><span class="hidden lg:inline">搜索</span><kbd class="hidden lg:inline-flex items-center px-1.5 py-0.5 text-xs font-mono bg-[var(--surface-muted)] border border-[var(--line)] rounded">⌘K</kbd></button><button class="text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] p-2 rounded-md" title="切换到暗色模式"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><button class="lg:hidden inline-flex items-center justify-center p-2 rounded-md text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-[var(--surface-muted)] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[var(--accent)]" aria-expanded="false"><span class="sr-only">打开主菜单</span><svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg></button></div></div></nav><aside class="
+        fixed top-16 left-0 z-40 w-64
+        h-[calc(100vh-4rem)]
+        border-r border-gray-200/60 dark:border-gray-700/60 bg-gradient-to-b from-white via-gray-50/50 to-white dark:from-gray-900 dark:via-gray-800/50 dark:to-gray-900
+        overflow-y-auto shadow-xl lg:shadow-none
+        transition-all duration-300 ease-out
+        -translate-x-full lg:translate-x-0
+      "><div class="lg:hidden flex justify-end p-4 border-b dark:border-gray-700"><button class="p-2 rounded-md text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button></div><nav aria-label="博客目录" class="p-4 lg:p-6 space-y-2"><a class="block px-3 py-2 font-semibold text-[var(--text)]" href="/blog" data-discover="true">框架更新</a><div class="mb-2"><button class="
+                    w-full flex items-center justify-between px-3 py-2.5 rounded-lg
+                    text-sm font-semibold transition-all duration-200
+                    text-blue-600 dark:text-blue-400 bg-blue-50/80 dark:bg-blue-900/20
+                  "><span class="flex items-center gap-2"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>2026</span><svg class="h-4 w-4 transition-transform duration-200 " fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button><div class="ml-3 mt-1 space-y-0.5 border-l-2 border-gray-200 dark:border-gray-700 pl-3"><a data-active="true" class="
+                            block px-3 py-2 rounded-md text-sm transition-all duration-200
+                            text-blue-600 dark:text-blue-400 bg-blue-50/80 dark:bg-blue-900/20 font-medium shadow-sm border-l-2 border-blue-500 -ml-[2px] pl-[10px]
+                          " href="/blog/2026/09/21/v2.1.109" data-discover="true"><div class="flex flex-col gap-0.5"><span class="font-medium">V2.1.109</span><span class="text-xs text-gray-500 dark:text-gray-500">9月21日</span></div></a><a data-active="false" class="
+                            block px-3 py-2 rounded-md text-sm transition-all duration-200
+                            text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-100/60 dark:hover:bg-gray-800/40
+                          " href="/blog/2026/08/31/v2.1.97" data-discover="true"><div class="flex flex-col gap-0.5"><span class="">V2.1.97</span><span class="text-xs text-gray-500 dark:text-gray-500">8月31日</span></div></a><a data-active="false" class="
+                            block px-3 py-2 rounded-md text-sm transition-all duration-200
+                            text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-100/60 dark:hover:bg-gray-800/40
+                          " href="/blog/2026/04/11/schedule-api" data-discover="true"><div class="flex flex-col gap-0.5"><span class="">V2.1.57</span><span class="text-xs text-gray-500 dark:text-gray-500">4月11日</span></div></a><a data-active="false" class="
+                            block px-3 py-2 rounded-md text-sm transition-all duration-200
+                            text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-100/60 dark:hover:bg-gray-800/40
+                          " href="/blog/2026/04/01/v2.1.52" data-discover="true"><div class="flex flex-col gap-0.5"><span class="">V2.1.52</span><span class="text-xs text-gray-500 dark:text-gray-500">4月1日</span></div></a><a data-active="false" class="
+                            block px-3 py-2 rounded-md text-sm transition-all duration-200
+                            text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-100/60 dark:hover:bg-gray-800/40
+                          " href="/blog/2026/02/28/v2.1.43" data-discover="true"><div class="flex flex-col gap-0.5"><span class="">V2.1.43</span><span class="text-xs text-gray-500 dark:text-gray-500">2月28日</span></div></a><a data-active="false" class="
+                            block px-3 py-2 rounded-md text-sm transition-all duration-200
+                            text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-100/60 dark:hover:bg-gray-800/40
+                          " href="/blog/2026/02/26/v2.1.22" data-discover="true"><div class="flex flex-col gap-0.5"><span class="">V2.1.22</span><span class="text-xs text-gray-500 dark:text-gray-500">2月26日</span></div></a><a data-active="false" class="
+                            block px-3 py-2 rounded-md text-sm transition-all duration-200
+                            text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-100/60 dark:hover:bg-gray-800/40
+                          " href="/blog/2026/01/22/v2.1.17" data-discover="true"><div class="flex flex-col gap-0.5"><span class="">V2.1.17</span><span class="text-xs text-gray-500 dark:text-gray-500">1月22日</span></div></a><a data-active="false" class="
+                            block px-3 py-2 rounded-md text-sm transition-all duration-200
+                            text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-100/60 dark:hover:bg-gray-800/40
+                          " href="/blog/2026/01/08/v2.1.15" data-discover="true"><div class="flex flex-col gap-0.5"><span class="">V2.1.15</span><span class="text-xs text-gray-500 dark:text-gray-500">1月8日</span></div></a></div></div><div class="mb-2"><button class="
+                    w-full flex items-center justify-between px-3 py-2.5 rounded-lg
+                    text-sm font-semibold transition-all duration-200
+                    text-gray-700 dark:text-gray-300 hover:bg-gray-100/80 dark:hover:bg-gray-800/60
+                  "><span class="flex items-center gap-2"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>2025</span><svg class="h-4 w-4 transition-transform duration-200 " fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button><div class="ml-3 mt-1 space-y-0.5 border-l-2 border-gray-200 dark:border-gray-700 pl-3"><a data-active="false" class="
+                            block px-3 py-2 rounded-md text-sm transition-all duration-200
+                            text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-100/60 dark:hover:bg-gray-800/40
+                          " href="/blog/2025/05/30/v2.1.0" data-discover="true"><div class="flex flex-col gap-0.5"><span class="">V2.1.0</span><span class="text-xs text-gray-500 dark:text-gray-500">5月30日</span></div></a><a data-active="false" class="
+                            block px-3 py-2 rounded-md text-sm transition-all duration-200
+                            text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-100/60 dark:hover:bg-gray-800/40
+                          " href="/blog/2025/05/13/v2.0.16" data-discover="true"><div class="flex flex-col gap-0.5"><span class="">V2.0.16</span><span class="text-xs text-gray-500 dark:text-gray-500">5月13日</span></div></a><a data-active="false" class="
+                            block px-3 py-2 rounded-md text-sm transition-all duration-200
+                            text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-100/60 dark:hover:bg-gray-800/40
+                          " href="/blog/2025/03/26/v2.0.4" data-discover="true"><div class="flex flex-col gap-0.5"><span class="">V2.0.4</span><span class="text-xs text-gray-500 dark:text-gray-500">3月26日</span></div></a><a data-active="false" class="
+                            block px-3 py-2 rounded-md text-sm transition-all duration-200
+                            text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-100/60 dark:hover:bg-gray-800/40
+                          " href="/blog/2025/03/14/v2.0.0" data-discover="true"><div class="flex flex-col gap-0.5"><span class="">V2.0.0 正式发布</span><span class="text-xs text-gray-500 dark:text-gray-500">3月14日</span></div></a></div></div><div class="mt-6 border-t border-[var(--line)] pt-4"><a class="block px-3 py-2 text-sm text-[var(--text-muted)] hover:underline" href="/blog?project=workbench" data-discover="true">工作台文章</a></div></nav></aside><main class="pt-16 lg:ml-64"><div class="lg:hidden sticky top-16 z-20 bg-[var(--surface)] border-b border-[var(--line)] px-4 py-3"><button class="flex items-center space-x-2 text-[var(--text-muted)] hover:text-[var(--text)] transition-colors"><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg><span class="text-sm font-medium">文章目录</span></button></div><div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8"><div class="not-prose mb-8 pb-8 border-b border-gray-200 dark:border-gray-700"><a class="mb-3 inline-block text-sm text-[var(--text-muted)] hover:underline" href="/blog" data-discover="true">框架更新</a><h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">V2.1.109</h1><div class="flex flex-wrap items-center gap-3 text-sm text-gray-600 dark:text-gray-400 mb-6"><time dateTime="2026-09-21" class="flex items-center"><svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>2026年9月21日</time></div><p class="text-lg text-gray-700 dark:text-gray-300 mb-6">扩展统一 Hook、消息格式、QQ Bot 能力和平台适配</p><div class="my-8 p-6 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-xl border border-gray-200 dark:border-gray-700"><div class="flex items-start gap-4"><img src="https://avatars.githubusercontent.com/u/110824794?v=4" alt="ningmengchongshui" class="w-16 h-16 rounded-full border-2 border-blue-500 dark:border-blue-400 flex-shrink-0"/><div class="flex-1 min-w-0"><div class="flex flex-wrap items-center gap-2 mb-2"><div class="flex items-center"><div><a href="https://github.com/ningmengchongshui" target="_blank" rel="noopener noreferrer" class="font-semibold text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">ningmengchongshui</a><p class="text-sm text-gray-600 dark:text-gray-400">Co-creator of alemonjs 1</p></div></div></div><div class="flex gap-3 mt-3"><a href="https://github.com/ningmengchongshui" target="_blank" rel="noopener noreferrer" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors" title="GitHub"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg></a><a href="mailto:ningmengchongshui@gmail.com" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors" title="Email"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></a></div></div></div></div></div><article class="prose prose-sm sm:prose-base lg:prose-lg prose-slate dark:prose-invert max-w-none"><h1>更新记录</h1>
+<p>本次更新根据 ALemonJS 仓库近期提交整理，覆盖核心包、官方平台包和 <code>alemonc</code> 工具链的新增内容。</p>
+<h2>核心接口</h2>
+<ul>
+<li>Markdown 引用支持 Markdown 节点和节点数组，可表达多行、空段落和嵌套引用。</li>
+<li>新增并扩展频道内容 Hook：<code>useSchedule</code>、<code>useForum</code>、<code>useAudio</code> 和 <code>useChannelSettings</code>。</li>
+<li>新增菜单和命令面板 Hook：<code>useMenu</code>、<code>usePanel</code>。</li>
+<li>统一 Action 上下文和 <code>ActionTarget</code>，支持从事件、群组、频道及私聊上下文解析目标。</li>
+<li>扩展媒体上传、分片上传、主动发送和流式消息类型。</li>
+<li><code>useMe</code>、<code>useGuild</code>、<code>useMember</code>、<code>useRole</code>、<code>usePermission</code>、<code>useReaction</code>、<code>useRequest</code> 等 Hook 补充更多查询和管理动作。</li>
+</ul>
+<h2>QQ Bot</h2>
+<ul>
+<li>增加群聊和 C2C 非频道事件及框架动作。</li>
+<li>支持命令面板、菜单、入群申请、申请策略、白名单和成员管理。</li>
+<li>补充群禁言、黑名单、连接网关、媒体上传和流式消息能力。</li>
+<li>拆分并整理 QQ Bot 的 API、事件、消息、框架和快速开始文档。</li>
+</ul>
+<h2>平台适配</h2>
+<ul>
+<li>新增微信个人号 iLink ClawBot 平台适配器。</li>
+<li>扩展抖音桌面端和抖音机器人适配器，补充登录、网关、消息、媒体和联系人能力。</li>
+<li>Discord、KOOK、Bubble、Telegram、OneBot、Milky、Wechaty、企业微信等平台补充 Markdown 引用转换和降级处理。</li>
+</ul>
+<h2>工具链与运行时</h2>
+<ul>
+<li><code>alemonc</code> 增加分支和发布相关操作，并完善发布参数处理。</li>
+<li>CBP 运行时继续补充连接、登录和进程间通信能力。</li>
+<li>平台适配器收到不支持的统一动作时，应返回明确结果，便于调用方判断能力范围。</li>
+</ul></article><nav class="flex justify-between items-center gap-4 pt-8 mt-8 border-t border-gray-200 dark:border-gray-700"><div class="flex-1"><div></div></div><div class="flex-1 text-right"><a class="group flex flex-col items-end hover:bg-gray-50 dark:hover:bg-gray-800 p-4 rounded-lg transition-colors" href="/blog/2026/08/31/v2.1.97" data-discover="true"><span class="text-sm text-gray-500 dark:text-gray-400 mb-1 flex items-center">下一篇<svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></span><span class="text-blue-600 dark:text-blue-400 group-hover:underline font-medium">V2.1.97</span></a></div></nav></div></main><footer class="lg:ml-64"><footer class="mt-auto border-t border-[var(--line)] bg-[var(--surface)] text-[var(--text-muted)]"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12"><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8"><div class="text-center sm:text-left"><h3 class="text-sm font-semibold uppercase tracking-wider mb-3 sm:mb-4 text-[var(--text)]">使用文档</h3><ul class="space-y-2"><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/alemonx/getting-started/install" data-discover="true">安装工作台</a></li><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/alemonjsDocs/getting-started/install" data-discover="true">创建机器人</a></li><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/alemonjsDocs/getting-started/connect-platform" data-discover="true">连接平台</a></li><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/help/overview" data-discover="true">常见问题</a></li></ul></div><div class="text-center sm:text-left"><h3 class="text-sm font-semibold uppercase tracking-wider mb-3 sm:mb-4 text-[var(--text)]">开发资源</h3><ul class="space-y-2"><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/extensions" data-discover="true">开发入口</a></li><li><a href="https://open.alemonjs.com" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-[var(--text)] transition-colors duration-200">生态资源</a></li><li><a href="https://github.com/lemonade-lab/alemonjs" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-[var(--text)] transition-colors duration-200">机器人源码</a></li></ul></div><div class="text-center sm:text-left"><h3 class="text-sm font-semibold uppercase tracking-wider mb-3 sm:mb-4 text-[var(--text)]">版本与社区</h3><ul class="space-y-2"><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/blog" data-discover="true">更新日志</a></li><li><a href="https://github.com/lemonade-lab/alemonx/releases" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-[var(--text)] transition-colors duration-200">工作台下载</a></li><li><a href="https://github.com/lemonade-lab/alemonx/discussions" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-[var(--text)] transition-colors duration-200">社区讨论</a></li><li><a href="https://qm.qq.com/q/AIiSecyPlK" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-[var(--text)] transition-colors duration-200">交流群</a></li></ul></div></div><div class="pt-6 sm:pt-8 border-t border-[var(--line)] text-sm text-center text-[var(--text-muted)]"><div>Released under the MIT License. <br/> Copyright © 2024-present LemonadeX </span> <br> <a  href="https://beian.miit.gov.cn/" target="_blank">津ICP备2023004480号</a></div></div></div></footer></footer></div></div></div>
+    <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
+    <script nomodule crossorigin id="vite-legacy-polyfill" src="/js/polyfills-legacy-X3HbyXd6.js"></script>
+    <script nomodule crossorigin id="vite-legacy-entry" data-src="/js/index-legacy-iz_BVVxo.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
+  </body>
+</html>
