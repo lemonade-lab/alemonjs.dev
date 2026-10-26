@@ -144,17 +144,28 @@ export default defineConfig({
         },
         manualChunks: isSsrBuild
           ? undefined
-          : {
-              'react-vendor': [
-                'react',
-                'react-dom',
-                'react-router-dom',
-                'react-router',
-                'react-redux',
-                'redux',
-                '@reduxjs/toolkit'
-              ],
-              'utils-vendor': ['axios', 'dayjs', 'classnames']
+          : id => {
+              const packageName = id
+                .replaceAll('\\', '/')
+                .split('/node_modules/')
+                .at(-1)
+              if (!id.includes('node_modules') || !packageName) return
+              const matches = (name: string) =>
+                packageName === name || packageName.startsWith(`${name}/`)
+              if (
+                [
+                  'react',
+                  'react-dom',
+                  'react-router-dom',
+                  'react-router',
+                  'react-redux',
+                  'redux',
+                  '@reduxjs/toolkit'
+                ].some(matches)
+              )
+                return 'react-vendor'
+              if (['axios', 'dayjs', 'classnames'].some(matches))
+                return 'utils-vendor'
             }
       }
     }

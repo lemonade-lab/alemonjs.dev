@@ -1,16 +1,16 @@
 ---
-title: 机器人构建规范
-description: 了解 ALemonX 如何识别机器人构建入口、bundle 输出和嵌套前端项目。
+title: 构建规范
+description: 配置机器人构建入口、产物路径和嵌套前端项目。
 sidebar_position: 5
 ---
 
-# 机器人构建规范
+# 构建规范
 
-ALemonX 发布机器人前会在隔离的 Git worktree 中执行构建。构建配置的目标是生成可以被工作台运行和发布的入口文件，而不是把所有源码强行打包成单个文件。
+工作台发布机器人前会在隔离的 Git worktree 中执行构建。构建配置的目标是生成可以被工作台运行和发布的入口文件，而不是把所有源码强行打包成单个文件。
 
 ## 构建入口优先级
 
-ALemonX 按以下顺序选择构建入口：
+工作台按以下顺序选择构建入口：
 
 ```text
 package.json 的 alemonjs.build 声明 script
@@ -39,7 +39,7 @@ npx lvy build
 
 ## 推荐产物
 
-> 请注意构建完成后，确定最终产物
+构建完成后，检查产物路径与入口配置是否一致。
 
 ```text
 project/

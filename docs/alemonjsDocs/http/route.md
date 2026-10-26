@@ -7,17 +7,17 @@ sidebar_position: 7
 
 默认地址 `http://localhost:17117/app`。
 
-## 当前支持的 HTTP 能力
+## HTTP 接入方式
 
 - 主应用公开 HTTP 服务
 - 插件应用公开 HTTP 服务
 - `defineChildren().register()` 直接返回的 `koaRouter`
 
-这些能力现在都受到运行时状态控制
+这些接口是否可用取决于应用的运行时状态。
 
 ## 生命周期规则
 
-### 只有 `ready` 才真正提供服务
+### 服务就绪
 
 如果应用当前状态是：
 
@@ -26,7 +26,7 @@ sidebar_position: 7
 - `failed`
 - `disposed`
 
-那么对应 HTTP 能力不会真正放行。
+对应 HTTP 服务不会正常处理业务请求，具体状态码见下表。
 
 ### 插件必须先进入 `apps` 管理
 
@@ -35,7 +35,7 @@ sidebar_position: 7
 - 不会进入运行时管理
 - 不应该暴露 HTTP 服务
 
-### 当前常见响应语义
+### 响应状态码
 
 - 未注册 / 未启用：`404`
 - 初始化中：`503`
@@ -73,12 +73,7 @@ export default defineChildren({
 })
 ```
 
-推荐它的原因很直接：
-
-- 路由方法、前缀、入口都由代码显式声明
-- 更容易做审计、权限和安全评审
-- 更容易做统一中间件和权限控制
-- 更符合“我主动注册了哪些 HTTP 能力”这个开发者心智
+在路由代码中声明请求方法、路径前缀和处理函数，并统一挂载权限校验与审计中间件。
 
 ## 静态资源
 
@@ -124,7 +119,7 @@ export default defineChildren({
 
 HTML 内的路径（包括接口），请使用相对路径，而非绝对路径。
 
-同时，推荐使用哈希路由进行前端路由导航。确保兼容性
+前端页面建议使用哈希路由。
 
 ## 安全
 
@@ -151,9 +146,7 @@ return 'handled'
 
 ## 配置
 
-[不了解vite?](https://vite.dev/)
-
-下面以 vite 打包配置为例
+以下为 Vite 构建配置示例。配置项见 [Vite 文档](https://vite.dev/)。
 
 ```ts title="vite.config.ts"
 import { defineConfig } from 'vite'
@@ -184,7 +177,7 @@ export default defineConfig({
 })
 ```
 
-接口调用，以 axios 为例
+使用 axios 调用接口：
 
 ```ts
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'

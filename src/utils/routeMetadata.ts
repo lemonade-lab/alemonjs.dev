@@ -20,9 +20,11 @@ export function getRouteMetadata(pathname: string): RouteMetadata {
     entry?.title ||
     entry?.metadata?.title ||
     entry?.metadata?.label ||
-    siteTitle
+    (pathname === '/blog' ? '博客' : siteTitle)
   const description =
-    entry?.description || entry?.metadata?.description || siteDescription
+    entry?.description ||
+    entry?.metadata?.description ||
+    (pathname === '/blog' ? '机器人框架更新与开发文章。' : siteDescription)
   const image = entry?.metadata?.image
     ? new URL(String(entry.metadata.image), siteUrl).href
     : `${siteUrl}/og.png`

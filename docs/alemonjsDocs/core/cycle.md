@@ -7,7 +7,7 @@ sidebar_position: 6
 
 :::info
 
-框架现在建议把运行时理解成三条主线：**应用阶段**、**事件阶段**、**HTTP 服务阶段**。
+生命周期回调分为应用、事件和 HTTP 服务三个阶段。
 
 :::
 
@@ -21,7 +21,7 @@ sidebar_position: 6
 - 读取静态配置
 - 建立不依赖路由索引的准备逻辑
 
-不建议把明显阻塞启动的重逻辑直接塞在模块顶层，应该尽量收进生命周期回调。
+将初始化逻辑放入生命周期回调，避免在模块加载时阻塞启动。
 
 ### `onMounted(store)`
 
@@ -34,11 +34,11 @@ sidebar_position: 6
 - 外部依赖初始化
 - 基于 `store.response`、`store.middleware` 的准备工作
 
-新项目仍然可以用它，但更推荐把“正式进入可服务状态前的最后检查”放到 `onReady`。
+最终依赖检查建议放在 `onReady`。
 
 ### `onReady(store)`
 
-推荐的新钩子。发生在 `onMounted` 之后、运行时状态进入 `ready` 之前。
+就绪回调，发生在 `onMounted` 之后、运行时状态进入 `ready` 之前。
 
 如果这里抛错，应用不会进入 `ready`。
 
@@ -50,7 +50,7 @@ sidebar_position: 6
 
 ### `onDispose(error)`
 
-推荐的新销毁钩子。适合统一清理：
+销毁回调，用于清理资源：
 
 - 关闭数据库连接
 - 停止轮询
@@ -94,7 +94,7 @@ sidebar_position: 6
 - 审计日志
 - fallback 判断
 - 发送结果判断
-- 统一收口埋点
+- 记录事件处理结果
 
 当前 `reason` 可能包括：
 
@@ -123,7 +123,7 @@ sidebar_position: 6
 - `web`
 - `koa-router`
 
-如果显式返回 `'handled'`，表示你已经自己写好了响应，框架不会再补默认 500。
+返回 `'handled'` 表示已写入响应，框架不再返回默认的 HTTP 500 响应。
 
 ## 运行时状态观察
 

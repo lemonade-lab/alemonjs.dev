@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
   <channel>
-    <title>ALemonX 更新</title>
+    <title>博客</title>
     <link>https://alemonjs.dev/blog</link>
-    <description>ALemonX 产品更新与开发日志</description>
+    <description>机器人框架更新与开发文章</description>
     <item>
       <title>V2.1.109</title>
       <link>https://alemonjs.dev/blog/2026/09/21/v2.1.109</link>
@@ -89,60 +89,11 @@
       <pubDate>Wed, 26 Mar 2025 00:00:00 GMT</pubDate>
     </item>
     <item>
-      <title>V2.0.0</title>
+      <title>V2.0.0 正式发布</title>
       <link>https://alemonjs.dev/blog/2025/03/14/v2.0.0</link>
       <guid isPermaLink="true">https://alemonjs.dev/blog/2025/03/14/v2.0.0</guid>
-      <description>更新</description>
+      <description>汇总 2.0 预发布阶段的事件处理、消息接口、配置管理和开发支持，并加入 JSX 消息写法。</description>
       <pubDate>Fri, 14 Mar 2025 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>V2.0.0-rc.94</title>
-      <link>https://alemonjs.dev/blog/2025/02/12/v2.0.0-rc.94</link>
-      <guid isPermaLink="true">https://alemonjs.dev/blog/2025/02/12/v2.0.0-rc.94</guid>
-      <description>更新</description>
-      <pubDate>Wed, 12 Feb 2025 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>V2.0.0-rc.88</title>
-      <link>https://alemonjs.dev/blog/2025/01/09/v2.0.0-rc.88</link>
-      <guid isPermaLink="true">https://alemonjs.dev/blog/2025/01/09/v2.0.0-rc.88</guid>
-      <description>更新</description>
-      <pubDate>Thu, 09 Jan 2025 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>V2.0.0-rc.84</title>
-      <link>https://alemonjs.dev/blog/2025/01/07/v2.0.0-rc.84</link>
-      <guid isPermaLink="true">https://alemonjs.dev/blog/2025/01/07/v2.0.0-rc.84</guid>
-      <description>更新</description>
-      <pubDate>Tue, 07 Jan 2025 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>V2.0.0-rc.81</title>
-      <link>https://alemonjs.dev/blog/2025/01/02/v2.0.0-rc.81</link>
-      <guid isPermaLink="true">https://alemonjs.dev/blog/2025/01/02/v2.0.0-rc.81</guid>
-      <description>更新</description>
-      <pubDate>Thu, 02 Jan 2025 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>V2.0.0-rc.78</title>
-      <link>https://alemonjs.dev/blog/2024/12/31/2.0.0-rc.78</link>
-      <guid isPermaLink="true">https://alemonjs.dev/blog/2024/12/31/2.0.0-rc.78</guid>
-      <description>更新</description>
-      <pubDate>Tue, 31 Dec 2024 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>V2.0.0-rc.76</title>
-      <link>https://alemonjs.dev/blog/2024/12/28/2.0.0-rc.76</link>
-      <guid isPermaLink="true">https://alemonjs.dev/blog/2024/12/28/2.0.0-rc.76</guid>
-      <description>更新</description>
-      <pubDate>Sat, 28 Dec 2024 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>V2.0.0-rc.74</title>
-      <link>https://alemonjs.dev/blog/2024/12/24/2.0.0-rc.74</link>
-      <guid isPermaLink="true">https://alemonjs.dev/blog/2024/12/24/2.0.0-rc.74</guid>
-      <description>更新</description>
-      <pubDate>Tue, 24 Dec 2024 00:00:00 GMT</pubDate>
     </item>
   </channel>
 </rss>

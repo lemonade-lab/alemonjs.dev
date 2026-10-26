@@ -8,9 +8,17 @@ const problems: string[] = []
 for (const file of required)
   if (!fs.existsSync(path.join(dist, file))) problems.push(`缺少 dist/${file}`)
 for (const entry of manifest) {
-  if (entry.redirectTo) continue
   const file = path.join(dist, entry.path.slice(1), 'index.html')
   if (!fs.existsSync(file)) problems.push(`缺少页面产物: ${entry.path}`)
+  else if (entry.redirectTo) {
+    const html = fs.readFileSync(file, 'utf8')
+    if (
+      !html.includes('http-equiv="refresh"') ||
+      !html.includes(`href="${entry.redirectTo}"`)
+    ) {
+      problems.push(`跳转页面缺少目标: ${entry.path}`)
+    }
+  }
 }
 const sitemap = fs.existsSync(path.join(dist, 'sitemap.xml'))
   ? fs.readFileSync(path.join(dist, 'sitemap.xml'), 'utf8')

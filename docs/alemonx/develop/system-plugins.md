@@ -1,12 +1,12 @@
 ---
 title: 系统插件开发
-description: 了解 ALemonX 系统插件的边界、目录结构、通讯协议、宿主能力与安全机制。
+description: 创建系统插件，配置执行器，并调用工作台接口。
 sidebar_position: 1
 ---
 
 # 系统插件开发
 
-系统插件是运行在 ALemonX 工作台中的扩展单元，用于为工作台增加全局的本机管理能力，例如网络检查、防火墙管理、Docker 管理、系统服务控制和硬件信息展示。
+系统插件是运行在工作台中的扩展单元，用于为工作台增加全局的本机管理能力，例如网络检查、防火墙管理、Docker 管理、系统服务控制和硬件信息展示。
 
 ## 运行模型
 
@@ -109,7 +109,7 @@ try {
 }
 ```
 
-## 通讯协议
+## 通信协议
 
 宿主启动执行器后，通过 stdin 发送：
 
@@ -163,7 +163,7 @@ running → completed / failed
 
 只读状态可以在清单中声明 `statusActions`，通过状态接口读取。此类请求不创建任务，并会被宿主短暂合并缓存，适合面板轮询。
 
-## 清单能力
+## 配置字段
 
 | 字段                   | 作用                                     |
 | ---------------------- | ---------------------------------------- |
@@ -311,7 +311,6 @@ POST /api/v1/setup/plugins/<id>/upload
 
 ## 相关文档
 
-- [插件清单](/docs/alemonx/reference/plugin-manifest)
-- [WebView 与扩展页面](/docs/alemonx/develop/webview)
+- [插件配置](/docs/alemonx/reference/plugin-manifest)
 - [机器人应用页](/docs/alemonx/develop/webview)
 - [源码项目开发文档](https://github.com/lemonade-lab/alemonx/blob/main/docs/plugin-development.md)

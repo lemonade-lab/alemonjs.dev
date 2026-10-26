@@ -13,6 +13,7 @@ import rawRouteManifest from '@/config/route-manifest.json'
 
 import Home from '@/pages/Home/App'
 import BlogList from '@/pages/BlogList'
+import { ecosystemCollections } from '@/api/ecosystem'
 
 // Vite 在构建期将匹配到的 Markdown/MDX 文件编译成模块索引。
 const docModules = import.meta.glob('../docs/**/*.{md,mdx}')
@@ -57,6 +58,26 @@ function createContentRoute(entry: RouteEntry) {
     }
   }
 
+  const collection =
+    entry.type === 'doc' ? ecosystemCollections[entry.path] : undefined
+  if (collection) {
+    return {
+      path: routePath,
+      lazy: async () => {
+        const [{ default: Original }, { default: Directory }] =
+          await Promise.all([
+            getContentModule(entry)(),
+            import('@/components/ecosystem/EcosystemDirectory')
+          ])
+        return {
+          Component: () => (
+            <Directory collection={collection} fallback={<Original />} />
+          )
+        }
+      }
+    }
+  }
+
   return {
     path: routePath,
     lazy: async () => ({
@@ -77,9 +98,7 @@ export const routes = [
     children: [
       {
         index: true,
-        element: (
-          <Navigate to="/docs/alemonx/getting-started/quick-start" replace />
-        )
+        element: <Navigate to="/docs/intro" replace />
       },
       ...routeManifest
         .filter(entry => entry.type === 'doc')

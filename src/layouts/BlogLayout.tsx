@@ -62,7 +62,7 @@ export default function BlogLayout() {
                 d="M4 6h16M4 12h16M4 18h16"
               />
             </svg>
-            <span className="text-sm font-medium">发布日志</span>
+            <span className="text-sm font-medium">文章目录</span>
           </button>
         </div>
 

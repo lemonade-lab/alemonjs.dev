@@ -77,3 +77,14 @@ for (const pathname of paths) {
   await writePage(template, pathname, result.html)
   console.log(`✅ prerendered ${pathname}`)
 }
+
+// Emit redirect pages so historical URLs also work on plain static hosting.
+for (const entry of manifest.filter(entry => entry.redirectTo)) {
+  const target = entry.redirectTo!
+  const outputDir = path.join(distDir, entry.path.slice(1))
+  await fs.mkdir(outputDir, { recursive: true })
+  await fs.writeFile(
+    path.join(outputDir, 'index.html'),
+    `<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><title>文章已合并</title><meta name="robots" content="noindex,follow"><meta http-equiv="refresh" content="0;url=${escapeHtml(target)}"><link rel="canonical" href="https://alemonjs.dev${escapeHtml(target)}"></head><body><p>文章已合并，请阅读<a href="${escapeHtml(target)}">正式发布日志</a>。</p></body></html>`
+  )
+}

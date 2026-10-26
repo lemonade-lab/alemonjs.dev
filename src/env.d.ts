@@ -3,6 +3,7 @@
 /// <reference types="vite-plugin-pwa/client" />
 
 interface ImportMetaEnv {
+  readonly VITE_ECOSYSTEM_API_BASE_URL?: string
   readonly VITE_APP_TITLE: string
   readonly NODE_ENV: 'development' | 'production'
   readonly NODE_BASE_ENV?: 'base' | 'pro'

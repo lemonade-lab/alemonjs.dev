@@ -1,9 +1,10 @@
 ---
-label: '配置读取'
+title: 配置接口
+description: 读取、保存配置，并监听配置项变化。
 sidebar_position: 6
 ---
 
-# 配置读取
+# 配置接口
 
 :::info
 

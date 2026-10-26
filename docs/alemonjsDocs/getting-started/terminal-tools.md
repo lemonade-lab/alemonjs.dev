@@ -1,12 +1,12 @@
 ---
-title: 终端工具
-description: 安装并使用 alemonc 管理配置、平台、运行和发布。
+title: 机器人命令行
+description: 使用 alemonc 配置项目、连接平台、运行和发布。
 sidebar_position: 5
 ---
 
-# 终端工具
+# 机器人命令行
 
-`alemonc` 是 ALemonJS 项目的命令行工具，用于配置管理、平台管理、运行、版本更新和发布。
+`alemonc` 是机器人框架项目的命令行工具，用于配置管理、平台管理、运行、版本更新和发布。
 
 ## 安装
 

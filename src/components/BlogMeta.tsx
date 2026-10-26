@@ -1,17 +1,8 @@
-import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import BlogAuthor from './BlogAuthor'
 
-const blogData = () => import('@/config/blog.json')
-
-interface BlogPost {
-  title: string
-  description?: string
-  date: string
-  path: string
-  tags?: string[]
-  authors?: string | string[]
-}
+import { blogPosts, getBlogProject, blogProjectNames } from '@/utils/blog'
+import { Link } from 'react-router-dom'
 
 /**
  * 博客元信息组件 - 显示日期、作者等信息
@@ -19,15 +10,8 @@ interface BlogPost {
  */
 export default function BlogMeta() {
   const location = useLocation()
-  const [post, setPost] = useState<BlogPost | null>(null)
-
-  useEffect(() => {
-    // 查找当前路径对应的博客文章
-    blogData().then(data => {
-      const currentPost = data.find(p => p.path === location.pathname)
-      setPost(currentPost || null)
-    })
-  }, [location.pathname])
+  const post = blogPosts.find(post => post.path === location.pathname)
+  const project = getBlogProject(location.pathname)
 
   if (!post) {
     return null
@@ -35,6 +19,12 @@ export default function BlogMeta() {
 
   return (
     <div className="not-prose mb-8 pb-8 border-b border-gray-200 dark:border-gray-700">
+      <Link
+        to={project === 'framework' ? '/blog' : '/blog?project=workbench'}
+        className="mb-3 inline-block text-sm text-[var(--text-muted)] hover:underline"
+      >
+        {blogProjectNames[project]}
+      </Link>
       {/* 标题 */}
       <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
         {post.title}

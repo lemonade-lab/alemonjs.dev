@@ -1,10 +1,10 @@
 ---
-title: 如何安装
-description: 安装ALemonX
+title: 安装
+description: 安装工作台
 sidebar_position: 1
 ---
 
-# 如何安装
+# 安装
 
 ## 脚本安装
 
@@ -58,25 +58,25 @@ curl -fsSL https://raw.githubusercontent.com/lemonade-lab/alemonx/main/scripts/i
 
 如需手动下载，可从 [GitHub Releases](https://github.com/lemonade-lab/alemonx/releases) 选择对应系统的压缩包：
 
-- Github规则：https://github.com/lemonade-lab/alemonx/releases/download/{{版本}}/{{包名}}
+- GitHub 下载地址格式：https://github.com/lemonade-lab/alemonx/releases/download/{{版本}}/{{包名}}
 - 例如：https://github.com/lemonade-lab/alemonx/releases/download/v0.2.19/alx-windows-amd64.zip
 
-下载得到的ZIP压缩包解压可得执行包。
+解压下载的 ZIP 文件，取得可执行文件。
 
 如果你遇到网络问题，可尝试使用官网代理：
 
-- 官网代理规则：https://download.alemonjs.com/application/alemonx/{{版本}}/{{包名}}
+- 代理下载地址格式：https://download.alemonjs.com/application/alemonx/{{版本}}/{{包名}}
 - 例如：https://download.alemonjs.com/application/alemonx/v0.2.19/alx-windows-amd64.zip
 
 ### Windows（手动安装）
 
-> 遇到权限问题可尝试超级管理员启动
+> 需要管理员权限的操作，按系统提示授权。
 
 Windows 直接运行 `alx.exe`。
 
 ### macOS / Linux / FreeBSD
 
-> 务必进行授权再启动
+为程序添加执行权限后启动：
 
 ```bash
 chmod +x alx
@@ -85,7 +85,7 @@ chmod +x alx
 
 ## Docker
 
-任意目录创建 docker-compose.yml 并保存以下内容
+在用于部署工作台的目录中创建 `docker-compose.yml`：
 
 ```yml
 services:
@@ -127,4 +127,4 @@ services:
 docker compose up -d
 ```
 
-更多操作请自行搜索docker相关内容
+启动后打开工作台地址，继续阅读[快速上手](/docs/alemonx/getting-started/quick-start)。

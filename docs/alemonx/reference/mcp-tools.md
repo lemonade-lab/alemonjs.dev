@@ -1,10 +1,10 @@
 ---
-title: MCP 工具参考
-description: ALemonX MCP 控制面的工具分组、参数约定、确认规则与推荐调用顺序。
+title: MCP 工具
+description: 查阅 MCP 工具、参数、确认要求和调用顺序。
 sidebar_position: 3
 ---
 
-# MCP 工具级参考
+# MCP 工具
 
 本页是 MCP 工具索引。工具通过 stdio 或 Streamable HTTP 提供，返回文本结果和 `structuredContent`；以结构化字段为准，不要解析人类可读文本来判断状态。
 
@@ -26,7 +26,7 @@ sidebar_position: 3
 | `alemonjs_list_catalog`               | 列出官方生态目录。                                  |
 | `alemonjs_get_catalog_document`       | 读取目录中的文档。                                  |
 | `alemonjs_get_catalog_package_config` | 获取目录包配置。                                    |
-| `alemonjs_list_releases`              | 查询 ALemonX 或生态版本发布信息。                   |
+| `alemonjs_list_releases`              | 查询工作台或生态版本发布信息。                      |
 
 ### 环境与项目检查
 

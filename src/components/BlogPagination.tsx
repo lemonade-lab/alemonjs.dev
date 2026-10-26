@@ -1,10 +1,10 @@
 import { Link, useLocation } from 'react-router-dom'
-import blogData from '@/config/blog.json'
+import { getBlogProject, getProjectPosts } from '@/utils/blog'
 import { flattenBlog } from '@/utils/flattenSidebar'
 
 export default function BlogPagination() {
   const location = useLocation()
-  const blogs = flattenBlog(blogData)
+  const blogs = flattenBlog(getProjectPosts(getBlogProject(location.pathname)))
 
   const currentIndex = blogs.findIndex(blog => blog.path === location.pathname)
 

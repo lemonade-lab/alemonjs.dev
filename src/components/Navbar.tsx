@@ -74,7 +74,7 @@ export default function Navbar() {
           </div>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden lg:flex items-center space-x-6">
             {navbar.items.map((item, index) => {
               if ('href' in item && item.href) {
                 return (
@@ -178,7 +178,7 @@ export default function Navbar() {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-[var(--surface-muted)] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[var(--accent)]"
+            className="lg:hidden inline-flex items-center justify-center p-2 rounded-md text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-[var(--surface-muted)] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[var(--accent)]"
             aria-expanded="false"
           >
             <span className="sr-only">打开主菜单</span>
@@ -217,7 +217,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden border-t border-[var(--line)] bg-[var(--surface)]">
+        <div className="lg:hidden border-t border-[var(--line)] bg-[var(--surface)]">
           <div className="px-2 pt-2 pb-3 space-y-1">
             {navbar.items.map((item, index) => {
               if ('href' in item && item.href) {

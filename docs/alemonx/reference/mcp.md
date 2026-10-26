@@ -1,12 +1,12 @@
 ---
-title: MCP
+title: MCP 配置
 description: 配置 stdio 或本机 HTTP MCP，并限制项目目录和写入操作。
 sidebar_position: 2
 ---
 
-# MCP
+# MCP 配置
 
-MCP 是 ALemonX 的控制面，不是直接暴露宿主 Shell。它把项目、运行、Git、发布和诊断能力作为带权限边界的工具提供给本机 AI 客户端。
+本机 AI 客户端通过 MCP 调用工作台的项目管理、运行、Git、发布和诊断工具。可用目录与写入操作由服务端限制。
 
 ## stdio
 
@@ -27,7 +27,7 @@ MCP_TOKEN='随机值' alx --mcp-port 17391 mcp-http
 
 客户端请求使用 `Bearer <MCP_TOKEN>`。HTTP 服务只监听本机地址。
 
-## 写入
+## 写入确认
 
 创建项目、写入文件、发布和 Git 操作必须传入 `confirm: true`。先读取计划或预检结果，再请求确认并执行写入。
 

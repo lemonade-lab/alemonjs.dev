@@ -1,13 +1,14 @@
 ---
-label: '响应事件'
+title: 事件处理
+description: 读取当前事件，并使用 next 控制后续处理。
 sidebar_position: 1
 ---
 
-# 响应事件
+# 事件处理
 
 ## `useEvent`
 
-安全的读取 event 和 next
+读取当前事件和 `next` 回调。
 
 ```ts
 import { useEvent } from 'alemonjs'
@@ -40,7 +41,7 @@ export default () => {
 
 不执行next()表示结束后续匹配。
 
-### `Next(Bool)`
+### `next()`
 
 ```ts
 import { useEvent } from 'alemonjs'

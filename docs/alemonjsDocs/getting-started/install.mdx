@@ -1,25 +1,25 @@
 ---
-title: 如何安装
-description: 使用 ALemonX 创建机器人项目，或手动安装 ALemonJS。
+title: 创建项目
+description: 使用工作台创建项目，或手动安装机器人框架。
 sidebar_position: 2
 ---
 
-# 如何安装
+# 创建项目
 
-## ALemonX 安装
+## 使用工作台
 
-[点击查看 如何安装 ALemonX](/docs/alemonx/getting-started/install)
+完成[安装](/docs/alemonx/getting-started/install)后，按[创建与导入](/docs/alemonx/use/projects/create-or-import)选择开发模板。
 
-## npm 安装
+## 使用脚手架
 
-> 需要有nodejs环境
+先安装 Node.js，再运行：
 
 ```bash
 npm create alemonjs
 cd alemonjs
 ```
 
-## 手动构建
+## 手动创建
 
 适合需要自行维护项目的开发者。
 
@@ -37,10 +37,10 @@ import { start } from 'alemonjs'
 start()
 ```
 
-按[开发手册](/docs/alemonjsDocs/core/router-sdl)编写路由和响应，然后启动：
+下面的命令只启动框架，尚未注册机器人指令：
 
 ```bash
 node index.js
 ```
 
-接着按[连接平台](/docs/environment)配置机器人账号。
+需要完整指令示例时，使用开发模板并阅读[编写指令](/docs/alemonjsDocs/getting-started/quick-start)。随后按[连接平台](/docs/alemonjsDocs/getting-started/connect-platform)配置账号并验证回复。

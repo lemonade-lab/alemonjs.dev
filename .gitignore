@@ -27,3 +27,6 @@ dist
 !/scripts/*.ts
 dist-server
 /packages
+
+/.playwright-cli
+/output

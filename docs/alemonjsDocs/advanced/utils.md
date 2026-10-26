@@ -7,13 +7,13 @@ sidebar_position: 9
 
 :::tip
 
-框架内置了一些常用的方法，以减少开发成本
+以下工具用于正则匹配、公网 IP 查询、计数、二维码生成和资源下载。
 
 :::
 
 ## Regular
 
-继承于`RegExp`的class
+继承 `RegExp` 的类。
 
 ```ts title="index.ts"
 import { Regular } from 'alemonjs/utils'
@@ -26,7 +26,7 @@ const regular = Regular.or(regular$1, regular$2)
 
 ## getPublicIP
 
-获取公网IP，如果有的话
+查询公网 IP。
 
 > 基于 `public-ip`
 
@@ -62,7 +62,7 @@ const buffer = await createQRCode('https://alemonjs.com')
 
 ## getBufferByURL
 
-请求URL，并得到Buffer
+请求指定 URL，返回 `Buffer`。
 
 ```ts
 import { getBufferByURL } from 'alemonjs/utils'

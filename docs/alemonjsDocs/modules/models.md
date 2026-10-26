@@ -1,18 +1,18 @@
 ---
-label: '模块'
+label: '模块加载'
 sidebar_position: 7
 ---
 
-# 模块
+# 模块加载
 
 :::info
 
-如果进行模块化和模块化处理仓库
+将本地仓库配置为工作区依赖，再通过 `apps` 加载。
 :::
 
-## 本地模块化
+## 加载本地模块
 
-> 安装仓库到`packages`目录下
+将模块仓库克隆到 `packages` 目录：
 
 ```sh
 git clone --depth=1  [git-url] ./packages/[pkg-name]
@@ -20,7 +20,7 @@ git clone --depth=1  [git-url2] ./packages/[pkg-name2]
 git clone --depth=1  [git-url3] ./packages/[pkg-name3]
 ```
 
-> 把packages目录下的本地模块都视为模块依赖
+在 `package.json` 中声明工作区：
 
 ```json title="package.json"
 {
@@ -29,13 +29,13 @@ git clone --depth=1  [git-url3] ./packages/[pkg-name3]
 }
 ```
 
-> 重新安装依赖
+重新安装依赖：
 
 ```sh
 yarn install
 ```
 
-> 框架配置设置`apps`
+在 `alemon.config.yaml` 的 `apps` 中启用模块：
 
 ```yaml title="alemon.config.yaml"
 # 加载模块, 具体见文档后续内容

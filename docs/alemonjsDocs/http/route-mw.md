@@ -72,7 +72,7 @@ export default defineChildren({
 
 ## 按前缀拆分
 
-如果一个应用里有多组 HTTP 能力，建议拆成多个 router：
+如果一个应用中有多组 HTTP 接口，建议拆成多个 router：
 
 ```ts
 const apiRouter = new KoaRouter({ prefix: '/api' })
@@ -92,8 +92,8 @@ export default defineChildren({
 })
 ```
 
-## 推荐理解
+## 注册要求
 
-- 中间件跟着显式注册的 `koaRouter` 走
+- 将中间件挂载到已注册的 `koaRouter`
 - 权限、审计、Body 解析都尽量显式挂载
-- 不依赖隐式目录规则，边界会更清楚
+- 通过路由代码指定中间件的作用范围

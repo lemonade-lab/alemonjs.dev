@@ -1,10 +1,10 @@
 ---
-title: 插件清单
-description: 为系统插件配置 alx.json 的执行器、页面和导航入口。
+title: 插件配置
+description: 配置 alx.json 中的执行器、页面、导航和授权字段。
 sidebar_position: 3
 ---
 
-# 插件清单
+# 插件配置
 
 `alx.json` 最大 64 KiB，必须是普通文件。`id` 匹配 `^[a-z][a-z0-9-]{1,63}$`。
 

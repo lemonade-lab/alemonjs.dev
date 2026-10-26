@@ -1,11 +1,12 @@
 ---
-label: '路由DSL'
+title: 路由 DSL
+description: 使用链式 API 配置指令分组、前缀和参数。
 sidebar_position: 7
 ---
 
-# 路由DSL
+# 路由 DSL
 
-将复杂的配置转为链式，同时规范化指令风格和加强匹配速度
+通过链式 API 配置指令分组、前缀、参数和匹配失败时的提示。
 
 ## 最小示例
 
@@ -39,25 +40,25 @@ export default router.define
 
 ---
 
-## 一眼看懂
+## 基本结构
 
-这套路由只用 4 个东西：
+基本结构包含四个方法：
 
 1. `Router.create(...)`
-   建路由容器，给顶层 `res` 默认事件/平台。
+   创建路由容器，设置顶层 `res` 的默认事件和平台。
 
 2. `router.res(...)`
    注册顶层前置逻辑。
 
 3. `group(...)`
-   建一组共享中间件、共享输入规则的命令组。
+   创建共享中间件和输入规则的指令组。
 
 4. `use(...)`
    注册具体命令。
 
 ---
 
-## 什么时候用 `router.res`
+## 前置处理
 
 `router.res(...)` 只放顶层前置逻辑。
 
@@ -68,7 +69,7 @@ export default router.define
 - select 转义
 - 其他“消息一进来就要先检查”的逻辑
 
-### 写法 懒加载
+### 懒加载
 
 ```ts
 router.res({}, () => import('@src/response/resGuide'))
@@ -82,7 +83,7 @@ router.res({}, () => import('@src/response/resGuide'))
 next()
 ```
 
-不要指望：
+以下返回值不能代替 `next()`：
 
 ```ts
 return true
@@ -90,7 +91,7 @@ return true
 
 ---
 
-## 什么时候用 `group`
+## 指令分组
 
 `group(...)` 表示“这一组命令共享同一套规则”。
 
@@ -130,7 +131,7 @@ const captcha = router.group(
 
 ---
 
-## 什么时候用 `use`
+## 注册指令
 
 `use(...)` 注册具体命令。
 
@@ -179,7 +180,7 @@ app.use(
 
 ---
 
-## key 怎么写
+## 指令名称
 
 ### 内部 key 一律不带前缀
 
@@ -201,7 +202,7 @@ app.use('/任务设置', ...);
 
 ---
 
-## `routeText` 怎么配
+## 输入前缀
 
 `routeText` 用来处理输入前缀，不改原始 `MessageText`，只影响路由命中。
 
@@ -245,9 +246,9 @@ routeText: {
 
 ---
 
-## `keyPolicy` 怎么配
+## 指令词数
 
-控制命中时按几词取 key。
+设置指令名称匹配的最大词数。
 
 ```ts
 keyPolicy: {
@@ -262,11 +263,11 @@ keyPolicy: {
 - `2`
   优先前两个词，再退回一个词
 
-一般命令组保持 `2` 就行。
+需要匹配双词指令时使用 `2`。
 
 ---
 
-## `schema` 怎么用
+## 参数解析
 
 业务通过 `useEvent()` 读取时，应使用 `event.current.__route` 访问这段上下文。
 
@@ -296,7 +297,7 @@ const { slot, step, content } = e.__route.params
 
 ---
 
-## fallback 怎么配
+## 未匹配提示
 
 当用户输入没命中时，是否提示“更接近哪个指令”。
 
@@ -321,7 +322,7 @@ fallback: {
 
 ---
 
-## duplicateKey 怎么配
+## 重名指令
 
 同一事件下，重复注册同一个 key 时怎么处理。
 
@@ -341,7 +342,7 @@ duplicateKey: 'warn'
 
 ---
 
-## redispatch 怎么配
+## 重新分发
 
 当某个 importer 改写了 `MessageText`，是否允许重新分发。
 

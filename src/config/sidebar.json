@@ -1,38 +1,71 @@
 [
   {
-    "title": "文档",
+    "title": "文档导航",
     "path": "/docs/intro",
     "position": 1
   },
   {
     "id": "alemonx",
-    "label": "ALemonX",
+    "label": "工作台",
     "position": 2,
     "collapsed": false,
     "items": [
       {
+        "title": "工作台概览",
+        "path": "/docs/alemonx/overview",
+        "position": 0
+      },
+      {
         "id": "getting-started",
-        "label": "开始",
-        "position": 0,
-        "collapsed": true,
+        "label": "入门",
+        "position": 1,
+        "collapsed": false,
         "items": [
           {
-            "title": "如何安装",
+            "title": "安装",
             "path": "/docs/alemonx/getting-started/install",
             "position": 1
           },
           {
-            "title": "工作站开始",
+            "title": "快速上手",
             "path": "/docs/alemonx/getting-started/quick-start",
+            "position": 2
+          }
+        ]
+      },
+      {
+        "id": "use",
+        "label": "使用指南",
+        "position": 2,
+        "collapsed": false,
+        "items": [
+          {
+            "title": "创建与导入",
+            "path": "/docs/alemonx/use/projects/create-or-import",
             "position": 1
+          },
+          {
+            "title": "运行与日志",
+            "path": "/docs/alemonx/use/runtime/run-and-monitor",
+            "position": 2
+          },
+          {
+            "title": "Agent 任务",
+            "path": "/docs/alemonx/use/agent/collaboration",
+            "position": 3
+          },
+          {
+            "title": "系统插件",
+            "path": "/docs/alemonx/use/plugins",
+            "position": 4
           }
         ]
       },
       {
         "id": "develop",
-        "label": "开发者",
-        "position": 2,
-        "collapsed": false,
+        "label": "扩展开发",
+        "position": 3,
+        "collapsed": true,
         "items": [
           {
             "title": "系统插件开发",
@@ -45,7 +78,7 @@
             "position": 3
           },
           {
-            "title": "机器人构建规范",
+            "title": "构建规范",
             "path": "/docs/alemonx/develop/build",
             "position": 5
           }
@@ -54,26 +87,26 @@
       {
         "id": "reference",
         "label": "参考",
-        "position": 3,
-        "collapsed": false,
+        "position": 4,
+        "collapsed": true,
         "items": [
           {
-            "title": "CLI",
+            "title": "工作台命令行",
             "path": "/docs/alemonx/reference/cli",
             "position": 1
           },
           {
-            "title": "MCP",
+            "title": "MCP 配置",
             "path": "/docs/alemonx/reference/mcp",
             "position": 2
           },
           {
-            "title": "MCP 工具参考",
+            "title": "MCP 工具",
             "path": "/docs/alemonx/reference/mcp-tools",
             "position": 3
           },
           {
-            "title": "插件清单",
+            "title": "插件配置",
             "path": "/docs/alemonx/reference/plugin-manifest",
             "position": 3
           }
@@ -83,45 +116,61 @@
   },
   {
     "id": "alemonjsDocs",
-    "label": "机器人开发",
+    "label": "机器人",
     "position": 3,
     "collapsed": true,
     "items": [
       {
+        "title": "开发概览",
+        "path": "/docs/alemonjsDocs/overview",
+        "position": 0
+      },
+      {
         "id": "getting-started",
-        "label": "开始",
-        "position": 0,
-        "collapsed": true,
+        "label": "快速入门",
+        "position": 1,
+        "collapsed": false,
         "items": [
           {
-            "title": "如何安装",
+            "title": "创建项目",
             "path": "/docs/alemonjsDocs/getting-started/install",
             "position": 2
           },
           {
-            "title": "配置说明",
+            "title": "编写指令",
+            "path": "/docs/alemonjsDocs/getting-started/quick-start",
+            "position": 3
+          },
+          {
+            "title": "运行配置",
             "path": "/docs/alemonjsDocs/getting-started/config",
             "position": 4
           },
           {
-            "title": "终端工具",
+            "title": "机器人命令行",
             "path": "/docs/alemonjsDocs/getting-started/terminal-tools",
             "position": 5
+          },
+          {
+            "title": "连接平台",
+            "path": "/docs/alemonjsDocs/getting-started/connect-platform",
+            "position": 6
           }
         ]
       },
       {
         "id": "core",
-        "label": "核心设计",
-        "position": 1,
+        "label": "消息处理",
+        "position": 2,
+        "collapsed": true,
         "items": [
           {
-            "title": "响应事件",
+            "title": "事件处理",
             "path": "/docs/alemonjsDocs/core/response",
             "position": 1
           },
           {
-            "title": "匹配路由",
+            "title": "路由匹配",
             "path": "/docs/alemonjsDocs/core/router",
             "position": 2
           },
@@ -136,7 +185,7 @@
             "position": 4
           },
           {
-            "title": "数据格式",
+            "title": "消息格式",
             "path": "/docs/alemonjsDocs/core/data-type",
             "position": 5
           },
@@ -156,7 +205,7 @@
             "position": 6
           },
           {
-            "title": "路由DSL",
+            "title": "路由 DSL",
             "path": "/docs/alemonjsDocs/core/router-sdl",
             "position": 7
           }
@@ -165,7 +214,8 @@
       {
         "id": "http",
         "label": "HTTP 服务",
-        "position": 2,
+        "position": 3,
+        "collapsed": true,
         "items": [
           {
             "title": "接口路由",
@@ -181,26 +231,27 @@
       },
       {
         "id": "modules",
-        "label": "模块与开放能力",
-        "position": 3,
+        "label": "模块与平台",
+        "position": 4,
+        "collapsed": true,
         "items": [
           {
-            "title": "实例对象",
+            "title": "全局实例",
             "path": "/docs/alemonjsDocs/modules/class",
             "position": 3
           },
           {
-            "title": "自定义平台",
+            "title": "平台适配",
             "path": "/docs/alemonjsDocs/modules/platforms",
             "position": 3
           },
           {
-            "title": "扩展",
+            "title": "扩展包配置",
             "path": "/docs/alemonjsDocs/modules/desktop",
             "position": 7
           },
           {
-            "title": "模块",
+            "title": "模块加载",
             "path": "/docs/alemonjsDocs/modules/models",
             "position": 7
           }
@@ -208,11 +259,12 @@
       },
       {
         "id": "advanced",
-        "label": "进阶能力",
-        "position": 4,
+        "label": "配置与工具",
+        "position": 5,
+        "collapsed": true,
         "items": [
           {
-            "title": "配置读取",
+            "title": "配置接口",
             "path": "/docs/alemonjsDocs/advanced/config",
             "position": 6
           },
@@ -231,28 +283,31 @@
     ]
   },
   {
-    "title": "连接平台",
-    "path": "/docs/environment",
-    "position": 6
+    "title": "开发入口",
+    "path": "/docs/extensions",
+    "position": 4
   },
   {
-    "title": "JS插件",
-    "path": "/docs/apps",
-    "position": 7
-  },
-  {
-    "title": "JS模块",
-    "path": "/docs/apps-module",
-    "position": 8
-  },
-  {
-    "title": "X插件",
-    "path": "/docs/apps-x",
-    "position": 9
-  },
-  {
-    "title": "开源生态",
-    "path": "/docs/open",
-    "position": 9
+    "id": "help",
+    "label": "问题排查",
+    "position": 5,
+    "collapsed": true,
+    "items": [
+      {
+        "title": "常见问题",
+        "path": "/docs/help/overview",
+        "position": 0
+      },
+      {
+        "title": "启动排查",
+        "path": "/docs/help/startup",
+        "position": 1
+      },
+      {
+        "title": "消息排查",
+        "path": "/docs/help/messages",
+        "position": 2
+      }
+    ]
   }
 ]

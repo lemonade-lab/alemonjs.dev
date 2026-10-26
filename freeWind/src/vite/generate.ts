@@ -301,7 +301,7 @@ function generateSearchIndex(
           : []
         if (type === 'blog') {
           const product = String(route.metadata.product || '')
-          if (!tags.includes(product)) tags.push(product)
+          if (product && !tags.includes(product)) tags.push(product)
         }
         const pagePath = `${basePath}/${route.path}`
         const fullText = stripMarkdown(route.content)
@@ -436,6 +436,15 @@ function validateRoutes(entries: RouteManifestEntry[]) {
       problems.push(`sidebar_position 必须是数字: ${entry.filePath}`)
     }
 
+    if (
+      entry.type === 'blog' &&
+      !['framework', 'workbench'].includes(String(entry.metadata.product))
+    ) {
+      problems.push(
+        `博客必须指定 product: framework 或 workbench: ${entry.filePath}`
+      )
+    }
+
     if (entry.date && Number.isNaN(new Date(entry.date).getTime())) {
       problems.push(`date 不是有效日期: ${entry.filePath}`)
     }
@@ -556,7 +565,7 @@ function generateRss(entries: RouteManifestEntry[]) {
       return `    <item>\n      <title>${escapeXml(title)}</title>\n      <link>${escapeXml(`${SITE_URL}${entry.path}`)}</link>\n      <guid isPermaLink="true">${escapeXml(`${SITE_URL}${entry.path}`)}</guid>\n      <description>${escapeXml(description)}</description>${pubDate ? `\n      <pubDate>${escapeXml(pubDate)}</pubDate>` : ''}\n    </item>`
     })
 
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0">\n  <channel>\n    <title>ALemonX 更新</title>\n    <link>${SITE_URL}/blog</link>\n    <description>ALemonX 产品更新与开发日志</description>\n${items.join('\n')}\n  </channel>\n</rss>\n`
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0">\n  <channel>\n    <title>博客</title>\n    <link>${SITE_URL}/blog</link>\n    <description>机器人框架更新与开发文章</description>\n${items.join('\n')}\n  </channel>\n</rss>\n`
 }
 
 /**
@@ -604,7 +613,7 @@ function generateSidebarConfig(docsRoutes: DocRoute[], docsDir: string) {
           route.metadata.title ||
           parts[0]) as string,
         path: `/docs/${route.path}`,
-        position: route.metadata.sidebar_position || 999
+        position: route.metadata.sidebar_position ?? 999
       })
     } else {
       // 二级及以上（目录下的文件）
@@ -635,7 +644,7 @@ function generateSidebarConfig(docsRoutes: DocRoute[], docsDir: string) {
             route.metadata.title ||
             parts[1]) as string,
           path: `/docs/${route.path}`,
-          position: route.metadata.sidebar_position || 999
+          position: route.metadata.sidebar_position ?? 999
         })
       } else {
         // 子分类下的文件（三级）
@@ -661,7 +670,7 @@ function generateSidebarConfig(docsRoutes: DocRoute[], docsDir: string) {
             route.metadata.title ||
             parts[parts.length - 1]) as string,
           path: `/docs/${route.path}`,
-          position: route.metadata.sidebar_position || 999
+          position: route.metadata.sidebar_position ?? 999
         })
       }
     }
@@ -687,7 +696,8 @@ function generateSidebarConfig(docsRoutes: DocRoute[], docsDir: string) {
       subCats.forEach(subCat => {
         subCat.items.sort((a, b) => a.position - b.position)
       })
-      category.items = subCats
+      category.items = [...(category.items ?? []), ...subCats]
+      category.items.sort((a, b) => a.position - b.position)
     } else if (category.items) {
       // 排序主分类的文档
       category.items.sort((a, b) => a.position - b.position)
@@ -847,21 +857,21 @@ function main() {
   console.log('✅ 侧边栏配置已生成: src/config/sidebar.json')
 
   // 生成博客元数据
-  const blogMeta = blogRoutes.map(route => {
-    const tags = Array.isArray(route.metadata.tags)
-      ? route.metadata.tags.map(tag => String(tag))
-      : []
-    const product = String(route.metadata.product || '')
-    if (!tags.includes(product)) tags.push(product)
-    return {
+  const blogMeta = blogRoutes
+    .filter(route => !route.metadata.redirect_to)
+    .map(route => ({
       title: route.metadata.title,
       description: route.metadata.description,
       date: route.metadata.date,
       path: `/blog/${route.path}`,
-      tags,
+      product: route.metadata.product,
+      tags: Array.isArray(route.metadata.tags)
+        ? route.metadata.tags
+            .map(String)
+            .filter(tag => tag && !['alemonjs', 'alemonx'].includes(tag))
+        : [],
       authors: route.metadata.authors
-    }
-  })
+    }))
   fs.mkdirSync(path.join(srcDir, 'config'), { recursive: true })
   fs.writeFileSync(
     path.join(srcDir, 'config', 'blog.json'),

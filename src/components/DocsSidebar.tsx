@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
+import '../assets/css/sidebar.css'
 
 interface NavItem {
   title: string
@@ -64,6 +65,23 @@ export default function DocsSidebar({
       })
   }, [])
 
+  useEffect(() => {
+    const activeSections: Record<string, boolean> = {}
+    for (const section of navigation) {
+      for (const item of section.items ?? []) {
+        if (isSubCategory(item)) {
+          if (item.items.some(page => page.path === location.pathname)) {
+            activeSections[section.id!] = false
+            activeSections[`${section.id}-${item.id}`] = false
+          }
+        } else if (item.path === location.pathname) {
+          activeSections[section.id!] = false
+        }
+      }
+    }
+    setCollapsedSections(previous => ({ ...previous, ...activeSections }))
+  }, [location.pathname, navigation])
+
   const toggleSection = (section: string, isCollapsed: boolean) => {
     setCollapsedSections(prev => ({
       ...prev,
@@ -110,6 +128,7 @@ export default function DocsSidebar({
         <div className="lg:hidden flex justify-end border-b border-[var(--line)]">
           <button
             onClick={onClose}
+            aria-label="关闭文档导航"
             className="p-2 rounded-md text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-[var(--surface-muted)]"
           >
             <svg
@@ -128,7 +147,7 @@ export default function DocsSidebar({
           </button>
         </div>
 
-        <nav className="p-4 lg:p-6 space-y-2">
+        <nav aria-label="文档导航" className="docs-navigation">
           {navigation.map((item, index) => {
             // 如果是分类（有 items）
             if (isCategory(item)) {
@@ -136,10 +155,11 @@ export default function DocsSidebar({
                 collapsedSections[item.id!] ?? item.collapsed ?? true
 
               return (
-                <div key={item.id || index}>
+                <div key={item.id || index} className="docs-navigation-section">
                   <button
                     onClick={() => toggleSection(item.id!, isCollapsed)}
-                    className="flex py-2 items-center justify-between w-full px-3 text-sm font-bold rounded-md text-[var(--text)] uppercase tracking-wider mb-3 hover:bg-[var(--surface-muted)] transition-all duration-200 group"
+                    aria-expanded={!isCollapsed}
+                    className="docs-navigation-heading"
                   >
                     {item.label}
                     <svg
@@ -158,7 +178,7 @@ export default function DocsSidebar({
                   </button>
 
                   {!isCollapsed && (
-                    <div className="space-y-4 mb-4">
+                    <div className="docs-navigation-children">
                       {item.items!.map((subItem, subIndex) => {
                         // 检查是否为子分类
                         if (isSubCategory(subItem)) {
@@ -170,12 +190,16 @@ export default function DocsSidebar({
                             true) as boolean
 
                           return (
-                            <div key={subItem.id}>
+                            <div
+                              key={subItem.id}
+                              className="docs-navigation-category"
+                            >
                               <button
                                 onClick={() =>
                                   toggleSection(subCategoryId, isSubCollapsed)
                                 }
-                                className="flex py-2 rounded-md items-center justify-between w-full pl-6 pr-3 text-xs font-semibold text-[var(--text-muted)] mb-2 hover:text-[var(--text)] transition-colors"
+                                aria-expanded={!isSubCollapsed}
+                                className="docs-navigation-subheading"
                               >
                                 {subItem.label}
                                 <svg
@@ -193,20 +217,21 @@ export default function DocsSidebar({
                                 </svg>
                               </button>
                               {!isSubCollapsed && (
-                                <ul className="space-y-1 pl-2">
+                                <ul className="docs-navigation-pages">
                                   {subItem.items.map(docItem => (
                                     <li key={docItem.path}>
                                       <Link
                                         to={docItem.path}
+                                        aria-current={
+                                          location.pathname === docItem.path
+                                            ? 'page'
+                                            : undefined
+                                        }
                                         onClick={onClose}
                                         data-active={
                                           location.pathname === docItem.path
                                         }
-                                        className={`block pl-6 pr-3 py-2 rounded-lg text-sm transition-all duration-200 ${
-                                          location.pathname === docItem.path
-                                            ? 'bg-[var(--accent)] text-[var(--accent-contrast)] font-semibold'
-                                            : 'text-[var(--text-muted)] hover:bg-[var(--surface-muted)] hover:text-[var(--text)]'
-                                        }`}
+                                        className="docs-navigation-link"
                                       >
                                         {docItem.title}
                                       </Link>
@@ -223,15 +248,16 @@ export default function DocsSidebar({
                               <li>
                                 <Link
                                   to={subItem.path}
+                                  aria-current={
+                                    location.pathname === subItem.path
+                                      ? 'page'
+                                      : undefined
+                                  }
                                   onClick={onClose}
                                   data-active={
                                     location.pathname === subItem.path
                                   }
-                                  className={`block px-3 py-2 rounded-lg text-sm transition-all duration-200 ${
-                                    location.pathname === subItem.path
-                                      ? 'bg-[var(--accent)] text-[var(--accent-contrast)] font-semibold'
-                                      : 'text-[var(--text-muted)] hover:bg-[var(--surface-muted)] hover:text-[var(--text)]'
-                                  }`}
+                                  className="docs-navigation-link"
                                 >
                                   {subItem.title}
                                 </Link>
@@ -250,13 +276,12 @@ export default function DocsSidebar({
                 <Link
                   key={item.path || index}
                   to={item.path!}
+                  aria-current={
+                    location.pathname === item.path ? 'page' : undefined
+                  }
                   onClick={onClose}
                   data-active={location.pathname === item.path}
-                  className={`block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                    location.pathname === item.path
-                      ? 'bg-[var(--accent)] text-[var(--accent-contrast)] font-semibold'
-                      : 'text-[var(--text-muted)] hover:bg-[var(--surface-muted)] hover:text-[var(--text)]'
-                  }`}
+                  className="docs-navigation-link"
                 >
                   {item.title}
                 </Link>

@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useMemo } from 'react'
+import { getBlogProject, getProjectPosts, blogProjectNames } from '@/utils/blog'
 
 interface BlogPost {
   title: string
@@ -19,8 +20,6 @@ interface GroupedBlogs {
   [year: string]: BlogPost[]
 }
 
-const blogJSON = () => import('../config/blog.json')
-
 export default function BlogSidebar({
   isOpen = true,
   onClose
@@ -30,29 +29,16 @@ export default function BlogSidebar({
   const [collapsedYears, setCollapsedYears] = useState<Record<string, boolean>>(
     {}
   )
-  const [groupedBlogs, setGroupedBlogs] = useState<GroupedBlogs>({})
-
-  // 加载博客配置
-  useEffect(() => {
-    blogJSON()
-      .then(data => {
-        const blogData = data.default || data
-        // 按年份分组
-        const grouped = blogData.reduce((acc: GroupedBlogs, blog: BlogPost) => {
-          const year = blog.date.substring(0, 4)
-          if (!acc[year]) {
-            acc[year] = []
-          }
-          acc[year].push(blog)
-          return acc
-        }, {})
-
-        setGroupedBlogs(grouped)
-      })
-      .catch(() => {
-        console.warn('无法加载博客配置')
-      })
-  }, [])
+  const project = getBlogProject(location.pathname, location.search)
+  const groupedBlogs = useMemo(
+    () =>
+      getProjectPosts(project).reduce((groups: GroupedBlogs, post) => {
+        const year = post.date.substring(0, 4)
+        ;(groups[year] ??= []).push(post)
+        return groups
+      }, {}),
+    [project]
+  )
 
   const toggleYear = (year: string) => {
     setCollapsedYears(prev => ({
@@ -122,7 +108,14 @@ export default function BlogSidebar({
           </button>
         </div>
 
-        <nav className="p-4 lg:p-6 space-y-2">
+        <nav aria-label="博客目录" className="p-4 lg:p-6 space-y-2">
+          <Link
+            to={project === 'framework' ? '/blog' : '/blog?project=workbench'}
+            onClick={onClose}
+            className="block px-3 py-2 font-semibold text-[var(--text)]"
+          >
+            {blogProjectNames[project]}
+          </Link>
           {sortedYears.map(year => {
             const yearBlogs = groupedBlogs[year]
             const isAnyActive = yearBlogs.some(
@@ -218,6 +211,15 @@ export default function BlogSidebar({
               </div>
             )
           })}
+          <div className="mt-6 border-t border-[var(--line)] pt-4">
+            <Link
+              to={project === 'framework' ? '/blog?project=workbench' : '/blog'}
+              onClick={onClose}
+              className="block px-3 py-2 text-sm text-[var(--text-muted)] hover:underline"
+            >
+              {project === 'framework' ? '工作台文章' : '返回框架更新'}
+            </Link>
+          </div>
         </nav>
       </aside>
     </>

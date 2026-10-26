@@ -1,5 +1,6 @@
 import { useRef, useState, type KeyboardEvent, type TouchEvent } from 'react'
 import { Link } from 'react-router-dom'
+import { ECOSYSTEM_URL } from '@/config/ecosystem'
 import alemonJSImage from '@/assets/img/alemon.png'
 import testOneImage from '@/assets/img/dt/cat.png'
 // import alemonDeskImage from '@/assets/img/dt/home.png'
@@ -15,7 +16,7 @@ const features = [
     action: '查看项目操作',
     link: '/docs/alemonx/use/projects/create-or-import',
     image: '/images/alemonx-workbench.png',
-    imageAlt: 'ALemonX 项目工作台与 Agent 任务输入区'
+    imageAlt: '项目工作台与 Agent 任务输入区'
   },
   {
     eyebrow: '02 · 运行',
@@ -25,7 +26,7 @@ const features = [
     action: '查看运行操作',
     link: '/docs/alemonx/use/runtime/run-and-monitor',
     image: '/images/alemonx-control.png',
-    imageAlt: 'ALemonX 运行页显示端口检查、依赖和前后台运行操作'
+    imageAlt: '运行页显示端口检查、依赖和前后台运行操作'
   },
   {
     eyebrow: '03 · Agent',
@@ -35,7 +36,7 @@ const features = [
     action: '查看 Agent 操作',
     link: '/docs/alemonx/use/agent/collaboration',
     image: '/images/alemonx-fix.png',
-    imageAlt: 'ALemonX 运维页显示任务、维护和紧急停止操作'
+    imageAlt: '运维页显示任务、维护和紧急停止操作'
   },
   {
     eyebrow: '04 · 测试',
@@ -55,7 +56,7 @@ const features = [
     action: '查看插件开发',
     link: '/docs/alemonx/develop/system-plugins',
     image: '/images/system-plugin.png',
-    imageAlt: 'ALemonX 系统插件列表与启用操作'
+    imageAlt: '工作台系统插件列表与启用操作'
   }
 ]
 
@@ -156,7 +157,7 @@ export default function HomePage() {
     <main className="space-y-24 pb-4 sm:space-y-40">
       <section aria-labelledby="features-title">
         <p className="text-sm font-medium tracking-[0.18em] text-[var(--text-muted)]">
-          ALemonX 工作台
+          工作台
         </p>
         <h2
           id="features-title"
@@ -217,7 +218,7 @@ export default function HomePage() {
               打开已有产品。
             </h2>
           </div>
-          <ActionLink link="/docs/apps">查看生态</ActionLink>
+          <ActionLink link={ECOSYSTEM_URL}>查看生态</ActionLink>
         </div>
         <div
           className="grid overflow-hidden rounded-[2rem] border border-[var(--line)] bg-[var(--surface-muted)] outline-none lg:grid-cols-[0.92fr_1.08fr]"

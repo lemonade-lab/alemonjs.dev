@@ -1,16 +1,17 @@
 ---
-label: '扩展'
+title: 扩展包配置
+description: 配置扩展包的入口、构建脚本和发布字段。
 sidebar_position: 7
 ---
 
-# 扩展
+# 扩展包配置
 
 :::info
 
-如何开发扩展并推送到npmjs
+配置扩展包的入口和 npm 发布信息。
 :::
 
-## 如何识别的
+## 入口识别
 
 ```shell title="大致的目录结构"
 node_modules/                 // Node.js 依赖包
@@ -20,15 +21,9 @@ node_modules/                 // Node.js 依赖包
  │      └── package.json      // 工程配置文件
 ```
 
-会读取`node_modules/pkg-name/package.json`
+框架读取 `node_modules/pkg-name/package.json` 的 `main` 字段，以入口文件所在目录作为工程目录。
 
-解析并得到`main`
-
-以入口文件的目录为工程目录
-
-## 服务端
-
-### 服务端配置
+## package.json 配置
 
 ```json title="package.json"
 {

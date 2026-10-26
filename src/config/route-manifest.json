@@ -4,10 +4,11 @@
     "type": "doc",
     "path": "/docs/alemonjsDocs/advanced/config",
     "filePath": "alemonjsDocs/advanced/config.md",
-    "title": "配置读取",
-    "description": "配置读取 读取框架配置 getConfigValue getConfig onWatchConfigValue",
+    "title": "配置接口",
+    "description": "读取、保存配置，并监听配置项变化。",
     "metadata": {
-      "label": "配置读取",
+      "title": "配置接口",
+      "description": "读取、保存配置，并监听配置项变化。",
       "sidebar_position": 6
     }
   },
@@ -29,7 +30,7 @@
     "path": "/docs/alemonjsDocs/advanced/utils",
     "filePath": "alemonjsDocs/advanced/utils.md",
     "title": "工具函数",
-    "description": "工具函数 框架内置了一些常用的方法，以减少开发成本 Regular 继承于RegExp的class getPublicIP 获取公网IP，如果有的话 基于 public-ip Counter 计数器 createQRCode 把指定内容转为...",
+    "description": "工具函数 以下工具用于正则匹配、公网 IP 查询、计数、二维码生成和资源下载。 Regular 继承 RegExp 的类。 getPublicIP 查询公网 IP。 基于 public-ip Counter 计数器 createQRCode...",
     "metadata": {
       "label": "工具函数",
       "sidebar_position": 9
@@ -54,7 +55,7 @@
     "path": "/docs/alemonjsDocs/core/cycle",
     "filePath": "alemonjsDocs/core/cycle.md",
     "title": "生命周期",
-    "description": "生命周期 框架现在建议把运行时理解成三条主线：应用阶段、事件阶段、HTTP 服务阶段。 应用阶段 onCreated() 应用刚创建时触发。适合放： 轻量初始化 读取静态配置 建立不依赖路由索引的准备逻辑 不建议把明显阻塞启动的重逻辑直接塞...",
+    "description": "生命周期 生命周期回调分为应用、事件和 HTTP 服务三个阶段。 应用阶段 onCreated() 应用刚创建时触发。适合放： 轻量初始化 读取静态配置 建立不依赖路由索引的准备逻辑 将初始化逻辑放入生命周期回调，避免在模块加载时阻塞启动。...",
     "metadata": {
       "label": "生命周期",
       "sidebar_position": 6
@@ -65,10 +66,10 @@
     "type": "doc",
     "path": "/docs/alemonjsDocs/core/data-type",
     "filePath": "alemonjsDocs/core/data-type.md",
-    "title": "数据格式",
-    "description": "数据格式 使用相同的 API 构建消息内容，由各平台包负责将其转换为平台原生格式。 消息发送的返回值为 Result[]，即 [res1, res2, ...]。数组中的每一项对应一次实际的平台 API 调用。 核心原则：不支持的数据格式，...",
+    "title": "消息格式",
+    "description": "消息格式 使用相同的 API 构建消息内容，由各平台包负责将其转换为平台原生格式。 消息发送的返回值为 Result[]，即 [res1, res2, ...]。数组中的每一项对应一次实际的平台 API 调用。 核心原则：不支持的数据格式，...",
     "metadata": {
-      "label": "数据格式",
+      "label": "消息格式",
       "sidebar_position": 5
     }
   },
@@ -78,9 +79,10 @@
     "path": "/docs/alemonjsDocs/core/hook",
     "filePath": "alemonjsDocs/core/hook.mdx",
     "title": "Hooks",
-    "description": "Hooks hook 在 response 中会自动劫持 event 上下文，也可显式传入，特别是非 response 上下文中调用。通过 useEvent 可获取当前事件和 next 回调。 useMessage 消息发送、删除、编辑、置...",
+    "description": "调用消息、成员、频道、事件订阅和交互接口。",
     "metadata": {
-      "label": "Hooks",
+      "title": "Hooks",
+      "description": "调用消息、成员、频道、事件订阅和交互接口。",
       "sidebar_position": 3
     }
   },
@@ -113,10 +115,11 @@
     "type": "doc",
     "path": "/docs/alemonjsDocs/core/response",
     "filePath": "alemonjsDocs/core/response.md",
-    "title": "响应事件",
-    "description": "响应事件 useEvent 安全的读取 event 和 next 执行周期 中间件之前 subscribe(create) > 中间件时 middleware > 中间件之后/响应之前 subscribe(mount) > 响应时 resp...",
+    "title": "事件处理",
+    "description": "读取当前事件，并使用 next 控制后续处理。",
     "metadata": {
-      "label": "响应事件",
+      "title": "事件处理",
+      "description": "读取当前事件，并使用 next 控制后续处理。",
       "sidebar_position": 1
     }
   },
@@ -125,10 +128,11 @@
     "type": "doc",
     "path": "/docs/alemonjsDocs/core/router-sdl",
     "filePath": "alemonjsDocs/core/router-sdl.md",
-    "title": "路由DSL",
-    "description": "路由DSL 将复杂的配置转为链式，同时规范化指令风格和加强匹配速度 最小示例 --- 一眼看懂 这套路由只用 4 个东西： Router.create(...) 建路由容器，给顶层 res 默认事件/平台。 router.res(...)...",
+    "title": "路由 DSL",
+    "description": "使用链式 API 配置指令分组、前缀和参数。",
     "metadata": {
-      "label": "路由DSL",
+      "title": "路由 DSL",
+      "description": "使用链式 API 配置指令分组、前缀和参数。",
       "sidebar_position": 7
     }
   },
@@ -137,10 +141,11 @@
     "type": "doc",
     "path": "/docs/alemonjsDocs/core/router",
     "filePath": "alemonjsDocs/core/router.md",
-    "title": "匹配路由",
-    "description": "匹配路由 defineRouter 路由匹配模式 每个路由项可配置三种匹配模式，按性能从高到低排列： 模式 字段 性能 说明 -------- --------- ---- --------------------------------...",
+    "title": "路由匹配",
+    "description": "按文本和事件类型匹配处理函数，并注册应用路由。",
     "metadata": {
-      "label": "匹配路由",
+      "title": "路由匹配",
+      "description": "按文本和事件类型匹配处理函数，并注册应用路由。",
       "sidebar_position": 2
     }
   },
@@ -149,12 +154,25 @@
     "type": "doc",
     "path": "/docs/alemonjsDocs/getting-started/config",
     "filePath": "alemonjsDocs/getting-started/config.md",
-    "title": "配置说明",
-    "description": "配置说明 配置的每个字段都是可选的，需要什么就补什么，不需要则忽视 基础配置 权限管理 消息过滤与控制 消息处理器配置 模块管理 快捷参数 启动时可使用的快捷参数： 基础环境变量 platform:string - 平台标识，支持的平台类型...",
+    "title": "运行配置",
+    "description": "运行配置 配置的每个字段都是可选的，需要什么就补什么，不需要则忽视 基础配置 权限管理 消息过滤与控制 消息处理器配置 模块管理 快捷参数 启动时可使用的快捷参数： 基础环境变量 platform:string - 平台标识，支持的平台类型...",
     "metadata": {
       "sidebar_position": 4,
       "show_giscus": 1,
-      "label": "配置说明"
+      "label": "运行配置"
+    }
+  },
+  {
+    "id": "doc:alemonjsDocs/getting-started/connect-platform.md",
+    "type": "doc",
+    "path": "/docs/alemonjsDocs/getting-started/connect-platform",
+    "filePath": "alemonjsDocs/getting-started/connect-platform.md",
+    "title": "连接平台",
+    "description": "使用现成平台适配器或 TestOne 验证消息收发。",
+    "metadata": {
+      "title": "连接平台",
+      "description": "使用现成平台适配器或 TestOne 验证消息收发。",
+      "sidebar_position": 6
     }
   },
   {
@@ -162,12 +180,25 @@
     "type": "doc",
     "path": "/docs/alemonjsDocs/getting-started/install",
     "filePath": "alemonjsDocs/getting-started/install.mdx",
-    "title": "如何安装",
-    "description": "使用 ALemonX 创建机器人项目，或手动安装 ALemonJS。",
+    "title": "创建项目",
+    "description": "使用工作台创建项目，或手动安装机器人框架。",
     "metadata": {
-      "title": "如何安装",
-      "description": "使用 ALemonX 创建机器人项目，或手动安装 ALemonJS。",
+      "title": "创建项目",
+      "description": "使用工作台创建项目，或手动安装机器人框架。",
       "sidebar_position": 2
+    }
+  },
+  {
+    "id": "doc:alemonjsDocs/getting-started/quick-start.md",
+    "type": "doc",
+    "path": "/docs/alemonjsDocs/getting-started/quick-start",
+    "filePath": "alemonjsDocs/getting-started/quick-start.md",
+    "title": "编写指令",
+    "description": "在开发模板中注册 /hello 指令并验证回复。",
+    "metadata": {
+      "title": "编写指令",
+      "description": "在开发模板中注册 /hello 指令并验证回复。",
+      "sidebar_position": 3
     }
   },
   {
@@ -175,11 +206,11 @@
     "type": "doc",
     "path": "/docs/alemonjsDocs/getting-started/terminal-tools",
     "filePath": "alemonjsDocs/getting-started/terminal-tools.md",
-    "title": "终端工具",
-    "description": "安装并使用 alemonc 管理配置、平台、运行和发布。",
+    "title": "机器人命令行",
+    "description": "使用 alemonc 配置项目、连接平台、运行和发布。",
     "metadata": {
-      "title": "终端工具",
-      "description": "安装并使用 alemonc 管理配置、平台、运行和发布。",
+      "title": "机器人命令行",
+      "description": "使用 alemonc 配置项目、连接平台、运行和发布。",
       "sidebar_position": 5
     }
   },
@@ -189,7 +220,7 @@
     "path": "/docs/alemonjsDocs/http/route-mw",
     "filePath": "alemonjsDocs/http/route-mw.md",
     "title": "路由中间件",
-    "description": "路由中间件 当前推荐把 HTTP 中间件直接挂到 koaRouter 上管理，而不是依赖隐式目录约定。 基础写法 解析 Body 可以直接使用 Koa 生态中间件，例如 koa-bodyparser： 按前缀拆分 如果一个应用里有多组 HT...",
+    "description": "路由中间件 当前推荐把 HTTP 中间件直接挂到 koaRouter 上管理，而不是依赖隐式目录约定。 基础写法 解析 Body 可以直接使用 Koa 生态中间件，例如 koa-bodyparser： 按前缀拆分 如果一个应用中有多组 HT...",
     "metadata": {
       "label": "路由中间件",
       "sidebar_position": 8
@@ -201,7 +232,7 @@
     "path": "/docs/alemonjsDocs/http/route",
     "filePath": "alemonjsDocs/http/route.md",
     "title": "接口路由",
-    "description": "接口路由 默认地址 http://localhost:17117/app。 当前支持的 HTTP 能力 主应用公开 HTTP 服务 插件应用公开 HTTP 服务 defineChildren().register() 直接返回的 koaRo...",
+    "description": "接口路由 默认地址 http://localhost:17117/app。 HTTP 接入方式 主应用公开 HTTP 服务 插件应用公开 HTTP 服务 defineChildren().register() 直接返回的 koaRouter...",
     "metadata": {
       "label": "接口路由",
       "sidebar_position": 7
@@ -212,10 +243,11 @@
     "type": "doc",
     "path": "/docs/alemonjsDocs/modules/class",
     "filePath": "alemonjsDocs/modules/class.md",
-    "title": "实例对象",
-    "description": "实例对象 内部开放的，对全局有影响的实例对象",
+    "title": "全局实例",
+    "description": "访问日志、响应、中间件、订阅状态和应用实例。",
     "metadata": {
-      "label": "实例对象",
+      "title": "全局实例",
+      "description": "访问日志、响应、中间件、订阅状态和应用实例。",
       "sidebar_position": 3
     }
   },
@@ -224,10 +256,11 @@
     "type": "doc",
     "path": "/docs/alemonjsDocs/modules/desktop",
     "filePath": "alemonjsDocs/modules/desktop.md",
-    "title": "扩展",
-    "description": "扩展 如何开发扩展并推送到npmjs 如何识别的 会读取nodemodules/pkg-name/package.json 解析并得到main 以入口文件的目录为工程目录 服务端 服务端配置",
+    "title": "扩展包配置",
+    "description": "配置扩展包的入口、构建脚本和发布字段。",
     "metadata": {
-      "label": "扩展",
+      "title": "扩展包配置",
+      "description": "配置扩展包的入口、构建脚本和发布字段。",
       "sidebar_position": 7
     }
   },
@@ -236,10 +269,10 @@
     "type": "doc",
     "path": "/docs/alemonjsDocs/modules/models",
     "filePath": "alemonjsDocs/modules/models.md",
-    "title": "模块",
-    "description": "模块 如果进行模块化和模块化处理仓库 本地模块化 安装仓库到packages目录下 把packages目录下的本地模块都视为模块依赖 重新安装依赖 框架配置设置apps",
+    "title": "模块加载",
+    "description": "模块加载 将本地仓库配置为工作区依赖，再通过 apps 加载。 加载本地模块 将模块仓库克隆到 packages 目录： 在 package.json 中声明工作区： 重新安装依赖： 在 alemon.config.yaml 的 apps...",
     "metadata": {
-      "label": "模块",
+      "label": "模块加载",
       "sidebar_position": 7
     }
   },
@@ -248,11 +281,25 @@
     "type": "doc",
     "path": "/docs/alemonjsDocs/modules/platforms",
     "filePath": "alemonjsDocs/modules/platforms.md",
-    "title": "自定义平台",
-    "description": "自定义平台 对接任意开放平台和框架 导出 目标与统一动作 平台适配器除了推送标准事件，还应处理框架统一的目标对象和动作请求。目标范围使用 ActionTarget 表示： 适配器可按平台能力处理消息、媒体、成员、频道、交互和请求等动作。无法...",
+    "title": "平台适配",
+    "description": "实现平台事件接收与消息、成员和频道等动作。",
     "metadata": {
-      "label": "自定义平台",
+      "title": "平台适配",
+      "description": "实现平台事件接收与消息、成员和频道等动作。",
       "sidebar_position": 3
+    }
+  },
+  {
+    "id": "doc:alemonjsDocs/overview.md",
+    "type": "doc",
+    "path": "/docs/alemonjsDocs/overview",
+    "filePath": "alemonjsDocs/overview.md",
+    "title": "开发概览",
+    "description": "从第一个指令进入事件、消息、服务和扩展开发。",
+    "metadata": {
+      "title": "开发概览",
+      "description": "从第一个指令进入事件、消息、服务和扩展开发。",
+      "sidebar_position": 0
     }
   },
   {
@@ -260,11 +307,11 @@
     "type": "doc",
     "path": "/docs/alemonx/develop/build",
     "filePath": "alemonx/develop/build.md",
-    "title": "机器人构建规范",
-    "description": "了解 ALemonX 如何识别机器人构建入口、bundle 输出和嵌套前端项目。",
+    "title": "构建规范",
+    "description": "配置机器人构建入口、产物路径和嵌套前端项目。",
     "metadata": {
-      "title": "机器人构建规范",
-      "description": "了解 ALemonX 如何识别机器人构建入口、bundle 输出和嵌套前端项目。",
+      "title": "构建规范",
+      "description": "配置机器人构建入口、产物路径和嵌套前端项目。",
       "sidebar_position": 5
     }
   },
@@ -274,10 +321,10 @@
     "path": "/docs/alemonx/develop/system-plugins",
     "filePath": "alemonx/develop/system-plugins.md",
     "title": "系统插件开发",
-    "description": "了解 ALemonX 系统插件的边界、目录结构、通讯协议、宿主能力与安全机制。",
+    "description": "创建系统插件，配置执行器，并调用工作台接口。",
     "metadata": {
       "title": "系统插件开发",
-      "description": "了解 ALemonX 系统插件的边界、目录结构、通讯协议、宿主能力与安全机制。",
+      "description": "创建系统插件，配置执行器，并调用工作台接口。",
       "sidebar_position": 1
     }
   },
@@ -299,11 +346,11 @@
     "type": "doc",
     "path": "/docs/alemonx/getting-started/install",
     "filePath": "alemonx/getting-started/install.mdx",
-    "title": "如何安装",
-    "description": "安装ALemonX",
+    "title": "安装",
+    "description": "安装工作台",
     "metadata": {
-      "title": "如何安装",
-      "description": "安装ALemonX",
+      "title": "安装",
+      "description": "安装工作台",
       "sidebar_position": 1
     }
   },
@@ -312,12 +359,12 @@
     "type": "doc",
     "path": "/docs/alemonx/getting-started/quick-start",
     "filePath": "alemonx/getting-started/quick-start.mdx",
-    "title": "工作站开始",
-    "description": "下载 alx，打开工作台，创建项目并运行一次任务。",
+    "title": "快速上手",
+    "description": "完成安装、打开工作台、创建项目并检查运行结果。",
     "metadata": {
-      "title": "工作站开始",
-      "description": "下载 alx，打开工作台，创建项目并运行一次任务。",
-      "sidebar_position": 1
+      "title": "快速上手",
+      "description": "完成安装、打开工作台、创建项目并检查运行结果。",
+      "sidebar_position": 2
     }
   },
   {
@@ -325,11 +372,11 @@
     "type": "doc",
     "path": "/docs/alemonx/overview",
     "filePath": "alemonx/overview.md",
-    "title": "ALemonX",
-    "description": "ALemonX 的安装入口，以及机器人和扩展开发文档。",
+    "title": "工作台概览",
+    "description": "查找工作台安装、项目运行、Agent 任务和系统插件文档。",
     "metadata": {
-      "title": "ALemonX",
-      "description": "ALemonX 的安装入口，以及机器人和扩展开发文档。",
+      "title": "工作台概览",
+      "description": "查找工作台安装、项目运行、Agent 任务和系统插件文档。",
       "sidebar_position": 0
     }
   },
@@ -338,11 +385,11 @@
     "type": "doc",
     "path": "/docs/alemonx/reference/cli",
     "filePath": "alemonx/reference/cli.md",
-    "title": "CLI",
-    "description": "使用 alx 启动工作台、管理服务、插件、认证和发布。",
+    "title": "工作台命令行",
+    "description": "使用 alx 启动工作台、管理后台服务和查看日志。",
     "metadata": {
-      "title": "CLI",
-      "description": "使用 alx 启动工作台、管理服务、插件、认证和发布。",
+      "title": "工作台命令行",
+      "description": "使用 alx 启动工作台、管理后台服务和查看日志。",
       "sidebar_position": 1
     }
   },
@@ -351,11 +398,11 @@
     "type": "doc",
     "path": "/docs/alemonx/reference/mcp-tools",
     "filePath": "alemonx/reference/mcp-tools.md",
-    "title": "MCP 工具参考",
-    "description": "ALemonX MCP 控制面的工具分组、参数约定、确认规则与推荐调用顺序。",
+    "title": "MCP 工具",
+    "description": "查阅 MCP 工具、参数、确认要求和调用顺序。",
     "metadata": {
-      "title": "MCP 工具参考",
-      "description": "ALemonX MCP 控制面的工具分组、参数约定、确认规则与推荐调用顺序。",
+      "title": "MCP 工具",
+      "description": "查阅 MCP 工具、参数、确认要求和调用顺序。",
       "sidebar_position": 3
     }
   },
@@ -364,10 +411,10 @@
     "type": "doc",
     "path": "/docs/alemonx/reference/mcp",
     "filePath": "alemonx/reference/mcp.md",
-    "title": "MCP",
+    "title": "MCP 配置",
     "description": "配置 stdio 或本机 HTTP MCP，并限制项目目录和写入操作。",
     "metadata": {
-      "title": "MCP",
+      "title": "MCP 配置",
       "description": "配置 stdio 或本机 HTTP MCP，并限制项目目录和写入操作。",
       "sidebar_position": 2
     }
@@ -377,60 +424,116 @@
     "type": "doc",
     "path": "/docs/alemonx/reference/plugin-manifest",
     "filePath": "alemonx/reference/plugin-manifest.md",
-    "title": "插件清单",
-    "description": "为系统插件配置 alx.json 的执行器、页面和导航入口。",
+    "title": "插件配置",
+    "description": "配置 alx.json 中的执行器、页面、导航和授权字段。",
     "metadata": {
-      "title": "插件清单",
-      "description": "为系统插件配置 alx.json 的执行器、页面和导航入口。",
+      "title": "插件配置",
+      "description": "配置 alx.json 中的执行器、页面、导航和授权字段。",
       "sidebar_position": 3
     }
   },
   {
-    "id": "doc:apps-module.md",
+    "id": "doc:alemonx/use/agent/collaboration.md",
     "type": "doc",
-    "path": "/docs/apps-module",
-    "filePath": "apps-module.md",
-    "title": "JS模块",
-    "description": "JS模块 数据 项目 版本 说明 -------------- --------------- ------------ [@alemonjs/db] [![db-s]][db-p] 数据连接管理 [@alemonjs/db]: https...",
+    "path": "/docs/alemonx/use/agent/collaboration",
+    "filePath": "alemonx/use/agent/collaboration.md",
+    "title": "Agent 任务",
+    "description": "描述任务目标、检查计划，并根据报告验证项目修改。",
     "metadata": {
-      "sidebar_position": 8,
-      "label": "JS模块"
+      "title": "Agent 任务",
+      "description": "描述任务目标、检查计划，并根据报告验证项目修改。",
+      "sidebar_position": 3
     }
   },
   {
-    "id": "doc:apps-x.md",
+    "id": "doc:alemonx/use/plugins.md",
     "type": "doc",
-    "path": "/docs/apps-x",
-    "filePath": "apps-x.md",
-    "title": "X插件",
-    "description": "X插件 X插件机制到底是怎么回事？请点击了解 alemonx 的制作 基础 项目名 说明 --------- ---------------- [network] 系统网络与防火墙 [qq] qq协议管理 [finder] 文件管理器 [d...",
+    "path": "/docs/alemonx/use/plugins",
+    "filePath": "alemonx/use/plugins.md",
+    "title": "系统插件",
+    "description": "安装、启用系统插件，并检查插件状态和数据目录。",
     "metadata": {
-      "sidebar_position": 9,
-      "label": "X插件"
+      "title": "系统插件",
+      "description": "安装、启用系统插件，并检查插件状态和数据目录。",
+      "sidebar_position": 4
     }
   },
   {
-    "id": "doc:apps.md",
+    "id": "doc:alemonx/use/projects/create-or-import.md",
     "type": "doc",
-    "path": "/docs/apps",
-    "filePath": "apps.md",
-    "title": "JS插件",
-    "description": "JS插件 模块机制到底是怎么回事？请点击了解👉模块化应用的制作 增强 最大可能的去加载现有生态的扩展 项目名 说明 ------------- -----------------------------------------------...",
+    "path": "/docs/alemonx/use/projects/create-or-import",
+    "filePath": "alemonx/use/projects/create-or-import.md",
+    "title": "创建与导入",
+    "description": "从模板创建项目，或导入本地目录和 Git 仓库。",
     "metadata": {
-      "sidebar_position": 7,
-      "label": "JS插件"
+      "title": "创建与导入",
+      "description": "从模板创建项目，或导入本地目录和 Git 仓库。",
+      "sidebar_position": 1
     }
   },
   {
-    "id": "doc:environment.md",
+    "id": "doc:alemonx/use/runtime/run-and-monitor.md",
     "type": "doc",
-    "path": "/docs/environment",
-    "filePath": "environment.md",
-    "title": "连接平台",
-    "description": "连接平台 点击项目名或版本号可查看详情。 官方 项目 版本 说明 -------------------------- --------------------------------------- --------------------...",
+    "path": "/docs/alemonx/use/runtime/run-and-monitor",
+    "filePath": "alemonx/use/runtime/run-and-monitor.md",
+    "title": "运行与日志",
+    "description": "区分工作台服务和机器人进程，完成前台调试与后台运行检查。",
     "metadata": {
-      "sidebar_position": 6,
-      "label": "连接平台"
+      "title": "运行与日志",
+      "description": "区分工作台服务和机器人进程，完成前台调试与后台运行检查。",
+      "sidebar_position": 2
+    }
+  },
+  {
+    "id": "doc:extensions.md",
+    "type": "doc",
+    "path": "/docs/extensions",
+    "filePath": "extensions.md",
+    "title": "开发入口",
+    "description": "按机器人指令、平台适配、系统插件和应用页面选择开发文档。",
+    "metadata": {
+      "title": "开发入口",
+      "description": "按机器人指令、平台适配、系统插件和应用页面选择开发文档。",
+      "sidebar_position": 4
+    }
+  },
+  {
+    "id": "doc:help/messages.md",
+    "type": "doc",
+    "path": "/docs/help/messages",
+    "filePath": "help/messages.md",
+    "title": "消息排查",
+    "description": "沿平台连接、事件进入、路由匹配和消息发送逐步定位。",
+    "metadata": {
+      "title": "消息排查",
+      "description": "沿平台连接、事件进入、路由匹配和消息发送逐步定位。",
+      "sidebar_position": 2
+    }
+  },
+  {
+    "id": "doc:help/overview.md",
+    "type": "doc",
+    "path": "/docs/help/overview",
+    "filePath": "help/overview.md",
+    "title": "常见问题",
+    "description": "按启动、平台连接、消息处理和插件问题选择排查路线。",
+    "metadata": {
+      "title": "常见问题",
+      "description": "按启动、平台连接、消息处理和插件问题选择排查路线。",
+      "sidebar_position": 0
+    }
+  },
+  {
+    "id": "doc:help/startup.md",
+    "type": "doc",
+    "path": "/docs/help/startup",
+    "filePath": "help/startup.md",
+    "title": "启动排查",
+    "description": "区分工作台服务、项目依赖与机器人进程故障。",
+    "metadata": {
+      "title": "启动排查",
+      "description": "区分工作台服务、项目依赖与机器人进程故障。",
+      "sidebar_position": 1
     }
   },
   {
@@ -438,24 +541,12 @@
     "type": "doc",
     "path": "/docs/intro",
     "filePath": "intro.md",
-    "title": "文档",
-    "description": "ALemonX、机器人开发与生态文档的内容一览。",
+    "title": "文档导航",
+    "description": "按使用工作台、开发机器人、扩展能力和排查问题选择阅读路线。",
     "metadata": {
-      "sidebar_position": 1,
-      "label": "文档",
-      "description": "ALemonX、机器人开发与生态文档的内容一览。"
-    }
-  },
-  {
-    "id": "doc:open.md",
-    "type": "doc",
-    "path": "/docs/open",
-    "filePath": "open.md",
-    "title": "开源生态",
-    "description": "开源生态 模块机制到底是怎么回事？请点击了解👉模块化应用的制作 SKILL 用于 AI 增强的 skill 项目名 说明 ---------------- ----------------- [common-dev] alemonjs 通...",
-    "metadata": {
-      "sidebar_position": 9,
-      "label": "开源生态"
+      "title": "文档导航",
+      "description": "按使用工作台、开发机器人、扩展能力和排查问题选择阅读路线。",
+      "sidebar_position": 1
     }
   },
   {
@@ -467,6 +558,7 @@
     "description": "扩展统一 Hook、消息格式、QQ Bot 能力和平台适配",
     "date": "2026-09-21",
     "metadata": {
+      "product": "framework",
       "title": "V2.1.109",
       "description": "扩展统一 Hook、消息格式、QQ Bot 能力和平台适配",
       "authors": "ningmengchongshui",
@@ -485,6 +577,7 @@
     "description": "新增事件上下文能力，补充连接、交互和目标媒体 API",
     "date": "2026-08-31",
     "metadata": {
+      "product": "framework",
       "title": "V2.1.97",
       "description": "新增事件上下文能力，补充连接、交互和目标媒体 API",
       "authors": "ningmengchongshui",
@@ -503,6 +596,7 @@
     "description": "基础可用",
     "date": "2026-08-22",
     "metadata": {
+      "product": "workbench",
       "title": "X0.2.19",
       "description": "基础可用",
       "authors": "ningmengchongshui",
@@ -521,6 +615,7 @@
     "description": "框架定时任务",
     "date": "2026-04-11",
     "metadata": {
+      "product": "framework",
       "title": "V2.1.57",
       "description": "框架定时任务",
       "authors": "ningmengchongshui",
@@ -539,6 +634,7 @@
     "description": "hooks增强",
     "date": "2026-04-01",
     "metadata": {
+      "product": "framework",
       "title": "V2.1.52",
       "description": "hooks增强",
       "authors": "ningmengchongshui",
@@ -557,6 +653,7 @@
     "description": "链式调用",
     "date": "2026-02-28",
     "metadata": {
+      "product": "framework",
       "title": "V2.1.43",
       "description": "链式调用",
       "authors": "ningmengchongshui",
@@ -575,6 +672,7 @@
     "description": "链式调用",
     "date": "2026-02-26",
     "metadata": {
+      "product": "framework",
       "title": "V2.1.22",
       "description": "链式调用",
       "authors": "ningmengchongshui",
@@ -593,6 +691,7 @@
     "description": "针对useSubscribe的优化",
     "date": "2026-01-22",
     "metadata": {
+      "product": "framework",
       "title": "V2.1.17",
       "description": "针对useSubscribe的优化",
       "authors": "ningmengchongshui",
@@ -611,6 +710,7 @@
     "description": "主要是一些比较重要的修复和优化",
     "date": "2026-01-08",
     "metadata": {
+      "product": "framework",
       "title": "V2.1.15",
       "description": "主要是一些比较重要的修复和优化",
       "authors": "ningmengchongshui",
@@ -629,6 +729,7 @@
     "description": "全新稳定版本推送",
     "date": "2025-05-30",
     "metadata": {
+      "product": "framework",
       "title": "V2.1.0",
       "description": "全新稳定版本推送",
       "authors": "ningmengchongshui",
@@ -647,6 +748,7 @@
     "description": "更新",
     "date": "2025-05-13",
     "metadata": {
+      "product": "framework",
       "title": "V2.0.16",
       "description": "更新",
       "authors": "ningmengchongshui",
@@ -665,6 +767,7 @@
     "description": "更新",
     "date": "2025-03-26",
     "metadata": {
+      "product": "framework",
       "title": "V2.0.4",
       "description": "更新",
       "authors": "ningmengchongshui",
@@ -679,15 +782,15 @@
     "type": "blog",
     "path": "/blog/2025/03/14/v2.0.0",
     "filePath": "2025/03/14/v2.0.0.md",
-    "title": "V2.0.0",
-    "description": "更新",
+    "title": "V2.0.0 正式发布",
+    "description": "汇总 2.0 预发布阶段的事件处理、消息接口、配置管理和开发支持，并加入 JSX 消息写法。",
     "date": "2025-03-14",
     "metadata": {
-      "title": "V2.0.0",
-      "description": "更新",
+      "product": "framework",
+      "title": "V2.0.0 正式发布",
+      "description": "汇总 2.0 预发布阶段的事件处理、消息接口、配置管理和开发支持，并加入 JSX 消息写法。",
       "authors": "ningmengchongshui",
       "tags": ["alemonjs"],
-      "image": "https://i.imgur.com/mErPwqL.png",
       "hide_table_of_contents": false,
       "date": "2025-03-14"
     }
@@ -698,15 +801,14 @@
     "path": "/blog/2025/02/12/v2.0.0-rc.94",
     "filePath": "2025/02/12/v2.0.0-rc.94.md",
     "title": "V2.0.0-rc.94",
-    "description": "更新",
+    "description": "已归纳至 V2.0.0 正式发布。",
     "date": "2025-02-12",
+    "redirectTo": "/blog/2025/03/14/v2.0.0",
     "metadata": {
+      "product": "framework",
       "title": "V2.0.0-rc.94",
-      "description": "更新",
-      "authors": "ningmengchongshui",
-      "tags": ["alemonjs"],
-      "image": "https://i.imgur.com/mErPwqL.png",
-      "hide_table_of_contents": false,
+      "redirect_to": "/blog/2025/03/14/v2.0.0",
+      "noindex": true,
       "date": "2025-02-12"
     }
   },
@@ -716,15 +818,14 @@
     "path": "/blog/2025/01/09/v2.0.0-rc.88",
     "filePath": "2025/01/09/v2.0.0-rc.88.md",
     "title": "V2.0.0-rc.88",
-    "description": "更新",
+    "description": "已归纳至 V2.0.0 正式发布。",
     "date": "2025-01-09",
+    "redirectTo": "/blog/2025/03/14/v2.0.0",
     "metadata": {
+      "product": "framework",
       "title": "V2.0.0-rc.88",
-      "description": "更新",
-      "authors": "ningmengchongshui",
-      "tags": ["alemonjs"],
-      "image": "https://i.imgur.com/mErPwqL.png",
-      "hide_table_of_contents": false,
+      "redirect_to": "/blog/2025/03/14/v2.0.0",
+      "noindex": true,
       "date": "2025-01-09"
     }
   },
@@ -734,15 +835,14 @@
     "path": "/blog/2025/01/07/v2.0.0-rc.84",
     "filePath": "2025/01/07/v2.0.0-rc.84.md",
     "title": "V2.0.0-rc.84",
-    "description": "更新",
+    "description": "已归纳至 V2.0.0 正式发布。",
     "date": "2025-01-07",
+    "redirectTo": "/blog/2025/03/14/v2.0.0",
     "metadata": {
+      "product": "framework",
       "title": "V2.0.0-rc.84",
-      "description": "更新",
-      "authors": "ningmengchongshui",
-      "tags": ["alemonjs"],
-      "image": "https://i.imgur.com/mErPwqL.png",
-      "hide_table_of_contents": false,
+      "redirect_to": "/blog/2025/03/14/v2.0.0",
+      "noindex": true,
       "date": "2025-01-07"
     }
   },
@@ -752,15 +852,14 @@
     "path": "/blog/2025/01/02/v2.0.0-rc.81",
     "filePath": "2025/01/02/v2.0.0-rc.81.md",
     "title": "V2.0.0-rc.81",
-    "description": "更新",
+    "description": "已归纳至 V2.0.0 正式发布。",
     "date": "2025-01-02",
+    "redirectTo": "/blog/2025/03/14/v2.0.0",
     "metadata": {
+      "product": "framework",
       "title": "V2.0.0-rc.81",
-      "description": "更新",
-      "authors": "ningmengchongshui",
-      "tags": ["alemonjs"],
-      "image": "https://i.imgur.com/mErPwqL.png",
-      "hide_table_of_contents": false,
+      "redirect_to": "/blog/2025/03/14/v2.0.0",
+      "noindex": true,
       "date": "2025-01-02"
     }
   },
@@ -770,15 +869,14 @@
     "path": "/blog/2024/12/31/2.0.0-rc.78",
     "filePath": "2024/12/31/2.0.0-rc.78.md",
     "title": "V2.0.0-rc.78",
-    "description": "更新",
+    "description": "已归纳至 V2.0.0 正式发布。",
     "date": "2024-12-31",
+    "redirectTo": "/blog/2025/03/14/v2.0.0",
     "metadata": {
+      "product": "framework",
       "title": "V2.0.0-rc.78",
-      "description": "更新",
-      "authors": "ningmengchongshui",
-      "tags": ["alemonjs"],
-      "image": "https://i.imgur.com/mErPwqL.png",
-      "hide_table_of_contents": false,
+      "redirect_to": "/blog/2025/03/14/v2.0.0",
+      "noindex": true,
       "date": "2024-12-31"
     }
   },
@@ -788,15 +886,14 @@
     "path": "/blog/2024/12/28/2.0.0-rc.76",
     "filePath": "2024/12/28/2.0.0-rc.76.md",
     "title": "V2.0.0-rc.76",
-    "description": "更新",
+    "description": "已归纳至 V2.0.0 正式发布。",
     "date": "2024-12-28",
+    "redirectTo": "/blog/2025/03/14/v2.0.0",
     "metadata": {
+      "product": "framework",
       "title": "V2.0.0-rc.76",
-      "description": "更新",
-      "authors": "ningmengchongshui",
-      "tags": ["alemonjs"],
-      "image": "https://i.imgur.com/mErPwqL.png",
-      "hide_table_of_contents": false,
+      "redirect_to": "/blog/2025/03/14/v2.0.0",
+      "noindex": true,
       "date": "2024-12-28"
     }
   },
@@ -806,15 +903,14 @@
     "path": "/blog/2024/12/24/2.0.0-rc.74",
     "filePath": "2024/12/24/2.0.0-rc.74.md",
     "title": "V2.0.0-rc.74",
-    "description": "更新",
+    "description": "已归纳至 V2.0.0 正式发布。",
     "date": "2024-12-24",
+    "redirectTo": "/blog/2025/03/14/v2.0.0",
     "metadata": {
+      "product": "framework",
       "title": "V2.0.0-rc.74",
-      "description": "更新",
-      "authors": "ningmengchongshui",
-      "tags": ["alemonjs"],
-      "image": "https://i.imgur.com/mErPwqL.png",
-      "hide_table_of_contents": false,
+      "redirect_to": "/blog/2025/03/14/v2.0.0",
+      "noindex": true,
       "date": "2024-12-24"
     }
   },
@@ -824,15 +920,14 @@
     "path": "/blog/2024/11/18/2.0.0-rc.54",
     "filePath": "2024/11/18/2.0.0-rc.54.md",
     "title": "V2.0.0-rc.54",
-    "description": "更新",
+    "description": "已归纳至 V2.0.0 正式发布。",
     "date": "2024-11-18",
+    "redirectTo": "/blog/2025/03/14/v2.0.0",
     "metadata": {
+      "product": "framework",
       "title": "V2.0.0-rc.54",
-      "description": "更新",
-      "authors": "ningmengchongshui",
-      "tags": ["alemonjs"],
-      "image": "https://i.imgur.com/mErPwqL.png",
-      "hide_table_of_contents": false,
+      "redirect_to": "/blog/2025/03/14/v2.0.0",
+      "noindex": true,
       "date": "2024-11-18"
     }
   },
@@ -842,15 +937,14 @@
     "path": "/blog/2024/11/09/2.0.0-rc.44",
     "filePath": "2024/11/09/2.0.0-rc.44.md",
     "title": "V2.0.0-rc.44",
-    "description": "更新",
+    "description": "已归纳至 V2.0.0 正式发布。",
     "date": "2024-11-09",
+    "redirectTo": "/blog/2025/03/14/v2.0.0",
     "metadata": {
+      "product": "framework",
       "title": "V2.0.0-rc.44",
-      "description": "更新",
-      "authors": "ningmengchongshui",
-      "tags": ["alemonjs"],
-      "image": "https://i.imgur.com/mErPwqL.png",
-      "hide_table_of_contents": false,
+      "redirect_to": "/blog/2025/03/14/v2.0.0",
+      "noindex": true,
       "date": "2024-11-09"
     }
   },
@@ -860,15 +954,14 @@
     "path": "/blog/2024/10/09/2.0.0-rc.33",
     "filePath": "2024/10/09/2.0.0-rc.33.md",
     "title": "V2.0.0-rc.33",
-    "description": "更新",
+    "description": "已归纳至 V2.0.0 正式发布。",
     "date": "2024-10-09",
+    "redirectTo": "/blog/2025/03/14/v2.0.0",
     "metadata": {
+      "product": "framework",
       "title": "V2.0.0-rc.33",
-      "description": "更新",
-      "authors": "ningmengchongshui",
-      "tags": ["alemonjs"],
-      "image": "https://i.imgur.com/mErPwqL.png",
-      "hide_table_of_contents": false,
+      "redirect_to": "/blog/2025/03/14/v2.0.0",
+      "noindex": true,
       "date": "2024-10-09"
     }
   }

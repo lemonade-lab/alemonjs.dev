@@ -1,5 +1,6 @@
 ---
-label: 'Hooks'
+title: Hooks
+description: 调用消息、成员、频道、事件订阅和交互接口。
 sidebar_position: 3
 ---
 
@@ -7,7 +8,7 @@ sidebar_position: 3
 
 :::info
 
-hook 在 response 中会自动劫持 event 上下文，也可显式传入，特别是非 response 上下文中调用。通过 `useEvent` 可获取当前事件和 next 回调。
+在响应函数中，Hooks 自动使用当前事件上下文；在其他位置调用时，可显式传入上下文。`useEvent` 返回当前事件和 `next` 回调。
 
 :::
 

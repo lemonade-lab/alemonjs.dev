@@ -43,7 +43,13 @@
     <loc>https://alemonjs.dev/docs/alemonjsDocs/getting-started/config</loc>
   </url>
   <url>
+    <loc>https://alemonjs.dev/docs/alemonjsDocs/getting-started/connect-platform</loc>
+  </url>
+  <url>
     <loc>https://alemonjs.dev/docs/alemonjsDocs/getting-started/install</loc>
+  </url>
+  <url>
+    <loc>https://alemonjs.dev/docs/alemonjsDocs/getting-started/quick-start</loc>
   </url>
   <url>
     <loc>https://alemonjs.dev/docs/alemonjsDocs/getting-started/terminal-tools</loc>
@@ -65,6 +71,9 @@
   </url>
   <url>
     <loc>https://alemonjs.dev/docs/alemonjsDocs/modules/platforms</loc>
+  </url>
+  <url>
+    <loc>https://alemonjs.dev/docs/alemonjsDocs/overview</loc>
   </url>
   <url>
     <loc>https://alemonjs.dev/docs/alemonx/develop/build</loc>
@@ -97,22 +106,31 @@
     <loc>https://alemonjs.dev/docs/alemonx/reference/plugin-manifest</loc>
   </url>
   <url>
-    <loc>https://alemonjs.dev/docs/apps-module</loc>
+    <loc>https://alemonjs.dev/docs/alemonx/use/agent/collaboration</loc>
   </url>
   <url>
-    <loc>https://alemonjs.dev/docs/apps-x</loc>
+    <loc>https://alemonjs.dev/docs/alemonx/use/plugins</loc>
   </url>
   <url>
-    <loc>https://alemonjs.dev/docs/apps</loc>
+    <loc>https://alemonjs.dev/docs/alemonx/use/projects/create-or-import</loc>
   </url>
   <url>
-    <loc>https://alemonjs.dev/docs/environment</loc>
+    <loc>https://alemonjs.dev/docs/alemonx/use/runtime/run-and-monitor</loc>
+  </url>
+  <url>
+    <loc>https://alemonjs.dev/docs/extensions</loc>
+  </url>
+  <url>
+    <loc>https://alemonjs.dev/docs/help/messages</loc>
+  </url>
+  <url>
+    <loc>https://alemonjs.dev/docs/help/overview</loc>
+  </url>
+  <url>
+    <loc>https://alemonjs.dev/docs/help/startup</loc>
   </url>
   <url>
     <loc>https://alemonjs.dev/docs/intro</loc>
-  </url>
-  <url>
-    <loc>https://alemonjs.dev/docs/open</loc>
   </url>
   <url>
     <loc>https://alemonjs.dev/blog/2026/09/21/v2.1.109</loc>
@@ -165,45 +183,5 @@
   <url>
     <loc>https://alemonjs.dev/blog/2025/03/14/v2.0.0</loc>
     <lastmod>2025-03-14</lastmod>
-  </url>
-  <url>
-    <loc>https://alemonjs.dev/blog/2025/02/12/v2.0.0-rc.94</loc>
-    <lastmod>2025-02-12</lastmod>
-  </url>
-  <url>
-    <loc>https://alemonjs.dev/blog/2025/01/09/v2.0.0-rc.88</loc>
-    <lastmod>2025-01-09</lastmod>
-  </url>
-  <url>
-    <loc>https://alemonjs.dev/blog/2025/01/07/v2.0.0-rc.84</loc>
-    <lastmod>2025-01-07</lastmod>
-  </url>
-  <url>
-    <loc>https://alemonjs.dev/blog/2025/01/02/v2.0.0-rc.81</loc>
-    <lastmod>2025-01-02</lastmod>
-  </url>
-  <url>
-    <loc>https://alemonjs.dev/blog/2024/12/31/2.0.0-rc.78</loc>
-    <lastmod>2024-12-31</lastmod>
-  </url>
-  <url>
-    <loc>https://alemonjs.dev/blog/2024/12/28/2.0.0-rc.76</loc>
-    <lastmod>2024-12-28</lastmod>
-  </url>
-  <url>
-    <loc>https://alemonjs.dev/blog/2024/12/24/2.0.0-rc.74</loc>
-    <lastmod>2024-12-24</lastmod>
-  </url>
-  <url>
-    <loc>https://alemonjs.dev/blog/2024/11/18/2.0.0-rc.54</loc>
-    <lastmod>2024-11-18</lastmod>
-  </url>
-  <url>
-    <loc>https://alemonjs.dev/blog/2024/11/09/2.0.0-rc.44</loc>
-    <lastmod>2024-11-09</lastmod>
-  </url>
-  <url>
-    <loc>https://alemonjs.dev/blog/2024/10/09/2.0.0-rc.33</loc>
-    <lastmod>2024-10-09</lastmod>
   </url>
 </urlset>

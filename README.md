@@ -58,6 +58,22 @@ A LemonJS 与 A LemonX 生态的官方文档站源码。这里集中维护框架
 
 ## 本地开发
 
+### 生态资源平台对接
+
+官网的产品介绍、官方文档与博客保持现有发布方式。导航新增“生态资源”入口，跳转至 `https://open.alemonjs.com/`。
+
+五个生态目录页保留原 URL，在浏览器通过 `https://open.alemonjs.com/api/v1/resources` 获取目录：连接平台、JS 插件、JS 模块、X 插件、开源生态。资源详情链接指向平台的 `/resources/:id`，资源维护与审核在独立平台完成。
+
+原 Markdown 作为静态预渲染和失败回退内容保留。接口超时、失败或返回无效数据时，官网仍显示原目录，并提供重试；静态构建不访问资源 API。公开请求不发送登录凭证。
+
+本地联调可复制 `.env.example` 到 `.env.local`，填写：
+
+```dotenv
+VITE_ECOSYSTEM_API_BASE_URL=http://localhost:8087/api
+```
+
+启动生态平台 Go 服务后，再运行本站 `yarn dev`。生产默认地址无需配置。域名和服务仍需单独部署，本地验证不代表公开地址已上线。
+
 需要 Node.js 和 Yarn。安装依赖：
 
 ```bash

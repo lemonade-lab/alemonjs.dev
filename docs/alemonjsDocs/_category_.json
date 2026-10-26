@@ -1,8 +1,5 @@
 {
-  "label": "机器人开发",
+  "label": "机器人",
   "position": 3,
-  "collapsed": true,
-  "link": {
-    "type": "generated-index"
-  }
+  "collapsed": true
 }

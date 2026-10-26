@@ -1,9 +1,10 @@
 ---
-label: '匹配路由'
+title: 路由匹配
+description: 按文本和事件类型匹配处理函数，并注册应用路由。
 sidebar_position: 2
 ---
 
-# 匹配路由
+# 路由匹配
 
 ## defineRouter
 

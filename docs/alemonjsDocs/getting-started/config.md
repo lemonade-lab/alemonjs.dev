@@ -1,10 +1,10 @@
 ---
 sidebar_position: 4
 show_giscus: 1
-label: '配置说明'
+label: '运行配置'
 ---
 
-# 配置说明
+# 运行配置
 
 :::info
 
@@ -160,7 +160,7 @@ node index.js --login discord --port 8080
 
 ChatBot Protocol
 
-ALemonJS的核心通信协议，负责客户端与平台之间的消息传输。
+机器人框架的核心通信协议，负责客户端与平台之间的消息传输。
 
 ### CBP连接配置
 
