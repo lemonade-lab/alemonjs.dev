@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/icon.ico" />
+    <link rel="apple-touch-icon" href="/pwa-192x192.png" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="ALemonX 更新"
+      href="/rss.xml"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta
+      name="description"
+      content="使用 ALemonX 创建或导入项目，运行命令，管理进程，并批准 Agent 任务。"
+    />
+    <meta property="og:title" content="ALemonX · 创建、运行和管理项目" />
+    <meta
+      property="og:description"
+      content="导入代码库，运行命令，查看日志，创建并批准 Agent 任务。"
+    />
+    <meta property="og:image" content="https://alemonjs.dev/og.png" />
+    <meta property="og:image:alt" content="ALemonX Local Agent Workstation" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>Expose 插件能力 · ALemonX</title>
+    <meta name="description" content="注册和调用同一运行实例中的插件能力，配置数据契约、授权和后台调用。" />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://alemonjs.dev/docs/alemonjsDocs/advanced/expose" />
+    <meta property="og:title" content="Expose 插件能力" />
+    <meta property="og:description" content="注册和调用同一运行实例中的插件能力，配置数据契约、授权和后台调用。" />
+    <meta property="og:image" content="https://alemonjs.dev/og.png" />
+    <script type="application/ld+json">{"@context":"https://schema.org","name":"Expose 插件能力","description":"注册和调用同一运行实例中的插件能力，配置数据契约、授权和后台调用。","url":"https://alemonjs.dev/docs/alemonjsDocs/advanced/expose","@type":"TechArticle","image":"https://alemonjs.dev/og.png","inLanguage":"zh-CN"}</script>
+    <script type="module" crossorigin src="/js/index-B5BcolWa.js"></script>
+    <link rel="modulepreload" crossorigin href="/js/rolldown-runtime-DcNxTHDL.js">
+    <link rel="modulepreload" crossorigin href="/js/react-vendor-Bt8ERwK0.js">
+    <link rel="stylesheet" crossorigin href="/assets/css/index-BiygSeJ-.css">
+    <script type="module">import'data:text/javascript,if(!import.meta.resolve)throw Error("import.meta.resolve not supported")';import.meta.url;import("_").catch(()=>1);(async function*(){})().next();window.__vite_is_modern_browser=true</script>
+    <script type="module">!function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy chunks, syntax error above and the same error below should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>
+  <link rel="manifest" href="/manifest.webmanifest"></head>
+
+  <body>
+    <div id="root"><div class="css-dev-only-do-not-override-p45i5k ant-app css-var-root"><div class="min-h-screen bg-[var(--canvas)] text-[var(--text)]"><nav class="fixed top-0 z-50 w-full border-b border-[var(--line)] bg-[var(--surface)] backdrop-blur-xl shadow-lg shadow-black/5"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex h-16 items-center justify-between"><div class="flex items-center"><a class="flex items-center space-x-2 hover:opacity-80 transition-opacity" href="/" data-discover="true"><span aria-hidden="true" class="grid h-8 w-8 place-items-center rounded-lg bg-black text-sm font-semibold text-white dark:bg-white dark:text-black">X</span><span class="text-lg font-bold text-[var(--text)]">ALemonX</span></a></div><div class="hidden lg:flex items-center space-x-6"><a class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md" href="/docs/intro" data-discover="true">文档</a><a class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md" href="/docs/alemonx/getting-started/quick-start" data-discover="true">工作台</a><a class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md" href="/docs/alemonjsDocs/overview" data-discover="true">机器人</a><a class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md" href="/docs/help/overview" data-discover="true">常见问题</a><a class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md" href="/blog" data-discover="true">博客</a><a href="https://open.alemonjs.com" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md">生态资源</a><a href="https://github.com/lemonade-lab/alemonx/releases" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md">工作台下载</a><a href="https://github.com/lemonade-lab/alemonx" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md">工作台源码</a><button class="flex items-center gap-2 text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] px-3 py-2 rounded-md border border-[var(--line)]" title="搜索 (⌘K)"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg><span class="hidden lg:inline">搜索</span><kbd class="hidden lg:inline-flex items-center px-1.5 py-0.5 text-xs font-mono bg-[var(--surface-muted)] border border-[var(--line)] rounded">⌘K</kbd></button><button class="text-[var(--text-muted)] transition-colors hover:text-[var(--text)] hover:bg-[var(--surface-muted)] p-2 rounded-md" title="切换到暗色模式"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><button class="lg:hidden inline-flex items-center justify-center p-2 rounded-md text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-[var(--surface-muted)] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[var(--accent)]" aria-expanded="false"><span class="sr-only">打开主菜单</span><svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg></button></div></div></nav><aside class="
+        fixed top-16 left-0 z-40 w-64
+        h-[calc(100vh-4rem)]
+        border-r border-[var(--line)] bg-[var(--canvas)] text-[var(--text)]
+        overflow-y-auto shadow-xl lg:shadow-none
+        transition-all duration-300 ease-out
+        -translate-x-full lg:translate-x-0
+      "><div class="lg:hidden flex justify-end border-b border-[var(--line)]"><button aria-label="关闭文档导航" class="p-2 rounded-md text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-[var(--surface-muted)]"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button></div><nav aria-label="文档导航" class="docs-navigation"></nav></aside><aside class="hidden xl:fixed xl:block xl:top-16 xl:bottom-0 xl:right-0 xl:w-64 xl:overflow-y-auto xl:z-10"></aside><main class="pt-16 lg:ml-64 xl:mr-64"><div class="lg:hidden sticky top-16 z-20 bg-[var(--surface)] border-b border-[var(--line)] px-4 py-3"><button class="flex items-center space-x-2 text-[var(--text-muted)] hover:text-[var(--text)] transition-colors"><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg><span class="text-sm font-medium">目录</span></button></div><div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8"><article id="doc-content" class="prose prose-sm sm:prose-base lg:prose-lg prose-slate dark:prose-invert max-w-none"><h1>Expose 插件能力</h1>
+<p>Expose 让同一个 AlemonJS 运行实例中的应用按协议、提供者和动作调用彼此的能力。下面的示例使用 AlemonJS 2.1.124。聊天指令仍从 <a href="/docs/alemonjsDocs/core/router-sdl">路由 DSL</a> 进入，两种入口可以调用同一个业务函数。</p>
+<h2>注册能力</h2>
+<p>在名为 <code>counter-plugin</code> 的应用入口 <code>src/index.ts</code> 中创建 Expose 实例，并在 <code>defineChildren()</code> 的 <code>register()</code> 中返回它。动作的输入和输出契约会在运行时校验。</p>
+<div class="code-block-with-title"><div class="code-block-header">src/index.ts</div><div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts"><span class="hljs-keyword">import</span> { defineChildren, <span class="hljs-title class_">Expose</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+
+<span class="hljs-keyword">const</span> expose = <span class="hljs-title class_">Expose</span>.<span class="hljs-title function_">create</span>().<span class="hljs-title function_">provide</span>({
+  <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;example.counter&#x27;</span>,
+  <span class="hljs-attr">version</span>: <span class="hljs-string">&#x27;1&#x27;</span>,
+  <span class="hljs-attr">description</span>: <span class="hljs-string">&#x27;读取计数&#x27;</span>,
+  <span class="hljs-attr">actions</span>: {
+    <span class="hljs-attr">read</span>: <span class="hljs-title class_">Expose</span>.<span class="hljs-property">action</span>&lt;<span class="hljs-literal">null</span>, { <span class="hljs-attr">count</span>: <span class="hljs-built_in">number</span> }&gt;({
+      <span class="hljs-attr">description</span>: <span class="hljs-string">&#x27;返回当前计数&#x27;</span>,
+      <span class="hljs-attr">effect</span>: <span class="hljs-string">&#x27;read&#x27;</span>,
+      <span class="hljs-attr">inputSchema</span>: { <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;null&#x27;</span> },
+      <span class="hljs-attr">outputSchema</span>: {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;object&#x27;</span>,
+        <span class="hljs-attr">properties</span>: { <span class="hljs-attr">count</span>: { <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;integer&#x27;</span>, <span class="hljs-attr">minimum</span>: <span class="hljs-number">0</span> } },
+        <span class="hljs-attr">required</span>: [<span class="hljs-string">&#x27;count&#x27;</span>],
+        <span class="hljs-attr">additionalProperties</span>: <span class="hljs-literal">false</span>
+      },
+      <span class="hljs-attr">authorize</span>: <span class="hljs-function">(<span class="hljs-params">_input, context</span>) =&gt;</span> context.<span class="hljs-property">callerApp</span> === <span class="hljs-string">&#x27;report-plugin&#x27;</span>,
+      <span class="hljs-attr">handler</span>: <span class="hljs-function">() =&gt;</span> ({ <span class="hljs-attr">count</span>: <span class="hljs-number">0</span> })
+    })
+  }
+})
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineChildren</span>({
+  <span class="hljs-title function_">register</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">return</span> { expose }
+  }
+})
+</code></pre></div></div>
+<p><code>name</code> 是协议名。调用方还要指定框架登记的提供者名称，因为同一个协议可以由多个应用提供。<code>version</code> 是提供者声明的契约版本，由调用方核对。</p>
+<p>契约使用 JSON Schema 子集，支持对象、数组、字符串、数值、布尔值及空值。对象需要显式声明 <code>additionalProperties: false</code>。对象字段用 <code>properties</code> 和 <code>required</code> 定义，数组使用 <code>items</code>、<code>minItems</code> 和 <code>maxItems</code>，字符串可用 <code>enum</code>、<code>minLength</code> 和 <code>maxLength</code>，数值可用 <code>minimum</code> 和 <code>maximum</code>。当前校验器会拒绝未支持的关键字，例如 <code>$ref</code>、<code>pattern</code> 和组合类型。其他边界见 <a href="https://github.com/lemonade-lab/alemonjs/blob/3b582bf5abfc5af1397274f8d47f5661b4b8be3a/packages/alemonjs/docs/expose.md#%E5%A5%91%E7%BA%A6%E8%8C%83%E5%9B%B4">完整接口参考</a>。</p>
+<h2>发现和调用能力</h2>
+<p><code>schema()</code> 返回各提供者的契约描述。先确认目标应用已经加载，再从 <code>report-plugin</code> 的生命周期或事件处理函数中调用。示例中的 <code>authorize</code> 只允许该应用调用。</p>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">Expose</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+
+<span class="hljs-keyword">const</span> client = <span class="hljs-title class_">Expose</span>.<span class="hljs-title function_">create</span>()
+<span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> client.<span class="hljs-title function_">call</span>(
+  <span class="hljs-string">&#x27;example.counter&#x27;</span>,
+  <span class="hljs-string">&#x27;counter-plugin&#x27;</span>,
+  <span class="hljs-string">&#x27;read&#x27;</span>,
+  <span class="hljs-literal">null</span>,
+  {
+    <span class="hljs-attr">timeoutMs</span>: <span class="hljs-number">5000</span>
+  }
+)
+
+<span class="hljs-keyword">if</span> (result.<span class="hljs-property">ok</span>) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">info</span>(result.<span class="hljs-property">data</span>)
+} <span class="hljs-keyword">else</span> {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">warn</span>(result.<span class="hljs-property">error</span>.<span class="hljs-property">code</span>, result.<span class="hljs-property">error</span>.<span class="hljs-property">outcome</span>)
+}
+</code></pre></div>
+<ul>
+<li><code>call()</code> 返回 Promise，要求动作同时声明输入和输出契约。成功结果的 <code>data</code> 通过了提供者的输出校验，其 TypeScript 类型为 <code>unknown</code>，调用方按选定的契约解析。</li>
+<li>失败结果的 <code>outcome: &#x27;not_started&#x27;</code> 表示处理函数尚未执行。<code>&#x27;unknown&#x27;</code> 表示函数已经开始，业务结果需要向提供方确认。对有副作用的动作，按业务操作 ID 查询结果或做幂等处理。</li>
+<li><code>timeoutMs</code> 和 <code>signal</code> 用于取消等待并通知处理函数。处理函数可将 <code>context.signal</code> 传给支持取消的下游；已经提交的操作仍需按业务规则处理。</li>
+<li>卸载或重载提供者时，旧句柄失效，执行中的调用会收到取消信号。旧动作仍可使用 <code>invoke()</code>，其同步返回值、Promise 和异常形式沿用旧接口。</li>
+</ul>
+<h2>调用身份与后台任务</h2>
+<p><code>authorize</code> 和 <code>handler</code> 都能读取调用上下文。框架从所属应用推导 <code>context.callerApp</code>。嵌套调用以直接发起调用的提供者作为调用方。执行涉及玩家数据或资产的动作时，还需要在提供方校验玩家、渠道和请求的操作权限。</p>
+<p>在应用生命周期或事件处理函数内创建 <code>createBackgroundRunner()</code>，后续调用返回的函数时会保留应用身份，并清除原聊天事件、事件链和父 Expose 调用上下文。</p>
+<div class="relative [&amp;_div]:opacity-0 [&amp;_div]:hover:opacity-100"><div class="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150"><button class="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]">复制</button></div><pre><code class="hljs language-ts"><span class="hljs-keyword">import</span> { createBackgroundRunner, <span class="hljs-title class_">Expose</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+
+<span class="hljs-comment">// 在 report-plugin 的生命周期或事件处理函数内创建。</span>
+<span class="hljs-keyword">const</span> readCounter = <span class="hljs-title function_">createBackgroundRunner</span>(<span class="hljs-function">() =&gt;</span>
+  <span class="hljs-title class_">Expose</span>.<span class="hljs-title function_">create</span>().<span class="hljs-title function_">call</span>(<span class="hljs-string">&#x27;example.counter&#x27;</span>, <span class="hljs-string">&#x27;counter-plugin&#x27;</span>, <span class="hljs-string">&#x27;read&#x27;</span>, <span class="hljs-literal">null</span>)
+)
+
+<span class="hljs-comment">// 在后台任务执行时调用。</span>
+<span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> <span class="hljs-title function_">readCounter</span>()
+</code></pre></div>
+<p>创建后台回调需要已有的应用上下文，所属运行实例销毁后调用会报错。任务调度和持久化由应用负责。需要代表玩家执行操作时，应把经过校验的授权范围和操作标识作为显式参数传入。</p>
+<h2>监听动作结果</h2>
+<p><code>watch()</code> 监听成功执行的动作。结构化动作通过输出校验后才发送通知，声明 <code>effect: &#x27;read&#x27;</code> 的动作跳过通知。调用 <code>watch()</code> 返回的函数可取消订阅。声明 <code>effect: &#x27;write&#x27;</code> 或 <code>&#x27;unknown&#x27;</code> 的成功动作会发出通知。应用上下文内注册的监听器随应用卸载清理，应用上下文外注册的监听器由调用方取消。监听事件可能包含动作输入，应按业务的数据范围决定记录哪些字段。</p></article><nav class="flex justify-between items-center gap-4 pt-8 mt-8 border-t border-gray-200 dark:border-gray-700"><div class="flex-1"><a class="group flex flex-col hover:bg-gray-50 dark:hover:bg-gray-800 p-4 rounded-lg transition-colors" href="/docs/alemonjsDocs/advanced/config" data-discover="true"><span class="text-sm text-gray-500 dark:text-gray-400 mb-1 flex items-center"><svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>上一页</span><span class="text-blue-600 dark:text-blue-400 group-hover:underline font-medium">配置接口</span></a></div><div class="flex-1 text-right"><a class="group flex flex-col items-end hover:bg-gray-50 dark:hover:bg-gray-800 p-4 rounded-lg transition-colors" href="/docs/alemonjsDocs/advanced/media" data-discover="true"><span class="text-sm text-gray-500 dark:text-gray-400 mb-1 flex items-center">下一页<svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></span><span class="text-blue-600 dark:text-blue-400 group-hover:underline font-medium">图片与平台素材</span></a></div></nav></div></main><footer class="lg:ml-64 xl:mr-64"><footer class="mt-auto border-t border-[var(--line)] bg-[var(--surface)] text-[var(--text-muted)]"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12"><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8"><div class="text-center sm:text-left"><h3 class="text-sm font-semibold uppercase tracking-wider mb-3 sm:mb-4 text-[var(--text)]">使用文档</h3><ul class="space-y-2"><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/alemonx/getting-started/install" data-discover="true">安装工作台</a></li><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/alemonjsDocs/getting-started/install" data-discover="true">创建机器人</a></li><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/alemonjsDocs/getting-started/connect-platform" data-discover="true">连接平台</a></li><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/help/overview" data-discover="true">常见问题</a></li></ul></div><div class="text-center sm:text-left"><h3 class="text-sm font-semibold uppercase tracking-wider mb-3 sm:mb-4 text-[var(--text)]">开发资源</h3><ul class="space-y-2"><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/extensions" data-discover="true">开发入口</a></li><li><a href="https://open.alemonjs.com" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-[var(--text)] transition-colors duration-200">生态资源</a></li><li><a href="https://github.com/lemonade-lab/alemonjs" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-[var(--text)] transition-colors duration-200">机器人源码</a></li></ul></div><div class="text-center sm:text-left"><h3 class="text-sm font-semibold uppercase tracking-wider mb-3 sm:mb-4 text-[var(--text)]">版本与社区</h3><ul class="space-y-2"><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/blog" data-discover="true">更新日志</a></li><li><a href="https://github.com/lemonade-lab/alemonx/releases" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-[var(--text)] transition-colors duration-200">工作台下载</a></li><li><a href="https://github.com/lemonade-lab/alemonx/discussions" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-[var(--text)] transition-colors duration-200">社区讨论</a></li><li><a href="https://qm.qq.com/q/AIiSecyPlK" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-[var(--text)] transition-colors duration-200">交流群</a></li></ul></div></div><div class="pt-6 sm:pt-8 border-t border-[var(--line)] text-sm text-center text-[var(--text-muted)]"><div>Released under the MIT License. <br/> Copyright © 2024-present LemonadeX </span> <br> <a  href="https://beian.miit.gov.cn/" target="_blank">津ICP备2023004480号</a></div></div></div></footer></footer></div></div></div>
+    <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
+    <script nomodule crossorigin id="vite-legacy-polyfill" src="/js/polyfills-legacy-X3HbyXd6.js"></script>
+    <script nomodule crossorigin id="vite-legacy-entry" data-src="/js/index-legacy-CSYUuxct.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
+  </body>
+</html>
