@@ -14,6 +14,8 @@ sidebar_position: 5
 
 ```ts
 type Events = {
+  'platform.raw': RawPlatformEvent
+
   // ── 消息事件 ──
   'message.create': PublicEventMessageCreate
   'message.update': PublicEventMessageUpdate
@@ -192,6 +194,47 @@ type Events = {
 ### Expansion — 扩展字段
 
 所有事件都包含 `[key: string]: any` 索引签名，允许适配器通过 `_tag` 等自定义字段携带平台特有信息。
+
+### QQ 原始事件
+
+使用 `@alemonjs/qq-bot@2.1.46` 时，未映射的 QQ 推送可通过 `platform.raw` 接收，已映射的推送继续使用各自的标准事件名。支持 WebSocket、签名 Webhook 和 Webhook 的 WebSocket 转发。能收到哪些事件取决于 QQ 账号权限、订阅和投递设置。
+
+订阅 `platform.raw` 后，使用 `current.Platform === 'qq-bot'` 和 `current.RawEventType` 筛选事件。`current.BotId` 标识接收事件的机器人，`current.EventId` 为可选的 QQ 信封 ID。`value` 是类型为 `unknown` 的原始数据，使用前需要校验字段。
+
+```ts
+import { defineChildren, Router, useEvent } from 'alemonjs'
+
+const router = Router.create({ events: ['platform.raw'] })
+
+router.res({ events: ['platform.raw'] }, async () => () => {
+  const [{ current, value }, next] = useEvent({ selects: 'platform.raw' })
+  if (
+    current.Platform !== 'qq-bot' ||
+    current.RawEventType !== 'YOUR_TEST_EVENT'
+  ) {
+    return next()
+  }
+
+  if (
+    value &&
+    typeof value === 'object' &&
+    'status' in value &&
+    typeof value.status === 'string'
+  ) {
+    console.info(current.BotId, value.status)
+  }
+})
+
+export default defineChildren({
+  register() {
+    return { responseRouter: router.define }
+  }
+})
+```
+
+把 `YOUR_TEST_EVENT` 换成实际已订阅的 QQ 事件名。`RawEventType` 来自推送的 `t`，`value` 来自 `d`。如果未收到，先核对 QQ 是否已向当前机器人投递该事件，再检查框架是否已用标准事件名映射它。
+
+[QQ 事件列表与订阅示例](https://github.com/lemonade-lab/alemonjs/blob/3b582bf5abfc5af1397274f8d47f5661b4b8be3a/packages/qq-bot/EVENTS.md)
 
 ### RouteContext — 路由上下文
 

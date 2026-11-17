@@ -99,7 +99,7 @@ alemonc branch feature-name
 
 ### 发布
 
-发布前确保工作区干净，并先使用预演确认构建产物：
+发布使用当前分支的 HEAD 提交。先提交要发布的改动，再用预演核对目标分支、标签和产物清单。
 
 ```bash
 alemonc publish --dry-run
@@ -108,7 +108,9 @@ alemonc publish prepatch --preid beta
 alemonc publish v1.0.33-rc.0
 ```
 
-`publish` 默认先执行 `npm run build`，再构建并发布当前包。主分支默认发布到 `release` 并创建版本标签；其他分支发布到对应的 `-release` 产物分支，不自动创建标签。`--dry-run` 不会推送分支或创建标签。
+- 命令在临时 Git 工作树中构建。优先执行 `package.json` 的 `alemonjs.build` 指定的脚本，其次选择 `bundle` 或 `build`。使用 `--skip-build` 时只打包提交中已有的产物。
+- `main` 和 `master` 默认发布到 `release`，其他分支默认使用 `<源码分支名>-release`，其中斜杠替换为短横线。`--branch` 可覆盖目标分支。目标为 `release` 或以 `-release` 结尾时，产物与 `v<版本>` 标签一起推送到 `origin`。
+- `--dry-run` 会读取远端分支和标签、构建并检查产物，在推送前结束。
 
 查看全部参数：
 

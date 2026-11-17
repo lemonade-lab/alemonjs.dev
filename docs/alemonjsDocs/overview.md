@@ -22,11 +22,14 @@ sidebar_position: 0
 | 处理多轮对话和分步输入 | [事件上下文](/docs/alemonjsDocs/core/context)                                                   |
 | 为指令选择处理函数     | [路由匹配](/docs/alemonjsDocs/core/router)、[路由 DSL](/docs/alemonjsDocs/core/router-sdl)      |
 | 发送消息和处理交互     | [Hooks](/docs/alemonjsDocs/core/hook)、[消息格式](/docs/alemonjsDocs/core/data-type)            |
+| 发送图片和复用素材     | [图片与平台素材](/docs/alemonjsDocs/advanced/media)                                             |
 | 选择监听哪些事件       | [事件类型](/docs/alemonjsDocs/core/message-type)                                                |
 | 拦截处理与管理执行阶段 | [中间件](/docs/alemonjsDocs/core/middleware)、[生命周期](/docs/alemonjsDocs/core/cycle)         |
 | 提供 HTTP 接口         | [接口路由](/docs/alemonjsDocs/http/route)、[路由中间件](/docs/alemonjsDocs/http/route-mw)       |
 | 添加周期性任务         | [定时任务](/docs/alemonjsDocs/advanced/schedule)                                                |
+| 注册和调用插件能力     | [Expose 插件能力](/docs/alemonjsDocs/advanced/expose)                                           |
 | 加载模块和配置扩展包   | [模块加载](/docs/alemonjsDocs/modules/models)、[扩展包配置](/docs/alemonjsDocs/modules/desktop) |
+| 为机器人编写离线测试   | [应用离线测试](/docs/alemonjsDocs/advanced/testing)                                             |
 | 接入新聊天平台         | [平台适配](/docs/alemonjsDocs/modules/platforms)                                                |
 | 查全局对象和辅助函数   | [全局实例](/docs/alemonjsDocs/modules/class)、[工具函数](/docs/alemonjsDocs/advanced/utils)     |
 

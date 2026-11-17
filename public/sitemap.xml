@@ -7,7 +7,16 @@
     <loc>https://alemonjs.dev/docs/alemonjsDocs/advanced/config</loc>
   </url>
   <url>
+    <loc>https://alemonjs.dev/docs/alemonjsDocs/advanced/expose</loc>
+  </url>
+  <url>
+    <loc>https://alemonjs.dev/docs/alemonjsDocs/advanced/media</loc>
+  </url>
+  <url>
     <loc>https://alemonjs.dev/docs/alemonjsDocs/advanced/schedule</loc>
+  </url>
+  <url>
+    <loc>https://alemonjs.dev/docs/alemonjsDocs/advanced/testing</loc>
   </url>
   <url>
     <loc>https://alemonjs.dev/docs/alemonjsDocs/advanced/utils</loc>
@@ -47,6 +56,9 @@
   </url>
   <url>
     <loc>https://alemonjs.dev/docs/alemonjsDocs/getting-started/install</loc>
+  </url>
+  <url>
+    <loc>https://alemonjs.dev/docs/alemonjsDocs/getting-started/qq-bot</loc>
   </url>
   <url>
     <loc>https://alemonjs.dev/docs/alemonjsDocs/getting-started/quick-start</loc>
@@ -131,6 +143,10 @@
   </url>
   <url>
     <loc>https://alemonjs.dev/docs/intro</loc>
+  </url>
+  <url>
+    <loc>https://alemonjs.dev/blog/2026/11/12/v2.1.124</loc>
+    <lastmod>2026-11-12</lastmod>
   </url>
   <url>
     <loc>https://alemonjs.dev/blog/2026/09/21/v2.1.109</loc>

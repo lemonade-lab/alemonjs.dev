@@ -13,6 +13,32 @@
     }
   },
   {
+    "id": "doc:alemonjsDocs/advanced/expose.md",
+    "type": "doc",
+    "path": "/docs/alemonjsDocs/advanced/expose",
+    "filePath": "alemonjsDocs/advanced/expose.md",
+    "title": "Expose 插件能力",
+    "description": "注册和调用同一运行实例中的插件能力，配置数据契约、授权和后台调用。",
+    "metadata": {
+      "title": "Expose 插件能力",
+      "description": "注册和调用同一运行实例中的插件能力，配置数据契约、授权和后台调用。",
+      "sidebar_position": 7
+    }
+  },
+  {
+    "id": "doc:alemonjsDocs/advanced/media.md",
+    "type": "doc",
+    "path": "/docs/alemonjsDocs/advanced/media",
+    "filePath": "alemonjsDocs/advanced/media.md",
+    "title": "图片与平台素材",
+    "description": "用结构化图片来源发送消息，或提前上传并复用 QQ Markdown 素材。",
+    "metadata": {
+      "title": "图片与平台素材",
+      "description": "用结构化图片来源发送消息，或提前上传并复用 QQ Markdown 素材。",
+      "sidebar_position": 8
+    }
+  },
+  {
     "id": "doc:alemonjsDocs/advanced/schedule.md",
     "type": "doc",
     "path": "/docs/alemonjsDocs/advanced/schedule",
@@ -22,6 +48,19 @@
     "metadata": {
       "label": "定时任务",
       "sidebar_position": 10
+    }
+  },
+  {
+    "id": "doc:alemonjsDocs/advanced/testing.md",
+    "type": "doc",
+    "path": "/docs/alemonjsDocs/advanced/testing",
+    "filePath": "alemonjsDocs/advanced/testing.md",
+    "title": "应用离线测试",
+    "description": "用 alemonjs/testing 验证事件处理、路由、消息节点与框架计时器。",
+    "metadata": {
+      "title": "应用离线测试",
+      "description": "用 alemonjs/testing 验证事件处理、路由、消息节点与框架计时器。",
+      "sidebar_position": 11
     }
   },
   {
@@ -155,7 +194,7 @@
     "path": "/docs/alemonjsDocs/getting-started/config",
     "filePath": "alemonjsDocs/getting-started/config.md",
     "title": "运行配置",
-    "description": "运行配置 配置的每个字段都是可选的，需要什么就补什么，不需要则忽视 基础配置 权限管理 消息过滤与控制 消息处理器配置 模块管理 快捷参数 启动时可使用的快捷参数： 基础环境变量 platform:string - 平台标识，支持的平台类型...",
+    "description": "运行配置 配置的每个字段都是可选的，需要什么就补什么，不需要则忽视 基础配置 权限管理 消息过滤与控制 消息处理器配置 模块管理 从 AlemonJS 2.1.124 起，可在 apps 中为每个包指定启用状态与加载顺序。按 order 从...",
     "metadata": {
       "sidebar_position": 4,
       "show_giscus": 1,
@@ -186,6 +225,19 @@
       "title": "创建项目",
       "description": "使用工作台创建项目，或手动安装机器人框架。",
       "sidebar_position": 2
+    }
+  },
+  {
+    "id": "doc:alemonjsDocs/getting-started/qq-bot.md",
+    "type": "doc",
+    "path": "/docs/alemonjsDocs/getting-started/qq-bot",
+    "filePath": "alemonjsDocs/getting-started/qq-bot.md",
+    "title": "QQ Bot 接入",
+    "description": "配置 QQ 官方机器人、扫码登录，并发送 QQ Markdown 与指令按钮。",
+    "metadata": {
+      "title": "QQ Bot 接入",
+      "description": "配置 QQ 官方机器人、扫码登录，并发送 QQ Markdown 与指令按钮。",
+      "sidebar_position": 7
     }
   },
   {
@@ -547,6 +599,25 @@
       "title": "文档导航",
       "description": "按使用工作台、开发机器人、扩展能力和排查问题选择阅读路线。",
       "sidebar_position": 1
+    }
+  },
+  {
+    "id": "blog:2026/11/12/v2.1.124.md",
+    "type": "blog",
+    "path": "/blog/2026/11/12/v2.1.124",
+    "filePath": "2026/11/12/v2.1.124.md",
+    "title": "V2.1.124",
+    "description": "应用包热插拔、应用级指令前缀、图片素材和 QQ 原始事件",
+    "date": "2026-11-12",
+    "metadata": {
+      "product": "framework",
+      "title": "V2.1.124",
+      "description": "应用包热插拔、应用级指令前缀、图片素材和 QQ 原始事件",
+      "authors": "ningmengchongshui",
+      "tags": ["alemonjs"],
+      "image": "https://i.imgur.com/mErPwqL.png",
+      "hide_table_of_contents": false,
+      "date": "2026-11-12"
     }
   },
   {

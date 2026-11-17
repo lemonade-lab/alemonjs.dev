@@ -18,6 +18,8 @@ sidebar_position: 6
 
 框架通用的 `login`、`port`、`url` 与 CBP 配置见 [运行配置](/docs/alemonjsDocs/getting-started/config)。不同平台的凭据与登录过程不同，不能直接套用其他适配器的配置。
 
+使用官方 QQ 机器人时，参见 [QQ Bot 接入](/docs/alemonjsDocs/getting-started/qq-bot)。
+
 ## 使用本地测试工具
 
 开发阶段可以使用 [TestOne](https://marketplace.visualstudio.com/items?itemName=lemonadex.alemonjs-testone)，按扩展说明连接本地测试环境，发送指令并查看消息与事件日志。

@@ -5,6 +5,13 @@
     <link>https://alemonjs.dev/blog</link>
     <description>机器人框架更新与开发文章</description>
     <item>
+      <title>V2.1.124</title>
+      <link>https://alemonjs.dev/blog/2026/11/12/v2.1.124</link>
+      <guid isPermaLink="true">https://alemonjs.dev/blog/2026/11/12/v2.1.124</guid>
+      <description>应用包热插拔、应用级指令前缀、图片素材和 QQ 原始事件</description>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
       <title>V2.1.109</title>
       <link>https://alemonjs.dev/blog/2026/09/21/v2.1.109</link>
       <guid isPermaLink="true">https://alemonjs.dev/blog/2026/09/21/v2.1.109</guid>

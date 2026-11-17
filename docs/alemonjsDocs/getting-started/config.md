@@ -96,6 +96,19 @@ alemonjs-openai:
   model: 'deepseek-chat'
 ```
 
+从 AlemonJS 2.1.124 起，可在 `apps` 中为每个包指定启用状态与加载顺序。按 `order` 从小到大加载，同序号沿用声明顺序，省略时使用从零开始的声明位置。省略 `enabled` 时默认启用。
+
+```yaml title="alemon.config.yaml"
+apps:
+  '@example/storage':
+    order: 10
+  '@example/business':
+    enabled: true
+    order: 20
+```
+
+同一对象中可使用布尔值简写启用状态。应用还可以配置 [指令前缀与按钮转换](/docs/alemonjsDocs/core/router-sdl)。
+
 ## 快捷参数
 
 启动时可使用的快捷参数：
@@ -143,6 +156,10 @@ node index.js --login discord --port 8080
 `serverPort`:`string | number` - 应用服务器端口（可选，仅在需要启动Web服务时设置）
 
 `is_full_receive`:`string` - 是否全量接收消息，可选值：`'true'` | `'1'` | `'false'` | `'0'`
+
+## 框架提示语言
+
+在 `alemon.config.yaml` 设置 `language: en-US` 可将内置提示切换为英文。`zh-CN` 为默认值，配置缺失或未知语言时也使用简体中文。应用自己的回复文字由应用维护。开发者可用 `withLanguage('en-US', callback)` 为一次调用临时覆盖语言，作用范围包含回调内的异步执行。
 
 ## 文件路径相关
 
