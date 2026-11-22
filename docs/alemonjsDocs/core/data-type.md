@@ -1,5 +1,6 @@
 ---
-label: '消息格式'
+title: 消息格式
+description: 用 Format 构建文本、媒体、按钮和 Markdown，并了解平台降级规则。
 sidebar_position: 5
 ---
 

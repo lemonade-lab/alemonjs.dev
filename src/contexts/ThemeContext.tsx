@@ -19,8 +19,12 @@ export default function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>(() => {
     if (typeof window === 'undefined') return 'light'
     // 从 localStorage 读取主题，或使用系统偏好
-    const savedTheme = window.localStorage.getItem('theme') as Theme | null
-    if (savedTheme) return savedTheme
+    try {
+      const savedTheme = window.localStorage.getItem('theme')
+      if (savedTheme === 'light' || savedTheme === 'dark') return savedTheme
+    } catch {
+      // The browser can disable storage independently of theme support.
+    }
 
     // 检测系统主题偏好
     if (
@@ -38,9 +42,16 @@ export default function ThemeProvider({ children }: { children: ReactNode }) {
     const root = document.documentElement
     root.classList.remove('light', 'dark')
     root.classList.add(theme)
+    document
+      .querySelector('meta[name="theme-color"]')
+      ?.setAttribute('content', theme === 'dark' ? '#1b1916' : '#f3f1ec')
 
     // 保存到 localStorage
-    window.localStorage.setItem('theme', theme)
+    try {
+      window.localStorage.setItem('theme', theme)
+    } catch {
+      // The current theme remains available for this visit.
+    }
   }, [theme])
 
   const toggleTheme = () => {

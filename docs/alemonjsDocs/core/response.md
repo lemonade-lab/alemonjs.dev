@@ -29,17 +29,9 @@ export default () => {
 
 ## 执行周期
 
-中间件之前 subscribe(create) >
+`subscribe(create)` → `middleware` → `subscribe(mount)` → `response` → `subscribe(unmount)`。
 
-中间件时 middleware >
-
-中间件之后/响应之前 subscribe(mount) >
-
-响应时 response >
-
-响应之后 subscribe(unmount)
-
-不执行next()表示结束后续匹配。
+在事件处理器中调用 `next()` 继续匹配，省略该调用会结束后续匹配。
 
 ### `next()`
 

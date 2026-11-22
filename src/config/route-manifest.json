@@ -39,14 +39,28 @@
     }
   },
   {
+    "id": "doc:alemonjsDocs/advanced/qq-messages.md",
+    "type": "doc",
+    "path": "/docs/alemonjsDocs/advanced/qq-messages",
+    "filePath": "alemonjsDocs/advanced/qq-messages.md",
+    "title": "QQ 消息与交互",
+    "description": "编写 QQ Markdown、内联指令按钮、群聊提及和指令面板。",
+    "metadata": {
+      "title": "QQ 消息与交互",
+      "description": "编写 QQ Markdown、内联指令按钮、群聊提及和指令面板。",
+      "sidebar_position": 12
+    }
+  },
+  {
     "id": "doc:alemonjsDocs/advanced/schedule.md",
     "type": "doc",
     "path": "/docs/alemonjsDocs/advanced/schedule",
     "filePath": "alemonjsDocs/advanced/schedule.md",
     "title": "定时任务",
-    "description": "定时任务 框架提供了替代原生 setInterval / setTimeout 的定时任务 API，由框架统一管理生命周期。插件卸载或热重载时，所有关联的定时任务会自动清理，避免内存泄漏。 基础用法 setInterval 替代原生 set...",
+    "description": "用框架计时器调度、暂停和取消任务，并了解插件卸载时的清理行为。",
     "metadata": {
-      "label": "定时任务",
+      "title": "定时任务",
+      "description": "用框架计时器调度、暂停和取消任务，并了解插件卸载时的清理行为。",
       "sidebar_position": 10
     }
   },
@@ -69,9 +83,10 @@
     "path": "/docs/alemonjsDocs/advanced/utils",
     "filePath": "alemonjsDocs/advanced/utils.md",
     "title": "工具函数",
-    "description": "工具函数 以下工具用于正则匹配、公网 IP 查询、计数、二维码生成和资源下载。 Regular 继承 RegExp 的类。 getPublicIP 查询公网 IP。 基于 public-ip Counter 计数器 createQRCode...",
+    "description": "查阅正则、公网 IP 查询、计数、二维码和资源下载工具。",
     "metadata": {
-      "label": "工具函数",
+      "title": "工具函数",
+      "description": "查阅正则、公网 IP 查询、计数、二维码和资源下载工具。",
       "sidebar_position": 9
     }
   },
@@ -94,9 +109,10 @@
     "path": "/docs/alemonjsDocs/core/cycle",
     "filePath": "alemonjsDocs/core/cycle.md",
     "title": "生命周期",
-    "description": "生命周期 生命周期回调分为应用、事件和 HTTP 服务三个阶段。 应用阶段 onCreated() 应用刚创建时触发。适合放： 轻量初始化 读取静态配置 建立不依赖路由索引的准备逻辑 将初始化逻辑放入生命周期回调，避免在模块加载时阻塞启动。...",
+    "description": "在应用、事件和 HTTP 回调中初始化、观测和释放资源。",
     "metadata": {
-      "label": "生命周期",
+      "title": "生命周期",
+      "description": "在应用、事件和 HTTP 回调中初始化、观测和释放资源。",
       "sidebar_position": 6
     }
   },
@@ -106,9 +122,10 @@
     "path": "/docs/alemonjsDocs/core/data-type",
     "filePath": "alemonjsDocs/core/data-type.md",
     "title": "消息格式",
-    "description": "消息格式 使用相同的 API 构建消息内容，由各平台包负责将其转换为平台原生格式。 消息发送的返回值为 Result[]，即 [res1, res2, ...]。数组中的每一项对应一次实际的平台 API 调用。 核心原则：不支持的数据格式，...",
+    "description": "用 Format 构建文本、媒体、按钮和 Markdown，并了解平台降级规则。",
     "metadata": {
-      "label": "消息格式",
+      "title": "消息格式",
+      "description": "用 Format 构建文本、媒体、按钮和 Markdown，并了解平台降级规则。",
       "sidebar_position": 5
     }
   },
@@ -131,9 +148,10 @@
     "path": "/docs/alemonjsDocs/core/message-type",
     "filePath": "alemonjsDocs/core/message-type.md",
     "title": "事件类型",
-    "description": "事件类型 命名规则： . . 无前缀：公域事件（群/频道/服务器内发生） private. 前缀：私域事件（私聊/好友/一对一场景） 事件总览 基础字段 所有事件都由以下基础类型组合而成。理解它们是理解每个事件字段的前提。 Platform...",
+    "description": "查询标准事件名、公开与私域字段以及 QQ 原始事件。",
     "metadata": {
-      "label": "事件类型",
+      "title": "事件类型",
+      "description": "查询标准事件名、公开与私域字段以及 QQ 原始事件。",
       "sidebar_position": 5
     }
   },
@@ -142,10 +160,11 @@
     "type": "doc",
     "path": "/docs/alemonjsDocs/core/middleware",
     "filePath": "alemonjsDocs/core/middleware.md",
-    "title": "中间件",
-    "description": "中间件 主要分为局部中间件和全局中间件，可对指定事件类型的 event 进行修改并向下传递 局部中间件 在 defineRouter 中通过分组实现。handler 返回 true 则允许继续执行 children 中的后续响应 最终执行...",
+    "title": "事件中间件",
+    "description": "为事件配置路由分组中间件和全局中间件。",
     "metadata": {
-      "label": "中间件",
+      "title": "事件中间件",
+      "description": "为事件配置路由分组中间件和全局中间件。",
       "sidebar_position": 6
     }
   },
@@ -194,11 +213,12 @@
     "path": "/docs/alemonjsDocs/getting-started/config",
     "filePath": "alemonjsDocs/getting-started/config.md",
     "title": "运行配置",
-    "description": "运行配置 配置的每个字段都是可选的，需要什么就补什么，不需要则忽视 基础配置 权限管理 消息过滤与控制 消息处理器配置 模块管理 从 AlemonJS 2.1.124 起，可在 apps 中为每个包指定启用状态与加载顺序。按 order 从...",
+    "description": "配置机器人入口、平台、端口、消息过滤、应用加载和 CBP。",
     "metadata": {
       "sidebar_position": 4,
       "show_giscus": 1,
-      "label": "运行配置"
+      "title": "运行配置",
+      "description": "配置机器人入口、平台、端口、消息过滤、应用加载和 CBP。"
     }
   },
   {
@@ -233,10 +253,10 @@
     "path": "/docs/alemonjsDocs/getting-started/qq-bot",
     "filePath": "alemonjsDocs/getting-started/qq-bot.md",
     "title": "QQ Bot 接入",
-    "description": "配置 QQ 官方机器人、扫码登录，并发送 QQ Markdown 与指令按钮。",
+    "description": "安装 QQ 官方机器人适配器，配置 AppID、AppSecret 或扫码授权。",
     "metadata": {
       "title": "QQ Bot 接入",
-      "description": "配置 QQ 官方机器人、扫码登录，并发送 QQ Markdown 与指令按钮。",
+      "description": "安装 QQ 官方机器人适配器，配置 AppID、AppSecret 或扫码授权。",
       "sidebar_position": 7
     }
   },
@@ -259,11 +279,11 @@
     "path": "/docs/alemonjsDocs/getting-started/terminal-tools",
     "filePath": "alemonjsDocs/getting-started/terminal-tools.md",
     "title": "机器人命令行",
-    "description": "使用 alemonc 配置项目、连接平台、运行和发布。",
+    "description": "",
+    "redirectTo": "/docs/alemonjsDocs/reference/cli",
     "metadata": {
       "title": "机器人命令行",
-      "description": "使用 alemonc 配置项目、连接平台、运行和发布。",
-      "sidebar_position": 5
+      "redirect_to": "/docs/alemonjsDocs/reference/cli"
     }
   },
   {
@@ -271,10 +291,11 @@
     "type": "doc",
     "path": "/docs/alemonjsDocs/http/route-mw",
     "filePath": "alemonjsDocs/http/route-mw.md",
-    "title": "路由中间件",
-    "description": "路由中间件 当前推荐把 HTTP 中间件直接挂到 koaRouter 上管理，而不是依赖隐式目录约定。 基础写法 解析 Body 可以直接使用 Koa 生态中间件，例如 koa-bodyparser： 按前缀拆分 如果一个应用中有多组 HT...",
+    "title": "HTTP 中间件",
+    "description": "在 Koa 路由挂载请求解析、权限检查和分组中间件。",
     "metadata": {
-      "label": "路由中间件",
+      "title": "HTTP 中间件",
+      "description": "在 Koa 路由挂载请求解析、权限检查和分组中间件。",
       "sidebar_position": 8
     }
   },
@@ -283,10 +304,11 @@
     "type": "doc",
     "path": "/docs/alemonjsDocs/http/route",
     "filePath": "alemonjsDocs/http/route.md",
-    "title": "接口路由",
-    "description": "接口路由 默认地址 http://localhost:17117/app。 HTTP 接入方式 主应用公开 HTTP 服务 插件应用公开 HTTP 服务 defineChildren().register() 直接返回的 koaRouter...",
+    "title": "应用 HTTP 路由",
+    "description": "注册 Koa 路由并在应用 HTTP 服务中提供接口和静态页面。",
     "metadata": {
-      "label": "接口路由",
+      "title": "应用 HTTP 路由",
+      "description": "注册 Koa 路由并在应用 HTTP 服务中提供接口和静态页面。",
       "sidebar_position": 7
     }
   },
@@ -322,9 +344,10 @@
     "path": "/docs/alemonjsDocs/modules/models",
     "filePath": "alemonjsDocs/modules/models.md",
     "title": "模块加载",
-    "description": "模块加载 将本地仓库配置为工作区依赖，再通过 apps 加载。 加载本地模块 将模块仓库克隆到 packages 目录： 在 package.json 中声明工作区： 重新安装依赖： 在 alemon.config.yaml 的 apps...",
+    "description": "通过工作区依赖和 apps 加载模块，也可在运行时重载或卸载。",
     "metadata": {
-      "label": "模块加载",
+      "title": "模块加载",
+      "description": "通过工作区依赖和 apps 加载模块，也可在运行时重载或卸载。",
       "sidebar_position": 7
     }
   },
@@ -355,14 +378,40 @@
     }
   },
   {
+    "id": "doc:alemonjsDocs/reference/cli.md",
+    "type": "doc",
+    "path": "/docs/alemonjsDocs/reference/cli",
+    "filePath": "alemonjsDocs/reference/cli.md",
+    "title": "机器人命令行",
+    "description": "使用 alemonc 配置项目、连接平台、运行和发布。",
+    "metadata": {
+      "title": "机器人命令行",
+      "description": "使用 alemonc 配置项目、连接平台、运行和发布。",
+      "sidebar_position": 1
+    }
+  },
+  {
+    "id": "doc:alemonx/deploy/docker.md",
+    "type": "doc",
+    "path": "/docs/alemonx/deploy/docker",
+    "filePath": "alemonx/deploy/docker.md",
+    "title": "Docker 部署工作台",
+    "description": "用 Docker Compose 启动工作台并保留配置与项目目录。",
+    "metadata": {
+      "title": "Docker 部署工作台",
+      "description": "用 Docker Compose 启动工作台并保留配置与项目目录。",
+      "sidebar_position": 1
+    }
+  },
+  {
     "id": "doc:alemonx/develop/build.md",
     "type": "doc",
     "path": "/docs/alemonx/develop/build",
     "filePath": "alemonx/develop/build.md",
-    "title": "构建规范",
+    "title": "工作台构建入口与产物",
     "description": "配置机器人构建入口、产物路径和嵌套前端项目。",
     "metadata": {
-      "title": "构建规范",
+      "title": "工作台构建入口与产物",
       "description": "配置机器人构建入口、产物路径和嵌套前端项目。",
       "sidebar_position": 5
     }
@@ -398,11 +447,11 @@
     "type": "doc",
     "path": "/docs/alemonx/getting-started/install",
     "filePath": "alemonx/getting-started/install.mdx",
-    "title": "安装",
-    "description": "安装工作台",
+    "title": "安装工作台",
+    "description": "下载 AlemonX 桌面版，或安装 alx 并在浏览器使用工作台。",
     "metadata": {
-      "title": "安装",
-      "description": "安装工作台",
+      "title": "安装工作台",
+      "description": "下载 AlemonX 桌面版，或安装 alx 并在浏览器使用工作台。",
       "sidebar_position": 1
     }
   },
@@ -412,10 +461,10 @@
     "path": "/docs/alemonx/getting-started/quick-start",
     "filePath": "alemonx/getting-started/quick-start.mdx",
     "title": "快速上手",
-    "description": "完成安装、打开工作台、创建项目并检查运行结果。",
+    "description": "跟着桌面版截图创建或导入项目，启动前台运行并查看日志。",
     "metadata": {
       "title": "快速上手",
-      "description": "完成安装、打开工作台、创建项目并检查运行结果。",
+      "description": "跟着桌面版截图创建或导入项目，启动前台运行并查看日志。",
       "sidebar_position": 2
     }
   },
@@ -425,10 +474,10 @@
     "path": "/docs/alemonx/overview",
     "filePath": "alemonx/overview.md",
     "title": "工作台概览",
-    "description": "查找工作台安装、项目运行、Agent 任务和系统插件文档。",
+    "description": "查找 AlemonX 项目管理、系统插件、部署和集成指南。",
     "metadata": {
       "title": "工作台概览",
-      "description": "查找工作台安装、项目运行、Agent 任务和系统插件文档。",
+      "description": "查找 AlemonX 项目管理、系统插件、部署和集成指南。",
       "sidebar_position": 0
     }
   },
@@ -476,10 +525,10 @@
     "type": "doc",
     "path": "/docs/alemonx/reference/plugin-manifest",
     "filePath": "alemonx/reference/plugin-manifest.md",
-    "title": "插件配置",
+    "title": "系统插件清单",
     "description": "配置 alx.json 中的执行器、页面、导航和授权字段。",
     "metadata": {
-      "title": "插件配置",
+      "title": "系统插件清单",
       "description": "配置 alx.json 中的执行器、页面、导航和授权字段。",
       "sidebar_position": 3
     }
@@ -490,11 +539,11 @@
     "path": "/docs/alemonx/use/agent/collaboration",
     "filePath": "alemonx/use/agent/collaboration.md",
     "title": "Agent 任务",
-    "description": "描述任务目标、检查计划，并根据报告验证项目修改。",
+    "description": "在桌面版打开项目的 DSH 工作区，设置访问权限并发送任务。",
     "metadata": {
       "title": "Agent 任务",
-      "description": "描述任务目标、检查计划，并根据报告验证项目修改。",
-      "sidebar_position": 3
+      "description": "在桌面版打开项目的 DSH 工作区，设置访问权限并发送任务。",
+      "sidebar_position": 5
     }
   },
   {
@@ -502,12 +551,25 @@
     "type": "doc",
     "path": "/docs/alemonx/use/plugins",
     "filePath": "alemonx/use/plugins.md",
-    "title": "系统插件",
+    "title": "安装系统插件",
     "description": "安装、启用系统插件，并检查插件状态和数据目录。",
     "metadata": {
-      "title": "系统插件",
+      "title": "安装系统插件",
       "description": "安装、启用系统插件，并检查插件状态和数据目录。",
-      "sidebar_position": 4
+      "sidebar_position": 6
+    }
+  },
+  {
+    "id": "doc:alemonx/use/projects/configure.md",
+    "type": "doc",
+    "path": "/docs/alemonx/use/projects/configure",
+    "filePath": "alemonx/use/projects/configure.md",
+    "title": "机器人配置",
+    "description": "在桌面版用表单调整机器人运行参数，并切换到 YAML 查看保存结果。",
+    "metadata": {
+      "title": "机器人配置",
+      "description": "在桌面版用表单调整机器人运行参数，并切换到 YAML 查看保存结果。",
+      "sidebar_position": 2
     }
   },
   {
@@ -516,11 +578,24 @@
     "path": "/docs/alemonx/use/projects/create-or-import",
     "filePath": "alemonx/use/projects/create-or-import.md",
     "title": "创建与导入",
-    "description": "从模板创建项目，或导入本地目录和 Git 仓库。",
+    "description": "在桌面工作台创建开发项目、添加本地目录或克隆 Git 仓库。",
     "metadata": {
       "title": "创建与导入",
-      "description": "从模板创建项目，或导入本地目录和 Git 仓库。",
+      "description": "在桌面工作台创建开发项目、添加本地目录或克隆 Git 仓库。",
       "sidebar_position": 1
+    }
+  },
+  {
+    "id": "doc:alemonx/use/runtime/local-test.md",
+    "type": "doc",
+    "path": "/docs/alemonx/use/runtime/local-test",
+    "filePath": "alemonx/use/runtime/local-test.md",
+    "title": "本地测试",
+    "description": "打开桌面版 TestOne 沙盒，发送测试指令并确认机器人回复。",
+    "metadata": {
+      "title": "本地测试",
+      "description": "打开桌面版 TestOne 沙盒，发送测试指令并确认机器人回复。",
+      "sidebar_position": 4
     }
   },
   {
@@ -529,11 +604,11 @@
     "path": "/docs/alemonx/use/runtime/run-and-monitor",
     "filePath": "alemonx/use/runtime/run-and-monitor.md",
     "title": "运行与日志",
-    "description": "区分工作台服务和机器人进程，完成前台调试与后台运行检查。",
+    "description": "在运行页启动前台调试、查看日志，并按需注册 PM2 后台服务。",
     "metadata": {
       "title": "运行与日志",
-      "description": "区分工作台服务和机器人进程，完成前台调试与后台运行检查。",
-      "sidebar_position": 2
+      "description": "在运行页启动前台调试、查看日志，并按需注册 PM2 后台服务。",
+      "sidebar_position": 3
     }
   },
   {
@@ -567,10 +642,10 @@
     "type": "doc",
     "path": "/docs/help/overview",
     "filePath": "help/overview.md",
-    "title": "常见问题",
+    "title": "问题排查",
     "description": "按启动、平台连接、消息处理和插件问题选择排查路线。",
     "metadata": {
-      "title": "常见问题",
+      "title": "问题排查",
       "description": "按启动、平台连接、消息处理和插件问题选择排查路线。",
       "sidebar_position": 0
     }

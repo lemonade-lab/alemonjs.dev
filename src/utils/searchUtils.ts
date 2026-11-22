@@ -28,12 +28,29 @@ export interface SearchResult {
 let miniSearch: MiniSearch<SearchDocument> | null = null
 let searchIndexPromise: Promise<MiniSearch<SearchDocument>> | null = null
 
+const segmenter =
+  typeof Intl.Segmenter === 'function'
+    ? new Intl.Segmenter('zh', { granularity: 'word' })
+    : null
+const defaultTokenize = MiniSearch.getDefault('tokenize')
+
+function tokenize(text: string) {
+  return defaultTokenize(text).flatMap(token =>
+    segmenter && /\p{Script=Han}/u.test(token)
+      ? Array.from(segmenter.segment(token))
+          .filter(part => part.isWordLike)
+          .map(part => part.segment)
+      : [token]
+  )
+}
+
 function loadSearchIndex() {
   if (miniSearch) return Promise.resolve(miniSearch)
   if (searchIndexPromise) return searchIndexPromise
 
   searchIndexPromise = import('@/config/search-index.json').then(data => {
     const index = new MiniSearch<SearchDocument>({
+      tokenize,
       fields: ['title', 'sectionTitle', 'titles', 'text', 'excerpt', 'tags'],
       storeFields: [
         'title',

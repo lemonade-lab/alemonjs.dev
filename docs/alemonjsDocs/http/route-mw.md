@@ -1,9 +1,10 @@
 ---
-label: '路由中间件'
+title: HTTP 中间件
+description: 在 Koa 路由挂载请求解析、权限检查和分组中间件。
 sidebar_position: 8
 ---
 
-# 路由中间件
+# HTTP 中间件
 
 :::tip
 

@@ -1,42 +1,31 @@
 ---
 title: 快速上手
-description: 完成安装、打开工作台、创建项目并检查运行结果。
+description: 跟着桌面版截图创建或导入项目，启动前台运行并查看日志。
 sidebar_position: 2
 ---
 
 # 快速上手
 
-按以下步骤安装工作台、创建项目、启动机器人并验证回复。编写机器人逻辑请阅读 [编写指令](/docs/alemonjsDocs/getting-started/quick-start)。
+以 macOS 桌面版为例，点图可放大。
 
-## 1. 安装并打开工作台
+## 1. 打开桌面工作台
 
-按操作系统完成 [安装](/docs/alemonx/getting-started/install)。在终端启动已安装的 `alx`：
+按[桌面版安装说明](/docs/alemonx/getting-started/install#桌面版)打开 **ALemonX Desktop**，在首次引导里选择目标。
 
-```bash
-alx --host 127.0.0.1
-```
+[![桌面版首次引导，提供部署、开发和管理入口，图中框出开发选项](/images/alemonx-desktop-guide/choose-goal.webp)](/images/alemonx-desktop-guide/choose-goal.webp)
 
-打开终端显示的地址，默认端口为 `17390`。手动下载的程序需在所在目录运行，例如 macOS / Linux 使用 `./alx --host 127.0.0.1`。
+- 想编写自己的指令，点 **开发**，按引导检查环境、填写项目名称并确认创建。
+- 已有本地项目或 Git 仓库，点 **管理**，再选择 **添加本地目录** 或 **从 Git 克隆**。
+- 想安装已有的机器人，点 **部署**，按引导选择部署方式。
 
-## 2. 创建或导入项目
+## 2. 选中项目，启动前台
 
-体验已有机器人时，按引导安装源码版机器人；开发自己的功能时，选择开发模板。也可以导入本地目录或克隆 Git 仓库。
+当机器人出现在左侧列表后，点项目名称，再点右侧 **运行**。检查页首的项目名称和依赖状态。在 **前台运行** 一行点 **启动前台**，按弹窗确认。需要配置平台时，按[连接平台](/docs/alemonjsDocs/getting-started/connect-platform)填写项目对应的配置。
 
-进入项目页，确认目录指向目标项目，再检查环境和依赖。具体选择见 [创建与导入](/docs/alemonx/use/projects/create-or-import)。
+[![hello-demo 的运行页，框出右侧运行入口及前台运行区的日志和启动前台按钮](/images/alemonx-desktop-guide/run-project.webp)](/images/alemonx-desktop-guide/run-project.webp)
 
-## 3. 启动并查看输出
+## 3. 检查运行结果
 
-先使用前台运行检查启动输出。环境与配置没有问题后，再按需要使用 PM2 后台运行。工作台服务与机器人进程分别管理，打开工作台并不代表机器人已经启动。
+点 **日志** 查看本次输出。已登录平台时，发一条已知指令并确认收到回复。
 
-启动失败时，从日志中的第一处错误定位环境、依赖或项目配置问题，见 [运行与日志](/docs/alemonx/use/runtime/run-and-monitor)。
-
-## 4. 验证机器人消息
-
-项目能启动后，按 [连接平台](/docs/alemonjsDocs/getting-started/connect-platform) 连接平台或使用本地测试工具，发送项目已有的测试指令，检查是否收到回复。
-
-## 接下来
-
-- 修改项目：了解 [Agent 任务](/docs/alemonx/use/agent/collaboration)。
-- 扩展工作台：了解 [系统插件](/docs/alemonx/use/plugins)。
-- 工作台打不开：[启动排查](/docs/help/startup)。
-- 需要命令行操作：查阅 [工作台命令行](/docs/alemonx/reference/cli)。
+[创建与导入](/docs/alemonx/use/projects/create-or-import) · [日志与后台运行](/docs/alemonx/use/runtime/run-and-monitor)

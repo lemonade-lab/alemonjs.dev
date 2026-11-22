@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import { useNavigate } from 'react-router-dom'
+import SiteIcon from './SiteIcon'
 import {
   highlightSegments,
   searchContent,
@@ -18,6 +19,8 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
   const [selectedIndex, setSelectedIndex] = useState(0)
   const navigate = useNavigate()
   const inputRef = useRef<HTMLInputElement>(null)
+  const dialogRef = useRef<HTMLDialogElement>(null)
+  const resultsRef = useRef<HTMLDivElement>(null)
 
   // 搜索
   useEffect(() => {
@@ -42,12 +45,24 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
     }
   }, [query])
 
-  // 自动聚焦
   useEffect(() => {
-    if (isOpen && inputRef.current) {
-      inputRef.current.focus()
+    if (!isOpen) return
+    const dialog = dialogRef.current
+    dialog?.showModal()
+    inputRef.current?.focus()
+    const overflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      dialog?.close()
+      document.body.style.overflow = overflow
     }
   }, [isOpen])
+
+  useEffect(() => {
+    resultsRef.current
+      ?.querySelector('[data-selected="true"]')
+      ?.scrollIntoView({ block: 'nearest' })
+  }, [selectedIndex])
 
   const handleSelect = (result: SearchResult) => {
     navigate(result.path)
@@ -60,7 +75,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
       segment.match ? (
         <mark
           key={`${segment.text}-${index}`}
-          className="bg-yellow-200 px-0.5 text-inherit dark:bg-yellow-500/40"
+          className="bg-[var(--accent-soft)] px-0.5 text-inherit"
         >
           {segment.text}
         </mark>
@@ -69,24 +84,23 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
       )
     )
 
-  // 键盘导航
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (!isOpen) return
+      if (!isOpen || e.isComposing) return
 
       switch (e.key) {
-        case 'Escape':
-          onClose()
-          break
         case 'ArrowDown':
           e.preventDefault()
-          setSelectedIndex(prev => Math.min(prev + 1, results.length - 1))
+          setSelectedIndex(prev =>
+            Math.min(prev + 1, Math.max(0, results.length - 1))
+          )
           break
         case 'ArrowUp':
           e.preventDefault()
           setSelectedIndex(prev => Math.max(prev - 1, 0))
           break
         case 'Enter':
+          if (e.target !== inputRef.current) return
           e.preventDefault()
           if (results[selectedIndex]) {
             const selected = results[selectedIndex]
@@ -105,61 +119,49 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
   if (!isOpen) return null
 
   return createPortal(
-    <div
-      className="fixed inset-0 z-[9999] flex items-start justify-center pt-[10vh] px-4"
-      onClick={onClose}
+    <dialog
+      ref={dialogRef}
+      className="site-search"
+      aria-label="搜索文档和博客"
+      onKeyDown={event => {
+        if (event.key === 'Escape' && !event.nativeEvent.isComposing) {
+          event.preventDefault()
+          onClose()
+        }
+      }}
+      onCancel={event => {
+        event.preventDefault()
+        onClose()
+      }}
+      onClick={event => {
+        if (event.target === event.currentTarget) onClose()
+      }}
     >
-      {/* 遮罩层 */}
-      <div className="absolute inset-0 bg-black/50 dark:bg-black/70 backdrop-blur-sm" />
-
-      {/* 搜索框 */}
-      <div
-        className="relative w-full max-w-2xl bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden"
-        onClick={e => e.stopPropagation()}
-      >
-        {/* 搜索输入 */}
-        <div className="flex items-center px-4 py-4 border-b border-gray-200 dark:border-gray-700">
-          <svg
-            className="h-5 w-5 text-gray-400 dark:text-gray-500 mr-3"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-            />
-          </svg>
+      <div className="site-search-body">
+        <div className="site-search-row">
+          <SiteIcon name="search" />
           <input
             ref={inputRef}
-            type="text"
+            type="search"
             value={query}
-            onChange={e => setQuery(e.target.value)}
-            placeholder="搜索文档和博客..."
-            className="flex-1 bg-transparent text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 outline-none text-lg"
+            onChange={event => setQuery(event.target.value)}
+            aria-label="搜索关键词"
+            placeholder="搜索文档和博客"
           />
-          {query && (
-            <button
-              onClick={() => setQuery('')}
-              className="ml-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
-            >
-              <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-                <path
-                  fillRule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </button>
-          )}
+          <button
+            type="button"
+            className="site-icon-button"
+            onClick={onClose}
+            aria-label="关闭搜索"
+          >
+            <SiteIcon name="close" />
+          </button>
         </div>
 
         {/* 搜索结果 */}
-        <div className="max-h-[60vh] overflow-y-auto">
+        <div className="site-search-results" ref={resultsRef}>
           {query && results.length === 0 && (
-            <div className="px-6 py-12 text-center text-gray-500 dark:text-gray-400">
+            <div className="px-6 py-12 text-center text-[var(--text-muted)]">
               <svg
                 className="mx-auto h-12 w-12 mb-4"
                 fill="none"
@@ -179,7 +181,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
           )}
 
           {!query && (
-            <div className="px-6 py-12 text-center text-gray-500 dark:text-gray-400">
+            <div className="px-6 py-12 text-center text-[var(--text-muted)]">
               <svg
                 className="mx-auto h-12 w-12 mb-4"
                 fill="none"
@@ -204,10 +206,10 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
               onClick={() => handleSelect(result)}
               onMouseEnter={() => setSelectedIndex(index)}
               data-selected={index === selectedIndex}
-              className={`w-full px-6 py-4 text-left border-b border-gray-100 dark:border-gray-700 last:border-b-0 transition-colors ${
+              className={`w-full px-5 py-3 text-left transition-colors ${
                 index === selectedIndex
-                  ? 'bg-blue-50 dark:bg-blue-900/20'
-                  : 'hover:bg-gray-50 dark:hover:bg-gray-700/50'
+                  ? 'bg-[var(--accent-soft)]'
+                  : 'hover:bg-[var(--surface-hover)]'
               }`}
             >
               <div className="flex items-start justify-between">
@@ -216,40 +218,40 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                     <span
                       className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${
                         result.type === 'doc'
-                          ? 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300'
-                          : 'bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300'
+                          ? 'bg-[var(--surface-input)] text-[var(--text)]'
+                          : 'bg-[var(--surface-rail)] text-[var(--text)]'
                       }`}
                     >
                       {result.type === 'doc' ? '文档' : '博客'}
                     </span>
                     {result.date && (
-                      <span className="text-xs text-gray-500 dark:text-gray-400">
+                      <span className="text-xs text-[var(--text-muted)]">
                         {new Date(result.date).toLocaleDateString('zh-CN')}
                       </span>
                     )}
                   </div>
                   {result.sectionTitle && (
-                    <p className="mb-1 text-xs text-gray-500 dark:text-gray-400">
+                    <p className="mb-1 text-xs text-[var(--text-muted)]">
                       {result.breadcrumb.join(' / ')}
                     </p>
                   )}
-                  <h3 className="font-medium text-gray-900 dark:text-gray-100 mb-1">
+                  <h3 className="font-medium text-[var(--text)] mb-1">
                     {renderHighlighted(result.title)}
                   </h3>
                   {result.sectionTitle && (
-                    <p className="mb-1 text-sm text-blue-700 dark:text-blue-300">
+                    <p className="mb-1 text-sm text-[var(--accent-text)]">
                       {renderHighlighted(result.sectionTitle)}
                     </p>
                   )}
                   {result.excerpt && (
-                    <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-2">
+                    <p className="text-sm text-[var(--text-muted)] line-clamp-2">
                       {renderHighlighted(result.excerpt)}
                     </p>
                   )}
                 </div>
                 {index === selectedIndex && (
                   <svg
-                    className="h-5 w-5 text-blue-600 dark:text-blue-400 ml-4 flex-shrink-0"
+                    className="h-5 w-5 text-[var(--accent-text)] ml-4 flex-shrink-0"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -268,23 +270,23 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
         </div>
 
         {/* 快捷键提示 */}
-        <div className="px-4 py-3 bg-gray-50 dark:bg-gray-900/50 border-t border-gray-200 dark:border-gray-700">
-          <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
+        <div className="site-search-footer">
+          <div className="flex items-center justify-between text-xs text-[var(--text-muted)]">
             <div className="flex items-center gap-4">
               <span className="flex items-center gap-1">
-                <kbd className="px-2 py-1 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded">
+                <kbd className="px-2 py-1 bg-[var(--surface-input)] rounded">
                   ↑↓
                 </kbd>
                 导航
               </span>
               <span className="flex items-center gap-1">
-                <kbd className="px-2 py-1 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded">
+                <kbd className="px-2 py-1 bg-[var(--surface-input)] rounded">
                   Enter
                 </kbd>
                 选择
               </span>
               <span className="flex items-center gap-1">
-                <kbd className="px-2 py-1 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded">
+                <kbd className="px-2 py-1 bg-[var(--surface-input)] rounded">
                   Esc
                 </kbd>
                 关闭
@@ -293,7 +295,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
           </div>
         </div>
       </div>
-    </div>,
+    </dialog>,
     document.body
   )
 }

@@ -1,43 +1,39 @@
 import { Link } from 'react-router-dom'
-
-const workbench = '/images/alemonx-workbench.png'
+import SiteIcon from '@/components/SiteIcon'
 
 export default function HeaderPage() {
   return (
-    <header className="overflow-hidden rounded-[2rem] bg-[#10100f] px-6 pb-0 pt-12 text-white sm:px-10 sm:pt-16 lg:px-16 lg:pt-20">
-      <div className="mx-auto max-w-5xl text-center">
-        <p className="text-sm font-medium tracking-[0.22em] text-white/60">
-          ALemonX
+    <header className="home-hero">
+      <div className="home-hero-copy">
+        <h1>ALemonX 文档</h1>
+        <p>
+          从创建机器人到运行、扩展和维护，查阅 ALemonX 工作台与 ALemonJS
+          框架的使用指南。
         </p>
-        <h1 className="mx-auto mt-5 max-w-4xl text-4xl font-semibold tracking-[-0.05em] sm:text-5xl lg:text-6xl">
-          管理机器人项目，
-          <br />让 Agent 参与维护。
-        </h1>
-        <p className="mx-auto mt-7 max-w-xl text-base leading-7 text-white/65 sm:text-lg">
-          创建或导入项目，运行服务和查看日志；为修复、开发与检查创建任务并批准操作。
-        </p>
-        <div className="mt-8 flex flex-wrap justify-center gap-3">
-          {/* <a
-            className="rounded-full bg-white px-5 py-3 text-sm font-semibold text-black transition hover:bg-white/85"
-            href="https://xcloud.alemonjs.com"
-            target="_blank"
-            rel="noreferrer"
-          >
-            在线体验
-          </a> */}
+        <div className="home-hero-actions">
           <Link
-            className="rounded-full border border-white/25 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+            className="site-primary-action"
             to="/docs/alemonx/getting-started/install"
           >
-            快速开始
+            <SiteIcon name="workbench" />
+            工作台快速开始
+          </Link>
+          <Link
+            className="site-secondary-action"
+            to="/docs/alemonjsDocs/overview"
+          >
+            <SiteIcon name="bot" />
+            机器人开发
           </Link>
         </div>
       </div>
-      <div className="relative mx-auto mt-14 max-w-6xl sm:mt-16">
+      <div className="home-workbench-preview">
         <img
-          src={workbench}
-          alt="ALemonX 工作台"
-          className="relative block w-full rounded-t-2xl border border-b-0 border-white/15 shadow-[0_-18px_70px_rgba(0,0,0,0.45)]"
+          src="/images/alemonx-workbench.png"
+          width="2112"
+          height="1320"
+          alt="ALemonX 工作台的机器人项目列表和 Agent 面板"
+          fetchPriority="high"
         />
       </div>
     </header>

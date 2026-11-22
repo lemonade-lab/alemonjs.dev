@@ -1,5 +1,6 @@
 ---
-label: '工具函数'
+title: 工具函数
+description: 查阅正则、公网 IP 查询、计数、二维码和资源下载工具。
 sidebar_position: 9
 ---
 

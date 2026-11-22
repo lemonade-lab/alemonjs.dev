@@ -2,7 +2,7 @@ import { useRef, useState, type KeyboardEvent, type TouchEvent } from 'react'
 import { Link } from 'react-router-dom'
 import { ECOSYSTEM_URL } from '@/config/ecosystem'
 import alemonJSImage from '@/assets/img/alemon.png'
-import testOneImage from '@/assets/img/dt/cat.png'
+// import testOneImage from '@/assets/img/dt/cat.png'
 // import alemonDeskImage from '@/assets/img/dt/home.png'
 // import alemonGoImage from '@/assets/img/web/info.png'
 import alemonAppImage from '@/assets/img/web/phone.png'
@@ -78,15 +78,6 @@ const products = [
     imageClass: 'object-contain p-12 sm:p-16',
     link: '/docs/alemonjsDocs/getting-started/quick-start',
     action: '进入开发文档'
-  },
-  {
-    name: 'ALemonJS TestOne',
-    type: '测试工具',
-    description: '在 VS Code 中运行测试，查看机器人消息和交互结果。',
-    image: testOneImage,
-    imageClass: 'object-cover',
-    link: 'https://marketplace.visualstudio.com/items?itemName=lemonadex.alemonjs-testone',
-    action: '查看扩展'
   }
 ]
 
@@ -116,7 +107,7 @@ function ProductLink({ product }: { product: (typeof products)[number] }) {
   return (
     <ActionLink
       link={product.link}
-      className="inline-flex rounded-full bg-[var(--accent)] px-5 py-3 text-sm font-semibold text-[var(--accent-contrast)] transition hover:opacity-80"
+      className="inline-flex rounded-full bg-[var(--accent)] px-5 py-3 text-sm font-semibold text-[var(--accent-contrast)] transition-colors hover:bg-[var(--accent-hover)]"
     >
       {product.action}
     </ActionLink>

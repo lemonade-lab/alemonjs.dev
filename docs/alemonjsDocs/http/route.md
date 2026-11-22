@@ -1,11 +1,12 @@
 ---
-label: '接口路由'
+title: 应用 HTTP 路由
+description: 注册 Koa 路由并在应用 HTTP 服务中提供接口和静态页面。
 sidebar_position: 7
 ---
 
-# 接口路由
+# 应用 HTTP 路由
 
-默认地址 `http://localhost:17117/app`。
+在 `alemon.config.yaml` 中设置 `serverPort: 18110` 后，主应用页面地址为 `http://127.0.0.1:18110/app/`。应用 HTTP 服务端口由 `serverPort` 指定，CBP 使用 `port`。
 
 ## HTTP 接入方式
 

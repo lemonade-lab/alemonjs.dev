@@ -1,5 +1,12 @@
 // MDX 组件库 - 类似 Docusaurus 的主题组件
-import { ReactNode, useState, Children, ReactElement, useRef } from 'react'
+import {
+  ReactNode,
+  useState,
+  Children,
+  ReactElement,
+  useRef,
+  useId
+} from 'react'
 import BlogAuthor from './BlogAuthor'
 
 // ============= Tabs 组件 =============
@@ -18,28 +25,55 @@ interface TabItemProps {
 
 export function Tabs({ children, defaultValue }: TabsProps) {
   const tabs = Children.toArray(children) as ReactElement<TabItemProps>[]
-  const firstValue = tabs[0]?.props?.value || ''
-  const [activeTab, setActiveTab] = useState(defaultValue || firstValue)
+  const id = useId()
+  const [activeTab, setActiveTab] = useState(
+    defaultValue || tabs[0]?.props?.value
+  )
+  const selected = tabs.findIndex(tab => tab.props.value === activeTab)
+  if (!tabs.length) return null
+  const active = Math.max(0, selected)
 
   return (
-    <div className="my-6  rounded-xl overflow-hidden  ">
-      <div className="flex flex-wrap overflow-x-auto">
-        {tabs.map(tab => (
+    <div className="my-6 min-w-0">
+      <div
+        role="tablist"
+        aria-label="示例选项"
+        className="flex gap-1 overflow-x-auto p-1 rounded-lg bg-[var(--surface-raised)]"
+      >
+        {tabs.map((tab, index) => (
           <button
+            type="button"
             key={tab.props.value}
+            id={`${id}-${index}`}
+            role="tab"
+            aria-controls={`${id}-panel`}
+            aria-selected={active === index}
+            tabIndex={active === index ? 0 : -1}
             onClick={() => setActiveTab(tab.props.value)}
-            className={`px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium transition-all duration-200 whitespace-nowrap ${
-              activeTab === tab.props.value
-                ? 'bg-[var(--surface)] text-[var(--text)] border-b-2 border-[var(--accent)] shadow-sm'
-                : 'text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-[var(--surface-muted)]'
-            }`}
+            onKeyDown={event => {
+              const next = {
+                ArrowLeft: (index - 1 + tabs.length) % tabs.length,
+                ArrowRight: (index + 1) % tabs.length,
+                Home: 0,
+                End: tabs.length - 1
+              }[event.key]
+              if (next === undefined) return
+              event.preventDefault()
+              setActiveTab(tabs[next].props.value)
+              document.getElementById(`${id}-${next}`)?.focus()
+            }}
+            className="shrink-0 whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium text-[var(--text-muted)] hover:bg-[var(--surface-hover)] aria-selected:bg-[var(--accent-soft)] aria-selected:text-[var(--accent-text)]"
           >
             {tab.props.label}
           </button>
         ))}
       </div>
-      <div className="p-1">
-        {tabs.find(tab => tab.props.value === activeTab)?.props.children}
+      <div
+        role="tabpanel"
+        id={`${id}-panel`}
+        aria-labelledby={`${id}-${active}`}
+      >
+        {tabs[active].props.children}
       </div>
     </div>
   )
@@ -103,14 +137,14 @@ export function Admonition({
   const config = configs[type]
 
   return (
-    <div
-      className={`my-4 sm:my-6 p-3 sm:p-4 border-l-4 rounded-r-lg ${config.className} shadow-sm`}
-    >
+    <div className={`my-4 sm:my-6 p-3 sm:p-4 rounded-lg ${config.className}`}>
       <div className="flex items-center gap-2 font-semibold mb-2 text-xs sm:text-sm uppercase">
-        <span className="text-base sm:text-lg">{config.icon}</span>
+        <span className="text-base sm:text-lg" aria-hidden="true">
+          {config.icon}
+        </span>
         <span>{title || config.title}</span>
       </div>
-      <div className="prose pmax-w-none [&>*:first-child]:mt-0 [&>*:last-child]:mb-0">
+      <div className="prose max-w-none [&>*:first-child]:mt-0 [&>*:last-child]:mb-0">
         {children}
       </div>
     </div>
@@ -160,27 +194,40 @@ export function Details({ summary, children }: DetailsProps) {
 }
 
 // ============= 代码块（带复制按钮） =============
-function CodeBlock({ children }) {
+function CodeBlock({ children }: { children: ReactNode }) {
   const codeRef = useRef<HTMLPreElement>(null)
+  const [status, setStatus] = useState('复制')
+
   const handleCopy = async () => {
     try {
-      const text = codeRef.current?.innerText || ''
-      await navigator.clipboard.writeText(text)
-    } catch (e) {
-      console.error('复制失败', e)
+      await navigator.clipboard.writeText(codeRef.current?.textContent ?? '')
+      setStatus('已复制')
+    } catch {
+      setStatus('复制失败')
     }
   }
+
   return (
-    <div className="relative [&_div]:opacity-0 [&_div]:hover:opacity-100">
-      <div className="absolute right-3 top-3   group-hover:opacity-100 transition-opacity duration-150">
-        <button
-          onClick={handleCopy}
-          className="inline-flex items-center gap-2 px-2.5 py-1.5 bg-[var(--surface)] border border-[var(--line)] text-[var(--text)] text-xs rounded-md shadow-sm hover:bg-[var(--surface-muted)]"
-        >
-          复制
-        </button>
-      </div>
-      <pre ref={codeRef}>{children}</pre>
+    <div className="doc-code">
+      <button
+        type="button"
+        className="doc-copy"
+        onClick={handleCopy}
+        aria-live="polite"
+      >
+        {status}
+      </button>
+      <pre ref={codeRef} tabIndex={0}>
+        {children}
+      </pre>
+    </div>
+  )
+}
+
+function Table({ children }: { children: ReactNode }) {
+  return (
+    <div className="doc-table" role="region" aria-label="表格" tabIndex={0}>
+      <table>{children}</table>
     </div>
   )
 }
@@ -193,6 +240,7 @@ export default {
   Details,
   BlogAuthor,
   pre: CodeBlock,
+  table: Table,
   Note: (props: Omit<AdmonitionProps, 'type'>) => (
     <Admonition type="note" {...props} />
   ),

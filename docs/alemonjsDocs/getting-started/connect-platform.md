@@ -6,32 +6,10 @@ sidebar_position: 6
 
 # 连接平台
 
-先确认项目可以启动，再选择验证消息的方式。已有平台适配器的安装与登录属于使用配置；自己实现平台协议才需要阅读 [平台适配](/docs/alemonjsDocs/modules/platforms)。
+1. 从[生态资源](https://open.alemonjs.com)选适配器。使用官方 QQ 机器人时直接看 [QQ Bot 接入](/docs/alemonjsDocs/getting-started/qq-bot)。
+2. 按适配器说明安装、准备账号凭据并填写项目配置。通用字段见[运行配置](/docs/alemonjsDocs/getting-started/config)。
+3. 启动项目，确认平台登录成功。发送已知指令，例如入门项目的 `/hello`，确认目标会话收到回复。
 
-## 使用已有平台
+开发阶段可用[桌面版本地测试](/docs/alemonx/use/runtime/local-test)验证指令。图片、Markdown 和交互组件的显示效果以实际平台为准。
 
-1. 从 [生态资源](https://open.alemonjs.com) 查找目标平台的适配器。
-2. 阅读适配器自己的安装说明，核对支持的框架版本及平台侧前置条件。
-3. 按适配器说明准备账号或凭据，并填写项目配置。
-4. 启动项目，检查平台连接和登录结果。
-5. 发送项目已有的测试指令；如果完成了入门示例，可以发送 `/hello`。
-
-框架通用的 `login`、`port`、`url` 与 CBP 配置见 [运行配置](/docs/alemonjsDocs/getting-started/config)。不同平台的凭据与登录过程不同，不能直接套用其他适配器的配置。
-
-使用官方 QQ 机器人时，参见 [QQ Bot 接入](/docs/alemonjsDocs/getting-started/qq-bot)。
-
-## 使用本地测试工具
-
-开发阶段可以使用 [TestOne](https://marketplace.visualstudio.com/items?itemName=lemonadex.alemonjs-testone)，按扩展说明连接本地测试环境，发送指令并查看消息与事件日志。
-
-本地测试成功后，仍应在目标平台验证实际消息格式与交互能力；各平台的支持情况可能不同。
-
-## 检查三个阶段
-
-| 阶段 | 应检查的结果                         |
-| ---- | ------------------------------------ |
-| 入站 | 测试消息进入框架，事件类型与预期一致 |
-| 处理 | 路由匹配，响应函数被执行             |
-| 出站 | 发送操作成功，目标会话收到回复       |
-
-连接成功但没有回复，请继续阅读 [消息排查](/docs/help/messages)。
+连接失败或没有回复时，按[消息排查](/docs/help/messages)定位。

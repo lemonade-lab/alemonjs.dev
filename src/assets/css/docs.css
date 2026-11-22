@@ -2,12 +2,11 @@
 
 /* 代码块带标题的样式 */
 .code-block-with-title {
-  @apply my-6 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 shadow-sm;
+  @apply my-6 rounded-lg overflow-hidden;
 }
 
 .code-block-header {
-  @apply flex items-center justify-between px-3 sm:px-4 py-2 bg-gray-100 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700;
-  @apply text-xs sm:text-sm font-mono text-gray-700 dark:text-gray-300 font-medium;
+  @apply flex items-center justify-between px-3 sm:px-4 py-2 text-xs sm:text-sm font-mono font-medium;
 }
 
 .code-block-with-title pre {
@@ -32,7 +31,7 @@
 .hljs-template-variable,
 .hljs-type,
 .hljs-variable.language_ {
-  color: #d73a49;
+  color: #982b38;
 }
 
 .hljs-title,
@@ -63,20 +62,20 @@
 
 .hljs-built_in,
 .hljs-symbol {
-  color: #e36209;
+  color: #914808;
 }
 
 .hljs-comment,
 .hljs-code,
 .hljs-formula {
-  color: #6a737d;
+  color: #5e6670;
 }
 
 .hljs-name,
 .hljs-quote,
 .hljs-selector-tag,
 .hljs-selector-pseudo {
-  color: #22863a;
+  color: #246639;
 }
 
 html.dark .hljs {
@@ -139,7 +138,7 @@ html.dark .hljs-selector-pseudo {
 
 /* Admonition 样式 */
 .admonition {
-  @apply my-6 p-4 border-l-4 rounded;
+  @apply my-6 p-4 rounded-lg;
 }
 
 .admonition-tip {
@@ -174,258 +173,259 @@ html.dark .admonition-danger {
   @apply bg-red-900/30 border-red-600;
 }
 
-/* Prose 样式增强 - 针对 Markdown 内容 */
+/* Keep article rhythm independent of the width of either navigation pane. */
 .prose {
-  @apply text-gray-800;
+  --tw-prose-body: var(--text);
+  --tw-prose-headings: var(--text);
+  --tw-prose-lead: var(--text-muted);
+  --tw-prose-links: var(--accent-text);
+  --tw-prose-bold: var(--text);
+  --tw-prose-counters: var(--text-muted);
+  --tw-prose-bullets: var(--text-muted);
+  --tw-prose-quotes: var(--text);
+  --tw-prose-captions: var(--text-muted);
+  --tw-prose-code: var(--accent-text);
+  --tw-prose-pre-code: var(--text);
+  --tw-prose-pre-bg: var(--code-surface);
+  max-width: none;
+  min-width: 0;
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.82;
+  overflow-wrap: anywhere;
 }
 
-html.dark .prose {
-  @apply text-gray-200;
+.prose :is(h1, h2, h3, h4) {
+  color: var(--text);
+  line-height: 1.27;
+  font-weight: 680;
 }
-
+.prose :is(strong, th, td) {
+  color: var(--text);
+}
+.prose :is(caption, figcaption) {
+  color: var(--text-muted);
+}
 .prose h1 {
-  @apply text-4xl font-bold mb-6 mt-8 text-gray-900 border-b pb-3;
+  font-size: clamp(2rem, 3.7vw, 2.85rem);
+  margin: 0 0 0.75em;
+  letter-spacing: -0.04em;
 }
-
-html.dark .prose h1 {
-  @apply text-gray-100 border-gray-700;
-}
-
 .prose h2 {
-  @apply text-3xl font-semibold mb-4 mt-8 text-gray-900 border-b pb-2;
+  font-size: clamp(1.38rem, 2.4vw, 1.75rem);
+  margin: 1.85em 0 0.65em;
+  letter-spacing: -0.025em;
 }
-
-html.dark .prose h2 {
-  @apply text-gray-100 border-gray-700;
-}
-
 .prose h3 {
-  @apply text-2xl font-semibold mb-3 mt-6 text-gray-900;
+  font-size: 1.24rem;
+  margin: 1.65em 0 0.56em;
 }
-
-html.dark .prose h3 {
-  @apply text-gray-100;
-}
-
 .prose h4 {
-  @apply text-xl font-semibold mb-2 mt-4 text-gray-800;
+  font-size: 1.07rem;
+  margin: 1.45em 0 0.55em;
 }
-
-html.dark .prose h4 {
-  @apply text-gray-200;
+.prose :is(h2, h3, h4)[id] {
+  scroll-margin-top: 32px;
 }
-
 .prose p {
-  @apply mb-4 leading-7 text-gray-700;
+  margin: 0 0 1em;
+  color: var(--text);
 }
-
-html.dark .prose p {
-  @apply text-gray-300;
-}
-
 .prose a {
-  @apply text-blue-600 hover:text-blue-700 underline decoration-blue-300 hover:decoration-blue-500 transition-colors;
+  color: var(--accent-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
 }
-
-html.dark .prose a {
-  @apply text-blue-400 hover:text-blue-300 decoration-blue-600 hover:decoration-blue-400;
+.prose a:hover {
+  color: var(--accent);
+  text-decoration-thickness: 2px;
 }
-
-.prose code {
-  @apply bg-gray-100 text-red-600 px-1.5 py-0.5 rounded text-sm font-mono before:content-[''] after:content-[''];
+.prose :is(ul, ol) {
+  margin-block: 0.75em 1.1em;
+  padding-inline-start: 1.45em;
 }
-
-html.dark .prose code {
-  @apply bg-gray-800 text-red-400;
-}
-
-.prose pre {
-  @apply bg-gray-50 text-gray-900 rounded-lg p-4 overflow-x-auto my-6 border border-gray-200;
-}
-
-html.dark .prose pre {
-  @apply bg-gray-800 text-gray-100 border-gray-700;
-}
-
-.prose pre code {
-  @apply bg-transparent text-gray-900 p-0;
-}
-
-/* 代码块复制按钮样式 */
-.code-block-with-copy {
-  position: relative;
-}
-.code-block-with-copy pre {
-  margin: 0;
-  padding-top: 2.25rem; /* leave space for the button */
-}
-.code-block-with-copy > div.absolute {
-  z-index: 10;
-}
-
-@media (prefers-color-scheme: dark) {
-  .code-block-with-copy button {
-    color: #e5e7eb; /* text-gray-200 */
-  }
-}
-
-html.dark .prose pre code {
-  @apply text-gray-100;
-}
-
 .prose ul {
-  @apply list-disc list-inside mb-4 space-y-2;
+  list-style: disc;
 }
-
 .prose ol {
-  @apply list-decimal list-inside mb-4 space-y-2;
+  list-style: decimal;
 }
-
 .prose li {
-  @apply text-gray-700;
-}
-
-html.dark .prose li {
-  @apply text-gray-300;
-}
-
-.prose blockquote {
-  @apply border-l-4 border-blue-500 pl-4 italic text-gray-700 my-4;
-}
-
-html.dark .prose blockquote {
-  @apply border-blue-600 text-gray-300;
-}
-
-.prose table {
-  @apply w-full border-collapse my-6;
-}
-
-.prose th {
-  @apply bg-gray-100 border border-gray-300 px-4 py-2 text-left font-semibold;
-}
-
-html.dark .prose th {
-  @apply bg-gray-800 border-gray-700 text-gray-200;
-}
-
-.prose td {
-  @apply border border-gray-300 px-4 py-2;
-}
-
-html.dark .prose td {
-  @apply border-gray-700 text-gray-300;
-}
-
-.prose img {
-  @apply rounded-lg shadow-md my-6;
-}
-
-.prose hr {
-  @apply my-8 border-gray-300;
-}
-
-html.dark .prose hr {
-  @apply border-gray-700;
-}
-
-/* 目录导航 */
-.toc {
-  @apply sticky top-24 overflow-y-auto;
-}
-
-.toc-link {
-  @apply block py-1 text-sm text-gray-600 hover:text-blue-600 transition-colors;
-}
-
-html.dark .toc-link {
-  @apply text-gray-400 hover:text-blue-400;
-}
-
-.toc-link-active {
-  @apply text-blue-600 font-medium;
-}
-
-html.dark .toc-link-active {
-  @apply text-blue-400;
-}
-
-/* 平滑滚动 */
-html {
-  scroll-behavior: smooth;
-}
-
-/* 选择文本样式 */
-::selection {
-  @apply bg-blue-200 text-blue-900;
-}
-
-html.dark ::selection {
-  @apply bg-blue-900 text-blue-100;
-}
-
-/* 文档内容使用站点中性色，不再混用 slate、gray 与 blue。 */
-.prose,
-.prose h1,
-.prose h2,
-.prose h3,
-.prose h4,
-.prose p,
-.prose li,
-.prose td,
-.prose th,
-.toc-link,
-.toc-link-active {
+  margin-block: 0.3em;
   color: var(--text);
 }
-
-.prose h1,
-.prose h2,
-.prose hr,
-.prose th,
-.prose td {
-  border-color: var(--line);
+.prose li::marker {
+  color: var(--text-muted);
 }
-
-.prose a,
-.toc-link-active {
-  color: var(--text);
-  text-decoration-color: var(--text-muted);
-}
-
-.prose a:hover,
-.toc-link:hover {
-  color: var(--text);
-  text-decoration-color: var(--text);
-}
-
-.prose code,
-.prose th {
-  background: var(--surface-muted);
-  color: var(--text);
-}
-
-.prose pre {
+.prose code {
   background: var(--code-surface);
-  border-color: var(--line);
-  color: var(--text);
+  color: var(--accent-text);
+  font-size: 0.88em;
+  border-radius: 4px;
+  padding: 0.12em 0.35em;
 }
-
+.prose code::before,
+.prose code::after {
+  content: none;
+}
+.prose pre {
+  min-width: 0;
+  max-width: 100%;
+  color: var(--text);
+  background: var(--code-surface);
+  border: 0;
+  border-radius: 9px;
+  padding: 15px 16px;
+  overflow: auto;
+  overscroll-behavior-x: contain;
+  font-size: 0.86rem;
+  line-height: 1.65;
+  white-space: pre;
+  overflow-wrap: normal;
+}
 .prose pre code {
   color: inherit;
+  background: transparent;
+  font-size: inherit;
+  padding: 0;
 }
-
 .prose blockquote {
-  border-color: var(--text-muted);
+  margin-inline: 0;
+  border: 0;
+  border-radius: 8px;
+  padding: 12px 16px;
+  background: var(--surface-muted);
   color: var(--text-muted);
 }
-
-.toc-link {
+.prose blockquote > :last-child {
+  margin-bottom: 0;
+}
+.prose img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 9px;
+}
+.prose hr {
+  border: 0;
+  background: var(--surface-raised);
+  height: 2px;
+  margin-block: 25px;
+}
+.doc-table {
+  min-width: 0;
+  max-width: 100%;
+  overflow: auto;
+  overscroll-behavior-x: contain;
+  margin-block: 1.35rem;
+  border-radius: 8px;
+}
+.prose table {
+  width: 100%;
+  margin: 0;
+  background: var(--surface-muted);
+  font-size: 0.88em;
+}
+.prose th,
+.prose td {
+  border: 0;
+  padding: 8px 12px;
+  min-width: 84px;
+  text-align: start;
+  vertical-align: top;
+}
+.prose th {
+  background: var(--surface-input);
+  font-weight: 680;
+}
+.prose tbody tr:nth-child(even) {
+  background: var(--surface-raised);
+}
+.doc-code {
+  position: relative;
+  min-width: 0;
+  max-width: 100%;
+  margin-block: 1.3rem;
+}
+.doc-code pre {
+  margin: 0;
+  padding-top: 39px;
+}
+.doc-copy {
+  position: absolute;
+  inset: 6px 7px auto auto;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: var(--surface-input);
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+.doc-copy:hover {
+  color: var(--text);
+  background: var(--surface-hover);
+}
+.code-block-with-title {
+  background: var(--code-surface);
+  border: 0;
+  box-shadow: none;
+}
+.code-block-header {
+  background: var(--surface-input);
+  border: 0;
   color: var(--text-muted);
 }
+.code-block-with-title .doc-code {
+  margin: 0;
+}
+.doc-pagination {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-block: 40px 0;
+}
+.doc-pagination a {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: var(--surface-raised);
+  overflow-wrap: anywhere;
+}
+.doc-pagination a:hover {
+  background: var(--surface-hover);
+}
+.doc-pagination small {
+  color: var(--text-muted);
+}
+.doc-pagination strong {
+  color: var(--accent-text);
+  font-weight: 640;
+}
+.doc-pagination .next {
+  grid-column: 2;
+  text-align: end;
+}
+::selection {
+  background: var(--accent-soft);
+  color: var(--text);
+}
 
-::selection,
-html.dark ::selection {
-  background: var(--accent);
-  color: var(--accent-contrast);
+@media (max-width: 1151px) {
+  .prose :is(h2, h3, h4)[id] {
+    scroll-margin-top: 75px;
+  }
+}
+@media (max-width: 520px) {
+  .prose {
+    font-size: 0.95rem;
+    line-height: 1.76;
+  }
+  .doc-pagination {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .doc-pagination .next {
+    grid-column: 1;
+  }
 }

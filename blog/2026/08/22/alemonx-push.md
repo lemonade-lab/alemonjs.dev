@@ -82,7 +82,7 @@ curl -fsSL https://raw.githubusercontent.com/lemonade-lab/alemonx/main/scripts/i
 
 下载得到的ZIP压缩包解压可得执行包，
 
-### Windows（手动安装）
+### Windows
 
 > 遇到权限问题可尝试超级管理员启动
 

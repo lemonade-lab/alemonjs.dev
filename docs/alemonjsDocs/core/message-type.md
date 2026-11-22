@@ -1,5 +1,6 @@
 ---
-label: '事件类型'
+title: 事件类型
+description: 查询标准事件名、公开与私域字段以及 QQ 原始事件。
 sidebar_position: 5
 ---
 

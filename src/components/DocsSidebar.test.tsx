@@ -42,7 +42,7 @@ describe('documentation navigation', () => {
     )
     const link = await screen.findByRole('link', { name: '路由匹配' })
     expect(link.getAttribute('data-active')).toBe('true')
-    await user.click(screen.getByRole('button', { name: '消息处理' }))
+    await user.click(screen.getByRole('button', { name: '事件与消息' }))
     await waitFor(() =>
       expect(screen.queryByRole('link', { name: '路由匹配' })).toBeNull()
     )

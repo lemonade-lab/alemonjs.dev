@@ -1,5 +1,6 @@
 ---
-label: '生命周期'
+title: 生命周期
+description: 在应用、事件和 HTTP 回调中初始化、观测和释放资源。
 sidebar_position: 6
 ---
 

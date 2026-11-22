@@ -1,5 +1,6 @@
 ---
-label: '模块加载'
+title: 模块加载
+description: 通过工作区依赖和 apps 加载模块，也可在运行时重载或卸载。
 sidebar_position: 7
 ---
 

@@ -13,6 +13,9 @@
     <loc>https://alemonjs.dev/docs/alemonjsDocs/advanced/media</loc>
   </url>
   <url>
+    <loc>https://alemonjs.dev/docs/alemonjsDocs/advanced/qq-messages</loc>
+  </url>
+  <url>
     <loc>https://alemonjs.dev/docs/alemonjsDocs/advanced/schedule</loc>
   </url>
   <url>
@@ -64,9 +67,6 @@
     <loc>https://alemonjs.dev/docs/alemonjsDocs/getting-started/quick-start</loc>
   </url>
   <url>
-    <loc>https://alemonjs.dev/docs/alemonjsDocs/getting-started/terminal-tools</loc>
-  </url>
-  <url>
     <loc>https://alemonjs.dev/docs/alemonjsDocs/http/route-mw</loc>
   </url>
   <url>
@@ -86,6 +86,12 @@
   </url>
   <url>
     <loc>https://alemonjs.dev/docs/alemonjsDocs/overview</loc>
+  </url>
+  <url>
+    <loc>https://alemonjs.dev/docs/alemonjsDocs/reference/cli</loc>
+  </url>
+  <url>
+    <loc>https://alemonjs.dev/docs/alemonx/deploy/docker</loc>
   </url>
   <url>
     <loc>https://alemonjs.dev/docs/alemonx/develop/build</loc>
@@ -124,7 +130,13 @@
     <loc>https://alemonjs.dev/docs/alemonx/use/plugins</loc>
   </url>
   <url>
+    <loc>https://alemonjs.dev/docs/alemonx/use/projects/configure</loc>
+  </url>
+  <url>
     <loc>https://alemonjs.dev/docs/alemonx/use/projects/create-or-import</loc>
+  </url>
+  <url>
+    <loc>https://alemonjs.dev/docs/alemonx/use/runtime/local-test</loc>
   </url>
   <url>
     <loc>https://alemonjs.dev/docs/alemonx/use/runtime/run-and-monitor</loc>

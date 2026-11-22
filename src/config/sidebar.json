@@ -22,7 +22,7 @@
         "collapsed": false,
         "items": [
           {
-            "title": "安装",
+            "title": "安装工作台",
             "path": "/docs/alemonx/getting-started/install",
             "position": 1
           },
@@ -45,19 +45,29 @@
             "position": 1
           },
           {
+            "title": "机器人配置",
+            "path": "/docs/alemonx/use/projects/configure",
+            "position": 2
+          },
+          {
             "title": "运行与日志",
             "path": "/docs/alemonx/use/runtime/run-and-monitor",
-            "position": 2
+            "position": 3
+          },
+          {
+            "title": "本地测试",
+            "path": "/docs/alemonx/use/runtime/local-test",
+            "position": 4
           },
           {
             "title": "Agent 任务",
             "path": "/docs/alemonx/use/agent/collaboration",
-            "position": 3
+            "position": 5
           },
           {
-            "title": "系统插件",
+            "title": "安装系统插件",
             "path": "/docs/alemonx/use/plugins",
-            "position": 4
+            "position": 6
           }
         ]
       },
@@ -78,16 +88,29 @@
             "position": 3
           },
           {
-            "title": "构建规范",
+            "title": "工作台构建入口与产物",
             "path": "/docs/alemonx/develop/build",
             "position": 5
           }
         ]
       },
       {
+        "id": "deploy",
+        "label": "服务部署",
+        "position": 4,
+        "collapsed": true,
+        "items": [
+          {
+            "title": "Docker 部署工作台",
+            "path": "/docs/alemonx/deploy/docker",
+            "position": 1
+          }
+        ]
+      },
+      {
         "id": "reference",
         "label": "参考",
-        "position": 4,
+        "position": 5,
         "collapsed": true,
         "items": [
           {
@@ -106,7 +129,7 @@
             "position": 3
           },
           {
-            "title": "插件配置",
+            "title": "系统插件清单",
             "path": "/docs/alemonx/reference/plugin-manifest",
             "position": 3
           }
@@ -147,11 +170,6 @@
             "position": 4
           },
           {
-            "title": "机器人命令行",
-            "path": "/docs/alemonjsDocs/getting-started/terminal-tools",
-            "position": 5
-          },
-          {
             "title": "连接平台",
             "path": "/docs/alemonjsDocs/getting-started/connect-platform",
             "position": 6
@@ -165,7 +183,7 @@
       },
       {
         "id": "core",
-        "label": "消息处理",
+        "label": "事件与消息",
         "position": 2,
         "collapsed": true,
         "items": [
@@ -205,7 +223,7 @@
             "position": 6
           },
           {
-            "title": "中间件",
+            "title": "事件中间件",
             "path": "/docs/alemonjsDocs/core/middleware",
             "position": 6
           },
@@ -223,12 +241,12 @@
         "collapsed": true,
         "items": [
           {
-            "title": "接口路由",
+            "title": "应用 HTTP 路由",
             "path": "/docs/alemonjsDocs/http/route",
             "position": 7
           },
           {
-            "title": "路由中间件",
+            "title": "HTTP 中间件",
             "path": "/docs/alemonjsDocs/http/route-mw",
             "position": 8
           }
@@ -264,7 +282,7 @@
       },
       {
         "id": "advanced",
-        "label": "配置与工具",
+        "label": "进阶开发",
         "position": 5,
         "collapsed": true,
         "items": [
@@ -297,6 +315,24 @@
             "title": "应用离线测试",
             "path": "/docs/alemonjsDocs/advanced/testing",
             "position": 11
+          },
+          {
+            "title": "QQ 消息与交互",
+            "path": "/docs/alemonjsDocs/advanced/qq-messages",
+            "position": 12
+          }
+        ]
+      },
+      {
+        "id": "reference",
+        "label": "参考",
+        "position": 6,
+        "collapsed": true,
+        "items": [
+          {
+            "title": "机器人命令行",
+            "path": "/docs/alemonjsDocs/reference/cli",
+            "position": 1
           }
         ]
       }
@@ -314,7 +350,7 @@
     "collapsed": true,
     "items": [
       {
-        "title": "常见问题",
+        "title": "问题排查",
         "path": "/docs/help/overview",
         "position": 0
       },

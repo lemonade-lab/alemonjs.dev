@@ -18,7 +18,7 @@ export default function BlogMeta() {
   }
 
   return (
-    <div className="not-prose mb-8 pb-8 border-b border-gray-200 dark:border-gray-700">
+    <div className="not-prose mb-9">
       <Link
         to={project === 'framework' ? '/blog' : '/blog?project=workbench'}
         className="mb-3 inline-block text-sm text-[var(--text-muted)] hover:underline"
@@ -26,12 +26,12 @@ export default function BlogMeta() {
         {blogProjectNames[project]}
       </Link>
       {/* 标题 */}
-      <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+      <h1 className="text-3xl sm:text-4xl font-bold text-[var(--text)] mb-4">
         {post.title}
       </h1>
 
       {/* 日期和标签 */}
-      <div className="flex flex-wrap items-center gap-3 text-sm text-gray-600 dark:text-gray-400 mb-6">
+      <div className="flex flex-wrap items-center gap-3 text-sm text-[var(--text-muted)] mb-6">
         <time dateTime={post.date} className="flex items-center">
           <svg
             className="w-4 h-4 mr-1"
@@ -58,7 +58,7 @@ export default function BlogMeta() {
             {post.tags.map(tag => (
               <span
                 key={tag}
-                className="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-md text-xs font-medium"
+                className="px-2 py-1 bg-[var(--accent-soft)] text-[var(--accent-text)] rounded-md text-xs font-medium"
               >
                 #{tag}
               </span>
@@ -69,7 +69,7 @@ export default function BlogMeta() {
 
       {/* 描述 */}
       {post.description && (
-        <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
+        <p className="text-lg text-[var(--text-muted)] mb-6">
           {post.description}
         </p>
       )}

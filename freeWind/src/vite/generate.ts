@@ -496,7 +496,8 @@ function validateRoutes(entries: RouteManifestEntry[]) {
 
 function validateInternalLinks(
   routes: DocRoute[],
-  entries: RouteManifestEntry[]
+  entries: RouteManifestEntry[],
+  publicDir: string
 ) {
   const knownPaths = new Set(entries.map(entry => entry.path))
   knownPaths.add('/')
@@ -517,9 +518,13 @@ function validateInternalLinks(
 
     for (const match of route.content.matchAll(linkPattern)) {
       const target = match[1].split(/[?#]/)[0]
-      if (!knownPaths.has(target)) {
-        problems.push(`${route.filePath} -> ${target}`)
-      }
+      if (knownPaths.has(target)) continue
+
+      const publicFile = path.resolve(publicDir, `.${target}`)
+      const isPublicFile =
+        publicFile.startsWith(publicDir + path.sep) &&
+        fs.statSync(publicFile, { throwIfNoEntry: false })?.isFile()
+      if (!isPublicFile) problems.push(`${route.filePath} -> ${target}`)
     }
   })
 
@@ -805,6 +810,7 @@ function main() {
   const docsDir = path.join(rootDir, 'docs')
   const blogDir = path.join(rootDir, 'blog')
   const srcDir = path.join(rootDir, 'src')
+  const publicDir = path.join(rootDir, 'public')
 
   console.log('🔍 扫描文档和博客...')
 
@@ -816,7 +822,11 @@ function main() {
 
   const routeManifest = generateRouteManifest(docsRoutes, blogRoutes)
   validateRoutes(routeManifest)
-  validateInternalLinks([...docsRoutes, ...blogRoutes], routeManifest)
+  validateInternalLinks(
+    [...docsRoutes, ...blogRoutes],
+    routeManifest,
+    publicDir
+  )
   fs.mkdirSync(path.join(srcDir, 'config'), { recursive: true })
   fs.writeFileSync(
     path.join(srcDir, 'config', 'route-manifest.json'),
@@ -825,7 +835,6 @@ function main() {
   )
   console.log('✅ 路由 Manifest 已生成: src/config/route-manifest.json')
 
-  const publicDir = path.join(rootDir, 'public')
   fs.mkdirSync(publicDir, { recursive: true })
   fs.writeFileSync(
     path.join(publicDir, 'sitemap.xml'),

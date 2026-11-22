@@ -26,7 +26,7 @@ export default function BlogList() {
         {posts.map(post => (
           <article
             key={post.path}
-            className="rounded-xl border border-[var(--line)] bg-[var(--surface)] p-5 sm:p-6"
+            className="rounded-xl bg-[var(--surface-raised)] p-5 sm:p-6"
           >
             <h3 className="text-xl font-semibold text-[var(--text)]">
               <Link to={post.path} className="hover:underline">
@@ -47,7 +47,7 @@ export default function BlogList() {
           </article>
         ))}
       </div>
-      <footer className="mt-10 border-t border-[var(--line)] pt-5 text-sm">
+      <footer className="mt-10 text-sm">
         <Link
           to={project === 'framework' ? '/blog?project=workbench' : '/blog'}
           className="text-[var(--text-muted)] hover:underline"

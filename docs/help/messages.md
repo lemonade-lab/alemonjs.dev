@@ -6,24 +6,13 @@ sidebar_position: 2
 
 # 消息排查
 
-## 1. 平台是否连接
+按 **连接 → 入站 → 路由 → 出站** 的顺序检查。用一条已知指令复现，记下发送时间。
 
-查看适配器的连接和登录日志。核对平台要求的凭据、地址、端口与项目实际配置，见 [连接平台](/docs/alemonjsDocs/getting-started/connect-platform)。不要仅凭机器人进程存在判断账号已登录。
+| 卡在哪一步                   | 先看什么                                                                                                                                                                      |
+| ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 平台连不上                   | 查看适配器的登录日志，核对凭据、地址和端口。[连接平台](/docs/alemonjsDocs/getting-started/connect-platform)                                                                   |
+| 平台已连接，框架没收到消息   | 查入站日志，核对实际事件类型和订阅范围。[事件类型](/docs/alemonjsDocs/core/message-type)                                                                                      |
+| 框架收到了，处理器没执行     | 检查应用是否注册 `responseRouter`、中间件是否放行、指令前缀和 `selects` 是否匹配。[路由匹配](/docs/alemonjsDocs/core/router) · [路由 DSL](/docs/alemonjsDocs/core/router-sdl) |
+| 处理器执行了，会话没收到回复 | 查发送结果，先用纯文本复测；图片或 Markdown 失败时再检查平台能力。[消息格式](/docs/alemonjsDocs/core/data-type)                                                               |
 
-## 2. 消息是否进入框架
-
-发送一条已知指令，检查入站事件。没有事件时先排查平台连接；有事件时核对事件类型与处理规则的 `selects`，见 [事件类型](/docs/alemonjsDocs/core/message-type)。
-
-## 3. 路由是否命中
-
-检查输入文本、前缀、正则以及加载的路由文件。使用路由 DSL 时，内部 key 与输入前缀分别配置，见 [路由 DSL](/docs/alemonjsDocs/core/router-sdl)。
-
-同时检查前置中间件是否终止了分发，以及应用入口是否返回了 `responseRouter`。定位时可先使用 [编写指令](/docs/alemonjsDocs/getting-started/quick-start) 的简单指令缩小范围。
-
-## 4. 是否发送成功
-
-响应已执行但平台没有收到消息时，查看发送操作的错误。先尝试普通文本，再检查图片、Markdown 或交互消息的格式与平台支持情况，见 [Hooks](/docs/alemonjsDocs/core/hook)。
-
-## 记录验证结果
-
-记录测试消息、触发时间、对应入站日志、响应是否执行以及发送结果。反馈时附上版本与复现步骤，见 [常见问题](/docs/help/overview)。
+需要反馈时，附上对应的入站、路由和发送日志。[反馈信息清单](/docs/help/overview#反馈问题前准备什么)

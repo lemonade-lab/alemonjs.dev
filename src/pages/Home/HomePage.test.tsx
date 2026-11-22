@@ -21,12 +21,12 @@ describe('HomePage', () => {
         .getAttribute('aria-selected')
     ).toBe('true')
 
-    await user.click(screen.getByRole('tab', { name: '查看 ALemonJS TestOne' }))
+    await user.click(screen.getByRole('tab', { name: '查看 ALemonJS' }))
 
-    expect(screen.getByText('ALemonJS TestOne')).toBeTruthy()
+    expect(screen.getByText('ALemonJS')).toBeTruthy()
     expect(
       screen
-        .getByRole('tab', { name: '查看 ALemonJS TestOne' })
+        .getByRole('tab', { name: '查看 ALemonJS' })
         .getAttribute('aria-selected')
     ).toBe('true')
   })

@@ -1,9 +1,10 @@
 ---
-label: '中间件'
+title: 事件中间件
+description: 为事件配置路由分组中间件和全局中间件。
 sidebar_position: 6
 ---
 
-# 中间件
+# 事件中间件
 
 :::info
 

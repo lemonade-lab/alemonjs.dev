@@ -65,6 +65,4 @@ export default defineChildren({
 
 ## 5. 验证与排错
 
-依次确认：启动入口加载了应用、应用注册了路由、消息进入框架、输入匹配 `/hello`、发送操作成功。前置中间件若终止了分发，响应不会被执行，见 [事件处理](/docs/alemonjsDocs/core/response)。
-
-仍然没有回复时，按 [消息排查](/docs/help/messages) 检查。成功后使用 [开发概览](/docs/alemonjsDocs/overview) 选择下一个主题。
+没有收到 `Hello!` 时按[消息排查](/docs/help/messages)检查。

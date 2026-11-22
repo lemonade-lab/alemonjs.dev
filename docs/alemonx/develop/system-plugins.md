@@ -6,7 +6,7 @@ sidebar_position: 1
 
 # 系统插件开发
 
-系统插件是运行在工作台中的扩展单元，用于为工作台增加全局的本机管理能力，例如网络检查、防火墙管理、Docker 管理、系统服务控制和硬件信息展示。
+系统插件可为工作台提供静态面板，并通过可选执行器处理本机操作。
 
 ## 运行模型
 
@@ -165,15 +165,7 @@ running → completed / failed
 
 ## 配置字段
 
-| 字段                   | 作用                                     |
-| ---------------------- | ---------------------------------------- |
-| `web`                  | 声明系统面板静态页面                     |
-| `services`             | 声明需要由宿主代理的本地回环服务         |
-| `statusActions`        | 声明无参数、只读、适合快速轮询的动作     |
-| `uploads`              | 声明浏览器上传文件和大小上限             |
-| `media`                | 声明由执行器生成的二维码、截图等媒体数据 |
-| `privilegedOperations` | 声明需要管理员授权的动作                 |
-| `development`          | 声明源码开发会话中的 runner、前端和服务  |
+可选能力和字段约束见[系统插件清单](/docs/alemonx/reference/plugin-manifest)。
 
 清单只是能力白名单，不是业务逻辑。动作名称和参数仍必须在执行器中自行校验，不能因为宿主接受了 `action` 就直接执行任意命令。
 
@@ -311,6 +303,6 @@ POST /api/v1/setup/plugins/<id>/upload
 
 ## 相关文档
 
-- [插件配置](/docs/alemonx/reference/plugin-manifest)
+- [系统插件清单](/docs/alemonx/reference/plugin-manifest)
 - [机器人应用页](/docs/alemonx/develop/webview)
 - [源码项目开发文档](https://github.com/lemonade-lab/alemonx/blob/main/docs/plugin-development.md)

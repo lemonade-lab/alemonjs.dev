@@ -38,11 +38,11 @@ window.__alxWebview.onMessage(listener)
 window.__alxWebview.request('./api/example', options)
 ```
 
-`request` 只接受 `./api/` 路径。页面打开时不会启动机器人；调用机器人 API 前处理机器人未运行的状态。
+`request` 只接受 `./api/` 路径。
 
 ## 页面生命周期
 
-机器人应用页是静态前端，不负责启动机器人进程。页面应该：
+页面加载和卸载时按以下顺序处理：
 
 1. 加载时读取 `window.__alxWebview.context`；
 2. 在请求前检查机器人是否运行；

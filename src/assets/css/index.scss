@@ -3,33 +3,49 @@
 @tailwind utilities;
 @import url('animate.css');
 @import './docs.css';
+@import './site-frame.css';
 
 :root {
-  --canvas: #f7f7f5;
-  --surface: #ffffff;
-  --surface-muted: #ecece8;
-  --text: #171716;
-  --text-muted: #686863;
-  --line: #deded8;
-  --accent: #171716;
-  --accent-contrast: #ffffff;
-  --code-surface: #efefeb;
+  --canvas: #f3f1ec;
+  --surface: #fcfaf7;
+  --surface-raised: #efebe3;
+  --surface-rail: #e5dfd4;
+  --surface-muted: #f1ede5;
+  --surface-hover: #e5dfd3;
+  --surface-input: #eae5db;
+  --text: #302a22;
+  --text-muted: #665e51;
+  --line: transparent;
+  --accent: #8e4b13;
+  --accent-hover: #74380d;
+  --accent-text: #784110;
+  --accent-soft: #ead6bf;
+  --accent-contrast: #fff;
+  --code-surface: #efebe3;
+  --overlay: rgb(30 26 20 / 0.38);
 }
 
 html.dark {
-  --canvas: #0d0d0d;
-  --surface: #171717;
-  --surface-muted: #232323;
-  --text: #f2f2ee;
-  --text-muted: #a6a6a0;
-  --line: #30302d;
-  --accent: #f2f2ee;
-  --accent-contrast: #171716;
-  --code-surface: #1c1c1c;
+  --canvas: #1b1916;
+  --surface: #211e19;
+  --surface-raised: #2b2720;
+  --surface-rail: #312b23;
+  --surface-muted: #29251e;
+  --surface-hover: #40382c;
+  --surface-input: #373128;
+  --text: #e6ddd0;
+  --text-muted: #b4a795;
+  --accent: #edb77e;
+  --accent-hover: #f3c595;
+  --accent-text: #f3c595;
+  --accent-soft: #463325;
+  --accent-contrast: #2d2015;
+  --code-surface: #15130f;
+  --overlay: rgb(0 0 0 / 0.55);
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   color-scheme: light;
 }
 
@@ -39,14 +55,10 @@ html.dark {
 
 html,
 body {
-  overflow: auto;
   margin: 0;
   padding: 0;
   width: 100%;
   min-height: 100vh;
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
   background: var(--canvas);
   color: var(--text);
 }
@@ -57,9 +69,6 @@ body {
   padding: 0;
   width: 100%;
   min-height: 100vh;
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
 }
 
 .ant-app {
@@ -68,9 +77,12 @@ body {
   padding: 0;
   width: 100%;
   min-height: 100vh;
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
+  color: var(--text);
+}
+
+:where(.site-frame, .site-search) :is(input, textarea)::placeholder {
+  color: var(--text-muted);
+  opacity: 1;
 }
 
 /* 自定义滚动条 */
@@ -89,21 +101,21 @@ html.dark ::-webkit-scrollbar-track {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #9a9a94;
+  background: #b5a999;
   border-radius: 4px;
   transition: background 0.3s ease;
 }
 
 html.dark ::-webkit-scrollbar-thumb {
-  background: #4a4a46;
+  background: #605447;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #73736e;
+  background: #8f8170;
 }
 
 html.dark ::-webkit-scrollbar-thumb:hover {
-  background: #696964;
+  background: #827160;
 }
 
 /* 平滑动画 */

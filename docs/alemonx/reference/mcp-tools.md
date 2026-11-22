@@ -6,37 +6,37 @@ sidebar_position: 3
 
 # MCP 工具
 
-本页是 MCP 工具索引。工具通过 stdio 或 Streamable HTTP 提供，返回文本结果和 `structuredContent`；以结构化字段为准，不要解析人类可读文本来判断状态。
+下表列出常用工具。通过 `tools/list` 获取当前服务的完整工具和参数，用 `structuredContent` 读取结构化结果。
 
 ## 调用约定
 
 - 修改、安装、启动、停止、构建和发布类工具必须传 `confirm: true`。
 - 先调用只读检查工具，再调用变更工具；发布前必须先执行对应的 preview/status。
-- 长操作返回任务 ID，使用 `alemonjs_get_project_task` 查询到 `completed` 或 `failed`。
+- 收到任务 ID 时，用 `alemonjs_get_project_task` 查询进度和结果。
 - 项目路径必须包含 `package.json`，并且受 `MCP_ALLOWED_ROOTS` 限制时必须位于允许根目录内。
 
 ## 工具目录
 
 ### 上下文与生态信息
 
-| 工具                                  | 用途                                                |
-| ------------------------------------- | --------------------------------------------------- |
-| `resources/list` / `resources/read`   | 读取 `alemonjs://mcp/capabilities` 和服务能力说明。 |
-| `alemonjs_theme`                      | 查询工作台主题或主题相关能力。                      |
-| `alemonjs_list_catalog`               | 列出官方生态目录。                                  |
-| `alemonjs_get_catalog_document`       | 读取目录中的文档。                                  |
-| `alemonjs_get_catalog_package_config` | 获取目录包配置。                                    |
-| `alemonjs_list_releases`              | 查询工作台或生态版本发布信息。                      |
+| 工具                                                  | 用途                                                |
+| ----------------------------------------------------- | --------------------------------------------------- |
+| `resources/list` / `resources/read`                   | 读取 `alemonjs://mcp/capabilities` 和服务能力说明。 |
+| `alemonjs_search_resources` / `alemonjs_get_resource` | 按关键词查找资源，按 ID 读取安装说明。              |
+| `alemonjs_list_catalog`                               | 列出官方生态目录。                                  |
+| `alemonjs_get_catalog_document`                       | 读取目录中的文档。                                  |
+| `alemonjs_get_catalog_package_config`                 | 获取目录包配置。                                    |
+| `alemonjs_list_releases`                              | 查询工作台或生态版本发布信息。                      |
 
 ### 环境与项目检查
 
-| 工具                           | 关键参数         | 用途                                     |
-| ------------------------------ | ---------------- | ---------------------------------------- |
-| `alemonjs_check_environment`   | 可选项目根目录   | 检查 Node.js、Git、包管理器等。          |
-| `alemonjs_project_status`      | `root`           | 汇总项目依赖、脚本、运行状态。           |
-| `alemonjs_list_project_files`  | `root`、可选路径 | 列出允许读取的项目文件。                 |
-| `alemonjs_read_project_file`   | `root`、`path`   | 读取单个文件；受敏感文件和大小限制保护。 |
-| `alemonjs_list_local_packages` | `root`           | 查询本地可用包与受管工具。               |
+| 工具                           | 关键参数                 | 用途                                     |
+| ------------------------------ | ------------------------ | ---------------------------------------- |
+| `alemonjs_check_environment`   | `goalId`、可选 `variant` | 检查指定安装或开发目标所需的工具。       |
+| `alemonjs_project_status`      | `root`                   | 汇总项目依赖、脚本、运行状态。           |
+| `alemonjs_list_project_files`  | `root`、可选路径         | 列出允许读取的项目文件。                 |
+| `alemonjs_read_project_file`   | `root`、`path`           | 读取单个文件；受敏感文件和大小限制保护。 |
+| `alemonjs_list_local_packages` | `root`                   | 查询本地可用包与受管工具。               |
 
 ### 项目与配置
 

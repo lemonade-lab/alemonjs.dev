@@ -1,5 +1,6 @@
 ---
-label: '定时任务'
+title: 定时任务
+description: 用框架计时器调度、暂停和取消任务，并了解插件卸载时的清理行为。
 sidebar_position: 10
 ---
 

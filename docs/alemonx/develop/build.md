@@ -1,12 +1,12 @@
 ---
-title: 构建规范
+title: 工作台构建入口与产物
 description: 配置机器人构建入口、产物路径和嵌套前端项目。
 sidebar_position: 5
 ---
 
-# 构建规范
+# 工作台构建入口与产物
 
-工作台发布机器人前会在隔离的 Git worktree 中执行构建。构建配置的目标是生成可以被工作台运行和发布的入口文件，而不是把所有源码强行打包成单个文件。
+工作台发布项目时在隔离的 Git worktree 中构建。
 
 ## 构建入口优先级
 
@@ -31,7 +31,6 @@ npx lvy build
     "start": "node lib/index.js"
   },
   "alemonjs": {
-    # 对应 scripts.bundle，可改为scripts中的其他脚本
     "build": "bundle"
   }
 }

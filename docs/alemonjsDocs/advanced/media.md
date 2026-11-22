@@ -53,6 +53,6 @@ if (uploaded.code === ResultCode.Ok) {
 
 对发送返回的每条结果检查 `code` 与 `media?.stage`。`stage: 'prepare'` 表示素材准备失败，此时框架会停止发送该消息。`stage: 'send'` 表示进入发送阶段。无结构化资源的旧消息结果仍可直接按 `code` 检查。
 
-一次消息可能包含多张图。即使其中一张准备失败，已准备好的资源仍会出现在 `media.resources`。排除问题后，可将符合当前用途和机器人的资源放回原来的图片位置。发送阶段失败时也可复用返回的资源。是否重试消息由应用决定，以避免重复投递。
+排除问题后，可复用 `media.resources` 中已准备成功、归属和用途匹配的素材。是否重发由应用决定，避免重复投递。
 
 QQ Markdown 素材归当前机器人，可在事件外用 `useMedia({ Platform: 'qq-bot', BotId: 'YOUR_APP_ID' })` 管理。普通图片资源需要实际消息目标。平台配额、素材过期和外部删除都可能导致发送失败。检查 `media.capabilities()` 了解平台的大小、数量和管理操作支持。

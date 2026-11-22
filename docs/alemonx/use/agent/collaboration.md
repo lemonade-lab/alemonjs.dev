@@ -1,33 +1,23 @@
 ---
 title: Agent 任务
-description: 描述任务目标、检查计划，并根据报告验证项目修改。
-sidebar_position: 3
+description: 在桌面版打开项目的 DSH 工作区，设置访问权限并发送任务。
+sidebar_position: 5
 ---
 
 # Agent 任务
 
-通过 Agent 任务检查问题、修复代码或添加功能。使用前先在项目页核对目录，明确此次允许修改的范围。
+首次使用 DSH 时，按界面提示配置 DeepSeek API Key。
 
-## 描述目标
+## 打开项目工作区
 
-写清楚触发步骤、当前结果、期望结果以及需要保留的行为。例如：
+点机器人列表里项目右侧的 **在 DSH 中打开**（鲸鱼图标）。DSH 会显示该项目的工作区。
 
-> 检查帮助指令为什么没有回复。先定位路由和响应文件，只修复该指令，保留其他指令行为，并说明如何验证。
+[![hello-demo 项目行右侧的鲸鱼图标](/images/alemonx-desktop-guide/agent-entry.webp)](/images/alemonx-desktop-guide/agent-entry.webp)
 
-涉及报错时附上版本与相关日志，配置中的密钥应先去除。
+## 发送任务
 
-## 阅读计划并执行
+在输入框写明要检查的内容。只需分析时，点访问模式选 **仅可查看**，再点 **发送消息**。任务会出现在会话中。
 
-创建任务后阅读计划，检查目标文件与修改范围，再按工作台要求批准写入操作。任务执行期间查看事件和输出，遇到缺失配置或环境问题时，根据报告补齐条件。
+[![DSH 输入框内是检查 hello 指令的示例任务，下方显示仅可查看与发送按钮](/images/alemonx-desktop-guide/agent-draft.webp)](/images/alemonx-desktop-guide/agent-draft.webp)
 
-## 验证结果
-
-任务结束后打开报告，核对修改内容、验证输出和未完成事项。构建成功只能说明构建检查通过；机器人行为仍需按目标场景发送消息验证。
-
-报告中未执行的测试，需要补齐环境后再验证。
-
-## 相关文档
-
-- [运行与日志](/docs/alemonx/use/runtime/run-and-monitor)：手动验证项目。
-- [MCP 配置](/docs/alemonx/reference/mcp)：从本机 AI 客户端调用工作台能力。
-- [MCP 工具](/docs/alemonx/reference/mcp-tools)：查阅工具分组与调用约定。
+看到 `MISSING_CREDENTIAL` 时，先配置所选模型的 API Key，再重发。

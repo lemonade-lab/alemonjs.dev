@@ -1,13 +1,13 @@
-import { useEffect, useRef, useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 
-interface TocItem {
+interface Heading {
   id: string
   text: string
   level: number
 }
 
-function slugify(text = '') {
+function slugify(text: string) {
   return text
     .toLowerCase()
     .trim()
@@ -15,126 +15,111 @@ function slugify(text = '') {
     .replace(/^-+|-+$/g, '')
 }
 
-export default function PageToc() {
-  const location = useLocation()
-  const [items, setItems] = useState<TocItem[]>([])
+export default function PageToc({ onNavigate }: { onNavigate?: () => void }) {
+  const { pathname, search } = useLocation()
+  const [items, setItems] = useState<Heading[]>([])
   const [activeId, setActiveId] = useState('')
-  const navRef = useRef<HTMLElement | null>(null)
+  const nav = useRef<HTMLElement>(null)
 
   useEffect(() => {
     const container = document.getElementById('doc-content')
     if (!container) return
 
     const build = () => {
-      const nodes = container.querySelectorAll('h1,h2,h3,h4')
-      const next: TocItem[] = []
-      const usedIds = new Map<string, number>()
-
-      nodes.forEach((node, index) => {
-        const el = node as HTMLElement
-        const text = el.innerText || el.textContent || ''
-        const baseId = el.id || slugify(text) || `heading-${index + 1}`
-        const occurrence = (usedIds.get(baseId) || 0) + 1
-        usedIds.set(baseId, occurrence)
-        const id = occurrence === 1 ? baseId : `${baseId}-${occurrence}`
-
-        // Markdown can contain同名标题。确保每个标题都有唯一锚点，
-        // 否则目录链接和滚动高亮会指向同一个元素。
-        if (el.id !== id) el.id = id
-
-        const level = Number(el.tagName.replace('H', '')) || 1
-        next.push({ id, text: text.trim(), level })
+      const used = new Set<string>()
+      const headings = [
+        ...container.querySelectorAll<HTMLHeadingElement>('h2,h3,h4')
+      ].map((heading, index) => {
+        const text = (heading.textContent ?? '').trim()
+        const base = heading.id || slugify(text) || `heading-${index + 1}`
+        let id = base
+        for (let suffix = 2; used.has(id); suffix += 1) id = `${base}-${suffix}`
+        used.add(id)
+        heading.id = id
+        return { id, text, level: Number(heading.tagName.slice(1)) }
       })
-      setItems(next)
+      setItems(headings)
     }
 
-    // 路由切换时先清空旧页面的目录，避免 Suspense 切换期间残留旧标题。
-    setItems([])
-    const frameId = window.requestAnimationFrame(build)
-
-    const mo = new MutationObserver(build)
-    mo.observe(container, { childList: true, subtree: true })
-    return () => {
-      window.cancelAnimationFrame(frameId)
-      mo.disconnect()
-    }
-  }, [location.pathname])
+    build()
+    const observer = new MutationObserver(build)
+    observer.observe(container, { childList: true, subtree: true })
+    return () => observer.disconnect()
+  }, [pathname])
 
   useEffect(() => {
     if (!items.length) return
-
-    const updateActiveHeading = () => {
-      const headings = items
-        .map(item => document.getElementById(item.id))
-        .filter(Boolean) as HTMLElement[]
-
-      if (!headings.length) return
-
-      const offsetTop = 120
-      let current = headings[0]
-
-      for (const heading of headings) {
-        if (heading.getBoundingClientRect().top <= offsetTop) {
-          current = heading
-        } else {
-          break
-        }
+    let frame = 0
+    const update = () => {
+      const offset =
+        (document.querySelector('.site-compact-header')?.getBoundingClientRect()
+          .height ?? 0) + 54
+      const atEnd =
+        window.scrollY > 0 &&
+        window.innerHeight + window.scrollY >=
+          document.documentElement.scrollHeight - 2
+      let current = items[0].id
+      for (const item of items) {
+        if (
+          (document.getElementById(item.id)?.getBoundingClientRect().top ??
+            Infinity) <= offset ||
+          atEnd
+        )
+          current = item.id
+        else break
       }
-
-      setActiveId(current.id)
+      setActiveId(current)
     }
-
-    updateActiveHeading()
-    window.addEventListener('scroll', updateActiveHeading, { passive: true })
-    window.addEventListener('resize', updateActiveHeading)
-
+    const schedule = () => {
+      window.cancelAnimationFrame(frame)
+      frame = window.requestAnimationFrame(update)
+    }
+    update()
+    window.addEventListener('scroll', schedule, { passive: true })
+    window.addEventListener('resize', schedule)
     return () => {
-      window.removeEventListener('scroll', updateActiveHeading)
-      window.removeEventListener('resize', updateActiveHeading)
+      window.cancelAnimationFrame(frame)
+      window.removeEventListener('scroll', schedule)
+      window.removeEventListener('resize', schedule)
     }
   }, [items])
 
-  useEffect(() => {
-    const activeLink = navRef.current?.querySelector(
-      '[data-active="true"]'
-    ) as HTMLElement | null
-
-    activeLink?.scrollIntoView({
-      block: 'center',
-      inline: 'nearest',
-      behavior: 'smooth'
-    })
+  useLayoutEffect(() => {
+    const root = nav.current
+    const item = root?.querySelector('[aria-current="location"]')
+    if (!root || !item || root.scrollHeight <= root.clientHeight) return
+    const row = item.getBoundingClientRect()
+    const box = root.getBoundingClientRect()
+    if (row.top < box.top || row.bottom > box.bottom)
+      root.scrollTop += row.top - box.top - box.height / 3
   }, [activeId])
 
-  if (!items.length) return null
-
   return (
-    <nav ref={navRef} className="toc hidden xl:block px-4 py-6">
-      <ul className="space-y-1">
-        {items.map(item => {
-          const isActive = item.id === activeId
-
-          return (
-            <li key={item.id}>
-              <a
-                href={`#${item.id}`}
-                onClick={e => {
-                  e.preventDefault()
-                  const el = document.getElementById(item.id)
-                  if (el)
-                    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    <nav className="site-toc" aria-label="本页目录" ref={nav}>
+      {items.length > 0 && !onNavigate && (
+        <p className="site-toc-title">本页目录</p>
+      )}
+      {items.length > 0 ? (
+        <ul>
+          {items.map(item => (
+            <li key={item.id} data-level={item.level}>
+              <Link
+                to={{
+                  pathname,
+                  search,
+                  hash: `#${encodeURIComponent(item.id)}`
                 }}
-                data-active={isActive}
-                aria-current={isActive ? 'location' : undefined}
-                className={`toc-link block text-sm ${isActive ? 'toc-link-active' : ''}`}
-                style={{ paddingLeft: `${(item.level - 1) * 12}px` }}
+                aria-current={item.id === activeId ? 'location' : undefined}
+                onClick={onNavigate}
               >
                 {item.text}
-              </a>
+              </Link>
             </li>
-          )
-        })}
-      </ul>
+          ))}
+        </ul>
+      ) : onNavigate ? (
+        <p className="site-toc-empty">本页无分节标题</p>
+      ) : null}
     </nav>
   )
 }

@@ -1,23 +1,20 @@
 ---
 sidebar_position: 4
 show_giscus: 1
-label: '运行配置'
+title: 运行配置
+description: 配置机器人入口、平台、端口、消息过滤、应用加载和 CBP。
 ---
 
 # 运行配置
 
-:::info
-
-配置的每个字段都是可选的，需要什么就补什么，不需要则忽视
-
-:::
+桌面操作见[机器人配置](/docs/alemonx/use/projects/configure)。按运行方式填写所需字段。Bot 平台配置用 `login` 选择适配器，`port` 用于 CBP，`serverPort` 用于应用 HTTP 服务。
 
 ### 基础配置
 
 ```yaml title="alemon.config.yaml"
 # === 服务器配置 ===
 port: 17117 # CBP服务器端口 （可选，仅需要外部交互时设置），快捷参数 --port 17117
-serverPort: 18110 # 应用服务器端口（可选，仅需要启动http服务时设置），快捷参数 --serverPort 17117
+serverPort: 18110 # 应用服务器端口（可选，仅需要启动http服务时设置），快捷参数 --serverPort 18110
 autoPort: false # 当端口冲突时，是否自增(可选，默认不自增)
 
 # === 应用配置 ===

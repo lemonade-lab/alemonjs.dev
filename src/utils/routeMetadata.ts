@@ -19,7 +19,6 @@ export function getRouteMetadata(pathname: string): RouteMetadata {
   const title =
     entry?.title ||
     entry?.metadata?.title ||
-    entry?.metadata?.label ||
     (pathname === '/blog' ? '博客' : siteTitle)
   const description =
     entry?.description ||

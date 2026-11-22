@@ -8,7 +8,7 @@ sidebar_position: 11
 
 `alemonjs/testing` 从 AlemonJS 2.1.112 起提供离线测试实例，可执行真实路由、Hook 和消息构造。平台动作由测试实例接管，因此无需启动机器人或准备平台账号。数据库和业务 HTTP 请求应由项目自行替换或注入测试依赖。
 
-安装 `tsx` 后可用 Node.js 22 的内置测试工具执行 TypeScript 测试。
+想在桌面聊天窗口手动发送指令，见[本地测试](/docs/alemonx/use/runtime/local-test)。安装 `tsx` 后可用 Node.js 22 的内置测试工具执行 TypeScript 测试。
 
 ```sh
 yarn add -D tsx
