@@ -9,7 +9,7 @@ export default defineConfig({
     navbar: {
       logo: {
         alt: 'ALemonX Logo',
-        src: 'me.png'
+        src: '/alemonx-logo.png'
       },
       title: 'ALemonX',
       items: [

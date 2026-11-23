@@ -5,7 +5,7 @@ export default function HeaderPage() {
   return (
     <header className="home-hero">
       <div className="home-hero-copy">
-        <h1>ALemonX 文档</h1>
+        <h1>ALemonX</h1>
         <p>
           从创建机器人到运行、扩展和维护，查阅 ALemonX 工作台与 ALemonJS
           框架的使用指南。

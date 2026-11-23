@@ -52,7 +52,13 @@ export default defineConfig({
       injectRegister: false,
       registerType: 'prompt',
       outDir: outDir,
-      includeAssets: ['icon.ico', 'pwa-192x192.png', 'pwa-512x512.png'],
+      includeAssets: [
+        'icon.ico',
+        'alemonx-logo.png',
+        'pwa-192x192.png',
+        'pwa-512x512.png',
+        'maskable-512x512.png'
+      ],
       manifest: {
         name: 'ALemonX',
         short_name: 'ALemonX',

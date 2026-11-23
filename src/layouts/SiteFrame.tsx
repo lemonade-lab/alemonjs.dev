@@ -47,7 +47,11 @@ function SiteRail({ openSearch }: { openSearch: () => void }) {
         aria-label={`${navbar.title} 首页`}
         title={`${navbar.title} 首页`}
       >
-        X
+        {navbar.logo ? (
+          <img src={navbar.logo.src} alt="" width={38} height={38} />
+        ) : (
+          'X'
+        )}
       </Link>
       <nav className="site-rail-links" aria-label="站点导航">
         {navbar.items.map(item => {
@@ -185,7 +189,7 @@ export default function SiteFrame({
   const { pathname, hash, key } = useLocation()
   const [drawer, setDrawer] = useState<'navigation' | 'toc' | null>(null)
   const [searchOpen, setSearchOpen] = useState(false)
-  const siteTitle = config.themeConfig.navbar.title
+  const { title: siteTitle, logo } = config.themeConfig.navbar
   const closeDrawer = () => setDrawer(null)
   const openSearch = () => {
     setDrawer(null)
@@ -278,6 +282,7 @@ export default function SiteFrame({
           <SiteIcon name="menu" />
         </button>
         <Link to="/" className="site-compact-brand">
+          {logo && <img src={logo.src} alt="" width={26} height={26} />}
           {siteTitle}
         </Link>
         <div className="site-compact-actions">

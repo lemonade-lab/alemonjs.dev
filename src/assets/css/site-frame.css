@@ -51,8 +51,7 @@
   height: 38px;
   margin: 0 auto 7px;
   border-radius: 10px;
-  background: var(--accent);
-  color: var(--accent-contrast);
+  color: var(--accent-text);
   font-size: 19px;
   font-weight: 780;
 }
@@ -405,6 +404,9 @@
     display: none;
   }
   .site-compact-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
     font-weight: 720;
     padding-inline-start: 5px;
   }
