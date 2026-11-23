@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="/icon.ico" />
+    <link rel="apple-touch-icon" href="/pwa-192x192.png" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="ALemonX 更新"
+      href="/rss.xml"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#f3f1ec" />
+    <script>
+      ;(() => {
+        let saved
+        try {
+          saved = localStorage.getItem('theme')
+        } catch {}
+        const dark =
+          saved === 'dark' ||
+          (saved !== 'light' &&
+            matchMedia('(prefers-color-scheme: dark)').matches)
+        document.documentElement.classList.add(dark ? 'dark' : 'light')
+        document.querySelector('meta[name="theme-color"]').content = dark
+          ? '#1b1916'
+          : '#f3f1ec'
+      })()
+    </script>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta
+      name="description"
+      content="使用 ALemonX 创建或导入项目，运行命令，管理进程，并批准 Agent 任务。"
+    />
+    <meta property="og:title" content="ALemonX · 创建、运行和管理项目" />
+    <meta
+      property="og:description"
+      content="导入代码库，运行命令，查看日志，创建并批准 Agent 任务。"
+    />
+    <meta property="og:image" content="https://alemonjs.dev/og.png" />
+    <meta property="og:image:alt" content="ALemonX Local Agent Workstation" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>运行配置 · ALemonX</title>
+    <meta name="description" content="配置机器人入口、平台、端口、消息过滤、应用加载和 CBP。" />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://alemonjs.dev/docs/alemonjsDocs/getting-started/config" />
+    <meta property="og:title" content="运行配置" />
+    <meta property="og:description" content="配置机器人入口、平台、端口、消息过滤、应用加载和 CBP。" />
+    <meta property="og:image" content="https://alemonjs.dev/og.png" />
+    <script type="application/ld+json">{"@context":"https://schema.org","name":"运行配置","description":"配置机器人入口、平台、端口、消息过滤、应用加载和 CBP。","url":"https://alemonjs.dev/docs/alemonjsDocs/getting-started/config","@type":"TechArticle","image":"https://alemonjs.dev/og.png","inLanguage":"zh-CN"}</script>
+    <script type="module" crossorigin src="/js/index-C-AQh7Op.js"></script>
+    <link rel="modulepreload" crossorigin href="/js/rolldown-runtime-BzFfZxsc.js">
+    <link rel="modulepreload" crossorigin href="/js/react-vendor-ayVKXDLB.js">
+    <link rel="stylesheet" crossorigin href="/assets/css/index-DMKHNveG.css">
+    <script type="module">import'data:text/javascript,if(!import.meta.resolve)throw Error("import.meta.resolve not supported")';import.meta.url;import("_").catch(()=>1);(async function*(){})().next();window.__vite_is_modern_browser=true</script>
+    <script type="module">!function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy chunks, syntax error above and the same error below should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>
+  <link rel="manifest" href="/manifest.webmanifest"></head>
+
+  <body>
+    <div id="root"><link rel="preload" as="image" href="/alemonx-logo.png"/><div class="css-dev-only-do-not-override-p45i5k ant-app css-var-root"><div class="site-frame" data-navigation="true" data-toc="true"><a class="site-skip-link" href="#site-content">跳到正文</a><header class="site-compact-header"><button type="button" class="site-icon-button site-mobile-navigation" aria-label="打开站点导航"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v14H4zM9 5v14"></path></svg></button><a class="site-compact-brand" href="/" data-discover="true"><img src="/alemonx-logo.png" alt="" width="26" height="26"/>ALemonX</a><div class="site-compact-actions"><button type="button" class="site-icon-button" aria-label="搜索文档"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 21l-4.3-4.3m1.8-5.2a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"></path></svg></button><button type="button" class="site-icon-button" aria-label="打开本页目录"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"></path></svg></button></div></header><div class="site-desktop-navigation"><div class="site-rail"><a class="site-rail-brand" aria-label="ALemonX 首页" title="ALemonX 首页" href="/" data-discover="true"><img src="/alemonx-logo.png" alt="" width="38" height="38"/></a><nav class="site-rail-links" aria-label="站点导航"><a class="site-rail-link" title="文档" href="/docs/intro" data-discover="true"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v14M3 5.5c3-1.5 6-1.5 9 0 3-1.5 6-1.5 9 0v13c-3-1.5-6-1.5-9 0-3-1.5-6-1.5-9 0z"></path></svg><span>文档</span></a><a class="site-rail-link" title="工作台" href="/docs/alemonx/getting-started/quick-start" data-discover="true"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5h18v15H3zM3 9h18M9 9v10.5"></path></svg><span>工作台</span></a><a class="site-rail-link" aria-current="true" title="机器人" href="/docs/alemonjsDocs/overview" data-discover="true"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5V2m-7 9H3m18 0h-2M7 5h10a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm2 6h.01M15 11h.01M9 15h6"></path></svg><span>机器人</span></a><a class="site-rail-link" title="常见问题" href="/docs/help/overview" data-discover="true"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v14M3 5.5c3-1.5 6-1.5 9 0 3-1.5 6-1.5 9 0v13c-3-1.5-6-1.5-9 0-3-1.5-6-1.5-9 0z"></path></svg><span>常见问题</span></a><a class="site-rail-link" title="博客" href="/blog" data-discover="true"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H5V3h1Zm9 0v5h4M8 12h8m-8 4h8"></path></svg><span>博客</span></a><a href="https://open.alemonjs.com" target="_blank" rel="noreferrer" class="site-rail-link" title="生态资源"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5 21 7.5v9l-9 5-9-5v-9l9-5Zm0 19v-9m9-5-9 5-9-5m4.5-2.5 9 5"></path></svg><span>生态资源</span></a><a href="https://github.com/lemonade-lab/alemonx/releases" target="_blank" rel="noreferrer" class="site-rail-link" title="工作台下载"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m-4-4 4 4 4-4M4 16v5h16v-5"></path></svg><span>下载</span></a><a href="https://github.com/lemonade-lab/alemonx" target="_blank" rel="noreferrer" class="site-rail-link" title="工作台源码"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-14-2 18"></path></svg><span>源码</span></a></nav><div class="site-rail-utilities"><button type="button" class="site-rail-link" aria-keyshortcuts="Control+k Meta+k"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 21l-4.3-4.3m1.8-5.2a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"></path></svg><span>搜索</span></button><button type="button" class="site-rail-link" aria-label="切换到暗色模式" title="切换到暗色模式"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 15.2a8.5 8.5 0 1 1-11.7-11.7 8.7 8.7 0 0 0 11.7 11.7Z"></path></svg><span>深色</span></button></div></div><div class="site-context"><div class="site-context-heading">文档导航</div><div class="site-context-body"><nav aria-label="文档导航" class="docs-navigation"><ul><li><a class="docs-navigation-link" data-active="false" href="/docs/intro" data-discover="true">文档总览</a></li><li class="docs-navigation-section"><button type="button" class="docs-navigation-heading" aria-expanded="true"><span>工作台</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button><ul class="docs-navigation-children"><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonx/overview" data-discover="true">工作台概览</a></li><li class="docs-navigation-category"><button type="button" class="docs-navigation-subheading" aria-expanded="true"><span>入门</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button><ul class="docs-navigation-children"><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonx/getting-started/install" data-discover="true">安装工作台</a></li><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonx/getting-started/quick-start" data-discover="true">快速上手</a></li></ul></li><li class="docs-navigation-category"><button type="button" class="docs-navigation-subheading" aria-expanded="true"><span>使用指南</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button><ul class="docs-navigation-children"><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonx/use/projects/create-or-import" data-discover="true">创建与导入</a></li><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonx/use/projects/configure" data-discover="true">机器人配置</a></li><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonx/use/runtime/run-and-monitor" data-discover="true">运行与日志</a></li><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonx/use/runtime/local-test" data-discover="true">本地测试</a></li><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonx/use/agent/collaboration" data-discover="true">Agent 任务</a></li><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonx/use/plugins" data-discover="true">安装系统插件</a></li></ul></li><li class="docs-navigation-category"><button type="button" class="docs-navigation-subheading" aria-expanded="false"><span>扩展开发</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button></li><li class="docs-navigation-category"><button type="button" class="docs-navigation-subheading" aria-expanded="false"><span>服务部署</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button></li><li class="docs-navigation-category"><button type="button" class="docs-navigation-subheading" aria-expanded="false"><span>参考</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button></li></ul></li><li class="docs-navigation-section"><button type="button" class="docs-navigation-heading" aria-expanded="true"><span>机器人</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button><ul class="docs-navigation-children"><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonjsDocs/overview" data-discover="true">开发概览</a></li><li class="docs-navigation-category"><button type="button" class="docs-navigation-subheading" aria-expanded="true"><span>快速入门</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button><ul class="docs-navigation-children"><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonjsDocs/getting-started/install" data-discover="true">创建项目</a></li><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonjsDocs/getting-started/quick-start" data-discover="true">编写指令</a></li><li><a class="docs-navigation-link" data-active="true" aria-current="page" href="/docs/alemonjsDocs/getting-started/config" data-discover="true">运行配置</a></li><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonjsDocs/getting-started/connect-platform" data-discover="true">连接平台</a></li><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonjsDocs/getting-started/qq-bot" data-discover="true">QQ Bot 接入</a></li></ul></li><li class="docs-navigation-category"><button type="button" class="docs-navigation-subheading" aria-expanded="false"><span>事件与消息</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button></li><li class="docs-navigation-category"><button type="button" class="docs-navigation-subheading" aria-expanded="false"><span>HTTP 服务</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button></li><li class="docs-navigation-category"><button type="button" class="docs-navigation-subheading" aria-expanded="false"><span>模块与平台</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button></li><li class="docs-navigation-category"><button type="button" class="docs-navigation-subheading" aria-expanded="false"><span>进阶开发</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button></li><li class="docs-navigation-category"><button type="button" class="docs-navigation-subheading" aria-expanded="false"><span>参考</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button></li></ul></li><li><a class="docs-navigation-link" data-active="false" href="/docs/extensions" data-discover="true">开发入口</a></li><li class="docs-navigation-section"><button type="button" class="docs-navigation-heading" aria-expanded="false"><span>问题排查</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button></li></ul></nav></div></div></div><div id="site-content" tabindex="-1" class="site-content"><main class="reading-main"><nav class="reader-breadcrumb" aria-label="当前位置"><a href="/docs/intro" data-discover="true">文档</a><span aria-hidden="true">/</span><a href="/docs/alemonjsDocs/overview" data-discover="true">ALemonJS 机器人</a></nav><article id="doc-content" class="prose reader-prose"><h1>运行配置</h1>
+<p>桌面操作见<a href="/docs/alemonx/use/projects/configure">机器人配置</a>。按运行方式填写所需字段。Bot 平台配置用 <code>login</code> 选择适配器，<code>port</code> 用于 CBP，<code>serverPort</code> 用于应用 HTTP 服务。</p>
+<h3>基础配置</h3>
+<div class="code-block-with-title"><div class="code-block-header">alemon.config.yaml</div><div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-yaml"><span class="hljs-comment"># === 服务器配置 ===</span>
+<span class="hljs-attr">port:</span> <span class="hljs-number">17117</span> <span class="hljs-comment"># CBP服务器端口 （可选，仅需要外部交互时设置），快捷参数 --port 17117</span>
+<span class="hljs-attr">serverPort:</span> <span class="hljs-number">18110</span> <span class="hljs-comment"># 应用服务器端口（可选，仅需要启动http服务时设置），快捷参数 --serverPort 18110</span>
+<span class="hljs-attr">autoPort:</span> <span class="hljs-literal">false</span> <span class="hljs-comment"># 当端口冲突时，是否自增(可选，默认不自增)</span>
+
+<span class="hljs-comment"># === 应用配置 ===</span>
+<span class="hljs-attr">input:</span> <span class="hljs-string">&#x27;lib/index.js&#x27;</span> <span class="hljs-comment">#（可选） 应用入口文件路径，快捷参数 --input</span>
+<span class="hljs-attr">login:</span> <span class="hljs-string">&#x27;discord&#x27;</span> <span class="hljs-comment"># （可选）登录平台标识，快捷参数 --login</span>
+<span class="hljs-attr">url:</span> <span class="hljs-string">&#x27;ws://127.0.0.1:17117&#x27;</span> <span class="hljs-comment"># （可选）CBP服务器连接地址，快捷参数 --url</span>
+<span class="hljs-attr">is_full_receive:</span> <span class="hljs-literal">false</span> <span class="hljs-comment"># （可选）是否全量接收消息（用于分流处理）</span>
+</code></pre></div></div>
+<h3>权限管理</h3>
+<div class="code-block-with-title"><div class="code-block-header">alemon.config.yaml</div><div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-yaml"><span class="hljs-comment"># === 主人权限设置 ===</span>
+<span class="hljs-attr">master_id:</span>
+  <span class="hljs-attr">&#x27;1715713638&#x27;:</span> <span class="hljs-literal">true</span> <span class="hljs-comment"># 通过用户ID设置主人权限</span>
+<span class="hljs-attr">master_key:</span>
+  <span class="hljs-attr">&#x27;123456&#x27;:</span> <span class="hljs-literal">true</span> <span class="hljs-comment"># 通过用户Key设置主人权限</span>
+
+<span class="hljs-comment"># === 机器人标识设置 ===</span>
+<span class="hljs-attr">bot_id:</span>
+  <span class="hljs-attr">&#x27;1715713638&#x27;:</span> <span class="hljs-literal">true</span> <span class="hljs-comment"># 将指定用户ID标识为机器人</span>
+<span class="hljs-attr">bot_key:</span>
+  <span class="hljs-attr">&#x27;123456&#x27;:</span> <span class="hljs-literal">true</span> <span class="hljs-comment"># 将指定用户Key标识为机器人</span>
+</code></pre></div></div>
+<h3>消息过滤与控制</h3>
+<div class="code-block-with-title"><div class="code-block-header">alemon.config.yaml</div><div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-yaml"><span class="hljs-comment"># === 禁用控制 ===</span>
+<span class="hljs-attr">disabled_text_regular:</span> <span class="hljs-string">&#x27;/闭关&#x27;</span> <span class="hljs-comment"># 文本正则匹配，若匹配则禁用所有功能</span>
+<span class="hljs-attr">disabled_selects:</span> <span class="hljs-comment"># 禁用特定事件类型</span>
+  <span class="hljs-attr">&#x27;private.message.create&#x27;:</span> <span class="hljs-literal">true</span> <span class="hljs-comment"># 禁用私聊消息</span>
+  <span class="hljs-attr">&#x27;message.create&#x27;:</span> <span class="hljs-literal">true</span> <span class="hljs-comment"># 禁用群组消息</span>
+  <span class="hljs-attr">&#x27;interaction.create&#x27;:</span> <span class="hljs-literal">true</span> <span class="hljs-comment"># 禁用交互事件</span>
+<span class="hljs-attr">disabled_user_id:</span> <span class="hljs-comment"># 禁用特定用户ID</span>
+  <span class="hljs-attr">&#x27;1715713638&#x27;:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">disabled_user_key:</span> <span class="hljs-comment"># 禁用特定用户Key</span>
+  <span class="hljs-attr">&#x27;123456&#x27;:</span> <span class="hljs-literal">true</span>
+
+<span class="hljs-comment"># === 文本重定向 ===</span>
+<span class="hljs-attr">redirect_text_regular:</span> <span class="hljs-string">&#x27;^#&#x27;</span> <span class="hljs-comment"># 文本前缀匹配正则</span>
+<span class="hljs-attr">redirect_text_target:</span> <span class="hljs-string">&#x27;/&#x27;</span> <span class="hljs-comment"># 将匹配的前缀替换为指定内容</span>
+
+<span class="hljs-comment"># === 文本映射规则 ===</span>
+<span class="hljs-attr">mapping_text:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-attr">regular:</span> <span class="hljs-string">&#x27;/开始游戏&#x27;</span> <span class="hljs-comment"># 匹配的文本</span>
+    <span class="hljs-attr">target:</span> <span class="hljs-string">&#x27;/踏入仙途&#x27;</span> <span class="hljs-comment"># 替换成的文本</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-attr">regular:</span> <span class="hljs-string">&#x27;/帮助&#x27;</span>
+    <span class="hljs-attr">target:</span> <span class="hljs-string">&#x27;/help&#x27;</span>
+</code></pre></div></div>
+<h3>消息处理器配置</h3>
+<div class="code-block-with-title"><div class="code-block-header">alemon.config.yaml</div><div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-yaml"><span class="hljs-attr">processor:</span>
+  <span class="hljs-attr">repeated_event_time:</span> <span class="hljs-number">60000</span> <span class="hljs-comment"># 过滤重复MessageId的时间窗口（毫秒）</span>
+  <span class="hljs-attr">repeated_user_time:</span> <span class="hljs-number">1000</span> <span class="hljs-comment"># 过滤同一用户连续消息的时间窗口（毫秒）</span>
+</code></pre></div></div>
+<h3>模块管理</h3>
+<div class="code-block-with-title"><div class="code-block-header">alemon.config.yaml</div><div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-yaml"><span class="hljs-comment"># === 子模块配置 ===</span>
+<span class="hljs-attr">apps:</span>
+  <span class="hljs-attr">&#x27;alemonjs-openai&#x27;:</span> <span class="hljs-literal">true</span> <span class="hljs-comment"># 启用OpenAI模块</span>
+  <span class="hljs-attr">&#x27;alemonjs-xianyu&#x27;:</span> <span class="hljs-literal">true</span> <span class="hljs-comment"># 启用咸鱼模块</span>
+  <span class="hljs-comment"># 也支持数组格式</span>
+  <span class="hljs-comment"># - &#x27;alemonjs-openai&#x27;</span>
+  <span class="hljs-comment"># - &#x27;alemonjs-xianyu&#x27;</span>
+
+<span class="hljs-comment"># === 模块特定配置 ===</span>
+<span class="hljs-comment"># 模块配置的键名应与模块名一致</span>
+<span class="hljs-attr">alemonjs-openai:</span>
+  <span class="hljs-attr">baseURL:</span> <span class="hljs-string">&#x27;https://api.deepseek.com&#x27;</span>
+  <span class="hljs-attr">apiKey:</span> <span class="hljs-string">&#x27;your-api-key-here&#x27;</span>
+  <span class="hljs-attr">model:</span> <span class="hljs-string">&#x27;deepseek-chat&#x27;</span>
+</code></pre></div></div>
+<p>从 AlemonJS 2.1.124 起，可在 <code>apps</code> 中为每个包指定启用状态与加载顺序。按 <code>order</code> 从小到大加载，同序号沿用声明顺序，省略时使用从零开始的声明位置。省略 <code>enabled</code> 时默认启用。</p>
+<div class="code-block-with-title"><div class="code-block-header">alemon.config.yaml</div><div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-yaml"><span class="hljs-attr">apps:</span>
+  <span class="hljs-attr">&#x27;@example/storage&#x27;:</span>
+    <span class="hljs-attr">order:</span> <span class="hljs-number">10</span>
+  <span class="hljs-attr">&#x27;@example/business&#x27;:</span>
+    <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span>
+    <span class="hljs-attr">order:</span> <span class="hljs-number">20</span>
+</code></pre></div></div>
+<p>同一对象中可使用布尔值简写启用状态。应用还可以配置 <a href="/docs/alemonjsDocs/core/router-sdl">指令前缀与按钮转换</a>。</p>
+<h2>快捷参数</h2>
+<p>启动时可使用的快捷参数：</p>
+<div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-bash"><span class="hljs-comment"># === 基础参数 ===</span>
+<span class="hljs-comment"># 指定CBP服务器端口</span>
+node index.js --port 8080
+
+<span class="hljs-comment"># 指定应用服务器端口</span>
+node index.js --serverPort 3000
+
+<span class="hljs-comment"># 指定入口文件</span>
+node index.js --input ./lib/index.js
+
+<span class="hljs-comment"># 指定登录平台</span>
+node index.js --login discord
+
+<span class="hljs-comment"># 指定CBP服务器连接地址</span>
+node index.js --url ws://localhost:8080
+
+<span class="hljs-comment"># 启用全量接收模式</span>
+node index.js --is_full_receive <span class="hljs-literal">true</span>
+
+<span class="hljs-comment"># === 组合使用示例 ===</span>
+<span class="hljs-comment"># 启动Discord平台，端口8080</span>
+node index.js --login discord --port 8080
+</code></pre></div>
+<h2>基础环境变量</h2>
+<p><code>platform</code>:<code>string</code> - 平台标识，支持的平台类型包括：</p>
+<ul>
+<li><code>discord</code> - Discord平台</li>
+<li><code>qq</code> - QQ平台</li>
+<li><code>telegram</code> - Telegram平台</li>
+<li>或其他自定义平台包名（如：<code>@alemonjs/xxx</code>）</li>
+</ul>
+<p><code>login</code>:<code>string</code> - 登录标识，通常与平台名称相同或为平台的特定实例名</p>
+<p><code>url</code>:<code>string</code> - CBP服务器连接地址，默认为 <code>ws://127.0.0.1:17117</code></p>
+<p><code>port</code>:<code>string | number</code> - CBP服务器端口，默认为 <code>17117</code></p>
+<p><code>serverPort</code>:<code>string | number</code> - 应用服务器端口（可选，仅在需要启动Web服务时设置）</p>
+<p><code>is_full_receive</code>:<code>string</code> - 是否全量接收消息，可选值：<code>&#x27;true&#x27;</code> | <code>&#x27;1&#x27;</code> | <code>&#x27;false&#x27;</code> | <code>&#x27;0&#x27;</code></p>
+<h2>框架提示语言</h2>
+<p>在 <code>alemon.config.yaml</code> 设置 <code>language: en-US</code> 可将内置提示切换为英文。<code>zh-CN</code> 为默认值，配置缺失或未知语言时也使用简体中文。应用自己的回复文字由应用维护。开发者可用 <code>withLanguage(&#x27;en-US&#x27;, callback)</code> 为一次调用临时覆盖语言，作用范围包含回调内的异步执行。</p>
+<h2>文件路径相关</h2>
+<p><code>LOG_PATH</code>:<code>string</code> - 日志文件存储路径</p>
+<p><code>PKG_PATH</code>:<code>string</code> - package.json 文件路径，默认为当前工作目录下的 <code>package.json</code></p>
+<p><code>CFG_PATH</code>:<code>string</code> - 配置文件路径，默认为当前工作目录下的 <code>alemon.config.yaml</code></p>
+<h2>运行环境</h2>
+<p><code>NODE_ENV</code>:<code>development | production</code> - 环境判断，用于区分开发环境和生产环境</p>
+<h2>CBP</h2>
+<p>ChatBot Protocol</p>
+<p>机器人框架的核心通信协议，负责客户端与平台之间的消息传输。</p>
+<h3>CBP连接配置</h3>
+<div class="code-block-with-title"><div class="code-block-header">alemon.config.yaml</div><div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-yaml"><span class="hljs-comment"># CBP服务器配置</span>
+<span class="hljs-attr">cbp:</span>
+  <span class="hljs-comment"># 连接超时时间（毫秒）</span>
+  <span class="hljs-attr">timeout:</span> <span class="hljs-number">180000</span> <span class="hljs-comment"># 3分钟</span>
+
+  <span class="hljs-comment"># 重连间隔（毫秒）</span>
+  <span class="hljs-attr">reconnectInterval:</span> <span class="hljs-number">6000</span> <span class="hljs-comment"># 6秒</span>
+
+  <span class="hljs-comment"># 心跳间隔（毫秒）</span>
+  <span class="hljs-attr">heartbeatInterval:</span> <span class="hljs-number">18000</span> <span class="hljs-comment"># 18秒</span>
+
+  <span class="hljs-comment"># 健康检查间隔（毫秒）</span>
+  <span class="hljs-attr">healthCheckInterval:</span> <span class="hljs-number">30000</span> <span class="hljs-comment"># 30秒</span>
+
+  <span class="hljs-comment"># 连接认证头配置</span>
+  <span class="hljs-attr">headers:</span>
+    <span class="hljs-attr">user-agent:</span> <span class="hljs-string">&#x27;platform&#x27;</span> <span class="hljs-comment"># 平台标识</span>
+    <span class="hljs-attr">x-device-id:</span> <span class="hljs-string">&#x27;auto-generated&#x27;</span> <span class="hljs-comment"># 设备ID（自动生成）</span>
+    <span class="hljs-attr">x-full-receive:</span> <span class="hljs-string">&#x27;0&#x27;</span> <span class="hljs-comment"># 是否全量接收：&#x27;1&#x27; 开启，&#x27;0&#x27; 关闭</span>
+</code></pre></div></div></article><nav class="doc-pagination" aria-label="相邻文档"><a href="/docs/alemonjsDocs/getting-started/quick-start" data-discover="true"><small>← 上一页</small><strong>编写指令</strong></a><a class="next" href="/docs/alemonjsDocs/getting-started/connect-platform" data-discover="true"><small>下一页 →</small><strong>连接平台</strong></a></nav></main><footer class="site-footer"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12"><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8"><div class="text-center sm:text-left"><h3 class="text-sm font-semibold uppercase tracking-wider mb-3 sm:mb-4 text-[var(--text)]">使用文档</h3><ul class="space-y-2"><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/alemonx/getting-started/install" data-discover="true">安装工作台</a></li><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/alemonjsDocs/getting-started/install" data-discover="true">创建机器人</a></li><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/alemonjsDocs/getting-started/connect-platform" data-discover="true">连接平台</a></li><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/help/overview" data-discover="true">常见问题</a></li></ul></div><div class="text-center sm:text-left"><h3 class="text-sm font-semibold uppercase tracking-wider mb-3 sm:mb-4 text-[var(--text)]">开发资源</h3><ul class="space-y-2"><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/extensions" data-discover="true">开发入口</a></li><li><a href="https://open.alemonjs.com" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-[var(--text)] transition-colors duration-200">生态资源</a></li><li><a href="https://github.com/lemonade-lab/alemonjs" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-[var(--text)] transition-colors duration-200">机器人源码</a></li></ul></div><div class="text-center sm:text-left"><h3 class="text-sm font-semibold uppercase tracking-wider mb-3 sm:mb-4 text-[var(--text)]">版本与社区</h3><ul class="space-y-2"><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/blog" data-discover="true">更新日志</a></li><li><a href="https://github.com/lemonade-lab/alemonx/releases" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-[var(--text)] transition-colors duration-200">工作台下载</a></li><li><a href="https://github.com/lemonade-lab/alemonx/discussions" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-[var(--text)] transition-colors duration-200">社区讨论</a></li><li><a href="https://qm.qq.com/q/AIiSecyPlK" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-[var(--text)] transition-colors duration-200">交流群</a></li></ul></div></div><div class="pt-6 sm:pt-8 border-t border-[var(--line)] text-sm text-center text-[var(--text-muted)]"><div>Released under the MIT License. <br/> Copyright © 2024-present LemonadeX </span> <br> <a  href="https://beian.miit.gov.cn/" target="_blank">津ICP备2023004480号</a></div></div></div></footer></div><aside class="site-desktop-toc" aria-label="辅助侧栏"><nav class="site-toc" aria-label="本页目录"></nav></aside></div></div></div>
+    <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
+    <script nomodule crossorigin id="vite-legacy-polyfill" src="/js/polyfills-legacy-C9AcUynB.js"></script>
+    <script nomodule crossorigin id="vite-legacy-entry" data-src="/js/index-legacy-BrU8PpXp.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
+  </body>
+</html>

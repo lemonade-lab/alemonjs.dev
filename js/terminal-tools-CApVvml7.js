@@ -1,0 +1,1 @@
+import{t as r}from"./react-vendor-ayVKXDLB.js";import{r as n}from"./index-C-AQh7Op.js";var t=r();function e(r){return(0,t.jsx)(t.Fragment,{})}function o(r={}){const{wrapper:o}={...n(),...r.components};return o?(0,t.jsx)(o,{...r,children:(0,t.jsx)(e,{...r})}):e()}export{o as default};

@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="/icon.ico" />
+    <link rel="apple-touch-icon" href="/pwa-192x192.png" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="ALemonX 更新"
+      href="/rss.xml"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#f3f1ec" />
+    <script>
+      ;(() => {
+        let saved
+        try {
+          saved = localStorage.getItem('theme')
+        } catch {}
+        const dark =
+          saved === 'dark' ||
+          (saved !== 'light' &&
+            matchMedia('(prefers-color-scheme: dark)').matches)
+        document.documentElement.classList.add(dark ? 'dark' : 'light')
+        document.querySelector('meta[name="theme-color"]').content = dark
+          ? '#1b1916'
+          : '#f3f1ec'
+      })()
+    </script>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta
+      name="description"
+      content="使用 ALemonX 创建或导入项目，运行命令，管理进程，并批准 Agent 任务。"
+    />
+    <meta property="og:title" content="ALemonX · 创建、运行和管理项目" />
+    <meta
+      property="og:description"
+      content="导入代码库，运行命令，查看日志，创建并批准 Agent 任务。"
+    />
+    <meta property="og:image" content="https://alemonjs.dev/og.png" />
+    <meta property="og:image:alt" content="ALemonX Local Agent Workstation" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>系统插件开发 · ALemonX</title>
+    <meta name="description" content="创建系统插件，配置执行器，并调用工作台接口。" />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://alemonjs.dev/docs/alemonx/develop/system-plugins" />
+    <meta property="og:title" content="系统插件开发" />
+    <meta property="og:description" content="创建系统插件，配置执行器，并调用工作台接口。" />
+    <meta property="og:image" content="https://alemonjs.dev/og.png" />
+    <script type="application/ld+json">{"@context":"https://schema.org","name":"系统插件开发","description":"创建系统插件，配置执行器，并调用工作台接口。","url":"https://alemonjs.dev/docs/alemonx/develop/system-plugins","@type":"TechArticle","image":"https://alemonjs.dev/og.png","inLanguage":"zh-CN"}</script>
+    <script type="module" crossorigin src="/js/index-C-AQh7Op.js"></script>
+    <link rel="modulepreload" crossorigin href="/js/rolldown-runtime-BzFfZxsc.js">
+    <link rel="modulepreload" crossorigin href="/js/react-vendor-ayVKXDLB.js">
+    <link rel="stylesheet" crossorigin href="/assets/css/index-DMKHNveG.css">
+    <script type="module">import'data:text/javascript,if(!import.meta.resolve)throw Error("import.meta.resolve not supported")';import.meta.url;import("_").catch(()=>1);(async function*(){})().next();window.__vite_is_modern_browser=true</script>
+    <script type="module">!function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy chunks, syntax error above and the same error below should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>
+  <link rel="manifest" href="/manifest.webmanifest"></head>
+
+  <body>
+    <div id="root"><link rel="preload" as="image" href="/alemonx-logo.png"/><div class="css-dev-only-do-not-override-p45i5k ant-app css-var-root"><div class="site-frame" data-navigation="true" data-toc="true"><a class="site-skip-link" href="#site-content">跳到正文</a><header class="site-compact-header"><button type="button" class="site-icon-button site-mobile-navigation" aria-label="打开站点导航"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v14H4zM9 5v14"></path></svg></button><a class="site-compact-brand" href="/" data-discover="true"><img src="/alemonx-logo.png" alt="" width="26" height="26"/>ALemonX</a><div class="site-compact-actions"><button type="button" class="site-icon-button" aria-label="搜索文档"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 21l-4.3-4.3m1.8-5.2a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"></path></svg></button><button type="button" class="site-icon-button" aria-label="打开本页目录"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"></path></svg></button></div></header><div class="site-desktop-navigation"><div class="site-rail"><a class="site-rail-brand" aria-label="ALemonX 首页" title="ALemonX 首页" href="/" data-discover="true"><img src="/alemonx-logo.png" alt="" width="38" height="38"/></a><nav class="site-rail-links" aria-label="站点导航"><a class="site-rail-link" title="文档" href="/docs/intro" data-discover="true"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v14M3 5.5c3-1.5 6-1.5 9 0 3-1.5 6-1.5 9 0v13c-3-1.5-6-1.5-9 0-3-1.5-6-1.5-9 0z"></path></svg><span>文档</span></a><a class="site-rail-link" aria-current="true" title="工作台" href="/docs/alemonx/getting-started/quick-start" data-discover="true"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5h18v15H3zM3 9h18M9 9v10.5"></path></svg><span>工作台</span></a><a class="site-rail-link" title="机器人" href="/docs/alemonjsDocs/overview" data-discover="true"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5V2m-7 9H3m18 0h-2M7 5h10a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm2 6h.01M15 11h.01M9 15h6"></path></svg><span>机器人</span></a><a class="site-rail-link" title="常见问题" href="/docs/help/overview" data-discover="true"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v14M3 5.5c3-1.5 6-1.5 9 0 3-1.5 6-1.5 9 0v13c-3-1.5-6-1.5-9 0-3-1.5-6-1.5-9 0z"></path></svg><span>常见问题</span></a><a class="site-rail-link" title="博客" href="/blog" data-discover="true"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H5V3h1Zm9 0v5h4M8 12h8m-8 4h8"></path></svg><span>博客</span></a><a href="https://open.alemonjs.com" target="_blank" rel="noreferrer" class="site-rail-link" title="生态资源"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5 21 7.5v9l-9 5-9-5v-9l9-5Zm0 19v-9m9-5-9 5-9-5m4.5-2.5 9 5"></path></svg><span>生态资源</span></a><a href="https://github.com/lemonade-lab/alemonx/releases" target="_blank" rel="noreferrer" class="site-rail-link" title="工作台下载"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m-4-4 4 4 4-4M4 16v5h16v-5"></path></svg><span>下载</span></a><a href="https://github.com/lemonade-lab/alemonx" target="_blank" rel="noreferrer" class="site-rail-link" title="工作台源码"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-14-2 18"></path></svg><span>源码</span></a></nav><div class="site-rail-utilities"><button type="button" class="site-rail-link" aria-keyshortcuts="Control+k Meta+k"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 21l-4.3-4.3m1.8-5.2a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"></path></svg><span>搜索</span></button><button type="button" class="site-rail-link" aria-label="切换到暗色模式" title="切换到暗色模式"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 15.2a8.5 8.5 0 1 1-11.7-11.7 8.7 8.7 0 0 0 11.7 11.7Z"></path></svg><span>深色</span></button></div></div><div class="site-context"><div class="site-context-heading">文档导航</div><div class="site-context-body"><nav aria-label="文档导航" class="docs-navigation"><ul><li><a class="docs-navigation-link" data-active="false" href="/docs/intro" data-discover="true">文档总览</a></li><li class="docs-navigation-section"><button type="button" class="docs-navigation-heading" aria-expanded="true"><span>工作台</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button><ul class="docs-navigation-children"><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonx/overview" data-discover="true">工作台概览</a></li><li class="docs-navigation-category"><button type="button" class="docs-navigation-subheading" aria-expanded="true"><span>入门</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button><ul class="docs-navigation-children"><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonx/getting-started/install" data-discover="true">安装工作台</a></li><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonx/getting-started/quick-start" data-discover="true">快速上手</a></li></ul></li><li class="docs-navigation-category"><button type="button" class="docs-navigation-subheading" aria-expanded="true"><span>使用指南</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button><ul class="docs-navigation-children"><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonx/use/projects/create-or-import" data-discover="true">创建与导入</a></li><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonx/use/projects/configure" data-discover="true">机器人配置</a></li><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonx/use/runtime/run-and-monitor" data-discover="true">运行与日志</a></li><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonx/use/runtime/local-test" data-discover="true">本地测试</a></li><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonx/use/agent/collaboration" data-discover="true">Agent 任务</a></li><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonx/use/plugins" data-discover="true">安装系统插件</a></li></ul></li><li class="docs-navigation-category"><button type="button" class="docs-navigation-subheading" aria-expanded="true"><span>扩展开发</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button><ul class="docs-navigation-children"><li><a class="docs-navigation-link" data-active="true" aria-current="page" href="/docs/alemonx/develop/system-plugins" data-discover="true">系统插件开发</a></li><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonx/develop/webview" data-discover="true">机器人应用页</a></li><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonx/develop/build" data-discover="true">工作台构建入口与产物</a></li></ul></li><li class="docs-navigation-category"><button type="button" class="docs-navigation-subheading" aria-expanded="false"><span>服务部署</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button></li><li class="docs-navigation-category"><button type="button" class="docs-navigation-subheading" aria-expanded="false"><span>参考</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button></li></ul></li><li class="docs-navigation-section"><button type="button" class="docs-navigation-heading" aria-expanded="false"><span>机器人</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button></li><li><a class="docs-navigation-link" data-active="false" href="/docs/extensions" data-discover="true">开发入口</a></li><li class="docs-navigation-section"><button type="button" class="docs-navigation-heading" aria-expanded="false"><span>问题排查</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button></li></ul></nav></div></div></div><div id="site-content" tabindex="-1" class="site-content"><main class="reading-main"><nav class="reader-breadcrumb" aria-label="当前位置"><a href="/docs/intro" data-discover="true">文档</a><span aria-hidden="true">/</span><a href="/docs/alemonx/getting-started/quick-start" data-discover="true">ALemonX 工作台</a></nav><article id="doc-content" class="prose reader-prose"><h1>系统插件开发</h1>
+<p>系统插件可为工作台提供静态面板，并通过可选执行器处理本机操作。</p>
+<h2>运行模型</h2>
+<p>一个系统插件由 Web 面板和可选执行器组成：</p>
+<div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-text">系统面板页（Web）
+        │  POST /api/v1/setup/plugins/&lt;id&gt;/actions
+        ▼
+ALemonX 宿主（alx）
+  身份校验、权限确认、任务互斥、进度、审计
+        │  stdin / stdout / stderr
+        ▼
+执行器（独立进程）
+  真正执行网络、系统、Docker 等本机操作
+</code></pre></div>
+<p>宿主不会在“发现插件”时执行插件代码。列出、渲染、启用和停用插件只读取清单和静态页面；只有用户调用动作时，宿主才会启动对应执行器。</p>
+<p>每个变更动作都会启动一次独立进程。这样可以让动作结束后释放资源，也可以把执行器崩溃限制在单次任务中。</p>
+<h2>插件结构</h2>
+<div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-text">my-status/
+├── alx.json              # 插件清单，必填
+├── web/
+│   └── index.html        # 系统面板页，必填
+├── runner/
+│   └── main.mjs          # 执行器，可选
+├── dist/                 # 发布包中的平台文件，可选
+└── .alx-install.json     # 宿主生成，禁止手工维护
+</code></pre></div>
+<p>插件的用户数据不要写入代码目录。宿主会注入 <code>ALX_PLUGIN_STORE</code>，插件应将数据库、登录态、下载缓存和可恢复配置保存到该目录。</p>
+<p>插件发现位置按优先级排列：</p>
+<ol>
+<li><code>&lt;workspace&gt;/plugins/</code>：用户安装插件的目录；</li>
+<li>程序提供的 <code>plugins/</code>：随程序安装的插件；</li>
+<li>用户配置目录中的旧版 <code>alx/plugins/</code>：仅用于兼容发现。</li>
+</ol>
+<p>同一个 <code>id</code> 只使用优先级最高的插件。插件目录和 <code>alx.json</code> 支持热更新，通常不需要重启工作台。</p>
+<h2>最小插件</h2>
+<h3><code>alx.json</code></h3>
+<div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;my-status&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;系统状态&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;version&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;1.0.0&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;runtime&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;node&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;entry&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;darwin-arm64&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;runner/main.mjs&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;linux-amd64&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;runner/main.mjs&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;windows-amd64&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;runner/main.mjs&quot;</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;web&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span> <span class="hljs-attr">&quot;root&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;web&quot;</span> <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;navigation&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;label&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;系统状态&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;icon&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;activity&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;order&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">10</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre></div>
+<p><code>id</code> 必须匹配 <code>^[a-z][a-z0-9-]{1,63}$</code>。<code>entry</code> 和 <code>web.root</code> 必须位于插件目录内，不能使用绝对路径、<code>..</code> 或符号链接逃逸。</p>
+<h3>执行器</h3>
+<p>执行器从标准输入读取一个 JSON 请求，并且只向标准输出写入一个 JSON 响应。日志应写到标准错误：</p>
+<div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-js"><span class="hljs-keyword">import</span> process <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;node:process&#x27;</span>
+
+<span class="hljs-keyword">try</span> {
+  <span class="hljs-keyword">const</span> input = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(<span class="hljs-keyword">await</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Response</span>(process.<span class="hljs-property">stdin</span>).<span class="hljs-title function_">text</span>())
+
+  <span class="hljs-keyword">if</span> (input.<span class="hljs-property">protocol</span> !== <span class="hljs-string">&#x27;alx/v1&#x27;</span> || input.<span class="hljs-property">method</span> !== <span class="hljs-string">&#x27;run&#x27;</span>) {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;不支持的 ALX 插件协议&#x27;</span>)
+  }
+  <span class="hljs-keyword">if</span> (input.<span class="hljs-property">action</span> !== <span class="hljs-string">&#x27;check&#x27;</span>) {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;未知操作&#x27;</span>)
+  }
+
+  process.<span class="hljs-property">stdout</span>.<span class="hljs-title function_">write</span>(
+    <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>({
+      <span class="hljs-attr">output</span>: <span class="hljs-string">&#x27;✓ 检查完成。&#x27;</span>,
+      <span class="hljs-attr">data</span>: { <span class="hljs-attr">ok</span>: <span class="hljs-literal">true</span> }
+    })
+  )
+} <span class="hljs-keyword">catch</span> (error) {
+  process.<span class="hljs-property">stdout</span>.<span class="hljs-title function_">write</span>(
+    <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>({
+      <span class="hljs-attr">error</span>: <span class="hljs-title class_">String</span>(error?.<span class="hljs-property">message</span> || error)
+    })
+  )
+}
+</code></pre></div>
+<h2>通信协议</h2>
+<p>宿主启动执行器后，通过 stdin 发送：</p>
+<div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;protocol&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;alx/v1&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;method&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;run&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;action&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;network-check&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;params&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span> <span class="hljs-attr">&quot;host&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;example.com&quot;</span> <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;confirm&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span>
+<span class="hljs-punctuation">}</span>
+</code></pre></div>
+<p>执行器必须向 stdout 输出唯一一个 JSON 对象：</p>
+<div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;output&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;✓ 网络检查完成。&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;data&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span> <span class="hljs-attr">&quot;latency&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">42</span> <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre></div>
+<p>失败时仍然输出合法 JSON，并设置 <code>error</code>：</p>
+<div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;output&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;已完成检查。&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;error&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;需要管理员权限&quot;</span>
+<span class="hljs-punctuation">}</span>
+</code></pre></div>
+<p>stdout 中不能混入调试文本，否则宿主无法解析响应。需要实时反馈时，可以向 stderr 输出进度帧：</p>
+<div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-text">@alx-progress {&quot;stage&quot;:&quot;checking&quot;,&quot;percent&quot;:50,&quot;message&quot;:&quot;正在检查…&quot;}
+</code></pre></div>
+<h3>任务生命周期</h3>
+<p>普通变更动作是异步任务：</p>
+<div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-text">POST /api/v1/setup/plugins/my-status/actions
+        ↓ 202 Accepted
+GET /api/v1/robot/tasks
+        ↓
+running → completed / failed
+</code></pre></div>
+<p>同一个插件同一时间只能执行一个变更动作。重复提交相同动作会复用现有任务，冲突动作返回 <code>409</code>。</p>
+<p>只读状态可以在清单中声明 <code>statusActions</code>，通过状态接口读取。此类请求不创建任务，并会被宿主短暂合并缓存，适合面板轮询。</p>
+<h2>配置字段</h2>
+<p>可选能力和字段约束见<a href="/docs/alemonx/reference/plugin-manifest">系统插件清单</a>。</p>
+<p>清单只是能力白名单，不是业务逻辑。动作名称和参数仍必须在执行器中自行校验，不能因为宿主接受了 <code>action</code> 就直接执行任意命令。</p>
+<h2>系统面板与 <code>ALXHost</code></h2>
+<p><code>web.root</code> 会被宿主以同源路径托管：</p>
+<div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-text">/api/v1/setup/plugins/web/&lt;id&gt;/index.html
+</code></pre></div>
+<p>宿主会自动注入 <code>host-bridge.js</code>，页面可以使用 <code>window.ALXHost</code> 调用受控宿主能力：</p>
+<div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-js"><span class="hljs-keyword">const</span> info = <span class="hljs-keyword">await</span> <span class="hljs-variable language_">window</span>.<span class="hljs-property">ALXHost</span>.<span class="hljs-title function_">info</span>(<span class="hljs-string">&#x27;my-status&#x27;</span>)
+<span class="hljs-keyword">const</span> context = <span class="hljs-keyword">await</span> <span class="hljs-variable language_">window</span>.<span class="hljs-property">ALXHost</span>.<span class="hljs-title function_">context</span>(<span class="hljs-string">&#x27;my-status&#x27;</span>, [<span class="hljs-string">&#x27;robot&#x27;</span>, <span class="hljs-string">&#x27;network&#x27;</span>])
+<span class="hljs-keyword">const</span> paths = <span class="hljs-keyword">await</span> <span class="hljs-variable language_">window</span>.<span class="hljs-property">ALXHost</span>.<span class="hljs-property">finder</span>.<span class="hljs-title function_">pick</span>(<span class="hljs-string">&#x27;my-status&#x27;</span>, <span class="hljs-string">&#x27;runtime-directory&#x27;</span>)
+<span class="hljs-keyword">await</span> <span class="hljs-variable language_">window</span>.<span class="hljs-property">ALXHost</span>.<span class="hljs-property">desktop</span>.<span class="hljs-title function_">open</span>(<span class="hljs-string">&#x27;my-status&#x27;</span>, paths[<span class="hljs-number">0</span>])
+<span class="hljs-keyword">await</span> <span class="hljs-variable language_">window</span>.<span class="hljs-property">ALXHost</span>.<span class="hljs-property">notification</span>.<span class="hljs-title function_">send</span>(<span class="hljs-string">&#x27;my-status&#x27;</span>, <span class="hljs-string">&#x27;检查完成&#x27;</span>)
+</code></pre></div>
+<p>常用能力包括：</p>
+<ul>
+<li><code>context</code>：读取脱敏的机器人和网络上下文；</li>
+<li><code>finder.pick</code>：请求宿主打开文件或目录选择器；</li>
+<li><code>desktop.open</code>：请求系统打开路径或 URL；</li>
+<li><code>clipboard</code>：读写系统剪贴板；</li>
+<li><code>notification</code>：发送系统通知；</li>
+<li><code>network.fetch</code>：受限的 GET / HEAD 网络请求；</li>
+<li><code>webview.open</code>：打开由工作台管理的插件页面。</li>
+</ul>
+<p>页面不能直接访问宿主文件系统、插件存储目录或管理员权限。需要读写文件时，应由页面调用一个受控 runner 动作。</p>
+<h2>本地服务与上传</h2>
+<h3>本地服务</h3>
+<p>插件可以声明回环服务，宿主只代理清单中允许的服务：</p>
+<div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;services&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;api&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;host&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;127.0.0.1&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;port&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">18080</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;websocket&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">}</span>
+</code></pre></div>
+<p>面板通过以下路径访问：</p>
+<div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-text">/api/v1/services/&lt;plugin&gt;/&lt;service&gt;/...
+</code></pre></div>
+<p>动态端口也必须由宿主代理，并且目标被强制限制为 <code>127.0.0.1</code>，不能借插件服务访问任意内网地址。</p>
+<h3>文件上传</h3>
+<p>文件上传使用专用的 <code>multipart/form-data</code> 接口，不要把文件内容塞进普通 JSON 参数：</p>
+<div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-text">POST /api/v1/setup/plugins/&lt;id&gt;/upload
+</code></pre></div>
+<p>宿主会限制大小、暂存文件、清理文件名，并将暂存目录通过参数传给 runner。插件应校验文件类型、内容和目标路径，不能把浏览器传入的文件名直接拼接到系统路径。</p>
+<h2>特权操作与审计</h2>
+<p>需要 sudo、UAC、Polkit 或其他管理员能力的操作，必须在 <code>privilegedOperations</code> 中声明。典型流程是：</p>
+<div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-text">面板请求 preflight
+        ↓
+宿主检查清单与当前系统授权模式
+        ↓
+用户确认或完成系统授权
+        ↓
+宿主启动 runnerAction
+        ↓
+记录审计结果
+</code></pre></div>
+<p>宿主负责授权、进程启动、进度转发和审计；插件负责动作语义、参数校验和平台细节。危险动作应该提供可读的计划说明和最小权限范围，不能把“执行任意 shell 命令”作为插件 API。</p>
+<h2>源码开发会话</h2>
+<p>开发阶段可以登记一个源码目录，由工作台管理前端开发服务、runner 和本地服务：</p>
+<div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;development&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;entry&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span> <span class="hljs-attr">&quot;go&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;runner/main.go&quot;</span> <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;web&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">&quot;mode&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;dev-server&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;command&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">&quot;program&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;pnpm&quot;</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">&quot;args&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;dev&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;--port&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;${ALX_PLUGIN_DEV_PORT}&quot;</span><span class="hljs-punctuation">]</span>
+      <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;healthPath&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/&quot;</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre></div>
+<p>源码会话的启动、停止、重启、构建和日志均由工作台管理。开发 Web 服务仍然通过宿主同源代理访问，不能为了 HMR 而额外暴露任意公网端口。</p>
+<h2>发布与安装</h2>
+<p>发布插件时，应为每个平台准备对应的 runner 资产，并在 GitHub Release 中提供压缩包和校验信息。宿主安装时会：</p>
+<ol>
+<li>读取并校验 <code>alx.json</code>；</li>
+<li>检查插件 ID、路径和平台兼容性；</li>
+<li>解包到工作区插件目录；</li>
+<li>写入安装元数据；</li>
+<li>启用插件并提供系统面板。</li>
+</ol>
+<p>旧目录插件会以兼容模式发现。迁移时宿主会复制到工作区并保留原目录，不应由插件自行删除旧数据。</p>
+<h2>安全开发规范</h2>
+<ul>
+<li>不要在 stdout 输出日志，只输出协议 JSON；</li>
+<li>所有动作都使用白名单，不执行未经校验的命令和参数；</li>
+<li>不要依赖浏览器传入的路径、文件名或 URL；</li>
+<li>不要把密钥、数据库和缓存写入插件代码目录；</li>
+<li>大文件使用上传通道或下载 Broker，不使用普通网络代理；</li>
+<li>特权操作必须声明、预检、确认并产生审计记录；</li>
+<li>Web 页面只通过 <code>ALXHost</code> 获取宿主能力；</li>
+<li>处理 <code>ALX_PLUGIN_INSTALL_MODE</code>，兼容 <code>development</code> 和 <code>legacy-local</code> 安装；</li>
+<li>在不同系统和架构上分别测试 runner；</li>
+<li>不要把系统插件和机器人插件的页面、配置、命令混在一起。</li>
+</ul>
+<h2>相关文档</h2>
+<ul>
+<li><a href="/docs/alemonx/reference/plugin-manifest">系统插件清单</a></li>
+<li><a href="/docs/alemonx/develop/webview">机器人应用页</a></li>
+<li><a href="https://github.com/lemonade-lab/alemonx/blob/main/docs/plugin-development.md">源码项目开发文档</a></li>
+</ul></article><nav class="doc-pagination" aria-label="相邻文档"><a href="/docs/alemonx/use/plugins" data-discover="true"><small>← 上一页</small><strong>安装系统插件</strong></a><a class="next" href="/docs/alemonx/develop/webview" data-discover="true"><small>下一页 →</small><strong>机器人应用页</strong></a></nav></main><footer class="site-footer"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12"><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8"><div class="text-center sm:text-left"><h3 class="text-sm font-semibold uppercase tracking-wider mb-3 sm:mb-4 text-[var(--text)]">使用文档</h3><ul class="space-y-2"><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/alemonx/getting-started/install" data-discover="true">安装工作台</a></li><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/alemonjsDocs/getting-started/install" data-discover="true">创建机器人</a></li><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/alemonjsDocs/getting-started/connect-platform" data-discover="true">连接平台</a></li><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/help/overview" data-discover="true">常见问题</a></li></ul></div><div class="text-center sm:text-left"><h3 class="text-sm font-semibold uppercase tracking-wider mb-3 sm:mb-4 text-[var(--text)]">开发资源</h3><ul class="space-y-2"><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/extensions" data-discover="true">开发入口</a></li><li><a href="https://open.alemonjs.com" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-[var(--text)] transition-colors duration-200">生态资源</a></li><li><a href="https://github.com/lemonade-lab/alemonjs" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-[var(--text)] transition-colors duration-200">机器人源码</a></li></ul></div><div class="text-center sm:text-left"><h3 class="text-sm font-semibold uppercase tracking-wider mb-3 sm:mb-4 text-[var(--text)]">版本与社区</h3><ul class="space-y-2"><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/blog" data-discover="true">更新日志</a></li><li><a href="https://github.com/lemonade-lab/alemonx/releases" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-[var(--text)] transition-colors duration-200">工作台下载</a></li><li><a href="https://github.com/lemonade-lab/alemonx/discussions" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-[var(--text)] transition-colors duration-200">社区讨论</a></li><li><a href="https://qm.qq.com/q/AIiSecyPlK" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-[var(--text)] transition-colors duration-200">交流群</a></li></ul></div></div><div class="pt-6 sm:pt-8 border-t border-[var(--line)] text-sm text-center text-[var(--text-muted)]"><div>Released under the MIT License. <br/> Copyright © 2024-present LemonadeX </span> <br> <a  href="https://beian.miit.gov.cn/" target="_blank">津ICP备2023004480号</a></div></div></div></footer></div><aside class="site-desktop-toc" aria-label="辅助侧栏"><nav class="site-toc" aria-label="本页目录"></nav></aside></div></div></div>
+    <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
+    <script nomodule crossorigin id="vite-legacy-polyfill" src="/js/polyfills-legacy-C9AcUynB.js"></script>
+    <script nomodule crossorigin id="vite-legacy-entry" data-src="/js/index-legacy-BrU8PpXp.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
+  </body>
+</html>

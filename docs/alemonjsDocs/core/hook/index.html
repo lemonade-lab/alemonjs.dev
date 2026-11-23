@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="/icon.ico" />
+    <link rel="apple-touch-icon" href="/pwa-192x192.png" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="ALemonX 更新"
+      href="/rss.xml"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#f3f1ec" />
+    <script>
+      ;(() => {
+        let saved
+        try {
+          saved = localStorage.getItem('theme')
+        } catch {}
+        const dark =
+          saved === 'dark' ||
+          (saved !== 'light' &&
+            matchMedia('(prefers-color-scheme: dark)').matches)
+        document.documentElement.classList.add(dark ? 'dark' : 'light')
+        document.querySelector('meta[name="theme-color"]').content = dark
+          ? '#1b1916'
+          : '#f3f1ec'
+      })()
+    </script>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta
+      name="description"
+      content="使用 ALemonX 创建或导入项目，运行命令，管理进程，并批准 Agent 任务。"
+    />
+    <meta property="og:title" content="ALemonX · 创建、运行和管理项目" />
+    <meta
+      property="og:description"
+      content="导入代码库，运行命令，查看日志，创建并批准 Agent 任务。"
+    />
+    <meta property="og:image" content="https://alemonjs.dev/og.png" />
+    <meta property="og:image:alt" content="ALemonX Local Agent Workstation" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>Hooks · ALemonX</title>
+    <meta name="description" content="调用消息、成员、频道、事件订阅和交互接口。" />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://alemonjs.dev/docs/alemonjsDocs/core/hook" />
+    <meta property="og:title" content="Hooks" />
+    <meta property="og:description" content="调用消息、成员、频道、事件订阅和交互接口。" />
+    <meta property="og:image" content="https://alemonjs.dev/og.png" />
+    <script type="application/ld+json">{"@context":"https://schema.org","name":"Hooks","description":"调用消息、成员、频道、事件订阅和交互接口。","url":"https://alemonjs.dev/docs/alemonjsDocs/core/hook","@type":"TechArticle","image":"https://alemonjs.dev/og.png","inLanguage":"zh-CN"}</script>
+    <script type="module" crossorigin src="/js/index-C-AQh7Op.js"></script>
+    <link rel="modulepreload" crossorigin href="/js/rolldown-runtime-BzFfZxsc.js">
+    <link rel="modulepreload" crossorigin href="/js/react-vendor-ayVKXDLB.js">
+    <link rel="stylesheet" crossorigin href="/assets/css/index-DMKHNveG.css">
+    <script type="module">import'data:text/javascript,if(!import.meta.resolve)throw Error("import.meta.resolve not supported")';import.meta.url;import("_").catch(()=>1);(async function*(){})().next();window.__vite_is_modern_browser=true</script>
+    <script type="module">!function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy chunks, syntax error above and the same error below should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>
+  <link rel="manifest" href="/manifest.webmanifest"></head>
+
+  <body>
+    <div id="root"><link rel="preload" as="image" href="/alemonx-logo.png"/><div class="css-dev-only-do-not-override-p45i5k ant-app css-var-root"><div class="site-frame" data-navigation="true" data-toc="true"><a class="site-skip-link" href="#site-content">跳到正文</a><header class="site-compact-header"><button type="button" class="site-icon-button site-mobile-navigation" aria-label="打开站点导航"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v14H4zM9 5v14"></path></svg></button><a class="site-compact-brand" href="/" data-discover="true"><img src="/alemonx-logo.png" alt="" width="26" height="26"/>ALemonX</a><div class="site-compact-actions"><button type="button" class="site-icon-button" aria-label="搜索文档"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 21l-4.3-4.3m1.8-5.2a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"></path></svg></button><button type="button" class="site-icon-button" aria-label="打开本页目录"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"></path></svg></button></div></header><div class="site-desktop-navigation"><div class="site-rail"><a class="site-rail-brand" aria-label="ALemonX 首页" title="ALemonX 首页" href="/" data-discover="true"><img src="/alemonx-logo.png" alt="" width="38" height="38"/></a><nav class="site-rail-links" aria-label="站点导航"><a class="site-rail-link" title="文档" href="/docs/intro" data-discover="true"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v14M3 5.5c3-1.5 6-1.5 9 0 3-1.5 6-1.5 9 0v13c-3-1.5-6-1.5-9 0-3-1.5-6-1.5-9 0z"></path></svg><span>文档</span></a><a class="site-rail-link" title="工作台" href="/docs/alemonx/getting-started/quick-start" data-discover="true"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5h18v15H3zM3 9h18M9 9v10.5"></path></svg><span>工作台</span></a><a class="site-rail-link" aria-current="true" title="机器人" href="/docs/alemonjsDocs/overview" data-discover="true"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5V2m-7 9H3m18 0h-2M7 5h10a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm2 6h.01M15 11h.01M9 15h6"></path></svg><span>机器人</span></a><a class="site-rail-link" title="常见问题" href="/docs/help/overview" data-discover="true"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v14M3 5.5c3-1.5 6-1.5 9 0 3-1.5 6-1.5 9 0v13c-3-1.5-6-1.5-9 0-3-1.5-6-1.5-9 0z"></path></svg><span>常见问题</span></a><a class="site-rail-link" title="博客" href="/blog" data-discover="true"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H5V3h1Zm9 0v5h4M8 12h8m-8 4h8"></path></svg><span>博客</span></a><a href="https://open.alemonjs.com" target="_blank" rel="noreferrer" class="site-rail-link" title="生态资源"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5 21 7.5v9l-9 5-9-5v-9l9-5Zm0 19v-9m9-5-9 5-9-5m4.5-2.5 9 5"></path></svg><span>生态资源</span></a><a href="https://github.com/lemonade-lab/alemonx/releases" target="_blank" rel="noreferrer" class="site-rail-link" title="工作台下载"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m-4-4 4 4 4-4M4 16v5h16v-5"></path></svg><span>下载</span></a><a href="https://github.com/lemonade-lab/alemonx" target="_blank" rel="noreferrer" class="site-rail-link" title="工作台源码"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-14-2 18"></path></svg><span>源码</span></a></nav><div class="site-rail-utilities"><button type="button" class="site-rail-link" aria-keyshortcuts="Control+k Meta+k"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 21l-4.3-4.3m1.8-5.2a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"></path></svg><span>搜索</span></button><button type="button" class="site-rail-link" aria-label="切换到暗色模式" title="切换到暗色模式"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 15.2a8.5 8.5 0 1 1-11.7-11.7 8.7 8.7 0 0 0 11.7 11.7Z"></path></svg><span>深色</span></button></div></div><div class="site-context"><div class="site-context-heading">文档导航</div><div class="site-context-body"><nav aria-label="文档导航" class="docs-navigation"><ul><li><a class="docs-navigation-link" data-active="false" href="/docs/intro" data-discover="true">文档总览</a></li><li class="docs-navigation-section"><button type="button" class="docs-navigation-heading" aria-expanded="true"><span>工作台</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button><ul class="docs-navigation-children"><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonx/overview" data-discover="true">工作台概览</a></li><li class="docs-navigation-category"><button type="button" class="docs-navigation-subheading" aria-expanded="true"><span>入门</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button><ul class="docs-navigation-children"><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonx/getting-started/install" data-discover="true">安装工作台</a></li><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonx/getting-started/quick-start" data-discover="true">快速上手</a></li></ul></li><li class="docs-navigation-category"><button type="button" class="docs-navigation-subheading" aria-expanded="true"><span>使用指南</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button><ul class="docs-navigation-children"><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonx/use/projects/create-or-import" data-discover="true">创建与导入</a></li><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonx/use/projects/configure" data-discover="true">机器人配置</a></li><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonx/use/runtime/run-and-monitor" data-discover="true">运行与日志</a></li><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonx/use/runtime/local-test" data-discover="true">本地测试</a></li><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonx/use/agent/collaboration" data-discover="true">Agent 任务</a></li><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonx/use/plugins" data-discover="true">安装系统插件</a></li></ul></li><li class="docs-navigation-category"><button type="button" class="docs-navigation-subheading" aria-expanded="false"><span>扩展开发</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button></li><li class="docs-navigation-category"><button type="button" class="docs-navigation-subheading" aria-expanded="false"><span>服务部署</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button></li><li class="docs-navigation-category"><button type="button" class="docs-navigation-subheading" aria-expanded="false"><span>参考</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button></li></ul></li><li class="docs-navigation-section"><button type="button" class="docs-navigation-heading" aria-expanded="true"><span>机器人</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button><ul class="docs-navigation-children"><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonjsDocs/overview" data-discover="true">开发概览</a></li><li class="docs-navigation-category"><button type="button" class="docs-navigation-subheading" aria-expanded="true"><span>快速入门</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button><ul class="docs-navigation-children"><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonjsDocs/getting-started/install" data-discover="true">创建项目</a></li><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonjsDocs/getting-started/quick-start" data-discover="true">编写指令</a></li><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonjsDocs/getting-started/config" data-discover="true">运行配置</a></li><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonjsDocs/getting-started/connect-platform" data-discover="true">连接平台</a></li><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonjsDocs/getting-started/qq-bot" data-discover="true">QQ Bot 接入</a></li></ul></li><li class="docs-navigation-category"><button type="button" class="docs-navigation-subheading" aria-expanded="true"><span>事件与消息</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button><ul class="docs-navigation-children"><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonjsDocs/core/response" data-discover="true">事件处理</a></li><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonjsDocs/core/router" data-discover="true">路由匹配</a></li><li><a class="docs-navigation-link" data-active="true" aria-current="page" href="/docs/alemonjsDocs/core/hook" data-discover="true">Hooks</a></li><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonjsDocs/core/context" data-discover="true">事件上下文</a></li><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonjsDocs/core/data-type" data-discover="true">消息格式</a></li><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonjsDocs/core/message-type" data-discover="true">事件类型</a></li><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonjsDocs/core/cycle" data-discover="true">生命周期</a></li><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonjsDocs/core/middleware" data-discover="true">事件中间件</a></li><li><a class="docs-navigation-link" data-active="false" href="/docs/alemonjsDocs/core/router-sdl" data-discover="true">路由 DSL</a></li></ul></li><li class="docs-navigation-category"><button type="button" class="docs-navigation-subheading" aria-expanded="false"><span>HTTP 服务</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button></li><li class="docs-navigation-category"><button type="button" class="docs-navigation-subheading" aria-expanded="false"><span>模块与平台</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button></li><li class="docs-navigation-category"><button type="button" class="docs-navigation-subheading" aria-expanded="false"><span>进阶开发</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button></li><li class="docs-navigation-category"><button type="button" class="docs-navigation-subheading" aria-expanded="false"><span>参考</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button></li></ul></li><li><a class="docs-navigation-link" data-active="false" href="/docs/extensions" data-discover="true">开发入口</a></li><li class="docs-navigation-section"><button type="button" class="docs-navigation-heading" aria-expanded="false"><span>问题排查</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button></li></ul></nav></div></div></div><div id="site-content" tabindex="-1" class="site-content"><main class="reading-main"><nav class="reader-breadcrumb" aria-label="当前位置"><a href="/docs/intro" data-discover="true">文档</a><span aria-hidden="true">/</span><a href="/docs/alemonjsDocs/overview" data-discover="true">ALemonJS 机器人</a></nav><article id="doc-content" class="prose reader-prose"><h1>Hooks</h1>
+<div class="my-4 sm:my-6 p-3 sm:p-4 rounded-lg bg-blue-50 dark:bg-blue-900/30 border-blue-500 dark:border-blue-600 text-blue-900 dark:text-blue-300"><div class="flex items-center gap-2 font-semibold mb-2 text-xs sm:text-sm uppercase"><span class="text-base sm:text-lg" aria-hidden="true">ℹ️</span><span>INFO</span></div><div class="prose max-w-none [&amp;&gt;*:first-child]:mt-0 [&amp;&gt;*:last-child]:mb-0"><p>在响应函数中，Hooks 自动使用当前事件上下文；在其他位置调用时，可显式传入上下文。<code>useEvent</code> 返回当前事件和 <code>next</code> 回调。</p></div></div>
+<h2><code>useMessage</code></h2>
+<blockquote>
+<p>消息发送、删除、编辑、置顶等操作</p>
+</blockquote>
+<div class="code-block-with-title"><div class="code-block-header">src/response/**/*/res.ts</div><div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-ts"><span class="hljs-keyword">import</span> { useEvent, useMessage, <span class="hljs-title class_">Format</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> [event] = <span class="hljs-title function_">useEvent</span>()
+  <span class="hljs-keyword">const</span> [message] = <span class="hljs-title function_">useMessage</span>()
+
+  <span class="hljs-comment">// 发送消息</span>
+  <span class="hljs-keyword">const</span> format = <span class="hljs-title class_">Format</span>.<span class="hljs-title function_">create</span>().<span class="hljs-title function_">addText</span>(<span class="hljs-string">&#x27;hello word&#x27;</span>)
+  message.<span class="hljs-title function_">send</span>({ format })
+
+  <span class="hljs-comment">// 删除消息</span>
+  <span class="hljs-keyword">await</span> message.<span class="hljs-title function_">delete</span>({ <span class="hljs-attr">messageId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">MessageId</span> })
+
+  <span class="hljs-comment">// 编辑消息</span>
+  <span class="hljs-keyword">await</span> message.<span class="hljs-title function_">edit</span>({
+    <span class="hljs-attr">format</span>: <span class="hljs-title class_">Format</span>.<span class="hljs-title function_">create</span>().<span class="hljs-title function_">addText</span>(<span class="hljs-string">&#x27;edited&#x27;</span>),
+    <span class="hljs-attr">messageId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">MessageId</span>
+  })
+
+  <span class="hljs-comment">// 置顶 / 取消置顶</span>
+  <span class="hljs-keyword">await</span> message.<span class="hljs-title function_">pin</span>({ <span class="hljs-attr">messageId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">MessageId</span> })
+  <span class="hljs-keyword">await</span> message.<span class="hljs-title function_">unpin</span>({ <span class="hljs-attr">messageId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">MessageId</span> })
+
+  <span class="hljs-comment">// 获取消息详情</span>
+  <span class="hljs-keyword">const</span> detail = <span class="hljs-keyword">await</span> message.<span class="hljs-title function_">get</span>({ <span class="hljs-attr">messageId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">MessageId</span> })
+}
+</code></pre></div></div>
+<div class="doc-table" role="region" aria-label="表格" tabindex="0"><table><thead><tr><th>方法</th><th>参数</th><th>说明</th></tr></thead><tbody><tr><td><code>send</code></td><td><code>{ format, replyId? }</code> 或 <code>DataEnums[]</code></td><td>发送消息</td></tr><tr><td><code>delete</code></td><td><code>{ messageId? }</code></td><td>删除消息</td></tr><tr><td><code>edit</code></td><td><code>{ format, messageId? }</code></td><td>编辑消息</td></tr><tr><td><code>pin</code></td><td><code>{ messageId? }</code></td><td>置顶消息</td></tr><tr><td><code>unpin</code></td><td><code>{ messageId? }</code></td><td>取消置顶</td></tr><tr><td><code>get</code></td><td><code>{ messageId? }</code></td><td>获取消息详情</td></tr></tbody></table></div>
+<h2><code>useMention</code></h2>
+<blockquote>
+<p>解析得到被提及（@）的数据</p>
+</blockquote>
+<div class="code-block-with-title"><div class="code-block-header">response/**/*/res.ts</div><div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-ts"><span class="hljs-keyword">import</span> { useMention } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> [mention] = <span class="hljs-title function_">useMention</span>()
+  <span class="hljs-comment">// 查找用户类型的 @ 提及，默认排除 bot</span>
+  <span class="hljs-keyword">const</span> user = <span class="hljs-keyword">await</span> mention.<span class="hljs-title function_">findOne</span>()
+  <span class="hljs-keyword">if</span> (!user.<span class="hljs-property">count</span> || !user.<span class="hljs-property">data</span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-comment">// 未找到用户</span>
+  }
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;User:&#x27;</span>, user)
+}
+</code></pre></div></div>
+<p><code>find</code> 返回所有匹配的提及用户数组，<code>findOne</code> 返回第一个匹配用户。</p>
+<p>支持的过滤选项：</p>
+<div class="doc-table" role="region" aria-label="表格" tabindex="0"><table><thead><tr><th>选项</th><th>类型</th><th>说明</th></tr></thead><tbody><tr><td><code>UserId</code></td><td><code>string</code></td><td>按用户ID过滤</td></tr><tr><td><code>UserKey</code></td><td><code>string</code></td><td>按用户Key过滤</td></tr><tr><td><code>UserName</code></td><td><code>string</code></td><td>按用户名过滤</td></tr><tr><td><code>IsMaster</code></td><td><code>boolean</code></td><td>是否为主人</td></tr><tr><td><code>IsBot</code></td><td><code>boolean</code></td><td>是否为机器人（默认排除）</td></tr></tbody></table></div>
+<h2><code>useSubscribe</code></h2>
+<blockquote>
+<p>订阅模式，在某个事件周期中进行观察</p>
+</blockquote>
+<div class="code-block-with-title"><div class="code-block-header">response/**/*/res.ts</div><div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-ts"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">Format</span>, useMessage, useSubscribe } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-title function_">default</span> () =&gt; {
+  <span class="hljs-keyword">const</span> [message] = <span class="hljs-title function_">useMessage</span>()
+  <span class="hljs-keyword">const</span> [subscribe] = <span class="hljs-title function_">useSubscribe</span>([<span class="hljs-string">&#x27;message.create&#x27;</span>, <span class="hljs-string">&#x27;private.message.create&#x27;</span>])
+
+  message.<span class="hljs-title function_">send</span>({
+    <span class="hljs-attr">format</span>: <span class="hljs-title class_">Format</span>.<span class="hljs-title function_">create</span>().<span class="hljs-title function_">addText</span>(<span class="hljs-string">&#x27;请输入密码&#x27;</span>)
+  })
+
+  <span class="hljs-comment">// 订阅 res 挂载之前的事件</span>
+  <span class="hljs-keyword">const</span> sub = subscribe.<span class="hljs-title function_">mount</span>(
+    <span class="hljs-function">(<span class="hljs-params">event, next</span>) =&gt;</span> {
+      <span class="hljs-keyword">const</span> [message] = <span class="hljs-title function_">useMessage</span>(event)
+      <span class="hljs-keyword">const</span> text = event.<span class="hljs-property">MessageText</span>
+
+      <span class="hljs-keyword">if</span> (text === <span class="hljs-string">&#x27;123456&#x27;</span>) {
+        message.<span class="hljs-title function_">send</span>({
+          <span class="hljs-attr">format</span>: <span class="hljs-title class_">Format</span>.<span class="hljs-title function_">create</span>().<span class="hljs-title function_">addText</span>(<span class="hljs-string">&#x27;密码正确&#x27;</span>)
+        })
+        <span class="hljs-built_in">clearTimeout</span>(timeout)
+      } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (text == <span class="hljs-string">&#x27;/close&#x27;</span>) {
+        message.<span class="hljs-title function_">send</span>({
+          <span class="hljs-attr">format</span>: <span class="hljs-title class_">Format</span>.<span class="hljs-title function_">create</span>().<span class="hljs-title function_">addText</span>(<span class="hljs-string">&#x27;取消登录&#x27;</span>)
+        })
+        <span class="hljs-built_in">clearTimeout</span>(timeout)
+      } <span class="hljs-keyword">else</span> {
+        message.<span class="hljs-title function_">send</span>({
+          <span class="hljs-attr">format</span>: <span class="hljs-title class_">Format</span>.<span class="hljs-title function_">create</span>().<span class="hljs-title function_">addText</span>(<span class="hljs-string">&#x27;密码不正确&#x27;</span>)
+        })
+        <span class="hljs-comment">// 保持订阅</span>
+        <span class="hljs-title function_">next</span>()
+      }
+    },
+    [<span class="hljs-string">&#x27;UserId&#x27;</span>]
+  )
+
+  <span class="hljs-keyword">const</span> timeout = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+    subscribe.<span class="hljs-title function_">cancel</span>(sub)
+    message.<span class="hljs-title function_">send</span>({
+      <span class="hljs-attr">format</span>: <span class="hljs-title class_">Format</span>.<span class="hljs-title function_">create</span>().<span class="hljs-title function_">addText</span>(<span class="hljs-string">&#x27;登录超时&#x27;</span>)
+    })
+  }, <span class="hljs-number">1000</span> * <span class="hljs-number">10</span>)
+}
+</code></pre></div></div>
+<h3>订阅时机</h3>
+<p><code>useSubscribe</code> 提供三种订阅时机：</p>
+<div class="doc-table" role="region" aria-label="表格" tabindex="0"><table><thead><tr><th>方法</th><th>说明</th></tr></thead><tbody><tr><td><code>subscribe.create(callback, keys)</code></td><td>在响应体创建时触发</td></tr><tr><td><code>subscribe.mount(callback, keys)</code></td><td>在中间件之后、响应之前触发</td></tr><tr><td><code>subscribe.unmount(callback, keys)</code></td><td>在响应之后触发</td></tr><tr><td><code>subscribe.cancel(sub)</code></td><td>取消订阅</td></tr></tbody></table></div>
+<p><code>keys</code> 参数指定用于匹配事件的字段名（如 <code>[&#x27;UserId&#x27;]</code>），只有这些字段值相同的事件才会触发订阅回调。</p>
+<h3>next 控制</h3>
+<p>订阅回调中的 <code>next</code> 行为：</p>
+<div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code>- `next()` — 保持订阅
+- `next(true)` — 保持订阅且传递给下一个订阅
+- `next(true, true)` — 保持订阅且传递给下一个周期
+
+&gt; 如果要实现带状态的多轮交互流程，推荐使用[事件上下文](/docs/alemonjsDocs/core/context)。`useSubscribe` 更适合临时事件监听和生命周期订阅。
+</code></pre></div>
+<h2><code>useMember</code></h2>
+<blockquote>
+<p>成员管理：查询、踢出、封禁、禁言、名片等</p>
+</blockquote>
+<div class="code-block-with-title"><div class="code-block-header">response/**/*/res.ts</div><div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-ts"><span class="hljs-keyword">import</span> { useEvent, useMember } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> [event] = <span class="hljs-title function_">useEvent</span>()
+  <span class="hljs-keyword">const</span> [member] = <span class="hljs-title function_">useMember</span>()
+
+  <span class="hljs-comment">// 获取成员信息</span>
+  <span class="hljs-keyword">const</span> info = <span class="hljs-keyword">await</span> member.<span class="hljs-title function_">info</span>({ <span class="hljs-attr">userId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">UserId</span> })
+
+  <span class="hljs-comment">// 获取成员列表</span>
+  <span class="hljs-keyword">const</span> list = <span class="hljs-keyword">await</span> member.<span class="hljs-title function_">list</span>({ <span class="hljs-attr">guildId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">GuildId</span> })
+
+  <span class="hljs-comment">// 搜索成员</span>
+  <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> member.<span class="hljs-title function_">search</span>({ <span class="hljs-attr">keyword</span>: <span class="hljs-string">&#x27;管理&#x27;</span> })
+
+  <span class="hljs-comment">// 踢出成员</span>
+  <span class="hljs-keyword">await</span> member.<span class="hljs-title function_">kick</span>({ <span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;123&#x27;</span> })
+
+  <span class="hljs-comment">// 封禁 / 解封</span>
+  <span class="hljs-keyword">await</span> member.<span class="hljs-title function_">ban</span>({ <span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;123&#x27;</span>, <span class="hljs-attr">reason</span>: <span class="hljs-string">&#x27;违规&#x27;</span>, <span class="hljs-attr">duration</span>: <span class="hljs-number">3600</span> })
+  <span class="hljs-keyword">await</span> member.<span class="hljs-title function_">unban</span>({ <span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;123&#x27;</span> })
+
+  <span class="hljs-comment">// 禁言（秒），0 = 解除</span>
+  <span class="hljs-keyword">await</span> member.<span class="hljs-title function_">mute</span>({ <span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;123&#x27;</span>, <span class="hljs-attr">duration</span>: <span class="hljs-number">60</span> })
+
+  <span class="hljs-comment">// 设置管理员</span>
+  <span class="hljs-keyword">await</span> member.<span class="hljs-title function_">admin</span>({ <span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;123&#x27;</span>, <span class="hljs-attr">enable</span>: <span class="hljs-literal">true</span> })
+
+  <span class="hljs-comment">// 设置名片</span>
+  <span class="hljs-keyword">await</span> member.<span class="hljs-title function_">card</span>({ <span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;123&#x27;</span>, <span class="hljs-attr">card</span>: <span class="hljs-string">&#x27;新昵称&#x27;</span> })
+
+  <span class="hljs-comment">// 设置专属头衔</span>
+  <span class="hljs-keyword">await</span> member.<span class="hljs-title function_">title</span>({ <span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;123&#x27;</span>, <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;VIP&#x27;</span>, <span class="hljs-attr">duration</span>: -<span class="hljs-number">1</span> })
+}
+</code></pre></div></div>
+<div class="doc-table" role="region" aria-label="表格" tabindex="0"><table><thead><tr><th>方法</th><th>参数</th><th>说明</th></tr></thead><tbody><tr><td><code>info</code></td><td><code>{ userId, guildId? }</code></td><td>获取成员信息</td></tr><tr><td><code>list</code></td><td><code>{ guildId?, pagination? }</code></td><td>获取成员列表</td></tr><tr><td><code>search</code></td><td><code>{ keyword, guildId?, limit? }</code></td><td>搜索成员</td></tr><tr><td><code>kick</code></td><td><code>{ userId, guildId? }</code></td><td>踢出成员</td></tr><tr><td><code>ban</code></td><td><code>{ userId, guildId?, reason?, duration? }</code></td><td>封禁成员</td></tr><tr><td><code>unban</code></td><td><code>{ userId, guildId? }</code></td><td>解封成员</td></tr><tr><td><code>mute</code></td><td><code>{ userId, duration, guildId? }</code></td><td>禁言成员</td></tr><tr><td><code>admin</code></td><td><code>{ userId, enable, guildId? }</code></td><td>设置管理员</td></tr><tr><td><code>card</code></td><td><code>{ userId, card, guildId? }</code></td><td>设置名片</td></tr><tr><td><code>title</code></td><td><code>{ userId, title, guildId?, duration? }</code></td><td>设置专属头衔</td></tr></tbody></table></div>
+<h2><code>useChannel</code></h2>
+<blockquote>
+<p>频道管理：查询、创建、更新、删除</p>
+</blockquote>
+<div class="code-block-with-title"><div class="code-block-header">response/**/*/res.ts</div><div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-ts"><span class="hljs-keyword">import</span> { useEvent, useChannel } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> [event] = <span class="hljs-title function_">useEvent</span>()
+  <span class="hljs-keyword">const</span> [channel] = <span class="hljs-title function_">useChannel</span>()
+
+  <span class="hljs-comment">// 获取频道信息</span>
+  <span class="hljs-keyword">const</span> info = <span class="hljs-keyword">await</span> channel.<span class="hljs-title function_">info</span>({ <span class="hljs-attr">channelId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">ChannelId</span> })
+
+  <span class="hljs-comment">// 获取频道列表</span>
+  <span class="hljs-keyword">const</span> list = <span class="hljs-keyword">await</span> channel.<span class="hljs-title function_">list</span>({ <span class="hljs-attr">guildId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">GuildId</span> })
+
+  <span class="hljs-comment">// 创建频道</span>
+  <span class="hljs-keyword">await</span> channel.<span class="hljs-title function_">create</span>({ <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;新频道&#x27;</span>, <span class="hljs-attr">guildId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">GuildId</span> })
+
+  <span class="hljs-comment">// 更新频道</span>
+  <span class="hljs-keyword">await</span> channel.<span class="hljs-title function_">update</span>({
+    <span class="hljs-attr">channelId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">ChannelId</span>,
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;改名&#x27;</span>,
+    <span class="hljs-attr">topic</span>: <span class="hljs-string">&#x27;新话题&#x27;</span>
+  })
+
+  <span class="hljs-comment">// 删除频道</span>
+  <span class="hljs-keyword">await</span> channel.<span class="hljs-title function_">delete</span>({ <span class="hljs-attr">channelId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">ChannelId</span> })
+}
+</code></pre></div></div>
+<div class="doc-table" role="region" aria-label="表格" tabindex="0"><table><thead><tr><th>方法</th><th>参数</th><th>说明</th></tr></thead><tbody><tr><td><code>info</code></td><td><code>{ channelId? }</code></td><td>获取频道信息</td></tr><tr><td><code>list</code></td><td><code>{ guildId? }</code></td><td>获取频道列表</td></tr><tr><td><code>create</code></td><td><code>{ name, type?, parentId?, guildId? }</code></td><td>创建频道</td></tr><tr><td><code>update</code></td><td><code>{ channelId, name?, topic?, position? }</code></td><td>更新频道</td></tr><tr><td><code>delete</code></td><td><code>{ channelId }</code></td><td>删除频道</td></tr></tbody></table></div>
+<h2><code>useGuild</code></h2>
+<blockquote>
+<p>服务器/公会管理</p>
+</blockquote>
+<div class="code-block-with-title"><div class="code-block-header">response/**/*/res.ts</div><div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-ts"><span class="hljs-keyword">import</span> { useEvent, useGuild } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> [event] = <span class="hljs-title function_">useEvent</span>()
+  <span class="hljs-keyword">const</span> [guild] = <span class="hljs-title function_">useGuild</span>()
+
+  <span class="hljs-comment">// 获取服务器信息</span>
+  <span class="hljs-keyword">const</span> info = <span class="hljs-keyword">await</span> guild.<span class="hljs-title function_">info</span>({ <span class="hljs-attr">guildId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">GuildId</span> })
+
+  <span class="hljs-comment">// 获取服务器列表</span>
+  <span class="hljs-keyword">const</span> list = <span class="hljs-keyword">await</span> guild.<span class="hljs-title function_">list</span>()
+
+  <span class="hljs-comment">// 更新服务器设置</span>
+  <span class="hljs-keyword">await</span> guild.<span class="hljs-title function_">update</span>({ <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;新名称&#x27;</span> })
+
+  <span class="hljs-comment">// 退出服务器</span>
+  <span class="hljs-keyword">await</span> guild.<span class="hljs-title function_">leave</span>({ <span class="hljs-attr">guildId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">GuildId</span> })
+
+  <span class="hljs-comment">// 全员禁言</span>
+  <span class="hljs-keyword">await</span> guild.<span class="hljs-title function_">mute</span>({ <span class="hljs-attr">enable</span>: <span class="hljs-literal">true</span> })
+}
+</code></pre></div></div>
+<div class="doc-table" role="region" aria-label="表格" tabindex="0"><table><thead><tr><th>方法</th><th>参数</th><th>说明</th></tr></thead><tbody><tr><td><code>info</code></td><td><code>{ guildId? }</code></td><td>获取服务器信息</td></tr><tr><td><code>list</code></td><td>无</td><td>获取服务器列表</td></tr><tr><td><code>update</code></td><td><code>{ name?, guildId? }</code></td><td>更新服务器设置</td></tr><tr><td><code>leave</code></td><td><code>{ guildId?, isDismiss? }</code></td><td>退出/解散服务器</td></tr><tr><td><code>mute</code></td><td><code>{ enable, guildId? }</code></td><td>全员禁言</td></tr></tbody></table></div>
+<h2><code>useRole</code></h2>
+<blockquote>
+<p>角色管理：创建、更新、删除、分配、移除</p>
+</blockquote>
+<div class="code-block-with-title"><div class="code-block-header">response/**/*/res.ts</div><div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-ts"><span class="hljs-keyword">import</span> { useEvent, useRole } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> [event] = <span class="hljs-title function_">useEvent</span>()
+  <span class="hljs-keyword">const</span> [role] = <span class="hljs-title function_">useRole</span>()
+
+  <span class="hljs-comment">// 获取角色列表</span>
+  <span class="hljs-keyword">const</span> list = <span class="hljs-keyword">await</span> role.<span class="hljs-title function_">list</span>({ <span class="hljs-attr">guildId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">GuildId</span> })
+
+  <span class="hljs-comment">// 创建角色</span>
+  <span class="hljs-keyword">const</span> created = <span class="hljs-keyword">await</span> role.<span class="hljs-title function_">create</span>({ <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;VIP&#x27;</span>, <span class="hljs-attr">color</span>: <span class="hljs-number">0xff0000</span> })
+
+  <span class="hljs-comment">// 更新角色</span>
+  <span class="hljs-keyword">await</span> role.<span class="hljs-title function_">update</span>({ <span class="hljs-attr">roleId</span>: <span class="hljs-string">&#x27;123&#x27;</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;超级VIP&#x27;</span> })
+
+  <span class="hljs-comment">// 删除角色</span>
+  <span class="hljs-keyword">await</span> role.<span class="hljs-title function_">delete</span>({ <span class="hljs-attr">roleId</span>: <span class="hljs-string">&#x27;123&#x27;</span> })
+
+  <span class="hljs-comment">// 分配 / 移除角色</span>
+  <span class="hljs-keyword">await</span> role.<span class="hljs-title function_">assign</span>({ <span class="hljs-attr">userId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">UserId</span>, <span class="hljs-attr">roleId</span>: <span class="hljs-string">&#x27;123&#x27;</span> })
+  <span class="hljs-keyword">await</span> role.<span class="hljs-title function_">remove</span>({ <span class="hljs-attr">userId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">UserId</span>, <span class="hljs-attr">roleId</span>: <span class="hljs-string">&#x27;123&#x27;</span> })
+}
+</code></pre></div></div>
+<div class="doc-table" role="region" aria-label="表格" tabindex="0"><table><thead><tr><th>方法</th><th>参数</th><th>说明</th></tr></thead><tbody><tr><td><code>list</code></td><td><code>{ guildId? }</code></td><td>获取角色列表</td></tr><tr><td><code>create</code></td><td><code>{ name, color?, permissions?, guildId? }</code></td><td>创建角色</td></tr><tr><td><code>update</code></td><td><code>{ roleId, name?, color?, permissions?, guildId? }</code></td><td>更新角色</td></tr><tr><td><code>delete</code></td><td><code>{ roleId, guildId? }</code></td><td>删除角色</td></tr><tr><td><code>assign</code></td><td><code>{ userId, roleId, guildId? }</code></td><td>分配角色</td></tr><tr><td><code>remove</code></td><td><code>{ userId, roleId, guildId? }</code></td><td>移除角色</td></tr></tbody></table></div>
+<h2><code>useReaction</code></h2>
+<blockquote>
+<p>表情回应管理</p>
+</blockquote>
+<div class="code-block-with-title"><div class="code-block-header">response/**/*/res.ts</div><div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-ts"><span class="hljs-keyword">import</span> { useEvent, useReaction } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> [event] = <span class="hljs-title function_">useEvent</span>()
+  <span class="hljs-keyword">const</span> [reaction] = <span class="hljs-title function_">useReaction</span>()
+
+  <span class="hljs-comment">// 添加表情回应</span>
+  <span class="hljs-keyword">await</span> reaction.<span class="hljs-title function_">add</span>({ <span class="hljs-attr">emojiId</span>: <span class="hljs-string">&#x27;👍&#x27;</span> })
+
+  <span class="hljs-comment">// 移除表情回应</span>
+  <span class="hljs-keyword">await</span> reaction.<span class="hljs-title function_">remove</span>({ <span class="hljs-attr">emojiId</span>: <span class="hljs-string">&#x27;👍&#x27;</span>, <span class="hljs-attr">messageId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">MessageId</span> })
+
+  <span class="hljs-comment">// 获取回应用户列表</span>
+  <span class="hljs-keyword">const</span> list = <span class="hljs-keyword">await</span> reaction.<span class="hljs-title function_">list</span>({ <span class="hljs-attr">emojiId</span>: <span class="hljs-string">&#x27;👍&#x27;</span>, <span class="hljs-attr">limit</span>: <span class="hljs-number">20</span> })
+}
+</code></pre></div></div>
+<div class="doc-table" role="region" aria-label="表格" tabindex="0"><table><thead><tr><th>方法</th><th>参数</th><th>说明</th></tr></thead><tbody><tr><td><code>add</code></td><td><code>{ emojiId, messageId? }</code></td><td>添加表情回应</td></tr><tr><td><code>remove</code></td><td><code>{ emojiId, messageId? }</code></td><td>移除表情回应</td></tr><tr><td><code>list</code></td><td><code>{ emojiId, messageId?, limit? }</code></td><td>获取回应用户列表</td></tr></tbody></table></div>
+<h2><code>useMe</code></h2>
+<blockquote>
+<p>获取当前 Bot 自身信息</p>
+</blockquote>
+<div class="code-block-with-title"><div class="code-block-header">response/**/*/res.ts</div><div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-ts"><span class="hljs-keyword">import</span> { useMe } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> [me] = <span class="hljs-title function_">useMe</span>()
+
+  <span class="hljs-keyword">const</span> info = <span class="hljs-keyword">await</span> me.<span class="hljs-title function_">info</span>()
+  <span class="hljs-keyword">const</span> guilds = <span class="hljs-keyword">await</span> me.<span class="hljs-title function_">guilds</span>()
+  <span class="hljs-keyword">const</span> threads = <span class="hljs-keyword">await</span> me.<span class="hljs-title function_">threads</span>()
+  <span class="hljs-keyword">const</span> friends = <span class="hljs-keyword">await</span> me.<span class="hljs-title function_">friends</span>()
+}
+</code></pre></div></div>
+<div class="doc-table" role="region" aria-label="表格" tabindex="0"><table><thead><tr><th>方法</th><th>说明</th></tr></thead><tbody><tr><td><code>info</code></td><td>获取 Bot 个人信息</td></tr><tr><td><code>guilds</code></td><td>获取加入的服务器列表</td></tr><tr><td><code>threads</code></td><td>获取私聊线程列表</td></tr><tr><td><code>friends</code></td><td>获取好友列表</td></tr></tbody></table></div>
+<h2><code>useUser</code></h2>
+<blockquote>
+<p>用户信息查询（无需服务器上下文）</p>
+</blockquote>
+<div class="code-block-with-title"><div class="code-block-header">response/**/*/res.ts</div><div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-ts"><span class="hljs-keyword">import</span> { useEvent, useUser } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> [event] = <span class="hljs-title function_">useEvent</span>()
+  <span class="hljs-keyword">const</span> [user] = <span class="hljs-title function_">useUser</span>()
+  <span class="hljs-keyword">const</span> info = <span class="hljs-keyword">await</span> user.<span class="hljs-title function_">info</span>({ <span class="hljs-attr">userId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">UserId</span> })
+}
+</code></pre></div></div>
+<div class="doc-table" role="region" aria-label="表格" tabindex="0"><table><thead><tr><th>方法</th><th>参数</th><th>说明</th></tr></thead><tbody><tr><td><code>info</code></td><td><code>{ userId }</code></td><td>获取用户信息</td></tr></tbody></table></div>
+<h2><code>useRequest</code></h2>
+<blockquote>
+<p>处理好友请求、入群请求等</p>
+</blockquote>
+<div class="code-block-with-title"><div class="code-block-header">response/**/*/res.ts</div><div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-ts"><span class="hljs-keyword">import</span> { useRequest } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> [request] = <span class="hljs-title function_">useRequest</span>()
+
+  <span class="hljs-comment">// 同意好友请求</span>
+  <span class="hljs-keyword">await</span> request.<span class="hljs-title function_">friend</span>({ <span class="hljs-attr">flag</span>: <span class="hljs-string">&#x27;xxx&#x27;</span>, <span class="hljs-attr">approve</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">remark</span>: <span class="hljs-string">&#x27;备注&#x27;</span> })
+
+  <span class="hljs-comment">// 同意入群请求</span>
+  <span class="hljs-keyword">await</span> request.<span class="hljs-title function_">guild</span>({ <span class="hljs-attr">flag</span>: <span class="hljs-string">&#x27;xxx&#x27;</span>, <span class="hljs-attr">subType</span>: <span class="hljs-string">&#x27;add&#x27;</span>, <span class="hljs-attr">approve</span>: <span class="hljs-literal">true</span> })
+}
+</code></pre></div></div>
+<div class="doc-table" role="region" aria-label="表格" tabindex="0"><table><thead><tr><th>方法</th><th>参数</th><th>说明</th></tr></thead><tbody><tr><td><code>friend</code></td><td><code>{ flag, approve, remark? }</code></td><td>处理好友请求</td></tr><tr><td><code>guild</code></td><td><code>{ flag, subType, approve, reason? }</code></td><td>处理入群/服务器请求</td></tr></tbody></table></div>
+<h2><code>useMedia</code></h2>
+<blockquote>
+<p>媒体管理：上传、发送图片/音频/视频/文件</p>
+</blockquote>
+<div class="code-block-with-title"><div class="code-block-header">response/**/*/res.ts</div><div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-ts"><span class="hljs-keyword">import</span> { useMedia } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> [media] = <span class="hljs-title function_">useMedia</span>()
+
+  <span class="hljs-comment">// 上传媒体（仅上传，不发送）</span>
+  <span class="hljs-keyword">await</span> media.<span class="hljs-title function_">upload</span>({ <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;image&#x27;</span>, <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;https://example.com/img.png&#x27;</span> })
+
+  <span class="hljs-comment">// 发送媒体到频道</span>
+  <span class="hljs-keyword">await</span> media.<span class="hljs-title function_">sendChannel</span>({ <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;image&#x27;</span>, <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;https://example.com/img.png&#x27;</span> })
+
+  <span class="hljs-comment">// 发送媒体到用户</span>
+  <span class="hljs-keyword">await</span> media.<span class="hljs-title function_">sendUser</span>({
+    <span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;123&#x27;</span>,
+    <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;audio&#x27;</span>,
+    <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;https://example.com/a.mp3&#x27;</span>
+  })
+}
+</code></pre></div></div>
+<div class="doc-table" role="region" aria-label="表格" tabindex="0"><table><thead><tr><th>方法</th><th>参数</th><th>说明</th></tr></thead><tbody><tr><td><code>upload</code></td><td><code>{ type, url?, data?, name? }</code></td><td>上传媒体文件</td></tr><tr><td><code>sendChannel</code></td><td><code>{ type, url?, data?, name?, channelId? }</code></td><td>发送到频道</td></tr><tr><td><code>sendUser</code></td><td><code>{ userId, type, url?, data?, name? }</code></td><td>发送到用户</td></tr></tbody></table></div>
+<p><code>upload</code>、<code>sendChannel</code> 和 <code>sendUser</code> 支持 <code>url</code>、<code>data</code>、<code>filePath</code>、<code>fileId</code> 四种媒体来源，但一次只能提供一种来源。针对具有明确目标的群组或 C2C 场景，也可以使用：</p>
+<div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-ts"><span class="hljs-keyword">await</span> media.<span class="hljs-title function_">send</span>({
+  <span class="hljs-attr">target</span>: { <span class="hljs-attr">targetId</span>: <span class="hljs-string">&#x27;123&#x27;</span>, <span class="hljs-attr">scope</span>: <span class="hljs-string">&#x27;channel&#x27;</span> },
+  <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;image&#x27;</span>,
+  <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;https://example.com/img.png&#x27;</span>
+})
+</code></pre></div>
+<h2><code>useConnection</code></h2>
+<blockquote>
+<p>查询机器人当前的连接状态。</p>
+</blockquote>
+<div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-ts"><span class="hljs-keyword">import</span> { useConnection } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+
+<span class="hljs-keyword">const</span> [{ getStatus }] = <span class="hljs-title function_">useConnection</span>()
+<span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> <span class="hljs-title function_">getStatus</span>({ <span class="hljs-title class_">BotId</span>: <span class="hljs-string">&#x27;bot-id&#x27;</span> })
+</code></pre></div>
+<p>如果平台不支持该能力，会返回 <code>Warn</code> 结果；调用方应通过返回值的 <code>code</code> 判断结果。</p>
+<h2><code>useInteraction</code></h2>
+<blockquote>
+<p>确认平台交互事件，例如按钮或命令交互。</p>
+</blockquote>
+<div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-ts"><span class="hljs-keyword">import</span> { useInteraction } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+
+<span class="hljs-keyword">const</span> [{ ack }] = <span class="hljs-title function_">useInteraction</span>()
+<span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> <span class="hljs-title function_">ack</span>({
+  <span class="hljs-title class_">InteractionId</span>: <span class="hljs-string">&#x27;interaction-id&#x27;</span>,
+  <span class="hljs-attr">code</span>: <span class="hljs-number">0</span>
+})
+</code></pre></div>
+<p>如果不传 <code>InteractionId</code>，Hook 会尝试从当前事件上下文读取；如果平台不支持交互确认，会返回 <code>Warn</code> 结果。</p>
+<p><code>type</code> 可选值：<code>&#x27;image&#x27;</code> | <code>&#x27;audio&#x27;</code> | <code>&#x27;video&#x27;</code> | <code>&#x27;file&#x27;</code></p>
+<h2><code>useHistory</code></h2>
+<blockquote>
+<p>消息历史记录</p>
+</blockquote>
+<div class="code-block-with-title"><div class="code-block-header">response/**/*/res.ts</div><div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-ts"><span class="hljs-keyword">import</span> { useEvent, useHistory } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> [event] = <span class="hljs-title function_">useEvent</span>()
+  <span class="hljs-keyword">const</span> [history] = <span class="hljs-title function_">useHistory</span>()
+  <span class="hljs-keyword">const</span> messages = <span class="hljs-keyword">await</span> history.<span class="hljs-title function_">list</span>({
+    <span class="hljs-attr">limit</span>: <span class="hljs-number">50</span>,
+    <span class="hljs-attr">before</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">MessageId</span>
+  })
+}
+</code></pre></div></div>
+<div class="doc-table" role="region" aria-label="表格" tabindex="0"><table><thead><tr><th>方法</th><th>参数</th><th>说明</th></tr></thead><tbody><tr><td><code>list</code></td><td><code>{ channelId?, limit?, before?, after? }</code></td><td>获取消息历史</td></tr></tbody></table></div>
+<h2><code>usePermission</code></h2>
+<blockquote>
+<p>频道权限管理</p>
+</blockquote>
+<div class="code-block-with-title"><div class="code-block-header">response/**/*/res.ts</div><div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-ts"><span class="hljs-keyword">import</span> { useEvent, usePermission } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> [event] = <span class="hljs-title function_">useEvent</span>()
+  <span class="hljs-keyword">const</span> [permission] = <span class="hljs-title function_">usePermission</span>()
+
+  <span class="hljs-comment">// 获取权限</span>
+  <span class="hljs-keyword">const</span> perm = <span class="hljs-keyword">await</span> permission.<span class="hljs-title function_">get</span>({ <span class="hljs-attr">userId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">UserId</span> })
+
+  <span class="hljs-comment">// 设置权限</span>
+  <span class="hljs-keyword">await</span> permission.<span class="hljs-title function_">set</span>({ <span class="hljs-attr">userId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">UserId</span>, <span class="hljs-attr">allow</span>: <span class="hljs-string">&#x27;1&#x27;</span>, <span class="hljs-attr">deny</span>: <span class="hljs-string">&#x27;0&#x27;</span> })
+}
+</code></pre></div></div>
+<div class="doc-table" role="region" aria-label="表格" tabindex="0"><table><thead><tr><th>方法</th><th>参数</th><th>说明</th></tr></thead><tbody><tr><td><code>get</code></td><td><code>{ userId, channelId? }</code></td><td>获取权限</td></tr><tr><td><code>set</code></td><td><code>{ userId, allow?, deny?, channelId? }</code></td><td>设置权限</td></tr></tbody></table></div>
+<h2><code>useAnnounce</code></h2>
+<blockquote>
+<p>频道公告管理</p>
+</blockquote>
+<div class="code-block-with-title"><div class="code-block-header">response/**/*/res.ts</div><div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-ts"><span class="hljs-keyword">import</span> { useEvent, useAnnounce } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> [event] = <span class="hljs-title function_">useEvent</span>()
+  <span class="hljs-keyword">const</span> [announce] = <span class="hljs-title function_">useAnnounce</span>()
+
+  <span class="hljs-comment">// 设置公告</span>
+  <span class="hljs-keyword">await</span> announce.<span class="hljs-title function_">set</span>({ <span class="hljs-attr">messageId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">MessageId</span> })
+
+  <span class="hljs-comment">// 删除公告</span>
+  <span class="hljs-keyword">await</span> announce.<span class="hljs-title function_">remove</span>({ <span class="hljs-attr">messageId</span>: event.<span class="hljs-property">current</span>.<span class="hljs-property">MessageId</span> })
+}
+</code></pre></div></div>
+<div class="doc-table" role="region" aria-label="表格" tabindex="0"><table><thead><tr><th>方法</th><th>参数</th><th>说明</th></tr></thead><tbody><tr><td><code>set</code></td><td><code>{ messageId, channelId?, guildId? }</code></td><td>设置公告</td></tr><tr><td><code>remove</code></td><td><code>{ messageId?, guildId? }</code></td><td>删除公告</td></tr></tbody></table></div>
+<h2><code>Forum&amp;Audio&amp;ChannelSettings</code></h2>
+<div class="doc-table" role="region" aria-label="表格" tabindex="0"><table><thead><tr><th>Hook</th><th>能力</th></tr></thead><tbody><tr><td><code>useSchedule</code></td><td>查询、创建、更新和删除定时内容</td></tr><tr><td><code>useForum</code></td><td>查询、创建和删除帖子 / 主题</td></tr><tr><td><code>useAudio</code></td><td>控制音频、加入或离开音频频道、查询在线状态</td></tr><tr><td><code>useChannelSettings</code></td><td>查询消息频率、权限，申请接口权限和打开私聊会话</td></tr></tbody></table></div>
+<div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-ts"><span class="hljs-keyword">import</span> { useSchedule, useForum } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+
+<span class="hljs-keyword">const</span> [{ list }] = <span class="hljs-title function_">useSchedule</span>()
+<span class="hljs-keyword">const</span> schedules = <span class="hljs-keyword">await</span> <span class="hljs-title function_">list</span>({ <span class="hljs-attr">channelId</span>: <span class="hljs-string">&#x27;channel-id&#x27;</span> })
+
+<span class="hljs-keyword">const</span> [{ create }] = <span class="hljs-title function_">useForum</span>()
+<span class="hljs-keyword">await</span> <span class="hljs-title function_">create</span>({
+  <span class="hljs-attr">channelId</span>: <span class="hljs-string">&#x27;channel-id&#x27;</span>,
+  <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;主题标题&#x27;</span>,
+  <span class="hljs-attr">content</span>: <span class="hljs-string">&#x27;主题内容&#x27;</span>,
+  <span class="hljs-attr">format</span>: <span class="hljs-number">1</span>
+})
+</code></pre></div>
+<h2><code>useMenu&amp;usePanel</code></h2>
+<p><code>useMenu</code> 管理会话菜单；<code>usePanel</code> 管理命令面板及其可见目标。命令面板支持命令、链接、管理员限制和目标用户 / 群组：</p>
+<div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-ts"><span class="hljs-keyword">import</span> { useMenu, usePanel } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+
+<span class="hljs-keyword">const</span> [{ set }] = <span class="hljs-title function_">useMenu</span>()
+<span class="hljs-keyword">await</span> <span class="hljs-title function_">set</span>({
+  <span class="hljs-attr">items</span>: [
+    { <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;帮助&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;message&#x27;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&#x27;/help&#x27;</span> },
+    { <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;文档&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;link&#x27;</span>, <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;https://alemonjs.com&#x27;</span> }
+  ]
+})
+
+<span class="hljs-keyword">const</span> [{ list }] = <span class="hljs-title function_">usePanel</span>()
+<span class="hljs-keyword">const</span> panels = <span class="hljs-keyword">await</span> <span class="hljs-title function_">list</span>({ <span class="hljs-attr">scope</span>: <span class="hljs-string">&#x27;group&#x27;</span> })
+</code></pre></div>
+<h2><code>useClient</code></h2>
+<blockquote>
+<p>映射平台原生接口类，用于调用平台特有 API</p>
+</blockquote>
+<div class="code-block-with-title"><div class="code-block-header">src/response/**/*/res.ts</div><div class="doc-code"><button type="button" class="doc-copy" aria-live="polite">复制</button><pre tabindex="0"><code class="hljs language-ts"><span class="hljs-keyword">import</span> { <span class="hljs-variable constant_">API</span>, platform } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@alemonjs/qq-bot&#x27;</span>
+<span class="hljs-keyword">import</span> { useEvent, useClient } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;alemonjs&#x27;</span>
+<span class="hljs-keyword">export</span> <span class="hljs-title function_">default</span> () =&gt; {
+  <span class="hljs-keyword">const</span> [event] = <span class="hljs-title function_">useEvent</span>()
+  <span class="hljs-keyword">if</span> (event.<span class="hljs-property">current</span>.<span class="hljs-property">Platform</span> === platform) {
+    <span class="hljs-keyword">const</span> [client] = <span class="hljs-title function_">useClient</span>(<span class="hljs-variable constant_">API</span>)
+    client.<span class="hljs-title function_">usersMe</span>()
+  }
+}
+</code></pre></div></div></article><nav class="doc-pagination" aria-label="相邻文档"><a href="/docs/alemonjsDocs/core/router" data-discover="true"><small>← 上一页</small><strong>路由匹配</strong></a><a class="next" href="/docs/alemonjsDocs/core/context" data-discover="true"><small>下一页 →</small><strong>事件上下文</strong></a></nav></main><footer class="site-footer"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12"><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8"><div class="text-center sm:text-left"><h3 class="text-sm font-semibold uppercase tracking-wider mb-3 sm:mb-4 text-[var(--text)]">使用文档</h3><ul class="space-y-2"><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/alemonx/getting-started/install" data-discover="true">安装工作台</a></li><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/alemonjsDocs/getting-started/install" data-discover="true">创建机器人</a></li><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/alemonjsDocs/getting-started/connect-platform" data-discover="true">连接平台</a></li><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/help/overview" data-discover="true">常见问题</a></li></ul></div><div class="text-center sm:text-left"><h3 class="text-sm font-semibold uppercase tracking-wider mb-3 sm:mb-4 text-[var(--text)]">开发资源</h3><ul class="space-y-2"><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/docs/extensions" data-discover="true">开发入口</a></li><li><a href="https://open.alemonjs.com" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-[var(--text)] transition-colors duration-200">生态资源</a></li><li><a href="https://github.com/lemonade-lab/alemonjs" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-[var(--text)] transition-colors duration-200">机器人源码</a></li></ul></div><div class="text-center sm:text-left"><h3 class="text-sm font-semibold uppercase tracking-wider mb-3 sm:mb-4 text-[var(--text)]">版本与社区</h3><ul class="space-y-2"><li><a class="text-sm hover:text-[var(--text)] transition-colors duration-200" href="/blog" data-discover="true">更新日志</a></li><li><a href="https://github.com/lemonade-lab/alemonx/releases" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-[var(--text)] transition-colors duration-200">工作台下载</a></li><li><a href="https://github.com/lemonade-lab/alemonx/discussions" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-[var(--text)] transition-colors duration-200">社区讨论</a></li><li><a href="https://qm.qq.com/q/AIiSecyPlK" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-[var(--text)] transition-colors duration-200">交流群</a></li></ul></div></div><div class="pt-6 sm:pt-8 border-t border-[var(--line)] text-sm text-center text-[var(--text-muted)]"><div>Released under the MIT License. <br/> Copyright © 2024-present LemonadeX </span> <br> <a  href="https://beian.miit.gov.cn/" target="_blank">津ICP备2023004480号</a></div></div></div></footer></div><aside class="site-desktop-toc" aria-label="辅助侧栏"><nav class="site-toc" aria-label="本页目录"></nav></aside></div></div></div>
+    <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
+    <script nomodule crossorigin id="vite-legacy-polyfill" src="/js/polyfills-legacy-C9AcUynB.js"></script>
+    <script nomodule crossorigin id="vite-legacy-entry" data-src="/js/index-legacy-BrU8PpXp.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
+  </body>
+</html>
